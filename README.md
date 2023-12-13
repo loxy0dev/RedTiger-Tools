@@ -12,3 +12,4 @@ pip install ctypes
 
 By: Fluzypro (fluzzzy)
 Discord: https://discord.gg/jMz9CpG2Vt
+Version: 1.8
