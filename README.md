@@ -2,6 +2,7 @@
 ### **Red-Tiger**
 
 **Contient:**
+
 01 -> Info   
 02 -> Serveur Discord (site)         
 03 -> IpPinger                     
@@ -18,7 +19,7 @@ Si "Install.py" ne marche pas installez ces modules:
 selenium, colorama, time, requests, json, random, string, ctypes
 
 
-Discord: https://discord.gg/jMz9CpG2Vt
-By: Fluzypro
-Version: 1.8
+Discord: https://discord.gg/jMz9CpG2Vt,
+By: Fluzypro,
+Version: 1.8,
 Langue: France
