@@ -1,4 +1,4 @@
-Si Install.py marche pas installer ces modules:
+Si "Install.py" ne marche pas installer ces modules:
 
 pip install selenium
 pip install colorama
