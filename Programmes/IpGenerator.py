@@ -1,7 +1,4 @@
-#Module
-import shutil, os
 import time
-import colorama
 import requests
 import time
 import json
@@ -9,15 +6,17 @@ import subprocess
 from random import *
 import random
 
-#Options
-from Options.Options import version, nom, codage, language, createur, discord, couleur, Reset, LAPprint, APprint, TitrePage
 
-#Titre de la page
+from Options.Options import *
+
+
 TitrePage("Red-Tiger | Ip Générator + Chekeur")
 
-def send_embed_webhook(webhook_url, embed_content):
+def send_embed_webhook(webhook_url, embed_content, username=None, url=None):
                 payload = {
-                'embeds': [embed_content]
+                'embeds': [embed_content],
+                'username': username,
+                'avatar_url': url
                  }
 
                 headers = {
@@ -25,14 +24,15 @@ def send_embed_webhook(webhook_url, embed_content):
              }
 
                 response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
-
+username = 'Red-Tiger'
+url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
 webhook = input(f"{couleur.RED}\nVoulez-vous annoncer une Ip valable avec un Webhook ? (y, n) -> {couleur.RESET}")
 if webhook in ['y']:
     webhook_url = input(f"{couleur.RED}\nEntrez le lien du Webhook -> {couleur.RESET}")
 def ping_ip(ip_address, nombre):
 
     try:
-        # Utilisation de subprocess pour appeler la commande ping
+
         result = subprocess.run(['ping', '-n', '1', ip_address], capture_output=True, text=True, timeout=2)
         
         
@@ -49,7 +49,7 @@ def ping_ip(ip_address, nombre):
              }
             }
 
-             send_embed_webhook(webhook_url, embed_content)
+             send_embed_webhook(webhook_url, embed_content, username, url)
 
 
             else:
@@ -73,9 +73,9 @@ while True:
     nombre += 1
     ip = f'{nombre_random1}.{nombre_random2}.{nombre_random3}.{nombre_random4}'
 
-    # Appel de la fonction ping_ip avec l'adresse IP spécifiée
+
     ping_ip(ip, nombre)
     TitrePage(f"Red-Tiger | Ip Générator + Chekeur | Tentative n°{nombre}")
 
-    # Ajouter une petite pause pour ne pas inonder le réseau
+
     time.sleep(1)

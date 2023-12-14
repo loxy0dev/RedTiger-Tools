@@ -1,15 +1,11 @@
-#Module
-import shutil, os
+import os
 import time
-import subprocess
-import ctypes
-import colorama
 from random import *
 
-#Options
-from Options.Options import version, nom, codage, language, createur, discord, couleur, Reset, LAPprint, APprint, TitrePage
 
-#Titre de la page
+from Options.Options import *
+
+
 TitrePage("Red-Tiger | Ip Pinger")
 
 hostname = input(couleur.RED + "\nIP -> " + couleur.RESET)

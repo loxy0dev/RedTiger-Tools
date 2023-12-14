@@ -1,12 +1,11 @@
-#Module
 import os
 import time
 import random
 
-#Options
-from Options.Options import version, nom, codage, language, createur, discord, couleur, Reset, APprint, LAPprint, TitrePage
 
-#Titre de la page
+from Options.Options import *
+
+
 TitrePage("Red-Tiger | Crack Mdp (Travaux)")
 
 LAPprint(couleur.YELLOW + "\n[INFORMATION] | Pour l'instant c'est manuel mais bientot se sera automatique.\n")

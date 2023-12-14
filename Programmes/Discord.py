@@ -3,15 +3,10 @@ from selenium import webdriver
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.common.by import By
 import os
-import time
-import subprocess
-import ctypes
-import colorama
 
 #Options
-from Options.Options import version, nom, codage, language, createur, discord, couleur, Reset, APprint, LAPprint, TitrePage
+from Options.Options import *
 
-#Titre de la page
 TitrePage("Red-Tiger | Serveur Discord (site)")
 
 site = "https://discord.gg/BCS88D9axA"

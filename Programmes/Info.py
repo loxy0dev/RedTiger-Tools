@@ -1,14 +1,11 @@
-#Module
-import colorama
 import os
 import time
-import subprocess
 
 
-#Options
-from Options.Options import version, nom, codage, language, createur, discord, couleur, Reset, LAPprint, APprint, TitrePage
 
-#Titre de la page
+from Options.Options import *
+
+
 TitrePage("Red-Tiger | Info")
 
 
@@ -16,7 +13,8 @@ LAPprint(couleur.RED + "\nRecherche d'information..")
 time.sleep(1)
 
 LAPprint(f"""\n{couleur.RED}Informations:
-{couleur.YELLOW}Nom           :  {couleur.CYAN}{nom}
+{couleur.YELLOW}Username      :  {couleur.CYAN}{nom_utilisateur}
+{couleur.YELLOW}Nom Tool      :  {couleur.CYAN}{nom}
 {couleur.YELLOW}Version       :  {couleur.CYAN}{version}
 {couleur.YELLOW}Codage        :  {couleur.CYAN}{codage}
 {couleur.YELLOW}Language      :  {couleur.CYAN}{language}

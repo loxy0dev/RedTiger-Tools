@@ -2,7 +2,7 @@ import requests
 import time
 import json
 
-from Options.Options import version, nom, codage, language, createur, discord, couleur, Reset, LAPprint, APprint, TitrePage
+from Options.Options import *
 
 TitrePage("Red-Tiger | WebhookCreate")
 

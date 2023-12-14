@@ -1,26 +1,24 @@
-#Module
+
 import os
 import time
-import ctypes
-import colorama
 
-#Options
-from Options.Options import version, codage, language, createur, couleur, Reset, LAPprint, APprint, TitrePage
 
-#Titre de la page
+from Options.Options import *
+
+
 TitrePage("Red-Tiger | Dox Create")
 
 chemin = "./01-Dox-Créés/DOX.txt"
 
-#Le texte d'explication
+
 print(couleur.RED + f"\n[INFORMATION] | {couleur.LIGHTRED_EX} Vous pouvez modifier les informations a tout moment.")
 print(couleur.RED + f"[INFORMATION] | {couleur.LIGHTRED_EX} Skipez la questions si vous ne s'avaez pas quoi mettre.")
 print(couleur.RED + f"\nEntrez les informations de votre victime:\n")
 
-# | Doc .txt pret a recevoir les info |
+
 fichier = open(chemin, 'w').write
 
-# | Questionnaire en variable |
+
 print(couleur.RED + "Info Perso:")
 nom = input(couleur.CYAN + "Nom: " + couleur.RESET)
 prenom = input(couleur.CYAN +"Prénom: " + couleur.RESET)
@@ -58,7 +56,7 @@ autremdp= input(couleur.CYAN +"\nAutres Comptes: " + couleur.RESET)
 print(couleur.RED + "\nAutres Infos:")
 autreinfo= input(couleur.CYAN +"Info: " + couleur.RESET)
 
-#Ecriture du Doc .txt grace au information stoqué dans des variable
+
 fichier(""" ^^^ Enregistrer sous... | Ctrl + Maj + S
         
         oooooooooo.     .oooooo.   ooooooo  ooooo 
@@ -115,7 +113,7 @@ fichier("\n\n" + autreinfo)
 
 open(chemin, 'w').close()
 
-#Fin, explication
+
 
 print(couleur.RED + "\nToute les informations on été recueilli avec succès :)")
 
