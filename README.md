@@ -1,4 +1,4 @@
-![RedTiger](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/f9115079-d4af-44f5-ac67-fb1a4b6331ba)
+![RedTiger feunetre](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/121e5a17-f9dd-4d7f-89d7-c74f61cc1935)
 ### **Red-Tiger**
 
 **Contient:**
@@ -10,16 +10,13 @@
 05 -> MdpCrack (Travaux)              
 06 -> MdpGénérator                
 07 -> DoxCreate               
+08 -> WebhookSpammer   
+09 -> WebhookCreate
+10 -> StealerCreate .Exe
 
-09 -> WebhookSpammer   
-10 -> WebhookCreate
-
-Si "Install.py" ne marche pas installez ces modules:
-
-selenium, colorama, time, requests, json, random, string, ctypes
-
+Avant toute chose, lisez le fichier "A LIRE.txt" et lancez "Setup.py"
 
 Discord: https://discord.gg/jMz9CpG2Vt,
 By: Fluzypro,
-Version: 1.8,
+Version: 1.9,
 Langue: France
