@@ -3,15 +3,15 @@
 
 **Contient:**
 
-01 -> Info   
-02 -> Serveur Discord (site)         
-03 -> IpPinger                     
-04 -> IpGénérator + Chekeur      
-05 -> MdpCrack (Travaux)              
-06 -> MdpGénérator                
-07 -> DoxCreate               
-08 -> WebhookSpammer   
-09 -> WebhookCreate
+01 -> Info,
+02 -> Serveur Discord (site),
+03 -> IpPinger,   
+04 -> IpGénérator + Chekeur,   
+05 -> MdpCrack (Travaux),           
+06 -> MdpGénérator,             
+07 -> DoxCreate,            
+08 -> WebhookSpammer,  
+09 -> WebhookCreate,
 10 -> StealerCreate .Exe
 
 Avant toute chose, lisez le fichier "A LIRE.txt" et lancez "Setup.py"
