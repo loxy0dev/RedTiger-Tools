@@ -1,10 +1,6 @@
-import requests
-import time
-import json
-
 from Options.Options import *
 
-TitrePage("Red-Tiger | Webhook Create")
+TitrePage("Webhook Create")
 
 print(f"""
 {couleur.LIGHTRED_EX}[01]{couleur.RED} -> Message Classique

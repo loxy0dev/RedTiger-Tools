@@ -1,12 +1,7 @@
-import os
-import time
-
-
-
 from Options.Options import *
 
 
-TitrePage("Red-Tiger | Info")
+TitrePage("Info")
 
 
 LAPprint(couleur.RED + "\nRecherche d'information..")

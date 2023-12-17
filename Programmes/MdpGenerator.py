@@ -1,13 +1,7 @@
-import os
-import time
-import string
-import random
-
-
 from Options.Options import *
 
 
-TitrePage("Red-Tiger | Mdp Générator")
+TitrePage("Mdp Générator")
 
 
 caractere = list(string.ascii_letters+string.digits+'AZERTYUIOPQSDFGHJKLMWXCVBNazertyuiopqsdfghjklmwxcvbn1234567890...---___')

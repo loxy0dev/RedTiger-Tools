@@ -1,15 +1,8 @@
-#Module
-from selenium import webdriver
-from selenium.webdriver.edge.service import Service
-from selenium.webdriver.common.by import By
-import os
-
-#Options
 from Options.Options import *
 
-TitrePage("Red-Tiger | Serveur Discord (site)")
+TitrePage("Serveur Discord (site)")
 
-site = "https://discord.gg/BCS88D9axA"
+site = discord
 navigateur = "Edge"
 
 s=Service("./Driver/msedgedriver.exe")

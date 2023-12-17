@@ -1,12 +1,7 @@
 
-import os
-import time
-
-
 from Options.Options import *
 
-
-TitrePage("Red-Tiger | Dox Create")
+TitrePage("Dox Create")
 
 chemin = "./01-Dox-Créés/DOX.txt"
 

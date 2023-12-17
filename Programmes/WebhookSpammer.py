@@ -1,10 +1,6 @@
-import requests
-import time
-import json
-
 from Options.Options import *
 
-TitrePage("Red-Tiger | WebhookCreate")
+TitrePage("Webhook Spammer")
 
 def send_webhook_message(webhook_url, message):
     payload = {'content': message}

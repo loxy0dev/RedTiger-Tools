@@ -1,16 +1,7 @@
-import time
-import requests
-import time
-import json
-import subprocess
-from random import *
-import random
-
-
 from Options.Options import *
 
 
-TitrePage("Red-Tiger | Ip Générator + Chekeur")
+TitrePage("Ip Generator + Chekeur")
 
 def send_embed_webhook(webhook_url, embed_content, username=None, url=None):
                 payload = {
@@ -26,7 +17,7 @@ def send_embed_webhook(webhook_url, embed_content, username=None, url=None):
                 response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
 username = 'Red-Tiger'
 url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
-webhook = input(f"{couleur.RED}\nVoulez-vous annoncer une Ip valable avec un Webhook ? (y, n) -> {couleur.RESET}")
+webhook = input(f"{couleur.RED}\nVoulez-vous annoncer une \"Ip\" valable avec un Webhook ? (y, n) -> {couleur.RESET}")
 if webhook in ['y']:
     webhook_url = input(f"{couleur.RED}\nEntrez le lien du Webhook -> {couleur.RESET}")
 def ping_ip(ip_address, nombre):
@@ -76,6 +67,3 @@ while True:
 
     ping_ip(ip, nombre)
     TitrePage(f"Red-Tiger | Ip Générator + Chekeur | Tentative n°{nombre}")
-
-
-    time.sleep(1)

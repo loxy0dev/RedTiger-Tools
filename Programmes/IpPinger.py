@@ -1,12 +1,7 @@
-import os
-import time
-from random import *
-
-
 from Options.Options import *
 
 
-TitrePage("Red-Tiger | Ip Pinger")
+TitrePage("Ip Pinger")
 
 hostname = input(couleur.RED + "\nIP -> " + couleur.RESET)
 
