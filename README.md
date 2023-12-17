@@ -1,16 +1,24 @@
 ![RedTiger](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/fce5e79c-bd35-4be5-8eec-b1cba196d66f)
-### **Red-Tiger**
+# **Red-Tiger**
 
-**Contient:**
+### Contient:
 
-[00] -> Exit                           [07] -> DoxCreate
-[01] -> Info                           [08] -> StealerCreate (.Exe)
-[02] -> ServeurDiscord (site)          [09] -> WebhookSpammer
-[03] -> IpPinger                       [10] -> WebhookCreate
-[04] -> IpGenerator + Chekeur          [11] -> WebhookGenerator + Chekeur
-[05] -> MdpCrack (Travaux)             [12] -> WebhookInfo
-[06] -> MdpGénérator                  
-
+- [?] -> Change Theme
+- [!] -> Change Username
+- [00] -> Exit
+- [01] -> Info
+- [02] -> Serveur Discord (site)
+- [03] -> Ip Pinger
+- [04] -> Ip Generator + Chekeur
+- [05] -> Mdp Crack (Travaux)
+- [06] -> Mdp Générator
+- [07] -> Dox Create
+- [08] -> Stealer Create (.Exe)
+- [09] -> Webhook Spammer
+- [10] -> Webhook Create
+- [11] -> Webhook Generator + Chekeur
+- [12] -> Webhook Info
+                  
 Avant toute chose, lisez le fichier "A LIRE.txt" et lancez "Setup.py"
 
 Discord: https://discord.gg/jMz9CpG2Vt,
