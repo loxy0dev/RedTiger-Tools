@@ -21,7 +21,8 @@
                   
 Avant toute chose, lisez le fichier "A LIRE.txt" et lancez "Setup.py"
 
-Discord: https://discord.gg/jMz9CpG2Vt,
-By: Fluzypro,
-Version: 1.9.1,
-Langue: France
+- [Discord](https://discord.gg/VF4vqzpDsY)
+- [Tiktok](https://www.tiktok.com/@fluzypro)
+- By: Fluzypro,
+- Version: 1.9.1,
+- Langue: France
