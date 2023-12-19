@@ -1,22 +1,34 @@
-![RedTiger feunetre](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/121e5a17-f9dd-4d7f-89d7-c74f61cc1935)
-### **Red-Tiger**
+![RedTiger](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/fce5e79c-bd35-4be5-8eec-b1cba196d66f)
+# **Red-Tiger**
+- Développé en **Python**.
+- Tool en **Français**.
+- **Aucun virus** ni **token grabb**.
+- **Open Source** uniquement pour vérifier s'il n'y a pas de virus ou de programmes malveillants.
+- **Mise a jour** très souvent.
+- **Disponible** pour tout le monde.
 
-**Contient:**
+### Contient:
 
-01 -> Info,
-02 -> Serveur Discord (site),
-03 -> IpPinger,   
-04 -> IpGénérator + Chekeur,   
-05 -> MdpCrack (Travaux),           
-06 -> MdpGénérator,             
-07 -> DoxCreate,            
-08 -> WebhookSpammer,  
-09 -> WebhookCreate,
-10 -> StealerCreate .Exe
-
+- [?] -> Change Theme
+- [!] -> Change Username
+- [00] -> Exit
+- [01] -> Info
+- [02] -> Serveur Discord (site)
+- [03] -> Ip Pinger
+- [04] -> Ip Generator + Chekeur
+- [05] -> Mdp Crack (Travaux)
+- [06] -> Mdp Générator
+- [07] -> Dox Create
+- [08] -> Stealer Create (.Exe)
+- [09] -> Webhook Spammer
+- [10] -> Webhook Create
+- [11] -> Webhook Generator + Chekeur
+- [12] -> Webhook Info
+                  
 Avant toute chose, lisez le fichier "A LIRE.txt" et lancez "Setup.py"
 
-Discord: https://discord.gg/jMz9CpG2Vt,
-By: Fluzypro,
-Version: 1.9,
-Langue: France
+- [Discord](https://discord.gg/VF4vqzpDsY)
+- [Tiktok](https://www.tiktok.com/@fluzypro)
+- By: Fluzypro,
+- Version: 1.9.1,
+- Langue: France
