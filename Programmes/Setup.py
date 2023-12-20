@@ -97,4 +97,13 @@ except subprocess.CalledProcessError as e:
 
 from Programmes.Options.Options import Reset
 
+nom_module = 'auto-py-to-exe'
+try:
+        subprocess.check_call(['pip', 'install', nom_module])
+        print(f"Le module {nom_module} a été installé avec succès.")
+except subprocess.CalledProcessError as e:
+        print(f"Erreur lors de l'installation du module {nom_module}. Code d'erreur : {e.returncode}")
+
+from Programmes.Options.Options import Reset
+
 Reset()

