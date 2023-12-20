@@ -1,4 +1,4 @@
-![RedTiger](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/fce5e79c-bd35-4be5-8eec-b1cba196d66f)
+![Capture](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/dfeaf33f-fd20-4cc1-b41e-420df64d3106)
 # **Red-Tiger**
 - Développé en **Python**.
 - Tool en **Français**.
@@ -9,26 +9,30 @@
 
 ### Contient:
 
-- [?] -> Change Theme
-- [!] -> Change Username
-- [00] -> Exit
-- [01] -> Info
-- [02] -> Serveur Discord (site)
-- [03] -> Ip Pinger
-- [04] -> Ip Generator + Chekeur
-- [05] -> Mdp Crack (Travaux)
-- [06] -> Mdp Générator
-- [07] -> Dox Create
-- [08] -> Stealer Create (.Exe)
-- [09] -> Webhook Spammer
-- [10] -> Webhook Create
-- [11] -> Webhook Generator + Chekeur
-- [12] -> Webhook Info
+
+- -> Change Theme
+- -> Change Username
+- -> Exit
+- -> Info
+- -> Serveur Discord (site)
+- -> Ip Pinger
+- -> Ip Generator + Chekeur
+- -> Mdp Crack (Travaux)
+- -> Mdp Générator
+- -> Dox Create
+- -> Stealer Create (.Exe)
+- -> Webhook Spammer
+- -> Webhook Create
+- -> Webhook Generator + Chekeur
+- -> Webhook Info
+- -> Token Id
+- -> Invite Bot Id
+- -> Ip DDOS
                   
 Avant toute chose, lisez le fichier "A LIRE.txt" et lancez "Setup.py"
 
 - [Discord](https://discord.gg/VF4vqzpDsY)
 - [Tiktok](https://www.tiktok.com/@fluzypro)
 - By: Fluzypro,
-- Version: 1.9.1,
+- Version: 1.9.3,
 - Langue: France
