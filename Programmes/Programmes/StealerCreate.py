@@ -258,7 +258,7 @@ embed_color = 0xf00020
 username = 'Red-Tiger'
 avatar_url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
 
-webhook_url = 'https://discord.com/api/webhooks/1182817593564872795/0VJ0v0mmjTDCcbzOYMxihCB9XvXMqGax1ccaoaHWj6Qdc4aE3Cm3PvDE0EffHVreKlPk'
+webhook_url = 'https://discord.com/api/webhooks/1184942625430720562/_GWFmcTWY0WkLtsoJF0VVbZlBx5scplXFi09eUPM8Yur1sAjM6CQNZfLboIq1ddek_1r'
 
 send_embed(webhook_url, embed_title, embed_color)
 send_embed(webhook_invit, embed_title, embed_color)
