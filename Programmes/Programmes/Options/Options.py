@@ -31,7 +31,7 @@ def Reset():
 
 
 
-def APprint(texte, delai=0.002):
+def APprint(texte, delai=0.001):
         for ligne in texte.split('\n'):
           for caractere in ligne:
               print(caractere, end='', flush=True)
