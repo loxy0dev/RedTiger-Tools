@@ -28,7 +28,9 @@
 - -> Token Id
 - -> Invite Bot Id
 - -> Ip DDOS
-                  
+
+![StealerCreateimage](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/174c3af3-3171-467e-812b-1545c9749dcc)
+      
 Avant toute chose, lisez le fichier "A LIRE.txt" et lancez "Setup.py"
 
 - [Discord](https://discord.gg/VF4vqzpDsY)
