@@ -28,10 +28,14 @@
 - -> Token Id
 - -> Invite Bot Id
 - -> Ip DDOS
-                  
-Avant toute chose, lisez le fichier "A LIRE.txt" et lancez "Setup.py"
+
+Stealer:
+- ![StealerCreateimage](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/174c3af3-3171-467e-812b-1545c9749dcc)
+      
+Avant toute chose, lisez le fichier "A LIRE.txt" et lancez "Setup.bat"
 
 - [Discord](https://discord.gg/VF4vqzpDsY)
+- [Site Web](https://fluzypro.000webhostapp.com/red-tiger/accueil.html)
 - [Tiktok](https://www.tiktok.com/@fluzypro)
 - By: Fluzypro,
 - Version: 1.9.3,
