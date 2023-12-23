@@ -10,7 +10,9 @@ codage = "Python"
 language = "France"
 createur = "Fluzypro"
 discord = "https://discord.gg/eWNQ46jqdC"
+siteweb = "https://fluzypro.000webhostapp.com/red-tiger/accueil.html"
 nom_utilisateur = open('./Programmes/Programmes/Options/NomUtilisateur.txt', 'r').read()
+theme = open('./Programmes/Programmes/Options/Theme.txt', 'r').read()
 
 couleur = colorama.Fore
 
@@ -31,14 +33,13 @@ def Reset():
 
 
 
-def APprint(texte, delai=0.001):
+def APprint(texte, delai=0.0000000001):
         for ligne in texte.split('\n'):
           for caractere in ligne:
               print(caractere, end='', flush=True)
               time.sleep(delai)
           print()  
           time.sleep(delai * 0)
-
 
 
 def LAPprint(texte, delai=0.03):

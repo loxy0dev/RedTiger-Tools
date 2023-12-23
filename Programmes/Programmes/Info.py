@@ -11,6 +11,7 @@ time.sleep(1)
 
 LAPprint(f"""\n{couleur.RED}Informations:
 {couleur.YELLOW}Username      :  {couleur.CYAN}{nom_utilisateur}
+{couleur.YELLOW}Theme         :  {couleur.CYAN}{theme}
 {couleur.YELLOW}Nom Tool      :  {couleur.CYAN}{nom}
 {couleur.YELLOW}Version       :  {couleur.CYAN}{version}
 {couleur.YELLOW}Codage        :  {couleur.CYAN}{codage}
@@ -19,6 +20,7 @@ LAPprint(f"""\n{couleur.RED}Informations:
 {couleur.YELLOW}Token Grabb   :  {couleur.CYAN}Aucun
 {couleur.YELLOW}Créateur      :  {couleur.CYAN}{createur}
 {couleur.YELLOW}Discord [02]  :  {couleur.CYAN}{discord}
+{couleur.YELLOW}Site    [02]  :  {couleur.CYAN}{siteweb}
 """ + couleur.RESET)
 
 input(couleur.RED + "\nFais entrer pour continuer -> " + couleur.RESET)

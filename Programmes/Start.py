@@ -5,6 +5,8 @@ import subprocess
 import os
 import time
 
+print(f"Version {version}")
+time.sleep(2)
 while True:
   nouvelle_couleur = open('Programmes/Programmes/Options/Theme.txt', 'r').read()
   couleur.RED = getattr(couleur, nouvelle_couleur, couleur.RED)
@@ -14,7 +16,7 @@ while True:
 
   os.system("cls")
 
-  APprint(couleur.RED + f"""     
+  print(couleur.RED + f"""     
                                                       
 			   ██▀███  ▓█████ ▓█████▄    ▄▄▄█████▓ ██▓  ▄████ ▓█████  ██▀███   │Grabb: {couleur.LIGHTRED_EX}aucun{couleur.RED}
 			  ▓██ ▒ ██▒▓█   ▀ ▒██▀ ██▌   ▓  ██▒ ▓▒▓██▒ ██▒ ▀█▒▓█   ▀ ▓██ ▒ ██▒ │Virus: {couleur.LIGHTRED_EX}aucun{couleur.RED}
@@ -23,7 +25,7 @@ while True:
 			  ░██▓ ▒██▒░▒████▒░▒████▓      ▒██▒ ░ ░██░░▒▓███▀▒░▒████▒░██▓ ▒██▒ │By: {couleur.LIGHTRED_EX}{createur}{couleur.RED}
 			  ░ ▒▓ ░▒▓░░░ ▒░ ░ ▒▒▓  ▒      ▒ ░░   ░▓   ░▒   ▒ ░░ ▒░ ░░ ▒▓ ░▒▓░ ├───────────────
 			    ░▒ ░ ▒░ ░ ░  ░ ░ ▒  ▒        ░     ▒ ░  ░   ░  ░ ░  ░  ░▒ ░ ▒░ │Username: {couleur.LIGHTRED_EX}{nom_utilisateur}{couleur.RED}
-			   ░░   ░    ░    ░ ░  ░      ░       ▒ ░░ ░   ░    ░     ░░   ░   │
+			   ░░   ░    ░    ░ ░  ░      ░       ▒ ░░ ░   ░    ░     ░░   ░   │Site: {couleur.LIGHTRED_EX}[02]{couleur.RED}
  			    ░        ░  ░   ░                 ░        ░    ░  ░   ░     
 
 > Change Theme -> {couleur.LIGHTRED_EX}[?]{couleur.RED} 
@@ -32,7 +34,7 @@ while True:
 ╔═══                              ═══╗ ╔═══            {couleur.LIGHTRED_EX}Discord:{couleur.RED}            ═══╗ ╔═══                                ═══╗
 ║                                    ║ ║                                      ║ ║                                      ║
     {couleur.LIGHTRED_EX}[01]{couleur.RED} -> Info                           {couleur.LIGHTRED_EX}[08]{couleur.RED} -> Webhook Catégorie (4)            {couleur.LIGHTRED_EX}[15]{couleur.RED} ->           
-    {couleur.LIGHTRED_EX}[02]{couleur.RED} -> Serveur Discord (site)         {couleur.LIGHTRED_EX}[09]{couleur.RED} -> Token Catégorie (2)              {couleur.LIGHTRED_EX}[16]{couleur.RED} -> 
+    {couleur.LIGHTRED_EX}[02]{couleur.RED} -> Site internet (2)              {couleur.LIGHTRED_EX}[09]{couleur.RED} -> Token Catégorie (2)              {couleur.LIGHTRED_EX}[16]{couleur.RED} -> 
     {couleur.LIGHTRED_EX}[03]{couleur.RED} -> Ip Catégorie (3)               {couleur.LIGHTRED_EX}[10]{couleur.RED} -> Invite Catégorie (1)             {couleur.LIGHTRED_EX}[17]{couleur.RED} -> 
     {couleur.LIGHTRED_EX}[04]{couleur.RED} -> Mdp Catégorie (2)              {couleur.LIGHTRED_EX}[11]{couleur.RED} ->                                  {couleur.LIGHTRED_EX}[18]{couleur.RED} -> 
     {couleur.LIGHTRED_EX}[05]{couleur.RED} -> Stealer Catégorie (2)          {couleur.LIGHTRED_EX}[12]{couleur.RED} ->                                  {couleur.LIGHTRED_EX}[19]{couleur.RED} -> 
@@ -57,8 +59,17 @@ while True:
             subprocess.run(commande, shell=True)
 
         if choix in ['2', '02', 'discord', 'Discord']:
-            commande = 'python ./Programmes/Programmes/Discord.py'
-            subprocess.run(commande, shell=True)
+            print(f"""
+{couleur.LIGHTRED_EX}[01]{couleur.RED} -> Site Red-Tiger
+{couleur.LIGHTRED_EX}[02]{couleur.RED} -> Serveur Discord
+""")
+            choixWebhook = input(couleur.RED + f"[->] " + couleur.RESET)
+            if choixWebhook in ['1', '01']:
+             commande = 'python ./Programmes/Programmes/Site.py'
+             subprocess.run(commande, shell=True)
+            if choixWebhook in ['2', '02']:
+             commande = 'python ./Programmes/Programmes/Discord.py'
+             subprocess.run(commande, shell=True)
 
 
 
@@ -66,7 +77,7 @@ while True:
            print(f"""
 {couleur.LIGHTRED_EX}[01]{couleur.RED} -> Ip Pinger
 {couleur.LIGHTRED_EX}[02]{couleur.RED} -> Ip Generator + Chekeur
-{couleur.LIGHTRED_EX}[03]{couleur.RED} -> Ip DDOS
+{couleur.LIGHTRED_EX}[03]{couleur.RED} -> Ip Stresser
 """)        
            choixWebhook = input(couleur.RED + f"[->] " + couleur.RESET)
            if choixWebhook in ['1', '01']:
@@ -78,7 +89,7 @@ while True:
               subprocess.run(commande, shell=True)
 
            if choixWebhook in ['3', '03']:
-              commande = 'python ./Programmes/Programmes/IpDDOS.py'
+              commande = 'python ./Programmes/Programmes/IpStresser.py'
               subprocess.run(commande, shell=True)
             
            else:

@@ -9,6 +9,7 @@
 			   ░░   ░    ░    ░ ░  ░      ░       ▒ ░░ ░   ░    ░     ░░   ░ 
  			    ░        ░  ░   ░                 ░        ░    ░  ░   ░     
 
+Site > https://fluzypro.000webhostapp.com/red-tiger/accueil.html
 1 > Lancez 'Setup.bat' pour vous assurer que tout fonctionne correctement.
 2 > Puis lancez 'Start.bat' si il ne se lance pas automatiquement.
 
