@@ -10,7 +10,7 @@ codage = "Python"
 language = "France"
 createur = "Fluzypro"
 discord = "https://discord.gg/eWNQ46jqdC"
-siteweb = "https://fluzypro.000webhostapp.com/red-tiger/accueil.html"
+siteweb = "https://red-tiger.000webhostapp.com/accueil.html"
 nom_utilisateur = open('./Programmes/Programmes/Options/NomUtilisateur.txt', 'r').read()
 theme = open('./Programmes/Programmes/Options/Theme.txt', 'r').read()
 
