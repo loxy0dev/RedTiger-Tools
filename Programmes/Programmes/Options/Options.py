@@ -5,7 +5,7 @@ import os
 import time
 
 nom = "Red-Tiger"
-version = "v1.9.4"
+version = "v1.9.6"
 codage = "Python"
 language = "EN"
 createur = "Fluzypro"
