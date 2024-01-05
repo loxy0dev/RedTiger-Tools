@@ -5,52 +5,49 @@ import os
 
 TitrePage("Dox Create")
 
-chemin = "./01-Dox-Créés/DOX.txt"
+chemin = "./01-Dox-Create/DOX.txt"
 
-
-print(couleur.RED + f"\n[INFORMATION] | {couleur.LIGHTRED_EX} Vous pouvez modifier les informations a tout moment.")
-print(couleur.RED + f"[INFORMATION] | {couleur.LIGHTRED_EX} Skipez la questions si vous ne s'avaez pas quoi mettre.")
-print(couleur.RED + f"\nEntrez les informations de votre victime:\n")
+print(couleur.RED + f"\nVictim information:\n")
 
 
 fichier = open(chemin, 'w').write
 
 
 print(couleur.RED + "Info Perso:")
-nom = input(couleur.CYAN + "Nom: " + couleur.RESET)
-prenom = input(couleur.CYAN +"Prénom: " + couleur.RESET)
-datene = input(couleur.CYAN +"Date Naissance: " + couleur.RESET)
+nom = input(couleur.CYAN + "Name: " + couleur.RESET)
+prenom = input(couleur.CYAN +"First Name: " + couleur.RESET)
+datene = input(couleur.CYAN +"Date of birth: " + couleur.RESET)
 
 print(couleur.RED + "\nInfo Pc:")
-nompc= input(couleur.CYAN +"Nom Du PC: " + couleur.RESET)
+nompc= input(couleur.CYAN +"Name PC: " + couleur.RESET)
 ip= input(couleur.CYAN +"Ip: " + couleur.RESET)
 
 print(couleur.RED + "\nLocalisaton:")
-pays = input(couleur.CYAN +"Pays: " + couleur.RESET)
-region = input(couleur.CYAN +"Régions: " + couleur.RESET)
-postal= input(couleur.CYAN +"Code Postal: " + couleur.RESET)
-ville = input(couleur.CYAN +"Ville: " + couleur.RESET)
-rue = input(couleur.CYAN +"Rue: " + couleur.RESET)
+pays = input(couleur.CYAN +"Country: " + couleur.RESET)
+region = input(couleur.CYAN +"Regions: " + couleur.RESET)
+postal= input(couleur.CYAN +"Postal Code: " + couleur.RESET)
+ville = input(couleur.CYAN +"City: " + couleur.RESET)
+rue = input(couleur.CYAN +"Street: " + couleur.RESET)
 
-print(couleur.RED + "\nCompte/Mdp:")
+print(couleur.RED + "\nAccount/Mdp:")
 print(couleur.YELLOW + "Discord:")
-discord = input(couleur.CYAN + "Nom: " + couleur.RESET)
+discord = input(couleur.CYAN + "Name: " + couleur.RESET)
 token = input(couleur.CYAN + "Token: " + couleur.RESET)
-mail= input(couleur.CYAN +"Adresse Mail: " + couleur.RESET)
-mdp= input(couleur.CYAN +"Mot de passe: " + couleur.RESET)
+mail= input(couleur.CYAN +"Mail address: " + couleur.RESET)
+mdp= input(couleur.CYAN +"Password: " + couleur.RESET)
 
 print(couleur.YELLOW + "\nMail:")
-amail = input(couleur.CYAN + "Adresse: " + couleur.RESET)
-mmail = input(couleur.CYAN + "Mot De Passe: " + couleur.RESET)
+amail = input(couleur.CYAN + "Adress: " + couleur.RESET)
+mmail = input(couleur.CYAN + "Password: " + couleur.RESET)
 
-print(couleur.YELLOW + "\nMdp Possible:")
-mdpp1 = input(couleur.CYAN + "Mdp: " + couleur.RESET)
-mdpp2 = input(couleur.CYAN + "Mdp: " + couleur.RESET)
-mdpp3 = input(couleur.CYAN + "Mdp: " + couleur.RESET)
+print(couleur.YELLOW + "\nPassword Possible:")
+mdpp1 = input(couleur.CYAN + "Password 1: " + couleur.RESET)
+mdpp2 = input(couleur.CYAN + "Password 2: " + couleur.RESET)
+mdpp3 = input(couleur.CYAN + "Password 3: " + couleur.RESET)
 
-autremdp= input(couleur.CYAN +"\nAutres Comptes: " + couleur.RESET)
+autremdp= input(couleur.CYAN +"\nOther Accounts: " + couleur.RESET)
 
-print(couleur.RED + "\nAutres Infos:")
+print(couleur.RED + "\Other Infos:")
 autreinfo= input(couleur.CYAN +"Info: " + couleur.RESET)
 
 
@@ -69,59 +66,48 @@ _________________________________________________________________
 
 fichier("-----------------------Info Perso:-----------------------")
 
-fichier("\n\nNom           :  " + nom)
-fichier("\nPrenom        :  " + prenom)
-fichier("\nDate Naissance:  " + datene)
+fichier("\n\nName          :  " + nom)
+fichier("\nFirst Name    :  " + prenom)
+fichier("\nDate of birth :  " + datene)
 
 fichier("\n\n------------------------Info Pc:-------------------------")
-fichier("\n\nNom Du Pc     :  " + nompc)
+fichier("\n\nName Pc       :  " + nompc)
 fichier("\nIp            :  " + ip)
 
 fichier("\n\n----------------------Localisation:----------------------")
 
-fichier("\n\nPays          :  " + pays)
+fichier("\n\nCountry       :  " + pays)
 fichier("\nRegions       :  " + region)
-fichier("\nCode Postal   :  " + postal)
-fichier("\nVille         :  " + ville)
-fichier("\nRue           :  " + rue)
+fichier("\nPostal Code   :  " + postal)
+fichier("\nCity          :  " + ville)
+fichier("\nStreet        :  " + rue)
 
 fichier("\n\n-----------------------Compte/Mdp:-----------------------")
 
 fichier("\n\nDiscord:")
 
-fichier("\nNom           :  " + discord)
+fichier("\nName          :  " + discord)
 fichier("\nToken         :  " + token)
-fichier("\nAdresse Mail  :  " + mail)
-fichier("\nMot de passe  :  " + mdp)
+fichier("\nAdress Mail   :  " + mail)
+fichier("\nPassword      :  " + mdp)
 
 fichier("\n\nMail:")
-fichier("\nAdresse       :  " + amail)
-fichier("\nMot De Passe  :  " + mmail)
+fichier("\nAdress        :  " + amail)
+fichier("\nPassword      :  " + mmail)
 
-fichier("\n\nMdp Possible  :  " + mdpp1 + " - " + mdpp2 + " - " + mdpp3)
+fichier("\n\nPassword Possible  :  " + mdpp1 + " - " + mdpp2 + " - " + mdpp3)
 
-fichier("\n\nAutres Comptes:")
+fichier("\n\nOther Accounts:")
 
 fichier("\n" + autremdp)
 
-fichier("\n\n----------------------Autres Infos:----------------------")
+fichier("\n\n----------------------Other Infos:----------------------")
 fichier("\n\n" + autreinfo)
 
 
 open(chemin, 'w').close()
 
 
-
-print(couleur.RED + "\nToute les informations on été recueilli avec succès :)")
-
-input(couleur.RED + "\nFaites entrer pour sauvegarder: " + couleur.RESET)
-time.sleep(1)
-print(couleur.CYAN + "Sauvegarde en cours...")
+print(couleur.RED + f"\nThe DOX was sent to: {couleur.CYAN}\"{chemin}\""+ couleur.RESET)
 time.sleep(3)
-print(couleur.RED + "Sauvegarde effectuer !")
-print(couleur.RED + f"\nChemin d'accès au document texte: {couleur.CYAN}\"{chemin}\""+ couleur.RESET)
-print(couleur.RED + f"\n[INFORMATION] | {couleur.LIGHTRED_EX}Renommez le fichier ou déplacez-le, car il sera réinitialisé !" + couleur.RESET)
-time.sleep(3)
-print(couleur.RED + f"\n[INFORMATION] | {couleur.LIGHTRED_EX}Veuillez relancer !\n" + couleur.RESET)
-
-os.system("pause")
+Continue()

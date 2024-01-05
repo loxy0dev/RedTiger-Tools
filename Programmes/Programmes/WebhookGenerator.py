@@ -5,7 +5,7 @@ import json
 import string
 import random
 
-TitrePage("Webhook Generator + Chekeur")
+TitrePage("Webhook Générator + Checker")
 
 def send_embed_webhook(webhook_url, embed_content, username=None, url=None):
                 payload = {
@@ -23,9 +23,9 @@ username = 'Red-Tiger'
 url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
 
 
-choixwebhook = input(f"{couleur.RED}\nVoulez-vous annoncer un \"Webhook\" valable avec un Webhook ? (y, n) -> {couleur.RESET}")
+choixwebhook = input(f"{couleur.RED}\nWebhook ? (y, n) -> {couleur.RESET}")
 if choixwebhook in ['y']:
-    webhook_url = input(f"{couleur.RED}\nEntrez le lien du Webhook -> {couleur.RESET}")
+    webhook_url = input(f"{couleur.RED}\nURL Webhook -> {couleur.RESET}")
 
 def send_webhook_message(webhook_url_Essai, content):
          payload = {
@@ -40,11 +40,11 @@ def send_webhook_message(webhook_url_Essai, content):
 
          if response.status_code == 204:
           if choixwebhook in ['y']:
-            print(f"{couleur.GREEN}[+] | {couleur.CYAN}{webhook_partie_variable}{couleur.GREEN} | Webhook Trouvé | n°{nombre}{couleur.RESET}")
+            print(f"{couleur.GREEN}[+] | {couleur.CYAN}{webhook_partie_variable}{couleur.GREEN} | Webhook Found | n°{nombre}{couleur.RESET}")
 
             embed_content = {
-           'title': f'Webhook Trouvé, tentative n°{nombre}',
-           'description': f"**__Lien Webhook:__**\n```{webhook_url_Essai}```\nIl se peut que le webhook ait été supprimé d'ici là.",
+           'title': f'Webhook Found, Tests n°{nombre}',
+           'description': f"**URL Webhook:__**\n```{webhook_url_Essai}```",
            'color': 0xf00020,
            'footer': {
             "text": "Red-Tiger",
@@ -53,10 +53,10 @@ def send_webhook_message(webhook_url_Essai, content):
             }
             send_embed_webhook(webhook_url, embed_content, username, url)
           else:
-                print(f"{couleur.GREEN}[+] | {couleur.CYAN}{webhook_partie_variable}{couleur.GREEN} | Webhook Trouvé | n°{nombre}{couleur.RESET}")
+                print(f"{couleur.GREEN}[+] | {couleur.CYAN}{webhook_partie_variable}{couleur.GREEN} | Webhook Found | n°{nombre}{couleur.RESET}")
 
          else:
-             print(f"{couleur.RED}[X] | {couleur.CYAN}{webhook_partie_variable}{couleur.RED} | Webhook Invalide | n°{nombre}{couleur.RESET}")
+             print(f"{couleur.RED}[X] | {couleur.CYAN}{webhook_partie_variable}{couleur.RED} | Webhook Invalid | n°{nombre}{couleur.RESET}")
 
 nombre = 0
 while True:
@@ -69,7 +69,7 @@ while True:
 
     webhook_url_Essai = f'https://discord.com/api/webhooks/{webhook_partie_variable}'
 
-    message_content = 'Webhook trouvé By Red Tiger'
+    message_content = 'Webhook found By Red Tiger'
 
     send_webhook_message(webhook_url_Essai, message_content)
-    TitrePage(f"Ip Générator + Chekeur | Tentative n°{nombre}")
+    TitrePage(f"Ip Générator + Checker | Tests n°{nombre}")

@@ -7,7 +7,7 @@ import time
 TitrePage("Webhook Create")
 
 print(f"""
-{couleur.LIGHTRED_EX}[01]{couleur.RED} -> Message Classique
+{couleur.LIGHTRED_EX}[01]{couleur.RED} -> Message Classic
 {couleur.LIGHTRED_EX}[02]{couleur.RED} -> Message Embed
 """)
 choix = int(input(f"[->] {couleur.RESET}"))
@@ -27,20 +27,23 @@ try:
          response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
 
          if response.status_code == 204:
-             LAPprint(f'\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Message envoyé avec succès')
+             LAPprint(f'\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Message Send.')
              time.sleep(5)
              Reset()
          else:
-             LAPprint(f'\n{couleur.RED}[ERREUR] | {couleur.LIGHTRED_EX}Message non envoyé.')
+             LAPprint(f'\n{couleur.RED}[ERREUR] | {couleur.LIGHTRED_EX}Message not Send.')
              time.sleep(5)
              Reset()
 
 
-        webhook_url = input(f"{couleur.RED}Entrer le lien du Webhook -> {couleur.RESET}")
+        webhook_url = input(f"{couleur.RED}URL Webhook -> {couleur.RESET}")
         if webhook_url.lower().startswith("https://discord.com/api/webhooks"):
 
-            message_content = input(f"{couleur.RED}\nEntrer le message -> {couleur.RESET}")
+            message_content = input(f"{couleur.RED}\nMessage -> {couleur.RESET}")
             send_webhook_message(webhook_url, message_content)
+        
+        else:
+            ErreurUrl()
 
 
     if choix == 2:
@@ -58,27 +61,27 @@ try:
             response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
 
             if response.status_code == 204:
-               LAPprint(f'\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Message envoyé avec succès !')
+               LAPprint(f'\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Message Send.')
                time.sleep(5)
                Reset()
             else:
-             LAPprint(f'\n{couleur.RED}[ERREUR] | {couleur.LIGHTRED_EX}Message non envoyé.')
+             LAPprint(f'\n{couleur.RED}[ERREUR] | {couleur.LIGHTRED_EX}Message not Send.')
              time.sleep(5)
              Reset()
     
-        webhook_url = input(f"{couleur.RED}\nEntrer le lien du Webhook -> {couleur.RESET}")
+        webhook_url = input(f"{couleur.RED}\nURL Webhook -> {couleur.RESET}")
 
         print(f""" {couleur.RED}
-{couleur.LIGHTRED_EX}[01]{couleur.RED} -> Rouge
+{couleur.LIGHTRED_EX}[01]{couleur.RED} -> Red
 {couleur.LIGHTRED_EX}[02]{couleur.RED} -> Orange
-{couleur.LIGHTRED_EX}[03]{couleur.RED} -> Jaune
-{couleur.LIGHTRED_EX}[04]{couleur.RED} -> Vert
-{couleur.LIGHTRED_EX}[05]{couleur.RED} -> Bleu
-{couleur.LIGHTRED_EX}[06]{couleur.RED} -> Violet
-{couleur.LIGHTRED_EX}[07]{couleur.RED} -> Blanc
-{couleur.LIGHTRED_EX}[08]{couleur.RED} -> Noir 
+{couleur.LIGHTRED_EX}[03]{couleur.RED} -> Yellow
+{couleur.LIGHTRED_EX}[04]{couleur.RED} -> Green
+{couleur.LIGHTRED_EX}[05]{couleur.RED} -> Blue
+{couleur.LIGHTRED_EX}[06]{couleur.RED} -> Magenta
+{couleur.LIGHTRED_EX}[07]{couleur.RED} -> White
+{couleur.LIGHTRED_EX}[08]{couleur.RED} -> Black 
 """)
-        couleur_input = int(input(f"{couleur.RED}Choisissez une couleur -> {couleur.RESET} "))
+        couleur_input = int(input(f"{couleur.RED}Color -> {couleur.RESET}"))
         try:
             if couleur_input == 1:
                 couleure = 0xFF0000  # Rouge
@@ -102,7 +105,7 @@ try:
             couleure = 0xFF0000  # Rouge (par défaut)
 
         embed_content = {
-           'title': input(f"{couleur.RED}Titre ->{couleur.RESET} "),
+           'title': input(f"{couleur.RED}Title ->{couleur.RESET} "),
            'description': input(f"{couleur.RED}Description ->{couleur.RESET} "),
            'color': couleure,
            'footer': {
@@ -113,10 +116,6 @@ try:
         send_embed_webhook(webhook_url, embed_content)
 
     else:
-        LAPprint(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Le choix n'existe pas !", couleur.RESET)
-        time.sleep(3)
-        Reset()
+        ErreurChoix
 except ValueError as e:
-    LAPprint(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Le choix n'existe pas !", couleur.RESET)
-    time.sleep(3)
-    Reset()
+    ErreurChoix

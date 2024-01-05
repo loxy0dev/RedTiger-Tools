@@ -5,21 +5,19 @@ import time
 import random
 import os
 
-TitrePage("Mdp Générator")
+TitrePage("Password Générator")
 
 
 caractere = list(string.ascii_letters+string.digits+'AZERTYUIOPQSDFGHJKLMWXCVBNazertyuiopqsdfghjklmwxcvbn1234567890...---___')
 
 
 try:
-    nombre = int(input(couleur.RED + "\nNombre de caractère -> " + couleur.RESET))
+    nombre = int(input(couleur.RED + "\nCharacter Number -> " + couleur.RESET))
     time.sleep(0.2)
-    fois = int(input(couleur.RED + "\nNombre de Mot de passe a générer -> " + couleur.RESET))
+    fois = int(input(couleur.RED + "\nGenerate Number -> " + couleur.RESET))
     time.sleep(0.2)
 except:
-    print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Choisissez un nombre !", couleur.RESET)
-    time.sleep(3)
-    Reset()
+    ErreurNombre()
 
 
 
@@ -32,14 +30,14 @@ def genenerate_password():
     return "".join(password)
 
 
-print(couleur.RED + "\nVoici les mots de passe que je vous propose:\n" + couleur.RESET)
+print(couleur.RED + "\nPassword Generate:\n" + couleur.RESET)
 time.sleep(1)
 for n in range(fois):
     time.sleep(0.05)
     print(couleur.CYAN + genenerate_password() + couleur.RESET)
 
 
-input(couleur.RED + "\nFais entrer pour continuer -> " + couleur.RESET)
+Continue()
 Reset()
 
 os.system("pause")

