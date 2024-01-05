@@ -17,19 +17,20 @@
 - -> Info
 - -> Site Internet (2)
 - -> Ip Pinger
-- -> Ip Generator + Chekeur
+- -> Ip Generator + Checker
 - -> Ip Stresser
-- -> Mdp Crack (Travaux)
 - -> Mdp Générator
 - -> Dox Create
 - -> Stealer Create (.Exe)
+- -> Web Scraping
 - -> Webhook Spammer
 - -> Webhook Create
-- -> Webhook Generator + Chekeur
+- -> Webhook Generator + Checker
 - -> Webhook Info
-- -> Token Id Brute
+- -> Token Id Brute + Checker
 - -> Token Id
 - -> Invite Bot Id
+- -> Nitro Generator + Checker
 
 Stealer:
 - ![StealerCreateimage](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/174c3af3-3171-467e-812b-1545c9749dcc)
@@ -40,5 +41,4 @@ Avant toute chose, lisez le fichier "A LIRE.txt" et lancez "Setup.bat"
 - [Site Web](https://red-tiger.000webhostapp.com/accueil.html)
 - [Tiktok](https://www.tiktok.com/@fluzypro)
 - By: Fluzypro,
-- Version: 1.9.4,
-- Langue: France
+- Version: 1.9.6
