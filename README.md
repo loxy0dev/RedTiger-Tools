@@ -1,5 +1,6 @@
-![Capture](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/dfeaf33f-fd20-4cc1-b41e-420df64d3106)
+![Capture](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/892739e3-bad6-4958-89f7-6d43464714ee)
 # **Red-Tiger**
+
 - Développé en **Python**.
 - Tool en **Français**.
 - **Aucun virus** ni **token grabb**.
@@ -14,9 +15,10 @@
 - -> Change Username
 - -> Exit
 - -> Info
-- -> Serveur Discord (site)
+- -> Site Internet (2)
 - -> Ip Pinger
 - -> Ip Generator + Chekeur
+- -> Ip Stresser
 - -> Mdp Crack (Travaux)
 - -> Mdp Générator
 - -> Dox Create
@@ -25,9 +27,9 @@
 - -> Webhook Create
 - -> Webhook Generator + Chekeur
 - -> Webhook Info
+- -> Token Id Brute
 - -> Token Id
 - -> Invite Bot Id
-- -> Ip DDOS
 
 Stealer:
 - ![StealerCreateimage](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/174c3af3-3171-467e-812b-1545c9749dcc)
@@ -35,8 +37,8 @@ Stealer:
 Avant toute chose, lisez le fichier "A LIRE.txt" et lancez "Setup.bat"
 
 - [Discord](https://discord.gg/VF4vqzpDsY)
-- [Site Web](https://fluzypro.000webhostapp.com/red-tiger/accueil.html)
+- [Site Web](https://red-tiger.000webhostapp.com/accueil.html)
 - [Tiktok](https://www.tiktok.com/@fluzypro)
 - By: Fluzypro,
-- Version: 1.9.3,
+- Version: 1.9.4,
 - Langue: France

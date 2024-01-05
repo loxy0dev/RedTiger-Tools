@@ -5,7 +5,11 @@ import os
 import time
 
 nom = "Red-Tiger"
+<<<<<<< HEAD
 version = "v1.9.6"
+=======
+version = "v1.9.4"
+>>>>>>> 30af7d2d833a368c9e7cc9125522f30b66b7f23d
 codage = "Python"
 language = "EN"
 createur = "Fluzypro"
@@ -49,6 +53,7 @@ def LAPprint(texte, delai=0.03):
               time.sleep(delai)
           print()  
           time.sleep(delai * 0)
+<<<<<<< HEAD
 
 def Continue():
     input(couleur.RED + "\nPress to continue -> " + couleur.RESET)
@@ -72,3 +77,5 @@ def ErreurNombre():
     print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Invalid Number !", couleur.RESET)
     time.sleep(3)
     Reset()
+=======
+>>>>>>> 30af7d2d833a368c9e7cc9125522f30b66b7f23d
