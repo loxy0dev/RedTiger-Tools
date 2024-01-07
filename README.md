@@ -1,13 +1,13 @@
 ![RedTiger](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/ada77d42-2b03-4011-9522-7e1570b04504)
 # **Red-Tiger**
 
-- Développé en **Python**.
-- Tool en **Anglais**.
-- **Aucun virus** ni **token grabb**.
-- **Open Source** uniquement pour vérifier s'il n'y a pas de virus ou de programmes malveillants.
-- **Mise a jour** très souvent.
-- **Disponible** pour tout le monde.
-
+- Developed in **Python**.
+- Tool in **English**.
+- **No viruses** or **token grabbers**.
+- **Open Source** only for verification, ensuring no viruses or malicious programs.
+- **Frequently updated**.
+- **Free** for everyone.
+  
 ### Contient:
 
 
