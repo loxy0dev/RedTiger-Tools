@@ -39,6 +39,5 @@ Avant toute chose, lisez le fichier "A LIRE.txt" et lancez "Setup.bat"
 
 - [Discord](https://discord.gg/VF4vqzpDsY)
 - [Site Web](https://red-tiger.000webhostapp.com/accueil.html)
-- [Tiktok](https://www.tiktok.com/@fluzypro)
 - By: Fluzypro,
 - Version: 1.9.6
