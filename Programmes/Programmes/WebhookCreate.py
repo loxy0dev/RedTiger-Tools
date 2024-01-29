@@ -27,11 +27,11 @@ try:
          response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
 
          if response.status_code == 204:
-             LAPprint(f'\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Message Send.')
+             LAPprint(f'\n{couleur.RED}[!] | {couleur.LIGHTRED_EX}Message Send.')
              time.sleep(5)
              Reset()
          else:
-             LAPprint(f'\n{couleur.RED}[ERREUR] | {couleur.LIGHTRED_EX}Message not Send.')
+             LAPprint(f'\n{couleur.RED}[!] | {couleur.LIGHTRED_EX}Message not Send.')
              time.sleep(5)
              Reset()
 
@@ -61,15 +61,15 @@ try:
             response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
 
             if response.status_code == 204:
-               LAPprint(f'\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Message Send.')
+               LAPprint(f'\n{couleur.RED}[!] | {couleur.LIGHTRED_EX}Message Send.')
                time.sleep(5)
                Reset()
             else:
-             LAPprint(f'\n{couleur.RED}[ERREUR] | {couleur.LIGHTRED_EX}Message not Send.')
+             LAPprint(f'\n{couleur.RED}[!] | {couleur.LIGHTRED_EX}Message not Send.')
              time.sleep(5)
              Reset()
     
-        webhook_url = input(f"{couleur.RED}\nURL Webhook -> {couleur.RESET}")
+        webhook_url = input(f"{couleur.RED}\n[?] | URL Webhook -> {couleur.RESET}")
 
         print(f""" {couleur.RED}
 {couleur.LIGHTRED_EX}[01]{couleur.RED} -> Red
@@ -81,8 +81,8 @@ try:
 {couleur.LIGHTRED_EX}[07]{couleur.RED} -> White
 {couleur.LIGHTRED_EX}[08]{couleur.RED} -> Black 
 """)
-        couleur_input = int(input(f"{couleur.RED}Color -> {couleur.RESET}"))
         try:
+            couleur_input = int(input(f"{couleur.RED}[?] | Color -> {couleur.RESET}"))
             if couleur_input == 1:
                 couleure = 0xFF0000  # Rouge
             elif couleur_input == 2:
@@ -101,12 +101,12 @@ try:
                 couleure = 0x000000 # Noir
             else:
                 couleure = 0xFF0000  # Rouge (par défaut)
-        except ValueError as e:
+        except:
             couleure = 0xFF0000  # Rouge (par défaut)
 
         embed_content = {
-           'title': input(f"{couleur.RED}Title ->{couleur.RESET} "),
-           'description': input(f"{couleur.RED}Description ->{couleur.RESET} "),
+           'title': input(f"{couleur.RED}[?] | Title ->{couleur.RESET} "),
+           'description': input(f"{couleur.RED}[?] | Description ->{couleur.RESET} "),
            'color': couleure,
            'footer': {
                 "text": "Red-Tiger",

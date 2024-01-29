@@ -108,6 +108,6 @@ fichier("\n\n" + autreinfo)
 open(chemin, 'w').close()
 
 
-print(couleur.RED + f"\nThe DOX was sent to: {couleur.CYAN}\"{chemin}\""+ couleur.RESET)
+print(couleur.RED + f"\n[!] | The DOX was sent to: {couleur.CYAN}\"{chemin}\""+ couleur.RESET)
 time.sleep(3)
 Continue()

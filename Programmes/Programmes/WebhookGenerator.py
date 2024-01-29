@@ -23,9 +23,9 @@ username = 'Red-Tiger'
 url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
 
 
-choixwebhook = input(f"{couleur.RED}\nWebhook ? (y, n) -> {couleur.RESET}")
+choixwebhook = input(f"{couleur.RED}\n[?] | Webhook ? (y, n) -> {couleur.RESET}")
 if choixwebhook in ['y']:
-    webhook_url = input(f"{couleur.RED}\nURL Webhook -> {couleur.RESET}")
+    webhook_url = input(f"{couleur.RED}\n[?] | URL Webhook -> {couleur.RESET}")
 
 def send_webhook_message(webhook_url_Essai, content):
          payload = {

@@ -21,9 +21,9 @@ def send_embed_webhook(webhook_url, embed_content, username=None, url=None):
                 response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
 username = 'Red-Tiger'
 url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
-webhook = input(f"{couleur.RED}\nWebhook ? (y, n) -> {couleur.RESET}")
+webhook = input(f"{couleur.RED}\n[?] | Webhook ? (y, n) -> {couleur.RESET}")
 if webhook in ['y']:
-    webhook_url = input(f"{couleur.RED}\nURL Webhook -> {couleur.RESET}")
+    webhook_url = input(f"{couleur.RED}[?] | URL Webhook -> {couleur.RESET}")
 def ping_ip(ip_address, nombre):
 
     try:
@@ -70,4 +70,4 @@ while True:
 
 
     ping_ip(ip, nombre)
-    TitrePage(f"Red-Tiger | Ip Générator + Checker | Tentative n°{nombre}")
+    TitrePage(f"Ip Generator + Checker | Tests n°{nombre}")

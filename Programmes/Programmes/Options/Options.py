@@ -24,12 +24,9 @@ def TitrePage(title):
 
 
 def Reset():
- try:
     os.system("cls")
     fichier = 'python ./Programmes/Start.py'
     subprocess.run(fichier, shell=True)
- except:
-     print(couleur.RED + f"\n[ERREUR] | {couleur.LIGHTRED_EX}Veuillez relancer !\n" + couleur.RESET)
 
 
 
@@ -51,24 +48,24 @@ def LAPprint(texte, delai=0.03):
           time.sleep(delai * 0)
 
 def Continue():
-    input(couleur.RED + "\nPress to continue -> " + couleur.RESET)
+    input(couleur.RED + f"[!] | Press to continue -> " + couleur.RESET)
     
 def ErreurChoix():
-    print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}There is no choice !", couleur.RESET)
+    print(f"{couleur.RED}[!] | There is no choice !", couleur.RESET)
     time.sleep(3)
     Reset()
 
 def ErreurId():
-    print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Invalid ID !", couleur.RESET)
+    print(f"{couleur.RED}[!] | Invalid ID !", couleur.RESET)
     time.sleep(3)
     Reset()
 
 def ErreurUrl():
-    print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Invalid URL !", couleur.RESET)
+    print(f"{couleur.RED}[!] | Invalid URL !", couleur.RESET)
     time.sleep(3)
     Reset()
     
 def ErreurNombre():
-    print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Invalid Number !", couleur.RESET)
+    print(f"{couleur.RED}[!] | Invalid Number !", couleur.RESET)
     time.sleep(3)
     Reset()

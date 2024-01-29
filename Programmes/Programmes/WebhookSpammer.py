@@ -15,10 +15,10 @@ def send_webhook_message(webhook_url, message):
     response.raise_for_status()
 
 
-webhook_url = input(f"{couleur.RED}\nURL Webhook -> {couleur.RESET}")
+webhook_url = input(f"{couleur.RED}\n[?] | URL Webhook -> {couleur.RESET}")
 if webhook_url.lower().startswith("https://discord.com/api/webhooks"):
 
-    message_to_send = input(f"{couleur.RED}Message -> {couleur.RESET}")
+    message_to_send = input(f"{couleur.RED}[?] | Message -> {couleur.RESET}")
 
     def repetition_action(nombre_de_repetitions):
      for i in range(1, nombre_de_repetitions + 1):
@@ -32,7 +32,7 @@ else:
     ErreurUrl
                 
 try:
-        nombre_repetitions = int(input(f"{couleur.RED}Number of Repetitions -> {couleur.RESET}"))
+        nombre_repetitions = int(input(f"{couleur.RED}[?] | Number of Repetitions -> {couleur.RESET}"))
         repetition_action(nombre_repetitions)
 except:
         ErreurNombre

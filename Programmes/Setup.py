@@ -27,73 +27,64 @@ print("""
 
 nom_module = 'selenium'
 try:
-        subprocess.check_call(['pip', 'install', nom_module])
-        print(f"Le module {nom_module} a été installé avec succès.")
-except subprocess.CalledProcessError as e:
-        print(f"Erreur lors de l'installation du module {nom_module}. Code d'erreur : {e.returncode}")
+ import selenium
+except:
+ subprocess.check_call(['pip', 'install', nom_module]) 
+        
 
 nom_module = 'colorama'
 try:
-        subprocess.check_call(['pip', 'install', nom_module])
-        print(f"Le module {nom_module} a été installé avec succès.")
-except subprocess.CalledProcessError as e:
-        print(f"Erreur lors de l'installation du module {nom_module}. Code d'erreur : {e.returncode}")
+ import colorama
+except:
+ subprocess.check_call(['pip', 'install', nom_module]) 
 
 nom_module = 'time'
 try:
-        subprocess.check_call(['pip', 'install', nom_module])
-        print(f"Le module {nom_module} a été installé avec succès.")
-except subprocess.CalledProcessError as e:
-        print(f"Erreur lors de l'installation du module {nom_module}. Code d'erreur : {e.returncode}")
+ import time
+except:
+ subprocess.check_call(['pip', 'install', nom_module]) 
 
 nom_module = 'requests'
 try:
-        subprocess.check_call(['pip', 'install', nom_module])
-        print(f"Le module {nom_module} a été installé avec succès.")
-except subprocess.CalledProcessError as e:
-        print(f"Erreur lors de l'installation du module {nom_module}. Code d'erreur : {e.returncode}")
+ import requests
+except:
+ subprocess.check_call(['pip', 'install', nom_module]) 
 
 nom_module = 'json'
 try:
-        subprocess.check_call(['pip', 'install', nom_module])
-        print(f"Le module {nom_module} a été installé avec succès.")
-except subprocess.CalledProcessError as e:
-        print(f"Erreur lors de l'installation du module {nom_module}. Code d'erreur : {e.returncode}")
+ import json
+except:
+ subprocess.check_call(['pip', 'install', nom_module]) 
 
 nom_module = 'random'
 try:
-        subprocess.check_call(['pip', 'install', nom_module])
-        print(f"Le module {nom_module} a été installé avec succès.")
-except subprocess.CalledProcessError as e:
-        print(f"Erreur lors de l'installation du module {nom_module}. Code d'erreur : {e.returncode}")
+ import random
+except:
+ subprocess.check_call(['pip', 'install', nom_module]) 
 
 nom_module = 'string'
 try:
-        subprocess.check_call(['pip', 'install', nom_module])
-        print(f"Le module {nom_module} a été installé avec succès.")
-except subprocess.CalledProcessError as e:
-        print(f"Erreur lors de l'installation du module {nom_module}. Code d'erreur : {e.returncode}")
+ import string
+except:
+ subprocess.check_call(['pip', 'install', nom_module]) 
     
 nom_module = 'ctypes'
 try:
-        subprocess.check_call(['pip', 'install', nom_module])
-        print(f"Le module {nom_module} a été installé avec succès.")
-except subprocess.CalledProcessError as e:
-        print(f"Erreur lors de l'installation du module {nom_module}. Code d'erreur : {e.returncode}")
+ import ctypes
+except:
+ subprocess.check_call(['pip', 'install', nom_module]) 
 
 nom_module = 'base64'
 try:
-        subprocess.check_call(['pip', 'install', nom_module])
-        print(f"Le module {nom_module} a été installé avec succès.")
-except subprocess.CalledProcessError as e:
-        print(f"Erreur lors de l'installation du module {nom_module}. Code d'erreur : {e.returncode}")
+ import base64
+except:
+ subprocess.check_call(['pip', 'install', nom_module]) 
 
 nom_module = 'threading'
 try:
-        subprocess.check_call(['pip', 'install', nom_module])
-        print(f"Le module {nom_module} a été installé avec succès.")
-except subprocess.CalledProcessError as e:
-        print(f"Erreur lors de l'installation du module {nom_module}. Code d'erreur : {e.returncode}")
+ import threading
+except:
+ subprocess.check_call(['pip', 'install', nom_module]) 
 
 from Programmes.Options.Options import Reset
 

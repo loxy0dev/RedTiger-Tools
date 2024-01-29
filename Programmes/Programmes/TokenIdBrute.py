@@ -11,10 +11,10 @@ colorama.init()
 
 TitrePage("Token Id Brute + Checker")
 
-idtoken = base64.b64encode((input(f"{couleur.RED}Victime ID -> {couleur.RESET}")).encode("ascii"))
+idtoken = base64.b64encode((input(f"{couleur.RED}[?] | Victime ID -> {couleur.RESET}")).encode("ascii"))
 idtoken = str(idtoken)[2:-1]
 try:
- thrd =  input(f"{couleur.RED}\nThreads -> {couleur.RESET}")
+ thrd =  input(f"{couleur.RED}\n[?] | Threads -> {couleur.RESET}")
 except:
  ErreurNombre()
 

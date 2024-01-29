@@ -11,10 +11,10 @@ import json
 import requests
 TitrePage("Nitro Générator + Checker")
 
-webhook = input(f"{couleur.RED}\nWebhook ? (y, n) -> {couleur.RESET}")
+webhook = input(f"{couleur.RED}\n[?] | Webhook ? (y, n) -> {couleur.RESET}")
 
 if webhook in ['y']:
-    webhook_url = input(f"{couleur.RED}\nURL Webhook -> {couleur.RESET}")
+    webhook_url = input(f"{couleur.RED}[?] | URL Webhook -> {couleur.RESET}")
 
 webdriver_path = './Driver/msedgedriver.exe'
 

@@ -5,7 +5,7 @@ import subprocess
 import os
 import time
 
-TitrePage("Start")
+TitrePage("Menu")
 
 os.system("cls")
 print(f"Version {version}")
@@ -51,7 +51,7 @@ while True:
   try:
 
         if choix in ['0', '00', 'exit', 'Exit']:
-            LAPprint(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Exit." + couleur.RESET)
+            LAPprint(f"\n{couleur.RED}[!] | Exit." + couleur.RESET)
             time.sleep(1)
             break
 
@@ -82,7 +82,6 @@ while True:
            print(f"""
 {couleur.LIGHTRED_EX}[01]{couleur.RED} -> Ip Pinger
 {couleur.LIGHTRED_EX}[02]{couleur.RED} -> Ip Generator + Checker
-{couleur.LIGHTRED_EX}[03]{couleur.RED} -> Ip Stresser
 """)        
            choixWebhook = input(couleur.RED + f"[->] " + couleur.RESET)
            if choixWebhook in ['1', '01']:
@@ -91,10 +90,6 @@ while True:
 
            if choixWebhook in ['2', '02']:
               commande = 'python ./Programmes/Programmes/IpGenerator.py'
-              subprocess.run(commande, shell=True)
-
-           if choixWebhook in ['3', '03']:
-              commande = 'python ./Programmes/Programmes/IpStresser.py'
               subprocess.run(commande, shell=True)
             
            else:
@@ -118,7 +113,7 @@ while True:
 
         if choix in ['5', '05']:
            print(f"""
-{couleur.LIGHTRED_EX}[01]{couleur.RED} -> Stealer Create (.Exe)
+{couleur.LIGHTRED_EX}[01]{couleur.RED} -> Stealer/Grab Create (.Exe)
 {couleur.LIGHTRED_EX}[02]{couleur.RED} -> Dox Create
 {couleur.LIGHTRED_EX}[03]{couleur.RED} -> Web Scraping
 """)        
@@ -229,7 +224,7 @@ while True:
 
         
         if choix in ['!', 'username', 'Username', 'nom', 'Nom']:
-           nom_utilisateur = input(f"{couleur.RED}\nUsername -> {couleur.RESET}")
+           nom_utilisateur = input(f"{couleur.RED}\n[?] | Username -> {couleur.RESET}")
            if not nom_utilisateur:
             nom_utilisateur = os.getlogin()
             with open('./Programmes/Programmes/Options/NomUtilisateur.txt', 'w') as fichier:
@@ -256,7 +251,7 @@ while True:
               fichier.write("MAGENTA")
              with open('./Programmes/Programmes/Options/Theme.txt', 'r') as fichier:
                 nouvelle_couleur = fichier.read()
-                print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Theme: {couleur.MAGENTA}{nouvelle_couleur}{couleur.RED}.", couleur.RESET)
+                print(f"\n{couleur.RED}[!] | Theme: {couleur.MAGENTA}{nouvelle_couleur}{couleur.RED}.", couleur.RESET)
                 time.sleep(3)
                 continue
              
@@ -265,7 +260,7 @@ while True:
               fichier.write("BLUE")
              with open('./Programmes/Programmes/Options/Theme.txt', 'r') as fichier:
                 nouvelle_couleur = fichier.read()
-                print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Theme: {couleur.BLUE}{nouvelle_couleur}{couleur.RED}.", couleur.RESET)
+                print(f"\n{couleur.RED}[!] | Theme: {couleur.BLUE}{nouvelle_couleur}{couleur.RED}.", couleur.RESET)
                 time.sleep(3)
                 continue
              
@@ -274,7 +269,7 @@ while True:
               fichier.write("GREEN")
              with open('./Programmes/Programmes/Options/Theme.txt', 'r') as fichier:
                 nouvelle_couleur = fichier.read()
-                print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Theme: {couleur.GREEN}{nouvelle_couleur}{couleur.RED}.", couleur.RESET)
+                print(f"\n{couleur.RED}[!] | Theme: {couleur.GREEN}{nouvelle_couleur}{couleur.RED}.", couleur.RESET)
                 time.sleep(3)
                 continue
              
@@ -283,7 +278,7 @@ while True:
               fichier.write("YELLOW")
              with open('./Programmes/Programmes/Options/Theme.txt', 'r') as fichier:
                 nouvelle_couleur = fichier.read()
-                print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Theme: {couleur.YELLOW}{nouvelle_couleur}{couleur.RED}.", couleur.RESET)
+                print(f"\n{couleur.RED}[!] | Theme: {couleur.YELLOW}{nouvelle_couleur}{couleur.RED}.", couleur.RESET)
                 time.sleep(3)
                 continue
              
@@ -292,7 +287,7 @@ while True:
               fichier.write("RED")
              with open('./Programmes/Programmes/Options/Theme.txt', 'r') as fichier:
                 nouvelle_couleur = fichier.read()
-                print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Theme: {couleur.RED}{nouvelle_couleur}{couleur.RED}.", couleur.RESET)
+                print(f"\n{couleur.RED}[!] | Theme: {couleur.RED}{nouvelle_couleur}{couleur.RED}.", couleur.RESET)
                 time.sleep(3)
                 Reset()
              
@@ -301,7 +296,7 @@ while True:
               fichier.write("WHITE")
              with open('./Programmes/Programmes/Options/Theme.txt', 'r') as fichier:
                 nouvelle_couleur = fichier.read()
-                print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Theme: {couleur.WHITE}{nouvelle_couleur}{couleur.RED}.", couleur.RESET)
+                print(f"\n{couleur.RED}[!] | Theme: {couleur.WHITE}{nouvelle_couleur}{couleur.RED}.", couleur.RESET)
                 time.sleep(3)
                 continue
             
@@ -310,7 +305,7 @@ while True:
               fichier.write("RED")
              with open('./Programmes/Programmes/Options/Theme.txt', 'r') as fichier:
                 nouvelle_couleur = fichier.read()
-                print(f"\n{couleur.RED}[INFORMATION] | {couleur.LIGHTRED_EX}Theme: {couleur.RED}{nouvelle_couleur}{couleur.RED}.", couleur.RESET)
+                print(f"\n{couleur.RED}[!] | Theme: {couleur.RED}{nouvelle_couleur}{couleur.RED}.", couleur.RESET)
                 time.sleep(3)
                 Reset()
 

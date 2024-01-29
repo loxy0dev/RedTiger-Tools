@@ -13,7 +13,7 @@ def obtenir_informations_webhook(webhook_url):
 
     if response.status_code == 200:
         webhook_info = response.json()
-        LAPprint(f"{couleur.RED}Information Webhook :\n")
+        LAPprint(f"{couleur.RED}\nInformation Webhook :")
 
         print(f"{couleur.YELLOW}Webhook ID      : {couleur.CYAN}", webhook_info['id'])
         print(f"{couleur.YELLOW}Webhook Token   : {couleur.CYAN}", webhook_info['token'])
@@ -44,9 +44,10 @@ def obtenir_informations_webhook(webhook_url):
     else:
         print(f"None.")
 
-# Utilisation
-webhook_url = input(f"{couleur.RED}\nWebhook -> {couleur.RESET}")
-obtenir_informations_webhook(webhook_url)
-
+try:
+ webhook_url = input(f"{couleur.RED}\n[?] | Webhook -> {couleur.RESET}")
+ obtenir_informations_webhook(webhook_url)
+except:
+ ErreurUrl()
 Continue()
 Reset()
