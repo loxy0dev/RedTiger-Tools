@@ -1,4 +1,4 @@
-![RedTiger](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/ada77d42-2b03-4011-9522-7e1570b04504)
+![Capture](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/ca68578f-54d4-466c-8d6b-ad3daec01202)
 # **Red-Tiger**
 
 - Developed in **Python**.
