@@ -18,10 +18,10 @@
 - -> Site Internet (2)
 - -> Ip Pinger
 - -> Ip Generator + Checker
-- -> Ip Info                  !UPDATE!
+- -> Ip Info                  ****!UPDATE!****
 - -> Mdp Générator
-- -> Dox Create               !UPDATE!
-- -> Stealer Create (.Exe)    !UPDATE!
+- -> Dox Create               ****!UPDATE!****
+- -> Stealer Create (.Exe)    ****!UPDATE!****
 - -> Web Scraping
 - -> Webhook Spammer
 - -> Webhook Create
