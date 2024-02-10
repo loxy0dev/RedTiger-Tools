@@ -38,7 +38,7 @@ Stealer/Grab:
 - ![Stealer 1](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/bb86ea23-1b20-4ce6-9750-d97e4f095b44)
 
 
-First of all, read the file “A LIRE.txt” and run “Setup.bat”
+First of all, read the file “TO READ.txt” and run “Setup.bat”
 
 - [Discord](https://discord.gg/VF4vqzpDsY)
 - [Site Web](https://red-tiger.000webhostapp.com/accueil.html)
