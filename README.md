@@ -1,4 +1,4 @@
-![Capture](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/ca68578f-54d4-466c-8d6b-ad3daec01202)
+![19 8](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/c4a08f55-cbf9-4efe-ac5f-1beab4c832b4)
 # **Red-Tiger**
 
 - Developed in **Python**.
@@ -18,10 +18,10 @@
 - -> Site Internet (2)
 - -> Ip Pinger
 - -> Ip Generator + Checker
-- -> Ip Stresser
+- -> Ip Info                  !UPDATE!
 - -> Mdp Générator
-- -> Dox Create
-- -> Stealer/Grab Create (.Exe)
+- -> Dox Create               !UPDATE!
+- -> Stealer Create (.Exe)    !UPDATE!
 - -> Web Scraping
 - -> Webhook Spammer
 - -> Webhook Create
