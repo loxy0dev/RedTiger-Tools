@@ -10,7 +10,12 @@
  			    ░        ░  ░   ░                 ░        ░    ░  ░   ░     
 
 Site > https://red-tiger.000webhostapp.com/accueil.html
-1 > Lancez 'Setup.bat' pour vous assurer que tout fonctionne correctement.
-2 > Puis lancez 'Start.bat' si il ne se lance pas automatiquement.
 
-ATTENTION > Ne touchez à aucun fichier du tool Red-Tiger afin d'éviter tout endommagement.
+
+1 (en) > Run 'Setup.bat' to make sure everything is working correctly.
+2 (en) > Then launch 'Start.bat' if it does not launch automatically.
+--------------------------------------------------------------------------------
+1 (fr) > Lancez 'Setup.bat' pour vous assurer que tout fonctionne correctement.
+2 (fr) > Puis lancez 'Start.bat' si il ne se lance pas automatiquement.
+
+DANGEROUS > Do not touch any file in the Red-Tiger tool to avoid any damage.

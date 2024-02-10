@@ -3,24 +3,24 @@ import ctypes
 import subprocess
 import os
 import time
+import sys
 
-nom = "Red-Tiger"
-version = "v1.9.7"
-codage = "Python"
-language = "EN"
-createur = "Fluzypro"
+name_tool = "Red-Tiger"
+version_tool = "v1.9.8"
+coding_tool = "Python"
+language_tool = "EN"
+creator = "Fluzypro"
 discord = "https://discord.gg/eWNQ46jqdC"
-siteweb = "https://red-tiger.000webhostapp.com/accueil.html"
-nom_utilisateur = open('./Programmes/Programmes/Options/NomUtilisateur.txt', 'r').read()
+website = "https://red-tiger.000webhostapp.com/accueil.html"
+username_user = open('./Programmes/Programmes/Options/NomUtilisateur.txt', 'r').read()
 theme = open('./Programmes/Programmes/Options/Theme.txt', 'r').read()
+color_webhook = 0xa80505
+color = colorama.Fore
 
-couleur = colorama.Fore
 
 
-
-def TitrePage(title):
-    ctypes.windll.kernel32.SetConsoleTitleW(f"Red-Tiger {version} | {title}")
-
+def Title(title):
+    ctypes.windll.kernel32.SetConsoleTitleW(f"Red-Tiger {version_tool} | {title}")
 
 
 def Reset():
@@ -28,6 +28,11 @@ def Reset():
     fichier = 'python ./Programmes/Start.py'
     subprocess.run(fichier, shell=True)
 
+def Clear():
+    os.system("cls")
+
+def Exit():
+    sys.exit()
 
 
 def APprint(texte, delai=0.0000000001):
@@ -48,24 +53,24 @@ def LAPprint(texte, delai=0.03):
           time.sleep(delai * 0)
 
 def Continue():
-    input(couleur.RED + f"[!] | Press to continue -> " + couleur.RESET)
+    input(color.RED + f"[!] | Press to continue -> " + color.RESET)
     
-def ErreurChoix():
-    print(f"{couleur.RED}[!] | There is no choice !", couleur.RESET)
+def ErrorChoice():
+    print(f"{color.RED}[!] | There is no choice !", color.RESET)
     time.sleep(3)
     Reset()
 
-def ErreurId():
-    print(f"{couleur.RED}[!] | Invalid ID !", couleur.RESET)
+def ErrorId():
+    print(f"{color.RED}[!] | Invalid ID !", color.RESET)
     time.sleep(3)
     Reset()
 
-def ErreurUrl():
-    print(f"{couleur.RED}[!] | Invalid URL !", couleur.RESET)
+def ErrorUrl():
+    print(f"{color.RED}[!] | Invalid URL !", color.RESET)
     time.sleep(3)
     Reset()
     
-def ErreurNombre():
-    print(f"{couleur.RED}[!] | Invalid Number !", couleur.RESET)
+def ErrorNumber():
+    print(f"{color.RED}[!] | Invalid Number !", color.RESET)
     time.sleep(3)
     Reset()

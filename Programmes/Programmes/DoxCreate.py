@@ -1,113 +1,131 @@
 from Options.Options import *
 
 import time
-import os
+import random
 
-TitrePage("Dox Create")
+Title("Dox Create")
 
-chemin = "./01-Dox-Create/DOX.txt"
+print(color.RED + f"\nVictim information:\n")
 
-print(couleur.RED + f"\nVictim information:\n")
+by = input(color.RED + "Doxed By: " + color.RESET)
+cause = input(color.RED + "Cause: " + color.RESET)
+
+print(color.YELLOW + "\nDiscord:")
+username_discord = input(color.RED + "Username: " + color.RESET)
+name_discord = input(color.RED + "Display Name: " + color.RESET)
+id_discord = input(color.RED + "Id: " + color.RESET)
+token_discord = input(color.RED + "Token: " + color.RESET)
+email_discord = input(color.RED + "Email: " + color.RESET)
+password_discord = input(color.RED + "Password: " + color.RESET)
+
+print(color.YELLOW + "\nPc:")
+ip_pc = input(color.RED + "Ip: " + color.RESET)
+name_pc = input(color.RED + "Name: " + color.RESET)
+os_pc = input(color.RED + "Os: " + color.RESET)
+key_pc = input(color.RED + "Windows Key: " + color.RESET)
+vpn_pc = input(color.RED + "Vpn Y/N: " + color.RESET)
+
+print(color.YELLOW + "\nPhone:")
+number = input(color.RED + "Phone Number: " + color.RESET)
+brand = input(color.RED + "Brand: " + color.RESET)
+operator = input(color.RED + "Operator: " + color.RESET)
+
+print(color.YELLOW + "\nPersonal:")
+last_name = input(color.RED + "Last Name: " + color.RESET)
+first_name = input(color.RED + "First Name: " + color.RESET)
+age = input(color.RED + "Age:" + color.RESET)
+
+mother = input(color.RED + "Mother: " + color.RESET)
+father = input(color.RED + "Father: " + color.RESET)
+brother = input(color.RED + "Brother: " + color.RESET)
+sister = input(color.RED + "Sister: " + color.RESET)
+
+print(color.YELLOW + "\nLoc:")
+continent = input(color.RED + "Continent: " + color.RESET)
+country = input(color.RED + "Country: " + color.RESET)
+postal_code = input(color.RED + "Postal Code: " + color.RESET)
+city = input(color.RED + "City: " + color.RESET)
+address = input(color.RED + "Adress: " + color.RESET)
+
+print(color.YELLOW + "\nAccounts")
+mail = input(color.RED + "Mail: " + color.RESET)
+password = input(color.RED + "Password: " + color.RESET)
+other = input(color.RED + "\nOther: " + color.RESET)
+print(f"{color.RED}Finished.")
+
+name_file = input(f"{color.RED}\n[?] | Choose the file name -> {color.RESET}")
+if not name_file.strip():
+    name_file = f'No Name {random.randint(1, 999)}'
+
+path = f"./01-Dox-Create/D0x - {name_file}.txt"
+fichier = open(path, 'w', encoding="utf-8").write
+
+fichier(f"""
+ ██████╗   ██████╗  ██╗  ██╗
+ ██╔══██╗ ██╔═████╗ ╚██╗██╔╝
+ ██║  ██║ ██║██╔██║  ╚███╔╝ 
+ ██║  ██║ ████╔╝██║  ██╔██╗ 
+ ██████╔╝ ╚██████╔╝ ██╔╝ ██╗ By RedTiger
+ ╚═════╝   ╚═════╝  ╚═╝  ╚═╝                                                                                                                              
+╔══════════════════════╗
+║|[+] Doxed By: {by}   ║
+║|[+] Cause: {cause}   ║
+╚══════════════════════╝
+
+╓─────────────────────Discord──────────────────────╖
+║|[+] Username: {username_discord}
+║|[+] Display Name: {name_discord}
+║|[+] ID: {id_discord}
+║|[+] Token: {token_discord}
+║|[+] E-Mail: {email_discord}
+║|[+] Password: {password_discord}
+╙────────────────────────────────────────────────╜
+
+╓───────────────────────Info──────────────────────╖
+║+────────────Pc────────────+
+║|[+] IP: {ip_pc}
+║|[+] Name: {name_pc}
+║|[+] OS: {os_pc}
+║|[+] Windows Key: {key_pc}
+║|[+] VPN Y/N: {vpn_pc}
+║
+║+───────────Phone──────────+
+║|[+] Phone Number: {number}
+║|[+] Brand: {brand}
+║|[+] Operator: {operator}
+║
+║+───────────Personal───────+
+║|[+] Last Name: {last_name}
+║|[+] First Name: {first_name}
+║|[+] Age: {age}
+║
+║|[+] Mother Y/N: {mother}
+║|[+] Father Y/N: {father}
+║|[+] Brother Y/N: {brother}
+║|[+] Sister Y/N: {sister}
+║
+║+────────────Loc───────────+
+║|[+] Continent: {continent}
+║|[+] Country: {country}
+║|[+] Postal Code: {postal_code}
+║|[+] City: {city}
+║|[+] Address: {address}
+╙────────────────────────────────────────────────╜
+
+╓─────────────────────Accounts─────────────────────╖
+║+───────────Mail───────────+
+║|[+] : {mail}
+║
+║+───────────Passwords──────+
+║|[+] : {password}
+║
+║+───────────Others──────────+
+║ {other}
+╙────────────────────────────────────────────────╜""")
 
 
-fichier = open(chemin, 'w').write
+open(path, 'w').close()
 
-
-print(couleur.RED + "Info Perso:")
-nom = input(couleur.CYAN + "Name: " + couleur.RESET)
-prenom = input(couleur.CYAN +"First Name: " + couleur.RESET)
-datene = input(couleur.CYAN +"Date of birth: " + couleur.RESET)
-
-print(couleur.RED + "\nInfo Pc:")
-nompc= input(couleur.CYAN +"Name PC: " + couleur.RESET)
-ip= input(couleur.CYAN +"Ip: " + couleur.RESET)
-
-print(couleur.RED + "\nLocalisaton:")
-pays = input(couleur.CYAN +"Country: " + couleur.RESET)
-region = input(couleur.CYAN +"Regions: " + couleur.RESET)
-postal= input(couleur.CYAN +"Postal Code: " + couleur.RESET)
-ville = input(couleur.CYAN +"City: " + couleur.RESET)
-rue = input(couleur.CYAN +"Street: " + couleur.RESET)
-
-print(couleur.RED + "\nAccount/Mdp:")
-print(couleur.YELLOW + "Discord:")
-discord = input(couleur.CYAN + "Name: " + couleur.RESET)
-token = input(couleur.CYAN + "Token: " + couleur.RESET)
-mail= input(couleur.CYAN +"Mail address: " + couleur.RESET)
-mdp= input(couleur.CYAN +"Password: " + couleur.RESET)
-
-print(couleur.YELLOW + "\nMail:")
-amail = input(couleur.CYAN + "Adress: " + couleur.RESET)
-mmail = input(couleur.CYAN + "Password: " + couleur.RESET)
-
-print(couleur.YELLOW + "\nPassword Possible:")
-mdpp1 = input(couleur.CYAN + "Password 1: " + couleur.RESET)
-mdpp2 = input(couleur.CYAN + "Password 2: " + couleur.RESET)
-mdpp3 = input(couleur.CYAN + "Password 3: " + couleur.RESET)
-
-autremdp= input(couleur.CYAN +"\nOther Accounts: " + couleur.RESET)
-
-print(couleur.RED + "\Other Infos:")
-autreinfo= input(couleur.CYAN +"Info: " + couleur.RESET)
-
-
-fichier(""" ^^^ Enregistrer sous... | Ctrl + Maj + S
-        
-        oooooooooo.     .oooooo.   ooooooo  ooooo 
-        `888'   `Y8b   d8P'  `Y8b   `8888    d8'  
-         888      888 888      888    Y888..8P    
-         888      888 888      888     `8888'     
-         888      888 888      888    .8PY888.    
-         888     d88' `88b    d88'   d8'  `888b   
-        o888bood8P'    `Y8bood8P'  o888o  o88888o   By Red-Tiger
-_________________________________________________________________                        
-
-""")
-
-fichier("-----------------------Info Perso:-----------------------")
-
-fichier("\n\nName          :  " + nom)
-fichier("\nFirst Name    :  " + prenom)
-fichier("\nDate of birth :  " + datene)
-
-fichier("\n\n------------------------Info Pc:-------------------------")
-fichier("\n\nName Pc       :  " + nompc)
-fichier("\nIp            :  " + ip)
-
-fichier("\n\n----------------------Localisation:----------------------")
-
-fichier("\n\nCountry       :  " + pays)
-fichier("\nRegions       :  " + region)
-fichier("\nPostal Code   :  " + postal)
-fichier("\nCity          :  " + ville)
-fichier("\nStreet        :  " + rue)
-
-fichier("\n\n-----------------------Compte/Mdp:-----------------------")
-
-fichier("\n\nDiscord:")
-
-fichier("\nName          :  " + discord)
-fichier("\nToken         :  " + token)
-fichier("\nAdress Mail   :  " + mail)
-fichier("\nPassword      :  " + mdp)
-
-fichier("\n\nMail:")
-fichier("\nAdress        :  " + amail)
-fichier("\nPassword      :  " + mmail)
-
-fichier("\n\nPassword Possible  :  " + mdpp1 + " - " + mdpp2 + " - " + mdpp3)
-
-fichier("\n\nOther Accounts:")
-
-fichier("\n" + autremdp)
-
-fichier("\n\n----------------------Other Infos:----------------------")
-fichier("\n\n" + autreinfo)
-
-
-open(chemin, 'w').close()
-
-
-print(couleur.RED + f"\n[!] | The DOX was sent to: {couleur.CYAN}\"{chemin}\""+ couleur.RESET)
+print(color.RED + f"[!] | The DOX {color.CYAN}\"{name_file}\"{color.RED} was sent to: {color.CYAN}\"{path}\""+ color.RESET)
 time.sleep(3)
 Continue()

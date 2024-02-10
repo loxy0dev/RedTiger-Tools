@@ -3,20 +3,20 @@ from Options.Options import *
 import time
 import os
 
-TitrePage("Ip Pinger")
+Title("Ip Pinger")
 
-hostname = input(couleur.RED + "\n[?] | IP -> " + couleur.RESET)
+hostname = input(color.RED + "\n[?] | IP -> " + color.RESET)
 
-print(couleur.RED + f"\nInformation Ip \"{hostname}\":{couleur.RESET}")
+print(color.RED + f"\nInformation Ip \"{hostname}\":{color.RESET}")
 time.sleep(0.5)
 response = os.system("ping -n 1 " + hostname)
 if response == 0:
     response = 0
     pingstatus = "Network Active"
-    LAPprint(f"\n{couleur.RED}[!] | IP Online." + couleur.RESET)
+    LAPprint(f"\n{color.RED}[!] | IP Online." + color.RESET)
 else:
     pingstatus = "Network Error"
-    LAPprint(f"\n{couleur.RED}[!] | IP Offline." + couleur.RESET)
+    LAPprint(f"\n{color.RED}[!] | IP Offline." + color.RESET)
 
 Continue()
 Reset()

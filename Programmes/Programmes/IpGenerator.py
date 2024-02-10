@@ -5,7 +5,7 @@ import requests
 import json
 import random
 
-TitrePage("Ip Generator + Checker")
+Title("Ip Generator + Checker")
 
 def send_embed_webhook(webhook_url, embed_content, username=None, url=None):
                 payload = {
@@ -21,9 +21,9 @@ def send_embed_webhook(webhook_url, embed_content, username=None, url=None):
                 response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
 username = 'Red-Tiger'
 url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
-webhook = input(f"{couleur.RED}\n[?] | Webhook ? (y, n) -> {couleur.RESET}")
+webhook = input(f"{color.RED}\n[?] | Webhook ? (y, n) -> {color.RESET}")
 if webhook in ['y']:
-    webhook_url = input(f"{couleur.RED}[?] | URL Webhook -> {couleur.RESET}")
+    webhook_url = input(f"{color.RED}[?] | URL Webhook -> {color.RESET}")
 def ping_ip(ip_address, nombre):
 
     try:
@@ -33,11 +33,11 @@ def ping_ip(ip_address, nombre):
         
         if webhook in ['y']:
             if result.returncode == 0:
-             print(f"{couleur.GREEN}[+] | {couleur.CYAN}{ip_address}{couleur.GREEN} | Ip Found | Tests n°{nombre}{couleur.RESET}")
+             print(f"{color.GREEN}[+] | {color.CYAN}{ip_address}{color.GREEN} | Ip Found | Tests n°{nombre}{color.RESET}")
              embed_content = {
            'title': f'Ip Found, Tests n°{nombre}',
            'description': f"**__Ip Online:__**\n```{ip_address}```",
-           'color': 0xf00020,
+           'color': color_webhook,
            'footer': {
             "text": "Red-Tiger",
             "icon_url": "https://media.discordapp.net/attachments/944760272265031720/1179429697495498834/IMG_1506.png?ex=6582fb00&is=65708600&hm=cbdc48779b762d4d7c95c34bb68a8aabf8314519d0b50c4d7371bea19eac5db4&=&format=webp&quality=lossless",
@@ -48,16 +48,16 @@ def ping_ip(ip_address, nombre):
 
 
             else:
-                  print(f"{couleur.RED}[X] | {couleur.CYAN}{ip_address}{couleur.RED} | Ip Invalid | Tests n°{nombre}{couleur.RESET}")
+                  print(f"{color.RED}[X] | {color.CYAN}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
         if webhook in ['n']:
              if result.returncode == 0:
-                print(f"{couleur.GREEN}[+] | {couleur.CYAN}{ip_address}{couleur.GREEN} | Ip Found | Tests n°{nombre}{couleur.RESET}")
+                print(f"{color.GREEN}[+] | {color.CYAN}{ip_address}{color.GREEN} | Ip Found | Tests n°{nombre}{color.RESET}")
              else:
-                  print(f"{couleur.RED}[X] | {couleur.CYAN}{ip_address}{couleur.RED} | Ip Invalid | Tests n°{nombre}{couleur.RESET}")
+                  print(f"{color.RED}[X] | {color.CYAN}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
              
 
     except subprocess.TimeoutExpired:
-        print(f"{couleur.RED}[X] | {couleur.CYAN}{ip_address}{couleur.RED} | Ip Invalid | Tests n°{nombre}{couleur.RESET}")
+        print(f"{color.RED}[X] | {color.CYAN}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
 nombre = 0
 while True:
     nombre_random1 = random.randint(1, 200)
@@ -70,4 +70,4 @@ while True:
 
 
     ping_ip(ip, nombre)
-    TitrePage(f"Ip Generator + Checker | Tests n°{nombre}")
+    Title(f"Ip Generator + Checker | Tests n°{nombre}")

@@ -4,13 +4,13 @@ import requests
 import json
 import time
 
-TitrePage("Webhook Create")
+Title("Webhook Create")
 
 print(f"""
-{couleur.LIGHTRED_EX}[01]{couleur.RED} -> Message Classic
-{couleur.LIGHTRED_EX}[02]{couleur.RED} -> Message Embed
+{color.LIGHTRED_EX}[01]{color.RED} -> Message Classic
+{color.LIGHTRED_EX}[02]{color.RED} -> Message Embed
 """)
-choix = int(input(f"[->] {couleur.RESET}"))
+choix = int(input(f"[->] {color.RESET}"))
 try:
     
     if choix == 1:
@@ -27,23 +27,23 @@ try:
          response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
 
          if response.status_code == 204:
-             LAPprint(f'\n{couleur.RED}[!] | {couleur.LIGHTRED_EX}Message Send.')
+             LAPprint(f'\n{color.RED}[!] | {color.LIGHTRED_EX}Message Send.')
              time.sleep(5)
              Reset()
          else:
-             LAPprint(f'\n{couleur.RED}[!] | {couleur.LIGHTRED_EX}Message not Send.')
+             LAPprint(f'\n{color.RED}[!] | {color.LIGHTRED_EX}Message not Send.')
              time.sleep(5)
              Reset()
 
 
-        webhook_url = input(f"{couleur.RED}URL Webhook -> {couleur.RESET}")
+        webhook_url = input(f"{color.RED}URL Webhook -> {color.RESET}")
         if webhook_url.lower().startswith("https://discord.com/api/webhooks"):
 
-            message_content = input(f"{couleur.RED}\nMessage -> {couleur.RESET}")
+            message_content = input(f"{color.RED}\nMessage -> {color.RESET}")
             send_webhook_message(webhook_url, message_content)
         
         else:
-            ErreurUrl()
+            ErrorUrl()
 
 
     if choix == 2:
@@ -61,28 +61,28 @@ try:
             response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
 
             if response.status_code == 204:
-               LAPprint(f'\n{couleur.RED}[!] | {couleur.LIGHTRED_EX}Message Send.')
+               LAPprint(f'\n{color.RED}[!] | {color.LIGHTRED_EX}Message Send.')
                time.sleep(5)
                Reset()
             else:
-             LAPprint(f'\n{couleur.RED}[!] | {couleur.LIGHTRED_EX}Message not Send.')
+             LAPprint(f'\n{color.RED}[!] | {color.LIGHTRED_EX}Message not Send.')
              time.sleep(5)
              Reset()
     
-        webhook_url = input(f"{couleur.RED}\n[?] | URL Webhook -> {couleur.RESET}")
+        webhook_url = input(f"{color.RED}\n[?] | URL Webhook -> {color.RESET}")
 
-        print(f""" {couleur.RED}
-{couleur.LIGHTRED_EX}[01]{couleur.RED} -> Red
-{couleur.LIGHTRED_EX}[02]{couleur.RED} -> Orange
-{couleur.LIGHTRED_EX}[03]{couleur.RED} -> Yellow
-{couleur.LIGHTRED_EX}[04]{couleur.RED} -> Green
-{couleur.LIGHTRED_EX}[05]{couleur.RED} -> Blue
-{couleur.LIGHTRED_EX}[06]{couleur.RED} -> Magenta
-{couleur.LIGHTRED_EX}[07]{couleur.RED} -> White
-{couleur.LIGHTRED_EX}[08]{couleur.RED} -> Black 
+        print(f""" {color.RED}
+{color.LIGHTRED_EX}[01]{color.RED} -> Red
+{color.LIGHTRED_EX}[02]{color.RED} -> Orange
+{color.LIGHTRED_EX}[03]{color.RED} -> Yellow
+{color.LIGHTRED_EX}[04]{color.RED} -> Green
+{color.LIGHTRED_EX}[05]{color.RED} -> Blue
+{color.LIGHTRED_EX}[06]{color.RED} -> Magenta
+{color.LIGHTRED_EX}[07]{color.RED} -> White
+{color.LIGHTRED_EX}[08]{color.RED} -> Black 
 """)
         try:
-            couleur_input = int(input(f"{couleur.RED}[?] | Color -> {couleur.RESET}"))
+            couleur_input = int(input(f"{color.RED}[?] | Color -> {color.RESET}"))
             if couleur_input == 1:
                 couleure = 0xFF0000  # Rouge
             elif couleur_input == 2:
@@ -100,13 +100,13 @@ try:
             elif couleur_input == 8:
                 couleure = 0x000000 # Noir
             else:
-                couleure = 0xFF0000  # Rouge (par défaut)
+                couleure = color_webhook  # Rouge (par défaut)
         except:
-            couleure = 0xFF0000  # Rouge (par défaut)
+            couleure = color_webhook  # Rouge (par défaut)
 
         embed_content = {
-           'title': input(f"{couleur.RED}[?] | Title ->{couleur.RESET} "),
-           'description': input(f"{couleur.RED}[?] | Description ->{couleur.RESET} "),
+           'title': input(f"{color.RED}[?] | Title ->{color.RESET} "),
+           'description': input(f"{color.RED}[?] | Description ->{color.RESET} "),
            'color': couleure,
            'footer': {
                 "text": "Red-Tiger",
@@ -116,6 +116,6 @@ try:
         send_embed_webhook(webhook_url, embed_content)
 
     else:
-        ErreurChoix
+        ErrorChoice
 except ValueError as e:
-    ErreurChoix
+    ErrorChoice
