@@ -15,7 +15,7 @@
 - -> Ip Localisation
 - -> Ip Pinger
 - -> Ip Generator                               
-- -> Stealer Create (.Exe)  ****!UPDATE!****
+- -> Discord/System/Browser Grab  ****!UPDATE!****
 - -> Discord Webhook Generator
 - -> Discord Webhook Info    
 - -> Discord Webhook Spammer
