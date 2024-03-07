@@ -30,6 +30,6 @@ First of all, read the file “TO READ.txt” and run “Setup.bat”
 
 - [Discord](https://discord.gg/VF4vqzpDsY)
 - [Site Web](https://red-tiger.000webhostapp.com/accueil.html)
-- [Tiktok](https://www.tiktok.com/@redtiger.tool)
-- By: Fluzypro,
+- [Tiktok](https://www.tiktok.com/@fluzyteck)
+- By: FluzyTeck,
 - Version: 2.0
