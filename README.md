@@ -1,4 +1,4 @@
-![2.0](Img/RedTiger.png)
+![RedTiger](Img/RedTiger.png)
 # **Red-Tiger**
 
 - Developed in **Python**.
@@ -9,8 +9,6 @@
 - **Free** for everyone.
   
 ### Contient:
-
-
 
 - -> Ip Localisation
 - -> Ip Pinger
@@ -25,6 +23,10 @@
 - -> Nitro Generator
 - -> Dox Create
 
+### Steal/Grab:
+![StealDiscord](Img/Steal_Discord.png)
+![StealSystem](Img/Steal_System.png)
+![StealBrowser](Img/Steal_Browser.png)
 
 First of all, read the file “TO READ.txt” and run “Setup.bat”
 
