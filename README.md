@@ -11,31 +11,19 @@
 ### Contient:
 
 
-- -> Change Theme
-- -> Change Username
-- -> Exit
-- -> Info
-- -> Site Internet (2)
-- -> Ip Pinger
-- -> Ip Generator + Checker
-- -> Ip Info                  ****!UPDATE!****
-- -> Mdp Générator
-- -> Dox Create               ****!UPDATE!****
-- -> Stealer Create (.Exe)    ****!UPDATE!****
-- -> Web Scraping
-- -> Webhook Spammer
-- -> Webhook Create
-- -> Webhook Generator + Checker
-- -> Webhook Info
-- -> Token Id Brute + Checker
-- -> Token Id
-- -> Invite Bot Id
-- -> Nitro Generator + Checker
 
-Stealer/Grab:
-- ![Stealer 2](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/12a19802-f2a5-4b7a-b5f0-93523c907717)
-- ![Stealer 3](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/12fbb599-3ba5-4790-ae05-8531534abd8e)
-- ![Stealer 1](https://github.com/fluzzzy/RedTiger-Fluzypro/assets/147531758/bb86ea23-1b20-4ce6-9750-d97e4f095b44)
+- -> Ip Localisation
+- -> Ip Pinger
+- -> Ip Generator                               
+- -> Stealer Create (.Exe)  ****!UPDATE!****
+- -> Discord Webhook Generator
+- -> Discord Webhook Info    
+- -> Discord Webhook Spammer
+- -> Discord Webhook Create
+- -> Discord Token To Id 
+- -> Invite Bot To Id
+- -> Nitro Generator
+- -> Dox Create
 
 
 First of all, read the file “TO READ.txt” and run “Setup.bat”
@@ -44,4 +32,4 @@ First of all, read the file “TO READ.txt” and run “Setup.bat”
 - [Site Web](https://red-tiger.000webhostapp.com/accueil.html)
 - [Tiktok](https://www.tiktok.com/@redtiger.tool)
 - By: Fluzypro,
-- Version: 1.9.7
+- Version: 2.0
