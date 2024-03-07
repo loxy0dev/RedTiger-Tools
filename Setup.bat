@@ -1,1 +1,1 @@
-python Programmes/Setup.py
+python Settings/Setup.py

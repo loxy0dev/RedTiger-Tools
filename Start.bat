@@ -1,1 +1,1 @@
-python Programmes/Start.py
+python Settings/Start.py
