@@ -19,13 +19,24 @@
 - -> Discord Webhook Spammer
 - -> Discord Webhook Create
 - -> Discord Token To Id 
-- -> Invite Bot To Id
-- -> Nitro Generator
+- -> Discord Token Generator
+- -> Discord Token Info
+- -> Discord Token Login
+- -> Discord Token Nuker (soon)
+- -> Discord Mass Dm
+- -> Discord House Changer
+- -> Discord Status Changer
+- -> Discord Language Changer
+- -> Discord Theme Changer
+- -> Discord Invite Bot To Id
+- -> Discord Nitro Generator
+- -> Discord Nuker Bot (soon)
 - -> Dox Create
 
 ### Steal/Grab:
 ![StealDiscord](Img/Steal_Discord.png)
 ![StealSystem](Img/Steal_System.png)
+![StealScreenshot](Img/Steal_Screenshot.png)
 ![StealBrowser](Img/Steal_Browser.png)
 
 First of all, read the file “TO READ.txt” and run “Setup.bat”
@@ -34,4 +45,4 @@ First of all, read the file “TO READ.txt” and run “Setup.bat”
 - [Site Web](https://red-tiger.000webhostapp.com/accueil.html)
 - [Tiktok](https://www.tiktok.com/@fluzyteck)
 - By: FluzyTeck,
-- Version: 2.0
+- Version: 2.1.0
