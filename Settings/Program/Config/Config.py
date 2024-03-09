@@ -4,10 +4,9 @@ import subprocess
 import os
 import time
 import sys
-import shutil
 
 name_tool = "Red Tiger"
-version_tool = "v2.1.0"
+version_tool = "v2.2.0"
 coding_tool = "Python"
 language_tool = "EN"
 creator = "FluzyTeck"

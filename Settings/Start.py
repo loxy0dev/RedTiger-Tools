@@ -1,9 +1,9 @@
-from Program.Config.Config import *
+try:
+ from Program.Config.Config import *
 
-import os
-import time
+ import os
 
-while True:
+ while True:
    os.system("cls")
    Title("Menu")
 
@@ -30,7 +30,7 @@ while True:
    {color.WHITE}[{color.RED}02{color.WHITE}] {color.RED}->{color.WHITE} Web Site                       {color.WHITE}[{color.RED}12{color.WHITE}] {color.RED}->{color.WHITE} Discord Token Generator        {color.WHITE}[{color.RED}22{color.WHITE}] {color.RED}->{color.WHITE} Discord Nitro Generator
    {color.WHITE}[{color.RED}03{color.WHITE}] {color.RED}->{color.WHITE} Ip Localisation                {color.WHITE}[{color.RED}13{color.WHITE}] {color.RED}->{color.WHITE} Discord Token Info             {color.WHITE}[{color.RED}23{color.WHITE}] {color.RED}->{color.WHITE} Discord Nuker Bot (soon)
    {color.WHITE}[{color.RED}04{color.WHITE}] {color.RED}->{color.WHITE} Ip Pinger                      {color.WHITE}[{color.RED}14{color.WHITE}] {color.RED}->{color.WHITE} Discord Token Login            {color.WHITE}[{color.RED}24{color.WHITE}] {color.RED}->{color.WHITE} Dox Create
-   {color.WHITE}[{color.RED}05{color.WHITE}] {color.RED}->{color.WHITE} Ip Generator                   {color.WHITE}[{color.RED}15{color.WHITE}] {color.RED}->{color.WHITE} Discord Token Nuker (soon)     {color.WHITE}[{color.RED}25{color.WHITE}] {color.RED}->{color.WHITE}
+   {color.WHITE}[{color.RED}05{color.WHITE}] {color.RED}->{color.WHITE} Ip Generator                   {color.WHITE}[{color.RED}15{color.WHITE}] {color.RED}->{color.WHITE} Discord Token Nuker            {color.WHITE}[{color.RED}25{color.WHITE}] {color.RED}->{color.WHITE}
    {color.WHITE}[{color.RED}06{color.WHITE}] {color.RED}->{color.WHITE} Discord/System/Browser Grab    {color.WHITE}[{color.RED}16{color.WHITE}] {color.RED}->{color.WHITE} Discord Mass Dm                {color.WHITE}[{color.RED}26{color.WHITE}] {color.RED}->{color.WHITE}
    {color.WHITE}[{color.RED}07{color.WHITE}] {color.RED}->{color.WHITE} Discord Webhook Generator      {color.WHITE}[{color.RED}17{color.WHITE}] {color.RED}->{color.WHITE} Discord House Changer          {color.WHITE}[{color.RED}27{color.WHITE}] {color.RED}->{color.WHITE}
    {color.WHITE}[{color.RED}08{color.WHITE}] {color.RED}->{color.WHITE} Discord Webhook Info           {color.WHITE}[{color.RED}18{color.WHITE}] {color.RED}->{color.WHITE} Discord Status Changer         {color.WHITE}[{color.RED}28{color.WHITE}] {color.RED}->{color.WHITE}
@@ -95,7 +95,9 @@ while True:
       StartProgram("")
    elif choice in ['']:
       StartProgram("")
-
+except:
+   file = 'python ./Settings/Setup.py'
+   subprocess.run(file, shell=True)
 
 
 

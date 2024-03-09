@@ -2,7 +2,6 @@ from Config.Config import *
 
 import requests
 import json
-import time
 
 Title("Discord Webhook Create")
 
