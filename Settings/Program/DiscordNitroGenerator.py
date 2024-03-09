@@ -15,16 +15,19 @@ webhook = input(f"{color.RED}\n[?] | Webhook ? (y, n) -> {color.RESET}")
 
 if webhook in ['y']:
     webhook_url = input(f"{color.RED}[?] | URL Webhook -> {color.RESET}")
+try:
+   webdriver_path = './Driver/msedgedriver.exe'
 
-webdriver_path = './Driver/msedgedriver.exe'
+   edge_options = EdgeOptions()
+   edge_options.use_chromium = True
 
-edge_options = EdgeOptions()
-edge_options.use_chromium = True
+   edge_service = EdgeService(webdriver_path)
 
-edge_service = EdgeService(webdriver_path)
-
-driver = webdriver.Edge(service=edge_service, options=edge_options)
-
+   driver = webdriver.Edge(service=edge_service, options=edge_options)
+except:
+   print(f"{color.RED}[X] | Edge not installed or driver not up to date.")
+   Continue()
+   Reset()
 while True:
  
  def generer_caracteres_aleatoires(longueur):

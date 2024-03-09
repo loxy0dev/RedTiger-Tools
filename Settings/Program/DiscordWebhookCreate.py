@@ -4,7 +4,7 @@ import requests
 import json
 import time
 
-Title("Webhook Create")
+Title("Discord Webhook Create")
 
 print(f"""
 {color.WHITE}[{color.RED}01{color.WHITE}]{color.RED} -> {color.WHITE}Message Classic

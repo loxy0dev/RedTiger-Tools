@@ -4,15 +4,16 @@ import subprocess
 import os
 import time
 import sys
+import shutil
 
 name_tool = "Red Tiger"
-version_tool = "v2.0"
+version_tool = "v2.1.0"
 coding_tool = "Python"
 language_tool = "EN"
 creator = "FluzyTeck"
-discord = "https://discord.gg/eWNQ46jqdC"
-website = "https://red-tiger.000webhostapp.com/accueil.html"
-github = "https://github.com/fluzzzy/RedTiger-Fluzypro"
+discord_server = "discord.gg/eWNQ46jqdC"
+website = "red-tiger.000webhostapp.com/accueil.html"
+github_tool = "github.com/fluzyteck/RedTiger"
 color_webhook = 0xa80505
 color = colorama.Fore
 
@@ -46,7 +47,6 @@ def APprint(texte, delai=0.0000000001):
           print()  
           time.sleep(delai * 0)
 
-
 def LAPprint(texte, delai=0.03):
         for ligne in texte.split('\n'):
           for caractere in ligne:
@@ -70,6 +70,11 @@ def ErrorId():
 
 def ErrorUrl():
     print(f"{color.RED}[!] | Invalid URL !", color.RESET)
+    time.sleep(3)
+    Reset()
+
+def ErrorToken():
+    print(f"{color.RED}[!] | Invalid Token !", color.RESET)
     time.sleep(3)
     Reset()
     

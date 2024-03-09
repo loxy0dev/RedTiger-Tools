@@ -11,25 +11,25 @@ except:
  ipdata = 'N/A'
 
 try:
- pays = ipdata["country_name"]
+  country = ipdata["country_name"]
 except:
-  pays = "N/A"
+  country = "N/A"
 try:
- ville = ipdata["city"]
+  city = ipdata["city"]
 except:
- ville = "N/A"
-try:
- pays_code = ipdata["country_code"].lower()
+  city = "N/A"
+try: 
+  country_code = ipdata["country_code"].lower()
 except:
-  pays_code = "N/A"
+  country_code = "N/A"
 try:
- postal = ipdata["postal"]
+  postal = ipdata["postal"]
 except:
   postal = "N/A"
 try:
- etat = ipdata["state"]
+  state = ipdata["state"]
 except:
-  etat = "N/A"
+  state = "N/A"
 try:
   latitude = ipdata["latitude"]
 except:
@@ -39,14 +39,14 @@ try:
 except:
   longitude = "N/A"
   
-print(f"""{color.RED}
-Localisation "{color.CYAN}{ip}{color.RED}":
-{color.YELLOW}Country    : {color.CYAN}{pays} ({pays_code})
-{color.YELLOW}State      : {color.CYAN}{etat}
-{color.YELLOW}Postal     : {color.CYAN}{postal}
-{color.YELLOW}City       : {color.CYAN}{ville}
-{color.YELLOW}Longitude  : {color.CYAN}{longitude}
-{color.YELLOW}Latitude   : {color.CYAN}{latitude}
+print(f"""
+{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Ip        : {color.WHITE}{ip}{color.RED}
+{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Country   : {color.WHITE}{country} ({country_code}){color.RED}
+{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} State     : {color.WHITE}{state}{color.RED}
+{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Postal    : {color.WHITE}{postal}{color.RED}
+{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} City      : {color.WHITE}{city}{color.RED}
+{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Longitude : {color.WHITE}{longitude}{color.RED}
+{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Latitude  : {color.WHITE}{latitude}{color.RED}
 """)
 Continue()
 Reset()

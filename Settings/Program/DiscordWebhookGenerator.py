@@ -5,7 +5,7 @@ import json
 import string
 import random
 
-Title("Webhook Generator")
+Title("Discord Webhook Generator")
 
 def send_embed_webhook(webhook_url, embed_content, username=None, url=None):
                 payload = {
@@ -40,7 +40,7 @@ def send_webhook_message(webhook_url_Essai, content):
 
          if response.status_code == 204:
           if choixwebhook in ['y']:
-            print(f"{color.GREEN}[+] | {color.CYAN}{webhook_partie_variable}{color.GREEN} | Webhook Found | n°{nombre}{color.RESET}")
+            print(f"{color.GREEN}[+] | {color.WHITE}{webhook_partie_variable}{color.GREEN} | Webhook Found | n°{nombre}{color.RESET}")
 
             embed_content = {
            'title': f'Webhook Found, Tests n°{nombre}',
@@ -53,10 +53,10 @@ def send_webhook_message(webhook_url_Essai, content):
             }
             send_embed_webhook(webhook_url, embed_content, username, url)
           else:
-                print(f"{color.GREEN}[+] | {color.CYAN}{webhook_partie_variable}{color.GREEN} | Webhook Found | n°{nombre}{color.RESET}")
+                print(f"{color.GREEN}[+] | {color.WHITE}{webhook_partie_variable}{color.GREEN} | Webhook Found | n°{nombre}{color.RESET}")
 
          else:
-             print(f"{color.RED}[X] | {color.CYAN}{webhook_partie_variable}{color.RED} | Webhook Invalid | n°{nombre}{color.RESET}")
+             print(f"{color.RED}[X] | {color.WHITE}{webhook_partie_variable}{color.RED} | Webhook Invalid | n°{nombre}{color.RESET}")
 
 nombre = 0
 while True:

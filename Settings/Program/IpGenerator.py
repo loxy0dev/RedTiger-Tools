@@ -48,16 +48,16 @@ def ping_ip(ip_address, nombre):
 
 
             else:
-                  print(f"{color.RED}[X] | {color.CYAN}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
+                  print(f"{color.RED}[X] | {color.WHITE}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
         if webhook in ['n']:
              if result.returncode == 0:
-                print(f"{color.GREEN}[+] | {color.CYAN}{ip_address}{color.GREEN} | Ip Found | Tests n°{nombre}{color.RESET}")
+                print(f"{color.GREEN}[+] | {color.WHITE}{ip_address}{color.GREEN} | Ip Found | Tests n°{nombre}{color.RESET}")
              else:
-                  print(f"{color.RED}[X] | {color.CYAN}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
+                  print(f"{color.RED}[X] | {color.WHITE}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
              
 
     except subprocess.TimeoutExpired:
-        print(f"{color.RED}[X] | {color.CYAN}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
+        print(f"{color.RED}[X] | {color.WHITE}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
 nombre = 0
 while True:
     nombre_random1 = random.randint(1, 200)

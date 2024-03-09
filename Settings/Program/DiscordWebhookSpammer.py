@@ -4,7 +4,7 @@ import requests
 import json
 import time
 
-Title("Webhook Spammer")
+Title("Discord Webhook Spammer")
 
 def send_webhook_message(webhook_url, message):
     payload = {'content': message}
