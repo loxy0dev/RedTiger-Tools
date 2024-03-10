@@ -53,11 +53,13 @@ Install with Git:
   5) Launch "Setup.bat".
 
 Install with GitHub:
-  1) Press the green “Code” button,
+  1) Press the green “<> Code” button,
   2) Press "Download ZIP" button,
   3) Extract the file "RedTiger-main.zip" to your desktop,
   4) Launch "Setup.bat".
 ```
+https://github.com/fluzyteck/RedTiger/archive/main.zip
+
 </p>
 First of all, read the file “TO READ.txt” and run “Setup.bat”
 
