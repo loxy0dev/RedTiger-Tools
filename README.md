@@ -22,7 +22,7 @@
 - -> Discord Token Generator
 - -> Discord Token Info
 - -> Discord Token Login
-- -> Discord Token Nuker (soon)
+- -> Discord Token Nuker
 - -> Discord Mass Dm
 - -> Discord House Changer
 - -> Discord Status Changer
@@ -45,4 +45,4 @@ First of all, read the file “TO READ.txt” and run “Setup.bat”
 - [Site Web](https://red-tiger.000webhostapp.com/accueil.html)
 - [Tiktok](https://www.tiktok.com/@fluzyteck)
 - By: FluzyTeck,
-- Version: 2.1.0
+- Version: 2.2.0
