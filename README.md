@@ -28,12 +28,11 @@
 ```
 </p>
 <h2>💀・Stealer/Grabber</h2>
-<div>
-   <img src="Img/Steal_System.png" width="450">
-   <img src="Img/Steal_Discord.png" width="450">
-   <img src="Img/Steal_Browser.png" width="450">
-   <img src="Img/Steal_Screenshot.png" width="450">
-    
+<div align="center">
+   <img align="center" src="Img/Steal_System.png" width="450">
+   <img align="center" src="Img/Steal_Discord.png" width="450">
+   <img align="center" src="Img/Steal_Browser.png" width="450">
+   <img align="center" src="Img/Steal_Screenshot.png" width="450">
 </div>
 
 First of all, read the file “TO READ.txt” and run “Setup.bat”
