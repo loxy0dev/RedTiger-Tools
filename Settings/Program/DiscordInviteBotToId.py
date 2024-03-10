@@ -1,5 +1,5 @@
+from Config.Util import *
 from Config.Config import *
-
 import webbrowser
 
 Title("Discord Invite Bot To Id")

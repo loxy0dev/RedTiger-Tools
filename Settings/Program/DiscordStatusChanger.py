@@ -1,5 +1,5 @@
+from Config.Util import *
 from Config.Config import *
-
 import requests
 import time
 
@@ -37,5 +37,5 @@ while True:
             i += 1
             time.sleep(times)
         except Exception as e:
-            print(f"{color.RED}[X] | Error: \"{color.WHITE}{e}{color.RED}\"")
+            print(f"{color.RED}[X] | Error | \"{color.WHITE}{e}{color.RED}\"")
             time.sleep(times)

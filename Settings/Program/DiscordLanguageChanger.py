@@ -1,5 +1,5 @@
+from Config.Util import *
 from Config.Config import *
-
 import requests
 import time
 import random
@@ -15,7 +15,7 @@ if r.status_code == 200:
         ErrorNumber()
 
     for i in range(amount):
-        time.sleep(1)
+        time.sleep(0.6)
         random_language = random.choice(['ja', 'zh-TW', 'ko', 'zh-CN', 'th', 'uk', 'ru', 'el', 'cs'])
         setting = {'locale': random_language}
         requests.patch("https://discord.com/api/v7/users/@me/settings", headers=headers, json=setting)

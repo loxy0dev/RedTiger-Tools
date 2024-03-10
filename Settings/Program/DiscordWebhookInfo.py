@@ -1,5 +1,5 @@
+from Config.Util import *
 from Config.Config import *
-
 import requests
 
 Title("Discord Webhook Info")

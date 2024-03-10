@@ -1,5 +1,5 @@
+from Config.Util import *
 from Config.Config import *
-
 import subprocess
 import requests
 import json

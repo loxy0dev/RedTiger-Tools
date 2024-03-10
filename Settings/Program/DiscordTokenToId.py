@@ -1,5 +1,5 @@
+from Config.Util import *
 from Config.Config import *
-
 import base64
 import threading
 import random
@@ -32,11 +32,11 @@ if brute in ['y', 'Y', 'Yes', 'yes']:
             bruh = requests.get('https://discordapp.com/api/v9/auth/login', headers=header)
 
             if bruh.status_code == 200:
-                    print(f"{color.GREEN}[X] | {color.WHITE}{token}{color.GREEN} | Token Found{color.RESET}")
+                    print(f"{color.GREEN}[+] | Token Found | {color.WHITE}{token}{color.RESET}")
                     Continue()
 
             else:
-                    print(f"{color.RED}[X] | {color.WHITE}{token}{color.RED} | Token Invalid{color.RESET}")
+                    print(f"{color.RED}[X] | Token Invalid | {color.WHITE}{token}{color.RESET}")
 
     threads = []
     try:

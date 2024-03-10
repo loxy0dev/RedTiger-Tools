@@ -1,28 +1,31 @@
+from Config.Util import *
 from Config.Config import *
-
 import requests
 
 Title("Discord Token Info")
 
 token_discord = input(f"{color.RED}\n[?] | Token -> {color.RESET}")
-print(f"{color.RED}[!] | Information Recovery..")
-user = requests.get(
+try:
+ print(f"{color.RED}[!] | Information Recovery..")
+ user = requests.get(
     'https://discord.com/api/v8/users/@me', headers={'Authorization': token_discord}).json()
-billing_discord = requests.get(
+ billing_discord = requests.get(
     'https://discord.com/api/v6/users/@me/billing/payment-sources', headers={'Authorization': token_discord}).json()
-guilds = requests.get(
+ guilds = requests.get(
     'https://discord.com/api/v9/users/@me/guilds?with_counts=true', headers={'Authorization': token_discord}).json()
-friends = requests.get(
+ friends = requests.get(
     'https://discord.com/api/v8/users/@me/relationships', headers={'Authorization': token_discord}).json()
-gift_codes_discord = requests.get(
+ gift_codes_discord = requests.get(
     'https://discord.com/api/v9/users/@me/outbound-promotions/codes', headers={'Authorization': token_discord}).json()
 
-username_discord = user['username'] + '#' + user['discriminator']
-user_id_discord = user['id']
-email_discord = user['email']
-phone_discord = user['phone']
-mfa_discord = user['mfa_enabled']
-
+ username_discord = user['username'] + '#' + user['discriminator']
+ user_id_discord = user['id']
+ email_discord = user['email']
+ phone_discord = user['phone']
+ mfa_discord = user['mfa_enabled']
+except:
+      ErrorToken()
+      
 try:
     avatar_discord = f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.gif" if requests.get(
         f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.gif").status_code == 200 else f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.png"
@@ -100,6 +103,7 @@ else:
     gift_codes_discord = "None"
 
 print(f"""{color.RED}
+{color.WHITE}[{color.RED}!{color.WHITE}]{color.RED} Token {color.WHITE}Valid{color.RED}.
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Username  : {color.WHITE}{username_discord}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Id        : {color.WHITE}{user_id_discord}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Email     : {color.WHITE}{email_discord}{color.RED}

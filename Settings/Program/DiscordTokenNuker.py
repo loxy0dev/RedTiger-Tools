@@ -1,3 +1,4 @@
+from Config.Util import *
 from Config.Config import *
 import requests
 import time
@@ -33,7 +34,7 @@ while True:
         r = requests.patch("https://discord.com/api/v9/users/@me/settings", headers=headers, json=CustomStatus_default)
         print(f"{color.RED}[+] | Status Changed | \"{color.WHITE}{default_status}{color.RED}\"")
     except Exception as e:
-        print(f"{color.RED}[X] | Error: \"{color.WHITE}{e}{color.RED}\"")
+        print(f"{color.RED}[X] | Error | \"{color.WHITE}{e}{color.RED}\"")
 
     for _ in range(5):
 
@@ -53,7 +54,7 @@ while True:
         r = requests.patch("https://discord.com/api/v9/users/@me/settings", headers=headers, json=CustomStatus_custom)
         print(f"{color.RED}[+] | Status Changed | \"{color.WHITE}{custom_status}{color.RED}\"")
     except Exception as e:
-        print(f"{color.RED}[X] | Error: \"{color.WHITE}{e}{color.RED}\"")
+        print(f"{color.RED}[X] | Error | \"{color.WHITE}{e}{color.RED}\"")
     
     for _ in range(5):
 

@@ -1,5 +1,5 @@
+from Config.Util import *
 from Config.Config import *
-
 import requests
 import json
 import string
@@ -40,10 +40,10 @@ def send_webhook_message(webhook_url_Essai, content):
 
          if response.status_code == 204:
           if choixwebhook in ['y']:
-            print(f"{color.GREEN}[+] | {color.WHITE}{webhook_partie_variable}{color.GREEN} | Webhook Found | n°{nombre}{color.RESET}")
+            print(f"{color.GREEN}[+] | Webhook Found | {color.WHITE}{webhook_partie_variable}{color.RESET}")
 
             embed_content = {
-           'title': f'Webhook Found, Tests n°{nombre}',
+           'title': f'Webhook Found !',
            'description': f"**URL Webhook:__**\n```{webhook_url_Essai}```",
            'color': color_webhook,
            'footer': {
@@ -53,14 +53,13 @@ def send_webhook_message(webhook_url_Essai, content):
             }
             send_embed_webhook(webhook_url, embed_content, username, url)
           else:
-                print(f"{color.GREEN}[+] | {color.WHITE}{webhook_partie_variable}{color.GREEN} | Webhook Found | n°{nombre}{color.RESET}")
+                print(f"{color.GREEN}[+] | Webhook Found | {color.WHITE}{webhook_partie_variable}{color.RESET}")
 
          else:
-             print(f"{color.RED}[X] | {color.WHITE}{webhook_partie_variable}{color.RED} | Webhook Invalid | n°{nombre}{color.RESET}")
+             print(f"{color.RED}[X] | Webhook Invalid | {color.WHITE}{webhook_partie_variable}{color.RESET}")
 
-nombre = 0
+
 while True:
-    nombre += 1
     
     chiffres = ''.join(random.choices(string.digits, k=18))
     caracteres = ''.join(random.choices(string.ascii_letters + string.digits, k=64))
@@ -72,4 +71,4 @@ while True:
     message_content = 'Webhook found By Red Tiger'
 
     send_webhook_message(webhook_url_Essai, message_content)
-    Title(f"Webhook Generator | Tests n°{nombre}")
+    Title(f"Webhook Generator | Webhook: {webhook_url_Essai}")

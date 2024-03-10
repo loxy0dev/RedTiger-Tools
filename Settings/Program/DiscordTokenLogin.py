@@ -1,3 +1,4 @@
+from Config.Util import *
 from Config.Config import *
 from selenium import webdriver
 from selenium.webdriver.edge.service import Service as EdgeService

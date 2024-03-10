@@ -1,5 +1,5 @@
+from Config.Util import *
 from Config.Config import *
-
 Title("Info")
 
 LAPprint(f"""\n{color.RED}Informations:

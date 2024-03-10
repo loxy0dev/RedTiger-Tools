@@ -102,7 +102,7 @@ try:
         except:
          subprocess.check_call(['pip', 'install', nom_module])
 
-        from Program.Config.Config import Reset
+        from Program.Config.Util import Reset
         Reset()
 except:
         print("[X] | Python is not installed with the \"PATH\" option !!")

