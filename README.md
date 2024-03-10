@@ -27,6 +27,7 @@
    [10] -> Discord Webhook Create         [20] -> Discord Theme Changer          [30] ->
 ```
 </p>
+
 <h2>💀・Stealer/Grabber</h2>
 <div align="center">
    <img align="center" src="Img/Steal_System.png" width="450">
@@ -34,11 +35,25 @@
    <img align="center" src="Img/Steal_Browser.png" width="450">
    <img align="center" src="Img/Steal_Screenshot.png" width="450">
 </div>
-<h2>⏳・Requirements:</h2>
+<h2>🔒・Requirements:</h2>
 <p>
 - You need to <a href="https://www.python.org/downloads/">install Python</a> with the <strong>PATH</strong> option. <a href="https://www.python.org/downloads/">Download Here</a><br>
 - You need to <a href="https://git-scm.com/download/win">install GIT</a> with the <strong>PATH</strong> option. <a href="https://git-scm.com/download/win">Download Here</a><br>
 - Windows 10/11
+</p>
+<h2>⏳・Installation:</h2>
+<p>
+
+```
+Install with Git:
+ 1) Press sumiltamemen on "windows + r" and open "cmd".
+ 2) git clone https://github.com/fluzyteck/RedTiger
+ 3) cd RedTiger
+ 4) code .
+
+Install with GitHub:
+Launch "Setup.bat"
+```
 </p>
 First of all, read the file “TO READ.txt” and run “Setup.bat”
 
