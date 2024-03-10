@@ -51,9 +51,10 @@ Install with Git:
   3) Write in cmd "cd RedTiger",
   4) Write in cmd "code .",
   5) Launch "Setup.bat".
+
 Install with GitHub:
-  1) Press the green “code” button,
-  2) Press "download zip" button,
+  1) Press the green “Code” button,
+  2) Press "Download ZIP" button,
   3) Extract the file "RedTiger-main.zip" to your desktop,
   4) Launch "Setup.bat".
 ```
