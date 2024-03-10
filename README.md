@@ -27,13 +27,14 @@
    [10] -> Discord Webhook Create         [20] -> Discord Theme Changer          [30] ->
 ```
 </p>
-<h2>Stealer/Grabber</h2>
-<img src="Img/Steal_Discord.png">
-### Steal/Grab:
-![StealDiscord](Img/Steal_Discord.png)
-![StealSystem](Img/Steal_System.png)
-![StealScreenshot](Img/Steal_Screenshot.png)
-![StealBrowser](Img/Steal_Browser.png)
+<h2>💀・Stealer/Grabber</h2>
+<div>
+   <img src="Img/Steal_System.png" width="450">
+   <img src="Img/Steal_Discord.png" width="450">
+   <img src="Img/Steal_Browser.png" width="450">
+   <img src="Img/Steal_Screenshot.png" width="450">
+    
+</div>
 
 First of all, read the file “TO READ.txt” and run “Setup.bat”
 
