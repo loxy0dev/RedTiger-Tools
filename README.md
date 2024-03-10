@@ -11,7 +11,7 @@
 💰 -> <strong>Free</strong> for everyone.<br>
 </p>
 
-### Contient:
+<h2>⚙️・Functions:</h2>
 <p align="center">
   
 ```
@@ -27,6 +27,8 @@
    [10] -> Discord Webhook Create         [20] -> Discord Theme Changer          [30] ->
 ```
 </p>
+<h2>Stealer/Grabber</h2>
+<img src="Img/Steal_Discord.png">
 ### Steal/Grab:
 ![StealDiscord](Img/Steal_Discord.png)
 ![StealSystem](Img/Steal_System.png)
