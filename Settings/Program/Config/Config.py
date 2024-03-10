@@ -6,7 +6,7 @@ import time
 import sys
 
 name_tool = "Red Tiger"
-version_tool = "v2.2.0"
+version_tool = "2.2.0"
 coding_tool = "Python"
 language_tool = "EN"
 creator = "FluzyTeck"
