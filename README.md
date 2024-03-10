@@ -58,13 +58,16 @@ Install with GitHub:
   3) Extract the file "RedTiger-main.zip" to your desktop,
   4) Launch "Setup.bat".
 ```
-https://github.com/fluzyteck/RedTiger/archive/main.zip
-
+Or install the Red Tiger tool <a href="https://github.com/fluzyteck/RedTiger/archive/main.zip
+">Here</a> and launch "Setup.bat".
 </p>
-First of all, read the file “TO READ.txt” and run “Setup.bat”
 
-- [Discord](https://discord.gg/VF4vqzpDsY)
-- [Site Web](https://red-tiger.000webhostapp.com/accueil.html)
-- [Tiktok](https://www.tiktok.com/@fluzyteck)
-- By: FluzyTeck,
+<h3>Credits</h3>
+<p>
+- <a href="https://discord.gg/VF4vqzpDsY">Discord Server</a><br>
+- <a href="https://red-tiger.000webhostapp.com/accueil.html">Site Web</a><br>
+- <a href="https://www.tiktok.com/@fluzyteck">Tiktok</a><br>
+- <a href="https://www.youtube.com/channel/UCB3ABdJP25ULxbydw4ldHjw">Youtube</a><br>
+- By: FluzyTeck<br>
 - Version: 2.3.0
+</p>
