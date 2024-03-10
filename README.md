@@ -34,7 +34,11 @@
    <img align="center" src="Img/Steal_Browser.png" width="450">
    <img align="center" src="Img/Steal_Screenshot.png" width="450">
 </div>
-
+<h2>⏳・Requirements:</h2>
+<p>
+- You need to <a href="https://www.python.org/downloads/">install Python</a> with the <strong>PATH</strong> option. <a href="https://www.python.org/downloads/">Download Here</a><br>
+- Windows 10/11
+</p>
 First of all, read the file “TO READ.txt” and run “Setup.bat”
 
 - [Discord](https://discord.gg/VF4vqzpDsY)
