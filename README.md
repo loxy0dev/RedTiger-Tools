@@ -63,7 +63,7 @@ Or install the Red Tiger tool <a href="https://github.com/fluzyteck/RedTiger/arc
    <img align="center" src="Img/Steal_Screenshot.png" width="450">
 </div>
 
-<h3>🔗・Credits</h3>
+<h3>🔗・Credits:</h3>
 <p>
 - <a href="https://discord.gg/VF4vqzpDsY">Discord Server</a><br>
 - <a href="https://red-tiger.000webhostapp.com/accueil.html">Site Web</a><br>
