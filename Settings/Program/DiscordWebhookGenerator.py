@@ -23,7 +23,7 @@ username = 'Red Tiger'
 url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
 
 
-choixwebhook = input(f"{color.RED}\n[?] | Webhook ? (y, n) -> {color.RESET}")
+choixwebhook = input(f"{color.RED}\n[?] | Webhook (y/n) -> {color.RESET}")
 if choixwebhook in ['y', 'Y','Yes','yes']:
     webhook_url = input(f"{color.RED}[?] | URL Webhook -> {color.RESET}")
 

