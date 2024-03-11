@@ -28,13 +28,6 @@
 ```
 </p>
 
-<h2>💀・Stealer/Grabber</h2>
-<div align="center">
-   <img align="center" src="Img/Steal_System.png" width="450">
-   <img align="center" src="Img/Steal_Discord.png" width="450">
-   <img align="center" src="Img/Steal_Browser.png" width="450">
-   <img align="center" src="Img/Steal_Screenshot.png" width="450">
-</div>
 <h2>🔒・Requirements:</h2>
 <p>
 - You need to <a href="https://www.python.org/downloads/">install Python</a> with the <strong>PATH</strong> option. <a href="https://www.python.org/downloads/">Download Here</a><br>
@@ -62,7 +55,15 @@ Or install the Red Tiger tool <a href="https://github.com/fluzyteck/RedTiger/arc
 ">Here</a> and launch "Setup.bat".
 </p>
 
-<h3>Credits</h3>
+<h2>💀・Stealer/Grabber:</h2>
+<div align="center">
+   <img align="center" src="Img/Steal_System.png" width="450">
+   <img align="center" src="Img/Steal_Discord.png" width="450">
+   <img align="center" src="Img/Steal_Browser.png" width="450">
+   <img align="center" src="Img/Steal_Screenshot.png" width="450">
+</div>
+
+<h3>🔗・Credits</h3>
 <p>
 - <a href="https://discord.gg/VF4vqzpDsY">Discord Server</a><br>
 - <a href="https://red-tiger.000webhostapp.com/accueil.html">Site Web</a><br>
