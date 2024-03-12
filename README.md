@@ -1,4 +1,4 @@
-<h1 align="center">Red Tiger Multi Tool 🛠️</h1>
+<h1 align="center">Red Tiger Multi-Tool 🛠️</h1>
 <img src="Img/RedTiger.png" width="9999"/> 
 
 <h2>📜・Description:</h2>
@@ -17,14 +17,14 @@
 ```
    [01] -> Tool Info                      [11] -> Discord Token To Id            [21] -> Discord House Changer
    [02] -> Web Site                       [12] -> Discord Token Generator        [22] -> Discord Nitro Generator
-   [03] -> Ip Localisation                [13] -> Discord Token Info             [23] -> Discord Server Nuker Bot (soon)
+   [03] -> Ip Info                        [13] -> Discord Token Info             [23] -> Discord Bot Server Nuker (soon)
    [04] -> Ip Pinger                      [14] -> Discord Token Login            [24] -> Discord Invite Bot To Id
    [05] -> Ip Generator                   [15] -> Discord Token Nuker            [25] -> Dox Create
-   [06] -> Discord/System/Browser Grab    [16] -> Discord Mass Dm                [26] ->
+   [06] -> Discord/System/Browser Grab    [16] -> Discord Mass Dm                [26] -> Number Info
    [07] -> Discord Webhook Generator      [17] -> Discord Spam Message Channel   [27] ->
    [08] -> Discord Webhook Info           [18] -> Discord Status Changer         [28] ->
    [09] -> Discord Webhook Spammer        [19] -> Discord Language Changer       [29] ->
-   [10] -> Discord Webhook Create         [20] -> Discord Theme Changer          [30] ->
+   [10] -> Discord Webhook Create         [20] -> Discord Theme Changer          [30] -> Next Page
 ```
 </p>
 
@@ -70,5 +70,5 @@ Or install the Red Tiger tool <a href="https://github.com/fluzyteck/RedTiger/arc
 - <a href="https://www.tiktok.com/@fluzyteck">Tiktok</a><br>
 - <a href="https://www.youtube.com/channel/UCB3ABdJP25ULxbydw4ldHjw">Youtube</a><br>
 - By: FluzyTeck<br>
-- Version: 2.3.0
+- Version: 2.4.0
 </p>
