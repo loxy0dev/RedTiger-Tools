@@ -1,4 +1,4 @@
-<h1 align="center">Red Tiger Multi Tool 🛠️</h1>
+<h1 align="center">Red Tiger Multi-Tool 🛠️</h1>
 <img src="Img/RedTiger.png" width="9999"/> 
 
 <h2>📜・Description:</h2>
