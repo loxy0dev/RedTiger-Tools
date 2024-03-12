@@ -7,8 +7,10 @@ token = input(f"{color.RED}\n[?] | Token -> {color.RESET}")
 channel = input(f"{color.RED}[?] | Channel -> {color.RESET}")
 message = input(f"{color.RED}[?] | Message -> {color.RESET}")
 
-def send_message():
-    requests.post(
+number = 0
+while True:
+   try:
+    response = requests.post(
             f"https://discord.com/api/channels/{channel}/messages",
             data={'content': message},
             headers={
@@ -16,7 +18,8 @@ def send_message():
                 'Authorization': token
             }
         )
-    print(f'{color.RED}[+] | Message Send | Message: "{color.WHITE}{message}{color.RED}" | Channel: "{color.WHITE}{channel}{color.RED}" {color.RESET}')
-
-while True:
-    send_message()
+    response.raise_for_status()
+    number += 1
+    print(f'{color.RED}[+] | Message Send | Message: "{color.WHITE}{message}{color.RED}" | Channel: "{color.WHITE}{channel}{color.RED}" | Number: "{color.WHITE}{number}{color.RED}"{color.RESET}')
+   except:
+      ()
