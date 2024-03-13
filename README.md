@@ -1,7 +1,5 @@
-
-[![GitHub Logo](Img/RedTiger.png)](https://github.com/fluzyteck/RedTiger)
 <h1 align="center">Red Tiger Multi-Tool 🛠️</h1>
-<img src="Img/RedTiger.png" width="9999"/> 
+[![GitHub Logo](Img/RedTiger.png)](https://github.com/fluzyteck/RedTiger)
 
 <h2>📜・Description:</h2>
 <p>
