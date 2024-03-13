@@ -15,16 +15,17 @@
 <p align="center">
   
 ```
-   [01] -> Tool Info                      [11] -> Discord Token To Id            [21] -> Discord House Changer
-   [02] -> Web Site                       [12] -> Discord Token Generator        [22] -> Discord Nitro Generator
-   [03] -> Ip Info                        [13] -> Discord Token Info             [23] -> Discord Bot Server Nuker (soon)
-   [04] -> Ip Pinger                      [14] -> Discord Token Login            [24] -> Discord Invite Bot To Id
-   [05] -> Ip Generator                   [15] -> Discord Token Nuker            [25] -> Dox Create
-   [06] -> Discord/System/Browser Grab    [16] -> Discord Mass Dm                [26] -> Number Info
-   [07] -> Discord Webhook Generator      [17] -> Discord Spam Message Channel   [27] ->
-   [08] -> Discord Webhook Info           [18] -> Discord Status Changer         [28] ->
-   [09] -> Discord Webhook Spammer        [19] -> Discord Language Changer       [29] ->
-   [10] -> Discord Webhook Create         [20] -> Discord Theme Changer          [30] -> Next Page
+   [Page n°1]
+   [01] -> Tool Info                      [11] -> Discord Webhook Generator      [21] -> Discord Mass Dm
+   [02] -> Web Site                       [12] -> Discord Webhook Create         [22] -> Discord Server Info (soon)
+   [03] -> Ip Info                        [13] -> Discord Nitro Generator        [23] -> Discord Raid Server (soon)
+   [04] -> Ip Pinger                      [14] -> Discord Token Generator        [24] -> Discord Status Changer
+   [05] -> Ip Generator                   [15] -> Discord Token Info             [25] -> Discord Language Changer
+   [06] -> Number Info                    [16] -> Discord Token Nuker            [26] -> Discord Theme Changer
+   [07] -> Dox Create                     [17] -> Discord Token Joiner           [27] -> Discord House Changer
+   [08] -> Discord/System/Browser Grab    [18] -> Discord Token Leaver (soon)    [28] -> Discord Bot Invite To Id
+   [09] -> Discord Webhook Info           [19] -> Discord Token Login            [29] -> Discord Bot Server Nuker (soon)
+   [10] -> Discord Webhook Spammer        [20] -> Discord Token To Id            [30] -> Next Page ▶
 ```
 </p>
 
@@ -70,5 +71,5 @@ Or install the Red Tiger tool <a href="https://github.com/fluzyteck/RedTiger/arc
 - <a href="https://www.tiktok.com/@fluzyteck">Tiktok</a><br>
 - <a href="https://www.youtube.com/channel/UCB3ABdJP25ULxbydw4ldHjw">Youtube</a><br>
 - By: FluzyTeck<br>
-- Version: 2.4.0
+- Version: 2.50
 </p>
