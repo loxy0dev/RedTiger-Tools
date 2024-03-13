@@ -66,6 +66,7 @@ Or install the Red Tiger tool <a href="https://github.com/fluzyteck/RedTiger/arc
    <img align="center" src="Img/Grab_System.png" width="450">
    <img align="center" src="Img/Grab_Discord.png" width="450">
    <img align="center" src="Img/Grab_Browser.png" width="450">
+   <img align="center" src="Img/Grab_Roblox.png" width="450">
    <img align="center" src="Img/Grab_Screenshot.png" width="450">
 </div>
 
