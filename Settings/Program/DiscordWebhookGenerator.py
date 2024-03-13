@@ -27,18 +27,9 @@ choixwebhook = input(f"{color.RED}\n[?] | Webhook (y/n) -> {color.RESET}")
 if choixwebhook in ['y', 'Y','Yes','yes']:
     webhook_url = input(f"{color.RED}[?] | URL Webhook -> {color.RESET}")
 
-def send_webhook_message(webhook_url_Essai, content):
-         payload = {
-             'content': content
-         }
-
-         headers = {
-             'Content-Type': 'application/json'
-          }
-
-         response = requests.post(webhook_url_Essai, data=json.dumps(payload), headers=headers)
-
-         if response.status_code == 204:
+def send_webhook_message(webhook_url_Essai):
+         response = requests.head(webhook_url_Essai)
+         if response.status_code == 200:
           if choixwebhook in ['y']:
             print(f"{color.GREEN}[+] | Webhook Found | {color.WHITE}{webhook_partie_variable}{color.RESET}")
 
@@ -68,7 +59,5 @@ while True:
 
     webhook_url_Essai = f'https://discord.com/api/webhooks/{webhook_partie_variable}'
 
-    message_content = 'Webhook found By Red Tiger'
-
-    send_webhook_message(webhook_url_Essai, message_content)
+    send_webhook_message(webhook_url_Essai)
     Title(f"Webhook Generator | Webhook: {webhook_url_Essai}")

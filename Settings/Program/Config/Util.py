@@ -84,3 +84,13 @@ def ErrorNumber():
     print(f"{color.RED}[X] | Invalid Number !", color.RESET)
     time.sleep(3)
     Reset()
+
+def ErrorWebhook():
+    print(f"{color.RED}[X] | Invalid Webhook !", color.RESET)
+    time.sleep(3)
+    Reset()
+
+def ErrorCookie():
+    print(f"{color.RED}[X] | Invalid Cookie !", color.RESET)
+    time.sleep(3)
+    Reset()

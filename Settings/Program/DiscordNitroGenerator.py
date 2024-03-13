@@ -15,17 +15,38 @@ webhook = input(f"{color.RED}\n[?] | Webhook ? (y, n) -> {color.RESET}")
 
 if webhook in ['y']:
     webhook_url = input(f"{color.RED}[?] | URL Webhook -> {color.RESET}")
+
+print(f"""
+{color.WHITE}[{color.RED}01{color.WHITE}] {color.RED}->{color.WHITE} Chrome
+{color.WHITE}[{color.RED}02{color.WHITE}] {color.RED}->{color.WHITE} Firefox
+{color.WHITE}[{color.RED}03{color.WHITE}] {color.RED}->{color.WHITE} Edge (recommend)
+""")
+choice = input(f"{color.RED}-> {color.RESET}")
 try:
-   webdriver_path = './Driver/msedgedriver.exe'
+    if choice == '1':
+        navigator = "Chrome"
+        print(f"{color.RED}[!] | {navigator} Starting..{color.RESET}")
+        driver = webdriver.Chrome()
+        print(f"{color.RED}[!] | {navigator} Ready !{color.RESET}")
 
-   edge_options = EdgeOptions()
-   edge_options.use_chromium = True
+    elif choice == '2':
+        navigator = "Firefox"
+        print(f"{color.RED}[!] | {navigator} Starting..{color.RESET}")
+        driver = webdriver.Firefox()
+        print(f"{color.RED}[!] | {navigator} Ready !{color.RESET}")
 
-   edge_service = EdgeService(webdriver_path)
+    elif choice == '3':
+        navigator = "Edge"
+        print(f"{color.RED}[!] | {navigator} Starting..{color.RESET}")
+        driver = webdriver.Edge()
+        print(f"{color.RED}[!] | {navigator} Ready !{color.RESET}")
 
-   driver = webdriver.Edge(service=edge_service, options=edge_options)
+    else:
+        ErrorChoice()
 except:
-   ErrorEdge()
+    print(f"{color.RED}[X] | {navigator} not installed or driver not up to date.")
+    Continue()
+    Reset()
 
 while True:
  

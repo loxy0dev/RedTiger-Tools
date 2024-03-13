@@ -3,6 +3,8 @@ from Config.Config import *
 import phonenumbers
 from phonenumbers import geocoder, carrier, timezone
 
+Title("Number Info")
+
 phone_number = input(f"{color.RED}\n[?] | Phone Number -> {color.RESET}")
 try:
     parsed_number = phonenumbers.parse(phone_number, None)

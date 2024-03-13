@@ -2,8 +2,10 @@ from Config.Util import *
 from Config.Config import *
 import requests
 
+Title("Discord Token Joiner")
+
 token = input(f"{color.RED}\n[?] | Token -> {color.RESET}")
-invite = input(f"{color.RED}[?] | Invitation -> {color.RESET}")
+invite = input(f"{color.RED}[?] | Server Invitation -> {color.RESET}")
 
 invite_code = invite.split("/")[-1]
 

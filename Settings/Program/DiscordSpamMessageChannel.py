@@ -1,7 +1,7 @@
 from Config.Util import *
 from Config.Config import *
 import requests
-
+Title("Discord Spam Message Channel")
 
 token = input(f"{color.RED}\n[?] | Token -> {color.RESET}")
 channel = input(f"{color.RED}[?] | Channel -> {color.RESET}")

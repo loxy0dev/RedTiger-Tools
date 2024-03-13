@@ -5,6 +5,8 @@ from json import *
 import requests
 import webbrowser
 
+Title("Ip Info")
+
 ip = input(f"{color.RED}\n[?] | Ip -> {color.RESET}")
 
 response = requests.get(f"http://ip-api.com/json/{ip}")
