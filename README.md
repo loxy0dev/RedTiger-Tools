@@ -1,5 +1,5 @@
-# Red Tiger Multi-Tool 🛠️
-[![GitHub Logo](Img/RedTiger.png)](https://github.com/fluzyteck/RedTiger)
+<h1 align="center">Red Tiger Multi-Tool 🛠️</h1> 
+<img src="Img/RedTiger.png" wdth="9999">
 
 <h2>📜・Description:</h2>
 <p>
