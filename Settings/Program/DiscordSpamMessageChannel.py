@@ -4,8 +4,9 @@ import requests
 Title("Discord Spam Message Channel")
 
 token = input(f"{color.RED}\n[?] | Token -> {color.RESET}")
-channel = input(f"{color.RED}[?] | Channel -> {color.RESET}")
+channel = input(f"{color.RED}[?] | Channel Id -> {color.RESET}")
 message = input(f"{color.RED}[?] | Message -> {color.RESET}")
+
 
 number = 0
 while True:

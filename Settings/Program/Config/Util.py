@@ -18,6 +18,9 @@ def get_current_datetime():
 def ModuleInstall(module):
     subprocess.check_call(['pip', 'install', module])
 
+def ModuleUninstall(module):
+    subprocess.check_call(['pip', 'uninstall', module])
+
 def Title(title):
     ctypes.windll.kernel32.SetConsoleTitleW(f"{name_tool} {version_tool} | {title}")
 

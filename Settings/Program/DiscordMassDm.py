@@ -2,7 +2,7 @@ from Config.Util import *
 from Config.Config import *
 import requests
 import threading
-from colorama import Fore
+
 Title("Discord Mass Dm")
 
 def MassDM(token_discord, channels, Message):
@@ -25,16 +25,27 @@ except:
     ()
 processes = []
 
+try:
+    repetition = int(input(f"{color.RED}[?] | Number of Repetitions -> {color.RESET}"))
+except:
+    ErrorNumber()
+
 channelIds = requests.get("https://discord.com/api/v9/users/@me/channels", headers={'Authorization': token_discord}).json()
-if not channelIds:
-    ()
-for channel in [channelIds[i:i+3] for i in range(0, len(channelIds), 3)]:
-    t = threading.Thread(target=MassDM, args=(token_discord, channel, message))
-    t.start()
-    processes.append(t)
-for process in processes:
-    process.join()
-Title("Discord Mass Dm - Finish")
-print(f"{color.RED}[!] | Finish.")
+
+number = 0
+for i in range(repetition):
+    number += 1
+    if not channelIds:
+        ()
+    for channel in [channelIds[i:i+3] for i in range(0, len(channelIds), 3)]:
+        t = threading.Thread(target=MassDM, args=(token_discord, channel, message))
+        t.start()
+        processes.append(t)
+    for process in processes:
+        process.join()
+    print(f"{color.RED}[!] | Finish n°{number}.")
+    time.sleep(5)
+    
+
 Continue()
 Reset()

