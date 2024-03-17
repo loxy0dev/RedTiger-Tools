@@ -1571,7 +1571,6 @@ except:
 try:
    import win32api
 except:
-   ModuleInstall("win32api")
    ModuleInstall("win32")
 try:
    import discord
