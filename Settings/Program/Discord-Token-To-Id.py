@@ -11,6 +11,11 @@ Title("Discord Token To Id")
 userid = input(f"{color.RED}\n[?] | Victime ID -> {color.RESET}")
 encodedBytes = base64.b64encode(userid.encode("utf-8"))
 OnePartToken = str(encodedBytes, "utf-8")
+motifs = ["=", "==", "==="]
+for motif in motifs:
+    if OnePartToken.endswith(motif):
+        OnePartToken = OnePartToken[:-2]
+
 print(f'{color.RED}[!] | Part One Token: \"{color.CYAN}{OnePartToken}.{color.RED}\"{color.RESET}')
 
 brute = input(f"{color.RED}[?] | Find the second part by brute force ? (y/n) -> {color.RESET}")

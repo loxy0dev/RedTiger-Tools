@@ -21,5 +21,7 @@ pip install bs4
 pip install webbrowser
 pip install itertools
 pip install phonenumbers
+pip install discord
+pip install discord.py
 echo Finish.
 start Start.bat

