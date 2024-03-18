@@ -1,4 +1,9 @@
-<h1 align="center">Red Tiger Multi-Tool 🛠️</h1> 
+<h1 align="center">RedTiger Multi-Tool 🐯</h1> 
+<p align="center">
+  <img src="https://img.shields.io/github/v/release/fluzyteck/RedTiger-Tools?label=Version&color=a80505">
+  <img src="https://img.shields.io/github/stars/fluzyteck/RedTiger-tools?style=flat&label=Stars&color=a80505">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/fluzyteck/RedTiger-Tools?label=Size&color=a80505">
+</p>
 <img src="Img/RedTiger.png" wdth="9999">
 
 <h2>📜・Description:</h2>
@@ -18,19 +23,19 @@
    [Page n°1]
    [01] -> Tool Info                      [11] -> Discord Webhook Generator      [21] -> Discord Mass Dm
    [02] -> Web Site                       [12] -> Discord Webhook Create         [22] -> Discord Server Info
-   [03] -> Ip Info                        [13] -> Discord Nitro Generator        [23] -> Discord Raid Server (soon)
+   [03] -> Ip Info                        [13] -> Discord Webhook Delete (soon)  [23] -> Discord Nitro Generator
    [04] -> Ip Pinger                      [14] -> Discord Token Generator        [24] -> Discord Status Changer
    [05] -> Ip Generator                   [15] -> Discord Token Info             [25] -> Discord Language Changer
    [06] -> Number Info                    [16] -> Discord Token Nuker            [26] -> Discord Theme Changer
    [07] -> Dox Create                     [17] -> Discord Token Joiner           [27] -> Discord House Changer
    [08] -> Builder Grab/Stealer           [18] -> Discord Token Leaver (soon)    [28] -> Discord Bot Invite To Id
-   [09] -> Discord Webhook Info           [19] -> Discord Token Login            [29] -> Discord Bot Server Nuker (soon)
+   [09] -> Discord Webhook Info           [19] -> Discord Token Login            [29] -> Discord Bot Server Nuker
    [10] -> Discord Webhook Spammer        [20] -> Discord Token To Id            [30] -> Next Page ▶
 
-   [Page n°2]
-   [31] -> ◀ Previous Page      
-   [32] -> Roblox Cookie Login          
-   [33] -> Roblox Cookie Info
+   [31] -> ◀ Previous Page             
+   [32] -> Discord Spam Message Channel  
+   [33] -> Roblox Cookie Info            
+   [34] -> Roblox Cookie Login
 ```
 </p>
 
@@ -77,5 +82,5 @@ Or install the Red Tiger tool <a href="https://github.com/fluzyteck/RedTiger/arc
 - <a href="https://www.tiktok.com/@fluzyteck">Tiktok</a><br>
 - <a href="https://www.youtube.com/channel/UCB3ABdJP25ULxbydw4ldHjw">Youtube</a><br>
 - By: FluzyTeck<br>
-- Version: 2.6
+- Version: 2.7
 </p>

