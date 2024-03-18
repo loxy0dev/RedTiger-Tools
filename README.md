@@ -1,5 +1,11 @@
-<h1 align="center">Red Tiger Multi-Tool 🛠️</h1> 
+<h1 align="center">RedTiger Multi-Tool 🐯</h1> 
+<p align="center">
+  <img src="https://img.shields.io/github/v/release/fluzyteck/RedTiger-Tools?label=Version&color=a80505">
+  <img src="https://img.shields.io/github/stars/fluzyteck/RedTiger-tools?style=flat&label=Stars&color=a80505">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/fluzyteck/RedTiger-Tools?label=Size&color=a80505">
+</p>
 <img src="Img/RedTiger.png" wdth="9999">
+
 <h2>📜・Description:</h2>
 <p>
 👨‍💻 -> Developed in <strong>Python</strong>.<br>
