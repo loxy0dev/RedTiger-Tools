@@ -1,7 +1,5 @@
 <h1 align="center">Red Tiger Multi-Tool 🛠️</h1> 
 <img src="Img/RedTiger.png" wdth="9999">
-<img src="https://img.shields.io/github/downloads/fluzyteck/RedTiger-Tools/total">
-
 <h2>📜・Description:</h2>
 <p>
 👨‍💻 -> Developed in <strong>Python</strong>.<br>
