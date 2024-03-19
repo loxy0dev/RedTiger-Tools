@@ -153,7 +153,7 @@ try:
  option_next_txt = option_next.ljust(30)[:30]
 
 
- page1 = f"""
+ page1 = f"""{color.WHITE}[{color.RED}Page n°1{color.WHITE}]
    {color.WHITE}[{color.RED}01{color.WHITE}] {color.RED}->{color.WHITE} {option_01_txt} {color.WHITE}[{color.RED}11{color.WHITE}] {color.RED}->{color.WHITE} {option_11_txt} {color.WHITE}[{color.RED}21{color.WHITE}] {color.RED}->{color.WHITE} {option_21_txt}
    {color.WHITE}[{color.RED}02{color.WHITE}] {color.RED}->{color.WHITE} {option_02_txt} {color.WHITE}[{color.RED}12{color.WHITE}] {color.RED}->{color.WHITE} {option_12_txt} {color.WHITE}[{color.RED}22{color.WHITE}] {color.RED}->{color.WHITE} {option_22_txt}
    {color.WHITE}[{color.RED}03{color.WHITE}] {color.RED}->{color.WHITE} {option_03_txt} {color.WHITE}[{color.RED}13{color.WHITE}] {color.RED}->{color.WHITE} {option_13_txt} {color.WHITE}[{color.RED}23{color.WHITE}] {color.RED}->{color.WHITE} {option_23_txt}
