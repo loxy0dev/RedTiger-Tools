@@ -36,7 +36,7 @@ try:
  option_07 = "Dox-Create"
  option_08 = "Number-Info"
  option_09 = "Builder-Stealer"
- option_10 = "Illegal-Website-(soon)"
+ option_10 = "Illegal-Website"
  option_11 = "Discord-Webhook-Generator"
  option_12 = "Discord-Webhook-Info"
  option_13 = "Discord-Webhook-Delete-(soon)"
