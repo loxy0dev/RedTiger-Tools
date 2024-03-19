@@ -1503,10 +1503,14 @@ print(f"{color.RED}\n[!] | Installing missing modules:{color.RESET}")
 
 subprocess.check_call(['pip', 'install', '--upgrade', 'discord.py'])
 
+try:
+   import sqlite3
+except:
+    ModuleInstall("sqlite3")
+
 ModuleInstall("screeninfo")
 ModuleInstall("psutil")
 ModuleInstall("GPUtil")
-ModuleInstall("sqlite3")
 ModuleInstall("requests")
 ModuleInstall("pycryptodome")
 ModuleInstall("discord")
