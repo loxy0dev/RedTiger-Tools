@@ -1,16 +1,16 @@
-try:
- from Program.Config.Config import *
- from Program.Config.Util import *
- import requests
- import re
- import webbrowser
 
- Clear()
- Title("Menu")
+from Program.Config.Config import *
+from Program.Config.Util import *
+import requests
+import re
+import webbrowser
 
- url = url_config
- response = requests.get(url)
- if response.status_code == 200:
+Clear()
+Title("Menu")
+
+url = url_config
+response = requests.get(url)
+if response.status_code == 200:
     content = response.text
     match = re.search(r'version_tool\s*=\s*"([^"]+)"', content)
     if match:
@@ -24,136 +24,136 @@ try:
             popup_version = ""
     else:
         popup_version = ""
- else:
+else:
     popup_version = ""
 
- option_01 = "Tool-Info"
- option_02 = "Web-Site"
- option_03 = "Ip-Info"
- option_04 = "Ip-Pinger"
- option_05 = "Ip-Generator"
- option_06 = "Dox-Tracker"
- option_07 = "Dox-Create"
- option_08 = "Number-Info"
- option_09 = "Builder-Stealer"
- option_10 = "Illegal-Website"
- option_11 = "Discord-Webhook-Generator"
- option_12 = "Discord-Webhook-Info"
- option_13 = "Discord-Webhook-Delete-(soon)"
- option_14 = "Discord-Webhook-Spammer"
- option_15 = "Discord-Token-Info"
- option_16 = "Discord-Token-Nuker"
- option_17 = "Discord-Token-Joiner"
- option_18 = "Discord-Token-Leaver-(soon)"
- option_19 = "Discord-Token-Login"
- option_20 = "Discord-Token-To-Id"
- option_21 = "Discord-Token-Generator"
- option_22 = "Discord-Server-Info"
- option_23 = "Discord-Mass-Dm"
- option_24 = "Discord-Status-Changer"
- option_25 = "Discord-Language-Changer"
- option_26 = "Discord-Theme-Changer"
- option_27 = "Discord-House-Changer"
- option_28 = "Discord-Bot-Invite-To-Id"
- option_29 = "Discord-Bot-Server-Nuker"
+option_01 = "Tool-Info"
+option_02 = "Web-Site"
+option_03 = "Ip-Info"
+option_04 = "Ip-Pinger"
+option_05 = "Ip-Generator"
+option_06 = "Dox-Tracker"
+option_07 = "Dox-Create"
+option_08 = "Number-Info"
+option_09 = "Builder-Stealer"
+option_10 = "Illegal-Website"
+option_11 = "Discord-Webhook-Generator"
+option_12 = "Discord-Webhook-Info"
+option_13 = "Discord-Webhook-Delete"
+option_14 = "Discord-Webhook-Spammer"
+option_15 = "Discord-Token-Info"
+option_16 = "Discord-Token-Nuker"
+option_17 = "Discord-Token-Joiner"
+option_18 = "Discord-Token-Leaver-(soon)"
+option_19 = "Discord-Token-Login"
+option_20 = "Discord-Token-To-Id"
+option_21 = "Discord-Token-Generator"
+option_22 = "Discord-Server-Info"
+option_23 = "Discord-Mass-Dm"
+option_24 = "Discord-Status-Changer"
+option_25 = "Discord-Language-Changer"
+option_26 = "Discord-Theme-Changer"
+option_27 = "Discord-House-Changer"
+option_28 = "Discord-Bot-Invite-To-Id"
+option_29 = "Discord-Bot-Server-Nuker"
 
- option_32 = "Discord-Spam-Message-Channel"
- option_33 = "Discord-Nitro-Generator"
- option_34 = "Roblox-Cookie-Info"
- option_35 = "Roblox-Cookie-Login"
- option_36 = ""
- option_37 = ""
- option_38 = ""
- option_39 = ""
- option_40 = ""
- option_41 = ""
- option_42 = ""
- option_43 = ""
- option_44 = ""
- option_45 = ""
- option_46 = ""
- option_47 = ""
- option_48 = ""
- option_49 = ""
- option_50 = ""
- option_61 = ""
- option_62 = ""
- option_63 = ""
- option_64 = ""
- option_65 = ""
- option_66 = ""
- option_67 = ""
- option_68 = ""
- option_69 = ""
+option_32 = "Discord-Spam-Message-Channel"
+option_33 = "Discord-Nitro-Generator"
+option_34 = "Roblox-Cookie-Info"
+option_35 = "Roblox-Cookie-Login"
+option_36 = ""
+option_37 = ""
+option_38 = ""
+option_39 = ""
+option_40 = ""
+option_41 = ""
+option_42 = ""
+option_43 = ""
+option_44 = ""
+option_45 = ""
+option_46 = ""
+option_47 = ""
+option_48 = ""
+option_49 = ""
+option_50 = ""
+option_61 = ""
+option_62 = ""
+option_63 = ""
+option_64 = ""
+option_65 = ""
+option_66 = ""
+option_67 = ""
+option_68 = ""
+option_69 = ""
  
- option_next = "Next Page ▶"
- option_previous = "◀ Previous Page"
+option_next = "Next Page ▶"
+option_previous = "◀ Previous Page"
 
- option_01_txt = option_01.ljust(30)[:30].replace("-", " ")
- option_02_txt = option_02.ljust(30)[:30].replace("-", " ")
- option_03_txt = option_03.ljust(30)[:30].replace("-", " ")
- option_04_txt = option_04.ljust(30)[:30].replace("-", " ")
- option_05_txt = option_05.ljust(30)[:30].replace("-", " ")
- option_06_txt = option_06.ljust(30)[:30].replace("-", " ")
- option_07_txt = option_07.ljust(30)[:30].replace("-", " ")
- option_08_txt = option_08.ljust(30)[:30].replace("-", " ")
- option_09_txt = color.LIGHTYELLOW_EX + option_09.ljust(30)[:30].replace("-", " ")
- option_10_txt = option_10.ljust(30)[:30].replace("-", " ")
- option_11_txt = option_11.ljust(30)[:30].replace("-", " ")
- option_12_txt = option_12.ljust(30)[:30].replace("-", " ")
- option_13_txt = option_13.ljust(30)[:30].replace("-", " ")
- option_14_txt = option_14.ljust(30)[:30].replace("-", " ")
- option_15_txt = option_15.ljust(30)[:30].replace("-", " ")
- option_16_txt = option_16.ljust(30)[:30].replace("-", " ")
- option_17_txt = option_17.ljust(30)[:30].replace("-", " ")
- option_18_txt = option_18.ljust(30)[:30].replace("-", " ")
- option_19_txt = option_19.ljust(30)[:30].replace("-", " ")
- option_20_txt = option_20.ljust(30)[:30].replace("-", " ")
- option_21_txt = option_21.ljust(30)[:30].replace("-", " ")
- option_22_txt = option_22.ljust(30)[:30].replace("-", " ")
- option_23_txt = option_23.ljust(30)[:30].replace("-", " ")
- option_24_txt = option_24.ljust(30)[:30].replace("-", " ")
- option_25_txt = option_25.ljust(30)[:30].replace("-", " ")
- option_26_txt = option_26.ljust(30)[:30].replace("-", " ")
- option_27_txt = option_27.ljust(30)[:30].replace("-", " ")
- option_28_txt = option_28.ljust(30)[:30].replace("-", " ")
- option_29_txt = option_29.ljust(30)[:30].replace("-", " ")
+option_01_txt = option_01.ljust(30)[:30].replace("-", " ")
+option_02_txt = option_02.ljust(30)[:30].replace("-", " ")
+option_03_txt = option_03.ljust(30)[:30].replace("-", " ")
+option_04_txt = option_04.ljust(30)[:30].replace("-", " ")
+option_05_txt = option_05.ljust(30)[:30].replace("-", " ")
+option_06_txt = option_06.ljust(30)[:30].replace("-", " ")
+option_07_txt = option_07.ljust(30)[:30].replace("-", " ")
+option_08_txt = option_08.ljust(30)[:30].replace("-", " ")
+option_09_txt = color.LIGHTYELLOW_EX + option_09.ljust(30)[:30].replace("-", " ")
+option_10_txt = option_10.ljust(30)[:30].replace("-", " ")
+option_11_txt = option_11.ljust(30)[:30].replace("-", " ")
+option_12_txt = option_12.ljust(30)[:30].replace("-", " ")
+option_13_txt = option_13.ljust(30)[:30].replace("-", " ")
+option_14_txt = option_14.ljust(30)[:30].replace("-", " ")
+option_15_txt = option_15.ljust(30)[:30].replace("-", " ")
+option_16_txt = option_16.ljust(30)[:30].replace("-", " ")
+option_17_txt = option_17.ljust(30)[:30].replace("-", " ")
+option_18_txt = option_18.ljust(30)[:30].replace("-", " ")
+option_19_txt = option_19.ljust(30)[:30].replace("-", " ")
+option_20_txt = option_20.ljust(30)[:30].replace("-", " ")
+option_21_txt = option_21.ljust(30)[:30].replace("-", " ")
+option_22_txt = option_22.ljust(30)[:30].replace("-", " ")
+option_23_txt = option_23.ljust(30)[:30].replace("-", " ")
+option_24_txt = option_24.ljust(30)[:30].replace("-", " ")
+option_25_txt = option_25.ljust(30)[:30].replace("-", " ")
+option_26_txt = option_26.ljust(30)[:30].replace("-", " ")
+option_27_txt = option_27.ljust(30)[:30].replace("-", " ")
+option_28_txt = option_28.ljust(30)[:30].replace("-", " ")
+option_29_txt = option_29.ljust(30)[:30].replace("-", " ")
 
- option_32_txt = option_32.ljust(30)[:30].replace("-", " ")
- option_33_txt = option_33.ljust(30)[:30].replace("-", " ")
- option_34_txt = option_34.ljust(30)[:30].replace("-", " ")
- option_35_txt = option_35.ljust(30)[:30].replace("-", " ")
- option_36_txt = option_36.ljust(30)[:30].replace("-", " ")
- option_37_txt = option_37.ljust(30)[:30].replace("-", " ")
- option_38_txt = option_38.ljust(30)[:30].replace("-", " ")
- option_39_txt = option_39.ljust(30)[:30].replace("-", " ")
- option_40_txt = option_40.ljust(30)[:30].replace("-", " ")
- option_41_txt = option_41.ljust(30)[:30].replace("-", " ")
- option_42_txt = option_42.ljust(30)[:30].replace("-", " ")
- option_43_txt = option_43.ljust(30)[:30].replace("-", " ")
- option_44_txt = option_44.ljust(30)[:30].replace("-", " ")
- option_45_txt = option_45.ljust(30)[:30].replace("-", " ")
- option_46_txt = option_46.ljust(30)[:30].replace("-", " ")
- option_47_txt = option_47.ljust(30)[:30].replace("-", " ")
- option_48_txt = option_48.ljust(30)[:30].replace("-", " ")
- option_49_txt = option_49.ljust(30)[:30].replace("-", " ")
- option_50_txt = option_50.ljust(30)[:30].replace("-", " ")
- option_61_txt = option_61.ljust(30)[:30].replace("-", " ")
- option_62_txt = option_62.ljust(30)[:30].replace("-", " ")
- option_63_txt = option_63.ljust(30)[:30].replace("-", " ")
- option_64_txt = option_64.ljust(30)[:30].replace("-", " ")
- option_65_txt = option_65.ljust(30)[:30].replace("-", " ")
- option_66_txt = option_66.ljust(30)[:30].replace("-", " ")
- option_67_txt = option_67.ljust(30)[:30].replace("-", " ")
- option_68_txt = option_68.ljust(30)[:30].replace("-", " ")
- option_69_txt = option_69.ljust(30)[:30].replace("-", " ")
-
-
- option_previous_txt = option_previous.ljust(30)[:30]
- option_next_txt = option_next.ljust(30)[:30]
+option_32_txt = option_32.ljust(30)[:30].replace("-", " ")
+option_33_txt = option_33.ljust(30)[:30].replace("-", " ")
+option_34_txt = option_34.ljust(30)[:30].replace("-", " ")
+option_35_txt = option_35.ljust(30)[:30].replace("-", " ")
+option_36_txt = option_36.ljust(30)[:30].replace("-", " ")
+option_37_txt = option_37.ljust(30)[:30].replace("-", " ")
+option_38_txt = option_38.ljust(30)[:30].replace("-", " ")
+option_39_txt = option_39.ljust(30)[:30].replace("-", " ")
+option_40_txt = option_40.ljust(30)[:30].replace("-", " ")
+option_41_txt = option_41.ljust(30)[:30].replace("-", " ")
+option_42_txt = option_42.ljust(30)[:30].replace("-", " ")
+option_43_txt = option_43.ljust(30)[:30].replace("-", " ")
+option_44_txt = option_44.ljust(30)[:30].replace("-", " ")
+option_45_txt = option_45.ljust(30)[:30].replace("-", " ")
+option_46_txt = option_46.ljust(30)[:30].replace("-", " ")
+option_47_txt = option_47.ljust(30)[:30].replace("-", " ")
+option_48_txt = option_48.ljust(30)[:30].replace("-", " ")
+option_49_txt = option_49.ljust(30)[:30].replace("-", " ")
+option_50_txt = option_50.ljust(30)[:30].replace("-", " ")
+option_61_txt = option_61.ljust(30)[:30].replace("-", " ")
+option_62_txt = option_62.ljust(30)[:30].replace("-", " ")
+option_63_txt = option_63.ljust(30)[:30].replace("-", " ")
+option_64_txt = option_64.ljust(30)[:30].replace("-", " ")
+option_65_txt = option_65.ljust(30)[:30].replace("-", " ")
+option_66_txt = option_66.ljust(30)[:30].replace("-", " ")
+option_67_txt = option_67.ljust(30)[:30].replace("-", " ")
+option_68_txt = option_68.ljust(30)[:30].replace("-", " ")
+option_69_txt = option_69.ljust(30)[:30].replace("-", " ")
 
 
- page1 = f"""{color.WHITE}[{color.RED}Page n°1{color.WHITE}]
+option_previous_txt = option_previous.ljust(30)[:30]
+option_next_txt = option_next.ljust(30)[:30]
+
+
+page1 = f"""{color.WHITE}[{color.RED}Page n°1{color.WHITE}]
    {color.WHITE}[{color.RED}01{color.WHITE}] {color.RED}->{color.WHITE} {option_01_txt} {color.WHITE}[{color.RED}11{color.WHITE}] {color.RED}->{color.WHITE} {option_11_txt} {color.WHITE}[{color.RED}21{color.WHITE}] {color.RED}->{color.WHITE} {option_21_txt}
    {color.WHITE}[{color.RED}02{color.WHITE}] {color.RED}->{color.WHITE} {option_02_txt} {color.WHITE}[{color.RED}12{color.WHITE}] {color.RED}->{color.WHITE} {option_12_txt} {color.WHITE}[{color.RED}22{color.WHITE}] {color.RED}->{color.WHITE} {option_22_txt}
    {color.WHITE}[{color.RED}03{color.WHITE}] {color.RED}->{color.WHITE} {option_03_txt} {color.WHITE}[{color.RED}13{color.WHITE}] {color.RED}->{color.WHITE} {option_13_txt} {color.WHITE}[{color.RED}23{color.WHITE}] {color.RED}->{color.WHITE} {option_23_txt}
@@ -165,7 +165,7 @@ try:
    {color.WHITE}[{color.RED}09{color.WHITE}] {color.RED}->{color.WHITE} {option_09_txt} {color.WHITE}[{color.RED}19{color.WHITE}] {color.RED}->{color.WHITE} {option_19_txt} {color.WHITE}[{color.RED}29{color.WHITE}] {color.RED}->{color.WHITE} {option_29_txt}
    {color.WHITE}[{color.RED}10{color.WHITE}] {color.RED}->{color.WHITE} {option_10_txt} {color.WHITE}[{color.RED}20{color.WHITE}] {color.RED}->{color.WHITE} {option_20_txt} {color.WHITE}[{color.RED}30{color.WHITE}] {color.RED}-> {option_next_txt}"""
 
- page2 = f"""{color.WHITE}[{color.RED}Page n°2{color.WHITE}]
+page2 = f"""{color.WHITE}[{color.RED}Page n°2{color.WHITE}]
    {color.WHITE}[{color.RED}31{color.WHITE}] {color.RED}-> {option_previous_txt} {color.WHITE}[{color.RED}41{color.WHITE}] {color.RED}->{color.WHITE} {option_41_txt} {color.WHITE}[{color.RED}61{color.WHITE}] {color.RED}->{color.WHITE} {option_61_txt}
    {color.WHITE}[{color.RED}32{color.WHITE}] {color.RED}->{color.WHITE} {option_32_txt} {color.WHITE}[{color.RED}42{color.WHITE}] {color.RED}->{color.WHITE} {option_42_txt} {color.WHITE}[{color.RED}62{color.WHITE}] {color.RED}->{color.WHITE} {option_62_txt}
    {color.WHITE}[{color.RED}33{color.WHITE}] {color.RED}->{color.WHITE} {option_33_txt} {color.WHITE}[{color.RED}43{color.WHITE}] {color.RED}->{color.WHITE} {option_43_txt} {color.WHITE}[{color.RED}63{color.WHITE}] {color.RED}->{color.WHITE} {option_63_txt}
@@ -178,19 +178,19 @@ try:
    {color.WHITE}[{color.RED}40{color.WHITE}] {color.RED}->{color.WHITE} {option_40_txt} {color.WHITE}[{color.RED}50{color.WHITE}] {color.RED}->{color.WHITE} {option_50_txt} {color.WHITE}[{color.RED}60{color.WHITE}] {color.RED}-> {option_next_txt}"""
 
 
- with open("Settings/Program/Config/Page.txt", "r") as file:
+with open("Settings/Program/Config/Page.txt", "r") as file:
   page = file.read()
- if page in ["1"]:
+if page in ["1"]:
     page = page1
     Title("Menu - Page n°1")
- elif page in ["2"]:
+elif page in ["2"]:
     page = page2
     Title("Menu - Page n°2")
- else:
+else:
     page = page1
     Title("Menu - Page n°1")
 
- while True:
+while True:
    Clear()
    print(color.RED + f"""{popup_version}                                                                                                   
                              ██▀███  ▓█████ ▓█████▄    ▄▄▄█████▓ ██▓  ▄████ ▓█████  ██▀███
@@ -326,8 +326,3 @@ try:
 
    elif choice in ['35']:
       StartProgram(f"{option_35}.py")
-            
-
-except:
-   file = 'python ./Settings/Setup.py'
-   subprocess.run(file, shell=True)

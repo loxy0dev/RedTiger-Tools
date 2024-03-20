@@ -6,16 +6,13 @@ import pkg_resources
 Title("Discord Bot Server Nuker")
 
 token = input(f"{color.RED}\n[?] | Token Bot -> {color.RESET}")
-
 prefix = "!"
-token = "MTIwMDg1Njk4ODI4OTA5MzczNg.GrLemQ.BGOOdGwKaRiUf3SnSU7Jt4_SH0SOUAb0lZBqWE"
 
 discord_py_version = None
 for package in pkg_resources.working_set:
     if package.key == 'discord.py':
         discord_py_version = package.version
         break
-
 
 if discord_py_version == '1.6.0':
     ()
@@ -72,7 +69,6 @@ try:
 {color.RED}Logs:{color.RESET}""")
 except:
     ErrorToken()
-
 
 @bot.command()
 async def nuke(ctx, *, args):
@@ -171,8 +167,8 @@ async def delete_channels(ctx):
 
     created_channel_ids.clear()
     send_message_loop.stop()
-
-
-bot.run(token)
-
+try:
+    bot.run(token)
+except:
+    ErrorToken()
 

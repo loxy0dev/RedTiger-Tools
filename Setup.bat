@@ -24,4 +24,5 @@ pip install phonenumbers
 pip install discord
 pip install discord.py
 echo Finish.
+timeout /t 5 /nobreak > nul
 start Start.bat
