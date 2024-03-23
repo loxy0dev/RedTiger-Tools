@@ -15,7 +15,10 @@ red = color.RED
 white = color.WHITE
 reset = color.RESET
 
-username_pc = os.getlogin()
+try:
+    username_pc = os.getlogin()
+except:
+    username_pc = "redtiger"
 
 INPUT = f'{red}[{white}>{red}] |'
 INFO = f'{red}[{white}!{red}] |'

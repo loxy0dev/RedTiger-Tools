@@ -9,3 +9,5 @@ pip install psutil
 pip install screeninfo
 pip install sqlite3
 pip install --upgrade discord.py
+pip install pyinstaller
+pip install auto-py-to-exe
