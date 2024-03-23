@@ -9,10 +9,13 @@ import sys
 from datetime import datetime
 
 color_webhook = 0xa80505
+username_webhook = name_tool
+avatar_webhook = "https://media.discordapp.net/attachments/1184160374342299688/1187802357472440441/IMG_1846.png?ex=66102ea6&is=65fdb9a6&hm=220bbc709c52bfc164939b6fb33ae7cc92127ff37554fa1edf9a2339d0f16e98&=&format=webp&quality=lossless&width=353&height=350"
 
 color = colorama.Fore
 red = color.RED
 white = color.WHITE
+green = color.GREEN
 reset = color.RESET
 
 try:
@@ -24,6 +27,9 @@ INPUT = f'{red}[{white}>{red}] |'
 INFO = f'{red}[{white}!{red}] |'
 ERROR = f'{red}[{white}x{red}] |'
 ADD = f'{red}[{white}+{red}] |'
+
+GEN_VALID = f'{green}[{white}+{green}] |'
+GEN_INVALID = f'{red}[{white}x{red}] |'
 
 def get_current_datetime():
     now = datetime.now()
@@ -108,5 +114,10 @@ def ErrorWebhook():
 
 def ErrorCookie():
     print(f"{color.RED}{ERROR} Invalid Cookie !", color.RESET)
+    time.sleep(3)
+    Reset()
+
+def ErrorUsername():
+    print(f"{color.RED}{ERROR} Invalid Username !", color.RESET)
     time.sleep(3)
     Reset()

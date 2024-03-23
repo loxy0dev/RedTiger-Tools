@@ -1,63 +1,83 @@
 from Config.Util import *
 from Config.Config import *
+import string
 import requests
 import json
-import string
 import random
-
+import threading
 Title("Discord Webhook Generator")
 
-def send_embed_webhook(webhook_url, embed_content, username=None, url=None):
-                payload = {
-                'embeds': [embed_content],
-                'username': username,
-                'avatar_url': url
-                 }
+webhook = input(f"{color.RED}\n{INPUT} Webhook ? (y/n) -> {color.RESET}")
+if webhook in ['y', 'Y', 'Yes', 'yes', 'YES']:
+    webhook_url = input(f"{color.RED}{INPUT} Webhook URL -> {color.RESET}")
+    try:
+        response = requests.head(webhook_url)
+        if response.status_code != 200:
+            ErrorWebhook()
+        else:
+            print(f"{color.RED}{INFO} Webhook Valid.")
+    except:
+        ErrorWebhook()
 
-                headers = {
-            'Content-Type': 'application/json'
-             }
-
-                response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
-username = 'Red Tiger'
-url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
+try:
+    threads_number = int(input(f"{INPUT} Threads Number -> {color.RESET}"))
+except:
+    ErrorNumber()
 
 
-choixwebhook = input(f"{color.RED}\n{INPUT} Webhook (y/n) -> {color.RESET}")
-if choixwebhook in ['y', 'Y','Yes','yes']:
-    webhook_url = input(f"{color.RED}{INPUT} URL Webhook -> {color.RESET}")
+def send_webhook(embed_content):
+    payload = {
+    'embeds': [embed_content],
+    'username': username_webhook,
+    'avatar_url': avatar_webhook
+    }
 
-def send_webhook_message(webhook_url_Essai):
-         response = requests.head(webhook_url_Essai)
-         if response.status_code == 200:
-          if choixwebhook in ['y']:
-            print(f"{color.GREEN}{ADD} Webhook Found | {color.WHITE}{webhook_partie_variable}{color.RESET}")
+    headers = {
+    'Content-Type': 'application/json'
+    }
 
-            embed_content = {
-           'title': f'Webhook Found !',
-           'description': f"**URL Webhook:__**\n```{webhook_url_Essai}```",
-           'color': color_webhook,
-           'footer': {
-            "text": "Red Tiger",
-            "icon_url": "https://media.discordapp.net/attachments/944760272265031720/1179429697495498834/IMG_1506.png?ex=6582fb00&is=65708600&hm=cbdc48779b762d4d7c95c34bb68a8aabf8314519d0b50c4d7371bea19eac5db4&=&format=webp&quality=lossless",
-             }
-            }
-            send_embed_webhook(webhook_url, embed_content, username, url)
-          else:
-                print(f"{color.GREEN}{ADD} Webhook Found | {color.WHITE}{webhook_partie_variable}{color.RESET}")
+    requests.post(webhook_url, data=json.dumps(payload), headers=headers)
 
-         else:
-             print(f"{color.RED}{ERROR} Webhook Invalid | {color.WHITE}{webhook_partie_variable}{color.RESET}")
+def webhook_check():
+    first = ''.join([str(random.randint(0, 9)) for _ in range(19)])
+    second = ''.join(random.choice(string.ascii_letters + string.digits + '-' + '_') for _ in range(random.choice([68])))
+    webhook_test_code = f"{first}/{second}"
+    webhook_test_url = f"https://discord.com/api/webhooks/{webhook_test_code}"
 
+    try:
+        response = requests.head(webhook_test_url)
+        if response.status_code == 200:
+            if webhook in ['y']:
+                embed_content = {
+                'title': f'Webhook Valid !',
+                'description': f"**__Webhook:__**\n```{webhook_test_url}```",
+                'color': color_webhook,
+                'footer': {
+                "text": username_webhook,
+                "icon_url": avatar_webhook,
+                }
+                }
+                send_webhook(embed_content)
+                print(f"{GEN_VALID} Status:  {color.WHITE}Valid{color.GREEN}  | Webhook: {color.WHITE}{webhook_test_code}{color.GREEN}")
+            else:
+                print(f"{GEN_VALID} Status:  {color.WHITE}Valid{color.GREEN}  | Webhook: {color.WHITE}{webhook_test_code}{color.GREEN}")
+        else:
+            print(f"{GEN_INVALID} Status: {color.WHITE}Invalid{color.RED} | Webhook: {color.WHITE}{webhook_test_code}{color.RED}")
+    except:
+        print(f"{GEN_INVALID} Status: {color.WHITE}Error{color.RED} | Webhook: {color.WHITE}{webhook_test_code}{color.RED}")
+
+def request():
+    threads = []
+    try:
+        for _ in range(int(threads_number)):
+            t = threading.Thread(target=webhook_check)
+            t.start()
+            threads.append(t)
+    except:
+        ErrorNumber()
+
+    for thread in threads:
+        thread.join()
 
 while True:
-    
-    chiffres = ''.join(random.choices(string.digits, k=18))
-    caracteres = ''.join(random.choices(string.ascii_letters + string.digits, k=64))
-
-    webhook_partie_variable = f'{chiffres}/{caracteres}'
-
-    webhook_url_Essai = f'https://discord.com/api/webhooks/{webhook_partie_variable}'
-
-    send_webhook_message(webhook_url_Essai)
-    Title(f"Webhook Generator | Webhook: {webhook_url_Essai}")
+    request()

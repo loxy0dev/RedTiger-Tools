@@ -1,6 +1,6 @@
 from Config.Util import *
 from Config.Config import *
-import subprocess
+import threading
 import time
 import socket
 Title("Ip Pinger")
@@ -18,15 +18,21 @@ try:
         bytes = int(bytes_input)
     else:
         bytes = 64
+
+    threads_input = input(f"{INPUT} Threads (enter for default) -> {color.RESET}")
+    if threads_input.strip():
+        threads_number = threads_input
+    else:
+        threads_number = 1
 except:
     ErrorNumber()
 
-def ping_ip(ip_address, port, bytes):
+def ping_ip():
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(2)
         start_time = time.time() 
-        sock.connect((ip_address, port))
+        sock.connect((hostname, port))
         data = b'\x00' * bytes
         sock.sendall(data)
         end_time = time.time() 
@@ -36,5 +42,18 @@ def ping_ip(ip_address, port, bytes):
         elapsed_time = 0
         print(f'{color.RED}Ping to {color.WHITE}{hostname}{color.RED}: time={color.WHITE}{elapsed_time}ms{color.RED} port={color.WHITE}{port}{color.RED} bytes={color.WHITE}{bytes}{color.RED} status={color.WHITE}fail{color.RED}')
 
+def request():
+    threads = []
+    try:
+        for _ in range(int(threads_number)):
+            t = threading.Thread(target=ping_ip)
+            t.start()
+            threads.append(t)
+    except:
+        ()
+
+    for thread in threads:
+        thread.join()
+
 while True:
-    ping_ip(hostname, port, bytes)
+    request()

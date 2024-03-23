@@ -86,11 +86,11 @@ while True:
                 'username': username,
                 'avatar_url': url,
                 'content': message
-                 }
+                }
 
                 headers = {
             'Content-Type': 'application/json'
-             }
+                }
 
                 response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
             username = 'Red Tiger'

@@ -1,73 +1,83 @@
 from Config.Util import *
 from Config.Config import *
-import subprocess
 import requests
 import json
 import random
-
+import threading
 Title("Ip Generator")
 
-def send_embed_webhook(webhook_url, embed_content, username=None, url=None):
-                payload = {
-                'embeds': [embed_content],
-                'username': username,
-                'avatar_url': url
-                 }
+webhook = input(f"{color.RED}\n{INPUT} Webhook ? (y/n) -> {color.RESET}")
+if webhook in ['y', 'Y', 'Yes', 'yes', 'YES']:
+    webhook_url = input(f"{color.RED}{INPUT} Webhook URL -> {color.RESET}")
+    try:
+        response = requests.head(webhook_url)
+        if response.status_code != 200:
+            ErrorWebhook()
+        else:
+            print(f"{color.RED}{INFO} Webhook Valid.")
+    except:
+        ErrorWebhook()
 
-                headers = {
-            'Content-Type': 'application/json'
-             }
+try:
+    threads_number = int(input(f"{INPUT} Threads Number -> {color.RESET}"))
+except:
+    ErrorNumber()
 
-                response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
-username = 'Red Tiger'
-url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
-webhook = input(f"{color.RED}\n{INPUT} Webhook (y/n) -> {color.RESET}")
-if webhook in ['y']:
-    webhook_url = input(f"{color.RED}{INPUT} URL Webhook -> {color.RESET}")
-def ping_ip(ip_address, nombre):
+
+def send_webhook(embed_content):
+    payload = {
+    'embeds': [embed_content],
+    'username': username_webhook,
+    'avatar_url': avatar_webhook
+    }
+
+    headers = {
+    'Content-Type': 'application/json'
+    }
+
+    requests.post(webhook_url, data=json.dumps(payload), headers=headers)
+
+def ip_check():
+    number_1 = random.randint(1, 200)
+    number_2 = random.randint(1, 200)
+    number_3 = random.randint(1, 200)
+    number_4 = random.randint(1, 200)
+    ip = f"{number_1}.{number_2}.{number_3}.{number_4}"
 
     try:
-
-        result = subprocess.run(['ping', '-n', '1', ip_address], capture_output=True, text=True, timeout=2)
-        
-        
-        if webhook in ['y']:
-            if result.returncode == 0:
-             print(f"{color.GREEN}{ADD} {color.CYAN}{ip_address}{color.GREEN} | Ip Found | Tests n°{nombre}{color.RESET}")
-             embed_content = {
-           'title': f'Ip Found, Tests n°{nombre}',
-           'description': f"**__Ip Online:__**\n```{ip_address}```",
-           'color': color_webhook,
-           'footer': {
-            "text": "Red Tiger",
-            "icon_url": "https://media.discordapp.net/attachments/944760272265031720/1179429697495498834/IMG_1506.png?ex=6582fb00&is=65708600&hm=cbdc48779b762d4d7c95c34bb68a8aabf8314519d0b50c4d7371bea19eac5db4&=&format=webp&quality=lossless",
-             }
-            }
-
-             send_embed_webhook(webhook_url, embed_content, username, url)
-
-
+        result = subprocess.run(['ping', '-n', '1', ip], capture_output=True, text=True, timeout=2)
+        if result.returncode == 0:
+            if webhook in ['y']:
+                embed_content = {
+                'title': f'Ip Valid !',
+                'description': f"**__Ip:__**\n```{ip}```",
+                'color': color_webhook,
+                'footer': {
+                "text": username_webhook,
+                "icon_url": avatar_webhook,
+                }
+                }
+                send_webhook(embed_content)
+                print(f"{GEN_VALID} Status:  {color.WHITE}Valid{color.GREEN}  | Ip: {color.WHITE}{ip}{color.GREEN}")
             else:
-                  print(f"{color.RED}{ERROR} {color.WHITE}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
-        if webhook in ['n']:
-             if result.returncode == 0:
-                print(f"{color.GREEN}{ADD} {color.WHITE}{ip_address}{color.GREEN} | Ip Found | Tests n°{nombre}{color.RESET}")
-             else:
-                  print(f"{color.RED}{ERROR} {color.WHITE}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
-             
+                print(f"{GEN_VALID} Status:  {color.WHITE}Valid{color.GREEN}  | Ip: {color.WHITE}{ip}{color.GREEN}")
+        else:
+            print(f"{GEN_INVALID} Status: {color.WHITE}Invalid{color.RED} | Ip: {color.WHITE}{ip}{color.RED}")
+    except:
+        print(f"{GEN_INVALID} Status: {color.WHITE}Invalid{color.RED} | Ip: {color.WHITE}{ip}{color.RED}")
 
-    except subprocess.TimeoutExpired:
-        print(f"{color.RED}{ERROR} {color.WHITE}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
-nombre = 0
+def request():
+    threads = []
+    try:
+        for _ in range(int(threads_number)):
+            t = threading.Thread(target=ip_check)
+            t.start()
+            threads.append(t)
+    except:
+        ErrorNumber()
+
+    for thread in threads:
+        thread.join()
+
 while True:
-    nombre_random1 = random.randint(1, 200)
-    nombre_random2 = random.randint(1, 200) 
-    nombre_random3 = random.randint(1, 100) 
-    nombre_random4 = random.randint(1, 100)
-    
-    nombre += 1
-    ip = f'{nombre_random1}.{nombre_random2}.{nombre_random3}.{nombre_random4}'
-
-
-    ping_ip(ip, nombre)
-    Title(f"Ip Generator | Tests n°{nombre}")
+    request()
