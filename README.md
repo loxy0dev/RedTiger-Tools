@@ -22,21 +22,26 @@
 ```
    [Page n°1]
    [01] -> Tool Info                      [11] -> Discord Webhook Generator      [21] -> Discord Token Generator
-   [02] -> Web Site                       [12] -> Discord Webhook Info           [22] -> Discord Server Info
-   [03] -> Ip Info                        [13] -> Discord Webhook Delete         [23] -> Discord Mass Dm
-   [04] -> Ip Pinger                      [14] -> Discord Webhook Spammer        [24] -> Discord Status Changer
-   [05] -> Ip Generator                   [15] -> Discord Token Info             [25] -> Discord Language Changer
-   [06] -> Dox Tracker                    [16] -> Discord Token Nuker            [26] -> Discord Theme Changer
-   [07] -> Dox Create                     [17] -> Discord Token Joiner           [27] -> Discord House Changer
+   [02] -> Web Site                       [12] -> Discord Webhook Info           [22] -> Discord Token Spammer
+   [03] -> Ip Info                        [13] -> Discord Webhook Delete         [23] -> Discord Token Mass Dm
+   [04] -> Ip Pinger                      [14] -> Discord Webhook Spammer        [24] -> Discord Token Status Changer
+   [05] -> Ip Generator                   [15] -> Discord Token Info             [25] -> Discord Token Language Changer
+   [06] -> Dox Tracker                    [16] -> Discord Token Nuker            [26] -> Discord Token Theme Changer
+   [07] -> Dox Create                     [17] -> Discord Token Joiner           [27] -> Discord Token House Changer
    [08] -> Number Info                    [18] -> Discord Token Leaver (soon)    [28] -> Discord Bot Invite To Id
    [09] -> Builder Stealer                [19] -> Discord Token Login            [29] -> Discord Bot Server Nuker
    [10] -> Illegal Website                [20] -> Discord Token To Id            [30] -> Next Page ▶
 
-   [31] -> ◀ Previous Page               
-   [32] -> Discord Spam Message Channel  
-   [33] -> Discord Nitro Generator       
-   [34] -> Roblox Cookie Info          
-   [35] -> Roblox Cookie Login
+   [Page n°2]
+   [31] -> ◀ Previous Page             
+   [32] -> Discord Server Info         
+   [33] -> Discord Nitro Generator    
+   [34] -> Roblox Cookie Info      
+   [35] -> Roblox Cookie Login            
+   [36] -> Youtube Downloader
+
+┌──(username@redtiger)─[~]
+└──$
 ```
 </p>
 
@@ -83,5 +88,5 @@ Or install the Red Tiger tool <a href="https://github.com/fluzyteck/RedTiger/arc
 - <a href="https://www.tiktok.com/@fluzyteck">Tiktok</a><br>
 - <a href="https://www.youtube.com/channel/UCB3ABdJP25ULxbydw4ldHjw">Youtube</a><br>
 - By: FluzyTeck<br>
-- Version: 3.0
+- Version: 3.1
 </p>
