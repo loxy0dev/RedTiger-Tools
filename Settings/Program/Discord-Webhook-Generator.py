@@ -23,15 +23,15 @@ username = 'Red Tiger'
 url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
 
 
-choixwebhook = input(f"{color.RED}\n[?] | Webhook (y/n) -> {color.RESET}")
+choixwebhook = input(f"{color.RED}\n{INPUT} Webhook (y/n) -> {color.RESET}")
 if choixwebhook in ['y', 'Y','Yes','yes']:
-    webhook_url = input(f"{color.RED}[?] | URL Webhook -> {color.RESET}")
+    webhook_url = input(f"{color.RED}{INPUT} URL Webhook -> {color.RESET}")
 
 def send_webhook_message(webhook_url_Essai):
          response = requests.head(webhook_url_Essai)
          if response.status_code == 200:
           if choixwebhook in ['y']:
-            print(f"{color.GREEN}[+] | Webhook Found | {color.WHITE}{webhook_partie_variable}{color.RESET}")
+            print(f"{color.GREEN}{ADD} Webhook Found | {color.WHITE}{webhook_partie_variable}{color.RESET}")
 
             embed_content = {
            'title': f'Webhook Found !',
@@ -44,10 +44,10 @@ def send_webhook_message(webhook_url_Essai):
             }
             send_embed_webhook(webhook_url, embed_content, username, url)
           else:
-                print(f"{color.GREEN}[+] | Webhook Found | {color.WHITE}{webhook_partie_variable}{color.RESET}")
+                print(f"{color.GREEN}{ADD} Webhook Found | {color.WHITE}{webhook_partie_variable}{color.RESET}")
 
          else:
-             print(f"{color.RED}[X] | Webhook Invalid | {color.WHITE}{webhook_partie_variable}{color.RESET}")
+             print(f"{color.RED}{ERROR} Webhook Invalid | {color.WHITE}{webhook_partie_variable}{color.RESET}")
 
 
 while True:

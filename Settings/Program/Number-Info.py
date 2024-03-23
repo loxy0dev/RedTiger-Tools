@@ -5,7 +5,7 @@ from phonenumbers import geocoder, carrier, timezone
 
 Title("Number Info")
 
-phone_number = input(f"{color.RED}\n[?] | Phone Number -> {color.RESET}")
+phone_number = input(f"{color.RED}\n{INPUT} Phone Number -> {color.RESET}")
 try:
     parsed_number = phonenumbers.parse(phone_number, None)
     if phonenumbers.is_valid_number(parsed_number):
@@ -46,6 +46,6 @@ try:
     Continue()
     Reset()
 except:
-    print(f"{color.RED}[!] | Invalid Number Format ! [Format: {color.WHITE}+(country_code)(number){color.RED}] [Ex: {color.WHITE}+442012345678{color.RED} or {color.WHITE}+33623456789]")
+    print(f"{color.RED}{INFO} Invalid Number Format ! [Format: {color.WHITE}+(country_code)(number){color.RED}] [Ex: {color.WHITE}+442012345678{color.RED} or {color.WHITE}+33623456789]")
     Continue()
     Reset()

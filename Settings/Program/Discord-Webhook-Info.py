@@ -45,7 +45,7 @@ def obtenir_informations_webhook(webhook_url):
         print(f"\nNone.")
 
 try:
- webhook_url = input(f"{color.RED}\n[?] | Webhook -> {color.RESET}")
+ webhook_url = input(f"{color.RED}\n{INPUT} Webhook -> {color.RESET}")
  obtenir_informations_webhook(webhook_url)
 except:
  ErrorUrl()

@@ -9,12 +9,12 @@ import string
 import json
 import requests
 
-Title("Nitro Generator")
+Title("Discord Nitro Generator")
 
-webhook = input(f"{color.RED}\n[?] | Webhook ? (y, n) -> {color.RESET}")
+webhook = input(f"{color.RED}\n{INPUT} Webhook ? (y, n) -> {color.RESET}")
 
 if webhook in ['y']:
-    webhook_url = input(f"{color.RED}[?] | URL Webhook -> {color.RESET}")
+    webhook_url = input(f"{color.RED}{INPUT} URL Webhook -> {color.RESET}")
 
 print(f"""
 {color.WHITE}[{color.RED}01{color.WHITE}] {color.RED}->{color.WHITE} Chrome
@@ -25,26 +25,26 @@ choice = input(f"{color.RED}-> {color.RESET}")
 try:
     if choice == '1':
         navigator = "Chrome"
-        print(f"{color.RED}[!] | {navigator} Starting..{color.RESET}")
+        print(f"{color.RED}{INFO} {navigator} Starting..{color.RESET}")
         driver = webdriver.Chrome()
-        print(f"{color.RED}[!] | {navigator} Ready !{color.RESET}")
+        print(f"{color.RED}{INFO} {navigator} Ready !{color.RESET}")
 
     elif choice == '2':
         navigator = "Firefox"
-        print(f"{color.RED}[!] | {navigator} Starting..{color.RESET}")
+        print(f"{color.RED}{INFO} {navigator} Starting..{color.RESET}")
         driver = webdriver.Firefox()
-        print(f"{color.RED}[!] | {navigator} Ready !{color.RESET}")
+        print(f"{color.RED}{INFO} {navigator} Ready !{color.RESET}")
 
     elif choice == '3':
         navigator = "Edge"
-        print(f"{color.RED}[!] | {navigator} Starting..{color.RESET}")
+        print(f"{color.RED}{INFO} {navigator} Starting..{color.RESET}")
         driver = webdriver.Edge()
-        print(f"{color.RED}[!] | {navigator} Ready !{color.RESET}")
+        print(f"{color.RED}{INFO} {navigator} Ready !{color.RESET}")
 
     else:
         ErrorChoice()
 except:
-    print(f"{color.RED}[X] | {navigator} not installed or driver not up to date.")
+    print(f"{color.RED}{ERROR} {navigator} not installed or driver not up to date.")
     Continue()
     Reset()
 
@@ -73,10 +73,10 @@ while True:
         break
 
  if found:
-    print(f"{color.RED}[X] | Nitro Invalid | {color.WHITE}{site_url}{color.RESET}")
+    print(f"{color.RED}{ERROR} Nitro Invalid | {color.WHITE}{site_url}{color.RESET}")
  else:
   if "1015" in driver.page_source:
-    print(f"{color.RED}[X] | Error 1015 | {color.WHITE}{site_url}{color.RESET}")
+    print(f"{color.RED}{ERROR} Error 1015    | {color.WHITE}{site_url}{color.RESET}")
     time.sleep(0.3)
   else:
          if webhook in ['y']:
@@ -107,7 +107,7 @@ while True:
             }
 
             send_embed_webhook(webhook_url, embed_content)
-            print(f"{color.GREEN}[+] | Nitro Valid | {color.WHITE}{site_url}{color.RESET}")
+            print(f"{color.GREEN}{ADD} Nitro Valid | {color.WHITE}{site_url}{color.RESET}")
          else:
-           print(f"{color.GREEN}[+] | Nitro Valid | {color.WHITE}{site_url}{color.RESET}")
+           print(f"{color.GREEN}{ADD} Nitro Valid | {color.WHITE}{site_url}{color.RESET}")
  continue

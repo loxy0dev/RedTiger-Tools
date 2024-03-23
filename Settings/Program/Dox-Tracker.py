@@ -13,20 +13,20 @@ print(f"""
 {color.WHITE}[{color.RED}04{color.WHITE}] {color.RED}->{color.WHITE} Other
 """)
 
-search_type = input(f"{color.RED}[?] | Search Type -> {color.RESET}")
+search_type = input(f"{color.RED}{INPUT} Search Type -> {color.RESET}")
 
 if search_type in ['01', '1']:
-    search = input(f"{color.RED}[?] | Username -> {color.RESET}")
+    search = input(f"{color.RED}{INPUT} Username -> {color.RESET}")
 
 elif search_type in ['02', '2']:
-    name = input(f"{color.RED}[?] | Name -> {color.RESET}")
-    first_name = input(f"{color.RED}[?] | First Name -> {color.RESET}")
+    name = input(f"{color.RED}{INPUT} Name -> {color.RESET}")
+    first_name = input(f"{color.RED}{INPUT} First Name -> {color.RESET}")
 
 elif search_type in ['04', '4']:
-    search = input(f"{color.RED}[?] | Search -> {color.RESET}")
+    search = input(f"{color.RED}{INPUT} Search -> {color.RESET}")
 
 elif search_type in ['03', '3']:
-    email = input(f"{color.RED}[?] | Email -> {color.RESET}")
+    email = input(f"{color.RED}{INPUT} Email -> {color.RESET}")
 
 else:
     ErrorChoice()
@@ -50,7 +50,7 @@ elif search_type in ['1', '01','2','02','4','04']:
 """)
 while True:
     if search_type in ['3', '03']:
-        choice = input(f"{color.RED}Site -> {color.RESET}")
+        choice = input(f"{color.RED}{INPUT} Site -> {color.RESET}")
 
         if choice in ['1', '01']:
             webbrowser.open(f"https://epieos.com/?q={email}")
@@ -58,7 +58,7 @@ while True:
             break
     
     elif search_type in ['1', '01','2','02','4','04']:
-        choice = input(f"{color.RED}Site -> {color.RESET}")
+        choice = input(f"{color.RED}{INPUT} Site -> {color.RESET}")
         if choice in ['01', '1']:
             if search_type in ['01', '1', '4', '04']:
                 webbrowser.open(f"https://www.facebook.com/search/top/?init=quick&q={search}")

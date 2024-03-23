@@ -4,7 +4,7 @@ import requests
 
 Title("Discord Server Info")
 
-invite = input(f"{color.RED}\n[?] | Server Invitation -> {color.RESET}")
+invite = input(f"{color.RED}\n{INPUT} Server Invitation -> {color.RESET}")
 try:
     invite_code = invite.split("/")[-1]
 except:

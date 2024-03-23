@@ -21,9 +21,9 @@ def send_embed_webhook(webhook_url, embed_content, username=None, url=None):
                 response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
 username = 'Red Tiger'
 url = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
-webhook = input(f"{color.RED}\n[?] | Webhook (y/n) -> {color.RESET}")
+webhook = input(f"{color.RED}\n{INPUT} Webhook (y/n) -> {color.RESET}")
 if webhook in ['y']:
-    webhook_url = input(f"{color.RED}[?] | URL Webhook -> {color.RESET}")
+    webhook_url = input(f"{color.RED}{INPUT} URL Webhook -> {color.RESET}")
 def ping_ip(ip_address, nombre):
 
     try:
@@ -33,7 +33,7 @@ def ping_ip(ip_address, nombre):
         
         if webhook in ['y']:
             if result.returncode == 0:
-             print(f"{color.GREEN}[+] | {color.CYAN}{ip_address}{color.GREEN} | Ip Found | Tests n°{nombre}{color.RESET}")
+             print(f"{color.GREEN}{ADD} {color.CYAN}{ip_address}{color.GREEN} | Ip Found | Tests n°{nombre}{color.RESET}")
              embed_content = {
            'title': f'Ip Found, Tests n°{nombre}',
            'description': f"**__Ip Online:__**\n```{ip_address}```",
@@ -48,16 +48,16 @@ def ping_ip(ip_address, nombre):
 
 
             else:
-                  print(f"{color.RED}[X] | {color.WHITE}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
+                  print(f"{color.RED}{ERROR} {color.WHITE}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
         if webhook in ['n']:
              if result.returncode == 0:
-                print(f"{color.GREEN}[+] | {color.WHITE}{ip_address}{color.GREEN} | Ip Found | Tests n°{nombre}{color.RESET}")
+                print(f"{color.GREEN}{ADD} {color.WHITE}{ip_address}{color.GREEN} | Ip Found | Tests n°{nombre}{color.RESET}")
              else:
-                  print(f"{color.RED}[X] | {color.WHITE}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
+                  print(f"{color.RED}{ERROR} {color.WHITE}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
              
 
     except subprocess.TimeoutExpired:
-        print(f"{color.RED}[X] | {color.WHITE}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
+        print(f"{color.RED}{ERROR} {color.WHITE}{ip_address}{color.RED} | Ip Invalid | Tests n°{nombre}{color.RESET}")
 nombre = 0
 while True:
     nombre_random1 = random.randint(1, 200)

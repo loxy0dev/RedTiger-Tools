@@ -4,7 +4,7 @@ import requests
 import json
 Title("Roblox Cookie Info")
 
-cookie = input(f"{color.RED}\n[?] | Cookie -> {color.WHITE}")
+cookie = input(f"{color.RED}\n{INPUT} Cookie -> {color.WHITE}")
 
 try:
     info = requests.get("https://www.roblox.com/mobileapi/userinfo", cookies={".ROBLOSECURITY": cookie})

@@ -7,7 +7,6 @@ import webbrowser
 
 Clear()
 Title("Menu")
-
 url = url_config
 response = requests.get(url)
 if response.status_code == 200:
@@ -17,7 +16,9 @@ if response.status_code == 200:
         current_version = match.group(1)
         if current_version != version_tool:
             print(f"{color.RED}[!] | Please download the new version of the tool ! {color.WHITE}{version_tool}{color.LIGHTYELLOW_EX} -> {color.WHITE}{current_version}{color.RED}")
-            webbrowser.open_new_tab(github_tool)
+            webbrowser.open(github_tool)
+            time.sleep(2)
+            webbrowser.open(url_downloads)
             input(f"{color.RED}[!] | Enter to still use this version -> {color.RESET}")
             popup_version = f"{color.LIGHTYELLOW_EX}Please update the tool: {color.WHITE}{version_tool}{color.LIGHTYELLOW_EX} -> {color.WHITE}{current_version}{color.RED}"
         else:
@@ -48,20 +49,19 @@ option_18 = "Discord-Token-Leaver-(soon)"
 option_19 = "Discord-Token-Login"
 option_20 = "Discord-Token-To-Id"
 option_21 = "Discord-Token-Generator"
-option_22 = "Discord-Server-Info"
-option_23 = "Discord-Mass-Dm"
-option_24 = "Discord-Status-Changer"
-option_25 = "Discord-Language-Changer"
-option_26 = "Discord-Theme-Changer"
-option_27 = "Discord-House-Changer"
+option_22 = "Discord-Token-Spammer"
+option_23 = "Discord-Token-Mass-Dm"
+option_24 = "Discord-Token-Status-Changer"
+option_25 = "Discord-Token-Language-Changer"
+option_26 = "Discord-Token-Theme-Changer"
+option_27 = "Discord-Token-House-Changer"
 option_28 = "Discord-Bot-Invite-To-Id"
 option_29 = "Discord-Bot-Server-Nuker"
-
-option_32 = "Discord-Spam-Message-Channel"
+option_32 = "Discord-Server-Info"
 option_33 = "Discord-Nitro-Generator"
 option_34 = "Roblox-Cookie-Info"
 option_35 = "Roblox-Cookie-Login"
-option_36 = ""
+option_36 = "Youtube-Downloader"
 option_37 = ""
 option_38 = ""
 option_39 = ""
@@ -153,29 +153,30 @@ option_previous_txt = option_previous.ljust(30)[:30]
 option_next_txt = option_next.ljust(30)[:30]
 
 
-page1 = f"""{color.WHITE}[{color.RED}Page n°1{color.WHITE}]
-   {color.WHITE}[{color.RED}01{color.WHITE}] {color.RED}->{color.WHITE} {option_01_txt} {color.WHITE}[{color.RED}11{color.WHITE}] {color.RED}->{color.WHITE} {option_11_txt} {color.WHITE}[{color.RED}21{color.WHITE}] {color.RED}->{color.WHITE} {option_21_txt}
-   {color.WHITE}[{color.RED}02{color.WHITE}] {color.RED}->{color.WHITE} {option_02_txt} {color.WHITE}[{color.RED}12{color.WHITE}] {color.RED}->{color.WHITE} {option_12_txt} {color.WHITE}[{color.RED}22{color.WHITE}] {color.RED}->{color.WHITE} {option_22_txt}
-   {color.WHITE}[{color.RED}03{color.WHITE}] {color.RED}->{color.WHITE} {option_03_txt} {color.WHITE}[{color.RED}13{color.WHITE}] {color.RED}->{color.WHITE} {option_13_txt} {color.WHITE}[{color.RED}23{color.WHITE}] {color.RED}->{color.WHITE} {option_23_txt}
-   {color.WHITE}[{color.RED}04{color.WHITE}] {color.RED}->{color.WHITE} {option_04_txt} {color.WHITE}[{color.RED}14{color.WHITE}] {color.RED}->{color.WHITE} {option_14_txt} {color.WHITE}[{color.RED}24{color.WHITE}] {color.RED}->{color.WHITE} {option_24_txt}
-   {color.WHITE}[{color.RED}05{color.WHITE}] {color.RED}->{color.WHITE} {option_05_txt} {color.WHITE}[{color.RED}15{color.WHITE}] {color.RED}->{color.WHITE} {option_15_txt} {color.WHITE}[{color.RED}25{color.WHITE}] {color.RED}->{color.WHITE} {option_25_txt}
-   {color.WHITE}[{color.RED}06{color.WHITE}] {color.RED}->{color.WHITE} {option_06_txt} {color.WHITE}[{color.RED}16{color.WHITE}] {color.RED}->{color.WHITE} {option_16_txt} {color.WHITE}[{color.RED}26{color.WHITE}] {color.RED}->{color.WHITE} {option_26_txt}
-   {color.WHITE}[{color.RED}07{color.WHITE}] {color.RED}->{color.WHITE} {option_07_txt} {color.WHITE}[{color.RED}17{color.WHITE}] {color.RED}->{color.WHITE} {option_17_txt} {color.WHITE}[{color.RED}27{color.WHITE}] {color.RED}->{color.WHITE} {option_27_txt}
-   {color.WHITE}[{color.RED}08{color.WHITE}] {color.RED}->{color.WHITE} {option_08_txt} {color.WHITE}[{color.RED}18{color.WHITE}] {color.RED}->{color.WHITE} {option_18_txt} {color.WHITE}[{color.RED}28{color.WHITE}] {color.RED}->{color.WHITE} {option_28_txt}
-   {color.WHITE}[{color.RED}09{color.WHITE}] {color.RED}->{color.WHITE} {option_09_txt} {color.WHITE}[{color.RED}19{color.WHITE}] {color.RED}->{color.WHITE} {option_19_txt} {color.WHITE}[{color.RED}29{color.WHITE}] {color.RED}->{color.WHITE} {option_29_txt}
-   {color.WHITE}[{color.RED}10{color.WHITE}] {color.RED}->{color.WHITE} {option_10_txt} {color.WHITE}[{color.RED}20{color.WHITE}] {color.RED}->{color.WHITE} {option_20_txt} {color.WHITE}[{color.RED}30{color.WHITE}] {color.RED}-> {option_next_txt}"""
+page1 = f"""{white}[{red}Page n°1{white}]
+   {white}[{red}01{white}] {red}->{white} {option_01_txt} {white}[{red}11{white}] {red}->{white} {option_11_txt} {white}[{red}21{white}] {red}->{white} {option_21_txt}
+   {white}[{red}02{white}] {red}->{white} {option_02_txt} {white}[{red}12{white}] {red}->{white} {option_12_txt} {white}[{red}22{white}] {red}->{white} {option_22_txt}
+   {white}[{red}03{white}] {red}->{white} {option_03_txt} {white}[{red}13{white}] {red}->{white} {option_13_txt} {white}[{red}23{white}] {red}->{white} {option_23_txt}
+   {white}[{red}04{white}] {red}->{white} {option_04_txt} {white}[{red}14{white}] {red}->{white} {option_14_txt} {white}[{red}24{white}] {red}->{white} {option_24_txt}
+   {white}[{red}05{white}] {red}->{white} {option_05_txt} {white}[{red}15{white}] {red}->{white} {option_15_txt} {white}[{red}25{white}] {red}->{white} {option_25_txt}
+   {white}[{red}06{white}] {red}->{white} {option_06_txt} {white}[{red}16{white}] {red}->{white} {option_16_txt} {white}[{red}26{white}] {red}->{white} {option_26_txt}
+   {white}[{red}07{white}] {red}->{white} {option_07_txt} {white}[{red}17{white}] {red}->{white} {option_17_txt} {white}[{red}27{white}] {red}->{white} {option_27_txt}
+   {white}[{red}08{white}] {red}->{white} {option_08_txt} {white}[{red}18{white}] {red}->{white} {option_18_txt} {white}[{red}28{white}] {red}->{white} {option_28_txt}
+   {white}[{red}09{white}] {red}->{white} {option_09_txt} {white}[{red}19{white}] {red}->{white} {option_19_txt} {white}[{red}29{white}] {red}->{white} {option_29_txt}
+   {white}[{red}10{white}] {red}->{white} {option_10_txt} {white}[{red}20{white}] {red}->{white} {option_20_txt} {white}[{red}30{white}] {red}->{white} {option_next_txt}"""
 
-page2 = f"""{color.WHITE}[{color.RED}Page n°2{color.WHITE}]
-   {color.WHITE}[{color.RED}31{color.WHITE}] {color.RED}-> {option_previous_txt} {color.WHITE}[{color.RED}41{color.WHITE}] {color.RED}->{color.WHITE} {option_41_txt} {color.WHITE}[{color.RED}61{color.WHITE}] {color.RED}->{color.WHITE} {option_61_txt}
-   {color.WHITE}[{color.RED}32{color.WHITE}] {color.RED}->{color.WHITE} {option_32_txt} {color.WHITE}[{color.RED}42{color.WHITE}] {color.RED}->{color.WHITE} {option_42_txt} {color.WHITE}[{color.RED}62{color.WHITE}] {color.RED}->{color.WHITE} {option_62_txt}
-   {color.WHITE}[{color.RED}33{color.WHITE}] {color.RED}->{color.WHITE} {option_33_txt} {color.WHITE}[{color.RED}43{color.WHITE}] {color.RED}->{color.WHITE} {option_43_txt} {color.WHITE}[{color.RED}63{color.WHITE}] {color.RED}->{color.WHITE} {option_63_txt}
-   {color.WHITE}[{color.RED}34{color.WHITE}] {color.RED}->{color.WHITE} {option_34_txt} {color.WHITE}[{color.RED}44{color.WHITE}] {color.RED}->{color.WHITE} {option_44_txt} {color.WHITE}[{color.RED}64{color.WHITE}] {color.RED}->{color.WHITE} {option_64_txt}
-   {color.WHITE}[{color.RED}35{color.WHITE}] {color.RED}->{color.WHITE} {option_35_txt} {color.WHITE}[{color.RED}45{color.WHITE}] {color.RED}->{color.WHITE} {option_45_txt} {color.WHITE}[{color.RED}65{color.WHITE}] {color.RED}->{color.WHITE} {option_65_txt}
-   {color.WHITE}[{color.RED}36{color.WHITE}] {color.RED}->{color.WHITE} {option_36_txt} {color.WHITE}[{color.RED}46{color.WHITE}] {color.RED}->{color.WHITE} {option_46_txt} {color.WHITE}[{color.RED}66{color.WHITE}] {color.RED}->{color.WHITE} {option_66_txt}
-   {color.WHITE}[{color.RED}37{color.WHITE}] {color.RED}->{color.WHITE} {option_37_txt} {color.WHITE}[{color.RED}47{color.WHITE}] {color.RED}->{color.WHITE} {option_47_txt} {color.WHITE}[{color.RED}67{color.WHITE}] {color.RED}->{color.WHITE} {option_67_txt}
-   {color.WHITE}[{color.RED}38{color.WHITE}] {color.RED}->{color.WHITE} {option_38_txt} {color.WHITE}[{color.RED}48{color.WHITE}] {color.RED}->{color.WHITE} {option_48_txt} {color.WHITE}[{color.RED}68{color.WHITE}] {color.RED}->{color.WHITE} {option_68_txt}
-   {color.WHITE}[{color.RED}39{color.WHITE}] {color.RED}->{color.WHITE} {option_39_txt} {color.WHITE}[{color.RED}49{color.WHITE}] {color.RED}->{color.WHITE} {option_49_txt} {color.WHITE}[{color.RED}69{color.WHITE}] {color.RED}->{color.WHITE} {option_69_txt}
-   {color.WHITE}[{color.RED}40{color.WHITE}] {color.RED}->{color.WHITE} {option_40_txt} {color.WHITE}[{color.RED}50{color.WHITE}] {color.RED}->{color.WHITE} {option_50_txt} {color.WHITE}[{color.RED}60{color.WHITE}] {color.RED}-> {option_next_txt}"""
+page2 = f"""{white}[{red}Page n°2{white}]
+   {white}[{red}31{white}] {red}->{white} {option_previous_txt} {white}[{red}41{white}] {red}->{white} {option_41_txt} {white}[{red}61{white}] {red}->{white} {option_61_txt}
+   {white}[{red}32{white}] {red}->{white} {option_32_txt} {white}[{red}42{white}] {red}->{white} {option_42_txt} {white}[{red}62{white}] {red}->{white} {option_62_txt}
+   {white}[{red}33{white}] {red}->{white} {option_33_txt} {white}[{red}43{white}] {red}->{white} {option_43_txt} {white}[{red}63{white}] {red}->{white} {option_63_txt}
+   {white}[{red}34{white}] {red}->{white} {option_34_txt} {white}[{red}44{white}] {red}->{white} {option_44_txt} {white}[{red}64{white}] {red}->{white} {option_64_txt}
+   {white}[{red}35{white}] {red}->{white} {option_35_txt} {white}[{red}45{white}] {red}->{white} {option_45_txt} {white}[{red}65{white}] {red}->{white} {option_65_txt}
+   {white}[{red}36{white}] {red}->{white} {option_36_txt} {white}[{red}46{white}] {red}->{white} {option_46_txt} {white}[{red}66{white}] {red}->{white} {option_66_txt}
+   {white}[{red}37{white}] {red}->{white} {option_37_txt} {white}[{red}47{white}] {red}->{white} {option_47_txt} {white}[{red}67{white}] {red}->{white} {option_67_txt}
+   {white}[{red}38{white}] {red}->{white} {option_38_txt} {white}[{red}48{white}] {red}->{white} {option_48_txt} {white}[{red}68{white}] {red}->{white} {option_68_txt}
+   {white}[{red}39{white}] {red}->{white} {option_39_txt} {white}[{red}49{white}] {red}->{white} {option_49_txt} {white}[{red}69{white}] {red}->{white} {option_69_txt}
+   {white}[{red}40{white}] {red}->{white} {option_40_txt} {white}[{red}50{white}] {red}->{white} {option_50_txt} {white}[{red}60{white}] {red}-> {option_next_txt}"""
+
 
 
 with open("Settings/Program/Config/Page.txt", "r") as file:
@@ -192,7 +193,7 @@ else:
 
 while True:
    Clear()
-   print(color.RED + f"""{popup_version}                                                                                                   
+   print(f"""{popup_version}{red}                                                                                                  
                              ██▀███  ▓█████ ▓█████▄    ▄▄▄█████▓ ██▓  ▄████ ▓█████  ██▀███
                             ▓██ ▒ ██▒▓█   ▀ ▒██▀ ██▌   ▓  ██▒ ▓▒▓██▒ ██▒ ▀█▒▓█   ▀ ▓██ ▒ ██▒
                             ▓██ ░▄█ ▒▒███   ░██   █▌   ▒ ▓██░ ▒░▒██▒▒██░▄▄▄░▒███   ▓██ ░▄█ ▒
@@ -202,16 +203,16 @@ while True:
                               ░▒ ░ ▒░ ░ ░  ░ ░ ▒  ▒        ░     ▒ ░  ░   ░  ░ ░  ░  ░▒ ░ ▒░
                              ░░   ░    ░    ░ ░  ░      ░       ▒ ░░ ░   ░    ░     ░░   ░
                               ░        ░  ░   ░                 ░        ░    ░  ░   ░      
-            
-                                           {color.WHITE}{github_tool}    
-                                 {color.WHITE}╔══════════════╦═════════╦══════════════╦═════════════╗
-                                 {color.WHITE}║ {color.RED}Hacking Tool{color.WHITE} ║ {color.RED}Ip Tool{color.WHITE} ║ {color.RED}Discord Tool{color.WHITE} ║ {color.RED}Roblox Tool{color.WHITE} ║ 
-                                 {color.WHITE}╚══════════════╩═════════╩══════════════╩═════════════╝  
-   
+
+                                           {white}{github_tool}    
+                                 {white}╔══════════════╦═════════╦══════════════╦═════════════╗
+                                 {white}║ {red}Hacking Tool{white} ║ {red}Ip Tool{white} ║ {red}Discord Tool{white} ║ {red}Roblox Tool{white} ║ 
+                                 {white}╚══════════════╩═════════╩══════════════╩═════════════╝  
    {page}
 """)
 
-   choice = input(f"{color.RED}-> {color.RESET}")
+   choice = input(f"""{red}┌──({white}{username_pc}@redtiger{red})─[{white}~{red}]
+└──{white}$ {reset}""")
 
    if choice in ['1', '01']:
       StartProgram(f"{option_01}.py")
@@ -326,3 +327,6 @@ while True:
 
    elif choice in ['35']:
       StartProgram(f"{option_35}.py")
+
+   elif choice in ['36']:
+      StartProgram(f"{option_36}.py")

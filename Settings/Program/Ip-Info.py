@@ -7,7 +7,7 @@ import webbrowser
 
 Title("Ip Info")
 
-ip = input(f"{color.RED}\n[?] | Ip -> {color.RESET}")
+ip = input(f"{color.RED}\n{INPUT} Ip -> {color.RESET}")
 
 response = requests.get(f"http://ip-api.com/json/{ip}")
 data = response.json()
@@ -46,7 +46,7 @@ print(f"""
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Org       : {color.WHITE}{org}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} As        : {color.WHITE}{as_number}{color.RED}
 """)
-choice = input(f"{color.RED}[?] | Open google map (y/n) -> {color.RESET}")
+choice = input(f"{color.RED}{INPUT} Open google map (y/n) -> {color.RESET}")
 if choice in ["y", "Y", "yes", "Yes", "YES" ]:
     webbrowser.open(url_position)
     Continue()

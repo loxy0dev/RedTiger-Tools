@@ -53,14 +53,14 @@ password = input(color.RED + "Password: " + color.RESET)
 other = input(color.RED + "\nOther: " + color.RESET)
 print(f"{color.RED}Finished.")
 
-name_file = input(f"{color.RED}\n[?] | Choose the file name -> {color.RESET}")
+name_file = input(f"{color.RED}\n{INPUT} Choose the file name -> {color.RESET}")
 if not name_file.strip():
     name_file = f'No Name {random.randint(1, 999)}'
 
-path = f"./1-File-Create/D0x - {name_file}.txt"
-fichier = open(path, 'w', encoding="utf-8").write
+path = f"./1-File-Output/D0x - {name_file}.txt"
 
-fichier(f"""
+with open(path, 'w', encoding='utf-8') as file:
+    file.write(f"""
  ██████╗   ██████╗  ██╗  ██╗
  ██╔══██╗ ██╔═████╗ ╚██╗██╔╝
  ██║  ██║ ██║██╔██║  ╚███╔╝ 
@@ -123,9 +123,6 @@ fichier(f"""
 ║ {other}
 ╙────────────────────────────────────────────────╜""")
 
-
-open(path, 'w').close()
-
-print(color.RED + f"[!] | The DOX {color.CYAN}\"{name_file}\"{color.RED} was sent to: {color.CYAN}\"{path}\""+ color.RESET)
-time.sleep(3)
-input(color.RED + f"[!] | Press to save -> " + color.RESET)
+print(color.RED + f"{INFO} The DOX {color.WHITE}\"{name_file}\"{color.RED} was sent to: {color.WHITE}\"{path}\""+ color.RESET)
+Continue()
+Reset()

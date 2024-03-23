@@ -3,16 +3,16 @@ from Config.Config import *
 import requests
 import time
 
-Title("Discord Status Changer")
+Title("Discord Token Status Changer")
 
-token = input(f"{color.RED}\n[?] | Token -> {color.RESET}")
+token = input(f"{color.RED}\n{INPUT} Token -> {color.RESET}")
 try:
-    statue_number = int(input(f"{color.RED}[?] | How many statues do you want to cycle (max 4) -> {color.RESET}"))
+    statue_number = int(input(f"{color.RED}{INPUT} How many statues do you want to cycle (max 4) -> {color.RESET}"))
 except:
     ErrorNumber()
 
 try:
-    times = int(input(f"{color.RED}[?] | Time between each change in seconds (Recommended time: 5) -> {color.RESET}"))
+    times = int(input(f"{color.RED}{INPUT} Time between each change in seconds (Recommended time: 5) -> {color.RESET}"))
 except:
     ErrorNumber()
 
@@ -22,7 +22,7 @@ headers = {'Authorization': token, 'Content-Type': 'application/json'}
 
 if statue_number >= 1 and statue_number <= 4:
     for loop in range(0, statue_number):
-        choice = str(input(f"{color.RED}[?] | Choose Custom Status {loop+1} -> {color.RESET}"))
+        choice = str(input(f"{color.RED}{INPUT} Choose Custom Status {loop+1} -> {color.RESET}"))
         statues.append(choice)
 else:
     ErrorNumber()
@@ -32,10 +32,10 @@ while True:
         CustomStatus = {"custom_status": {"text": statues[i]}}
         try:
             r = requests.patch("https://discord.com/api/v9/users/@me/settings", headers=headers, json=CustomStatus)
-            print(f"{color.RED}[+] | Status changed | {color.WHITE}{statues[i]}{color.RED}")
+            print(f"{color.RED}{ADD} Status changed | {color.WHITE}{statues[i]}{color.RED}")
             Title(f"Discord Status Changer - Status: {statues[i]}")
             i += 1
             time.sleep(times)
         except Exception as e:
-            print(f"{color.RED}[X] | Error | \"{color.WHITE}{e}{color.RED}\"")
+            print(f"{color.RED}{ERROR} Error | \"{color.WHITE}{e}{color.RED}\"")
             time.sleep(times)

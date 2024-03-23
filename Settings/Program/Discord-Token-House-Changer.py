@@ -2,8 +2,9 @@ from Config.Util import *
 from Config.Config import *
 import requests
 
-Title("Discord House Changer")
+Title("Discord Token House Changer")
 
+token = input(f"{color.RED}\n{INPUT} Token -> {color.RESET}")
 print(f"""
 {color.WHITE}[{color.RED}01{color.WHITE}] {color.RED}->{color.WHITE} Bravery
 {color.WHITE}[{color.RED}02{color.WHITE}] {color.RED}->{color.WHITE} Brilliance
@@ -11,7 +12,6 @@ print(f"""
 """)
 
 house = input(f"{color.RED}-> {color.RESET}").lstrip("0")
-token = input(f"{color.RED}\n[?] | Token -> {color.RESET}")
 
 validityTest = requests.get('https://discordapp.com/api/v6/users/@me', headers={'Authorization': token, 'Content-Type': 'application/json'})
 if validityTest.status_code != 200:
@@ -25,8 +25,8 @@ else:
         ErrorChoice()
     r = requests.post('https://discordapp.com/api/v6/hypesquad/online', headers=headers, json=payload, timeout=10)
     if r.status_code == 204:
-        print(f"{color.RED}[!] | Hypesquad house changed.")
+        print(f"{color.RED}{INFO} Hypesquad house changed.")
         Continue()
         Reset()
     else:
-        print(f"{color.RED}[X] | Hypesquad house has not changed.")
+        print(f"{color.RED}{ERROR} Hypesquad house has not changed.")

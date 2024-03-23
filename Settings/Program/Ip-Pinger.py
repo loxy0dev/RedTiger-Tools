@@ -2,28 +2,39 @@ from Config.Util import *
 from Config.Config import *
 import subprocess
 import time
-
+import socket
 Title("Ip Pinger")
 
-hostname = input(color.RED + "\n[?] | Ip -> " + color.RESET)
+hostname = input(color.RED + f"\n{INPUT} Ip -> " + color.RESET)
 try:
-    time_ping = int(input(color.RED + "[?] | Time Between Pings (s) -> " + color.RESET))
+    port_input = input(color.RED + f"{INPUT} Port (enter for default) -> " + color.RESET)
+    if port_input.strip():
+        port = int(port_input)
+    else:
+        port = 80  
+    
+    bytes_input = input(color.RED + f"{INPUT} Bytes (enter for default) -> " + color.RESET)
+    if bytes_input.strip():
+        bytes = int(bytes_input)
+    else:
+        bytes = 64
 except:
     ErrorNumber()
 
-def ping(ip_address):
-    while True:
-        result = subprocess.run(['ping', '-n', '1', ip_address], capture_output=True, text=True)
+def ping_ip(ip_address, port, bytes):
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(2)
+        start_time = time.time() 
+        sock.connect((ip_address, port))
+        data = b'\x00' * bytes
+        sock.sendall(data)
+        end_time = time.time() 
+        elapsed_time = (end_time - start_time) * 1000 
+        print(f'{color.RED}Ping to {color.WHITE}{hostname}{color.RED}: time={color.WHITE}{elapsed_time:.2f}ms{color.RED} port={color.WHITE}{port}{color.RED} bytes={color.WHITE}{bytes}{color.RED} status={color.WHITE}succeed{color.RED}')
+    except:
+        elapsed_time = 0
+        print(f'{color.RED}Ping to {color.WHITE}{hostname}{color.RED}: time={color.WHITE}{elapsed_time}ms{color.RED} port={color.WHITE}{port}{color.RED} bytes={color.WHITE}{bytes}{color.RED} status={color.WHITE}fail{color.RED}')
 
-        ping_response = [line.strip() for line in result.stdout.split('\n') if "R‚ponse" in line]
-
-        try:
-            print(f"{color.WHITE}{ping_response[0]}")
-        except Exception as e:
-            print(f"{color.RED}[X] | Error: {color.WHITE}{e}")
-        time.sleep(time_ping)
-
-ping(hostname)
-
-Continue()
-Reset()
+while True:
+    ping_ip(hostname, port, bytes)

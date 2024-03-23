@@ -1,11 +1,11 @@
 from Config.Util import *
 from Config.Config import *
 import requests
-Title("Discord Spam Message Channel")
+Title("Discord Token Spammer")
 
-token = input(f"{color.RED}\n[?] | Token -> {color.RESET}")
-channel = input(f"{color.RED}[?] | Channel Id -> {color.RESET}")
-message = input(f"{color.RED}[?] | Message -> {color.RESET}")
+token = input(f"{color.RED}\n{INPUT} Token -> {color.RESET}")
+channel = input(f"{color.RED}{INPUT} Channel Id -> {color.RESET}")
+message = input(f"{color.RED}{INPUT} Message -> {color.RESET}")
 
 
 number = 0
@@ -21,6 +21,6 @@ while True:
         )
     response.raise_for_status()
     number += 1
-    print(f'{color.RED}[+] | Message Send | Message: "{color.WHITE}{message}{color.RED}" | Channel: "{color.WHITE}{channel}{color.RED}" | Number: "{color.WHITE}{number}{color.RED}"{color.RESET}')
+    print(f'{color.RED}{ADD} Message Send | Message: "{color.WHITE}{message}{color.RED}" | Channel: "{color.WHITE}{channel}{color.RED}" | Number: "{color.WHITE}{number}{color.RED}"{color.RESET}')
    except:
       ()

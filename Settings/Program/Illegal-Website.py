@@ -32,7 +32,7 @@ print(f"""
  {color.WHITE}[{color.RED}00{color.WHITE}] {color.RED}->{color.WHITE} BACK
 """)
 
-choice = input(f"{color.RED}[?] | Site -> {color.WHITE}")
+choice = input(f"{color.RED}{INPUT} Site -> {color.WHITE}")
 if choice in ['01', '1']:
     webbrowser.open("https://ddosnow.com")
 

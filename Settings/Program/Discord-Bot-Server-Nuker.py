@@ -5,7 +5,7 @@ import pkg_resources
 
 Title("Discord Bot Server Nuker")
 
-token = input(f"{color.RED}\n[?] | Token Bot -> {color.RESET}")
+token = input(f"{color.RED}\n{INPUT}Token Bot -> {color.RESET}")
 prefix = "!"
 
 discord_py_version = None
@@ -17,7 +17,7 @@ for package in pkg_resources.working_set:
 if discord_py_version == '1.6.0':
     ()
 else:
-    print(f"{color.RED}[!] | Installing discord.py version 1.6.0: (please put \"y\" so that it uninstalls to better reinstall){color.RESET}\n")
+    print(f"{color.RED}{INFO} Installing discord.py version 1.6.0: (please put \"y\" so that it uninstalls to better reinstall){color.RESET}\n")
     ModuleUninstall("discord.py")
     ModuleInstall("discord.py==1.6.0")
     time.sleep(5)
