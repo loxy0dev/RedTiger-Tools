@@ -210,7 +210,6 @@ while True:
                                  {white}╚══════════════╩═════════╩══════════════╩═════════════╝  
    {page}
 """)
-   username_pc = "username"
    choice = input(f"""{red}┌───({white}{username_pc}@redtiger{red})─[{white}~{red}]
 └──{white}$ {reset}""")
 
