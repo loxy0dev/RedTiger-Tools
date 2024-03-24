@@ -1,5 +1,5 @@
 name_tool = "RedTiger"
-version_tool = "3.2"
+version_tool = "3.3"
 coding_tool = "Python 3"
 language_tool = "EN"
 creator = "FluzyTeck"

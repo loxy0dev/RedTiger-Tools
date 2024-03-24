@@ -3,7 +3,6 @@ from Config.Config import *
 from urllib.request import Request, urlopen
 from json import *
 import requests
-import webbrowser
 
 Title("Ip Info")
 
@@ -45,12 +44,7 @@ print(f"""
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Isp       : {color.WHITE}{isp}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Org       : {color.WHITE}{org}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} As        : {color.WHITE}{as_number}{color.RED}
-""")
-choice = input(f"{color.RED}{INPUT} Open google map (y/n) -> {color.RESET}")
-if choice in ["y", "Y", "yes", "Yes", "YES" ]:
-    webbrowser.open(url_position)
-    Continue()
-    Reset()
-else:
- Continue()
- Reset()
+{color.RESET}""")
+Browser_Private(site=url_position, title=f"Ip Localisation ({latitude}, {longitude})", search_bar=False)
+Continue()
+Reset()

@@ -15,6 +15,7 @@ path_destination = os.path.abspath(path_destination_relative)
 try:
     yt = YouTube(video_url)
     if file_type in ['1', '01']:
+        print(f"{color.RED}{INFO} Download...")
         audio_stream = yt.streams.filter(only_audio=True).first()
         audio_stream.download(output_path=path_destination)
         print(f"{color.RED}{INFO} Audio downloaded successfully. The mp3 file is located in the folder \"{color.WHITE}{path_destination}{color.RED}\"")
@@ -27,6 +28,7 @@ try:
         except:
              ()
     elif file_type in ['2', '02']:
+        print(f"{color.RED}{INFO} Download...")
         video_stream = yt.streams.get_highest_resolution()
         video_stream.download(output_path=path_destination)
         print(f"{color.RED}{INFO} Video downloaded successfully. The mp3 file is located in the folder \"{color.WHITE}{path_destination}{color.RED}\"")

@@ -1,4 +1,3 @@
-
 from Program.Config.Config import *
 from Program.Config.Util import *
 import requests
@@ -64,7 +63,7 @@ option_35 = "Roblox-Cookie-Info"
 option_36 = "Roblox-User-Info"
 option_37 = "Roblox-Id-Info"
 option_38 = "Youtube-Downloader"
-option_39 = ""
+option_39 = "Browser-Private"
 option_40 = ""
 option_41 = ""
 option_42 = ""
@@ -177,21 +176,18 @@ page2 = f"""{white}[{red}Page n°2{white}]
    {white}[{red}39{white}] {red}->{white} {option_39_txt} {white}[{red}49{white}] {red}->{white} {option_49_txt} {white}[{red}69{white}] {red}->{white} {option_69_txt}
    {white}[{red}40{white}] {red}->{white} {option_40_txt} {white}[{red}50{white}] {red}->{white} {option_50_txt} {white}[{red}60{white}] {red}-> {option_next_txt}"""
 
-
-
-with open("Settings/Program/Config/Page.txt", "r") as file:
-  page = file.read()
-if page in ["1"]:
-    page = page1
-    Title("Page 1")
-elif page in ["2"]:
-    page = page2
-    Title("Page 2")
-else:
-    page = page1
-    Title("Page 1")
-
 while True:
+   with open("Settings/Program/Config/Page.txt", "r") as file:
+      page = file.read()
+   if page in ["1"]:
+      page = page1
+      Title("Page 1")
+   elif page in ["2"]:
+      page = page2
+      Title("Page 2")
+   else:
+      page = page1
+      Title("Page 1")
    Clear()
    print(f"""{popup_version}{red}                                                                                                  
                              ██▀███  ▓█████ ▓█████▄    ▄▄▄█████▓ ██▓  ▄████ ▓█████  ██▀███
@@ -210,7 +206,6 @@ while True:
                                  {white}╚══════════════╩═════════╩══════════════╩═════════════╝  
    {page}
 """)
-   username_pc = "username"
    choice = input(f"""{red}┌───({white}{username_pc}@redtiger{red})─[{white}~{red}]
 └──{white}$ {reset}""")
 
@@ -336,3 +331,6 @@ while True:
 
    elif choice in ['38']:
       StartProgram(f"{option_38}.py")
+
+   elif choice in ['39']:
+      StartProgram(f"{option_39}.py")
