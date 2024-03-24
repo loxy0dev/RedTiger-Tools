@@ -41,6 +41,7 @@
    [36] -> Roblox User Info             
    [37] -> Roblox Id Info             
    [38] -> Youtube Downloader
+   [39] -> Browser Private
 
 ┌───(username@redtiger)─[~]
 └──$
@@ -90,5 +91,5 @@ Or install the Red Tiger tool <a href="https://github.com/fluzyteck/RedTiger/arc
 - <a href="https://www.tiktok.com/@fluzyteck">Tiktok</a><br>
 - <a href="https://www.youtube.com/channel/UCB3ABdJP25ULxbydw4ldHjw">Youtube</a><br>
 - By: FluzyTeck<br>
-- Version: 3.2
+- Version: 3.3
 </p>
