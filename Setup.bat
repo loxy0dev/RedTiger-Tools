@@ -23,6 +23,8 @@ pip install itertools
 pip install phonenumbers
 pip install discord
 pip install discord.py
+pip install PyQt5
+pip install PyQtWebEngine
 echo Finish.
 timeout /t 5 /nobreak > nul
 start Start.bat
