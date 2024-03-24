@@ -33,14 +33,16 @@
    [10] -> Illegal Website                [20] -> Discord Token To Id            [30] -> Next Page ▶
 
    [Page n°2]
-   [31] -> ◀ Previous Page             
-   [32] -> Discord Server Info         
+   [31] -> ◀ Previous Page              
+   [32] -> Discord Server Info        
    [33] -> Discord Nitro Generator    
-   [34] -> Roblox Cookie Info      
-   [35] -> Roblox Cookie Login            
-   [36] -> Youtube Downloader
+   [34] -> Roblox Cookie Login          
+   [35] -> Roblox Cookie Info           
+   [36] -> Roblox User Info             
+   [37] -> Roblox Id Info             
+   [38] -> Youtube Downloader
 
-┌──(username@redtiger)─[~]
+┌───(username@redtiger)─[~]
 └──$
 ```
 </p>
@@ -88,5 +90,5 @@ Or install the Red Tiger tool <a href="https://github.com/fluzyteck/RedTiger/arc
 - <a href="https://www.tiktok.com/@fluzyteck">Tiktok</a><br>
 - <a href="https://www.youtube.com/channel/UCB3ABdJP25ULxbydw4ldHjw">Youtube</a><br>
 - By: FluzyTeck<br>
-- Version: 3.1
+- Version: 3.2
 </p>
