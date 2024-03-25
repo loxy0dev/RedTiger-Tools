@@ -58,13 +58,13 @@ def webhook_check():
                 }
                 }
                 send_webhook(embed_content)
-                print(f"{GEN_VALID} Status:  {color.WHITE}Valid{color.GREEN}  | Webhook: {color.WHITE}{webhook_test_code}{color.GREEN}")
+                print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Status:  {color.WHITE}Valid{color.GREEN}  | Webhook: {color.WHITE}{webhook_test_code}{color.GREEN}")
             else:
-                print(f"{GEN_VALID} Status:  {color.WHITE}Valid{color.GREEN}  | Webhook: {color.WHITE}{webhook_test_code}{color.GREEN}")
+                print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Status:  {color.WHITE}Valid{color.GREEN}  | Webhook: {color.WHITE}{webhook_test_code}{color.GREEN}")
         else:
-            print(f"{GEN_INVALID} Status: {color.WHITE}Invalid{color.RED} | Webhook: {color.WHITE}{webhook_test_code}{color.RED}")
+            print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Status: {color.WHITE}Invalid{color.RED} | Webhook: {color.WHITE}{webhook_test_code}{color.RED}")
     except:
-        print(f"{GEN_INVALID} Status: {color.WHITE}Error{color.RED} | Webhook: {color.WHITE}{webhook_test_code}{color.RED}")
+        print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Status: {color.WHITE}Error{color.RED} | Webhook: {color.WHITE}{webhook_test_code}{color.RED}")
 
 def request():
     threads = []

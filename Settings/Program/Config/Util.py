@@ -6,7 +6,7 @@ import subprocess
 import os
 import time
 import sys
-from datetime import datetime
+import datetime
 
 color_webhook = 0xa80505
 username_webhook = name_tool
@@ -22,6 +22,11 @@ try:
     username_pc = os.getlogin()
 except:
     username_pc = "redtiger"
+
+def current_time_day_hour():
+    return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+def current_time_hour():
+    return datetime.datetime.now().strftime('%H:%M:%S')
 
 INPUT = f'{red}[{white}>{red}] |'
 INFO = f'{red}[{white}!{red}] |'

@@ -38,8 +38,8 @@ print(f"""
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Region    : {color.WHITE}{region} ({region_code}){color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Zip       : {color.WHITE}{zip_postal}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} City      : {color.WHITE}{city}{color.RED}
-{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Longitude : {color.WHITE}{longitude}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Latitude  : {color.WHITE}{latitude}{color.RED}
+{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Longitude : {color.WHITE}{longitude}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Timezone  : {color.WHITE}{timezone}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Isp       : {color.WHITE}{isp}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Org       : {color.WHITE}{org}{color.RED}

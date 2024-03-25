@@ -9,7 +9,7 @@ print(f"""
 """)
 file_type = input(f"{color.RED}{INPUT} Format -> {color.RESET}")
 
-path_destination_relative = "./1-File-Output"
+path_destination_relative = "./1-File-Output/YoutubeDownloader"
 path_destination = os.path.abspath(path_destination_relative)
 
 try:
@@ -22,7 +22,7 @@ try:
         try:
             directory = os.getcwd()
             print(f"{color.RED}{INFO} Open \"{color.WHITE}{path_destination}{color.RED}\"")
-            path = directory + "/1-File-Create"
+            path = directory + "/1-File-Create/YoutubeDownloader"
             path = os.path.realpath(path)
             os.startfile(path)
         except:
@@ -35,7 +35,7 @@ try:
         try:
             directory = os.getcwd()
             print(f"{color.RED}{INFO} Open \"{color.WHITE}{path_destination}{color.RED}\"")
-            path = directory + "/1-File-Create"
+            path = directory + "/1-File-Create/YoutubeDownloader"
             path = os.path.realpath(path)
             os.startfile(path)
         except:
