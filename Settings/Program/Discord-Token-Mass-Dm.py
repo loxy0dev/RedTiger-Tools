@@ -10,10 +10,10 @@ def MassDM(token_discord, channels, Message):
         for user in [x["username"]+"#"+x["discriminator"] for x in channel["recipients"]]:
             try:
                 requests.post(f"https://discord.com/api/v9/channels/{channel['id']}/messages", headers={'Authorization': token_discord}, data={"content": f"{Message}"})
-                print(f'{color.RED}{ADD} Message Send | User: \"{color.WHITE}{user}{color.RED}\"')
-                Title(f"Discord Mass Dm - {user}")
+                print(f'{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Send{color.RED} | User: {color.WHITE}{user}{color.RED}')
+
             except Exception as e:
-                print(f'{color.RED}{ERROR} Message not Send | Error: \"{color.WHITE}{e}{color.RED}\"')
+                print(f'{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Error: {e}{color.RED}')
 
 token_discord = input(f"{color.RED}\n{INPUT} Token -> {color.RESET}")
 validityTest = requests.get('https://discordapp.com/api/v6/users/@me', headers={'Authorization': token_discord, 'Content-Type': 'application/json'})

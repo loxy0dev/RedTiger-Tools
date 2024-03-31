@@ -4,6 +4,7 @@ import requests
 import time
 import random
 Title("Discord Token Language Changer")
+
 token = input(f"{color.RED}\n{INPUT} Token -> {color.RESET}")
 
 headers = {'Authorization': token, 'Content-Type': 'application/json'}
@@ -15,14 +16,15 @@ if r.status_code == 200:
         ErrorNumber()
 
     for i in range(amount):
-        time.sleep(0.6)
-        random_language = random.choice(['ja', 'zh-TW', 'ko', 'zh-CN', 'th', 'uk', 'ru', 'el', 'cs'])
-        setting = {'locale': random_language}
-        requests.patch("https://discord.com/api/v7/users/@me/settings", headers=headers, json=setting)
-        print(f"{color.RED}{ADD} Language Changed | \"{color.WHITE}{random_language}{color.RED}\"")
-        Title(f"Discord Language Changer - Language: {random_language}")
-    Title("Discord Language Changer - Finish")
-    print(f"{color.RED}[!] | Finish.")
+        try:
+            time.sleep(0.6)
+            random_language = random.choice(['ja', 'zh-TW', 'ko', 'zh-CN', 'th', 'uk', 'ru', 'el', 'cs'])
+            setting = {'locale': random_language}
+            requests.patch("https://discord.com/api/v7/users/@me/settings", headers=headers, json=setting)
+            print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Changed{color.RED} | Language: {color.WHITE}{random_language}{color.RED}")
+        except:
+            print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status:  {color.WHITE}Error{color.RED}  | Language: {color.WHITE}{random_language}{color.RED}")
+    print(f"\n{color.RED}{INFO} Finish.")
     Continue()
     Reset()
 else:

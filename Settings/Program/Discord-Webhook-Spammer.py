@@ -2,43 +2,53 @@ from Config.Util import *
 from Config.Config import *
 import requests
 import json
-import time
+import threading
 
 Title("Discord Webhook Spammer")
 
-def send_webhook_message(webhook_url, message):
-    payload = {'content': message}
-    headers = {'Content-Type': 'application/json'}
 
+webhook_url = input(f"{color.RED}\n{INPUT} Webhook URL -> {color.RESET}")
 
-    response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
-    response.raise_for_status()
-
-
-webhook_url = input(f"{color.RED}\n{INPUT} URL Webhook -> {color.RESET}")
 if webhook_url.lower().startswith("https://discord.com/api/webhooks"):
-
-    message_to_send = input(f"{color.RED}{INPUT} Message -> {color.RESET}")
-
-    def repetition_action(nombre_de_repetitions):
-     for i in range(1, nombre_de_repetitions + 1):
-        try:
-            send_webhook_message(webhook_url, message_to_send)
-            print(f'{color.RED}{ADD} Message Send | Message: "{color.WHITE}{message_to_send}{color.RED}" | Webhook: "{color.WHITE}{webhook_url}{color.RED}" | n°{i}')
-        except:
-            print(f'{color.RED}{ERROR} Error | Message: "{color.WHITE}{message_to_send}{color.RED}" | Webhook: "{color.WHITE}{webhook_url}{color.RED}"{color.RESET}')
-            time.sleep(1)
+    pass
 else:
-    ErrorUrl()
-                
+    ErrorWebhook()
+
+message = input(f"{color.RED}{INPUT} Message -> {color.RESET}")
+
 try:
-        nombre_repetitions = int(input(f"{color.RED}{INPUT} Number of Repetitions -> {color.RESET}"))
-        repetition_action(nombre_repetitions)
+    threads_number = int(input(f"{INPUT} Threads Number -> {color.RESET}"))
 except:
+    ErrorNumber()
+
+def send_webhook():
+    headers = {
+        'Content-Type': 'application/json'
+    }
+    payload = {
+        'content': message,
+        'username': username_webhook,
+        'avatar_url': avatar_webhook
+    }
+    try:
+        response = requests.post(webhook_url, headers=headers, data=json.dumps(payload))
+        response.raise_for_status()
+        print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Message: {color.WHITE}{message}{color.GREEN} | Status: {color.WHITE}Send{color.GREEN}")
+    except:
+        print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Message: {color.WHITE}{message}{color.RED} | Status: {color.WHITE}Rate Limit{color.RED}")
+
+def request():
+    threads = []
+    try:
+        for _ in range(int(threads_number)):
+            t = threading.Thread(target=send_webhook)
+            t.start()
+            threads.append(t)
+    except:
         ErrorNumber()
 
-LAPprint(f"{color.RED}{INFO} {nombre_repetitions} message(s) sent !")
-Continue()
-Reset()
+    for thread in threads:
+        thread.join()
 
-        
+while True:
+    request()

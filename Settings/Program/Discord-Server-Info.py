@@ -25,8 +25,6 @@ if response.status_code == 200:
     inviter_banner = data['inviter']['banner']
     inviter_accent_color = data['inviter']['accent_color']
     inviter_global_name = data['inviter']['global_name']
-    inviter_avatar_asset = data['inviter']['avatar_decoration_data']['asset']
-    inviter_avatar_sku_id = data['inviter']['avatar_decoration_data']['sku_id']
     inviter_banner_color = data['inviter']['banner_color']
     expires_at = data['expires_at']
     flags = data['flags']
@@ -74,8 +72,6 @@ Inviter Information:
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Flags         : {color.WHITE}{inviter_flags}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Banner        : {color.WHITE}{inviter_banner}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Accent Color  : {color.WHITE}{inviter_accent_color}{color.RED}
-{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Avatar Asset  : {color.WHITE}{inviter_avatar_asset}{color.RED}
-{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Avatar SKU ID : {color.WHITE}{inviter_avatar_sku_id}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Banner Color  : {color.WHITE}{inviter_banner_color}{color.RED}
 """)
 Continue()

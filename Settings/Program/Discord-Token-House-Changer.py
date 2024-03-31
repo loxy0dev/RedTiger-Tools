@@ -11,7 +11,7 @@ print(f"""
 {color.WHITE}[{color.RED}03{color.WHITE}] {color.RED}->{color.WHITE} Balance
 """)
 
-house = input(f"{color.RED}-> {color.RESET}").lstrip("0")
+house = input(f"{color.RED}{INPUT} House -> {color.RESET}").lstrip("0")
 
 validityTest = requests.get('https://discordapp.com/api/v6/users/@me', headers={'Authorization': token, 'Content-Type': 'application/json'})
 if validityTest.status_code != 200:

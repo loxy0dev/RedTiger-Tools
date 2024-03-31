@@ -13,7 +13,7 @@ URLBot = f'https://discord.com/oauth2/authorize?client_id={IdBot}&scope=bot&perm
 
 print(f"{color.RED}{INFO} URL bot: \"{color.WHITE}{URLBot}{color.RED}\"{color.RESET}")
 
-choice = input(f"{color.RED}{INPUT} Open the Internet ? (y, n) -> {color.RESET}")
+choice = input(f"{color.RED}{INPUT} Open the Internet ? (y/n) -> {color.RESET}")
 if choice in ['y', 'Y', 'Yes', 'yes']:
     webbrowser.open_new_tab(URLBot)
     Continue()

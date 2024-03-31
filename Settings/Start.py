@@ -44,29 +44,29 @@ option_14 = "Discord-Webhook-Spammer"
 option_15 = "Discord-Token-Info"
 option_16 = "Discord-Token-Nuker"
 option_17 = "Discord-Token-Joiner"
-option_18 = "Discord-Token-Leaver-(soon)"
+option_18 = "Discord-Token-Leaver"
 option_19 = "Discord-Token-Login"
 option_20 = "Discord-Token-To-Id-And-Brute"
 option_21 = "Discord-Token-Generator"
 option_22 = "Discord-Token-Spammer"
-option_23 = "Discord-Token-Mass-Dm"
-option_24 = "Discord-Token-Status-Changer"
-option_25 = "Discord-Token-Language-Changer"
-option_26 = "Discord-Token-Theme-Changer"
-option_27 = "Discord-Token-House-Changer"
-option_28 = "Discord-Bot-Invite-To-Id"
-option_29 = "Discord-Bot-Server-Nuker"
-option_32 = "Discord-Server-Info"
-option_33 = "Discord-Nitro-Generator"
-option_34 = "Roblox-Cookie-Login"
-option_35 = "Roblox-Cookie-Info"
-option_36 = "Roblox-User-Info"
-option_37 = "Roblox-Id-Info"
-option_38 = "Youtube-Downloader"
-option_39 = "Browser-Private"
-option_40 = ""
-option_41 = ""
-option_42 = ""
+option_23 = "Discord-Token-Delete-Friends"
+option_24 = "Discord-Token-Block-Friends"
+option_25 = "Discord-Token-Mass-Dm"
+option_26 = "Discord-Token-Delete-Dm"
+option_27 = "Discord-Token-Status-Changer"
+option_28 = "Discord-Token-Language-Changer"
+option_29 = "Discord-Token-Theme-Changer"
+option_32 = "Discord-Token-House-Changer"
+option_33 = "Discord-Bot-Invite-To-Id"
+option_34 = "Discord-Bot-Server-Nuker"
+option_35 = "Discord-Server-Info"
+option_36 = "Discord-Nitro-Generator"
+option_37 = "Roblox-Cookie-Login"
+option_38 = "Roblox-Cookie-Info"
+option_39 = "Roblox-User-Info"
+option_40 = "Roblox-Id-Info"
+option_41 = "Youtube-Downloader"
+option_42 = "Browser-Private"
 option_43 = ""
 option_44 = ""
 option_45 = ""
@@ -177,15 +177,19 @@ page2 = f"""{white}[{red}Page n°2{white}]
    {white}[{red}40{white}] {red}->{white} {option_40_txt} {white}[{red}50{white}] {red}->{white} {option_50_txt} {white}[{red}60{white}] {red}-> {option_next_txt}"""
 
 while True:
-   with open("Settings/Program/Config/Page.txt", "r") as file:
-      page = file.read()
-   if page in ["1"]:
-      page = page1
-      Title("Page 1")
-   elif page in ["2"]:
-      page = page2
-      Title("Page 2")
-   else:
+   try:
+      with open("Settings/Program/Config/Page.txt", "r") as file:
+         page = file.read()
+      if page in ["1"]:
+         page = page1
+         Title("Page 1")
+      elif page in ["2"]:
+         page = page2
+         Title("Page 2")
+      else:
+         page = page1
+         Title("Page 1")
+   except:
       page = page1
       Title("Page 1")
    Clear()

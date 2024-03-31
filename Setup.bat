@@ -5,7 +5,7 @@ echo Installing the python modules required for the Red Tiger Tool:
 timeout /t 5 /nobreak > nul
 python -m pip install --upgrade pip setuptools wheel
 python -m pip install --upgrade pip
-
+timeout /t 5 /nobreak > nul
 pip install time
 pip install selenium
 pip install colorama

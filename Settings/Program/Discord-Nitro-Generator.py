@@ -16,11 +16,10 @@ webhook = input(f"{color.RED}\n{INPUT} Webhook ? (y/n) -> {color.RESET}")
 if webhook in ['y', 'Y', 'Yes', 'yes', 'YES']:
     webhook_url = input(f"{color.RED}{INPUT} Webhook URL -> {color.RESET}")
     try:
-        response = requests.head(webhook_url)
-        if response.status_code != 200:
-            ErrorWebhook()
+        if webhook_url.lower().startswith("https://discord.com/api/webhooks"):
+            pass
         else:
-            print(f"{color.RED}{INFO} Webhook Valid.")
+            ErrorWebhook()
     except:
         ErrorWebhook()
 
@@ -72,7 +71,7 @@ def send_webhook(embed_content):
 
 def nitro_check():
     code_nitro = ''.join([random.choice(string.ascii_uppercase + string.digits) for _ in range(16)])
-    url_nitro = f'https://discord.com/gifts/{code_nitro}'
+    url_nitro = f'https://discord.gifts/{code_nitro}'
 
     driver.get(url_nitro)
     driver.implicitly_wait(0)

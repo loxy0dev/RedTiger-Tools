@@ -34,7 +34,7 @@ else:
 if search_type in ['3', '03']:
     print(f"""
 {color.WHITE}[{color.RED}01{color.WHITE}] {color.RED}->{color.WHITE} Epieos.com
-{color.WHITE}[{color.RED}02{color.WHITE}] {color.RED}->{color.WHITE} Back
+{color.WHITE}[{color.RED}02{color.WHITE}] {color.RED}-> Back
 """)
     
 elif search_type in ['1', '01','2','02','4','04']:
@@ -46,7 +46,7 @@ elif search_type in ['1', '01','2','02','4','04']:
 {color.WHITE}[{color.RED}05{color.WHITE}] {color.RED}->{color.WHITE} Peekyou.com
 {color.WHITE}[{color.RED}06{color.WHITE}] {color.RED}->{color.WHITE} Tumblr.com
 {color.WHITE}[{color.RED}07{color.WHITE}] {color.RED}->{color.WHITE} PagesJaunes.fr
-{color.WHITE}[{color.RED}02{color.WHITE}] {color.RED}->{color.WHITE} Back
+{color.WHITE}[{color.RED}08{color.WHITE}] {color.RED}-> Back
 """)
 while True:
     if search_type in ['3', '03']:

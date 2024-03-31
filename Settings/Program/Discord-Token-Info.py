@@ -102,8 +102,8 @@ if gift_codes_discord:
 else:
     gift_codes_discord = "None"
 
-print(f"""{color.RED}
-{color.WHITE}[{color.RED}!{color.WHITE}]{color.RED} Token {color.WHITE}Valid{color.RED}.
+print(f"""
+{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Status    : {color.WHITE}Valid{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Username  : {color.WHITE}{username_discord}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Id        : {color.WHITE}{user_id_discord}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Email     : {color.WHITE}{email_discord}{color.RED}

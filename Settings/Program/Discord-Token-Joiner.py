@@ -18,8 +18,6 @@ try:
 except:
     server_name = invite
 
-
-print(f"{color.RED}[!] | Server: {color.WHITE}{server_name}")
 try:
         headers = {
             'Authorization': token
@@ -27,9 +25,11 @@ try:
         response = requests.post(f"https://discord.com/api/v9/invites/{invite_code}", headers=headers)
         
         if response.status_code == 200:
-            print(f"{color.RED}{ADD} Joined | Invite: \"{color.WHITE}{invite}{color.RED}\" | Token: \"{color.WHITE}{token}{color.RED}\"")
+            print(f"\n{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Joined{color.RED} | Server: {color.WHITE}{server_name}{color.RED}\n")
         else:
-            print(f"{color.RED}{ERROR} Error Joined | Invite: \"{color.WHITE}{invite}{color.RED}\" | Token: \"{color.WHITE}{token}{color.RED}\" | Error: \"{color.WHITE}{response.status_code}{color.RED}\"")
+            print(f"\n{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Error {response.status_code}{color.RED} | Server: {color.WHITE}{server_name}{color.RED}\n")
 except:
-       print(f"{color.RED}{ERROR} Error Joined | Invite: \"{color.WHITE}{invite}{color.RED}\" | Token: \"{color.WHITE}{token}{color.RED}\"")
+    print(f"\n{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Error{color.RED} | Server: {color.WHITE}{server_name}{color.RED}\n")
 
+Continue()
+Reset()

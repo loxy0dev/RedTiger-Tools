@@ -11,11 +11,10 @@ webhook = input(f"{color.RED}\n{INPUT} Webhook ? (y/n) -> {color.RESET}")
 if webhook in ['y', 'Y', 'Yes', 'yes', 'YES']:
     webhook_url = input(f"{color.RED}{INPUT} Webhook URL -> {color.RESET}")
     try:
-        response = requests.head(webhook_url)
-        if response.status_code != 200:
-            ErrorWebhook()
+        if webhook_url.lower().startswith("https://discord.com/api/webhooks"):
+            pass
         else:
-            print(f"{color.RED}{INFO} Webhook Valid.")
+            ErrorWebhook()
     except:
         ErrorWebhook()
 
@@ -23,7 +22,6 @@ try:
     threads_number = int(input(f"{INPUT} Threads Number -> {color.RESET}"))
 except:
     ErrorNumber()
-
 
 def send_webhook(embed_content):
     payload = {

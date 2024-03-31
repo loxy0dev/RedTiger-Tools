@@ -11,18 +11,13 @@ try:
 except:
     ErrorNumber()
 
-try:
-    times = int(input(f"{color.RED}{INPUT} Time between each change in seconds (Recommended time: 5) -> {color.RESET}"))
-except:
-    ErrorNumber()
-
 statues = []
 
 headers = {'Authorization': token, 'Content-Type': 'application/json'}
 
 if statue_number >= 1 and statue_number <= 4:
     for loop in range(0, statue_number):
-        choice = str(input(f"{color.RED}{INPUT} Choose Custom Status {loop+1} -> {color.RESET}"))
+        choice = str(input(f"{color.RED}{INPUT} Custom Status {loop+1} -> {color.RESET}"))
         statues.append(choice)
 else:
     ErrorNumber()
@@ -32,10 +27,9 @@ while True:
         CustomStatus = {"custom_status": {"text": statues[i]}}
         try:
             r = requests.patch("https://discord.com/api/v9/users/@me/settings", headers=headers, json=CustomStatus)
-            print(f"{color.RED}{ADD} Status changed | {color.WHITE}{statues[i]}{color.RED}")
-            Title(f"Discord Status Changer - Status: {statues[i]}")
+            print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Changed{color.RED} | Status Discord: {color.WHITE}{statues[i]}{color.RED}")
             i += 1
-            time.sleep(times)
+            time.sleep(5)
         except Exception as e:
-            print(f"{color.RED}{ERROR} Error | \"{color.WHITE}{e}{color.RED}\"")
-            time.sleep(times)
+            print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Changed{color.RED} | Status Discord: {color.WHITE}{statues[i]}{color.RED}")
+            time.sleep(5)

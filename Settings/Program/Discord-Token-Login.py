@@ -11,7 +11,7 @@ print(f"""
 {color.WHITE}[{color.RED}02{color.WHITE}] {color.RED}->{color.WHITE} Firefox
 {color.WHITE}[{color.RED}03{color.WHITE}] {color.RED}->{color.WHITE} Edge
 """)
-choice = input(f"{color.RED}-> {color.RESET}")
+choice = input(f"{color.RED}{INPUT} Browser -> {color.RESET}")
 
 try:
     if choice == '1':

@@ -1,3 +1,4 @@
+python -m pip install --upgrade pip setuptools wheel
 pip install browser_cookie3
 pip install Pillow
 pip install pywin32

