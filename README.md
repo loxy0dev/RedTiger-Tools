@@ -94,6 +94,6 @@ Or install the Red Tiger tool <a href="https://github.com/fluzyteck/RedTiger/arc
 - <a href="https://red-tiger.000webhostapp.com/accueil.html">Site Web</a><br>
 - <a href="https://www.tiktok.com/@fluzyteck">Tiktok</a><br>
 - <a href="https://www.youtube.com/channel/UCB3ABdJP25ULxbydw4ldHjw">Youtube</a><br>
-- Creator: FluzyTeck<br>
+- Creator: Loxyteck<br>
 - Version: 3.5
 </p>
