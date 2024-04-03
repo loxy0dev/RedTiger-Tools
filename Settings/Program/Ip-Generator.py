@@ -52,6 +52,7 @@ def ip_check():
         if result.returncode == 0:
             number_valid += 1
             if webhook in ['y']:
+
                 embed_content = {
                 'title': f'Ip Valid !',
                 'description': f"**__Ip:__**\n```{ip}```",
@@ -67,7 +68,7 @@ def ip_check():
                 print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Logs: {color.WHITE}{number_invalid} invalid - {number_valid} valid{color.RED} | Status:  {color.WHITE}Valid{color.GREEN}  | Ip: {color.WHITE}{ip}{color.GREEN}")
             
             with open(file_txt, 'a') as f:
-                f.write(f"[{current_time_day_hour()}] | Ip Valid: {ip}\n")
+                f.write(f"[{current_time_day_hour()}] | Status: Valid | Ip: {ip}\n")
         else:
             number_invalid += 1
             print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Logs: {color.WHITE}{number_invalid} invalid - {number_valid} valid{color.RED} | Status: {color.WHITE}Invalid{color.RED} | Ip: {color.WHITE}{ip}{color.RED}")

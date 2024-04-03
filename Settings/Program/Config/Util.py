@@ -37,6 +37,7 @@ INPUT = f'{red}[{white}>{red}] |'
 INFO = f'{red}[{white}!{red}] |'
 ERROR = f'{red}[{white}x{red}] |'
 ADD = f'{red}[{white}+{red}] |'
+WAIT = f'{red}[{white}~{red}] |'
 
 GEN_VALID = f'{green}[{white}+{green}] |'
 GEN_INVALID = f'{red}[{white}x{red}] |'

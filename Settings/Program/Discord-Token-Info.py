@@ -6,7 +6,7 @@ Title("Discord Token Info")
 
 token_discord = input(f"{color.RED}\n{INPUT} Token -> {color.RESET}")
 try:
- print(f"{color.RED}{INFO} Information Recovery..")
+ print(f"{color.RED}{WAIT} Information Recovery..")
  user = requests.get(
     'https://discord.com/api/v8/users/@me', headers={'Authorization': token_discord}).json()
  billing_discord = requests.get(

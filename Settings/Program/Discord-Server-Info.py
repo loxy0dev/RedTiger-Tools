@@ -20,7 +20,6 @@ if response.status_code == 200:
     inviter_avatar = data['inviter']['avatar']
     inviter_discriminator = data['inviter']['discriminator']
     inviter_public_flags = data['inviter']['public_flags']
-    inviter_premium_type = data['inviter']['premium_type']
     inviter_flags = data['inviter']['flags']
     inviter_banner = data['inviter']['banner']
     inviter_accent_color = data['inviter']['accent_color']
@@ -68,7 +67,6 @@ Inviter Information:
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Avatar        : {color.WHITE}{inviter_avatar}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Discriminator : {color.WHITE}{inviter_discriminator}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Public Flags  : {color.WHITE}{inviter_public_flags}{color.RED}
-{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Premium Type  : {color.WHITE}{inviter_premium_type}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Flags         : {color.WHITE}{inviter_flags}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Banner        : {color.WHITE}{inviter_banner}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Accent Color  : {color.WHITE}{inviter_accent_color}{color.RED}
