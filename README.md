@@ -32,18 +32,18 @@
    [07] -> Dox Create                     [17] -> Discord Token Joiner           [27] -> Discord Token Status Changer
    [08] -> Number Info                    [18] -> Discord Token Leaver           [28] -> Discord Token Language Changer
    [09] -> Builder Stealer                [19] -> Discord Token Login            [29] -> Discord Token Theme Changer
-   [10] -> Illegal Website                [20] -> Discord Token To Id And Brute  [30] -> Next Page ▶
+   [10] -> Search In DataBase             [20] -> Discord Token To Id And Brute  [30] -> Next Page >>
 
    [Page n°2]
-   [31] -> ◀ Previous Page                [41] -> Youtube Downloader             
-   [32] -> Discord Token House Changer    [42] -> Browser Private              
-   [33] -> Discord Bot Invite To Id      
-   [34] -> Discord Bot Server Nuker      
-   [35] -> Discord Server Info          
-   [36] -> Discord Nitro Generator    
+   [31] -> << Previous Page               [41] -> Youtube Downloader            
+   [32] -> Discord Token House Changer    [42] -> Browser Private               
+   [33] -> Discord Bot Invite To Id       [43] -> Illegal Website              
+   [34] -> Discord Bot Server Nuker     
+   [35] -> Discord Server Info         
+   [36] -> Discord Nitro Generator     
    [37] -> Roblox Cookie Login        
-   [38] -> Roblox Cookie Info       
-   [39] -> Roblox User Info          
+   [38] -> Roblox Cookie Info          
+   [39] -> Roblox User Info        
    [40] -> Roblox Id Info
 
 ┌───(username@redtiger)─[~]
@@ -95,5 +95,5 @@ Or install the Red Tiger tool <a href="https://github.com/fluzyteck/RedTiger/arc
 - <a href="https://www.tiktok.com/@fluzyteck">Tiktok</a><br>
 - <a href="https://www.youtube.com/channel/UCB3ABdJP25ULxbydw4ldHjw">Youtube</a><br>
 - Creator: Loxyteck<br>
-- Version: 3.5
+- Version: 3.6
 </p>
