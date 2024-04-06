@@ -1645,23 +1645,16 @@ build_button.grid(row=10, column=0, columnspan=2, pady=(30, 0), padx=(100,0))
 
 root.mainloop()
 
-
-try:
-    if webhook.lower().startswith("https://discord.com/api/webhooks"):
-        pass
-    else:
-        ErrorWebhook()
-except:
-   ErrorWebhook()
+CheckWebhook(webhook)
 
 
-file_text_relative = f'./1-File-Output/BuilderStealer/{name_file}.txt'
+file_text_relative = f'./1-FileOutput/BuilderStealer/{name_file}.txt'
 file_text = os.path.abspath(file_text_relative)
 
-file_python_relative = f'./1-File-Output/BuilderStealer/{name_file}.py'
+file_python_relative = f'./1-FileOutput/BuilderStealer/{name_file}.py'
 file_python = os.path.abspath(file_python_relative)
 
-path_destination_relative = "./1-File-Output/BuilderStealer"
+path_destination_relative = "./1-FileOutput/BuilderStealer"
 path_destination = os.path.abspath(path_destination_relative)
 
 

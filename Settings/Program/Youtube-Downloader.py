@@ -9,7 +9,7 @@ print(f"""
 """)
 file_type = input(f"{color.RED}{INPUT} Format -> {color.RESET}")
 
-path_destination_relative = "./1-File-Output/YoutubeDownloader"
+path_destination_relative = "./1-FileOutput/YoutubeDownloader"
 path_destination = os.path.abspath(path_destination_relative)
 
 try:
@@ -22,7 +22,7 @@ try:
         try:
             directory = os.getcwd()
             print(f"{color.RED}{INFO} Open \"{color.WHITE}{path_destination}{color.RED}\"")
-            path = directory + "/1-File-Create/YoutubeDownloader"
+            path = directory + "./1-FileOutput/YoutubeDownloader"
             path = os.path.realpath(path)
             os.startfile(path)
         except:
@@ -31,11 +31,11 @@ try:
         print(f"{color.RED}{INFO} Download...")
         video_stream = yt.streams.get_highest_resolution()
         video_stream.download(output_path=path_destination)
-        print(f"{color.RED}{INFO} Video downloaded successfully. The mp3 file is located in the folder \"{color.WHITE}{path_destination}{color.RED}\"")
+        print(f"{color.RED}{INFO} Video downloaded successfully. The mp4 file is located in the folder \"{color.WHITE}{path_destination}{color.RED}\"")
         try:
             directory = os.getcwd()
             print(f"{color.RED}{INFO} Open \"{color.WHITE}{path_destination}{color.RED}\"")
-            path = directory + "/1-File-Create/YoutubeDownloader"
+            path = directory + "/1-FileOutput/YoutubeDownloader"
             path = os.path.realpath(path)
             os.startfile(path)
         except:

@@ -15,13 +15,7 @@ Title("Discord Nitro Generator")
 webhook = input(f"{color.RED}\n{INPUT} Webhook ? (y/n) -> {color.RESET}")
 if webhook in ['y', 'Y', 'Yes', 'yes', 'YES']:
     webhook_url = input(f"{color.RED}{INPUT} Webhook URL -> {color.RESET}")
-    try:
-        if webhook_url.lower().startswith("https://discord.com/api/webhooks"):
-            pass
-        else:
-            ErrorWebhook()
-    except:
-        ErrorWebhook()
+    CheckWebhook(webhook_url)
 
 print(f"""
 {color.WHITE}[{color.RED}01{color.WHITE}] {color.RED}->{color.WHITE} Chrome

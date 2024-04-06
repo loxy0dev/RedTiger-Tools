@@ -4,6 +4,7 @@ import requests
 
 Title("Discord Webhook Delete")
 webhook_url = input(f"{color.RED}\n{INPUT} URL Webhook -> {color.RESET}")
+CheckWebhook(webhook_url)
 try:
     response = requests.delete(webhook_url)
     response.raise_for_status()

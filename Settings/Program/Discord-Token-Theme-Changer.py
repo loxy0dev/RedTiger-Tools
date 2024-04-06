@@ -5,7 +5,8 @@ import time
 from itertools import cycle
 
 Title("Discord Token Theme Changer")
-token = input(f"{color.RED}\n{INPUT} Token -> {color.RESET}")
+print()
+token = Choice1TokenDiscord()
 
 headers = {'Authorization': token, 'Content-Type': 'application/json'}
 r = requests.get('https://discord.com/api/v8/users/@me', headers=headers)

@@ -3,7 +3,7 @@ from Config.Config import *
 
 Title("Search DataBase")
 
-folder_database_relative = "./DataBase"
+folder_database_relative = "./2-DataBase"
 folder_database = os.path.abspath(folder_database_relative)
 
 print(f"""

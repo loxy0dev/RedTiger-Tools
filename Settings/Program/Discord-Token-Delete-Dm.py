@@ -4,7 +4,8 @@ import requests
 import threading
 Title("Discord Token Delete Dm")
 
-token = input(f"{color.RED}\n{INPUT} Token -> {color.RESET}")
+print()
+token = Choice1TokenDiscord()
 r = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token, 'Content-Type': 'application/json'})
 if r.status_code == 200:
     pass

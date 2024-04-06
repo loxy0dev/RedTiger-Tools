@@ -15,26 +15,26 @@ except:
 
 try:
     username_roblox = information['UserName']
-except KeyError:
+except:
     username_roblox = "None"
 
 try:
     user_id_roblox = information["UserID"]
-except KeyError:
+except:
     user_id_roblox = "None"
 
 try:
     robux_roblox = information["RobuxBalance"]
-except KeyError:
+except:
     robux_roblox = "None"
 try:
     premium_roblox = information["IsPremium"]
-except KeyError:
+except:
     premium_roblox = "None"
 
 try:
     avatar_roblox = information["ThumbnailUrl"]
-except KeyError:
+except:
     avatar_roblox = "None"
 
 try:

@@ -4,7 +4,8 @@ from selenium import webdriver
 
 Title("Discord Token Login")
 
-token = input(f"{color.RED}\n{INPUT} Token -> {color.RESET}")
+print()
+token = Choice1TokenDiscord()
 
 print(f"""
 {color.WHITE}[{color.RED}01{color.WHITE}] {color.RED}->{color.WHITE} Chrome

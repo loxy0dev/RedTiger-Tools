@@ -8,6 +8,7 @@ import time
 import sys
 import datetime
 import sys
+import requests
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QVBoxLayout, QWidget
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QUrl, Qt
@@ -134,9 +135,60 @@ def ErrorUsername():
     time.sleep(3)
     Reset()
 
+def CheckWebhook(webhook):
+    if webhook.lower().startswith("https://discord.com/api/webhooks"):
+        pass
+    else:
+        ErrorWebhook()
 
+def Choice1TokenDiscord():
+    def CheckToken(token_number, token):
+        r = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token, 'Content-Type': 'application/json'})
+        if r.status_code == 200:
+            status = f"Valid"
+            user = requests.get(
+                'https://discord.com/api/v8/users/@me', headers={'Authorization': token}).json()
+            username_discord = user['username']
+            token_sensur = token[:-10] + '*' * 10
+            print(f"{white}[{red}{token_number}{white}]{red} -> {red}Status: {white}{status}{red} | User: {white}{username_discord}{red} | Token: {white}{token_sensur}")
+        else:
+            status = f"Invalid"
+            print(f"{white}[{red}{token_number}{white}]{red} -> {red}Status: {white}{status}{red} | {red}Token: {white}{token}")
 
-def Browser_Private(site, search_bar=True, title="Navigateur Web"):
+    file_token_discord = "./TokenDisc.txt"
+    tokens = {}
+    token_discord_number = 0
+
+    with open(file_token_discord, 'r') as file_token:
+        print(f"{red}Token ({white}{file_token_discord}{red}):")
+        for line in file_token:
+            if not line.strip() or line.isspace():
+                continue
+    
+            token_discord_number += 1
+            modified_token = line.strip()
+            tokens[token_discord_number] = modified_token
+            CheckToken(token_discord_number, modified_token)
+
+    if not tokens:
+        print(f"{ERROR} No token in file: {white}{file_token_discord}")
+        Continue()
+        Reset()
+        return None
+
+    try:
+        selected_token_number = int(input(f"\n{color.RED}{INPUT} Token -> {color.RESET}"))
+    except:
+        ErrorChoice()
+
+    selected_token = tokens.get(selected_token_number)
+    if selected_token:
+        pass
+    else:
+        ErrorChoice()
+    return selected_token
+
+def BrowserPrivate(site, search_bar=True, title="Navigateur Web"):
     class WebBrowserApp(QMainWindow):
         def __init__(self, url=None, width=1000, height=300, search_bar=True, title="Navigateur Web"):
             super().__init__()
@@ -148,7 +200,6 @@ def Browser_Private(site, search_bar=True, title="Navigateur Web"):
             self.url_entry.setText(url or "") 
             self.url_entry.setVisible(self.search_bar)
 
-            # Créer le QWebEngineView
             self.webview = QWebEngineView()
 
             layout = QVBoxLayout()
@@ -156,13 +207,12 @@ def Browser_Private(site, search_bar=True, title="Navigateur Web"):
                 layout.addWidget(self.url_entry)
             layout.addWidget(self.webview)
 
-            # Widget central
             central_widget = QWidget()
             central_widget.setLayout(layout)
             self.setCentralWidget(central_widget)
 
             if url:
-                self.load_url()  # Charger l'URL lors de l'initialisation
+                self.load_url()
             logo = "./Img/RedTiger_Icon.ico"
             self.setWindowIcon(QIcon(logo))
 
@@ -177,7 +227,7 @@ def Browser_Private(site, search_bar=True, title="Navigateur Web"):
                 self.webview.load(QUrl(url))
 
         def contextMenuEvent(self, event):
-            pass  # Désactiver le menu contextuel
+            pass 
 
     def main():
         app = QApplication(sys.argv)
@@ -203,7 +253,6 @@ def Browser_Private(site, search_bar=True, title="Navigateur Web"):
         sys.exit(app.exec_())
 
     main()
-
 
 world = r""" :...........................-*#%%#-....:-@@@@@@+......................................................................+
  :.......................-@@*@@@%-.*@@@@@@@@@@@@@@*....................................::..............................+

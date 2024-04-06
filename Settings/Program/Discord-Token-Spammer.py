@@ -3,7 +3,8 @@ from Config.Config import *
 import requests
 Title("Discord Token Spammer")
 
-token = input(f"{color.RED}\n{INPUT} Token -> {color.RESET}")
+print()
+token = Choice1TokenDiscord()
 channel = input(f"{color.RED}{INPUT} Channel Id -> {color.RESET}")
 message = input(f"{color.RED}{INPUT} Message -> {color.RESET}")
 

@@ -57,7 +57,7 @@ name_file = input(f"{color.RED}\n{INPUT} Choose the file name -> {color.RESET}")
 if not name_file.strip():
     name_file = f'No Name {random.randint(1, 999)}'
 
-path = f"./1-File-Output/DoxCreate/D0x - {name_file}.txt"
+path = f"./1-FileOutput/DoxCreate/D0x - {name_file}.txt"
 
 with open(path, 'w', encoding='utf-8') as file:
     file.write(f"""

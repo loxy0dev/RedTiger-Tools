@@ -5,7 +5,8 @@ import time
 
 Title("Discord Token Status Changer")
 
-token = input(f"{color.RED}\n{INPUT} Token -> {color.RESET}")
+print()
+token = Choice1TokenDiscord()
 try:
     statue_number = int(input(f"{color.RED}{INPUT} How many statues do you want to cycle (max 4) -> {color.RESET}"))
 except:

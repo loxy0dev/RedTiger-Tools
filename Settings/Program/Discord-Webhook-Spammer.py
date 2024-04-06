@@ -8,12 +8,7 @@ Title("Discord Webhook Spammer")
 
 
 webhook_url = input(f"{color.RED}\n{INPUT} Webhook URL -> {color.RESET}")
-
-if webhook_url.lower().startswith("https://discord.com/api/webhooks"):
-    pass
-else:
-    ErrorWebhook()
-
+CheckWebhook(webhook_url)
 message = input(f"{color.RED}{INPUT} Message -> {color.RESET}")
 
 try:

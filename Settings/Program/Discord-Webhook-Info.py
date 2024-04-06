@@ -4,14 +4,12 @@ import requests
 
 Title("Discord Webhook Info")
 
-def obtenir_informations_webhook(webhook_url):
-    headers = {
-        'Content-Type': 'application/json',
-    }
+def info_webhook(webhook):
+        headers = {
+            'Content-Type': 'application/json',
+        }
 
-    response = requests.get(webhook_url, headers=headers)
-
-    if response.status_code == 200:
+        response = requests.get(webhook_url, headers=headers)
         webhook_info = response.json()
         print(f"{color.RED}\nInformation Webhook:")
 
@@ -20,8 +18,8 @@ def obtenir_informations_webhook(webhook_url):
         print(f"{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Name    : {color.WHITE}", webhook_info['name'])
         print(f"{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Avatar  : {color.WHITE}", webhook_info['avatar'])
         print(f"{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Type    : {color.WHITE}", "bot" if webhook_info['type'] == 1 else "webhook utilisateur")
-        print(f"{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Channel ID      : {color.WHITE}", webhook_info['channel_id'])
-        print(f"{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Server ID       : {color.WHITE}", webhook_info['guild_id'])
+        print(f"{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Channel ID : {color.WHITE}", webhook_info['channel_id'])
+        print(f"{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Server ID  : {color.WHITE}", webhook_info['guild_id'])
 
         print(f"{color.RED}\nUser information associated with the Webhook:")
         if 'user' in webhook_info:
@@ -33,7 +31,6 @@ def obtenir_informations_webhook(webhook_url):
             print(f"{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Number      : {color.WHITE}", user_info['discriminator'])
             print(f"{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Avatar      : {color.WHITE}", user_info['avatar'])
             print(f"{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Flags       : {color.WHITE}", user_info['flags'], " Publique:", user_info['public_flags'])
-            print(f"{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Nitro       : {color.WHITE}", user_info['premium_type'])
             print(f"{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Color       : {color.WHITE}", user_info['accent_color'])
             print(f"{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Decoration  : {color.WHITE}", user_info['avatar_decoration_data'])
             print(f"{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Banner      : {color.WHITE}", user_info['banner_color'])
@@ -41,13 +38,9 @@ def obtenir_informations_webhook(webhook_url):
         else:
             print("\nNone.")
 
-    else:
-        print(f"\nNone.")
 
-try:
- webhook_url = input(f"{color.RED}\n{INPUT} Webhook -> {color.RESET}")
- obtenir_informations_webhook(webhook_url)
-except:
- ErrorUrl()
+webhook_url = input(f"{color.RED}\n{INPUT} Webhook URL -> {color.RESET}")
+CheckWebhook(webhook_url)
+info_webhook(webhook_url)
 Continue()
 Reset()

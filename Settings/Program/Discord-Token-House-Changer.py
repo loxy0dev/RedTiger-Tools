@@ -4,7 +4,8 @@ import requests
 
 Title("Discord Token House Changer")
 
-token = input(f"{color.RED}\n{INPUT} Token -> {color.RESET}")
+print()
+token = Choice1TokenDiscord()
 print(f"""
 {color.WHITE}[{color.RED}01{color.WHITE}] {color.RED}->{color.WHITE} Bravery
 {color.WHITE}[{color.RED}02{color.WHITE}] {color.RED}->{color.WHITE} Brilliance

@@ -338,3 +338,15 @@ while True:
 
    elif choice in ['39']:
       StartProgram(f"{option_39}.py")
+
+   elif choice in ['40']:
+      StartProgram(f"{option_40}.py")
+
+   elif choice in ['41']:
+      StartProgram(f"{option_41}.py")
+
+   elif choice in ['42']:
+      StartProgram(f"{option_42}.py")
+
+   elif choice in ['43']:
+      StartProgram(f"{option_43}.py")

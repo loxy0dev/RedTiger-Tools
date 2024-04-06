@@ -9,13 +9,7 @@ Title("Ip Generator")
 webhook = input(f"{color.RED}\n{INPUT} Webhook ? (y/n) -> {color.RESET}")
 if webhook in ['y', 'Y', 'Yes', 'yes', 'YES']:
     webhook_url = input(f"{color.RED}{INPUT} Webhook URL -> {color.RESET}")
-    try:
-        if webhook_url.lower().startswith("https://discord.com/api/webhooks"):
-            pass
-        else:
-            ErrorWebhook()
-    except:
-        ErrorWebhook()
+    CheckWebhook(webhook_url)
 
 try:
     threads_number = int(input(f"{INPUT} Threads Number -> {color.RESET}"))
@@ -37,7 +31,7 @@ def send_webhook(embed_content):
 
 number_valid = 0
 number_invalid = 0
-file_txt_relative = "./1-File-Output/IpGenerator/Ip-Valid.txt"
+file_txt_relative = "./1-FileOutput/IpGenerator/IpValid.txt"
 file_txt = os.path.abspath(file_txt_relative)
 def ip_check():
     global number_valid, number_invalid

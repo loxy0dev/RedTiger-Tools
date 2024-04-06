@@ -4,7 +4,8 @@ import requests
 
 Title("Discord Token Joiner")
 
-token = input(f"{color.RED}\n{INPUT} Token -> {color.RESET}")
+print()
+token = Choice1TokenDiscord()
 invite = input(f"{color.RED}{INPUT} Server Invitation -> {color.RESET}")
 
 invite_code = invite.split("/")[-1]

@@ -15,7 +15,8 @@ def MassDM(token_discord, channels, Message):
             except Exception as e:
                 print(f'{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Error: {e}{color.RED}')
 
-token_discord = input(f"{color.RED}\n{INPUT} Token -> {color.RESET}")
+print()
+token_discord = Choice1TokenDiscord()
 validityTest = requests.get('https://discordapp.com/api/v6/users/@me', headers={'Authorization': token_discord, 'Content-Type': 'application/json'})
 if validityTest.status_code != 200:
     ErrorToken()

@@ -10,13 +10,7 @@ Title("Discord Webhook Generator")
 webhook = input(f"{color.RED}\n{INPUT} Webhook ? (y/n) -> {color.RESET}")
 if webhook in ['y', 'Y', 'Yes', 'yes', 'YES']:
     webhook_url = input(f"{color.RED}{INPUT} Webhook URL -> {color.RESET}")
-    try:
-        if webhook_url.lower().startswith("https://discord.com/api/webhooks"):
-            pass
-        else:
-            ErrorWebhook()
-    except:
-        ErrorWebhook()
+    CheckWebhook(webhook_url)
 
 try:
     threads_number = int(input(f"{INPUT} Threads Number -> {color.RESET}"))

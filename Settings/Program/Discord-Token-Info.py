@@ -4,7 +4,8 @@ import requests
 
 Title("Discord Token Info")
 
-token_discord = input(f"{color.RED}\n{INPUT} Token -> {color.RESET}")
+print()
+token_discord = Choice1TokenDiscord()
 try:
  print(f"{color.RED}{WAIT} Information Recovery..")
  user = requests.get(
@@ -25,7 +26,6 @@ try:
  mfa_discord = user['mfa_enabled']
 except:
       ErrorToken()
-      
 try:
     avatar_discord = f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.gif" if requests.get(
         f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.gif").status_code == 200 else f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.png"

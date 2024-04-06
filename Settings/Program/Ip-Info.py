@@ -45,6 +45,6 @@ print(f"""
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Org       : {color.WHITE}{org}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} As        : {color.WHITE}{as_number}{color.RED}
 {color.RESET}""")
-Browser_Private(site=url_position, title=f"Ip Localisation ({latitude}, {longitude})", search_bar=False)
+BrowserPrivate(site=url_position, title=f"Ip Localisation ({latitude}, {longitude})", search_bar=False)
 Continue()
 Reset()
