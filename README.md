@@ -90,7 +90,7 @@ Or install the Red Tiger tool <a href="https://github.com/fluzyteck/RedTiger/arc
 
 <h3>🔗・Credits:</h3>
 <p>
-- <a href="https://discord.gg/XUs2f9jz8j">Discord Server</a><br>
+- <a href="https://discord.gg/ZJNFYjdEMD">Discord Server</a><br>
 - <a href="https://red-tiger.000webhostapp.com/accueil.html">Site Web</a><br>
 - <a href="https://www.tiktok.com/@fluzyteck">Tiktok</a><br>
 - <a href="https://www.youtube.com/channel/UCB3ABdJP25ULxbydw4ldHjw">Youtube</a><br>
