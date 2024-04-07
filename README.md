@@ -76,15 +76,19 @@ Install with GitHub:
   4) Launch "Setup.bat".
 ```
 </p>
+<h2>⚠️・Terms of use:</h2>
+<p>
+RedTiger has been developed solely for educational purposes. This project has been created with good intentions and is intended for personal use only. By choosing to use RedTiger, you acknowledge and accept full responsibility for any consequences that may result from your actions.
+</p>
 
-<h2>💀・Stealer/Grabber:</h2>
+<h2>💀・Stealer:</h2>
 <div align="center">
-   <img align="center" src="Img/Builder_Stealer.png" width="450">
-   <img align="center" src="Img/Grab_System.png" width="450">
-   <img align="center" src="Img/Grab_Discord.png" width="450">
-   <img align="center" src="Img/Grab_Browser.png" width="450">
-   <img align="center" src="Img/Grab_Roblox.png" width="450">
-   <img align="center" src="Img/Grab_Screenshot.png" width="450">
+   <img align="center" src="Img/Builder_Stealer.png" width="300">
+   <img align="center" src="Img/Grab_System.png" width="300">
+   <img align="center" src="Img/Grab_Discord.png" width="300">
+   <img align="center" src="Img/Grab_Browser.png" width="300">
+   <img align="center" src="Img/Grab_Roblox.png" width="300">
+   <img align="center" src="Img/Grab_Screenshot.png" width="300">
 </div>
 
 <h3>🔗・Credits:</h3>
