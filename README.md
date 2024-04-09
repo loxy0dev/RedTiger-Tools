@@ -54,11 +54,12 @@
 <h2>🔒・Requirements:</h2>
 <p>
 - You need to <a href="https://www.python.org/downloads/">install Python</a> with the <strong>PATH</strong> option. <a href="https://www.python.org/downloads/">Download Here</a><br>
-- You need to <a href="https://git-scm.com/download/win">install GIT</a> with the <strong>PATH</strong> option. <a href="https://git-scm.com/download/win">Download Here</a><br>
 - Windows 10/11
 </p>
 <h2>⏳・Installation:</h2>
 <p>
+Install the RedTiger tool <a href="https://github.com/fluzyteck/RedTiger/archive/main.zip
+">Here</a> and launch "Setup.bat".
 
 ```
 Install with Git:
@@ -74,23 +75,25 @@ Install with GitHub:
   3) Extract the file "RedTiger-main.zip" to your desktop,
   4) Launch "Setup.bat".
 ```
-Or install the Red Tiger tool <a href="https://github.com/fluzyteck/RedTiger/archive/main.zip
-">Here</a> and launch "Setup.bat".
+</p>
+<h2>⚠️・Terms of use:</h2>
+<p>
+RedTiger has been developed solely for educational purposes. This project has been created with good intentions and is intended for personal use only. By choosing to use RedTiger, you acknowledge and accept full responsibility for any consequences that may result from your actions.
 </p>
 
-<h2>💀・Stealer/Grabber:</h2>
+<h2>💀・Stealer:</h2>
 <div align="center">
-   <img align="center" src="Img/Builder_Stealer.png" width="450">
-   <img align="center" src="Img/Grab_System.png" width="450">
-   <img align="center" src="Img/Grab_Discord.png" width="450">
-   <img align="center" src="Img/Grab_Browser.png" width="450">
-   <img align="center" src="Img/Grab_Roblox.png" width="450">
-   <img align="center" src="Img/Grab_Screenshot.png" width="450">
+   <img align="center" src="Img/Builder_Stealer.png" width="300">
+   <img align="center" src="Img/Grab_System.png" width="300">
+   <img align="center" src="Img/Grab_Discord.png" width="300">
+   <img align="center" src="Img/Grab_Browser.png" width="300">
+   <img align="center" src="Img/Grab_Roblox.png" width="300">
+   <img align="center" src="Img/Grab_Screenshot.png" width="300">
 </div>
 
 <h3>🔗・Credits:</h3>
 <p>
-- <a href="https://discord.gg/XUs2f9jz8j">Discord Server</a><br>
+- <a href="https://discord.gg/ZJNFYjdEMD">Discord Server</a><br>
 - <a href="https://red-tiger.000webhostapp.com/accueil.html">Site Web</a><br>
 - <a href="https://www.tiktok.com/@fluzyteck">Tiktok</a><br>
 - <a href="https://www.youtube.com/channel/UCB3ABdJP25ULxbydw4ldHjw">Youtube</a><br>
