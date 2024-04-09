@@ -1,7 +1,10 @@
 from Config.Util import *
 from Config.Config import *
-import os
-from selenium import webdriver
+try:
+    from selenium import webdriver
+except Exception as e:
+   ErrorModule(e)
+   
 
 Title("Roblox Cookie Login")
 
@@ -11,7 +14,7 @@ print(f"""
 {color.WHITE}[{color.RED}02{color.WHITE}] {color.RED}->{color.WHITE} Firefox
 {color.WHITE}[{color.RED}03{color.WHITE}] {color.RED}->{color.WHITE} Edge
 """)
-choice = input(f"{color.RED}-> {color.RESET}")
+choice = input(f"{INPUT} Browser -> {color.RESET}")
 try:
     if choice == '1':
         navigator = "Chrome"

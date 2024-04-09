@@ -1,6 +1,10 @@
 from Config.Util import *
 from Config.Config import *
-from pytube import YouTube
+try:
+    from pytube import YouTube
+except Exception as e:
+   ErrorModule(e)
+   
 Title("Youtube Downloader")
 video_url = input(f"{color.RED}\n{INPUT} Video URL -> {color.RESET}")
 print(f"""

@@ -1,9 +1,14 @@
 from Config.Util import *
 from Config.Config import *
-import requests
-import json
-import random
-import threading
+try:
+    import requests
+    import json
+    import random
+    import threading
+
+except Exception as e:
+   ErrorModule(e)
+   
 Title("Ip Generator")
 
 webhook = input(f"{color.RED}\n{INPUT} Webhook ? (y/n) -> {color.RESET}")
@@ -62,7 +67,7 @@ def ip_check():
                 print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Logs: {color.WHITE}{number_invalid} invalid - {number_valid} valid{color.RED} | Status:  {color.WHITE}Valid{color.GREEN}  | Ip: {color.WHITE}{ip}{color.GREEN}")
             
             with open(file_txt, 'a') as f:
-                f.write(f"[{current_time_day_hour()}] | Status: Valid | Ip: {ip}\n")
+                f.write(f"{ip}\n")
         else:
             number_invalid += 1
             print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Logs: {color.WHITE}{number_invalid} invalid - {number_valid} valid{color.RED} | Status: {color.WHITE}Invalid{color.RED} | Ip: {color.WHITE}{ip}{color.RED}")

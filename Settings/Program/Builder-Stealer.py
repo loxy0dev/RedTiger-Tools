@@ -1452,8 +1452,9 @@ print(f"""{color.WHITE}
                       {color.WHITE}║ {color.RED}System Grab{color.WHITE} ║ {color.RED}Discord Grab{color.WHITE} ║ {color.RED}Browser Grab{color.WHITE} ║ {color.RED}Roblox Grab{color.WHITE} ║ {color.RED}Screenshot Grab{color.WHITE} ║
                       ╚═════════════╩══════════════╩══════════════╩═════════════╩═════════════════╝
 
-{color.RED}{INFO} Disable your antivirus !
-{color.RED}{INFO} Custom your grabber:""")
+{red}{INFO} No double webhook !!
+{red}{INFO} Disable your antivirus !!
+{red}{INFO} Custom your grabber:""")
 
 
 import tkinter as tk

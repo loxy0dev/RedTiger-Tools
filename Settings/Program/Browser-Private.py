@@ -6,4 +6,7 @@ print(f"\n{INFO} No marks, No saving, everything in this browser will be deleted
 print(f"{INFO} Starting the browser..")
 print(f"{INFO} Browser launched.")
 print(f"{INFO} Logs:{color.RESET}")
-BrowserPrivate(site="https://google.com", title="Browser Private")
+try:
+    BrowserPrivate(site="https://google.com", title="Browser Private")
+except Exception as e:
+    print(f"{ERROR} Error: {white}{e}")

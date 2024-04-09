@@ -1,8 +1,12 @@
 from Config.Util import *
 from Config.Config import *
-import threading
-import time
-import socket
+try:
+    import threading
+    import time
+    import socket
+except Exception as e:
+   ErrorModule(e)
+   
 Title("Ip Pinger")
 
 hostname = input(color.RED + f"\n{INPUT} Ip -> " + color.RESET)

@@ -1,9 +1,11 @@
 from Config.Util import *
 from Config.Config import *
-from urllib.request import Request, urlopen
-from json import *
-import requests
-
+try:
+    from json import *
+    import requests
+except Exception as e:
+   ErrorModule(e)
+   
 Title("Ip Info")
 
 ip = input(f"{color.RED}\n{INPUT} Ip -> {color.RESET}")
@@ -45,6 +47,9 @@ print(f"""
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Org       : {color.WHITE}{org}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} As        : {color.WHITE}{as_number}{color.RED}
 {color.RESET}""")
-BrowserPrivate(site=url_position, title=f"Ip Localisation ({latitude}, {longitude})", search_bar=False)
+try:
+    BrowserPrivate(site=url_position, title=f"Ip Localisation ({latitude}, {longitude})", search_bar=False)
+except:
+    pass
 Continue()
 Reset()

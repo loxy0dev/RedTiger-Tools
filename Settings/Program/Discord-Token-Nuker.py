@@ -1,11 +1,15 @@
 from Config.Util import *
 from Config.Config import *
-import requests
-import time
-import requests
-import time
-from itertools import cycle
-import random
+try:
+    import requests
+    import time
+    import requests
+    import time
+    from itertools import cycle
+    import random
+except Exception as e:
+   ErrorModule(e)
+   
 
 Title("Discord Token Nuker")
 
@@ -35,7 +39,7 @@ while True:
         r = requests.patch("https://discord.com/api/v9/users/@me/settings", headers=headers, json=CustomStatus_default)
         print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Changed{color.RED} | Status Discord: {color.WHITE}{default_status}{color.RED}")
     except Exception as e:
-        print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Changed{color.RED} | Status Discord: {color.WHITE}{default_status}{color.RED}")
+        print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Error {e}{color.RED} | Status Discord: {color.WHITE}{default_status}{color.RED}")
 
     for _ in range(5):
         try:

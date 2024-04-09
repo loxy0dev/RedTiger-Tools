@@ -3,12 +3,16 @@
 
 from Config.Util import *
 from Config.Config import *
-import string
-import requests
-import json
-import random
-import threading
-import base64
+try:
+    import string
+    import requests
+    import json
+    import random
+    import threading
+    import base64
+except Exception as e:
+   ErrorModule(e)
+   
 Title("Discord Token To Id")
 
 userid = input(f"{color.RED}\n{INPUT} Victime ID -> {color.RESET}")

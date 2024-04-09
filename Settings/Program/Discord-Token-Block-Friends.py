@@ -1,8 +1,12 @@
 
 from Config.Util import *
 from Config.Config import *
-import requests
-import threading
+try:
+    import requests
+    import threading
+except Exception as e:
+   ErrorModule(e)
+   
 Title("Discord Token Block Friends")
 
 print()

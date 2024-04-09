@@ -1,7 +1,13 @@
 from Config.Util import *
 from Config.Config import *
+try:
+    import requests
+except Exception as e:
+   ErrorModule(e)
+   
+   
 Title("Roblox User Info")
-import requests
+
 
 user_id = input(f"\n{INPUT} ID -> {color.RESET}")
 try:

@@ -8,6 +8,7 @@ print(f"""{color.RED}
 {color.RED}Coding        :  {color.WHITE}{coding_tool}
 {color.RED}Language      :  {color.WHITE}{language_tool}
 {color.RED}Creator       :  {color.WHITE}{creator}  //  Discord: {color.WHITE}{creator_discord}
+{color.RED}Platform      :  {color.WHITE}{platform}
 {color.RED}Discord [02]  :  {color.WHITE}{discord_server}
 {color.RED}Site    [02]  :  {color.WHITE}{website}
 {color.RED}GitHub  [02]  :  {color.WHITE}{github_tool}

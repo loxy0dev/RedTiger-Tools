@@ -1,6 +1,9 @@
 from Config.Util import *
 from Config.Config import *
-from selenium import webdriver
+try:
+    from selenium import webdriver
+except Exception as e:
+   ErrorModule(e)
 
 Title("Discord Token Login")
 

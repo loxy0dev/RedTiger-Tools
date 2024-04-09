@@ -1,7 +1,10 @@
 from Config.Util import *
 from Config.Config import *
-import time
-import random
+try:
+    import random
+except Exception as e:
+   ErrorModule(e)
+   
 
 Title("Dox Create")
 

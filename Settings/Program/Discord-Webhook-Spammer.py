@@ -1,9 +1,12 @@
 from Config.Util import *
 from Config.Config import *
-import requests
-import json
-import threading
-
+try:
+    import requests
+    import json
+    import threading
+except Exception as e:
+   ErrorModule(e)
+   
 Title("Discord Webhook Spammer")
 
 

@@ -1,8 +1,11 @@
 
 from Config.Util import *
 from Config.Config import *
-import pkg_resources
-
+try:
+    import pkg_resources
+except Exception as e:
+   ErrorModule(e)
+   
 Title("Discord Bot Server Nuker")
 
 token = input(f"{color.RED}\n{INPUT}Token Bot -> {color.RESET}")
@@ -15,7 +18,7 @@ for package in pkg_resources.working_set:
         break
 
 if discord_py_version == '1.6.0':
-    ()
+    pass
 else:
     print(f"{color.RED}{INFO} Installing discord.py version 1.6.0: (please put \"y\" so that it uninstalls to better reinstall){color.RESET}\n")
     ModuleUninstall("discord.py")

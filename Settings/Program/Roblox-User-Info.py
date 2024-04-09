@@ -1,8 +1,12 @@
 from Config.Util import *
 from Config.Config import *
+
+try:
+    import requests
+except Exception as e:
+   ErrorModule(e)
+
 Title("Roblox User Info")
-import requests
-import json
 
 username_input = input(f"\n{INPUT} Username -> {color.RESET}")
 try:

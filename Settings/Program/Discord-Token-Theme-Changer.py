@@ -1,8 +1,12 @@
 from Config.Util import *
 from Config.Config import *
-import requests
-import time
-from itertools import cycle
+try:
+    import requests
+    import time
+    from itertools import cycle
+except Exception as e:
+   ErrorModule(e)
+   
 
 Title("Discord Token Theme Changer")
 print()

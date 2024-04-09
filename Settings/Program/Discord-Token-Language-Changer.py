@@ -1,8 +1,12 @@
 from Config.Util import *
 from Config.Config import *
-import requests
-import time
-import random
+try:
+    import requests
+    import time
+    import random
+except Exception as e:
+   ErrorModule(e)
+   
 Title("Discord Token Language Changer")
 
 print()

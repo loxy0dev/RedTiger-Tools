@@ -1,6 +1,10 @@
 from Config.Util import *
 from Config.Config import *
-import requests
+try:
+    import requests
+except Exception as e:
+   ErrorModule(e)
+   
 
 Title("Discord Webhook Delete")
 webhook_url = input(f"{color.RED}\n{INPUT} URL Webhook -> {color.RESET}")

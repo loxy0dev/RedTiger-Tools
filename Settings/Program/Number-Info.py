@@ -1,7 +1,11 @@
 from Config.Util import *
 from Config.Config import *
-import phonenumbers
-from phonenumbers import geocoder, carrier, timezone
+try:
+    import phonenumbers
+    from phonenumbers import geocoder, carrier, timezone
+except Exception as e:
+   ErrorModule(e)
+   
 
 Title("Number Info")
 

@@ -1,10 +1,14 @@
 from Config.Util import *
 from Config.Config import *
-import string
-import requests
-import json
-import random
-import threading
+try:
+    import string
+    import requests
+    import json
+    import random
+    import threading
+except Exception as e:
+   ErrorModule(e)
+   
 Title("Discord Webhook Generator")
 
 webhook = input(f"{color.RED}\n{INPUT} Webhook ? (y/n) -> {color.RESET}")

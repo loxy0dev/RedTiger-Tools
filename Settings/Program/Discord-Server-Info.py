@@ -1,7 +1,11 @@
 from Config.Util import *
 from Config.Config import *
-import requests
 
+try:
+    import requests
+except Exception as e:
+   ErrorModule(e)
+   
 Title("Discord Server Info")
 
 invite = input(f"{color.RED}\n{INPUT} Server Invitation -> {color.RESET}")

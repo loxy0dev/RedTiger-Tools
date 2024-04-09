@@ -1,7 +1,11 @@
 from Config.Util import *
 from Config.Config import *
-import requests
-import time
+try:
+    import requests
+    import time
+except Exception as e:
+   ErrorModule(e)
+   
 
 Title("Discord Token Status Changer")
 

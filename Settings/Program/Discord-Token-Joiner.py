@@ -1,6 +1,10 @@
 from Config.Util import *
 from Config.Config import *
-import requests
+try:
+    import requests
+except Exception as e:
+   ErrorModule(e)
+   
 
 Title("Discord Token Joiner")
 

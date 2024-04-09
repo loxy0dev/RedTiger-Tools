@@ -1,13 +1,18 @@
 from Config.Util import *
 from Config.Config import *
-import requests
-import json
+try:
+    import requests
+    import json
+except Exception as e:
+   ErrorModule(e)
+   
 Title("Roblox Cookie Info")
 
 cookie = input(f"{color.RED}\n{INPUT} Cookie -> {color.WHITE}")
 
 try:
     info = requests.get("https://www.roblox.com/mobileapi/userinfo", cookies={".ROBLOSECURITY": cookie})
+    print(info.json())
     information = json.loads(info.text)
     status = "Valid"
 except:

@@ -23,28 +23,28 @@
   
 ```
    [Page n°1]
-   [01] -> Tool Info                      [11] -> Discord Webhook Generator      [21] -> Discord Token Generator
-   [02] -> Web Site                       [12] -> Discord Webhook Info           [22] -> Discord Token Spammer
-   [03] -> Ip Info                        [13] -> Discord Webhook Delete         [23] -> Discord Token Delete Friends
-   [04] -> Ip Pinger                      [14] -> Discord Webhook Spammer        [24] -> Discord Token Block Friends
-   [05] -> Ip Generator                   [15] -> Discord Token Info             [25] -> Discord Token Mass Dm
-   [06] -> Dox Tracker                    [16] -> Discord Token Nuker            [26] -> Discord Token Delete Dm
-   [07] -> Dox Create                     [17] -> Discord Token Joiner           [27] -> Discord Token Status Changer
-   [08] -> Number Info                    [18] -> Discord Token Leaver           [28] -> Discord Token Language Changer
-   [09] -> Builder Stealer                [19] -> Discord Token Login            [29] -> Discord Token Theme Changer
-   [10] -> Search In DataBase             [20] -> Discord Token To Id And Brute  [30] -> Next Page >>
-
+   [01] -> Tool Info                      [11] -> Discord Webhook Generator      [21] -> Discord Token To Id And Brute
+   [02] -> Web Site                       [12] -> Discord Webhook Info           [22] -> Discord Token Server Raid
+   [03] -> Ip Info                        [13] -> Discord Webhook Delete         [23] -> Discord Token Spammer
+   [04] -> Ip Pinger                      [14] -> Discord Webhook Spammer        [24] -> Discord Token Delete Friends
+   [05] -> Ip Generator                   [15] -> Discord Get Your Token         [25] -> Discord Token Block Friends
+   [06] -> Dox Tracker                    [16] -> Discord Token Info             [26] -> Discord Token Mass Dm
+   [07] -> Dox Create                     [17] -> Discord Token Nuker            [27] -> Discord Token Delete Dm
+   [08] -> Number Info                    [18] -> Discord Token Joiner           [28] -> Discord Token Status Changer
+   [09] -> Builder Stealer                [19] -> Discord Token Leaver           [29] -> Discord Token Language Changer
+   [10] -> Search In DataBase             [20] -> Discord Token Login            [30] -> Next Page >>
+  
    [Page n°2]
-   [31] -> << Previous Page               [41] -> Youtube Downloader            
-   [32] -> Discord Token House Changer    [42] -> Browser Private               
-   [33] -> Discord Bot Invite To Id       [43] -> Illegal Website              
-   [34] -> Discord Bot Server Nuker     
-   [35] -> Discord Server Info         
-   [36] -> Discord Nitro Generator     
-   [37] -> Roblox Cookie Login        
-   [38] -> Roblox Cookie Info          
-   [39] -> Roblox User Info        
-   [40] -> Roblox Id Info
+   [31] -> << Previous Page               [41] -> Roblox User Info            
+   [32] -> Discord Token House Changer    [42] -> Roblox Id Info               
+   [33] -> Discord Token Theme Changer    [43] -> Browser Private              
+   [34] -> Discord Token Generator        [44] -> Illegal Website             
+   [35] -> Discord Bot Server Nuker       [45] -> Youtube Downloader         
+   [36] -> Discord Bot Invite To Id     
+   [37] -> Discord Server Info        
+   [38] -> Discord Nitro Generator     
+   [39] -> Roblox Cookie Login          
+   [40] -> Roblox Cookie Info
 
 ┌───(username@redtiger)─[~]
 └──$
@@ -95,5 +95,5 @@ Or install the Red Tiger tool <a href="https://github.com/fluzyteck/RedTiger/arc
 - <a href="https://www.tiktok.com/@fluzyteck">Tiktok</a><br>
 - <a href="https://www.youtube.com/channel/UCB3ABdJP25ULxbydw4ldHjw">Youtube</a><br>
 - Creator: Loxyteck<br>
-- Version: 3.7
+- Version: 3.8
 </p>

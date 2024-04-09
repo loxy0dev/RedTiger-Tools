@@ -25,6 +25,10 @@ pip install discord
 pip install discord.py
 pip install PyQt5
 pip install PyQtWebEngine
+pip install pytube
+pip install pycryptodome
+pip install pywin32
+
 echo Finish.
 timeout /t 5 /nobreak > nul
 start Start.bat

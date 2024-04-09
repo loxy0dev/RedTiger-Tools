@@ -1,8 +1,10 @@
 from Config.Util import *
 from Config.Config import *
-import webbrowser
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+try:
+    import webbrowser
+except Exception as e:
+   ErrorModule(e)
+   
 Title("Dox Tracker")
 
 

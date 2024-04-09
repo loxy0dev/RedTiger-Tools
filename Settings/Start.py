@@ -1,8 +1,11 @@
 from Program.Config.Config import *
 from Program.Config.Util import *
-import requests
-import re
-import webbrowser
+try:
+   import requests
+   import re
+   import webbrowser
+except Exception as e:
+   ErrorModule(e)
 
 Clear()
 Title("Menu")
@@ -41,41 +44,41 @@ option_11 = "Discord-Webhook-Generator"
 option_12 = "Discord-Webhook-Info"
 option_13 = "Discord-Webhook-Delete"
 option_14 = "Discord-Webhook-Spammer"
-option_15 = "Discord-Token-Info"
-option_16 = "Discord-Token-Nuker"
-option_17 = "Discord-Token-Joiner"
-option_18 = "Discord-Token-Leaver"
-option_19 = "Discord-Token-Login"
-option_20 = "Discord-Token-To-Id-And-Brute"
-option_21 = "Discord-Token-Generator"
-option_22 = "Discord-Token-Spammer"
-option_23 = "Discord-Token-Delete-Friends"
-option_24 = "Discord-Token-Block-Friends"
-option_25 = "Discord-Token-Mass-Dm"
-option_26 = "Discord-Token-Delete-Dm"
-option_27 = "Discord-Token-Status-Changer"
-option_28 = "Discord-Token-Language-Changer"
-option_29 = "Discord-Token-Theme-Changer"
+option_15 = "Discord-Get-Your-Token"
+option_16 = "Discord-Token-Info"
+option_17 = "Discord-Token-Nuker"
+option_18 = "Discord-Token-Joiner"
+option_19 = "Discord-Token-Leaver"
+option_20 = "Discord-Token-Login"
+option_21 = "Discord-Token-To-Id-And-Brute"
+option_22 = "Discord-Token-Server-Raid"
+option_23 = "Discord-Token-Spammer"
+option_24 = "Discord-Token-Delete-Friends"
+option_25 = "Discord-Token-Block-Friends"
+option_26 = "Discord-Token-Mass-Dm"
+option_27 = "Discord-Token-Delete-Dm"
+option_28 = "Discord-Token-Status-Changer"
+option_29 = "Discord-Token-Language-Changer"
 option_32 = "Discord-Token-House-Changer"
-option_33 = "Discord-Bot-Invite-To-Id"
-option_34 = "Discord-Bot-Server-Nuker"
-option_35 = "Discord-Server-Info"
-option_36 = "Discord-Nitro-Generator"
-option_37 = "Roblox-Cookie-Login"
-option_38 = "Roblox-Cookie-Info"
-option_39 = "Roblox-User-Info"
-option_40 = "Roblox-Id-Info"
-option_41 = "Youtube-Downloader"
-option_42 = "Browser-Private"
-option_43 = "Illegal-Website"
-option_44 = ""
-option_45 = ""
+option_33 = "Discord-Token-Theme-Changer"
+option_34 = "Discord-Token-Generator"
+option_35 = "Discord-Bot-Server-Nuker"
+option_36 = "Discord-Bot-Invite-To-Id"
+option_37 = "Discord-Server-Info"
+option_38 = "Discord-Nitro-Generator"
+option_39 = "Roblox-Cookie-Login"
+option_40 = "Roblox-Cookie-Info"
+option_41 = "Roblox-User-Info"
+option_42 = "Roblox-Id-Info"
+option_43 = "Browser-Private"
+option_44 = "Illegal-Website" 
+option_45 = "Youtube-Downloader"
 option_46 = ""
 option_47 = ""
 option_48 = ""
 option_49 = ""
 option_50 = ""
-option_61 = ""
+option_61 = "" 
 option_62 = ""
 option_63 = ""
 option_64 = ""
@@ -301,7 +304,6 @@ while True:
       StartProgram(f"{option_29}.py")
       
 
-
    elif choice in ['30']:
       page = page2
       with open("Settings/Program/Config/Page.txt", "w") as file:
@@ -350,3 +352,12 @@ while True:
 
    elif choice in ['43']:
       StartProgram(f"{option_43}.py")
+   
+   elif choice in ['44']:
+      StartProgram(f"{option_44}.py")
+
+   elif choice in ['45']:
+      StartProgram(f"{option_45}.py")
+
+   else:
+      ErrorChoiceStart()

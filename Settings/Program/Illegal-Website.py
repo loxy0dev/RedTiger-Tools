@@ -1,6 +1,10 @@
 from Config.Util import *
 from Config.Config import *
-import webbrowser
+try:
+    import webbrowser
+except Exception as e:
+   ErrorModule(e)
+   
 Title("Illegal Website")
 
 fr = f"{color.GREEN}FREE{color.RED}"

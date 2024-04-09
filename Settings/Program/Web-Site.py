@@ -1,6 +1,10 @@
 from Config.Util import *
 from Config.Config import *
-import webbrowser
+try:
+    import webbrowser
+except Exception as e:
+   ErrorModule(e)
+
 Title("Web Site")
 print(f"""
 {color.WHITE}[{color.RED}01{color.WHITE}] {color.RED}->{color.WHITE} Site Web
