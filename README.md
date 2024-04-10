@@ -56,6 +56,7 @@
 - You need to <a href="https://www.python.org/downloads/">install Python</a> with the <strong>PATH</strong> option. <a href="https://www.python.org/downloads/">Download Here</a><br>
 - Windows 10/11
 </p>
+<img src="Img/Python_Path.png" width="500px">
 <h2>⏳・Installation:</h2>
 <p>
 Install the RedTiger tool <a href="https://github.com/fluzyteck/RedTiger/archive/main.zip
