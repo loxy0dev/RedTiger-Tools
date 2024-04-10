@@ -65,7 +65,7 @@ Install the RedTiger tool <a href="https://github.com/fluzyteck/RedTiger/archive
 ```
 Install with Git:
   1) Press sumiltamemen on "windows + r" and open "cmd",
-  2) Write in cmd "git clone https://github.com/fluzyteck/RedTiger",
+  2) Write in cmd "git clone https://github.com/loxyteck/RedTiger-Tools.git",
   3) Write in cmd "cd RedTiger",
   4) Write in cmd "code .",
   5) Launch "Setup.bat".
