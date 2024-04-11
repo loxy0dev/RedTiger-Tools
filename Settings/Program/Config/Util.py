@@ -51,28 +51,30 @@ def ModuleUninstall(module):
     subprocess.check_call(['pip', 'uninstall', module])
 
 def Title(title):
-    try:
+    if sys.platform.startswith("win"):
         "WINDOWS"
         ctypes.windll.kernel32.SetConsoleTitleW(f"{name_tool} {version_tool} | {title}")
-    except:
+    elif sys.platform.startswith("linux"):
         "LINUX"
         sys.stdout.write(f"\x1b]2;{name_tool} {version_tool} | {title}\x07")
+        
 
 def Reset():
-    try:
+    if sys.platform.startswith("win"):
         "WINDOWS"
-        file = f'python ./Settings/Start.py'
+        file = f'python ./RedTiger.py'
         subprocess.run(file, shell=True)
-    except:
+    elif sys.platform.startswith("linux"):
         "LINUX"
-        file = f'python3 ./Settings/Start.py'
+        file = f'python3 ./RedTiger.py'
         subprocess.run(file, shell=True)
+
         
 def Clear():
-    try:
+    if sys.platform.startswith("win"):
         "WINDOWS"
         os.system("cls")
-    except:
+    elif sys.platform.startswith("linux"):
         "LINUX"
         os.system("clear")
 
@@ -80,14 +82,15 @@ def Exit():
     sys.exit()
 
 def StartProgram(program):
-    try:
+    if sys.platform.startswith("win"):
         "WINDOWS"
         file = f'python ./Settings/Program/{program}'
         subprocess.run(file, shell=True)
-    except:
+    elif sys.platform.startswith("linux"):
         "LINUX"
         file = f'python3 ./Settings/Program/{program}'
         subprocess.run(file, shell=True)
+        
 
 def Continue():
     input(color.RED + f"{INFO} Press to continue -> " + color.RESET)
@@ -155,6 +158,10 @@ def CheckWebhook(webhook):
         pass
     elif webhook.lower().startswith("http://canary.discord.com/api/webhooks"):
         pass
+    elif webhook.lower().startswith("https://discordapp.com/api/webhooks"):
+        pass
+    elif webhook.lower().startswith("http://discordapp.com/api/webhooks"):
+        pass
     else:
         ErrorWebhook()
 
@@ -201,7 +208,13 @@ def ChoiceMultiTokenDisord():
             if not line.strip() or line.isspace():
                 continue
             token_discord_number += 1
-        print(f"{INFO} {white}{token_discord_number}{red} Token found ({white}{file_token_discord}{red})")
+        
+        if token_discord_number == 0:
+            print(f"{INFO} No Token Discord in file: {white}{file_token_discord}{red} Please add tokens to the file.")
+            Continue()
+            Reset()
+        else:
+            print(f"{INFO} {white}{token_discord_number}{red} Token Discord found ({white}{file_token_discord}{red})")
     
     try:
         num_tokens = int(input(f"{INPUT} How many token (max {token_discord_number}) -> {reset}"))
@@ -213,11 +226,11 @@ def ChoiceMultiTokenDisord():
     token_discord_number = 0
     with open(file_token_discord, 'r') as file_token:
         print()
-        print(f"{red}Token ({white}{file_token_discord}{red}):")
+        print(f"{red}Token Discord ({white}{file_token_discord}{red}):")
         for line in file_token:
             if not line.strip() or line.isspace():
                 continue
-    
+            
             token_discord_number += 1
             modified_token = line.strip()
             tokens[token_discord_number] = modified_token
@@ -229,7 +242,7 @@ def ChoiceMultiTokenDisord():
     for _ in range(num_tokens):
         try:
             number += 1
-            selected_token_number = int(input(f"{color.RED}{INPUT} Token {number}/{num_tokens} -> {color.RESET}"))
+            selected_token_number = int(input(f"{color.RED}{INPUT} Token Number {number}/{num_tokens} -> {color.RESET}"))
         except:
             ErrorNumber()
         
@@ -260,7 +273,7 @@ def Choice1TokenDiscord():
     token_discord_number = 0
 
     with open(file_token_discord, 'r') as file_token:
-        print(f"{red}Token ({white}{file_token_discord}{red}):")
+        print(f"{red}Token Discord ({white}{file_token_discord}{red}):")
         for line in file_token:
             if not line.strip() or line.isspace():
                 continue
@@ -271,13 +284,13 @@ def Choice1TokenDiscord():
             CheckToken(token_discord_number, modified_token)
 
     if not tokens:
-        print(f"{ERROR} No token in file: {white}{file_token_discord}")
+        print(f"{INFO} No Token Discord in file: {white}{file_token_discord}{red} Please add tokens to the file.")
         Continue()
         Reset()
         return None
 
     try:
-        selected_token_number = int(input(f"\n{color.RED}{INPUT} Token -> {color.RESET}"))
+        selected_token_number = int(input(f"\n{color.RED}{INPUT} Token Number -> {color.RESET}"))
     except:
         ErrorChoice()
 

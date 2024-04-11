@@ -1,5 +1,5 @@
-from Program.Config.Config import *
-from Program.Config.Util import *
+from Settings.Program.Config.Config import *
+from Settings.Program.Config.Util import *
 try:
    import requests
    import re
@@ -9,26 +9,29 @@ except Exception as e:
 
 Clear()
 Title("Menu")
-url = url_config
-response = requests.get(url)
-if response.status_code == 200:
-    content = response.text
-    match = re.search(r'version_tool\s*=\s*"([^"]+)"', content)
-    if match:
-        current_version = match.group(1)
-        if current_version != version_tool:
-            print(f"{color.RED}[!] | Please download the new version of the tool ! {color.WHITE}{version_tool}{color.LIGHTYELLOW_EX} -> {color.WHITE}{current_version}{color.RED}")
-            webbrowser.open(github_tool)
-            time.sleep(2)
-            webbrowser.open(url_downloads)
-            input(f"{color.RED}[!] | Enter to still use this version -> {color.RESET}")
-            popup_version = f"{color.LIGHTYELLOW_EX}Please update the tool: {color.WHITE}{version_tool}{color.LIGHTYELLOW_EX} -> {color.WHITE}{current_version}{color.RED}"
-        else:
-            popup_version = ""
-    else:
-        popup_version = ""
-else:
-    popup_version = ""
+try:
+   url = url_config
+   response = requests.get(url)
+   if response.status_code == 200:
+       content = response.text
+       match = re.search(r'version_tool\s*=\s*"([^"]+)"', content)
+       if match:
+           current_version = match.group(1)
+           if current_version != version_tool:
+               print(f"{color.RED}[!] | Please download the new version of the tool ! {color.WHITE}{version_tool}{color.LIGHTYELLOW_EX} -> {color.WHITE}{current_version}{color.RED}")
+               webbrowser.open(github_tool)
+               time.sleep(2)
+               webbrowser.open(url_downloads)
+               input(f"{color.RED}[!] | Enter to still use this version -> {color.RESET}")
+               popup_version = f"{color.LIGHTYELLOW_EX}Please update the tool: {color.WHITE}{version_tool}{color.LIGHTYELLOW_EX} -> {color.WHITE}{current_version}{color.RED}"
+           else:
+               popup_version = ""
+       else:
+           popup_version = ""
+   else:
+       popup_version = ""
+except:
+   popup_version = ""
 
 option_01 = "Tool-Info"
 option_02 = "Web-Site"

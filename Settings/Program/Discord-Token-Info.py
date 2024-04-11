@@ -155,36 +155,35 @@ try:
                 owner_guild_count = len(owner_guilds)
                 owner_guilds_names = [] 
                 if owner_guilds:
-                    space_owner_guilds = "\n"
                     for guild in owner_guilds:
                         owner_guilds_names.append(f"{guild['name']} ({guild['id']})")
-                else:
-                    space_owner_guilds = ""
+                    owner_guilds_names = "\n" + "\n".join(owner_guilds_names)
             except:
                 owner_guild_count = "None"
-                owner_guilds_names = [] 
+                owner_guilds_names = "None" 
     except:
         owner_guild_count = "None"
         guild_count = "None"
         owner_guilds_names = "None"
 
+
     try:
         billing_discord = requests.get('https://discord.com/api/v6/users/@me/billing/payment-sources', headers={'Authorization': token_discord}).json()
         if billing_discord:
-            payment_methods = []
+            payment_methods_discord = []
 
             for method in billing_discord:
                 if method['type'] == 1:
-                    payment_methods.append('CB: ')
+                    payment_methods_discord.append('CB')
                 elif method['type'] == 2:
-                    payment_methods.append("Paypal: ")
+                    payment_methods_discord.append("Paypal")
                 else:
-                    payment_methods.append('Other: ')
-            payment_methods = ', '.join(payment_methods)
+                    payment_methods_discord.append('Other')
+            payment_methods_discord = ' / '.join(payment_methods_discord)
         else:
-            billing_discord = "None"
+            payment_methods_discord = "None"
     except:
-        billing_discord = "None"
+        payment_methods_discord = "None"
     
     try:
         friends = requests.get('https://discord.com/api/v8/users/@me/relationships', headers={'Authorization': token_discord}).json()
@@ -256,10 +255,10 @@ print(f"""
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} NSFW         : {color.WHITE}{nsfw_discord}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Multi-Factor Authentication : {color.WHITE}{mfa_discord}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Authenticator Type          : {color.WHITE}{authenticator_types_discord}{color.RED}
-{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Billing      : {color.WHITE}{billing_discord}{color.RED}
+{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Billing      : {color.WHITE}{payment_methods_discord}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Gift Code    : {color.WHITE}{gift_codes_discord}{color.RED}
-{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Server       : {color.WHITE}{guild_count}{color.RED}
-{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Owner Server : {color.WHITE}({owner_guild_count}){space_owner_guilds}{owner_guilds_names}{color.RED}
+{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Guilds       : {color.WHITE}{guild_count}{color.RED}
+{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Owner Guilds : {color.WHITE}{owner_guild_count}{owner_guilds_names}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Bio          : {color.WHITE}{bio_discord}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Friend       : {color.WHITE}{friends_discord}{color.RED}
 """)

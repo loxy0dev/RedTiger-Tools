@@ -54,26 +54,27 @@
 <h2>🔒・Requirements:</h2>
 <p>
 - You need to <a href="https://www.python.org/downloads/">install Python</a> with the <strong>PATH</strong> option. <a href="https://www.python.org/downloads/">Download Here</a><br>
-- Windows 10/11
+- Windows 10/11 or Linux
 </p>
+<img src="Img/Python_Path.png" width="500px">
 <h2>⏳・Installation:</h2>
 <p>
 Install the RedTiger tool <a href="https://github.com/fluzyteck/RedTiger/archive/main.zip
-">Here</a> and launch "Setup.bat".
+">Here</a> and launch "Setup.bat" or "Setup.py".
 
 ```
 Install with Git:
   1) Press sumiltamemen on "windows + r" and open "cmd",
-  2) Write in cmd "git clone https://github.com/fluzyteck/RedTiger",
-  3) Write in cmd "cd RedTiger",
+  2) Write in cmd "git clone https://github.com/loxyteck/RedTiger-Tools.git",
+  3) Write in cmd "cd RedTiger-Tools",
   4) Write in cmd "code .",
-  5) Launch "Setup.bat".
+  5) Launch "Setup.bat" or "Setup.py".
 
 Install with GitHub:
   1) Press the green “<> Code” button,
   2) Press "Download ZIP" button,
   3) Extract the file "RedTiger-main.zip" to your desktop,
-  4) Launch "Setup.bat".
+  4) Launch "Setup.bat" or "Setup.py".
 ```
 </p>
 <h2>⚠️・Terms of use:</h2>
@@ -95,8 +96,6 @@ RedTiger has been developed solely for educational purposes. This project has be
 <p>
 - <a href="https://discord.gg/ZJNFYjdEMD">Discord Server</a><br>
 - <a href="https://red-tiger.000webhostapp.com/accueil.html">Site Web</a><br>
-- <a href="https://www.tiktok.com/@fluzyteck">Tiktok</a><br>
-- <a href="https://www.youtube.com/channel/UCB3ABdJP25ULxbydw4ldHjw">Youtube</a><br>
 - Creator: Loxyteck<br>
-- Version: 3.8
+- Version: 3.9
 </p>
