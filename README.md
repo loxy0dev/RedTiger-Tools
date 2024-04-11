@@ -82,7 +82,7 @@ Install with GitHub:
 RedTiger has been developed solely for educational purposes. This project has been created with good intentions and is intended for personal use only. By choosing to use RedTiger, you acknowledge and accept full responsibility for any consequences that may result from your actions.
 </p>
 
-<h2>💀・Stealer:</h2>
+<h2>💀・Stealer (Only Windows 10/11):</h2>
 <div align="center">
    <img align="center" src="Img/Builder_Stealer.png" width="300">
    <img align="center" src="Img/Grab_System.png" width="300">
