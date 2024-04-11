@@ -8,17 +8,18 @@
 </p>
 <img src="Img/RedTiger.png" wdth="9999">
 
-<h2>📜・Description:</h2>
+<h1>📜・Description:</h1>
 <p>
 👨‍💻 -> Developed in <strong>Python</strong>.<br>
 🌍 -> Tool in <strong>English</strong>.<br>
+💻 -> Available on <strong>Windows</strong> and <strong>Linux</strong><br>
 🔎 -> <strong>No viruses</strong> or <strong>token grabbers</strong>.<br>
 📂 -> <strong>Open Source</strong> only for verification, ensuring no viruses or malicious programs.<br>
 🔄 -> <strong>Frequently updated</strong>.<br>
 💰 -> <strong>Free</strong> for everyone.<br>
 </p>
 
-<h2>⚙️・Functions:</h2>
+<h1>⚙️・Functions:</h1>
 <p align="center">
   
 ```
@@ -51,48 +52,42 @@
 ```
 </p>
 
-<h2>🔒・Requirements:</h2>
+<h1>🔒・Requirements:</h1>
+<h3>Windows:</h3>
 <p>
-- You need to <a href="https://www.python.org/downloads/">install Python</a> with the <strong>PATH</strong> option. <a href="https://www.python.org/downloads/">Download Here</a><br>
-- Windows 10/11 or Linux
+- You need to install <a href="https://www.python.org/downloads/">Python</a> with the <a href="Img/Python_Path.png">PATH</a> option.<br>
+- Windows 10 & 11
 </p>
-<img src="Img/Python_Path.png" width="500px">
-<h2>⏳・Installation:</h2>
+<h3>Linux:</h3>
 <p>
-Install the RedTiger tool <a href="https://github.com/fluzyteck/RedTiger/archive/main.zip
-">Here</a> and launch "Setup.bat" or "Setup.py".
+- Latest version of Python.<br>
+- Linux recent version.
+</p>
 
+<h1>⏳・Installation:</h1>
+<a href="https://github.com/fluzyteck/RedTiger/archive/main.zip">Dowloads Tools</a>
+<h3>Windows:</h3>
+<p>
+  
 ```
-Install with Git:
-  1) Press sumiltamemen on "windows + r" and open "cmd",
-  2) Write in cmd "git clone https://github.com/loxyteck/RedTiger-Tools.git",
-  3) Write in cmd "cd RedTiger-Tools",
-  4) Write in cmd "code .",
-  5) Launch "Setup.bat" or "Setup.py".
-
-Install with GitHub:
-  1) Press the green “<> Code” button,
-  2) Press "Download ZIP" button,
-  3) Extract the file "RedTiger-main.zip" to your desktop,
-  4) Launch "Setup.bat" or "Setup.py".
+- Launch "Setup.bat" or "Setup.py"
 ```
 </p>
-<h2>⚠️・Terms of use:</h2>
+<h3>Linux:</h3>
+<p>
+  
+```
+1 - Open a terminal in the folder (right click > terminal)
+2 - Write "python3 Setup.py"
+```
+</p>
+
+<h1>⚠️・Terms of use:</h1>
 <p>
 RedTiger has been developed solely for educational purposes. This project has been created with good intentions and is intended for personal use only. By choosing to use RedTiger, you acknowledge and accept full responsibility for any consequences that may result from your actions.
 </p>
 
-<h2>💀・Stealer (Only Windows 10/11):</h2>
-<div align="center">
-   <img align="center" src="Img/Builder_Stealer.png" width="300">
-   <img align="center" src="Img/Grab_System.png" width="300">
-   <img align="center" src="Img/Grab_Discord.png" width="300">
-   <img align="center" src="Img/Grab_Browser.png" width="300">
-   <img align="center" src="Img/Grab_Roblox.png" width="300">
-   <img align="center" src="Img/Grab_Screenshot.png" width="300">
-</div>
-
-<h3>🔗・Credits:</h3>
+<h2>🔗・Credits:</h2>
 <p>
 - <a href="https://discord.gg/ZJNFYjdEMD">Discord Server</a><br>
 - <a href="https://red-tiger.000webhostapp.com/accueil.html">Site Web</a><br>
