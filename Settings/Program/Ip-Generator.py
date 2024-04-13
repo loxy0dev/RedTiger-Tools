@@ -47,7 +47,13 @@ def ip_check():
     ip = f"{number_1}.{number_2}.{number_3}.{number_4}"
 
     try:
-        result = subprocess.run(['ping', '-n', '1', ip], capture_output=True, text=True, timeout=0.1)
+        if sys.platform.startswith("win"):
+            "WINDOWS"
+            result = subprocess.run(['ping', '-n', '1', ip], capture_output=True, text=True, timeout=0.1)
+        elif sys.platform.startswith("linux"):
+            "LINUX"
+            result = subprocess.run(['ping', '-c', '1', '-W', '1', ip], capture_output=True, text=True, timeout=0.1)
+
         if result.returncode == 0:
             number_valid += 1
             if webhook in ['y']:

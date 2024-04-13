@@ -31,9 +31,9 @@ def raid():
         channel = random.choice(channels)
         response = requests.post(f"https://discord.com/api/channels/{channel}/messages", data={'content': message}, headers={'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12) Gecko/20050915 Firefox/1.0.7', 'Authorization': token})
         response.raise_for_status()
-        print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Send{color.RED} | Message: {color.WHITE}{message_sensur}{color.RED} | Channel: {color.WHITE}{channel}{color.RED}")
+        print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Status: {color.WHITE}Send{color.GREEN} | Message: {color.WHITE}{message_sensur}{color.GREEN} | Channel: {color.WHITE}{channel}{color.GREEN}")
     except:
-        print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Error {response.status_code}{color.RED} | Message: {color.WHITE}{message_sensur}{color.RED} | Channel: {color.WHITE}{channel}{color.RED}")
+        print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Status: {color.WHITE}Error {response.status_code}{color.RED} | Message: {color.WHITE}{message_sensur}{color.RED} | Channel: {color.WHITE}{channel}{color.RED}")
 
 def request():
     threads = []

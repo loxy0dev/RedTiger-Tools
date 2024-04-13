@@ -7,6 +7,10 @@ except Exception as e:
 
 Title("Discord Token Login")
 
+if sys.platform.startswith("linux"):
+    "LINUX"
+    OnlyWindows()
+    
 print()
 token = Choice1TokenDiscord()
 

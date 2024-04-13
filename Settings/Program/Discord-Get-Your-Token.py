@@ -14,6 +14,10 @@ except Exception as e:
 
 Title("Discord Get Your Token")
 
+if sys.platform.startswith("linux"):
+    "LINUX"
+    OnlyWindows()
+    
 def GetYourToken():
     class YourToken:
         def __init__(self):

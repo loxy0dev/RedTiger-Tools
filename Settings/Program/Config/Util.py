@@ -146,7 +146,12 @@ def ErrorUsername():
 
 def ErrorModule(e):
     print(f"{color.RED}{ERROR} Error Module (Restart Setup.bat): {white}{e}", color.RESET)
-    time.sleep(5)
+    Continue()
+    Reset()
+
+def OnlyWindows():
+    print(f"{color.RED}{ERROR} This function is only available on Windows 10/11 !", color.RESET)
+    Continue()
     Reset()
 
 def CheckWebhook(webhook):
@@ -181,7 +186,6 @@ def ChoiceMultiChannelDiscord():
         except:
             ErrorId()
 
-    print(selected_channels)
     return selected_channels
 
 

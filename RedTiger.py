@@ -75,7 +75,7 @@ option_41 = "Roblox-User-Info"
 option_42 = "Roblox-Id-Info"
 option_43 = "Browser-Private"
 option_44 = "Illegal-Website" 
-option_45 = "Youtube-Downloader"
+option_45 = ""
 option_46 = ""
 option_47 = ""
 option_48 = ""
@@ -90,7 +90,7 @@ option_66 = ""
 option_67 = ""
 option_68 = ""
 option_69 = ""
- 
+
 option_next = "Next Page >>"
 option_previous = "<< Previous Page"
 
@@ -153,10 +153,8 @@ option_67_txt = option_67.ljust(30)[:30].replace("-", " ")
 option_68_txt = option_68.ljust(30)[:30].replace("-", " ")
 option_69_txt = option_69.ljust(30)[:30].replace("-", " ")
 
-
 option_previous_txt = option_previous.ljust(30)[:30]
 option_next_txt = option_next.ljust(30)[:30]
-
 
 page1 = f"""{white}[{red}Page n°1{white}]
    {white}[{red}01{white}] {red}->{white} {option_01_txt} {white}[{red}11{white}] {red}->{white} {option_11_txt} {white}[{red}21{white}] {red}->{white} {option_21_txt}

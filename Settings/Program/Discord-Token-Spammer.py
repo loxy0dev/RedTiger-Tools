@@ -34,9 +34,9 @@ def spam():
             }
         )
         response.raise_for_status()
-        print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Send{color.RED} | Message: {color.WHITE}{message_sensur}{color.RED} | Channel: {color.WHITE}{channel}{color.RED}")
+        print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Status: {color.WHITE}Send{color.GREEN} | Message: {color.WHITE}{message_sensur}{color.GREEN} | Channel: {color.WHITE}{channel}{color.GREEN}")
     except:
-        print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Error {response.status_code}{color.RED} | Message: {color.WHITE}{message_sensur}{color.RED} | Channel: {color.WHITE}{channel}{color.RED}")
+        print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Status: {color.WHITE}Error {response.status_code}{color.RED} | Message: {color.WHITE}{message_sensur}{color.RED} | Channel: {color.WHITE}{channel}{color.RED}")
 
 def request():
     threads = []
