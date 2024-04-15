@@ -10,6 +10,7 @@ Title("Roblox User Info")
 
 
 user_id = input(f"\n{INPUT} ID -> {color.RESET}")
+print(f"{color.RED}{WAIT} Information Recovery..{reset}")
 try:
 
     user_info_response = requests.get(f"https://users.roblox.com/v1/users/{user_id}")

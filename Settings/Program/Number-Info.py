@@ -10,6 +10,7 @@ except Exception as e:
 Title("Number Info")
 
 phone_number = input(f"{color.RED}\n{INPUT} Phone Number -> {color.RESET}")
+print(f"{color.RED}{WAIT} Information Recovery..{reset}")
 try:
     parsed_number = phonenumbers.parse(phone_number, None)
     if phonenumbers.is_valid_number(parsed_number):

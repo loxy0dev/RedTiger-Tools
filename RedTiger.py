@@ -34,19 +34,19 @@ except:
    popup_version = ""
 
 option_01 = "Tool-Info"
-option_02 = "Web-Site"
+option_02 = "Tool-Website"
 option_03 = "Ip-Info"
 option_04 = "Ip-Pinger"
 option_05 = "Ip-Generator"
-option_06 = "Dox-Tracker"
-option_07 = "Dox-Create"
-option_08 = "Number-Info"
-option_09 = "Builder-Stealer"
-option_10 = "Search-In-DataBase"
-option_11 = "Discord-Webhook-Generator"
-option_12 = "Discord-Webhook-Info"
-option_13 = "Discord-Webhook-Delete"
-option_14 = "Discord-Webhook-Spammer"
+option_06 = "Ip-Website"
+option_07 = "Dox-Tracker"
+option_08 = "Dox-Create"
+option_09 = "Number-Info"
+option_10 = "Email-Info"     
+option_11 = "Builder-Stealer"
+option_12 = "Sql-Vulnerability"
+option_13 = "Search-In-DataBase"
+option_14 = "Illegal-Website"
 option_15 = "Discord-Get-Your-Token"
 option_16 = "Discord-Token-Info"
 option_17 = "Discord-Token-Nuker"
@@ -69,14 +69,14 @@ option_35 = "Discord-Bot-Server-Nuker"
 option_36 = "Discord-Bot-Invite-To-Id"
 option_37 = "Discord-Server-Info"
 option_38 = "Discord-Nitro-Generator"
-option_39 = "Roblox-Cookie-Login"
-option_40 = "Roblox-Cookie-Info"
-option_41 = "Roblox-User-Info"
-option_42 = "Roblox-Id-Info"
-option_43 = "Browser-Private"
-option_44 = "Illegal-Website" 
-option_45 = ""
-option_46 = ""
+option_39 = "Discord-Webhook-Info"
+option_40 = "Discord-Webhook-Delete"
+option_41 = "Discord-Webhook-Spammer"
+option_42 = "Discord-Webhook-Generator"
+option_43 = "Roblox-Cookie-Login"
+option_44 = "Roblox-Cookie-Info"
+option_45 = "Roblox-User-Info"
+option_46 = "Roblox-Id-Info"
 option_47 = ""
 option_48 = ""
 option_49 = ""
@@ -102,7 +102,7 @@ option_05_txt = option_05.ljust(30)[:30].replace("-", " ")
 option_06_txt = option_06.ljust(30)[:30].replace("-", " ")
 option_07_txt = option_07.ljust(30)[:30].replace("-", " ")
 option_08_txt = option_08.ljust(30)[:30].replace("-", " ")
-option_09_txt = color.LIGHTYELLOW_EX + option_09.ljust(30)[:30].replace("-", " ")
+option_09_txt = option_09.ljust(30)[:30].replace("-", " ")
 option_10_txt = option_10.ljust(30)[:30].replace("-", " ")
 option_11_txt = option_11.ljust(30)[:30].replace("-", " ")
 option_12_txt = option_12.ljust(30)[:30].replace("-", " ")
@@ -208,10 +208,10 @@ while True:
                              ░░   ░    ░    ░ ░  ░      ░       ▒ ░░ ░   ░    ░     ░░   ░
                               ░        ░  ░   ░                 ░        ░    ░  ░   ░      
 
-                                           {white}{github_tool}    
-                                 {white}╔══════════════╦═════════╦══════════════╦═════════════╗
-                                 {white}║ {red}Hacking Tool{white} ║ {red}Ip Tool{white} ║ {red}Discord Tool{white} ║ {red}Roblox Tool{white} ║ 
-                                 {white}╚══════════════╩═════════╩══════════════╩═════════════╝  
+                                           {white}{github_tool}
+                                                     {white}╔════════════╗
+                                                     {white}║ {red}Multi-Tool{white} ║
+                                                     {white}╚════════════╝
    {page}
 """)
    choice = input(f"""{red}┌───({white}{username_pc}@redtiger{red})─[{white}~{red}]

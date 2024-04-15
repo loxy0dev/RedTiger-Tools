@@ -1,7 +1,7 @@
 from Config.Util import *
 from Config.Config import *
 Title("Tool Info")
-
+print(f"{color.RED}{WAIT} Information Recovery..{reset}")
 print(f"""{color.RED}
 {color.RED}Name Tool     :  {color.WHITE}{name_tool}
 {color.RED}Version       :  {color.WHITE}{version_tool}

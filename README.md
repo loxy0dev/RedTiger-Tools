@@ -24,28 +24,28 @@
   
 ```
    [Page n°1]
-   [01] -> Tool Info                      [11] -> Discord Webhook Generator      [21] -> Discord Token To Id And Brute
-   [02] -> Web Site                       [12] -> Discord Webhook Info           [22] -> Discord Token Server Raid
-   [03] -> Ip Info                        [13] -> Discord Webhook Delete         [23] -> Discord Token Spammer
-   [04] -> Ip Pinger                      [14] -> Discord Webhook Spammer        [24] -> Discord Token Delete Friends
+   [01] -> Tool Info                      [11] -> Builder Stealer                [21] -> Discord Token To Id And Brute
+   [02] -> Tool Website                   [12] -> Sql Vulnerability              [22] -> Discord Token Server Raid
+   [03] -> Ip Info                        [13] -> Search In DataBase             [23] -> Discord Token Spammer
+   [04] -> Ip Pinger                      [14] -> Illegal Website                [24] -> Discord Token Delete Friends
    [05] -> Ip Generator                   [15] -> Discord Get Your Token         [25] -> Discord Token Block Friends
-   [06] -> Dox Tracker                    [16] -> Discord Token Info             [26] -> Discord Token Mass Dm
-   [07] -> Dox Create                     [17] -> Discord Token Nuker            [27] -> Discord Token Delete Dm
-   [08] -> Number Info                    [18] -> Discord Token Joiner           [28] -> Discord Token Status Changer
-   [09] -> Builder Stealer                [19] -> Discord Token Leaver           [29] -> Discord Token Language Changer
-   [10] -> Search In DataBase             [20] -> Discord Token Login            [30] -> Next Page >>
+   [06] -> Ip Website                     [16] -> Discord Token Info             [26] -> Discord Token Mass Dm
+   [07] -> Dox Tracker                    [17] -> Discord Token Nuker            [27] -> Discord Token Delete Dm
+   [08] -> Dox Create                     [18] -> Discord Token Joiner           [28] -> Discord Token Status Changer
+   [09] -> Number Info                    [19] -> Discord Token Leaver           [29] -> Discord Token Language Changer
+   [10] -> Email Info                     [20] -> Discord Token Login            [30] -> Next Page >>
   
    [Page n°2]
-   [31] -> << Previous Page               [41] -> Roblox User Info            
-   [32] -> Discord Token House Changer    [42] -> Roblox Id Info               
-   [33] -> Discord Token Theme Changer    [43] -> Browser Private              
-   [34] -> Discord Token Generator        [44] -> Illegal Website             
-   [35] -> Discord Bot Server Nuker       [45] -> Youtube Downloader         
-   [36] -> Discord Bot Invite To Id     
-   [37] -> Discord Server Info        
-   [38] -> Discord Nitro Generator     
-   [39] -> Roblox Cookie Login          
-   [40] -> Roblox Cookie Info
+   [31] -> << Previous Page               [41] -> Discord Webhook Spammer      
+   [32] -> Discord Token House Changer    [42] -> Discord Webhook Generator      
+   [33] -> Discord Token Theme Changer    [43] -> Roblox Cookie Login           
+   [34] -> Discord Token Generator        [44] -> Roblox Cookie Info            
+   [35] -> Discord Bot Server Nuker       [45] -> Roblox User Info             
+   [36] -> Discord Bot Invite To Id       [46] -> Roblox Id Info               
+   [37] -> Discord Server Info         
+   [38] -> Discord Nitro Generator      
+   [39] -> Discord Webhook Info         
+   [40] -> Discord Webhook Delete
 
 ┌───(username@redtiger)─[~]
 └──$
@@ -92,5 +92,5 @@ RedTiger has been developed solely for educational purposes. This project has be
 - <a href="https://discord.gg/ZJNFYjdEMD">Discord Server</a><br>
 - <a href="https://red-tiger.000webhostapp.com/accueil.html">Site Web</a><br>
 - Creator: Loxyteck<br>
-- Version: 3.9
+- Version: 4.0
 </p>

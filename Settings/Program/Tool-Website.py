@@ -5,11 +5,11 @@ try:
 except Exception as e:
    ErrorModule(e)
 
-Title("Web Site")
+Title("Tool Website")
 print(f"""
-{color.WHITE}[{color.RED}01{color.WHITE}] {color.RED}->{color.WHITE} Site Web
-{color.WHITE}[{color.RED}02{color.WHITE}] {color.RED}->{color.WHITE} Discord Server 
-{color.WHITE}[{color.RED}03{color.WHITE}] {color.RED}->{color.WHITE} GitHub Tool
+{color.WHITE}[{color.RED}01{color.WHITE}] {color.RED}->{color.WHITE} Web Site
+{color.WHITE}[{color.RED}02{color.WHITE}] {color.RED}->{color.WHITE} Discord
+{color.WHITE}[{color.RED}03{color.WHITE}] {color.RED}->{color.WHITE} Github
 """)
 
 choice = input(f"{color.RED}{INPUT} Site -> {color.RESET}")

@@ -9,7 +9,7 @@ except Exception as e:
 Title("Roblox Cookie Info")
 
 cookie = input(f"{color.RED}\n{INPUT} Cookie -> {color.WHITE}")
-
+print(f"{color.RED}{WAIT} Information Recovery..{reset}")
 try:
     info = requests.get("https://www.roblox.com/mobileapi/userinfo", cookies={".ROBLOSECURITY": cookie})
     print(info.json())

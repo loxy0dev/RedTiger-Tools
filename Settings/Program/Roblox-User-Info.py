@@ -9,6 +9,7 @@ except Exception as e:
 Title("Roblox User Info")
 
 username_input = input(f"\n{INPUT} Username -> {color.RESET}")
+print(f"{color.RED}{WAIT} Information Recovery..{reset}")
 try:
     response = requests.post("https://users.roblox.com/v1/usernames/users", json={
         "usernames": [username_input],

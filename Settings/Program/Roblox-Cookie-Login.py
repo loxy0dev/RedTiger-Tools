@@ -8,6 +8,10 @@ except Exception as e:
 
 Title("Roblox Cookie Login")
 
+if sys.platform.startswith("linux"):
+    "LINUX"
+    OnlyWindows()
+
 cookie = input(f"{color.RED}\n{INPUT} Cookie -> {color.WHITE}")
 print(f"""
 {color.WHITE}[{color.RED}01{color.WHITE}] {color.RED}->{color.WHITE} Chrome

@@ -6,6 +6,7 @@ if sys.platform.startswith("win"):
     "WINDOWS"
     os.system("pip install --upgrade pip")
     os.system("pip install --upgrade pip setuptools wheel")
+    os.system("pip install dnspython")
     os.system("pip install time")
     os.system("pip install selenium")
     os.system("pip install colorama")
@@ -26,6 +27,7 @@ if sys.platform.startswith("win"):
     os.system("pip install PyQt5")
     os.system("pip install PyQtWebEngine")
     os.system("pip install pytube")
+    os.system("pip install cryptography")
     os.system("pip install pycryptodome")
     os.system("pip install pywin32")
     print("Finish.")
@@ -35,6 +37,7 @@ elif sys.platform.startswith("linux"):
     "LINUX"
     os.system("pip3 install --upgrade pip")
     os.system("pip3 install --upgrade pip setuptools wheel")
+    os.system("pip3 install dnspython")
     os.system("pip3 install time")
     os.system("pip3 install selenium")
     os.system("pip3 install colorama")
@@ -55,6 +58,7 @@ elif sys.platform.startswith("linux"):
     os.system("pip3 install PyQt5")
     os.system("pip3 install PyQtWebEngine")
     os.system("pip3 install pytube")
+    os.system("pip3 install cryptography")
     os.system("pip3 install pycryptodome")
     os.system("pip3 install pywin32")
     print("Finish.")

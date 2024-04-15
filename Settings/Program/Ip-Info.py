@@ -9,7 +9,7 @@ except Exception as e:
 Title("Ip Info")
 
 ip = input(f"{color.RED}\n{INPUT} Ip -> {color.RESET}")
-
+print(f"{color.RED}{WAIT} Information Recovery..{reset}")
 response = requests.get(f"http://ip-api.com/json/{ip}")
 data = response.json()
 status = data["status"]
