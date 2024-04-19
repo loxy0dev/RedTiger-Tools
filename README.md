@@ -10,6 +10,9 @@
 
 <h1>📜・Description:</h1>
 <p>
+The "<a target="_blank" href="https://raw.githubusercontent.com/loxyteck/RedTiger-Tools/main/Settings/Program/Builder-Stealer.py">Builder Stealer</a>" and "<a target="_blank" href="https://raw.githubusercontent.com/loxyteck/RedTiger-Tools/main/Settings/Program/Discord-Get-Your-Token.py">Discord Get Your Token</a>" options are detected by the antivirus even though there is no backdoor.<br>
+I'll let you check the code for each of the options, there is no backdoor.
+  
 👨‍💻 -> Developed in <strong>Python</strong>.<br>
 🌍 -> Tool in <strong>English</strong>.<br>
 💻 -> Available on <strong>Windows</strong> and <strong>Linux</strong><br>
