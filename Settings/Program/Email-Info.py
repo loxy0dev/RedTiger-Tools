@@ -117,5 +117,7 @@ print(f"""
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Mailgun    : {color.WHITE}{mailgun_validation}{color.RED}
 {color.RESET}""")
 
+Continue()
+Reset()
 
 

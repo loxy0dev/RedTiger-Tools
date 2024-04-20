@@ -17,10 +17,13 @@ def get_ip_address(domain):
 website = input(f"\n{INPUT} Website Url -> {color.RESET}")
 print(f"{color.RED}{WAIT} Information Recovery..{reset}")
 if "https://" in website:
+    secure = True
     domain = website.replace("https://", "")
 elif "http://" in website:
+    secure = False
     domain = website.replace("http://", "")
 else:
+    secure = None
     domain = website
 
 ip = get_ip_address(domain)
@@ -43,6 +46,7 @@ print(f"""
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Domain  : {color.WHITE}{domain}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Ip      : {color.WHITE}{ip}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Status  : {color.WHITE}{status}{color.RED}
+{color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Secure  : {color.WHITE}{secure}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Isp     : {color.WHITE}{isp}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Org     : {color.WHITE}{org}{color.RED}
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} As      : {color.WHITE}{as_number}{color.RED}

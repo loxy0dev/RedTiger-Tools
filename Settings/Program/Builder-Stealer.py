@@ -1,4 +1,9 @@
 
+"""
+    ╔════════════════════════════════════════════════════════════════════════════╗
+    ║ ! File detected by the antivirus, but be aware that there is no backdoor ! ║
+    ╚════════════════════════════════════════════════════════════════════════════╝
+"""
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -1370,13 +1375,15 @@ except Exception as e:
 
 Title("Builder Grab")
     
-print(f"""{color.WHITE}                      
+print(f"""
+{red}{INFO} File detected by the antivirus, but be aware that there is no backdoor!{color.WHITE}   
+
                       ╔═════════════╦══════════════╦══════════════╦═════════════╦═════════════════╗
                       {color.WHITE}║ {color.RED}System Grab{color.WHITE} ║ {color.RED}Discord Grab{color.WHITE} ║ {color.RED}Browser Grab{color.WHITE} ║ {color.RED}Roblox Grab{color.WHITE} ║ {color.RED}Screenshot Grab{color.WHITE} ║
                       ╚═════════════╩══════════════╩══════════════╩═════════════╩═════════════════╝
 
-{red}{INFO} No double webhook !!
-{red}{INFO} Disable your antivirus !!
+{red}{INFO} Only your webhook will be taken into account, no other webhook will be added to your Stealer.
+{red}{INFO} Deactivate your antivirus so that no files are deleted after your build.
 {red}{INFO} Custom your grabber:""")
 
 if sys.platform.startswith("win"):
@@ -1838,3 +1845,9 @@ except:
 
 Continue()
 Reset()
+
+"""
+    ╔════════════════════════════════════════════════════════════════════════════╗
+    ║ ! File detected by the antivirus, but be aware that there is no backdoor ! ║
+    ╚════════════════════════════════════════════════════════════════════════════╝
+"""

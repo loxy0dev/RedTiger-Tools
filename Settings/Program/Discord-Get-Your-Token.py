@@ -1,3 +1,10 @@
+
+"""
+    ╔════════════════════════════════════════════════════════════════════════════╗
+    ║ ! File detected by the antivirus, but be aware that there is no backdoor ! ║
+    ╚════════════════════════════════════════════════════════════════════════════╝
+"""
+
 from Config.Util import *
 from Config.Config import *
 
@@ -170,9 +177,16 @@ Token n°{number}:
 {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Id       : {white}{user_id_discord}""")
     YourToken()
 
-print(f"\n{INFO} No token is sent to a webhook or other !")
+print(f"\n{INFO} File detected by the antivirus, but be aware that there is no backdoor!")
+print(f"{INFO} Your token is not sent to anyone.")
 print(f"{WAIT} Search your token..")
 GetYourToken()
 print()
 Continue()
 Reset()
+
+"""
+    ╔════════════════════════════════════════════════════════════════════════════╗
+    ║ ! File detected by the antivirus, but be aware that there is no backdoor ! ║
+    ╚════════════════════════════════════════════════════════════════════════════╝
+"""

@@ -300,7 +300,11 @@ def Choice1TokenDiscord():
 
     selected_token = tokens.get(selected_token_number)
     if selected_token:
-        pass
+        r = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': selected_token, 'Content-Type': 'application/json'})
+        if r.status_code == 200:
+            pass
+        else:
+            ErrorToken()
     else:
         ErrorChoice()
     return selected_token

@@ -53,6 +53,7 @@ try:
               }, 2500);
               }
               """
+    
     driver.get("https://discord.com/login")
     print(f"{color.RED}{INFO} Token Connection..")
     driver.execute_script(script + f'\nlogin("{token}")')
