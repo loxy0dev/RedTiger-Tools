@@ -93,8 +93,8 @@ RedTiger has been developed solely for educational purposes. This project has be
 
 <h2>🔗・Credits:</h2>
 <p>
-- <a href="https://discord.gg/ZJNFYjdEMD">Discord Server</a><br>
-- <a href="https://red-tiger.000webhostapp.com/accueil.html">Site Web</a><br>
+- <a href="https://discord.gg/ZJNFYjdEMD">Discord</a><br>
+- <a href="https://red-tiger.000webhostapp.com/accueil.html">Website</a><br>
 - Creator: Loxyteck<br>
 - Version: 4.0
 </p>
