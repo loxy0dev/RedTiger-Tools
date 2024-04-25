@@ -35,16 +35,16 @@ except:
 
 option_01 = "Tool-Info"
 option_02 = "Tool-Website"
-option_03 = "Ip-Info"
-option_04 = "Ip-Pinger"
-option_05 = "Ip-Generator"
-option_06 = "Ip-Website"
-option_07 = "Ip-Port"
-option_08 = "Dox-Tracker"
-option_09 = "Dox-Create"
-option_10 = "Number-Info"
-option_11 = "Email-Info"
-option_12 = "Builder-Stealer"
+option_03 = "Builder-Stealer"
+option_04 = "Ip-Info"
+option_05 = "Ip-Pinger"
+option_06 = "Ip-Port-Search"
+option_07 = "Ip-Website"
+option_08 = "Ip-Generator"
+option_09 = "Dox-Tracker"
+option_10 = "Dox-Create"
+option_11 = "Number-Info"
+option_12 = "Email-Info"
 option_13 = "Sql-Vulnerability"
 option_14 = "Search-In-DataBase"
 option_15 = "Illegal-Website"
@@ -359,6 +359,18 @@ while True:
 
    elif choice in ['45']:
       StartProgram(f"{option_45}.py")
+
+   elif choice in ['46']:
+      StartProgram(f"{option_46}.py")
+
+   elif choice in ['47']:
+      StartProgram(f"{option_47}.py")
+
+   elif choice in ['48']:
+      StartProgram(f"{option_48}.py")
+
+   elif choice in ['49']:
+      StartProgram(f"{option_49}.py")
 
    else:
       ErrorChoiceStart()

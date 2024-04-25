@@ -3,7 +3,7 @@ from Config.Config import *
 try:
     import requests
     import threading
-
+    import time
 except Exception as e:
    ErrorModule(e)
    
@@ -16,7 +16,6 @@ if r.status_code == 200:
     pass
 else:
     ErrorToken()
-
 def LeaveServer(guilds, token):
     for guild in guilds:
         try:
