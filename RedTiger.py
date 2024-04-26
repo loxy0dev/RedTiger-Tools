@@ -1,14 +1,6 @@
 from Settings.Program.Config.Config import *
 from Settings.Program.Config.Util import *
-try:
-   import requests
-   import re
-   import webbrowser
-except Exception as e:
-   ErrorModule(e)
 
-Clear()
-Title("Menu")
 try:
    url = url_config
    response = requests.get(url)
@@ -32,55 +24,65 @@ try:
        popup_version = ""
 except:
    popup_version = ""
-
+   
 option_01 = "Tool-Info"
 option_02 = "Tool-Website"
 option_03 = "Builder-Stealer"
-option_04 = "Ip-Info"
-option_05 = "Ip-Pinger"
-option_06 = "Ip-Port-Search"
-option_07 = "Ip-Website"
-option_08 = "Ip-Generator"
-option_09 = "Dox-Tracker"
-option_10 = "Dox-Create"
-option_11 = "Number-Info"
-option_12 = "Email-Info"
-option_13 = "Sql-Vulnerability"
-option_14 = "Search-In-DataBase"
-option_15 = "Illegal-Website"
-option_16 = "Discord-Get-Your-Token"
-option_17 = "Discord-Token-Info"
-option_18 = "Discord-Token-Nuker"
-option_19 = "Discord-Token-Joiner"
-option_20 = "Discord-Token-Leaver"
-option_21 = "Discord-Token-Login"
-option_22 = "Discord-Token-To-Id-And-Brute"
-option_23 = "Discord-Token-Server-Raid"
-option_24 = "Discord-Token-Spammer"
-option_25 = "Discord-Token-Delete-Friends"
-option_26 = "Discord-Token-Block-Friends"
-option_27 = "Discord-Token-Mass-Dm"
-option_28 = "Discord-Token-Delete-Dm"
-option_29 = "Discord-Token-Status-Changer"
-option_32 = "Discord-Token-Language-Changer"
-option_33 = "Discord-Token-House-Changer"
-option_34 = "Discord-Token-Theme-Changer"
-option_35 = "Discord-Token-Generator"
-option_36 = "Discord-Bot-Server-Nuker"
-option_37 = "Discord-Bot-Invite-To-Id"
-option_38 = "Discord-Server-Info"
-option_39 = "Discord-Nitro-Generator"
-option_40 = "Discord-Webhook-Info"
-option_41 = "Discord-Webhook-Delete"
-option_42 = "Discord-Webhook-Spammer"
-option_43 = "Discord-Webhook-Generator"
-option_44 = "Roblox-Cookie-Login"
-option_45 = "Roblox-Cookie-Info"
-option_46 = "Roblox-User-Info"
-option_47 = "Roblox-Id-Info"
-option_48 = ""
+option_04 = "Sql-Vulnerability"
+option_05 = "Illegal-Website"
+option_06 = "Search-In-DataBase"
+option_07 = "Dox-Tracker"
+option_08 = "Dox-Create"
+option_09 = "Number-Info"
+option_10 = "Email-Info"
+option_11 = "Ip-Info"
+option_12 = "Ip-Pinger"
+option_13 = "Ip-Website"
+option_14 = "Ip-Port-Search"
+option_15 = "Ip-Generator"
+option_16 = "Get-Your-Ip"
+option_17 = "Get-Your-Token-Discord"
+option_18 = "Discord-Token-Info"
+option_19 = "Discord-Token-Nuker"
+option_20 = "Discord-Token-Joiner"
+option_21 = "Discord-Token-Leaver"
+option_22 = "Discord-Token-Login"
+option_23 = "Discord-Token-To-Id-And-Brute"
+option_24 = "Discord-Token-Server-Raid"
+option_25 = "Discord-Token-Spammer"
+option_26 = "Discord-Token-Delete-Friends"
+option_27 = "Discord-Token-Block-Friends"
+option_28 = "Discord-Token-Mass-Dm"
+option_29 = "Discord-Token-Delete-Dm"
+option_32 = "Discord-Token-Status-Changer"
+option_33 = "Discord-Token-Language-Changer"
+option_34 = "Discord-Token-House-Changer"
+option_35 = "Discord-Token-Theme-Changer"
+option_36 = "Discord-Token-Generator"
+option_37 = "Discord-Bot-Server-Nuker"
+option_38 = "Discord-Bot-Invite-To-Id"
+option_39 = "Discord-Server-Info"
+option_40 = "Discord-Nitro-Generator"
+option_41 = "Discord-Webhook-Info"
+option_42 = "Discord-Webhook-Delete"
+option_43 = "Discord-Webhook-Spammer"
+option_44 = "Discord-Webhook-Generator"
+option_45 = "Roblox-Cookie-Login"
+option_46 = "Roblox-Cookie-Info"
+option_47 = "Roblox-User-Info"
+option_48 = "Roblox-Id-Info"
 option_49 = ""
 option_50 = ""
+option_51 = ""
+option_52 = ""
+option_53 = ""
+option_54 = ""
+option_55 = ""
+option_56 = ""
+option_57 = ""
+option_58 = ""
+option_59 = ""
+option_60 = ""
 option_61 = "" 
 option_62 = ""
 option_63 = ""
@@ -143,6 +145,16 @@ option_47_txt = option_47.ljust(30)[:30].replace("-", " ")
 option_48_txt = option_48.ljust(30)[:30].replace("-", " ")
 option_49_txt = option_49.ljust(30)[:30].replace("-", " ")
 option_50_txt = option_50.ljust(30)[:30].replace("-", " ")
+option_51_txt = option_50.ljust(30)[:30].replace("-", " ")
+option_52_txt = option_50.ljust(30)[:30].replace("-", " ")
+option_53_txt = option_50.ljust(30)[:30].replace("-", " ")
+option_54_txt = option_50.ljust(30)[:30].replace("-", " ")
+option_55_txt = option_50.ljust(30)[:30].replace("-", " ")
+option_56_txt = option_50.ljust(30)[:30].replace("-", " ")
+option_57_txt = option_50.ljust(30)[:30].replace("-", " ")
+option_58_txt = option_50.ljust(30)[:30].replace("-", " ")
+option_59_txt = option_50.ljust(30)[:30].replace("-", " ")
+option_60_txt = option_50.ljust(30)[:30].replace("-", " ")
 option_61_txt = option_61.ljust(30)[:30].replace("-", " ")
 option_62_txt = option_62.ljust(30)[:30].replace("-", " ")
 option_63_txt = option_63.ljust(30)[:30].replace("-", " ")
@@ -180,9 +192,9 @@ page2 = f"""{white}[{red}Page n°2{white}]
    {white}[{red}39{white}] {red}->{white} {option_39_txt} {white}[{red}49{white}] {red}->{white} {option_49_txt} {white}[{red}69{white}] {red}->{white} {option_69_txt}
    {white}[{red}40{white}] {red}->{white} {option_40_txt} {white}[{red}50{white}] {red}->{white} {option_50_txt} {white}[{red}60{white}] {red}-> {option_next_txt}"""
 
-while True:
+def Menu():
    try:
-      with open("Settings/Program/Config/Page.txt", "r") as file:
+      with open("./Settings/Program/Config/Page.txt", "r") as file:
          page = file.read()
       if page in ["1"]:
          page = page1
@@ -196,8 +208,8 @@ while True:
    except:
       page = page1
       Title("Page 1")
-   Clear()
-   print(f"""{popup_version}{red}                                                                                                  
+
+   menu = f"""{popup_version}{red}                                                                                                  
                              ██▀███  ▓█████ ▓█████▄    ▄▄▄█████▓ ██▓  ▄████ ▓█████  ██▀███
                             ▓██ ▒ ██▒▓█   ▀ ▒██▀ ██▌   ▓  ██▒ ▓▒▓██▒ ██▒ ▀█▒▓█   ▀ ▓██ ▒ ██▒
                             ▓██ ░▄█ ▒▒███   ░██   █▌   ▒ ▓██░ ▒░▒██▒▒██░▄▄▄░▒███   ▓██ ░▄█ ▒
@@ -213,7 +225,15 @@ while True:
                                                      {white}║ {red}Multi-Tool{white} ║
                                                      {white}╚════════════╝
    {page}
-""")
+   """
+   return menu
+
+Clear()
+Slow(banner + Menu())
+
+while True:
+   Clear()
+   print(Menu())
    choice = input(f"""{red}┌───({white}{username_pc}@redtiger{red})─[{white}~{red}]
 └──{white}$ {reset}""")
 
@@ -307,13 +327,13 @@ while True:
 
    elif choice in ['30']:
       page = page2
-      with open("Settings/Program/Config/Page.txt", "w") as file:
+      with open("./Settings/Program/Config/Page.txt", "w") as file:
          file.write("2")
          Title("Page 2")
 
    elif choice in ['31']:
       page = page1
-      with open("Settings/Program/Config/Page.txt", "w") as file:
+      with open("./Settings/Program/Config/Page.txt", "w") as file:
          file.write("1")
          Title("Page 1")
 
@@ -371,6 +391,12 @@ while True:
 
    elif choice in ['49']:
       StartProgram(f"{option_49}.py")
+
+   elif choice in ['50']:
+      StartProgram(f"{option_50}.py")
+
+   elif choice in ['51']:
+      StartProgram(f"{option_51}.py")
 
    else:
       ErrorChoiceStart()

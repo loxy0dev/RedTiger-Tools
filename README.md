@@ -28,28 +28,28 @@ I'll let you check the code for each of the options, there is no backdoor.
   
 ```
    [Page n°1]
-   [01] -> Tool Info                      [11] -> Number Info                    [21] -> Discord Token Login
-   [02] -> Tool Website                   [12] -> Email Info                     [22] -> Discord Token To Id And Brute
-   [03] -> Builder Stealer                [13] -> Sql Vulnerability              [23] -> Discord Token Server Raid
-   [04] -> Ip Info                        [14] -> Search In DataBase             [24] -> Discord Token Spammer
-   [05] -> Ip Pinger                      [15] -> Illegal Website                [25] -> Discord Token Delete Friends
-   [06] -> Ip Port Search                 [16] -> Discord Get Your Token         [26] -> Discord Token Block Friends
-   [07] -> Ip Website                     [17] -> Discord Token Info             [27] -> Discord Token Mass Dm
-   [08] -> Ip Generator                   [18] -> Discord Token Nuker            [28] -> Discord Token Delete Dm
-   [09] -> Dox Tracker                    [19] -> Discord Token Joiner           [29] -> Discord Token Status Changer
-   [10] -> Dox Create                     [20] -> Discord Token Leaver           [30] -> Next Page >>
-  
+   [01] -> Tool Info                      [11] -> Ip Info                        [21] -> Discord Token Leaver
+   [02] -> Tool Website                   [12] -> Ip Pinger                      [22] -> Discord Token Login
+   [03] -> Builder Stealer                [13] -> Ip Website                     [23] -> Discord Token To Id And Brute
+   [04] -> Sql Vulnerability              [14] -> Ip Port Search                 [24] -> Discord Token Server Raid
+   [05] -> Illegal Website                [15] -> Ip Generator                   [25] -> Discord Token Spammer
+   [06] -> Search In DataBase             [16] -> Get Your Ip                    [26] -> Discord Token Delete Friends
+   [07] -> Dox Tracker                    [17] -> Get Your Token Discord         [27] -> Discord Token Block Friends
+   [08] -> Dox Create                     [18] -> Discord Token Info             [28] -> Discord Token Mass Dm
+   [09] -> Number Info                    [19] -> Discord Token Nuker            [29] -> Discord Token Delete Dm
+   [10] -> Email Info                     [20] -> Discord Token Joiner           [30] -> Next Page >>
+
    [Page n°2]
-   [31] -> << Previous Page               [41] -> Discord Webhook Delete        
-   [32] -> Discord Token Language Changer [42] -> Discord Webhook Spammer        
-   [33] -> Discord Token House Changer    [43] -> Discord Webhook Generator      
-   [34] -> Discord Token Theme Changer    [44] -> Roblox Cookie Login           
-   [35] -> Discord Token Generator        [45] -> Roblox Cookie Info          
-   [36] -> Discord Bot Server Nuker       [46] -> Roblox User Info              
-   [37] -> Discord Bot Invite To Id       [47] -> Roblox Id Info                 
-   [38] -> Discord Server Info           
-   [39] -> Discord Nitro Generator      
-   [40] -> Discord Webhook Info
+   [31] -> << Previous Page               [41] -> Discord Webhook Info         
+   [32] -> Discord Token Status Changer   [42] -> Discord Webhook Delete      
+   [33] -> Discord Token Language Changer [43] -> Discord Webhook Spammer     
+   [34] -> Discord Token House Changer    [44] -> Discord Webhook Generator   
+   [35] -> Discord Token Theme Changer    [45] -> Roblox Cookie Login           
+   [36] -> Discord Token Generator        [46] -> Roblox Cookie Info         
+   [37] -> Discord Bot Server Nuker       [47] -> Roblox User Info             
+   [38] -> Discord Bot Invite To Id       [48] -> Roblox Id Info               
+   [39] -> Discord Server Info          
+   [40] -> Discord Nitro Generator
 
 ┌───(username@redtiger)─[~]
 └──$
@@ -96,5 +96,5 @@ RedTiger has been developed solely for educational purposes. This project has be
 - <a href="https://discord.gg/ZJNFYjdEMD">Discord</a><br>
 - <a href="https://red-tiger.000webhostapp.com/accueil.html">Website</a><br>
 - Creator: Loxyteck<br>
-- Version: 4.1
+- Version: 4.2
 </p>
