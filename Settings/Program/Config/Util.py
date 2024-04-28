@@ -69,9 +69,6 @@ def Clear():
         os.system("clear")
 
 def Reset():
-    try:
-        return
-    except:
         if sys.platform.startswith("win"):
             "WINDOWS"
             file = f'python ./RedTiger.py'

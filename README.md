@@ -31,7 +31,7 @@ I'll let you check the code for each of the options, there is no backdoor.
    [01] -> Tool Info                      [11] -> Ip Info                        [21] -> Discord Token Leaver
    [02] -> Tool Website                   [12] -> Ip Pinger                      [22] -> Discord Token Login
    [03] -> Builder Stealer                [13] -> Ip Website                     [23] -> Discord Token To Id And Brute
-   [04] -> Sql Vulnerability              [14] -> Ip Port Search                 [24] -> Discord Token Server Raid
+   [04] -> Sql Vulnerability              [14] -> Ip Port Scanner                [24] -> Discord Token Server Raid
    [05] -> Illegal Website                [15] -> Ip Generator                   [25] -> Discord Token Spammer
    [06] -> Search In DataBase             [16] -> Get Your Ip                    [26] -> Discord Token Delete Friends
    [07] -> Dox Tracker                    [17] -> Get Your Token Discord         [27] -> Discord Token Block Friends

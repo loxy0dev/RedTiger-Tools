@@ -6,7 +6,7 @@ try:
 except Exception as e:
    ErrorModule(e)
    
-Title("Ip Port")
+Title("Ip Port Scanner")
 
 def scan_port(ip, port):
     try:

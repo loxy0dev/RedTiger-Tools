@@ -1,8 +1,22 @@
 import os
 import sys
+import psutil
+import time
+
 
 def disinfect():
     try:
+        def DeleteRestart():
+            def EndTask(file):
+                for proc in psutil.process_iter():
+                    try:
+                        if file.lower() in proc.name().lower():
+                            proc.terminate()
+                    except:
+                        pass
+            EndTask("ㅤ.exe")
+            EndTask("ㅤ.py")
+
         def DeleteStartup():
             if sys.platform.startswith('win'):  
                 folder = os.path.join(os.getenv('APPDATA'), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup')
@@ -18,11 +32,6 @@ def disinfect():
             file = f"{folder}/ㅤ.py"
             if os.path.exists(file):
                 os.remove(file)
-        
-        try:
-            DeleteStartup()
-        except:
-            pass
 
         def UnblockSite():
 
@@ -71,10 +80,24 @@ def disinfect():
             ]
             for website in websites_to_block:
                 unblock_website(website)
+        print(f"Disinfection RedTiger stealer in progress..")
+        time.sleep(1)
+        try:
+            DeleteRestart()
+        except:
+            pass
+        time.sleep(2)
+        try:
+            DeleteStartup()
+        except:
+            pass
+        time.sleep(2)
         try:
             UnblockSite()
         except:
             pass
+        print(f"Disinfection finished.")
+        time.sleep(3)
 
     except Exception as e:
         print(e)
