@@ -127,6 +127,9 @@ try:
 
     try:
         linked_users_discord = user['linked_users']
+        linked_users_discord = ' / '.join(linked_users_discord)
+        if not linked_users_discord.strip():
+            linked_users_discord = "None"
     except:
         linked_users_discord = "None"
     
@@ -139,6 +142,7 @@ try:
     
     try:
         authenticator_types_discord = user['authenticator_types']
+        authenticator_types_discord = ' / '.join(authenticator_types_discord)
     except:
         authenticator_types_discord = "None"
 
@@ -152,7 +156,7 @@ try:
                 guild_count = "None"
             try:
                 owner_guilds = [guild for guild in guilds if guild['owner']]
-                owner_guild_count = len(owner_guilds)
+                owner_guild_count = f"({len(owner_guilds)})"
                 owner_guilds_names = [] 
                 if owner_guilds:
                     for guild in owner_guilds:

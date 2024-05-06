@@ -10,8 +10,6 @@ try:
     import datetime
     import sys
     import requests
-    import webbrowser
-    import re
 except Exception as e:
     import os
     print(f"[x] | Error Module (Restart Setup.bat): {e}")
@@ -26,6 +24,7 @@ red = color.RED
 white = color.WHITE
 green = color.GREEN
 reset = color.RESET
+blue = color.BLUE
 
 try:
     username_pc = os.getlogin()
@@ -78,9 +77,6 @@ def Reset():
             file = f'python3 ./RedTiger.py'
             subprocess.run(file, shell=True)
 
-def Exit():
-    sys.exit()
-   
 def StartProgram(program):
     if sys.platform.startswith("win"):
         "WINDOWS"

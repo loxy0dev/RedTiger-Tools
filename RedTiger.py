@@ -2,6 +2,12 @@ from Settings.Program.Config.Config import *
 from Settings.Program.Config.Util import *
 
 try:
+   import webbrowser
+   import re
+except:
+   ErrorModule()
+   
+try:
    url = url_config
    response = requests.get(url)
    if response.status_code == 200:
@@ -12,8 +18,6 @@ try:
            if current_version != version_tool:
                print(f"{color.RED}[!] | Please download the new version of the tool ! {color.WHITE}{version_tool}{color.LIGHTYELLOW_EX} -> {color.WHITE}{current_version}{color.RED}")
                webbrowser.open(github_tool)
-               time.sleep(2)
-               webbrowser.open(url_downloads)
                input(f"{color.RED}[!] | Enter to still use this version -> {color.RESET}")
                popup_version = f"{color.LIGHTYELLOW_EX}Please update the tool: {color.WHITE}{version_tool}{color.LIGHTYELLOW_EX} -> {color.WHITE}{current_version}{color.RED}"
            else:
@@ -35,43 +39,43 @@ option_07 = "Dox-Tracker"
 option_08 = "Dox-Create"
 option_09 = "Number-Info"
 option_10 = "Email-Info"
-option_11 = "Ip-Info"
-option_12 = "Ip-Pinger"
-option_13 = "Ip-Website"
-option_14 = "Ip-Port-Scanner"
-option_15 = "Ip-Generator"
-option_16 = "Get-Your-Ip"
-option_17 = "Get-Your-Token-Discord"
-option_18 = "Discord-Token-Info"
-option_19 = "Discord-Token-Nuker"
-option_20 = "Discord-Token-Joiner"
-option_21 = "Discord-Token-Leaver"
-option_22 = "Discord-Token-Login"
-option_23 = "Discord-Token-To-Id-And-Brute"
-option_24 = "Discord-Token-Server-Raid"
-option_25 = "Discord-Token-Spammer"
-option_26 = "Discord-Token-Delete-Friends"
-option_27 = "Discord-Token-Block-Friends"
-option_28 = "Discord-Token-Mass-Dm"
-option_29 = "Discord-Token-Delete-Dm"
-option_32 = "Discord-Token-Status-Changer"
-option_33 = "Discord-Token-Language-Changer"
-option_34 = "Discord-Token-House-Changer"
-option_35 = "Discord-Token-Theme-Changer"
-option_36 = "Discord-Token-Generator"
-option_37 = "Discord-Bot-Server-Nuker"
-option_38 = "Discord-Bot-Invite-To-Id"
-option_39 = "Discord-Server-Info"
-option_40 = "Discord-Nitro-Generator"
-option_41 = "Discord-Webhook-Info"
-option_42 = "Discord-Webhook-Delete"
-option_43 = "Discord-Webhook-Spammer"
-option_44 = "Discord-Webhook-Generator"
-option_45 = "Roblox-Cookie-Login"
-option_46 = "Roblox-Cookie-Info"
-option_47 = "Roblox-User-Info"
-option_48 = "Roblox-Id-Info"
-option_49 = ""
+option_11 = "Email-OSINT"
+option_12 = "Ip-Info"
+option_13 = "Ip-Pinger"
+option_14 = "Ip-Website"
+option_15 = "Ip-Port-Scanner"
+option_16 = "Ip-Generator"
+option_17 = "Get-Your-Ip"
+option_18 = "Get-Your-Token-Discord"
+option_19 = "Discord-Token-Info"
+option_20 = "Discord-Token-Nuker"
+option_21 = "Discord-Token-Joiner"
+option_22 = "Discord-Token-Leaver"
+option_23 = "Discord-Token-Login"
+option_24 = "Discord-Token-To-Id-And-Brute"
+option_25 = "Discord-Token-Server-Raid"
+option_26 = "Discord-Token-Spammer"
+option_27 = "Discord-Token-Delete-Friends"
+option_28 = "Discord-Token-Block-Friends"
+option_29 = "Discord-Token-Mass-Dm"
+option_32 = "Discord-Token-Delete-Dm"
+option_33 = "Discord-Token-Status-Changer"
+option_34 = "Discord-Token-Language-Changer"
+option_35 = "Discord-Token-House-Changer"
+option_36 = "Discord-Token-Theme-Changer"
+option_37 = "Discord-Token-Generator"
+option_38 = "Discord-Bot-Server-Nuker"
+option_39 = "Discord-Bot-Invite-To-Id"
+option_40 = "Discord-Server-Info"
+option_41 = "Discord-Nitro-Generator"
+option_42 = "Discord-Webhook-Info"
+option_43 = "Discord-Webhook-Delete"
+option_44 = "Discord-Webhook-Spammer"
+option_45 = "Discord-Webhook-Generator"
+option_46 = "Roblox-Cookie-Login"
+option_47 = "Roblox-Cookie-Info"
+option_48 = "Roblox-User-Info"
+option_49 = "Roblox-Id-Info"
 option_50 = ""
 option_51 = ""
 option_52 = ""

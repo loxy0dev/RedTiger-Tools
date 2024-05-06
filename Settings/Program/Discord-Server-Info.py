@@ -17,31 +17,106 @@ response = requests.get(f"https://discord.com/api/v9/invites/{invite_code}")
 
 if response.status_code == 200:
     data = response.json()
-    type_value = data['type']
-    code_value = data['code']
-    inviter_id = data['inviter']['id']
-    inviter_username = data['inviter']['username']
-    inviter_avatar = data['inviter']['avatar']
-    inviter_discriminator = data['inviter']['discriminator']
-    inviter_public_flags = data['inviter']['public_flags']
-    inviter_flags = data['inviter']['flags']
-    inviter_banner = data['inviter']['banner']
-    inviter_accent_color = data['inviter']['accent_color']
-    inviter_global_name = data['inviter']['global_name']
-    inviter_banner_color = data['inviter']['banner_color']
-    expires_at = data['expires_at']
-    flags = data['flags']
-    server_id = data['guild_id']
-    server_name = data['guild']['name']
-    server_icon = data['guild']['icon']
-    server_features = data['guild']['features']
-    server_verification_level = data['guild']['verification_level']
-    server_nsfw_level = data['guild']['nsfw_level']
-    server_nsfw = data['guild']['nsfw']
-    server_premium_subscription_count = data['guild']['premium_subscription_count']
-    channel_id = data['channel']['id']
-    channel_type = data['channel']['type']
-    channel_name = data['channel']['name']
+    try:
+        type_value = data['type']
+    except:
+        type_value= "None"
+    try:
+        code_value = data['code']
+    except:
+        code_value = "None"
+    try:
+        inviter_id = data['inviter']['id']
+    except:
+        inviter_id = "None"
+    try:
+        inviter_username = data['inviter']['username']
+    except:
+        inviter_username = "None"
+    try:
+        inviter_avatar = data['inviter']['avatar']
+    except:
+        inviter_avatar = "None"
+    try:
+        inviter_discriminator = data['inviter']['discriminator']
+    except:
+        inviter_discriminator = "None"
+    try:
+        inviter_public_flags = data['inviter']['public_flags']
+    except:
+        inviter_public_flags = "None"
+    try:
+        inviter_flags = data['inviter']['flags']
+    except:
+        inviter_flags = "None"
+    try:
+        inviter_banner = data['inviter']['banner']
+    except:
+        inviter_banner = "None"
+    try:
+        inviter_accent_color = data['inviter']['accent_color']
+    except:
+        inviter_accent_color = "None"
+    try:
+        inviter_global_name = data['inviter']['global_name']
+    except:
+        inviter_global_name = "None"
+    try:
+        inviter_banner_color = data['inviter']['banner_color']
+    except:
+        inviter_banner_color = "None"
+    try:
+        expires_at = data['expires_at']
+    except:
+        expires_at = "None"
+    try:
+        flags = data['flags']
+    except:
+        flags = "None"
+    try:
+        server_id = data['guild_id']
+    except:
+        server_id = "None"
+    try:
+        server_name = data['guild']['name']
+    except:
+        server_name = "None"
+    try:
+        server_icon = data['guild']['icon']
+    except:
+        server_icon = "None"
+    try:
+        server_features = data['guild']['features']
+    except:
+        server_features = "None"
+    try:
+        server_verification_level = data['guild']['verification_level']
+    except:
+        server_verification_level = "None"
+    try:
+        server_nsfw_level = data['guild']['nsfw_level']
+    except:
+        server_nsfw_level = "None"
+    try:
+        server_nsfw = data['guild']['nsfw']
+    except:
+       server_nsfw = "None"
+    try:
+        server_premium_subscription_count = data['guild']['premium_subscription_count']
+    except:
+        server_premium_subscription_count = "None"
+    try:
+        channel_id = data['channel']['id']
+    except:
+        channel_id = "None"
+    try:
+        channel_type = data['channel']['type']
+    except:
+        channel_type = "None"
+    try:
+        channel_name = data['channel']['name']
+    except:
+        channel_name = "None"
 else:
     ErrorUrl()
 

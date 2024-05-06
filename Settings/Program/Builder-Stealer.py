@@ -1849,6 +1849,7 @@ elif sys.platform.startswith("linux"):
     os.system("pip3 install pyinstaller")
     os.system("pip3 install auto-py-to-exe")
 
+
 time.sleep(3)
 
 

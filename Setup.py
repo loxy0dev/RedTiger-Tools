@@ -1,7 +1,8 @@
 import sys
 import os
 
-print("Installing the python modules required for the RedTiger Tool:")
+print("\nInstalling the python modules required for the RedTiger Tool:")
+
 if sys.platform.startswith("win"):
     "WINDOWS"
     os.system("pip install --upgrade pip")

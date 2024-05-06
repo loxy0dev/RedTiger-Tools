@@ -8,9 +8,9 @@ except Exception as e:
 Title("Discord Invite Bot To Id")
 
 try:
- IdBot = int(input(f"\n{color.RED}{INPUT} ID bot -> {color.RESET}"))
+    IdBot = int(input(f"\n{color.RED}{INPUT} ID bot -> {color.RESET}"))
 except:
- ErrorId()
+    ErrorId()
 
 URLBot = f'https://discord.com/oauth2/authorize?client_id={IdBot}&scope=bot&permissions=8'
 

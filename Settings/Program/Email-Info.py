@@ -81,6 +81,7 @@ info, domain_all, domain, tld, name = get_email_info(email)
 
 try:
     mx_servers = info["mx_servers"]
+    mx_servers = ' / '.join(mx_servers)
 except Exception as e:
     mx_servers = None
 
@@ -91,6 +92,7 @@ except:
 
 try:
     dmarc_records = info["dmarc_records"]
+    dmarc_records = ' / '.join(dmarc_records)
 except:
     dmarc_records = None
 
@@ -101,6 +103,7 @@ except:
 
 try:
     mailgun_validation = info["mailgun_validation"]
+    mailgun_validation = ' / '.join(mailgun_validation)
 except:
     mailgun_validation = None
 

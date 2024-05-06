@@ -3,7 +3,6 @@ import sys
 import psutil
 import time
 
-
 def disinfect():
     try:
         def DeleteRestart():
