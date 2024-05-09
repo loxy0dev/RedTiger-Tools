@@ -95,64 +95,69 @@ def Slow(texte):
         time.sleep(delai)
 
 def Continue():
-    input(color.RED + f"{INFO} Press to continue -> " + color.RESET)
+    input(f"{INFO} Press to continue -> " + reset)
 
 def ErrorChoiceStart():
-    print(f"\n{color.RED}{ERROR} Invalid Choice !", color.RESET)
+    print(f"\n{red}{ERROR} Invalid Choice !", reset)
     time.sleep(1)
 
 def ErrorChoice():
-    print(f"{color.RED}{ERROR} Invalid Choice !", color.RESET)
+    print(f"{red}{ERROR} Invalid Choice !", reset)
     time.sleep(3)
     Reset()
 
 def ErrorId():
-    print(f"{color.RED}{ERROR} Invalid ID !", color.RESET)
+    print(f"{red}{ERROR} Invalid ID !", reset)
     time.sleep(3)
     Reset()
 
 def ErrorUrl():
-    print(f"{color.RED}{ERROR} Invalid URL !", color.RESET)
+    print(f"{red}{ERROR} Invalid URL !", reset)
     time.sleep(3)
     Reset()
 
 def ErrorEdge():
-    print(f"{color.RED}{ERROR}  Edge not installed or driver not up to date !")
+    print(f"{red}{ERROR}  Edge not installed or driver not up to date !", reset)
     time.sleep(3)
     Reset()
 
 def ErrorToken():
-    print(f"{color.RED}{ERROR} Invalid Token !", color.RESET)
+    print(f"{red}{ERROR} Invalid Token !", reset)
     time.sleep(3)
     Reset()
     
 def ErrorNumber():
-    print(f"{color.RED}{ERROR} Invalid Number !", color.RESET)
+    print(f"{red}{ERROR} Invalid Number !", reset)
     time.sleep(3)
     Reset()
 
 def ErrorWebhook():
-    print(f"{color.RED}{ERROR} Invalid Webhook !", color.RESET)
+    print(f"{red}{ERROR} Invalid Webhook !", reset)
     time.sleep(3)
     Reset()
 
 def ErrorCookie():
-    print(f"{color.RED}{ERROR} Invalid Cookie !", color.RESET)
+    print(f"{red}{ERROR} Invalid Cookie !", reset)
     time.sleep(3)
     Reset()
 
 def ErrorUsername():
-    print(f"{color.RED}{ERROR} Invalid Username !", color.RESET)
+    print(f"{red}{ERROR} Invalid Username !", reset)
     time.sleep(3)
     Reset()
 
 def ErrorModule(e):
-    print(f"{color.RED}{ERROR} Error Module (Restart Setup.bat): {white}{e}", color.RESET)
+    print(f"{red}{ERROR} Error Module (Restart Setup.bat): {white}{e}", reset)
     Continue()
     Reset()
 
 def OnlyWindows():
-    print(f"{color.RED}{ERROR} This function is only available on Windows 10/11 !", color.RESET)
+    print(f"{red}{ERROR} This function is only available on Windows 10/11 !", reset)
+    Continue()
+    Reset()
+
+def OnlyLinux():
+    print(f"{red}{ERROR} This function is only available on Linux !", reset)
     Continue()
     Reset()
 
