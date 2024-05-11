@@ -1,4 +1,4 @@
-<h1 align="center">RedTiger Multi-Tool 🐯</h1> 
+<h1 align="center"><img src="Img/RedTiger_Logo2.png" width="40px"> RedTiger Multi-Tool <img src="Img/RedTiger_Logo2.png" width="40px"></h1> 
 <p align="center">
   <img src="https://img.shields.io/github/v/release/fluzyteck/RedTiger-Tools?label=Version&color=a80505">
   <img src="https://img.shields.io/github/stars/fluzyteck/RedTiger-tools?style=flat&label=Stars&color=a80505">
