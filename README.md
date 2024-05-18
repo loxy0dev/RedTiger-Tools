@@ -59,7 +59,7 @@ I'll let you check the code for each of the options, there is no backdoor.
 <h1>🔒・Requirements:</h1>
 <h3>Windows:</h3>
 <p>
-- You need to install <a href="https://www.python.org/downloads/">Python</a> with the <a href="Img/Python_Path.png">PATH</a> option.<br>
+- You need to install <a href="https://www.python.org/downloads/">Python</a> with the <a href="Img/Python_Path.png">PATH</a> options.<br>
 - Windows 10 & 11
 </p>
 <h3>Linux:</h3>
