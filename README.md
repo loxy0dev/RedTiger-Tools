@@ -1,100 +1,77 @@
-<h1 align="center"><img src="Img/RedTiger_Logo2.png" width="40px"> RedTiger Multi-Tool <img src="Img/RedTiger_Logo2.png" width="40px"></h1> 
+<!-- USEFUL LINKS -->
+
+[discord_get_token]:    https://github.com/loxyteck/RedTiger-Tools/blob/main/Settings/Program/Discord-Get-Your-Token.py
+[builder_stealer]:      https://github.com/loxyteck/RedTiger-Tools/blob/main/Settings/Program/Builder-Stealer.py
+[global_py_dws]:        https://www.python.org/downloads/
+[linux_py_lv]:          https://www.python.org/ftp/python/3.12.3/Python-3.12.3.tgz
+[language_tp]:          https://img.shields.io/github/languages/top/fluzyteck/RedTiger-Tools?color=a80505
+[win_py_lv]:            https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe
+[discord]:              https://discord.gg/ZJNFYjdEMD
+[website]:              https://loxyteck.github.io/redtiger
+
+<h1 align="center">
+  
+<img height="30px" src="Img/RedTiger_Logo2.png"> RedTiger Multi-Tool </h1> 
+
 <p align="center">
   <img src="https://img.shields.io/github/v/release/fluzyteck/RedTiger-Tools?label=Version&color=a80505">
   <img src="https://img.shields.io/github/stars/fluzyteck/RedTiger-tools?style=flat&label=Stars&color=a80505">
-  <img src="https://img.shields.io/github/repo-size/fluzyteck/RedTiger-Tools?label=Size&color=a80505">
+  <img src="https://img.shields.io/github/repo-size/fluzyteck/RedTiger-Tools?label=Size&color=a80505"> 
   <img src="https://img.shields.io/github/languages/top/fluzyteck/RedTiger-Tools?color=a80505">
+</p>
 
-</p>
-<img src="Img/RedTiger.png" wdth="9999">
-<p>
-The "<a href="https://github.com/loxyteck/RedTiger-Tools/blob/main/Settings/Program/Builder-Stealer.py">Builder Stealer</a>" and "<a href="https://github.com/loxyteck/RedTiger-Tools/blob/main/Settings/Program/Discord-Get-Your-Token.py">Discord Get Your Token</a>" options are detected by the antivirus even though there is no backdoor.<br>
-I'll let you check the code for each of the options, there is no backdoor.
-</p>
+<img src="Img/RedTiger.png" width="100%">
+
+
+> [!IMPORTANT]
+The [Builder Stealer][builder_stealer] and [Discord Get Your Token][discord_get_token] are safe to use. Feel free to review the source code; there are no hidden threats.
+
 <h1>📜・Description:</h1>
-<p>
-  
-👨‍💻 -> Developed in <strong>Python</strong>.<br>
-🌍 -> Tool in <strong>English</strong>.<br>
-💻 -> Available on <strong>Windows</strong> and <strong>Linux</strong><br>
-🔎 -> <strong>No viruses</strong> or <strong>token grabbers</strong>.<br>
-📂 -> <strong>Open Source</strong> only for verification, ensuring no viruses or malicious programs.<br>
-🔄 -> <strong>Frequently updated</strong>.<br>
-💰 -> <strong>Free</strong> for everyone.<br>
-</p>
 
-<h1>⚙️・Functions:</h1>
-<p align="center">
-  
-```
-   [Page n°1]
-   [01] -> Tool Info                      [11] -> Email Info                     [21] -> Discord Token Nuker
-   [02] -> Tool Website                   [12] -> Number Info                    [22] -> Discord Token Joiner
-   [03] -> Builder Malware And Stealer    [13] -> Ip Info                        [23] -> Discord Token Leaver
-   [04] -> Sql Vulnerability              [14] -> Ip Pinger                      [24] -> Discord Token Login
-   [05] -> Illegal Website                [15] -> Ip Website                     [25] -> Discord Token To Id And Brute
-   [06] -> Search In DataBase             [16] -> Ip Port Scanner                [26] -> Discord Token Server Raid
-   [07] -> Dox Create                     [17] -> Ip Generator                   [27] -> Discord Token Spammer
-   [08] -> Dox Tracker (OSINT)            [18] -> Get Your Ip                    [28] -> Discord Token Delete Friends
-   [09] -> Username Tracker (OSINT)       [19] -> Get Your Token Discord         [29] -> Discord Token Block Friends
-   [10] -> Email Tracker (OSINT)          [20] -> Discord Token Info             [30] -> Next Page >>
+- 👨‍💻 Developed in **Python**
+- 🌍 Tool available in **English**
+- 💻 Compatible with **Windows** and **Linux**
+- 🔎 **No viruses** or **token grabbers**
+- 📂 **Open Source** for transparency
+- 🔄 **Regular updates**
+- 💰 **Free** for everyone
 
-   [Page n°2]
-   [31] -> << Previous Page               [41] -> Discord Server Info           
-   [32] -> Discord Token Mass Dm          [42] -> Discord Nitro Generator      
-   [33] -> Discord Token Delete Dm        [43] -> Discord Webhook Info          
-   [34] -> Discord Token Status Changer   [44] -> Discord Webhook Delete        
-   [35] -> Discord Token Language Changer [45] -> Discord Webhook Spammer      
-   [36] -> Discord Token House Changer    [46] -> Discord Webhook Generator      
-   [37] -> Discord Token Theme Changer    [47] -> Roblox Cookie Login            
-   [38] -> Discord Token Generator        [48] -> Roblox Cookie Info        
-   [39] -> Discord Bot Server Nuker       [49] -> Roblox User Info            
-   [40] -> Discord Bot Invite To Id       [50] -> Roblox Id Info
+<h1>⚙️・Features:</h1>
 
-┌───(username@redtiger)─[~]
-└──$
-```
-</p>
+| PAGE  | FEATURES |
+|------|----------|
+| 1    | `Tool Info`, `Tool Website`, `Builder Malware And Stealer`, `Sql Vulnerability`, `Illegal Website`, `Search In DataBase`, `Dox Create`, `Dox Tracker (OSINT)`, `Username Tracker (OSINT)`, `Email Tracker (OSINT)`, `Email Info`, `Number Info`, `Ip Info`, `Ip Pinger`, `Ip Website`, `Ip Port Scanner`, `Ip Generator`, `Get Your Ip`, `Get Your Token Discord`, `Discord Token Info`, `Discord Token Nuker`, `Discord Token Joiner`, `Discord Token Leaver`, `Discord Token Login`, `Discord Token To Id And Brute`, `Discord Token Server Raid`, `Discord Token Spammer`, `Discord Token Delete Friends`, `Discord Token Block Friends` |
+| 2    | `Discord Token Mass Dm`, `Discord Token Delete Dm`, `Discord Token Status Changer`, `Discord Token Language Changer`, `Discord Token House Changer`, `Discord Token Theme Changer`, `Discord Token Generator`, `Discord Bot Server Nuker`, `Discord Bot Invite To Id`, `Discord Server Info`, `Discord Nitro Generator`, `Discord Webhook Info`, `Discord Webhook Delete`, `Discord Webhook Spammer`, `Discord Webhook Generator`, `Roblox Cookie Login`, `Roblox Cookie Info`, `Roblox User Info`, `Roblox Id Info` |
 
 <h1>🔒・Requirements:</h1>
-<h3>Windows:</h3>
-<p>
-- You need to install <a href="https://www.python.org/downloads/">Python</a> with the <a href="Img/Python_Path.png">PATH</a> options.<br>
-- Windows 10 & 11
-</p>
-<h3>Linux:</h3>
-<p>
-- Latest version of Python.<br>
-- Linux recent version.
-</p>
+
+**Windows:**
+> [!TIP]
+> click [here][win_py_lv] to download latest python version 
+- Install [Python][global_py_dws] with the [PATH](Img/Python_Path.png) option.
+- Compatible with Windows 10 & 11.
+
+**Linux:**
+> [!TIP]
+> click [here][linux_py_lv] to download latest python version `*.tgz`
+- Latest version of Python.
+- Recent version of Linux.
 
 <h1>⏳・Installation:</h1>
-<a href="https://github.com/fluzyteck/RedTiger/archive/main.zip">Dowloads Tools</a>
-<h3>Windows:</h3>
-<p>
-  
-```
-- Launch "Setup.bat" or "Setup.py"
-```
-</p>
-<h3>Linux:</h3>
-<p>
-  
-```
-1 - Open a terminal in the folder (right click > terminal)
-2 - Write "python3 Setup.py"
-```
-</p>
 
-<h1>⚠️・Terms of use:</h1>
-<p>
-RedTiger has been developed solely for educational purposes. This project has been created with good intentions and is intended for personal use only. By choosing to use RedTiger, you acknowledge and accept full responsibility for any consequences that may result from your actions.
-</p>
+**Windows:**
+- Launch `Setup.bat` or `Setup.py`
+
+**Linux:**
+1. Open a terminal in the folder (right click > terminal)
+2. Execute `python3 Setup.py`
+
+> [!WARNING]
+> RedTiger is developed for educational purposes only. It is intended for personal use and must be used responsibly. By using RedTiger, you accept full responsibility for its use.
 
 <h2>🔗・Credits:</h2>
-<p>
-- <a href="https://discord.gg/ZJNFYjdEMD">Discord</a><br>
-- <a href="https://loxyteck.github.io/redtiger">Website</a><br>
-- Creator: Loxyteck<br>
-- Version: 4.6
-</p>
+
+- [Discord Community][discord]
+- [Official Website][website]
+- Creator: Loxyteck
+- Version: `4.6`
