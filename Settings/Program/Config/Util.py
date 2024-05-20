@@ -31,6 +31,8 @@ try:
 except:
     username_pc = "username"
 
+censored = "loxy"
+
 INPUT = f'{red}[{white}>{red}] |'
 INFO = f'{red}[{white}!{red}] |'
 ERROR = f'{red}[{white}x{red}] |'

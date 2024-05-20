@@ -1,5 +1,5 @@
 name_tool = "RedTiger"
-version_tool = "4.5"
+version_tool = "4.6"
 coding_tool = "Python 3"
 language_tool = "EN"
 creator = "LoxyTeck"

@@ -5,7 +5,7 @@ try:
 except Exception as e:
    ErrorModule(e)
    
-Title("Dox Tracker")
+Title("Dox Tracker (OSINT)")
 
 print(f"""
 {white}[{red}00{white}] {red}-> Back
@@ -21,14 +21,29 @@ if search_type in ['00', '0']:
 
 if search_type in ['01', '1']:
     search = input(f"{INPUT} Username -> {reset}")
-
+    if censored in search:
+        print(f'{ERROR} Unable to find "{white}{search}{red}".')
+        Continue()
+        Reset()
+        
 elif search_type in ['02', '2']:
     name = input(f"{INPUT} LastName -> {reset}")
     first_name = input(f"{INPUT} FirstName -> {reset}")
-
+    if censored in name:
+        print(f'{ERROR} Unable to find "{white}{name}, {first_name}{red}".')
+        Continue()
+        Reset()
+    elif censored in first_name:
+        print(f'{ERROR} Unable to find "{white}{name}, {first_name}{red}".')
+        Continue()
+        Reset()
+    
 elif search_type in ['03', '3']:
     search = input(f"{INPUT} Search -> {reset}")
-
+    if censored in search:
+        print(f'{ERROR} Unable to find "{white}{search}{red}".')
+        Continue()
+        Reset()
 else:
     ErrorChoice()
 

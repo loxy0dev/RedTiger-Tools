@@ -76,6 +76,11 @@ def get_email_info(email):
     return info, domain_all, domain, tld, name
 
 email = input(f"\n{INPUT} Email -> {reset}")
+if censored in email:
+    print(f'{ERROR} Unable to find email "{white}{email}{red}".')
+    Continue()
+    Reset()
+    
 print(f"{color.RED}{WAIT} Information Recovery..{reset}")
 info, domain_all, domain, tld, name = get_email_info(email)
 

@@ -14,14 +14,14 @@ r = color.RED
 y = color.YELLOW
 print(f"""
  {w}┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
- {w}┃                 {r}DDOS{w}                 ┃                  {r}IP{w}                  ┃                 {r}DOX{w}                  ┃
+ {w}┃                 {r}DDOS{w}                 ┃                  {r}IP{w}                  ┃              {r}OSINT/DOX{w}               ┃
  {w}┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
  {w}┃[{r}01{w}] {fr} https://ddosnow.com/{w}        ┃[{r}07{w}]{r} https://iplogger.org/{w}            ┃[{r}13{w}]{r} https://doxbin.net/{w}              ┃
- {w}┃[{r}02{w}] {fr} https://stresser.zone/{w}      ┃[{r}08{w}]{r} https://grabify.link/{w}            ┃[{r}14{w}]{r} https://www.geocreepy.com/{w}       ┃
+ {w}┃[{r}02{w}] {fr} https://stresser.zone/{w}      ┃[{r}08{w}]{r} https://grabify.link/{w}            ┃[{r}14{w}]{r} https://osint.industries{w}         ┃
  {w}┃[{r}03{w}] {fr} https://stresse.ru/{w}         ┃[{r}09{w}]{r} https://grabify.icu/{w}             ┃[{r}15{w}]{r} https://epieos.com/{w}              ┃
  {w}┃[{r}04{w}] {pa} https://stresse.cat/{w}        ┃[{r}10{w}]{r} https://whatstheirip.tech/{w}       ┃[{r}16{w}]{r} https://nuwber.fr/{w}               ┃
- {w}┃[{r}05{w}] {pa} https://starkstresser.net/{w}  ┃[{r}11{w}]{r} https://www.spylink.net/{w}         ┃[{r}17{w}]                                  ┃
- {w}┃[{r}06{w}] {pa} https://ddos.services/{w}      ┃[{r}12{w}]{r} https://ipinfo.io/{w}               ┃[{r}18{w}]                                  ┃
+ {w}┃[{r}05{w}] {pa} https://starkstresser.net/{w}  ┃[{r}11{w}]{r} https://www.spylink.net/{w}         ┃[{r}17{w}]{r} https://osintframework.com{w}       ┃
+ {w}┃[{r}06{w}] {pa} https://ddos.services/{w}      ┃[{r}12{w}]{r} https://ipinfo.io/{w}               ┃[{r}18{w}]{r} https://whatsmyname.app/            ┃
  {w}┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
             {w}┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
             {w}┃                                          {r}Dark Web{w}                                         ┃

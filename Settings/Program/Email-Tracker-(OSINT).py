@@ -9,9 +9,14 @@ try:
 except Exception as e:
    ErrorModule(e)
 
-Title("Email OSINT")
+Title("Email Tracker (OSINT)")
 
 email = input(f"\n{INPUT} Email -> {reset}")
+
+if censored in email:
+    print(f'{ERROR} Unable to find email "{white}{email}{red}".')
+    Continue()
+    Reset()
 
 print(f"""
 {white}[{red}01{white}] {red}->{white} Chrome (Linux)
