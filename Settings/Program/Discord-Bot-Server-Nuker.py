@@ -59,6 +59,7 @@ try:
 {RED}> Id     : {WHITE}{0.user.id}
 {RED}> Prefix : {WHITE}{prefix}
 {RED}> Status : {WHITE}Online""".format(bot, RED=color.RED, WHITE=color.WHITE, token=token, prefix=prefix))
+        
         print(f"""
 {color.RED}Bot Commands:
 > {prefix}nuke {color.LIGHTRED_EX}<Channels Number>{color.RED} - {color.LIGHTRED_EX}<Channels Name>{color.RED} - {color.LIGHTRED_EX}<Message Spam>

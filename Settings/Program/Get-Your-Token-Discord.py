@@ -24,7 +24,7 @@ Title("Get Your Token Discord")
 if sys.platform.startswith("linux"):
     "LINUX"
     OnlyWindows()
-    
+
 def GetYourToken():
     class YourToken:
         def __init__(self):

@@ -5,7 +5,7 @@ try:
 except Exception as e:
    ErrorModule(e)
    
-Title("Ip Website")
+Title("Website Info")
 
 def get_ip_address(domain):
     try:

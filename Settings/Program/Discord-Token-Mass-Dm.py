@@ -49,7 +49,7 @@ for i in range(repetition):
     for process in processes:
         process.join()
     print(f"{color.RED}{INFO} Finish n°{number}.")
-    time.sleep(5)
+    time.sleep(0.5)
     
 
 Continue()
