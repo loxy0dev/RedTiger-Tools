@@ -1,3 +1,8 @@
+"""
+Copyright (c) RedTiger (https://redtiger.online/)
+See the file 'LICENSE' for copying permission
+"""
+
 import os
 import sys
 import psutil

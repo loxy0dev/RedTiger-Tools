@@ -1,18 +1,30 @@
+"""
+Copyright (c) RedTiger (https://redtiger.online/)
+See the file 'LICENSE' for copying permission
+"""
+
 from Config.Util import *
 from Config.Config import *
-Title("Tool Info")
-print(f"{color.RED}{WAIT} Information Recovery..{reset}")
-print(f"""{color.RED}
-{color.RED}Name Tool     :  {color.WHITE}{name_tool}
-{color.RED}Version       :  {color.WHITE}{version_tool}
-{color.RED}Coding        :  {color.WHITE}{coding_tool}
-{color.RED}Language      :  {color.WHITE}{language_tool}
-{color.RED}Creator       :  {color.WHITE}{creator}
-{color.RED}Platform      :  {color.WHITE}{platform}
-{color.RED}Discord [02]  :  {color.WHITE}{discord_server}
-{color.RED}Site    [02]  :  {color.WHITE}{website}
-{color.RED}GitHub  [02]  :  {color.WHITE}{github_tool}
-""" + color.RESET)
 
-Continue()
-Reset()
+Title("Tool Info")
+
+try:
+    print(f"\n{red}{WAIT} Information Recovery..{reset}")
+
+    print(f"""{red}
+    {white}[{red}+{white}]{red} Name Tool     :  {white}{name_tool}
+    {white}[{red}+{white}]{red} Version       :  {white}{version_tool}
+    {white}[{red}+{white}]{red} Coding        :  {white}{coding_tool}
+    {white}[{red}+{white}]{red} Language      :  {white}{language_tool}
+    {white}[{red}+{white}]{red} Creator       :  {white}{creator}
+    {white}[{red}+{white}]{red} Platform      :  {white}{platform}
+    {white}[{red}+{white}]{red} Discord  [02] :  {white}https://{discord_server}
+    {white}[{red}+{white}]{red} Site     [02] :  {white}https://{website}
+    {white}[{red}+{white}]{red} GitHub   [02] :  {white}https://{github_tool}
+    {white}[{red}+{white}]{red} Telegram [02] :  {white}https://{telegram}
+    {reset}""")
+
+    Continue()
+    Reset()
+except Exception as e:
+    Error(e)

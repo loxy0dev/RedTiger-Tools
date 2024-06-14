@@ -1,5 +1,9 @@
-from .Config import *
+"""
+Copyright (c) RedTiger (https://redtiger.online/)
+See the file 'LICENSE' for copying permission
+"""
 
+from .Config import *
 try:
     import colorama
     import ctypes
@@ -20,11 +24,13 @@ username_webhook = name_tool
 avatar_webhook = "https://media.discordapp.net/attachments/1184160374342299688/1223987317908181073/RedTiger_Logo.png?ex=661bda05&is=66096505&hm=c567e0e9e672ae70de44ddf128301ae0a6737d78a2f2a9f46ff9f2b717f0ac04&=&format=webp&quality=lossless&width=810&height=810"
 
 color = colorama.Fore
+colorama.init()
 red = color.RED
 white = color.WHITE
 green = color.GREEN
 reset = color.RESET
 blue = color.BLUE
+yellow = color.YELLOW
 
 try:
     username_pc = os.getlogin()
@@ -99,6 +105,11 @@ def Slow(texte):
 def Continue():
     input(f"{INFO} Press to continue -> " + reset)
 
+def Error(e):
+    print(f"{red}{ERROR} Error: {white}{e}", reset)
+    Continue()
+    Reset()
+
 def ErrorChoiceStart():
     print(f"\n{red}{ERROR} Invalid Choice !", reset)
     time.sleep(1)
@@ -119,7 +130,7 @@ def ErrorUrl():
     Reset()
 
 def ErrorEdge():
-    print(f"{red}{ERROR}  Edge not installed or driver not up to date !", reset)
+    print(f"{red}{ERROR} Edge not installed or driver not up to date !", reset)
     time.sleep(3)
     Reset()
 

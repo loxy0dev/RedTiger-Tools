@@ -1,5 +1,7 @@
-
-
+"""
+Copyright (c) RedTiger (https://redtiger.online/)
+See the file 'LICENSE' for copying permission
+"""
 
 from Config.Util import *
 from Config.Config import *

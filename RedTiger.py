@@ -1,12 +1,20 @@
+"""
+Copyright (c) RedTiger (https://redtiger.online/)
+See the file 'LICENSE' for copying permission
+"""
+
 from Settings.Program.Config.Config import *
 from Settings.Program.Config.Util import *
 
 try:
    import webbrowser
    import re
+   import colorama
 except:
    ErrorModule()
-   
+
+colorama.init()
+
 try:
    url = url_config
    response = requests.get(url)
@@ -16,10 +24,10 @@ try:
        if match:
            current_version = match.group(1)
            if current_version != version_tool:
-               print(f"{color.RED}[!] | Please download the new version of the tool ! {color.WHITE}{version_tool}{color.LIGHTYELLOW_EX} -> {color.WHITE}{current_version}{color.RED}")
+               print(f"{INFO} Please download the new version of the tool ! {white}{version_tool}{color.LIGHTYELLOW_EX} -> {white}{current_version}{red}")
                webbrowser.open(github_tool)
-               input(f"{color.RED}[!] | Enter to still use this version -> {color.RESET}")
-               popup_version = f"{color.LIGHTYELLOW_EX}Please update the tool: {color.WHITE}{version_tool}{color.LIGHTYELLOW_EX} -> {color.WHITE}{current_version}{color.RED}"
+               input(f"{INFO} Enter to still use this version -> {color.RESET}")
+               popup_version = f"{color.LIGHTYELLOW_EX}Please update the tool: {white}{version_tool}{color.LIGHTYELLOW_EX} -> {white}{current_version}{red}"
            else:
                popup_version = ""
        else:
@@ -236,171 +244,175 @@ Clear()
 Slow(banner + Menu())
 
 while True:
-   Clear()
-   print(Menu())
-   choice = input(f"""{red}┌───({white}{username_pc}@redtiger{red})─[{white}~{red}]
+   try:
+      Clear()
+      print(Menu())
+      choice = input(f"""{red}┌───({white}{username_pc}@redtiger{red})─[{white}~{red}]
 └──{white}$ {reset}""")
 
-   if choice in ['1', '01']:
-      StartProgram(f"{option_01}.py")
+      if choice in ['1', '01']:
+         StartProgram(f"{option_01}.py")
 
-   elif choice in ['2', '02']:
-      StartProgram(f"{option_02}.py")
+      elif choice in ['2', '02']:
+         StartProgram(f"{option_02}.py")
 
-   elif choice in ['3', '03']:
-      StartProgram(f"{option_03}.py")
+      elif choice in ['3', '03']:
+         StartProgram(f"{option_03}.py")
 
-   elif choice in ['4', '04']:
-      StartProgram(f"{option_04}.py")
+      elif choice in ['4', '04']:
+         StartProgram(f"{option_04}.py")
 
-   elif choice in ['5', '05']:
-      StartProgram(f"{option_05}.py")
+      elif choice in ['5', '05']:
+         StartProgram(f"{option_05}.py")
 
-   elif choice in ['6', '06']:
-      StartProgram(f"{option_06}.py")
+      elif choice in ['6', '06']:
+         StartProgram(f"{option_06}.py")
 
-   elif choice in ['7', '07']:
-      StartProgram(f"{option_07}.py")
+      elif choice in ['7', '07']:
+         StartProgram(f"{option_07}.py")
 
-   elif choice in ['8', '08']:
-      StartProgram(f"{option_08}.py")
+      elif choice in ['8', '08']:
+         StartProgram(f"{option_08}.py")
 
-   elif choice in ['9', '09']:
-      StartProgram(f"{option_09}.py")
+      elif choice in ['9', '09']:
+         StartProgram(f"{option_09}.py")
 
-   elif choice in ['10']:
-      StartProgram(f"{option_10}.py")
+      elif choice in ['10']:
+         StartProgram(f"{option_10}.py")
 
-   elif choice in ['11']:
-      StartProgram(f"{option_11}.py")
+      elif choice in ['11']:
+         StartProgram(f"{option_11}.py")
 
-   elif choice in ['12']:
-      StartProgram(f"{option_12}.py")
+      elif choice in ['12']:
+         StartProgram(f"{option_12}.py")
 
-   elif choice in ['13']:
-      StartProgram(f"{option_13}.py")
+      elif choice in ['13']:
+         StartProgram(f"{option_13}.py")
 
-   elif choice in ['14']:
-      StartProgram(f"{option_14}.py")
+      elif choice in ['14']:
+         StartProgram(f"{option_14}.py")
 
-   elif choice in ['15']:
-      StartProgram(f"{option_15}.py")
+      elif choice in ['15']:
+         StartProgram(f"{option_15}.py")
 
-   elif choice in ['16']:
-      StartProgram(f"{option_16}.py")
+      elif choice in ['16']:
+         StartProgram(f"{option_16}.py")
 
-   elif choice in ['17']:
-      StartProgram(f"{option_17}.py")
+      elif choice in ['17']:
+         StartProgram(f"{option_17}.py")
 
-   elif choice in ['18']:
-      StartProgram(f"{option_18}.py")
+      elif choice in ['18']:
+         StartProgram(f"{option_18}.py")
 
-   elif choice in ['19']:
-      StartProgram(f"{option_19}.py")
+      elif choice in ['19']:
+         StartProgram(f"{option_19}.py")
       
-   elif choice in ['20']:
-      StartProgram(f"{option_20}.py")
+      elif choice in ['20']:
+         StartProgram(f"{option_20}.py")
       
-   elif choice in ['21']:
-      StartProgram(f"{option_21}.py")
+      elif choice in ['21']:
+         StartProgram(f"{option_21}.py")
       
-   elif choice in ['22']:
-      StartProgram(f"{option_22}.py")
+      elif choice in ['22']:
+         StartProgram(f"{option_22}.py")
       
-   elif choice in ['23']:
-      StartProgram(f"{option_23}.py")
+      elif choice in ['23']:
+         StartProgram(f"{option_23}.py")
       
-   elif choice in ['24']:
-      StartProgram(f"{option_24}.py")
+      elif choice in ['24']:
+         StartProgram(f"{option_24}.py")
       
-   elif choice in ['25']:
-      StartProgram(f"{option_25}.py")
+      elif choice in ['25']:
+         StartProgram(f"{option_25}.py")
       
-   elif choice in ['26']:
-      StartProgram(f"{option_26}.py")
+      elif choice in ['26']:
+         StartProgram(f"{option_26}.py")
       
-   elif choice in ['27']:
-      StartProgram(f"{option_27}.py")
+      elif choice in ['27']:
+         StartProgram(f"{option_27}.py")
       
-   elif choice in ['28']:
-      StartProgram(f"{option_28}.py")
+      elif choice in ['28']:
+         StartProgram(f"{option_28}.py")
       
-   elif choice in ['29']:
-      StartProgram(f"{option_29}.py")
+      elif choice in ['29']:
+         StartProgram(f"{option_29}.py")
       
 
-   elif choice in ['30']:
-      page = page2
-      with open("./Settings/Program/Config/Page.txt", "w") as file:
-         file.write("2")
-         Title("Page 2")
+      elif choice in ['30']:
+         page = page2
+         with open("./Settings/Program/Config/Page.txt", "w") as file:
+            file.write("2")
+            Title("Page 2")
 
-   elif choice in ['31']:
-      page = page1
-      with open("./Settings/Program/Config/Page.txt", "w") as file:
-         file.write("1")
-         Title("Page 1")
+      elif choice in ['31']:
+         page = page1
+         with open("./Settings/Program/Config/Page.txt", "w") as file:
+            file.write("1")
+            Title("Page 1")
 
 
-   elif choice in ['32']:
-      StartProgram(f"{option_32}.py")
+      elif choice in ['32']:
+         StartProgram(f"{option_32}.py")
       
-   elif choice in ['33']:
-      StartProgram(f"{option_33}.py")
+      elif choice in ['33']:
+         StartProgram(f"{option_33}.py")
       
-   elif choice in ['34']:
-      StartProgram(f"{option_34}.py")
+      elif choice in ['34']:
+         StartProgram(f"{option_34}.py")
 
-   elif choice in ['35']:
-      StartProgram(f"{option_35}.py")
+      elif choice in ['35']:
+         StartProgram(f"{option_35}.py")
 
-   elif choice in ['36']:
-      StartProgram(f"{option_36}.py")
+      elif choice in ['36']:
+         StartProgram(f"{option_36}.py")
 
-   elif choice in ['37']:
-      StartProgram(f"{option_37}.py")
+      elif choice in ['37']:
+         StartProgram(f"{option_37}.py")
 
-   elif choice in ['38']:
-      StartProgram(f"{option_38}.py")
+      elif choice in ['38']:
+         StartProgram(f"{option_38}.py")
 
-   elif choice in ['39']:
-      StartProgram(f"{option_39}.py")
+      elif choice in ['39']:
+         StartProgram(f"{option_39}.py")
 
-   elif choice in ['40']:
-      StartProgram(f"{option_40}.py")
+      elif choice in ['40']:
+         StartProgram(f"{option_40}.py")
 
-   elif choice in ['41']:
-      StartProgram(f"{option_41}.py")
+      elif choice in ['41']:
+         StartProgram(f"{option_41}.py")
 
-   elif choice in ['42']:
-      StartProgram(f"{option_42}.py")
+      elif choice in ['42']:
+         StartProgram(f"{option_42}.py")
 
-   elif choice in ['43']:
-      StartProgram(f"{option_43}.py")
+      elif choice in ['43']:
+         StartProgram(f"{option_43}.py")
    
-   elif choice in ['44']:
-      StartProgram(f"{option_44}.py")
+      elif choice in ['44']:
+         StartProgram(f"{option_44}.py")
 
-   elif choice in ['45']:
-      StartProgram(f"{option_45}.py")
+      elif choice in ['45']:
+         StartProgram(f"{option_45}.py")
 
-   elif choice in ['46']:
-      StartProgram(f"{option_46}.py")
+      elif choice in ['46']:
+         StartProgram(f"{option_46}.py")
 
-   elif choice in ['47']:
-      StartProgram(f"{option_47}.py")
+      elif choice in ['47']:
+         StartProgram(f"{option_47}.py")
 
-   elif choice in ['48']:
-      StartProgram(f"{option_48}.py")
+      elif choice in ['48']:
+         StartProgram(f"{option_48}.py")
 
-   elif choice in ['49']:
-      StartProgram(f"{option_49}.py")
+      elif choice in ['49']:
+         StartProgram(f"{option_49}.py")
 
-   elif choice in ['50']:
-      StartProgram(f"{option_50}.py")
+      elif choice in ['50']:
+         StartProgram(f"{option_50}.py")
 
-   elif choice in ['51']:
-      StartProgram(f"{option_51}.py")
+      elif choice in ['51']:
+         StartProgram(f"{option_51}.py")
 
-   else:
-      ErrorChoiceStart()
+      else:
+         ErrorChoiceStart()
+         
+   except Exception as e:
+      Error(e)
