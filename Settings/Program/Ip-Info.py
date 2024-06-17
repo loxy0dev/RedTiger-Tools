@@ -14,47 +14,47 @@ except Exception as e:
 Title("Ip Info")
 
 try:
-    ip = input(f"{color.RED}\n{INPUT} Ip -> {color.RESET}")
-    print(f"{color.RED}{WAIT} Information Recovery..{reset}")
-    response = requests.get(f"http://ip-api.com/json/{ip}")
-    data = response.json()
-    status = data["status"]
-    if status in ["fail"]:
-        status = "Invalid"
-        ip_adress, country, country_code, region, region_code, city, zip_postal, latitude, longitude, timezone, isp, org, as_number, url_position = "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", 
-    else:
-        status = "Valid"
-        ip_adress = data["query"]
-        country = data["country"]
-        country_code = data["countryCode"]
-        region = data["regionName"]
-        region_code = data["region"]
-        city = data["city"]
-        zip_postal = data["zip"]
-        latitude = data["lat"]
-        longitude = data["lon"]
-        timezone = data["timezone"]
-        isp = data["isp"]
-        org = data["org"]
-        as_number = data["as"]
-        url_position = f"https://www.google.com/maps/search/?api=1&query={latitude},{longitude}"
+    ip = input(f"\n{INPUT} Ip -> {reset}")
+    print(f"{WAIT} Information Recovery..{reset}")
+
+    response = requests.get(f"https://{website}/api/ip/ip={ip}")
+    api = response.json()
+
+    ip = api['ip']
+    status = api['status']
+    country = api['country']
+    country_code = api['country_code']
+    region = api['region']
+    region_code = api['region_code']
+    zip = api['zip']
+    city = api['city']
+    latitude = api['latitude']
+    longitude = api['longitude']
+    timezone = api['timezone']
+    isp = api['isp']
+    org = api['org']
+    as_host = api['as']
+    loc_url = api['loc_url']
+    credit = api['credit']
+    copyright = api['copyright']
 
     print(f"""
     {white}[{red}+{white}]{red} Ip        : {white}{ip}{red}
     {white}[{red}+{white}]{red} Status    : {white}{status}{red}
     {white}[{red}+{white}]{red} Country   : {white}{country} ({country_code}){red}
     {white}[{red}+{white}]{red} Region    : {white}{region} ({region_code}){red}
-    {white}[{red}+{white}]{red} Zip       : {white}{zip_postal}{red}
+    {white}[{red}+{white}]{red} Zip       : {white}{zip}{red}
     {white}[{red}+{white}]{red} City      : {white}{city}{red}
     {white}[{red}+{white}]{red} Latitude  : {white}{latitude}{red}
     {white}[{red}+{white}]{red} Longitude : {white}{longitude}{red}
     {white}[{red}+{white}]{red} Timezone  : {white}{timezone}{red}
     {white}[{red}+{white}]{red} Isp       : {white}{isp}{red}
     {white}[{red}+{white}]{red} Org       : {white}{org}{red}
-    {white}[{red}+{white}]{red} As        : {white}{as_number}{red}
+    {white}[{red}+{white}]{red} As        : {white}{as_host}{red}
+    {white}[{red}+{white}]{red} Copyright : {white}{copyright}{red}
     {reset}""")
     try:
-        BrowserPrivate(site=url_position, title=f"Ip Localisation ({latitude}, {longitude})", search_bar=False)
+        BrowserPrivate(site=loc_url, title=f"Ip Localisation ({latitude}, {longitude})", search_bar=False)
     except:
         pass
     Continue()

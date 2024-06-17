@@ -13,379 +13,382 @@ except Exception as e:
 
 Title("Dox Create")
 
-def NumberInfo(phone_number):
-    try:
-        import phonenumbers
-        from phonenumbers import geocoder, carrier, timezone
-    except:
-        pass
-    
-    try:
-        parsed_number = phonenumbers.parse(phone_number, None)
-        operator_phone = carrier.name_for_number(parsed_number, "fr")
-        type_number_phone = "Mobile" if phonenumbers.number_type(parsed_number) == phonenumbers.PhoneNumberType.MOBILE else "Fixe"
-        country_phone = phonenumbers.region_code_for_number(parsed_number)
-        region_phone = geocoder.description_for_number(parsed_number, "fr")
-        timezones = timezone.time_zones_for_number(parsed_number)
-        timezone_phone = timezones[0] if timezones else None
-    except:
-        operator_phone = "None"
-        type_number_phone = "None"
-        country_phone = "None"
-        region_phone = "None"
-        timezone_phone = "None"
+try:
+    def NumberInfo(phone_number):
+        try:
+            import phonenumbers
+            from phonenumbers import geocoder, carrier, timezone
+        except:
+            pass
+        
+        try:
+            parsed_number = phonenumbers.parse(phone_number, None)
+            operator_phone = carrier.name_for_number(parsed_number, "fr")
+            type_number_phone = "Mobile" if phonenumbers.number_type(parsed_number) == phonenumbers.PhoneNumberType.MOBILE else "Fixe"
+            country_phone = phonenumbers.region_code_for_number(parsed_number)
+            region_phone = geocoder.description_for_number(parsed_number, "fr")
+            timezones = timezone.time_zones_for_number(parsed_number)
+            timezone_phone = timezones[0] if timezones else None
+        except:
+            operator_phone = "None"
+            type_number_phone = "None"
+            country_phone = "None"
+            region_phone = "None"
+            timezone_phone = "None"
 
-    return operator_phone, type_number_phone, country_phone, region_phone, timezone_phone
+        return operator_phone, type_number_phone, country_phone, region_phone, timezone_phone
 
-def IpInfo(ip):
-    try:
-        response = requests.get(f"http://ip-api.com/json/{ip}")
-        data = response.json()
-    except:
-        pass
+    def IpInfo(ip):
+        try:
+            response = requests.get(f"https://{website}/api/ip/ip={ip}")
+            api = response.json()
+        except:
+            pass
 
-    try:
-        isp_ip = data["isp"]
-    except:
-        isp_ip = "None"
-    
-    try:
-        org_ip = data["org"]
-    except:
-        org_ip = "None"
+        try:
+            isp_ip = api["isp"]
+        except:
+            isp_ip = "None"
+        
+        try:
+            org_ip = api["org"]
+        except:
+            org_ip = "None"
 
-    try:
-        as_ip = data["as"]
-    except:
-        as_ip = "None"
-    
-    return isp_ip, org_ip, as_ip
+        try:
+            as_ip = api["as"]
+        except:
+            as_ip = "None"
+        
+        return isp_ip, org_ip, as_ip
 
-def TokenInfo(token):
-    try:
-        from datetime import datetime, timezone
-        user = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token}).json()
-        r = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token, 'Content-Type': 'application/json'})
-    except:
-        pass
+    def TokenInfo(token):
+        try:
+            from datetime import datetime, timezone
+            user = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token}).json()
+            r = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token, 'Content-Type': 'application/json'})
+        except:
+            pass
 
-    try:
-        username_discord = user['username'] + '#' + user['discriminator']
-    except:
-        username_discord = "None"
-    
-    try:
-        display_name_discord = user['global_name']
-    except:
-        display_name_discord = "None"
+        try:
+            username_discord = user['username'] + '#' + user['discriminator']
+        except:
+            username_discord = "None"
+        
+        try:
+            display_name_discord = user['global_name']
+        except:
+            display_name_discord = "None"
 
-    try:
-        user_id_discord = user['id']
-    except:
-        user_id_discord = "None"
+        try:
+            user_id_discord = user['id']
+        except:
+            user_id_discord = "None"
 
-    try:
-        avatar_url_discord = f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.gif" if requests.get(f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.gif").status_code == 200 else f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.png"
-    except:
-        avatar_url_discord = "None"
+        try:
+            avatar_url_discord = f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.gif" if requests.get(f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.gif").status_code == 200 else f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.png"
+        except:
+            avatar_url_discord = "None"
 
-    try:
-        created_at_discord = datetime.fromtimestamp(((int(user['id']) >> 22) + 1420070400000) / 1000, timezone.utc)
-    except:
-        created_at_discord = "None"
+        try:
+            created_at_discord = datetime.fromtimestamp(((int(user['id']) >> 22) + 1420070400000) / 1000, timezone.utc)
+        except:
+            created_at_discord = "None"
 
-    try:
-        email_discord = user['email']
-    except:
-        email_discord = "None"
+        try:
+            email_discord = user['email']
+        except:
+            email_discord = "None"
 
-    try:
-        phone_discord = user['phone']
-    except:
-        phone_discord = "None"
+        try:
+            phone_discord = user['phone']
+        except:
+            phone_discord = "None"
 
-    try:
-        friends = requests.get('https://discord.com/api/v8/users/@me/relationships', headers={'Authorization': token}).json()
-        if friends:
-            friends_discord = []
-            for friend in friends:
-                unprefered_flags = [64, 128, 256, 1048704]
-                data = f"{friend['user']['username']}#{friend['user']['discriminator']} ({friend['user']['id']})"
+        try:
+            friends = requests.get('https://discord.com/api/v8/users/@me/relationships', headers={'Authorization': token}).json()
+            if friends:
+                friends_discord = []
+                for friend in friends:
+                    unprefered_flags = [64, 128, 256, 1048704]
+                    data = f"{friend['user']['username']}#{friend['user']['discriminator']} ({friend['user']['id']})"
 
-                if len('\n'.join(friends_discord)) + len(data) >= 1024:
-                    break
+                    if len('\n'.join(friends_discord)) + len(data) >= 1024:
+                        break
 
-                friends_discord.append(data)
+                    friends_discord.append(data)
 
-            if len(friends_discord) > 0:
-                friends_discord = '\n' + ' / '.join(friends_discord)
+                if len(friends_discord) > 0:
+                    friends_discord = '\n' + ' / '.join(friends_discord)
+                else:
+                    friends_discord = "None"
             else:
                 friends_discord = "None"
-        else:
+        except:
             friends_discord = "None"
-    except:
-        friends_discord = "None"
 
-    try:
-        gift_codes = requests.get('https://discord.com/api/v9/users/@me/outbound-promotions/codes', headers={'Authorization': token}).json()
-        if gift_codes:
-            codes = []
-            for gift_codes_discord in gift_codes:
-                name = gift_codes_discord['promotion']['outbound_title']
-                gift_codes_discord = gift_codes_discord['code']
-                data = f"Gift: {name}\nCode: {gift_codes_discord}"
-                if len('\n\n'.join(gift_codes_discord)) + len(data) >= 1024:
-                    break
-                gift_codes_discord.append(data)
-            if len(gift_codes_discord) > 0:
-                gift_codes_discord = '\n\n'.join(gift_codes_discord)
+        try:
+            gift_codes = requests.get('https://discord.com/api/v9/users/@me/outbound-promotions/codes', headers={'Authorization': token}).json()
+            if gift_codes:
+                codes = []
+                for gift_codes_discord in gift_codes:
+                    name = gift_codes_discord['promotion']['outbound_title']
+                    gift_codes_discord = gift_codes_discord['code']
+                    data = f"Gift: {name}\nCode: {gift_codes_discord}"
+                    if len('\n\n'.join(gift_codes_discord)) + len(data) >= 1024:
+                        break
+                    gift_codes_discord.append(data)
+                if len(gift_codes_discord) > 0:
+                    gift_codes_discord = '\n\n'.join(gift_codes_discord)
+                else:
+                    gift_codes_discord = "None"
             else:
                 gift_codes_discord = "None"
-        else:
+        except:
             gift_codes_discord = "None"
-    except:
-        gift_codes_discord = "None"
 
-    try:
-        mfa_discord = user['mfa_enabled']
-    except:
-        mfa_discord = "None"
+        try:
+            mfa_discord = user['mfa_enabled']
+        except:
+            mfa_discord = "None"
 
-    try:
-        if user['premium_type'] == 0:
-            nitro_discord = 'False'
-        elif user['premium_type'] == 1:
-            nitro_discord = 'Nitro Classic'
-        elif user['premium_type'] == 2:
-            nitro_discord = 'Nitro Boosts'
-        elif user['premium_type'] == 3:
-            nitro_discord = 'Nitro Basic'
-        else:
-            nitro_discord = 'False'
-    except:
-        nitro_discord = "None"
+        try:
+            if user['premium_type'] == 0:
+                nitro_discord = 'False'
+            elif user['premium_type'] == 1:
+                nitro_discord = 'Nitro Classic'
+            elif user['premium_type'] == 2:
+                nitro_discord = 'Nitro Boosts'
+            elif user['premium_type'] == 3:
+                nitro_discord = 'Nitro Basic'
+            else:
+                nitro_discord = 'False'
+        except:
+            nitro_discord = "None"
 
-    return username_discord, display_name_discord, user_id_discord, avatar_url_discord, created_at_discord, email_discord, phone_discord, nitro_discord, friends_discord, gift_codes_discord, mfa_discord
+        return username_discord, display_name_discord, user_id_discord, avatar_url_discord, created_at_discord, email_discord, phone_discord, nitro_discord, friends_discord, gift_codes_discord, mfa_discord
 
 
-by =      input(f"{INPUT} Doxed By      : {reset}")
-reason =  input(f"{INPUT} Reason        : {reset}")
-pseudo1 = input(f"{INPUT} First Pseudo  : {reset}")
-pseudo2 = input(f"{INPUT} Second Pseudo : {reset}")
+    by =      input(f"{INPUT} Doxed By      : {reset}")
+    reason =  input(f"{INPUT} Reason        : {reset}")
+    pseudo1 = input(f"{INPUT} First Pseudo  : {reset}")
+    pseudo2 = input(f"{INPUT} Second Pseudo : {reset}")
 
-print(f"\n{INFO}{yellow} Discord Information:")
-token_input = input(f"{INPUT} Token ? (y/n) -> {reset}")
-if token_input in ["y", "Y", "yes", "YES", "Yes"]:
-    token = input(f"{INPUT} Token: {reset}")
-    username_discord, display_name_discord, user_id_discord, avatar_url_discord, created_at_discord, email_discord, phone_discord, nitro_discord, friends_discord, gift_codes_discord, mfa_discord = TokenInfo(token)
-else:
-    token = "None"
-    username_discord =     input(f"{INPUT} Username      : {reset}")
-    display_name_discord = input(f"{INPUT} Display Name  : {reset}")
-    user_id_discord =      input(f"{INPUT} Id            : {reset}")
-    avatar_url_discord =   input(f"{INPUT} Avatar        : {reset}")
-    created_at_discord =   input(f"{INPUT} Created At    : {reset}")
-    email_discord =        input(f"{INPUT} Email         : {reset}")
-    phone_discord =        input(f"{INPUT} Phone         : {reset}")
-    nitro_discord =        input(f"{INPUT} Nitro         : {reset}")
-    friends_discord =      input(f"{INPUT} Friends       : {reset}")
-    gift_codes_discord =   input(f"{INPUT} Gift Code     : {reset}")
-    mfa_discord =          input(f"{INPUT} Mfa           : {reset}")
+    print(f"\n{INFO}{yellow} Discord Information:")
+    token_input = input(f"{INPUT} Token ? (y/n) -> {reset}")
+    if token_input in ["y", "Y", "yes", "YES", "Yes"]:
+        token = input(f"{INPUT} Token: {reset}")
+        username_discord, display_name_discord, user_id_discord, avatar_url_discord, created_at_discord, email_discord, phone_discord, nitro_discord, friends_discord, gift_codes_discord, mfa_discord = TokenInfo(token)
+    else:
+        token = "None"
+        username_discord =     input(f"{INPUT} Username      : {reset}")
+        display_name_discord = input(f"{INPUT} Display Name  : {reset}")
+        user_id_discord =      input(f"{INPUT} Id            : {reset}")
+        avatar_url_discord =   input(f"{INPUT} Avatar        : {reset}")
+        created_at_discord =   input(f"{INPUT} Created At    : {reset}")
+        email_discord =        input(f"{INPUT} Email         : {reset}")
+        phone_discord =        input(f"{INPUT} Phone         : {reset}")
+        nitro_discord =        input(f"{INPUT} Nitro         : {reset}")
+        friends_discord =      input(f"{INPUT} Friends       : {reset}")
+        gift_codes_discord =   input(f"{INPUT} Gift Code     : {reset}")
+        mfa_discord =          input(f"{INPUT} Mfa           : {reset}")
 
-print(f"\n{INFO}{yellow} Ip Information:")
-ip_public = input(f"{INPUT} Ip Publique   : {reset}")
-ip_local =  input(f"{INPUT} Ip Local      : {reset}")
-ipv6 =      input(f"{INPUT} Ipv6          : {reset}")
-vpn_pc =    input(f"{INPUT} VPN           : {reset}")
-isp_ip, org_ip, as_ip = IpInfo(ip_public)
+    print(f"\n{INFO}{yellow} Ip Information:")
+    ip_public = input(f"{INPUT} Ip Publique   : {reset}")
+    ip_local =  input(f"{INPUT} Ip Local      : {reset}")
+    ipv6 =      input(f"{INPUT} Ipv6          : {reset}")
+    vpn_pc =    input(f"{INPUT} VPN           : {reset}")
+    isp_ip, org_ip, as_ip = IpInfo(ip_public)
 
-print(f"\n{INFO}{yellow} Pc Information:")
-name_pc =         input(f"{INPUT} Name          : {reset}")
-username_pcc =    input(f"{INPUT} Username      : {reset}")
-displayname_pc =  input(f"{INPUT} Display Name  : {reset}")
-platform_pc =     input(f"{INPUT} Platefrom     : {reset}")
-exploitation_pc = input(f"{INPUT} Exploitation  : {reset}")
-windowskey_pc =   input(f"{INPUT} Windows Key   : {reset}")
-mac_pc =          input(f"{INPUT} MAC Adress    : {reset}")
-hwid_pc =         input(f"{INPUT} HWID Adress   : {reset}")
-cpu_pc =          input(f"{INPUT} CPU           : {reset}")
-gpu_pc =          input(f"{INPUT} GPU           : {reset}")
-ram_pc =          input(f"{INPUT} RAM           : {reset}")
-disk_pc =         input(f"{INPUT} Disk          : {reset}")
-mainscreen_pc =   input(f"{INPUT} Screen Main   : {reset}")
-secscreen_pc =    input(f"{INPUT} Screen Sec    : {reset}")
-                  
-print(f"\n{INFO}{yellow} Number Information:")
-phone_number = input(f"{INPUT} Phone Number  : {reset}")
-brand_phone = input(f"{INPUT} Brand         : {reset}")
-operator_phone, type_number_phone, country_phone, region_phone, timezone_phone = NumberInfo(phone_number)
+    print(f"\n{INFO}{yellow} Pc Information:")
+    name_pc =         input(f"{INPUT} Name          : {reset}")
+    username_pcc =    input(f"{INPUT} Username      : {reset}")
+    displayname_pc =  input(f"{INPUT} Display Name  : {reset}")
+    platform_pc =     input(f"{INPUT} Platefrom     : {reset}")
+    exploitation_pc = input(f"{INPUT} Exploitation  : {reset}")
+    windowskey_pc =   input(f"{INPUT} Windows Key   : {reset}")
+    mac_pc =          input(f"{INPUT} MAC Adress    : {reset}")
+    hwid_pc =         input(f"{INPUT} HWID Adress   : {reset}")
+    cpu_pc =          input(f"{INPUT} CPU           : {reset}")
+    gpu_pc =          input(f"{INPUT} GPU           : {reset}")
+    ram_pc =          input(f"{INPUT} RAM           : {reset}")
+    disk_pc =         input(f"{INPUT} Disk          : {reset}")
+    mainscreen_pc =   input(f"{INPUT} Screen Main   : {reset}")
+    secscreen_pc =    input(f"{INPUT} Screen Sec    : {reset}")
+                    
+    print(f"\n{INFO}{yellow} Number Information:")
+    phone_number = input(f"{INPUT} Phone Number  : {reset}")
+    brand_phone = input(f"{INPUT} Brand         : {reset}")
+    operator_phone, type_number_phone, country_phone, region_phone, timezone_phone = NumberInfo(phone_number)
 
-print(f"\n{INFO}{yellow} Personal Information:")
-gender =     input(f"{INPUT} Gender        : {reset}")
-last_name =  input(f"{INPUT} Last Name     : {reset}")
-first_name = input(f"{INPUT} First Name    : {reset}")
-age =        input(f"{INPUT} Age           : {reset}")
-mother =     input(f"{INPUT} Mother        : {reset}")
-father =     input(f"{INPUT} Father        : {reset}")
-brother =    input(f"{INPUT} Brother       : {reset}")
-sister =     input(f"{INPUT} Sister        : {reset}")
-             
-print(f"\n{INFO}{yellow} Loc Information:")
-continent =   input(f"{INPUT} Continent     : {reset}")
-country =     input(f"{INPUT} Country       : {reset}")
-region =      input(f"{INPUT} Region        : {reset}")
-postal_code = input(f"{INPUT} Postal Code   : {reset}")
-city =        input(f"{INPUT} City          : {reset}")
-adress =      input(f"{INPUT} Adress        : {reset}")
-timezone =    input(f"{INPUT} Timezone      : {reset}")
-longitude =   input(f"{INPUT} Longitude     : {reset}")
-latitude =    input(f"{INPUT} Latitude      : {reset}")
+    print(f"\n{INFO}{yellow} Personal Information:")
+    gender =     input(f"{INPUT} Gender        : {reset}")
+    last_name =  input(f"{INPUT} Last Name     : {reset}")
+    first_name = input(f"{INPUT} First Name    : {reset}")
+    age =        input(f"{INPUT} Age           : {reset}")
+    mother =     input(f"{INPUT} Mother        : {reset}")
+    father =     input(f"{INPUT} Father        : {reset}")
+    brother =    input(f"{INPUT} Brother       : {reset}")
+    sister =     input(f"{INPUT} Sister        : {reset}")
+                
+    print(f"\n{INFO}{yellow} Loc Information:")
+    continent =   input(f"{INPUT} Continent     : {reset}")
+    country =     input(f"{INPUT} Country       : {reset}")
+    region =      input(f"{INPUT} Region        : {reset}")
+    postal_code = input(f"{INPUT} Postal Code   : {reset}")
+    city =        input(f"{INPUT} City          : {reset}")
+    adress =      input(f"{INPUT} Adress        : {reset}")
+    timezone =    input(f"{INPUT} Timezone      : {reset}")
+    longitude =   input(f"{INPUT} Longitude     : {reset}")
+    latitude =    input(f"{INPUT} Latitude      : {reset}")
 
-print(f"\n{INFO}{yellow} Social Information:")
-password = input(f"{INPUT} Password      : {reset}")
-email =    input(f"{INPUT} Email         : {reset}")
-           
-print(f"\n{INFO}{yellow} Other:")
-other =    input(f"{INPUT} Other         : {reset}")
-database = input(f"{INPUT} DataBase      : {reset}")
-logs =     input(f"{INPUT} Logs          : {reset}")
-
-
-name_file = input(f"{color.RED}\n{INPUT} Choose the file name -> {color.RESET}")
-if not name_file.strip():
-    name_file = f'No Name {random.randint(1, 999)}'
-
-path = f"./1-FileOutput/DoxCreate/D0x - {name_file}.txt"
-
-with open(path, 'w', encoding='utf-8') as file:
-    file.write(f'''
- {discord_server}
- ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄                                    
-                                     
-		`7MM"""Yb.     .g8""8q.`YMM'   `MP' 
-		  MM    `Yb. .dP'    `YM.VMb.  ,P   
-		  MM     `Mb dM'      `MM `MM.M'    
-		  MM      MM MM        MM   MMb     
-		  MM     ,MP MM.      ,MP ,M'`Mb.   
-		  MM    ,dP' `Mb.    ,dP',P   `MM.  
-		.JMMmmmdP'     `"bmmd"'.MM:.  .:MMa.   Template By RedTiger (https://{github_tool})
-                                    
-                                                         
-                                          
-		Doxed By : {by}
-		Reason   : {reason}
-		Pseudo   : "{pseudo1}", "{pseudo2}"
-  
- ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-
-	      ╔═══════════════════════════════════════════════════════════════════════════════════════╗
-		DISCORD:
-		=====================================================================================
-		[+] Username     : {username_discord}
-		[+] Display Name : {display_name_discord}
-		[+] ID           : {user_id_discord}
-		[+] Avatar       : {avatar_url_discord}
-		[+] Created At   : {created_at_discord}
-		[+] Token        : {token}
-		[+] E-Mail       : {email_discord}
-		[+] Phone        : {phone_discord}
-		[+] Nitro        : {nitro_discord}
-		[+] Friends      : {friends_discord}
-		[+] Gift Code    : {gift_codes_discord}
-		[+] Multi-Factor Authentication : {mfa_discord}
-	      ╚═══════════════════════════════════════════════════════════════════════════════════════╝
-
-	      ╔═══════════════════════════════════════════════════════════════════════════════════════╗
-		INFORMATION:
-		=====================================================================================
-		+────────────Pc────────────+
-		[+] IP Publique  : {ip_public}
-		[+] Ip Local     : {ip_local}
-		[+] Ipv6         : {ipv6}
-		[+] Isp          : {isp_ip}
-		[+] Org          : {org_ip}
-		[+] As           : {as_ip}
-
-		[+] VPN Y/N      : {vpn_pc}
-
-		[+] Name         : {name_pc}
-		[+] Username     : {username_pcc}
-		[+] Display Name : {displayname_pc}
-
-		[+] Plateform    : {platform_pc}
-		[+] Exploitation : {exploitation_pc}
-		[+] Windows Key  : {windowskey_pc}
-
-		[+] MAC          : {mac_pc}
-		[+] HWID         : {hwid_pc}
-		[+] CPU          : {cpu_pc}
-		[+] GPU          : {gpu_pc}
-		[+] RAM          : {ram_pc}
-		[+] Disk         : {disk_pc}
-
-		[+] Screen Main      : {mainscreen_pc}
-		[+] Screen Secondary : {secscreen_pc}
-
-		+───────────Phone──────────+
-		[+] Phone Number : {phone_number}
-		[+] Brand        : {brand_phone}
-		[+] Operator     : {operator_phone}
-		[+] Type Number  : {type_number_phone}
-		[+] Country      : {country_phone}
-		[+] Region       : {region_phone}
-		[+] Timezone     : {timezone_phone}
-
-		+───────────Personal───────+
-		[+] Gender      : {gender}
-		[+] Last Name   : {last_name}
-		[+] First Name  : {first_name}
-		[+] Age         :  {age}
-
-		[+] Mother      : {mother}
-		[+] Father      : {father}
-		[+] Brother     : {brother}
-		[+] Sister      : {sister}
-
-		+────────────Loc───────────+
-		[+] Continent   : {continent}
-		[+] Country     : {country}
-		[+] Region      : {region}
-		[+] Postal Code : {postal_code}
-		[+] City        : {city}
-		[+] Address     : {adress}
-		[+] Timezone    : {timezone}
-		[+] Longitude   : {longitude}
-		[+] Latitude    : {latitude}
-	      ╚═══════════════════════════════════════════════════════════════════════════════════════╝
+    print(f"\n{INFO}{yellow} Social Information:")
+    password = input(f"{INPUT} Password      : {reset}")
+    email =    input(f"{INPUT} Email         : {reset}")
+            
+    print(f"\n{INFO}{yellow} Other:")
+    other =    input(f"{INPUT} Other         : {reset}")
+    database = input(f"{INPUT} DataBase      : {reset}")
+    logs =     input(f"{INPUT} Logs          : {reset}")
 
 
-	      ╔═══════════════════════════════════════════════════════════════════════════════════════╗
-		SOCIAL:
-		=====================================================================================
-		+──────Mails & Password─────+
-		[+] Email    : {email}
-		[+] Password : {password}
-	      ╚═══════════════════════════════════════════════════════════════════════════════════════╝
+    name_file = input(f"{color.RED}\n{INPUT} Choose the file name -> {color.RESET}")
+    if not name_file.strip():
+        name_file = f'No Name {random.randint(1, 999)}'
 
-	      ╔═══════════════════════════════════════════════════════════════════════════════════════╗
-		OTHER:
-		=====================================================================================
-          {other}
-	      ╚═══════════════════════════════════════════════════════════════════════════════════════╝
+    path = f"./1-FileOutput/DoxCreate/D0x - {name_file}.txt"
 
-	      ╔═══════════════════════════════════════════════════════════════════════════════════════╗
-		DATABASE:
-		=====================================================================================
-          {database}
-	      ╚═══════════════════════════════════════════════════════════════════════════════════════╝
+    with open(path, 'w', encoding='utf-8') as file:
+        file.write(f'''
+    {discord_server}
+    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄                                    
+                                        
+            `7MM"""Yb.     .g8""8q.`YMM'   `MP' 
+            MM    `Yb. .dP'    `YM.VMb.  ,P   
+            MM     `Mb dM'      `MM `MM.M'    
+            MM      MM MM        MM   MMb     
+            MM     ,MP MM.      ,MP ,M'`Mb.   
+            MM    ,dP' `Mb.    ,dP',P   `MM.  
+            .JMMmmmdP'     `"bmmd"'.MM:.  .:MMa.   Template By RedTiger (https://{github_tool})
+                                        
+                                                            
+                                            
+            Doxed By : {by}
+            Reason   : {reason}
+            Pseudo   : "{pseudo1}", "{pseudo2}"
+    
+    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
-	      ╔═══════════════════════════════════════════════════════════════════════════════════════╗
-		LOGS:
-		=====================================================================================
-          {logs}
-	      ╚═══════════════════════════════════════════════════════════════════════════════════════╝
-''')
+            ╔═══════════════════════════════════════════════════════════════════════════════════════╗
+            DISCORD:
+            =====================================================================================
+            [+] Username     : {username_discord}
+            [+] Display Name : {display_name_discord}
+            [+] ID           : {user_id_discord}
+            [+] Avatar       : {avatar_url_discord}
+            [+] Created At   : {created_at_discord}
+            [+] Token        : {token}
+            [+] E-Mail       : {email_discord}
+            [+] Phone        : {phone_discord}
+            [+] Nitro        : {nitro_discord}
+            [+] Friends      : {friends_discord}
+            [+] Gift Code    : {gift_codes_discord}
+            [+] Multi-Factor Authentication : {mfa_discord}
+            ╚═══════════════════════════════════════════════════════════════════════════════════════╝
 
-print(color.RED + f"{INFO} The DOX {color.WHITE}\"{name_file}\"{color.RED} was sent to: {color.WHITE}\"{path}\""+ color.RESET)
-Continue()
-Reset()
+            ╔═══════════════════════════════════════════════════════════════════════════════════════╗
+            INFORMATION:
+            =====================================================================================
+            +────────────Pc────────────+
+            [+] IP Publique  : {ip_public}
+            [+] Ip Local     : {ip_local}
+            [+] Ipv6         : {ipv6}
+            [+] Isp          : {isp_ip}
+            [+] Org          : {org_ip}
+            [+] As           : {as_ip}
+
+            [+] VPN Y/N      : {vpn_pc}
+
+            [+] Name         : {name_pc}
+            [+] Username     : {username_pcc}
+            [+] Display Name : {displayname_pc}
+
+            [+] Plateform    : {platform_pc}
+            [+] Exploitation : {exploitation_pc}
+            [+] Windows Key  : {windowskey_pc}
+
+            [+] MAC          : {mac_pc}
+            [+] HWID         : {hwid_pc}
+            [+] CPU          : {cpu_pc}
+            [+] GPU          : {gpu_pc}
+            [+] RAM          : {ram_pc}
+            [+] Disk         : {disk_pc}
+
+            [+] Screen Main      : {mainscreen_pc}
+            [+] Screen Secondary : {secscreen_pc}
+
+            +───────────Phone──────────+
+            [+] Phone Number : {phone_number}
+            [+] Brand        : {brand_phone}
+            [+] Operator     : {operator_phone}
+            [+] Type Number  : {type_number_phone}
+            [+] Country      : {country_phone}
+            [+] Region       : {region_phone}
+            [+] Timezone     : {timezone_phone}
+
+            +───────────Personal───────+
+            [+] Gender      : {gender}
+            [+] Last Name   : {last_name}
+            [+] First Name  : {first_name}
+            [+] Age         :  {age}
+
+            [+] Mother      : {mother}
+            [+] Father      : {father}
+            [+] Brother     : {brother}
+            [+] Sister      : {sister}
+
+            +────────────Loc───────────+
+            [+] Continent   : {continent}
+            [+] Country     : {country}
+            [+] Region      : {region}
+            [+] Postal Code : {postal_code}
+            [+] City        : {city}
+            [+] Address     : {adress}
+            [+] Timezone    : {timezone}
+            [+] Longitude   : {longitude}
+            [+] Latitude    : {latitude}
+            ╚═══════════════════════════════════════════════════════════════════════════════════════╝
+
+
+            ╔═══════════════════════════════════════════════════════════════════════════════════════╗
+            SOCIAL:
+            =====================================================================================
+            +──────Mails & Password─────+
+            [+] Email    : {email}
+            [+] Password : {password}
+            ╚═══════════════════════════════════════════════════════════════════════════════════════╝
+
+            ╔═══════════════════════════════════════════════════════════════════════════════════════╗
+            OTHER:
+            =====================================================================================
+            {other}
+            ╚═══════════════════════════════════════════════════════════════════════════════════════╝
+
+            ╔═══════════════════════════════════════════════════════════════════════════════════════╗
+            DATABASE:
+            =====================================================================================
+            {database}
+            ╚═══════════════════════════════════════════════════════════════════════════════════════╝
+
+            ╔═══════════════════════════════════════════════════════════════════════════════════════╗
+            LOGS:
+            =====================================================================================
+            {logs}
+            ╚═══════════════════════════════════════════════════════════════════════════════════════╝
+    ''')
+
+    print(color.RED + f"{INFO} The DOX {color.WHITE}\"{name_file}\"{color.RED} was sent to: {color.WHITE}\"{path}\""+ color.RESET)
+    Continue()
+    Reset()
+except Exception as e:
+    Error(e)

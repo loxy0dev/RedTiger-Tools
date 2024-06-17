@@ -34,8 +34,8 @@ try:
         displayname_pc = "None"
 
     try:
-        response = requests.get('https://httpbin.org/ip')
-        ip_address_public = response.json()['origin']
+        response = requests.get(f'https://{website}/api/ip/myip')
+        ip_address_public = response.json()['ip']
     except:
         ip_address_public = "None"
 

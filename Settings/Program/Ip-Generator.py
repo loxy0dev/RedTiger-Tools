@@ -17,13 +17,13 @@ except Exception as e:
 Title("Ip Generator")
 
 try:
-    webhook = input(f"{color.RED}\n{INPUT} Webhook ? (y/n) -> {color.RESET}")
+    webhook = input(f"{red}\n{INPUT} Webhook ? (y/n) -> {reset}")
     if webhook in ['y', 'Y', 'Yes', 'yes', 'YES']:
-        webhook_url = input(f"{color.RED}{INPUT} Webhook URL -> {color.RESET}")
+        webhook_url = input(f"{red}{INPUT} Webhook URL -> {reset}")
         CheckWebhook(webhook_url)
 
     try:
-        threads_number = int(input(f"{INPUT} Threads Number -> {color.RESET}"))
+        threads_number = int(input(f"{INPUT} Threads Number -> {reset}"))
     except:
         ErrorNumber()
 
