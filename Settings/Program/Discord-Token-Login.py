@@ -20,45 +20,67 @@ try:
 {white}[{red}02{white}] {red}->{white} Chrome (Windows)
 {white}[{red}03{white}] {red}->{white} Firefox (Windows)
 {white}[{red}04{white}] {red}->{white} Edge (Windows)
-
     """)
-    browser = input(f"{red}{INPUT} Browser -> {reset}")
+    browser = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Browser -> {reset}")
 
-    try:
-        if browser == '1':
-            if sys.platform.startswith("win"):
-                OnlyLinux()
+    if browser in ['1', '01']:
+        if sys.platform.startswith("win"):
+            OnlyWindows()
+        try:
             navigator = "Chrome Linux"
-            print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} {navigator} Starting..{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
             chrome_driver_path = os.path.abspath("./Driver/chromedriverlinux")
             chrome_options = webdriver.ChromeOptions()
             chrome_options.add_argument(f"webdriver.chrome.driver={chrome_driver_path}")
             driver = webdriver.Chrome(options=chrome_options)
-            print(f"{red}[{white}{current_time_hour()}{red}] {INFO} {navigator} Ready !{blue}")
-        if browser == '2':
-            if sys.platform.startswith("linux"):
-                OnlyLinux()
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
+        except:
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
+            Continue()
+            Reset()
+            
+    elif browser in ['2', '02']:
+        if sys.platform.startswith("linux"):
+            OnlyLinux()
+        try:
             navigator = "Chrome"
-            print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} {navigator} Starting..{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
             driver = webdriver.Chrome()
-            print(f"{red}[{white}{current_time_hour()}{red}] {INFO} {navigator} Ready !{blue}")
-        elif browser == '3':
-            if sys.platform.startswith("linux"):
-                OnlyLinux()
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
+        except:
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
+            Continue()
+            Reset()
+
+    elif browser in ['3', '03']:
+        if sys.platform.startswith("linux"):
+            OnlyLinux()
+        try:
             navigator = "Firefox"
-            print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} {navigator} Starting..{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
             driver = webdriver.Firefox()
-            print(f"{red}[{white}{current_time_hour()}{red}] {INFO} {navigator} Ready !{blue}")
-        elif browser == '4':
-            if sys.platform.startswith("linux"):
-                OnlyLinux()
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
+        except:
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
+            Continue()
+            Reset()
+
+    elif browser in ['4', '04']:
+        if sys.platform.startswith("linux"):
+            OnlyLinux()
+        try:
             navigator = "Edge"
-            print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} {navigator} Starting..{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
             driver = webdriver.Edge()
-            print(f"{red}[{white}{current_time_hour()}{red}] {INFO} {navigator} Ready !{blue}")
-        else:
-            ErrorChoice()
-        
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
+        except:
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
+            Continue()
+            Reset()
+    else:
+        ErrorChoice()
+    
+    try:
         script = """
                 function login(token) {
                 setInterval(() => {
@@ -71,15 +93,15 @@ try:
                 """
         
         driver.get("https://discord.com/login")
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Token Connection..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Token Connection..{blue}")
         driver.execute_script(script + f'\nlogin("{token}")')
         time.sleep(4)
-        print(f"{red}[{white}{current_time_hour()}{red}] {INFO} Connected Token !{blue}")
-        print(f"{INFO} If you leave the tool, edge will close!{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Connected Token !{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} If you leave the tool, edge will close!{blue}")
         Continue()
         Reset()
     except:
-        print(f"{color.RED}{ERROR} {navigator} not installed or driver not up to date.")
+        print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
         Continue()
         Reset()
 except Exception as e:

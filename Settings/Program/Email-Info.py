@@ -81,13 +81,13 @@ try:
 
         return info, domain_all, domain, tld, name
 
-    email = input(f"\n{INPUT} Email -> {reset}")
+    email = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Email -> {reset}")
     if censored in email:
-        print(f'{ERROR} Unable to find email "{white}{email}{red}".')
+        print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find email "{white}{email}{red}".')
         Continue()
         Reset()
         
-    print(f"{color.RED}{WAIT} Information Recovery..{reset}")
+    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Information Recovery..{reset}")
     info, domain_all, domain, tld, name = get_email_info(email)
 
     try:
@@ -119,16 +119,16 @@ try:
         mailgun_validation = None
 
     print(f"""
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Email      : {color.WHITE}{email}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Name       : {color.WHITE}{name}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Domain     : {color.WHITE}{domain}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Tld        : {color.WHITE}{tld}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Domain All : {color.WHITE}{domain_all}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Servers    : {color.WHITE}{mx_servers}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Spf        : {color.WHITE}{spf_records}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Dmarc      : {color.WHITE}{dmarc_records}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Workspace  : {color.WHITE}{google_workspace}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Mailgun    : {color.WHITE}{mailgun_validation}{color.RED}
+    {INFO_ADD} Email      : {white}{email}{red}
+    {INFO_ADD} Name       : {white}{name}{red}
+    {INFO_ADD} Domain     : {white}{domain}{red}
+    {INFO_ADD} Tld        : {white}{tld}{red}
+    {INFO_ADD} Domain All : {white}{domain_all}{red}
+    {INFO_ADD} Servers    : {white}{mx_servers}{red}
+    {INFO_ADD} Spf        : {white}{spf_records}{red}
+    {INFO_ADD} Dmarc      : {white}{dmarc_records}{red}
+    {INFO_ADD} Workspace  : {white}{google_workspace}{red}
+    {INFO_ADD} Mailgun    : {white}{mailgun_validation}{red}
     {color.RESET}""")
 
     Continue()

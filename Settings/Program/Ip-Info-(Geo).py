@@ -6,16 +6,18 @@ See the file 'LICENSE' for copying permission
 from Config.Util import *
 from Config.Config import *
 try:
-    from json import *
     import requests
+    import socket
+    import concurrent.futures
 except Exception as e:
    ErrorModule(e)
    
 Title("Ip Info")
 
 try:
-    ip = input(f"\n{INPUT} Ip -> {reset}")
-    print(f"{WAIT} Information Recovery..{reset}")
+    Slow(map_banner)
+    ip = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Ip -> {reset}")
+    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Information Recovery..{reset}")
 
     response = requests.get(f"https://{website}/api/ip/ip={ip}")
     api = response.json()
@@ -39,19 +41,18 @@ try:
     copyright = api['copyright']
 
     print(f"""
-    {white}[{red}+{white}]{red} Ip        : {white}{ip}{red}
-    {white}[{red}+{white}]{red} Status    : {white}{status}{red}
-    {white}[{red}+{white}]{red} Country   : {white}{country} ({country_code}){red}
-    {white}[{red}+{white}]{red} Region    : {white}{region} ({region_code}){red}
-    {white}[{red}+{white}]{red} Zip       : {white}{zip}{red}
-    {white}[{red}+{white}]{red} City      : {white}{city}{red}
-    {white}[{red}+{white}]{red} Latitude  : {white}{latitude}{red}
-    {white}[{red}+{white}]{red} Longitude : {white}{longitude}{red}
-    {white}[{red}+{white}]{red} Timezone  : {white}{timezone}{red}
-    {white}[{red}+{white}]{red} Isp       : {white}{isp}{red}
-    {white}[{red}+{white}]{red} Org       : {white}{org}{red}
-    {white}[{red}+{white}]{red} As        : {white}{as_host}{red}
-    {white}[{red}+{white}]{red} Copyright : {white}{copyright}{red}
+    {INFO_ADD} Ip         : {white}{ip}{red}
+    {INFO_ADD} Status     : {white}{status}{red}
+    {INFO_ADD} Country    : {white}{country} ({country_code}){red}
+    {INFO_ADD} Region     : {white}{region} ({region_code}){red}
+    {INFO_ADD} Zip        : {white}{zip}{red}
+    {INFO_ADD} City       : {white}{city}{red}
+    {INFO_ADD} Latitude   : {white}{latitude}{red}
+    {INFO_ADD} Longitude  : {white}{longitude}{red}
+    {INFO_ADD} Timezone   : {white}{timezone}{red}
+    {INFO_ADD} Isp        : {white}{isp}{red}
+    {INFO_ADD} Org        : {white}{org}{red}
+    {INFO_ADD} As         : {white}{as_host}{red}
     {reset}""")
     try:
         BrowserPrivate(site=loc_url, title=f"Ip Localisation ({latitude}, {longitude})", search_bar=False)

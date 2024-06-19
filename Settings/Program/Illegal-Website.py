@@ -67,10 +67,10 @@ try:
             {w}┃[{r}Database{w}]     : {r}http://breachdbsztfykg2fdaq2gnqnxfsbj5d35byz3yzj73hazydk4vq72qd.onion/{w}    ┃
             {w}┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
- {color.WHITE}[{color.RED}00{color.WHITE}] {color.RED}->{color.WHITE} Back
+ {white}[{red}00{white}] {red}->{white} Back
 """)
 
-    choice = input(f"{color.RED}{INPUT} Site -> {color.WHITE}")
+    choice = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Site -> {color.WHITE}")
     if choice in ['01', '1']:
         webbrowser.open("https://ddosnow.com")
 

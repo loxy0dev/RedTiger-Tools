@@ -13,23 +13,23 @@ except Exception as e:
 Title("Tool Info")
 
 try:
-    print(f"\n{red}{WAIT} Information Recovery..{reset}")
+    print(f"\n{BEFORE + current_time_hour() + AFTER} {WAIT} Information Recovery..{reset}")
 
-    print(f"""{red}
-    {white}[{red}+{white}]{red} Name Tool     :  {white}{name_tool}
-    {white}[{red}+{white}]{red} Version       :  {white}{version_tool}
-    {white}[{red}+{white}]{red} Copyright     :  {white}{copyright}
-    {white}[{red}+{white}]{red} Coding        :  {white}{coding_tool}
-    {white}[{red}+{white}]{red} Language      :  {white}{language_tool}
-    {white}[{red}+{white}]{red} Creator       :  {white}{creator}
-    {white}[{red}+{white}]{red} Platform      :  {white}{platform}
-    {white}[{red}+{white}]{red} Discord  [02] :  {white}https://{discord_server}
-    {white}[{red}+{white}]{red} Site     [02] :  {white}https://{website}
-    {white}[{red}+{white}]{red} GitHub   [02] :  {white}https://{github_tool}
-    {white}[{red}+{white}]{red} Telegram [02] :  {white}https://{telegram}
+    print(f"""
+    {INFO_ADD} Name Tool     :  {white}{name_tool}
+    {INFO_ADD} Version       :  {white}{version_tool}
+    {INFO_ADD} Copyright     :  {white}{copyright}
+    {INFO_ADD} Coding        :  {white}{coding_tool}
+    {INFO_ADD} Language      :  {white}{language_tool}
+    {INFO_ADD} Creator       :  {white}{creator}
+    {INFO_ADD} Platform      :  {white}{platform}
+    {INFO_ADD} Discord  [02] :  {white}https://{discord_server}
+    {INFO_ADD} Site     [02] :  {white}https://{website}
+    {INFO_ADD} GitHub   [02] :  {white}https://{github_tool}
+    {INFO_ADD} Telegram [02] :  {white}https://{telegram}
     {reset}""")
 
-    license_read = input(f"{INPUT} Open 'LICENSE' ? (y/n) -> {reset}")
+    license_read = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Open 'LICENSE' ? (y/n) -> {reset}")
     if license_read in ['y', 'Y', 'Yes', 'yes', 'YES']:
         webbrowser.open_new_tab(license)
     else:

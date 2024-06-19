@@ -169,7 +169,7 @@ try:
         return username_discord, display_name_discord, user_id_discord, avatar_url_discord, created_at_discord, email_discord, phone_discord, nitro_discord, friends_discord, gift_codes_discord, mfa_discord
 
 
-    by =      input(f"{INPUT} Doxed By      : {reset}")
+    by =      input(f"\n{INPUT} Doxed By      : {reset}")
     reason =  input(f"{INPUT} Reason        : {reset}")
     pseudo1 = input(f"{INPUT} First Pseudo  : {reset}")
     pseudo2 = input(f"{INPUT} Second Pseudo : {reset}")

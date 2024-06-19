@@ -17,10 +17,10 @@ except Exception as e:
 Title("Username Tracker (OSINT)")
 
 try:
-    username = input(f"\n{INPUT} Username -> {reset}")
+    username = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Username -> {reset}")
 
     if censored in username:
-        print(f'{ERROR} Unable to find username "{white}{username}{red}".')
+        print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find username "{white}{username}{red}".')
         Continue()
         Reset()
 
@@ -30,60 +30,60 @@ try:
 {white}[{red}03{white}] {red}->{white} Firefox (Windows)
 {white}[{red}04{white}] {red}->{white} Edge (Windows)
     """)
-    browser = input(f"{red}{INPUT} Browser -> {reset}")
+    browser = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Browser -> {reset}")
 
-    if browser == '1':
+    if browser in ['1', '01']:
         if sys.platform.startswith("win"):
-            OnlyLinux()
+            OnlyWindows()
         try:
             navigator = "Chrome Linux"
-            print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} {navigator} Starting..{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
             chrome_driver_path = os.path.abspath("./Driver/chromedriverlinux")
             chrome_options = webdriver.ChromeOptions()
             chrome_options.add_argument(f"webdriver.chrome.driver={chrome_driver_path}")
             driver = webdriver.Chrome(options=chrome_options)
-            print(f"{red}[{white}{current_time_hour()}{red}] {INFO} {navigator} Ready !{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
         except:
-            print(f"{ERROR} {navigator} not installed or driver not up to date.")
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
             Continue()
             Reset()
             
-    if browser == '2':
+    elif browser in ['2', '02']:
         if sys.platform.startswith("linux"):
             OnlyLinux()
         try:
             navigator = "Chrome"
-            print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} {navigator} Starting..{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
             driver = webdriver.Chrome()
-            print(f"{red}[{white}{current_time_hour()}{red}] {INFO} {navigator} Ready !{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
         except:
-            print(f"{ERROR} {navigator} not installed or driver not up to date.")
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
             Continue()
             Reset()
 
-    elif browser == '3':
+    elif browser in ['3', '03']:
         if sys.platform.startswith("linux"):
             OnlyLinux()
         try:
             navigator = "Firefox"
-            print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} {navigator} Starting..{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
             driver = webdriver.Firefox()
-            print(f"{red}[{white}{current_time_hour()}{red}] {INFO} {navigator} Ready !{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
         except:
-            print(f"{ERROR} {navigator} not installed or driver not up to date.")
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
             Continue()
             Reset()
 
-    elif browser == '4':
+    elif browser in ['4', '04']:
         if sys.platform.startswith("linux"):
             OnlyLinux()
         try:
             navigator = "Edge"
-            print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} {navigator} Starting..{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
             driver = webdriver.Edge()
-            print(f"{red}[{white}{current_time_hour()}{red}] {INFO} {navigator} Ready !{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
         except:
-            print(f"{ERROR} {navigator} not installed or driver not up to date.")
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
             Continue()
             Reset()
     else:
@@ -103,7 +103,7 @@ try:
         return translated_text
 
     def tiktok_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Tiktok..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Tiktok..{blue}")
         try:
             link = r"https://www.tiktok.com/@" + username
             driver.get(link)
@@ -118,7 +118,7 @@ try:
         return tiktok
 
     def instagram_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Instagram..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Instagram..{blue}")
         try:
             link = r"https://instagram.com/" + username
             driver.get(link)
@@ -133,7 +133,7 @@ try:
         return instagram
 
     def giters_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Giters..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Giters..{blue}")
         try:
             link = r"https://giters.com/" + username
             driver.get(link)
@@ -151,7 +151,7 @@ try:
         return giters
 
     def github_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Github..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Github..{blue}")
         try:
             link = r"https://github.com/" + username
             driver.get(link)
@@ -166,7 +166,7 @@ try:
         return github
 
     def paypal_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Paypal..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Paypal..{blue}")
         try:
             link = r"https://www.paypal.com/paypalme/" + username
             driver.get(link)
@@ -183,7 +183,7 @@ try:
         return paypal
 
     def telegram_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Telegram..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Telegram..{blue}")
         try:
             link = r"https://t.me/" + username
             driver.get(link)
@@ -200,7 +200,7 @@ try:
         return telegram
 
     def snapchat_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Snapchat..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Snapchat..{blue}")
         try:
             link = r"https://www.snapchat.com/add/" + username
             driver.get(link)
@@ -215,7 +215,7 @@ try:
         return snapchat
 
     def linktree_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Linktree..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Linktree..{blue}")
         try:
             link = r"https://linktr.ee/" + username
             driver.get(link)
@@ -230,7 +230,7 @@ try:
         return linktree
 
     def roblox_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Roblox..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Roblox..{blue}")
         try:
             link = r"https://www.roblox.com/search/users?keyword=" + username
             driver.get(link)
@@ -245,7 +245,7 @@ try:
         return roblox
 
     def streamlabs_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Streamlabs..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Streamlabs..{blue}")
         try:
             link = r"https://streamlabs.com/" + username + r"/tip"
             driver.get(link)
@@ -263,18 +263,18 @@ try:
 
 
     Slow(f"""
-    {red}The username "{white}{username}{red}" was found:
+{BEFORE + current_time_hour() + AFTER} {INFO} The username "{white}{username}{red}" was found:
 
-    {white}[{red}+{white}]{red} Tiktok     : {white}{tiktok_search()}{red}
-    {white}[{red}+{white}]{red} Instagram  : {white}{instagram_search()}{red}
-    {white}[{red}+{white}]{red} Snapchat   : {white}{snapchat_search()}{red}
-    {white}[{red}+{white}]{red} Giters     : {white}{giters_search()}{red}
-    {white}[{red}+{white}]{red} Github     : {white}{github_search()}{red}
-    {white}[{red}+{white}]{red} Paypal     : {white}{paypal_search()}{red}
-    {white}[{red}+{white}]{red} Telegram   : {white}{telegram_search()}{red}
-    {white}[{red}+{white}]{red} Linktree   : {white}{linktree_search()}{red}
-    {white}[{red}+{white}]{red} Roblox     : {white}{roblox_search()}{red}
-    {white}[{red}+{white}]{red} Streamlabs : {white}{streamlabs_search()}{red}
+    {INFO_ADD} Tiktok     : {white}{tiktok_search()}{red}
+    {INFO_ADD} Instagram  : {white}{instagram_search()}{red}
+    {INFO_ADD} Snapchat   : {white}{snapchat_search()}{red}
+    {INFO_ADD} Giters     : {white}{giters_search()}{red}
+    {INFO_ADD} Github     : {white}{github_search()}{red}
+    {INFO_ADD} Paypal     : {white}{paypal_search()}{red}
+    {INFO_ADD} Telegram   : {white}{telegram_search()}{red}
+    {INFO_ADD} Linktree   : {white}{linktree_search()}{red}
+    {INFO_ADD} Roblox     : {white}{roblox_search()}{red}
+    {INFO_ADD} Streamlabs : {white}{streamlabs_search()}{red}
     """)
 
     driver.quit()

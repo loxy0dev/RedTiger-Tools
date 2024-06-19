@@ -20,34 +20,34 @@ try:
     {white}[{red}03{white}] {red}->{white} Other
     """)
 
-    search_type = input(f"{INPUT} Search Type -> {reset}")
+    search_type = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Search Type -> {reset}")
 
     if search_type in ['00', '0']:
         Reset()
 
     if search_type in ['01', '1']:
-        search = input(f"{INPUT} Username -> {reset}")
+        search = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Username -> {reset}")
         if censored in search:
-            print(f'{ERROR} Unable to find "{white}{search}{red}".')
+            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find "{white}{search}{red}".')
             Continue()
             Reset()
             
     elif search_type in ['02', '2']:
-        name = input(f"{INPUT} LastName -> {reset}")
-        first_name = input(f"{INPUT} FirstName -> {reset}")
+        name = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} LastName -> {reset}")
+        first_name = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} FirstName -> {reset}")
         if censored in name:
-            print(f'{ERROR} Unable to find "{white}{name}, {first_name}{red}".')
+            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find "{white}{name}, {first_name}{red}".')
             Continue()
             Reset()
         elif censored in first_name:
-            print(f'{ERROR} Unable to find "{white}{name}, {first_name}{red}".')
+            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find "{white}{name}, {first_name}{red}".')
             Continue()
             Reset()
         
     elif search_type in ['03', '3']:
-        search = input(f"{INPUT} Search -> {reset}")
+        search = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Search -> {reset}")
         if censored in search:
-            print(f'{ERROR} Unable to find "{white}{search}{red}".')
+            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find "{white}{search}{red}".')
             Continue()
             Reset()
     else:
@@ -67,7 +67,7 @@ try:
     while True:
         
         if search_type in ['1', '01','2','02','3','03']:
-            choice = input(f"{color.RED}{INPUT} Site -> {color.RESET}")
+            choice = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Site -> {color.RESET}")
 
             if choice in ['0', '00']:
                 break

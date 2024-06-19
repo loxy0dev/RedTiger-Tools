@@ -9,15 +9,19 @@ try:
     from json import *
     import requests
     import socket
-    import win32api
+    if sys.platform.startswith("win"):
+        "WINDOWS"
+        import win32api
+    else:
+        pass
 except Exception as e:
    ErrorModule(e)
    
 Title("Get Your Ip")
 
 try:
-    print(f"\n{INFO} Your Ip is not sent to anyone.")
-    print(f"{WAIT} Search your Ip..")
+    print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Your Ip is not sent to anyone.")
+    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search your Ip..")
     try:
         hostname_pc = socket.gethostname()
     except:
@@ -29,7 +33,11 @@ try:
         username_pc = "None"
 
     try:
-        displayname_pc = win32api.GetUserNameEx(win32api.NameDisplay)
+        if sys.platform.startswith("win"):
+            "WINDOWS"
+            displayname_pc = win32api.GetUserNameEx(win32api.NameDisplay)
+        else:
+            displayname_pc = "None"
     except:
         displayname_pc = "None"
 
@@ -59,12 +67,12 @@ try:
             ip_address_ipv6 = "None"
 
     print(f"""
-    {white}[{red}+{white}]{red} Pc Hostname      : {white}{hostname_pc}{red}
-    {white}[{red}+{white}]{red} Pc Username      : {white}{username_pc}{red}
-    {white}[{red}+{white}]{red} Pc DisplayName   : {white}{displayname_pc}{red}
-    {white}[{red}+{white}]{red} Ip Public [ipv4] : {white}{ip_address_public}{red}
-    {white}[{red}+{white}]{red} Ip Local  [ipv4] : {white}{ip_address_local}{red}
-    {white}[{red}+{white}]{red} Ipv6             : {white}{ip_address_ipv6}{red}
+    {INFO_ADD} Pc Hostname      : {white}{hostname_pc}{red}
+    {INFO_ADD} Pc Username      : {white}{username_pc}{red}
+    {INFO_ADD} Pc DisplayName   : {white}{displayname_pc}{red}
+    {INFO_ADD} Ip Public [ipv4] : {white}{ip_address_public}{red}
+    {INFO_ADD} Ip Local  [ipv4] : {white}{ip_address_local}{red}
+    {INFO_ADD} Ipv6             : {white}{ip_address_ipv6}{red}
     """)
 
     Continue()

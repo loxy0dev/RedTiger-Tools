@@ -15,8 +15,8 @@ except Exception as e:
 Title("Number Info")
 
 try:
-    phone_number = input(f"{color.RED}\n{INPUT} Phone Number -> {color.RESET}")
-    print(f"{color.RED}{WAIT} Information Recovery..{reset}")
+    phone_number = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Phone Number -> {color.RESET}")
+    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Information Recovery..{reset}")
     try:
         parsed_number = phonenumbers.parse(phone_number, None)
         if phonenumbers.is_valid_number(parsed_number):
@@ -44,20 +44,20 @@ try:
 
 
         print(f"""
-    {white}[{red}+{white}]{red} Phone        : {white}{phone_number}{red}
-    {white}[{red}+{white}]{red} Formatted    : {white}{formatted_number}{red}
-    {white}[{red}+{white}]{red} Status       : {white}{status}{red}
-    {white}[{red}+{white}]{red} Country Code : {white}{country_code}{red}
-    {white}[{red}+{white}]{red} Country      : {white}{country}{red}
-    {white}[{red}+{white}]{red} Region       : {white}{region}{red}
-    {white}[{red}+{white}]{red} Timezone     : {white}{timezone_info}{red}
-    {white}[{red}+{white}]{red} Operator     : {white}{operator}{red}
-    {white}[{red}+{white}]{red} Type Number  : {white}{type_number}{red}
+    {INFO_ADD} Phone        : {white}{phone_number}{red}
+    {INFO_ADD} Formatted    : {white}{formatted_number}{red}
+    {INFO_ADD} Status       : {white}{status}{red}
+    {INFO_ADD} Country Code : {white}{country_code}{red}
+    {INFO_ADD} Country      : {white}{country}{red}
+    {INFO_ADD} Region       : {white}{region}{red}
+    {INFO_ADD} Timezone     : {white}{timezone_info}{red}
+    {INFO_ADD} Operator     : {white}{operator}{red}
+    {INFO_ADD} Type Number  : {white}{type_number}{red}
     """)
         Continue()
         Reset()
     except:
-        print(f"{INFO} Invalid Format ! [Ex: {white}+442012345678{red} or {white}+33623456789]")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Invalid Format ! [Ex: {white}+442012345678{red} or {white}+33623456789{red}]")
         Continue()
         Reset()
 except Exception as e:

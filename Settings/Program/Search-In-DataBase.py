@@ -13,11 +13,11 @@ try:
     folder_database = os.path.abspath(folder_database_relative)
 
     print(f"""
-{INFO} Add DataBase to the "{white}{folder_database_relative}{red}" folder.
-{INFO} If you don't have a DataBase you can get one on the Discord Server "{white}{discord_server}{red}\".""")
-    search = input(f"\n{INPUT} Search -> {reset}")
+{BEFORE + current_time_hour() + AFTER} {INFO} Add DataBase to the "{white}{folder_database_relative}{red}" folder.
+{BEFORE + current_time_hour() + AFTER} {INFO} If you don't have a DataBase you can get one on the Discord Server "{white}{discord_server}{red}\".""")
+    search = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Search -> {reset}")
 
-    print(f"{WAIT} Search in DataBase..")
+    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in DataBase..")
 
     def TitleSearch(files_searched, element):
         Title(f"Search DataBase | Total: {files_searched} | File: {element}")
@@ -28,7 +28,7 @@ try:
         def check(folder):
             global files_searched
             results_found = False
-            print(f"{WAIT} Search in {white}{folder}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in {white}{folder}")
             for element in os.listdir(folder):
                 chemin_element = os.path.join(folder, element)
                 if os.path.isdir(chemin_element):
@@ -68,19 +68,19 @@ try:
 - Result : {white}{line_info}
     """)
                         except Exception as e:
-                            print(f"{ERROR} Error reading file \"{white}{element}{red}\": {white}{e}")
+                            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Error reading file \"{white}{element}{red}\": {white}{e}")
                     except Exception as e:
-                        print(f"{ERROR} Error reading file \"{white}{element}{red}\": {white}{e}")
+                        print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Error reading file \"{white}{element}{red}\": {white}{e}")
             return results_found
 
         results_found = check(folder_database)
         if not results_found:
-            print(f"{INFO} No result found for \"{white}{search}{red}\".")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} No result found for \"{white}{search}{red}\".")
 
-        print(f"{INFO} Total files searched: {white}{files_searched}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Total files searched: {white}{files_searched}")
 
     except Exception as e:
-        print(f"{ERROR} Error during search: {white}{e}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Error during search: {white}{e}")
 
     Continue()
     Reset()

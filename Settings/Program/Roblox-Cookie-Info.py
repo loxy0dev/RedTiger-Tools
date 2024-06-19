@@ -14,8 +14,8 @@ except Exception as e:
 Title("Roblox Cookie Info")
 
 try:
-    cookie = input(f"{color.RED}\n{INPUT} Cookie -> {color.WHITE}")
-    print(f"{color.RED}{WAIT} Information Recovery..{reset}")
+    cookie = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Cookie -> {white}")
+    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Information Recovery..{reset}")
     try:
         info = requests.get("https://www.roblox.com/mobileapi/userinfo", cookies={".ROBLOSECURITY": cookie})
         print(info.json())
@@ -55,13 +55,13 @@ try:
 
 
     print(f"""
-    {white}[{red}+{white}]{red} Status        : {white}{status}{red}
-    {white}[{red}+{white}]{red} Username      : {white}{username_roblox}{red}
-    {white}[{red}+{white}]{red} Id            : {white}{user_id_roblox}{red}
-    {white}[{red}+{white}]{red} Robux         : {white}{robux_roblox}{red}
-    {white}[{red}+{white}]{red} Premium       : {white}{premium_roblox}{red}
-    {white}[{red}+{white}]{red} Builders Club : {white}{builders_club_roblox}{red}
-    {white}[{red}+{white}]{red} Avatar        : {white}{avatar_roblox}{red}
+    {INFO_ADD} Status        : {white}{status}{red}
+    {INFO_ADD} Username      : {white}{username_roblox}{red}
+    {INFO_ADD} Id            : {white}{user_id_roblox}{red}
+    {INFO_ADD} Robux         : {white}{robux_roblox}{red}
+    {INFO_ADD} Premium       : {white}{premium_roblox}{red}
+    {INFO_ADD} Builders Club : {white}{builders_club_roblox}{red}
+    {INFO_ADD} Avatar        : {white}{avatar_roblox}{red}
     """)
     Continue()
     Reset()

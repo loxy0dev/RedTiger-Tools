@@ -17,10 +17,10 @@ except Exception as e:
 Title("Email Tracker (OSINT)")
 
 try:
-    email = input(f"\n{INPUT} Email -> {reset}")
+    email = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Email -> {reset}")
 
     if censored in email:
-        print(f'{ERROR} Unable to find email "{white}{email}{red}".')
+        print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find email "{white}{email}{red}".')
         Continue()
         Reset()
 
@@ -30,60 +30,60 @@ try:
 {white}[{red}03{white}] {red}->{white} Firefox (Windows)
 {white}[{red}04{white}] {red}->{white} Edge (Windows)
     """)
-    browser = input(f"{red}{INPUT} Browser -> {reset}")
+    browser = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Browser -> {reset}")
 
-    if browser == '1':
+    if browser in ['1', '01']:
         if sys.platform.startswith("win"):
-            OnlyLinux()
+            OnlyWindows()
         try:
             navigator = "Chrome Linux"
-            print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} {navigator} Starting..{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
             chrome_driver_path = os.path.abspath("./Driver/chromedriverlinux")
             chrome_options = webdriver.ChromeOptions()
             chrome_options.add_argument(f"webdriver.chrome.driver={chrome_driver_path}")
             driver = webdriver.Chrome(options=chrome_options)
-            print(f"{red}[{white}{current_time_hour()}{red}] {INFO} {navigator} Ready !{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
         except:
-            print(f"{ERROR} {navigator} not installed or driver not up to date.")
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
             Continue()
             Reset()
             
-    if browser == '2':
+    elif browser in ['2', '02']:
         if sys.platform.startswith("linux"):
             OnlyLinux()
         try:
             navigator = "Chrome"
-            print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} {navigator} Starting..{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
             driver = webdriver.Chrome()
-            print(f"{red}[{white}{current_time_hour()}{red}] {INFO} {navigator} Ready !{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
         except:
-            print(f"{ERROR} {navigator} not installed or driver not up to date.")
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
             Continue()
             Reset()
 
-    elif browser == '3':
+    elif browser in ['3', '03']:
         if sys.platform.startswith("linux"):
             OnlyLinux()
         try:
             navigator = "Firefox"
-            print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} {navigator} Starting..{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
             driver = webdriver.Firefox()
-            print(f"{red}[{white}{current_time_hour()}{red}] {INFO} {navigator} Ready !{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
         except:
-            print(f"{ERROR} {navigator} not installed or driver not up to date.")
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
             Continue()
             Reset()
 
-    elif browser == '4':
+    elif browser in ['4', '04']:
         if sys.platform.startswith("linux"):
             OnlyLinux()
         try:
             navigator = "Edge"
-            print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} {navigator} Starting..{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
             driver = webdriver.Edge()
-            print(f"{red}[{white}{current_time_hour()}{red}] {INFO} {navigator} Ready !{blue}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
         except:
-            print(f"{ERROR} {navigator} not installed or driver not up to date.")
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
             Continue()
             Reset()
     else:
@@ -103,7 +103,7 @@ try:
         return translated_text
 
     def twitter_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Twitter..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Twitter..{blue}")
         try:
             driver.get(r"https://twitter.com/i/flow/login")
             driver.implicitly_wait(10)
@@ -121,7 +121,7 @@ try:
         return twitter
 
     def google_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Google..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Google..{blue}")
         try:
             driver.get(r"https://accounts.google.com/v3/signin/identifier?authuser=0&continue=https%3A%2F%2Fmyaccount.google.com%2F&ec=GAlAwAE&hl=fr&service=accountsettings&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S-1241433703%3A1715014494878825&theme=mn&ddm=0")
             driver.implicitly_wait(10)
@@ -141,7 +141,7 @@ try:
         return google
 
     def instagram_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Instagram..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Instagram..{blue}")
         try:
             driver.get(r"https://www.instagram.com/accounts/emailsignup/")
             driver.implicitly_wait(10)
@@ -169,7 +169,7 @@ try:
         return instagram
 
     def snapchat_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Snapchat..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Snapchat..{blue}")
         try:
             driver.get(r"https://www.snapchat.com/?original_referrer=none")
             driver.implicitly_wait(10)
@@ -191,7 +191,7 @@ try:
         return snapchat
 
     def microsoft_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Microsoft..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Microsoft..{blue}")
         try:
             driver.get(r"https://login.microsoftonline.com/common/oauth2/v2.0/authorize?scope=service%3A%3Aaccount.microsoft.com%3A%3AMBI_SSL%20openid%20profile%20offline_access&response_type=code&client_id=81feaced-5ddd-41e7-8bef-3e20a2689bb7&redirect_uri=https%3A%2F%2Faccount.microsoft.com%2Fauth%2Fcomplete-signin-oauth&client-request-id=61ddde4f-db57-4b1a-a700-ba7c7805ba76&x-client-SKU=MSAL.Desktop&x-client-Ver=4.58.1.0&x-client-OS=Windows%20Server%202019%20Datacenter&prompt=select_account&client_info=1&state=H4sIAAAAAAAEAA3NS4JDMAAA0LvMtgu0SC3rU5Voqe_IjqJCKhm_weln3gXel8xul3EBneq48lrUc0c_NdoTd7O6JtZEDbvfyIprH7znfVwMjdqParx-9uQuNRW0w9lihW6eHEA4r00aDk8UnA769wokAScYDogZCZkWEm7tmXGuvUYHY09VR_NH0JFuJHLhQoTGLbCH8PIb1zHUnySbyyxtfDvY1eljrmRhspZZQl-lsExXmBORPSGgWZb5fax4F7rmUuoHcj5Q0CFRbaK2VRBQTtJdukZI1zQuyFv0f7_dH15iwZtQ2QuwOR3E-2bkoEV9UJf-5ATnX-Pqn8clW56WL-0OcZt3_lJpf-ZTqBbo9WDabQtvHIulB6YCBoGcZolLGVo8RawoWpJjK3k4iipSeaFIhmsx2AzndvcazJorRwU68x267ObPX39XKEYaggEAAA&msaoauth2=true&lc=1036&ru=https%3A%2F%2Faccount.microsoft.com%2Faccount%3Flang%3Dfr-fr%26refd%3Dwww.google.com")
             driver.implicitly_wait(10)
@@ -211,7 +211,7 @@ try:
         return microsoft
 
     def spotify_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Spotify..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Spotify..{blue}")
         try:
             driver.get(r"https://www.spotify.com/fr/signup?flow_id=8f84ffe4-cbe3-481c-99c7-944f17ec3405%3A1715044537&forward_url=https%3A%2F%2Faccounts.spotify.com%2Ffr%2Fstatus")
             driver.implicitly_wait(10)
@@ -237,7 +237,7 @@ try:
         return spotify
 
     def pornhub_search():
-        print(f"{red}[{white}{current_time_hour()}{red}] {WAIT} Search in Pornhub..{blue}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Pornhub..{blue}")
         try:
             driver.get(r"https://fr.pornhub.com/signup")
             driver.implicitly_wait(10)
@@ -257,15 +257,15 @@ try:
         return pornhub
 
     Slow(f"""
-    {red}The email "{white}{email}{red}" was found:
+{BEFORE + current_time_hour() + AFTER} {INFO} The email "{white}{email}{red}" was found:
 
-    {white}[{red}+{white}]{red} Spotify   : {white}{spotify_search()}{red}
-    {white}[{red}+{white}]{red} Snapchat  : {white}{snapchat_search()}{red}
-    {white}[{red}+{white}]{red} Instagram : {white}{instagram_search()}{red}
-    {white}[{red}+{white}]{red} Pornhub   : {white}{pornhub_search()}{red}
-    {white}[{red}+{white}]{red} Twitter   : {white}{twitter_search()}{red}
-    {white}[{red}+{white}]{red} Google    : {white}{google_search()}{red}
-    {white}[{red}+{white}]{red} Microsoft : {white}{microsoft_search()}{red}
+    {INFO_ADD} Spotify   : {white}{spotify_search()}{red}
+    {INFO_ADD} Snapchat  : {white}{snapchat_search()}{red}
+    {INFO_ADD} Instagram : {white}{instagram_search()}{red}
+    {INFO_ADD} Pornhub   : {white}{pornhub_search()}{red}
+    {INFO_ADD} Twitter   : {white}{twitter_search()}{red}
+    {INFO_ADD} Google    : {white}{google_search()}{red}
+    {INFO_ADD} Microsoft : {white}{microsoft_search()}{red}
     """)
 
     driver.quit()

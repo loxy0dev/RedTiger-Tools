@@ -12,38 +12,38 @@ except Exception as e:
 
 Title("Tool Website")
 print(f"""
-{color.WHITE}[{color.RED}01{color.WHITE}] {color.RED}->{color.WHITE} Web Site
-{color.WHITE}[{color.RED}02{color.WHITE}] {color.RED}->{color.WHITE} Discord
-{color.WHITE}[{color.RED}03{color.WHITE}] {color.RED}->{color.WHITE} Github
-{color.WHITE}[{color.RED}04{color.WHITE}] {color.RED}->{color.WHITE} Telegram
+{white}[{red}01{white}] {red}->{white} Web Site
+{white}[{red}02{white}] {red}->{white} Discord
+{white}[{red}03{white}] {red}->{white} Github
+{white}[{red}04{white}] {red}->{white} Telegram
 """)
 
 try:
-    choice = input(f"{color.RED}{INPUT} Site -> {color.RESET}")
+    choice = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Site -> {color.RESET}")
     if choice in ['1', '01']:
         site = f"https://{website}"
         webbrowser.open_new_tab(site)
-        print(f"{color.RED}{INFO} Access to the site \"{color.WHITE}{site}{color.RED}\"" + color.RESET)
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Access to the site \"{color.WHITE}{site}{color.RED}\"" + color.RESET)
         Continue()
         Reset()
     if choice in ['2', '02']:
         site = f"https://{discord_server}"
         webbrowser.open_new_tab(site)
-        print(f"{color.RED}\n{INFO} Access to the Discord server \"{color.WHITE}{site}{color.RED}\"" + color.RESET)
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Access to the Discord server \"{color.WHITE}{site}{color.RED}\"" + color.RESET)
         Continue()
         Reset()
 
     if choice in ['3', '03']:
         site = f"https://{github_tool}"
         webbrowser.open_new_tab(site)
-        print(f"{color.RED}{INFO} Access to the site \"{color.WHITE}{site}{color.RED}\"" + color.RESET)
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Access to the site \"{color.WHITE}{site}{color.RED}\"" + color.RESET)
         Continue()
         Reset()
 
     if choice in ['4', '04']:
         site = f"https://{telegram}"
         webbrowser.open_new_tab(site)
-        print(f"{color.RED}{INFO} Access to the site \"{color.WHITE}{site}{color.RED}\"" + color.RESET)
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Access to the site \"{color.WHITE}{site}{color.RED}\"" + color.RESET)
         Continue()
         Reset()
 except Exception as e:

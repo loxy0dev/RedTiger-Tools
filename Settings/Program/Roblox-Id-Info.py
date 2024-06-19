@@ -14,8 +14,8 @@ except Exception as e:
 Title("Roblox User Info")
 
 try:
-    user_id = input(f"\n{INPUT} ID -> {color.RESET}")
-    print(f"{color.RED}{WAIT} Information Recovery..{reset}")
+    user_id = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} ID -> {color.RESET}")
+    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Information Recovery..{reset}")
     try:
 
         user_info_response = requests.get(f"https://users.roblox.com/v1/users/{user_id}")
@@ -62,14 +62,14 @@ try:
             has_verified_badge = "None"
 
         print(f"""
-    {white}[{red}+{white}]{red} Username       : {white}{username}{red}
-    {white}[{red}+{white}]{red} Id             : {white}{userid}{red}
-    {white}[{red}+{white}]{red} Display Name   : {white}{display_name}{red}
-    {white}[{red}+{white}]{red} Description    : {white}{description}{red}
-    {white}[{red}+{white}]{red} Created        : {white}{created_at}{red}
-    {white}[{red}+{white}]{red} Banned         : {white}{is_banned}{red}
-    {white}[{red}+{white}]{red} External Name  : {white}{external_app_display_name}{red}
-    {white}[{red}+{white}]{red} Verified Badge : {white}{has_verified_badge}{red}
+    {INFO_ADD} Username       : {white}{username}{red}
+    {INFO_ADD} Id             : {white}{userid}{red}
+    {INFO_ADD} Display Name   : {white}{display_name}{red}
+    {INFO_ADD} Description    : {white}{description}{red}
+    {INFO_ADD} Created        : {white}{created_at}{red}
+    {INFO_ADD} Banned         : {white}{is_banned}{red}
+    {INFO_ADD} External Name  : {white}{external_app_display_name}{red}
+    {INFO_ADD} Verified Badge : {white}{has_verified_badge}{red}
     """)
         Continue()
         Reset()

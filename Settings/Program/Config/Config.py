@@ -4,7 +4,7 @@ See the file 'LICENSE' for copying permission
 """
 
 name_tool = "RedTiger"
-version_tool = "4.9"
+version_tool = "5.0"
 coding_tool = "Python 3"
 language_tool = "EN"
 creator = "LoxyTeck"

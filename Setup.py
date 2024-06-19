@@ -12,6 +12,7 @@ if sys.platform.startswith("win"):
     "WINDOWS"
     os.system("pip install --upgrade pip")
     os.system("pip install --upgrade pip setuptools wheel")
+    os.system("pip install bcrypt")
     os.system("pip install deep-translator")
     os.system("pip install dnspython")
     os.system("pip install time")
@@ -44,6 +45,7 @@ elif sys.platform.startswith("linux"):
     "LINUX"
     os.system("pip3 install --upgrade pip")
     os.system("pip3 install --upgrade pip setuptools wheel")
+    os.system("pip3 install bcrypt")
     os.system("pip3 install deep-translator")
     os.system("pip3 install dnspython")
     os.system("pip3 install time")

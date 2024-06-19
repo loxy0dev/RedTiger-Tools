@@ -15,21 +15,21 @@ except Exception as e:
 Title("Ip Pinger")
 
 try:
-    hostname = input(color.RED + f"\n{INPUT} Ip -> " + color.RESET)
+    hostname = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Ip -> " + color.RESET)
     try:
-        port_input = input(color.RED + f"{INPUT} Port (enter for default) -> " + color.RESET)
+        port_input = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Port (enter for default) -> " + color.RESET)
         if port_input.strip():
             port = int(port_input)
         else:
             port = 80  
         
-        bytes_input = input(color.RED + f"{INPUT} Bytes (enter for default) -> " + color.RESET)
+        bytes_input = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Bytes (enter for default) -> " + color.RESET)
         if bytes_input.strip():
             bytes = int(bytes_input)
         else:
             bytes = 64
 
-        threads_input = input(f"{INPUT} Threads (enter for default) -> {color.RESET}")
+        threads_input = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Threads (enter for default) -> {color.RESET}")
         if threads_input.strip():
             threads_number = threads_input
         else:
@@ -47,10 +47,10 @@ try:
             sock.sendall(data)
             end_time = time.time() 
             elapsed_time = (end_time - start_time) * 1000 
-            print(f'{ADD} Ping to {white}{hostname}{red}: time={white}{elapsed_time:.2f}ms{red} port={white}{port}{red} bytes={white}{bytes}{red} status={white}succeed{red}')
+            print(f'{BEFORE + current_time_hour() + AFTER} {ADD} Ping to {white}{hostname}{red}: time={white}{elapsed_time:.2f}ms{red} port={white}{port}{red} bytes={white}{bytes}{red} status={white}succeed{red}')
         except:
             elapsed_time = 0
-            print(f'{ERROR} Ping to {white}{hostname}{red}: time={white}{elapsed_time}ms{red} port={white}{port}{red} bytes={white}{bytes}{red} status={white}fail{red}')
+            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Ping to {white}{hostname}{red}: time={white}{elapsed_time}ms{red} port={white}{port}{red} bytes={white}{bytes}{red} status={white}fail{red}')
 
     def request():
         threads = []

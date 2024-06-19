@@ -13,6 +13,10 @@ See the file 'LICENSE' for copying permission
 from Config.Util import *
 from Config.Config import *
 
+if sys.platform.startswith("linux"):
+    "LINUX"
+    OnlyWindows()
+
 try:
     import os
     import json
@@ -27,9 +31,6 @@ except Exception as e:
 Title("Get Your Token Discord")
 
 try:
-    if sys.platform.startswith("linux"):
-        "LINUX"
-        OnlyWindows()
 
     def GetYourToken():
         class YourToken:
@@ -177,15 +178,15 @@ try:
                     user_id_discord = user['id']
                     number += 1
                     print(f"""{red}
-    Token n°{number}:
-    {white}[{red}+{white}]{red} Token    : {white}{token_discord}
-    {white}[{red}+{white}]{red} Username : {white}{username_discord}
-    {white}[{red}+{white}]{red} Id       : {white}{user_id_discord}""")
+    {INFO_ADD} Token n°{number}:
+    {INFO_ADD} Token    : {white}{token_discord}
+    {INFO_ADD} Username : {white}{username_discord}
+    {INFO_ADD} Id       : {white}{user_id_discord}""")
         YourToken()
 
-    print(f"\n{INFO} File detected by the antivirus, but be aware that there is no backdoor!")
-    print(f"{INFO} Your Token is not sent to anyone.")
-    print(f"{WAIT} Search your Token..")
+    print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} File detected by the antivirus, but be aware that there is no backdoor!")
+    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Your Token is not sent to anyone.")
+    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search your Token..")
     GetYourToken()
     print()
     Continue()

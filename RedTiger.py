@@ -39,54 +39,54 @@ except:
 
 option_01 = "Tool-Info"
 option_02 = "Tool-Website"
-option_03 = "Builder-Malware-And-Stealer"
+option_03 = "Virus-Build-(Stealer,-Malware)"
 option_04 = "Sql-Vulnerability"
-option_05 = "Illegal-Website"
-option_06 = "Search-In-DataBase"
-option_07 = "Dox-Create"
-option_08 = "Dox-Tracker-(OSINT)"
-option_09 = "Username-Tracker-(OSINT)"
-option_10 = "Email-Tracker-(OSINT)"
-option_11 = "Email-Info"
-option_12 = "Number-Info"
-option_13 = "Website-Info"
-option_14 = "Ip-Info"
-option_15 = "Ip-Pinger"
-option_16 = "Ip-Port-Scanner"
+option_05 = "Website-Scanner"
+option_06 = "Illegal-Website"
+option_07 = "Search-In-DataBase"
+option_08 = "Dox-Create"
+option_09 = "Dox-Tracker-(OSINT)"
+option_10 = "Username-Tracker-(OSINT)"
+option_11 = "Email-Tracker-(OSINT)"
+option_12 = "Email-Info"
+option_13 = "Number-Info"
+option_14 = "Ip-Info-(Geo)"
+option_15 = "Ip-Port-Scanner"
+option_16 = "Ip-Pinger"
 option_17 = "Ip-Generator"
-option_18 = "Get-Your-Ip"
-option_19 = "Get-Your-Token-Discord"
-option_20 = "Discord-Token-Info"
-option_21 = "Discord-Token-Nuker"
-option_22 = "Discord-Token-Joiner"
-option_23 = "Discord-Token-Leaver"
-option_24 = "Discord-Token-Login"
-option_25 = "Discord-Token-To-Id-And-Brute"
-option_26 = "Discord-Token-Server-Raid"
-option_27 = "Discord-Token-Spammer"
-option_28 = "Discord-Token-Delete-Friends"
-option_29 = "Discord-Token-Block-Friends"
-option_32 = "Discord-Token-Mass-Dm"
-option_33 = "Discord-Token-Delete-Dm"
-option_34 = "Discord-Token-Status-Changer"
-option_35 = "Discord-Token-Language-Changer"
-option_36 = "Discord-Token-House-Changer"
-option_37 = "Discord-Token-Theme-Changer"
-option_38 = "Discord-Token-Generator"
-option_39 = "Discord-Bot-Server-Nuker"
-option_40 = "Discord-Bot-Invite-To-Id"
-option_41 = "Discord-Server-Info"
-option_42 = "Discord-Nitro-Generator"
-option_43 = "Discord-Webhook-Info"
-option_44 = "Discord-Webhook-Delete"
-option_45 = "Discord-Webhook-Spammer"
-option_46 = "Discord-Webhook-Generator"
-option_47 = "Roblox-Cookie-Login"
-option_48 = "Roblox-Cookie-Info"
-option_49 = "Roblox-User-Info"
-option_50 = "Roblox-Id-Info"
-option_51 = ""
-option_52 = ""
+option_18 = "Password-Encrypted"
+option_19 = "Password-Decrypted"
+option_20 = "Get-Your-Ip"
+option_21 = "Get-Your-Token-Discord"
+option_22 = "Discord-Token-Info"
+option_23 = "Discord-Token-Nuker"
+option_24 = "Discord-Token-Joiner"
+option_25 = "Discord-Token-Leaver"
+option_26 = "Discord-Token-Login"
+option_27 = "Discord-Token-To-Id-And-Brute"
+option_28 = "Discord-Token-Server-Raid"
+option_29 = "Discord-Token-Spammer"
+option_32 = "Discord-Token-Delete-Friends"
+option_33 = "Discord-Token-Block-Friends"
+option_34 = "Discord-Token-Mass-Dm"
+option_35 = "Discord-Token-Delete-Dm"
+option_36 = "Discord-Token-Status-Changer"
+option_37 = "Discord-Token-Language-Changer"
+option_38 = "Discord-Token-House-Changer"
+option_39 = "Discord-Token-Theme-Changer"
+option_40 = "Discord-Token-Generator"
+option_41 = "Discord-Bot-Server-Nuker"
+option_42 = "Discord-Bot-Invite-To-Id"
+option_43 = "Discord-Server-Info"
+option_44 = "Discord-Nitro-Generator"
+option_45 = "Discord-Webhook-Info"
+option_46 = "Discord-Webhook-Delete"
+option_47 = "Discord-Webhook-Spammer"
+option_48 = "Discord-Webhook-Generator"
+option_49 = "Roblox-Cookie-Login"
+option_50 = "Roblox-Cookie-Info"
+option_51 = "Roblox-User-Info"
+option_52 = "Roblox-Id-Info"
 option_53 = ""
 option_54 = ""
 option_55 = ""
@@ -241,7 +241,7 @@ def Menu():
    return menu
 
 Clear()
-Slow(banner + Menu())
+Slow(Menu())
 
 while True:
    try:
@@ -410,6 +410,17 @@ while True:
 
       elif choice in ['51']:
          StartProgram(f"{option_51}.py")
+
+      elif choice in ['52']:
+         StartProgram(f"{option_52}.py")
+
+      elif choice in ['53']:
+         StartProgram(f"{option_53}.py")
+
+      elif choice in ['54']:
+         StartProgram(f"{option_54}.py")
+
+
 
       else:
          ErrorChoiceStart()

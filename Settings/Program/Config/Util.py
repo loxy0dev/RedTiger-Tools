@@ -39,19 +39,28 @@ except:
 
 censored = "loxy"
 
-INPUT = f'{red}[{white}>{red}] |'
-INFO = f'{red}[{white}!{red}] |'
-ERROR = f'{red}[{white}x{red}] |'
-ADD = f'{red}[{white}+{red}] |'
-WAIT = f'{red}[{white}~{red}] |'
-
-GEN_VALID = f'{green}[{white}+{green}] |'
-GEN_INVALID = f'{red}[{white}x{red}] |'
-
 def current_time_day_hour():
     return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
 def current_time_hour():
     return datetime.datetime.now().strftime('%H:%M:%S')
+
+BEFORE = f'{red}[{white}'
+AFTER = f'{red}]'
+
+BEFORE_GREEN = f'{green}[{white}'
+AFTER_GREEN = f'{green}]'
+
+INPUT = f'{BEFORE}>{AFTER} |'
+INFO = f'{BEFORE}!{AFTER} |'
+ERROR = f'{BEFORE}x{AFTER} |'
+ADD = f'{BEFORE}+{AFTER} |'
+WAIT = f'{BEFORE}~{AFTER} |'
+
+GEN_VALID = f'{BEFORE_GREEN}+{AFTER_GREEN} |'
+GEN_INVALID = f'{BEFORE}x{AFTER} |'
+
+INFO_ADD = f'{white}[{red}+{white}]{red}'
 
 def ModuleInstall(module):
     subprocess.check_call(['pip', 'install', module])
@@ -96,81 +105,81 @@ def StartProgram(program):
         subprocess.run(file, shell=True)
 
 def Slow(texte):
-    delai = 0.02
+    delai = 0.03
     lignes = texte.split('\n')
     for ligne in lignes:
         print(ligne)
         time.sleep(delai)
 
 def Continue():
-    input(f"{INFO} Press to continue -> " + reset)
+    input(f"{BEFORE + current_time_hour() + AFTER} {INFO} Press to continue -> " + reset)
 
 def Error(e):
-    print(f"{red}{ERROR} Error: {white}{e}", reset)
+    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Error: {white}{e}", reset)
     Continue()
     Reset()
 
 def ErrorChoiceStart():
-    print(f"\n{red}{ERROR} Invalid Choice !", reset)
+    print(f"\n{BEFORE + current_time_hour() + AFTER} {ERROR} Invalid Choice !", reset)
     time.sleep(1)
 
 def ErrorChoice():
-    print(f"{red}{ERROR} Invalid Choice !", reset)
+    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Invalid Choice !", reset)
     time.sleep(3)
     Reset()
 
 def ErrorId():
-    print(f"{red}{ERROR} Invalid ID !", reset)
+    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Invalid ID !", reset)
     time.sleep(3)
     Reset()
 
 def ErrorUrl():
-    print(f"{red}{ERROR} Invalid URL !", reset)
+    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Invalid URL !", reset)
     time.sleep(3)
     Reset()
 
 def ErrorEdge():
-    print(f"{red}{ERROR} Edge not installed or driver not up to date !", reset)
+    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Edge not installed or driver not up to date !", reset)
     time.sleep(3)
     Reset()
 
 def ErrorToken():
-    print(f"{red}{ERROR} Invalid Token !", reset)
+    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Invalid Token !", reset)
     time.sleep(3)
     Reset()
     
 def ErrorNumber():
-    print(f"{red}{ERROR} Invalid Number !", reset)
+    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Invalid Number !", reset)
     time.sleep(3)
     Reset()
 
 def ErrorWebhook():
-    print(f"{red}{ERROR} Invalid Webhook !", reset)
+    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Invalid Webhook !", reset)
     time.sleep(3)
     Reset()
 
 def ErrorCookie():
-    print(f"{red}{ERROR} Invalid Cookie !", reset)
+    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Invalid Cookie !", reset)
     time.sleep(3)
     Reset()
 
 def ErrorUsername():
-    print(f"{red}{ERROR} Invalid Username !", reset)
+    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Invalid Username !", reset)
     time.sleep(3)
     Reset()
 
 def ErrorModule(e):
-    print(f"{red}{ERROR} Error Module (Restart Setup.bat): {white}{e}", reset)
+    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Error Module (Restart Setup.bat): {white}{e}", reset)
     Continue()
     Reset()
 
 def OnlyWindows():
-    print(f"{red}{ERROR} This function is only available on Windows 10/11 !", reset)
+    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} This function is only available on Windows 10/11 !", reset)
     Continue()
     Reset()
 
 def OnlyLinux():
-    print(f"{red}{ERROR} This function is only available on Linux !", reset)
+    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} This function is only available on Linux !", reset)
     Continue()
     Reset()
 
@@ -210,6 +219,10 @@ def ChoiceMultiChannelDiscord():
 
 
 def ChoiceMultiTokenDisord():
+    if sys.platform.startswith("linux"):
+        "LINUX"
+        return
+
     def CheckToken(token_number, token):
         r = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token, 'Content-Type': 'application/json'})
         if r.status_code == 200:
@@ -259,7 +272,7 @@ def ChoiceMultiTokenDisord():
             modified_token = line.strip()
             tokens[token_discord_number] = modified_token
             CheckToken(token_discord_number, modified_token)
-    
+
     number = 0
     selected_tokens = []
     print()
@@ -404,20 +417,175 @@ def BrowserPrivate(site, search_bar=True, title="Navigateur Web"):
 
     main()
 
-banner = red + f"""
-\n
-\n
-\n
-\n
-\n
-\n
-\n
-\n
-\n
-\n
-\n
-\n
-\n
+
+
+decrypted_banner = red + r"""
+                                         ^M@@@@@@@@@v                                    
+                                      v@@@@@@@@@@@@@@@@@                                 
+                                    _@@@@@@@}    ;a@@@@@@@                               
+                                   M@@@@@            @@@@@@                              
+                                  ;@@@@@              O@@@@@                             
+                                  @@@@@v               @@@@@                             
+                                  @@@@@;               @@@@@                             
+                                  @@@@@;                                                 
+                                  @@@@@;        v@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@         
+                                              @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@       
+                                             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      
+                                             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      
+                                             @@@@@@@@@@@@@@@@j     @@@@@@@@@@@@@@@@      
+                                             @@@@@@@@@@@@@@@        @@@@@@@@@@@@@@@      
+                                             @@@@@@@@@@@@@@@v       @@@@@@@@@@@@@@@      
+                                             @@@@@@@@@@@@@@@@@    @@@@@@@@@@@@@@@@@      
+                                             @@@@@@@@@@@@@@@@@    @@@@@@@@@@@@@@@@@      
+                                             @@@@@@@@@@@@@@@@@_   @@@@@@@@@@@@@@@@@      
+                                             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      
+                                              @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|      
+                                               ^@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O  """
+
+
+encrypted_banner = red + r"""
+                                                       j@@@@@^                                 
+                           _@v   p@@@@j           j@@@@@@@@@@@@@@@;          |@@@@M   v@}      
+                          @@@@@} >@@@@    v@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@p    @@@@_ _@@@@@     
+                          >@@@v    @@     v@@@@@@@@@@@@      p@@@@@@@@@@@a     @@    j@@@_     
+                           ^@@     @@@@   |@@@@@@@@@@^ @@@@@@; @@@@@@@@@@p   p@@@     M@;      
+                           ^@@            >@@@@@@@@@@ p@@@@@@@ M@@@@@@@@@j            M@;      
+                           ^@@@@@@@@@@@}   @@@@@@@@|            >@@@@@@@@;   @@@@@@@@@@@;      
+                                           }@@@@@@@|    O@@@    >@@@@@@@M                      
+                          |@@@@             @@@@@@@|     M@     >@@@@@@@^            @@@@j     
+                          @@@@@@@@@@@@@@@>   @@@@@@|    O@@@    >@@@@@@    @@@@@@@@@@@@@@@     
+                            ^                 @@@@@v            }@@@@@^                ^       
+                                 p@@@@@@@@@^   M@@@@@@@@@@@@@@@@@@@@@    @@@@@@@@@p            
+                                 p@_            ^@@@@@@@@@@@@@@@@@@>            >@a            
+                                @@@@O              @@@@@@@@@@@@@@              J@@@@           
+                               ;@@@@@                 J@@@@@@p                 @@@@@>          
+                                  ;              p@              p@>  M@@_       ;             
+                                          @@@@p  p@_  ;      j_  a@@@@@@@@j                    
+                                         ^@@@@@@@@@   v@_   O@}       M@@_                     
+                                            ;         p@|   O@}      }}                        
+                                                    >@@@@@  O@@@@@@@@@@@J                      
+                                                     p@@@j         ;@@@@^                      """
+
+
+
+scan_bannner = red + r"""
+                                                            >@@|                                                
+                                                            >@@|                                                
+                                                            >@@|                                                
+                                                            >@@|                                                
+                                                   >|a@@@@@@@@@|                                                
+                                              }@@@@@@@@@@@@@@@@| 000M|                                          
+                                          ;@@@@@@O  @@@@@@@@@@@|  j000000_                                      
+                                       }@@@@@v   |@@@@@@@@@@@@@| 00J  |00000j                                   
+                                     @@@@@_     @@@@@@@@@@@@@@@| 0000    ;00000^                                
+                                  ;@@@@v       _@@@@@@@     >@@| 0000v      }0000_                              
+                                ^@@@@_         @@@@@@@      ^O@| 00000        ;0000_                            
+                                 @@@@;         @@@@@@@      ;p@| 00000         0000^                            
+                                   @@@@p       >@@@@@@@^    >@@| 0000v      J0000;                              
+                                     O@@@@|     M@@@@@@@@@@@@@@| 0000    >00000                                 
+                                       ;@@@@@J^  }@@@@@@@@@@@@@| 00v  j00000}                                   
+                                          >@@@@@@@_;@@@@@@@@@@@| ;M000000_                                      
+                                              >@@@@@@@@@@@@@@@@| 00000}                                          
+                                                   ^jpM@@@@@@@@|                                                
+                                                            >@@|                                                
+                                                            >@@|                                                
+                                                            >@@|                                                
+                                                            >@@|                                                
+                                                            >@@| 
+"""
+
+
+
+sql_banner = red + r"""
+                                                                                   ^                      
+                                                                                 J@@M                     
+                                                                        ^         @@@@^                   
+                                                                     ;@@@>         J@@@                   
+                                                                      ;@@@J      ;j j@@@}                 
+                                                                       ^@@@O  ^J@@@@^;@@@}                
+                                                                   >@@@; @@@@^;@@@@@> ;@@@O               
+                                                                >j _@@@@j p@@@^;@|      @@@>              
+                                                              }@@@@  @@@@j J@@@>                          
+                                                          ^a@@ _@@@@;_@@@@a }@@@>                         
+                                                       ^} v@@@@^;@@@@@@@@@@@ >@@@v                        
+                                                     |@@@@ ^@@@@J@@@@@@@@@@@@;^@@@J                       
+                                                  J@M }@@@@ _@@@@@@@@@@@@@@j    @@j                       
+                                               ; v@@@@ >@@@@@@@@@@@@@@@@j                                 
+                                            ^@@@@ ;@@@@v@@@@@@@@@@@@@j^                                   
+                                            a@@@@@ >@@@@@@@@@@@@@@a                                       
+                                            |@@@@@@@@@@@@@@@@@@J                                          
+                                          |a ;@@@@@@@@@@@@@@a;                                            
+                                         @@@@ ;@@@@@@@@@@@;                                               
+                                        |@@@@@> @@@@@@@>                                                  
+                                     }@@@pO@MJ   >pp_                                                     
+                                  ;@@@a                                                                   
+                               ;@@@p;                                                                     
+                            >p@@M>                                                                        
+                           }@@>                                                                           
+"""
+
+
+
+map_banner = red + r"""
+                                      :**+ :::+*@@.                                                         
+                              +: @ = =.  :#@@@@@@@@                 :     .=*@@#     -                      
+                 @@@@-. :=: +@@.:% *=@@:   @@@@@@          :#=::     .:@=@@@@@@@@@@@@@@@@@@@@--.-:          
+             .#@@@@@@@@@@@@@@@@@@:# .@@   #@@    :@-     +@@:@@@+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*        
+             #*   :%@@@@@@@@@@:   .@@#*              ..  ##@ *#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-:- %=         
+                   *@@@@@@@@@@@@%@@@@@@@            = @=+@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+   #.        
+                   #@@@@@@@@@##@@@@@= =#              #@@@#@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@=            
+                  @@@@@@@@@@@#+#@@=                 :@@@-.#-*#@.  .@@.=%@@@@%@@@@@@@@@@@@@@@@@=  +          
+                 :@@@@@@@@@@@@@@:                   :@@    # - @@@@@@@ =@@@*#*@@@@@@@@@@@@@=.=-  #:         
+                  :@@@@@@@@@@@+                     @@@@@@@: :    @@@@@@@@@@@@@@@@@@@@@@@@@@@               
+                   #@@@@@    @                     #%@@@@@@@@@@@@@@@@@:@@@@@@@@@@@@#@@@@@@@@@:              
+                     @@@     .                    @@@@@@@@@@@@@@@@-%@@@%@#   @@@@@@#=@#@@@@@==              
+                     =@@##@   =:*.                @@@@@@*@@@@@@@@@@-=@@@@.    +@@@:  %#@@#=   :             
+                         .=@.                     #@@@@@@@@#@@@@@@@@+#:        %@      *%@=                 
+                            . @@@@@@               @#@@*@@@@@@@@@@@@@@@=        :-     -       =.           
+                             :@@@@@@@#=                   @@@@@@@@@@@@-               :+%  .@=              
+                            -@@@@@@@@@@@@                 @+@@@@*+@@#                   @. @@.#   # :       
+                             @@@@@@@@@@@@@@@               @@@@@*@@@                     :=.        @@@.    
+                              @@@@@@@@@@@@@                #@@@@@@%@.                             :  :      
+                               *@@@@@@@@@@%               :@@@@@@@@@ @@.                      .@@@@=:@      
+                                :@@@@@@@@@                 #@@@@@@   @:                    .#@@@@@@@@@@     
+                                :@@@@%@@                   .@@@@@-   .                     @@@@@@@@@@@@*    
+                                :@@@@@@.                    *@@@-                          @@@@#@@@@@@@     
+                                .@@@@@                                                           =@@@:    @=
+                                 =@@                                                              =    #+   
+                                  @%                                                                        
+"""
+
+
+
+virus_banner = red + r"""
+                                                         ...                                       
+                                                  +%@@@@@@@@@@@@@*.                                
+                                               #@@@@@@@@@@@@@@@@@@@@@:                             
+                                             %@@@@@@@@@@@@@@@@@@@@@@@@@:                           
+                                           .@@@@@@@@@@@@@@@@@@@@@@@@@@@@:                          
+                                           :@@@@@@@@@@@@@@@@@@@@@@@@@@@@%                          
+                                           =@@@@@@@@@@@@@@@@@@@@@@@@@@@@%                          
+                                           :@@@@@@@@@@@@@@@@@@@@@@@@@@@@*                          
+                                            #@@@%.     .@@@@+      #@@@%                           
+                                             +@@=      .@@@@=      .@@#                            
+                                              @@@@%%%@@@@%*@@@@%%%@@@@=                            
+                                             .@@@@@@@@@@*  -@@@@@@@@@@=                            
+                                           .    .::-@@@@@@@@@@@@+::.    .                          
+                                         *@@@@#     @@@@@@@@@@@@-    +@@@@@.                       
+                                         #@@@@@%    -%@@@@@@@@%=.   *@@@@@@:                       
+                                       @@@@@@@@@@@@:            .#@@@@@@@@@@@-                     
+                                       +@@@@@*#@@@@@@@@*:  .+@@@@@@@@%*%@@@@#                      
+                                                    *@@@@@@@@@@%.                                  
+                                        .==.    .+%@@@@@@@%@@@@@@@+:     :=:                       
+                                       @@@@@@@@@@@@@@*.       :@@@@@@@@@@@@@@=                     
+                                       -@@@@@@@@%=                :#@@@@@@@@*                      
+                                         *@@@@@:                     %@@@@@:                       
+                                         :%@@%.                       *@@@=                       
+"""
+
+
+
+logo_banner = red + r"""
                                          █████████████████████████████████████                                        
                                    ██████                  █                  ██████                                   
                                ██████                                             ██████                               
@@ -459,17 +627,4 @@ banner = red + f"""
                                                        █████████                                                       
                                                          █████                                                         
                                                            █                                                           
-\n
-\n
-\n
-\n
-\n
-\n
-\n
-\n
-\n
-\n
-\n
-\n
-\n
 """

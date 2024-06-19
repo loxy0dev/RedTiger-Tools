@@ -20,18 +20,18 @@ try:
             sock.settimeout(1)
             result = sock.connect_ex((ip, port))
             if result == 0:
-                print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {white}Open{red} | Port: {white}{port}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Status: {white}Open{red} | Port: {white}{port}")
             sock.close()
         except Exception as e:
-            print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Error: {white}{e}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Error: {white}{e}")
             return
 
     def scan_ports(ip, start_port, end_port):
         with concurrent.futures.ThreadPoolExecutor() as executor:
             results = {executor.submit(scan_port, ip, port): port for port in range(start_port, end_port + 1)}
 
-    ip = input(f"{color.RED}\n{INPUT} Ip -> {color.RESET}")
-    print(f"{WAIT} Search Port..")
+    ip = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Ip -> {reset}")
+    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Scanning..")
     start_port = 1
     end_port = 65535
 
