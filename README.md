@@ -8,7 +8,7 @@
 </p>
 <img src="Img/RedTiger.png" wdth="9999">
 <p>
-<strong>The "<a href="https://github.com/loxyteck/RedTiger-Tools/blob/main/Settings/Program/VirusBuilderOptions.py">VirusBuilderOptions</a>" and "<a href="https://github.com/loxyteck/RedTiger-Tools/blob/main/Settings/Program/Virus-Builder-Disinfect.py">Virus-Builder-Disinfect</a>" scripts are detected as "backdoor" or "malware", this script is only detected but does not represent any threat to you.</strong>
+<strong>The "<a href="https://github.com/loxyteck/RedTiger-Tools/blob/main/Settings/Program/VirusBuilderOptions.py">VirusBuilderOptions.py</a>" and "<a href="https://github.com/loxyteck/RedTiger-Tools/blob/main/Settings/Program/Virus-Builder-Disinfect.py">Virus-Builder-Disinfect.py</a>" scripts are detected as "backdoor" or "malware", this script is only detected but does not represent any threat to you.</strong>
 </p>
 <h1>📜・Description:</h1>
 <p>
