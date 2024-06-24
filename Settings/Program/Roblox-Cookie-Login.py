@@ -1,7 +1,8 @@
-"""
-Copyright (c) RedTiger (https://redtiger.online/)
-See the file 'LICENSE' for copying permission
-"""
+# Copyright (c) RedTiger (https://redtiger.online/)
+# See the file 'LICENSE' for copying permission
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------|
+# EN: - Do not touch or modify the code below. If there is an error, please contact the owner, but under no circumstances should you touch the code.
+# FR: - Ne pas toucher ni modifier le code ci-dessous. En cas d'erreur, veuillez contacter le propriétaire, mais en aucun cas vous ne devez toucher au code.
 
 from Config.Util import *
 from Config.Config import *
@@ -20,32 +21,13 @@ try:
 
     cookie = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Cookie -> {white}")
     print(f"""
-{white}[{red}01{white}] {red}->{white} Chrome (Linux)
-{white}[{red}02{white}] {red}->{white} Chrome (Windows)
+{white}[{red}01{white}] {red}->{white} Chrome (Windows / Linux)
+{white}[{red}02{white}] {red}->{white} Edge (Windows)
 {white}[{red}03{white}] {red}->{white} Firefox (Windows)
-{white}[{red}04{white}] {red}->{white} Edge (Windows)
     """)
     browser = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Browser -> {reset}")
-
+ 
     if browser in ['1', '01']:
-        if sys.platform.startswith("win"):
-            OnlyWindows()
-        try:
-            navigator = "Chrome Linux"
-            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
-            chrome_driver_path = os.path.abspath("./Driver/chromedriverlinux")
-            chrome_options = webdriver.ChromeOptions()
-            chrome_options.add_argument(f"webdriver.chrome.driver={chrome_driver_path}")
-            driver = webdriver.Chrome(options=chrome_options)
-            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
-        except:
-            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
-            Continue()
-            Reset()
-            
-    elif browser in ['2', '02']:
-        if sys.platform.startswith("linux"):
-            OnlyLinux()
         try:
             navigator = "Chrome"
             print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
@@ -56,31 +38,33 @@ try:
             Continue()
             Reset()
 
+    elif browser in ['2', '02']:
+        if sys.platform.startswith("linux"):
+            OnlyLinux()
+        else:
+            try:
+                navigator = "Edge"
+                print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
+                driver = webdriver.Edge()
+                print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
+            except:
+                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
+                Continue()
+                Reset()
+
     elif browser in ['3', '03']:
         if sys.platform.startswith("linux"):
             OnlyLinux()
-        try:
-            navigator = "Firefox"
-            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
-            driver = webdriver.Firefox()
-            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
-        except:
-            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
-            Continue()
-            Reset()
-
-    elif browser in ['4', '04']:
-        if sys.platform.startswith("linux"):
-            OnlyLinux()
-        try:
-            navigator = "Edge"
-            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
-            driver = webdriver.Edge()
-            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
-        except:
-            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
-            Continue()
-            Reset()
+        else:
+            try:
+                navigator = "Firefox"
+                print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
+                driver = webdriver.Firefox()
+                print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
+            except:
+                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
+                Continue()
+                Reset()
     else:
         ErrorChoice()
     

@@ -1,7 +1,12 @@
-"""
-Copyright (c) RedTiger (https://redtiger.online/)
-See the file 'LICENSE' for copying permission
-"""
+# Copyright (c) RedTiger (https://redtiger.online/)
+# See the file 'LICENSE' for copying permission
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------|
+# EN: - Do not touch or modify the code below. If there is an error, please contact the owner, but under no circumstances should you touch the code.
+# FR: - Ne pas toucher ni modifier le code ci-dessous. En cas d'erreur, veuillez contacter le propriétaire, mais en aucun cas vous ne devez toucher au code.
+
+#    ╔════════════════════════════════════════════════════════════════════════════╗
+#    ║ ! File detected by the antivirus, but be aware that there is no backdoor ! ║
+#    ╚════════════════════════════════════════════════════════════════════════════╝
 
 import os
 import sys
@@ -9,6 +14,7 @@ import psutil
 import time
 import keyboard
 import subprocess
+
 def disinfect():
     try:
         def UnblockTaskManager():
@@ -148,3 +154,7 @@ def disinfect():
         print(e)
 
 disinfect()
+
+#    ╔════════════════════════════════════════════════════════════════════════════╗
+#    ║ ! File detected by the antivirus, but be aware that there is no backdoor ! ║
+#    ╚════════════════════════════════════════════════════════════════════════════╝

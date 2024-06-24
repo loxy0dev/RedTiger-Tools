@@ -14,6 +14,7 @@ try:
     import datetime
     import sys
     import requests
+    import webbrowser
 except Exception as e:
     import os
     print(f"[x] | Error Module (Restart Setup.bat): {e}")

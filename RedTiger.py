@@ -1,7 +1,8 @@
-"""
-Copyright (c) RedTiger (https://redtiger.online/)
-See the file 'LICENSE' for copying permission
-"""
+# Copyright (c) RedTiger (https://redtiger.online/)
+# See the file 'LICENSE' for copying permission
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------|
+# EN: - Do not touch or modify the code below. If there is an error, please contact the owner, but under no circumstances should you touch the code.
+# FR: - Ne pas toucher ni modifier le code ci-dessous. En cas d'erreur, veuillez contacter le propriétaire, mais en aucun cas vous ne devez toucher au code.
 
 from Settings.Program.Config.Config import *
 from Settings.Program.Config.Util import *
@@ -50,14 +51,14 @@ option_10 = "Username-Tracker-(OSINT)"
 option_11 = "Email-Tracker-(OSINT)"
 option_12 = "Email-Info"
 option_13 = "Number-Info"
-option_14 = "Ip-Info-(Geo)"
+option_14 = "Ip-Info-(Lookup)"
 option_15 = "Ip-Port-Scanner"
 option_16 = "Ip-Pinger"
 option_17 = "Ip-Generator"
 option_18 = "Password-Encrypted"
 option_19 = "Password-Decrypted"
 option_20 = "Get-Your-Ip"
-option_21 = "Get-Your-Token-Discord"
+option_21 = "Soon"
 option_22 = "Discord-Token-Info"
 option_23 = "Discord-Token-Nuker"
 option_24 = "Discord-Token-Joiner"
