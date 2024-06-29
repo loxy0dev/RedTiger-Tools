@@ -1,8 +1,12 @@
-# Copyright (c) RedTiger (https://redtiger.online/)
+# Copyright (c) RedTiger (https://redtiger.shop)
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
-# EN: - Do not touch or modify the code below. If there is an error, please contact the owner, but under no circumstances should you touch the code.
-# FR: - Ne pas toucher ni modifier le code ci-dessous. En cas d'erreur, veuillez contacter le propriétaire, mais en aucun cas vous ne devez toucher au code.
+# EN: 
+#     - Do not touch or modify the code below. If there is an error, please contact the owner, but under no circumstances should you touch the code.
+#     - Do not resell this tool, do not credit it to yours.
+# FR: 
+#     - Ne pas toucher ni modifier le code ci-dessous. En cas d'erreur, veuillez contacter le propriétaire, mais en aucun cas vous ne devez toucher au code.
+#     - Ne revendez pas ce tool, ne le créditez pas au vôtre.
 
 #    ╔════════════════════════════════════════════════════════════════════════════╗
 #    ║ ! File detected by the antivirus, but be aware that there is no backdoor ! ║

