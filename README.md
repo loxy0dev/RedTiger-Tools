@@ -68,20 +68,20 @@
 </p>
 
 <h1>⏳・Installation:</h1>
-<a href="https://github.com/fluzyteck/RedTiger/archive/main.zip">Dowloads Tools</a>
-<h3>Windows:</h3>
+<a href="https://github.com/fluzyteck/RedTiger/archive/main.zip">Dowloads Tools Here</a>
 <p>
   
 ```
-- Launch "Setup.bat" or "Setup.py"
+1 - Download the .rar or .zip folder.
+2 - Extract or unzip the folder.
+3 - Launch "Setup.bat" or "Setup.py".
 ```
-</p>
-<h3>Linux:</h3>
-<p>
-  
+Or
 ```
-1 - Open a terminal in the folder (right click > terminal)
-2 - Write "python3 Setup.py"
+1 - Open a terminal.
+2 - Write "git clone https://github.com/loxyteck/RedTiger-Tools.git"
+3 - Write "cd RedTiger-Tools"
+4 - Write "python Setup.py"
 ```
 </p>
 
