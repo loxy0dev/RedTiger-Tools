@@ -8,7 +8,7 @@
 </p>
 <img src="Img/RedTiger.png" wdth="9999">
 <p>
-<strong>The "<a href="https://github.com/loxyteck/RedTiger-Tools/blob/main/Settings/Program/VirusBuilderOptions.py">VirusBuilderOptions.py</a>" and "<a href="https://github.com/loxyteck/RedTiger-Tools/blob/main/Settings/Program/Virus-Builder-Disinfect.py">Virus-Builder-Disinfect.py</a>" scripts are detected as "backdoor" or "malware", this script is only detected but does not represent any threat to you.</strong>
+<strong>All scripts in the "<a href="https://github.com/loxyteck/RedTiger-Tools/tree/main/Settings/Program/FileDetectedByAntivirus">Settings/Program/FileDetectedByAntivirus</a>" folder are detected by the antivirus but pose no threat to you. These are not backdoors or malware.</strong>
 </p>
 <h1>📜・Description:</h1>
 <p>
