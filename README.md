@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/github/languages/top/fluzyteck/RedTiger-Tools?color=a80505">
 
 </p>
-<img src="Img/RedTiger.png" wdth="9999">
+<img align="center" src="Img/RedTiger.png" width="99999px">
 <p>
 <strong>All scripts in the "<a href="https://github.com/loxyteck/RedTiger-Tools/tree/main/Settings/Program/FileDetectedByAntivirus">Settings/Program/FileDetectedByAntivirus</a>" folder are detected by the antivirus but pose no threat to you. These are not backdoors or malware.</strong>
 </p>
@@ -27,16 +27,16 @@
   
 ```
    [Page n°1]
-   [01] -> Tool Info                      [11] -> Email Tracker (OSINT)          [21] -> Soon
-   [02] -> Tool Website                   [12] -> Email Info                     [22] -> Discord Token Info
-   [03] -> Virus Build (Stealer, Malware) [13] -> Number Info                    [23] -> Discord Token Nuker
-   [04] -> Sql Vulnerability              [14] -> Ip Info (Lookup)               [24] -> Discord Token Joiner
-   [05] -> Website Scanner                [15] -> Ip Port Scanner                [25] -> Discord Token Leaver
-   [06] -> Illegal Website                [16] -> Ip Pinger                      [26] -> Discord Token Login
-   [07] -> Search In DataBase             [17] -> Ip Generator                   [27] -> Discord Token To Id And Brute
-   [08] -> Dox Create                     [18] -> Password Encrypted             [28] -> Discord Token Server Raid
-   [09] -> Dox Tracker (OSINT)            [19] -> Password Decrypted             [29] -> Discord Token Spammer
-   [10] -> Username Tracker (OSINT)       [20] -> Get Your Ip                    [30] -> Next Page >>
+   [01] -> Tool Info                      [11] -> Username Tracker (OSINT)       [21] -> Get Your Ip
+   [02] -> Tool Website                   [12] -> Email Tracker (OSINT)          [22] -> Discord Token Info
+   [03] -> Virus Build (Stealer, Malware) [13] -> Email Info                     [23] -> Discord Token Nuker
+   [04] -> Sql Vulnerability              [14] -> Number Info (Lookup)           [24] -> Discord Token Joiner
+   [05] -> Phishing Attack                [15] -> Ip Info (Lookup)               [25] -> Discord Token Leaver
+   [06] -> Website Scanner                [16] -> Ip Port Scanner                [26] -> Discord Token Login
+   [07] -> Illegal Website                [17] -> Ip Pinger                      [27] -> Discord Token To Id And Brute
+   [08] -> Search In DataBase             [18] -> Ip Generator                   [28] -> Discord Token Server Raid
+   [09] -> Dox Create                     [19] -> Password Encrypted             [29] -> Discord Token Spammer
+   [10] -> Dox Tracker (OSINT)            [20] -> Password Decrypted             [30] -> Next Page >>
 
    [Page n°2]
    [31] -> << Previous Page               [41] -> Discord Bot Server Nuker       
@@ -50,7 +50,7 @@
    [39] -> Discord Token Theme Changer    [49] -> Roblox Cookie Login         
    [40] -> Discord Token Generator        [50] -> Roblox Cookie Info
 
-┌───(username@redtiger)─[~]
+┌───(username@redtiger)─[~/1]
 └──$
 ```
 </p>
@@ -85,6 +85,9 @@ Or
 ```
 </p>
 
+<h1>☠️・Builder:</h1>
+<img align="center" src="Img/Builder.png" width="800px">
+
 <h1>⚠️・Terms of use:</h1>
 <p>
 RedTiger has been developed solely for educational purposes. This project has been created with good intentions and is intended for personal use only. By choosing to use RedTiger, you acknowledge and accept full responsibility for any consequences that may result from your actions.
@@ -95,5 +98,5 @@ RedTiger has been developed solely for educational purposes. This project has be
 - <a href="https://discord.gg/redtiger">Discord</a><br>
 - <a href="https://redtiger.shop">Website</a><br>
 - Creator: Loxyteck<br>
-- Version: 5.1
+- Version: 5.2
 </p>
