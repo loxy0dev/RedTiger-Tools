@@ -87,6 +87,8 @@ try:
 
     Slow(scan_bannner)
     website_url = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Website Url -> {reset}")
+    Censored(website_url)
+        
     print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Scanning..{reset}\n")
 
     if "https://" not in website_url and "http://" not in website_url:

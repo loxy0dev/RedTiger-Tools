@@ -32,29 +32,17 @@ try:
 
     if search_type in ['01', '1']:
         search = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Username -> {reset}")
-        if censored in search:
-            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find "{white}{search}{red}".')
-            Continue()
-            Reset()
+        Censored(search)
             
     elif search_type in ['02', '2']:
         name = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} LastName -> {reset}")
         first_name = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} FirstName -> {reset}")
-        if censored in name:
-            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find "{white}{name}, {first_name}{red}".')
-            Continue()
-            Reset()
-        elif censored in first_name:
-            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find "{white}{name}, {first_name}{red}".')
-            Continue()
-            Reset()
+        Censored(name)
+        Censored(first_name)
         
     elif search_type in ['03', '3']:
         search = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Search -> {reset}")
-        if censored in search:
-            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find "{white}{search}{red}".')
-            Continue()
-            Reset()
+        Censored(search)
     else:
         ErrorChoice()
 

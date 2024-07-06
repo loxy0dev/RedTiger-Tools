@@ -9,7 +9,7 @@
 #     - Ne revendez pas ce tool, ne le créditez pas au vôtre.
 
 name_tool = "RedTiger"
-version_tool = "5.1"
+version_tool = "5.2"
 coding_tool = "Python 3"
 language_tool = "EN"
 creator = "LoxyTeck"

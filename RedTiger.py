@@ -46,23 +46,23 @@ option_01 = "Tool-Info"
 option_02 = "Tool-Website"
 option_03 = "Virus-Build-(Stealer,-Malware)"
 option_04 = "Sql-Vulnerability"
-option_05 = "Website-Scanner"
-option_06 = "Illegal-Website"
-option_07 = "Search-In-DataBase"
-option_08 = "Dox-Create"
-option_09 = "Dox-Tracker-(OSINT)"
-option_10 = "Username-Tracker-(OSINT)"
-option_11 = "Email-Tracker-(OSINT)"
-option_12 = "Email-Info"
-option_13 = "Number-Info"
-option_14 = "Ip-Info-(Lookup)"
-option_15 = "Ip-Port-Scanner"
-option_16 = "Ip-Pinger"
-option_17 = "Ip-Generator"
-option_18 = "Password-Encrypted"
-option_19 = "Password-Decrypted"
-option_20 = "Get-Your-Ip"
-option_21 = "Soon"
+option_05 = "Phishing-Attack"
+option_06 = "Website-Scanner"
+option_07 = "Illegal-Website"
+option_08 = "Search-In-DataBase"
+option_09 = "Dox-Create"
+option_10 = "Dox-Tracker-(OSINT)"
+option_11 = "Username-Tracker-(OSINT)"
+option_12 = "Email-Tracker-(OSINT)"
+option_13 = "Email-Info"
+option_14 = "Number-Info-(Lookup)"
+option_15 = "Ip-Info-(Lookup)"
+option_16 = "Ip-Port-Scanner"
+option_17 = "Ip-Pinger"
+option_18 = "Ip-Generator"
+option_19 = "Password-Encrypted"
+option_20 = "Password-Decrypted"
+option_21 = "Get-Your-Ip"
 option_22 = "Discord-Token-Info"
 option_23 = "Discord-Token-Nuker"
 option_24 = "Discord-Token-Joiner"
@@ -195,7 +195,9 @@ page1 = f"""{white}[{red}Page n°1{white}]
    {white}[{red}07{white}] {red}->{white} {option_07_txt} {white}[{red}17{white}] {red}->{white} {option_17_txt} {white}[{red}27{white}] {red}->{white} {option_27_txt}
    {white}[{red}08{white}] {red}->{white} {option_08_txt} {white}[{red}18{white}] {red}->{white} {option_18_txt} {white}[{red}28{white}] {red}->{white} {option_28_txt}
    {white}[{red}09{white}] {red}->{white} {option_09_txt} {white}[{red}19{white}] {red}->{white} {option_19_txt} {white}[{red}29{white}] {red}->{white} {option_29_txt}
-   {white}[{red}10{white}] {red}->{white} {option_10_txt} {white}[{red}20{white}] {red}->{white} {option_20_txt} {white}[{red}30{white}] {red}-> {option_next_txt}"""
+   {white}[{red}10{white}] {red}->{white} {option_10_txt} {white}[{red}20{white}] {red}->{white} {option_20_txt} {white}[{red}30{white}] {red}-> {option_next_txt}
+
+{red}┌───({white}{username_pc}@redtiger{red})─[{white}~/1{red}]"""
 
 page2 = f"""{white}[{red}Page n°2{white}]
    {white}[{red}31{white}] {red}-> {option_previous_txt} {white}[{red}41{white}] {red}->{white} {option_41_txt} {white}[{red}61{white}] {red}->{white} {option_61_txt}
@@ -207,7 +209,9 @@ page2 = f"""{white}[{red}Page n°2{white}]
    {white}[{red}37{white}] {red}->{white} {option_37_txt} {white}[{red}47{white}] {red}->{white} {option_47_txt} {white}[{red}67{white}] {red}->{white} {option_67_txt}
    {white}[{red}38{white}] {red}->{white} {option_38_txt} {white}[{red}48{white}] {red}->{white} {option_48_txt} {white}[{red}68{white}] {red}->{white} {option_68_txt}
    {white}[{red}39{white}] {red}->{white} {option_39_txt} {white}[{red}49{white}] {red}->{white} {option_49_txt} {white}[{red}69{white}] {red}->{white} {option_69_txt}
-   {white}[{red}40{white}] {red}->{white} {option_40_txt} {white}[{red}50{white}] {red}->{white} {option_50_txt} {white}[{red}60{white}] {red}-> {option_next_txt}"""
+   {white}[{red}40{white}] {red}->{white} {option_40_txt} {white}[{red}50{white}] {red}->{white} {option_50_txt} {white}[{red}60{white}] {red}-> {option_next_txt}
+
+{red}┌───({white}{username_pc}@redtiger{red})─[{white}~/2{red}]"""
 
 def Menu():
    try:
@@ -215,15 +219,19 @@ def Menu():
          page = file.read()
       if page in ["1"]:
          page = page1
+         page_number = "1"
          Title("Page 1")
       elif page in ["2"]:
          page = page2
+         page_number = "2"
          Title("Page 2")
       else:
          page = page1
+         page_number = "1"
          Title("Page 1")
    except:
       page = page1
+      page_number = "1"
       Title("Page 1")
 
    menu = f"""{popup_version}{red}                                                                                                  
@@ -241,19 +249,15 @@ def Menu():
                                                      {white}╔════════════╗
                                                      {white}║ {red}Multi-Tool{white} ║
                                                      {white}╚════════════╝
-   {page}
-   """
+   {page}"""
    return menu
 
-Clear()
-Slow(Menu())
 
 while True:
    try:
       Clear()
-      print(Menu())
-      choice = input(f"""{red}┌───({white}{username_pc}@redtiger{red})─[{white}~{red}]
-└──{white}$ {reset}""")
+      Slow(Menu())
+      choice = input(f"""└──{white}$ {reset}""")
 
       if choice in ['1', '01']:
          StartProgram(f"{option_01}.py")
@@ -348,12 +352,16 @@ while True:
          with open("./Settings/Program/Config/Page.txt", "w") as file:
             file.write("2")
             Title("Page 2")
+         Clear()
+         Slow(Menu())
 
       elif choice in ['31']:
          page = page1
          with open("./Settings/Program/Config/Page.txt", "w") as file:
             file.write("1")
             Title("Page 1")
+         Clear()
+         Slow(Menu())
 
 
       elif choice in ['32']:

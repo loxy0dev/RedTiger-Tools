@@ -24,10 +24,7 @@ Title("Username Tracker (OSINT)")
 try:
     username = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Username -> {reset}")
 
-    if censored in username:
-        print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find username "{white}{username}{red}".')
-        Continue()
-        Reset()
+    Censored(username)
 
     print(f"""
 {white}[{red}01{white}] {red}->{white} Chrome (Windows / Linux)

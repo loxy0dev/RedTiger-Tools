@@ -23,11 +23,7 @@ Title("Email Tracker (OSINT)")
 
 try:
     email = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Email -> {reset}")
-
-    if censored in email:
-        print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find email "{white}{email}{red}".')
-        Continue()
-        Reset()
+    Censored(email)
 
     print(f"""
 {white}[{red}01{white}] {red}->{white} Chrome (Windows / Linux)

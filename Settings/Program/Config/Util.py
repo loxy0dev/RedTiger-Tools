@@ -43,8 +43,6 @@ try:
 except:
     username_pc = "username"
 
-censored = "loxy"
-
 def current_time_day_hour():
     return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
@@ -67,6 +65,20 @@ GEN_VALID = f'{BEFORE_GREEN}+{AFTER_GREEN} |'
 GEN_INVALID = f'{BEFORE}x{AFTER} |'
 
 INFO_ADD = f'{white}[{red}+{white}]{red}'
+
+def Censored(text):
+    censored = ["loxy", website, creator]
+    for censored_text in censored:
+        if text in censored:
+            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find "{white}{text}{red}".')
+            Continue()
+            Reset()
+        elif censored_text in text:
+            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find "{white}{text}{red}".')
+            Continue()
+            Reset()
+        else:
+            pass
 
 def ModuleInstall(module):
     subprocess.check_call(['pip', 'install', module])
@@ -424,6 +436,31 @@ def BrowserPrivate(site, search_bar=True, title="Navigateur Web"):
     main()
 
 
+phishing_banner = red + r"""
+                                                         .+#%@@%#+.                                     
+                                                    .#@@@@@@@@@@@@@@@@#.                                
+                                                  +@@@@@@@@@@@@@@@@@@@@@@*                              
+                                                .%@@@@@@@@@@@@@@@@@@@@@@@@%.                            
+                                                %@@@@@@@@@@@@@@@@@@@@@@@@@@%                            
+
+                                               %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#                          
+                                                -..........................-.                           
+                                                %@@@@@@%%@@@@@@@@@@@%@@@@@@%                            
+                                                %@@@#     .%@@@@%.     *@@@%                            
+                                                . :+%%+--+%@#::#@%*--+%%+: .                            
+                                                                           .                            
+                                                 :                        :                             
+                                                  -                      =                              
+                                                    -                  -                                
+                                                       -=          --                                   
+                                               -+#%@@@@@@=        =@@@@@@%#+-                           
+                                            *@@@@@@@@@@@@=        =@@@@@@@@@@@@*                        
+                                          *@@@@@@@@@@@@@@+        +@@@@@@@@@@@@@@#                      
+                                         *@@@@@@@@@@@@@@@@%=    -%@@@@@@@@@@@@@@@@#                     
+                                        -@@@@@@@@@@@@@@@@@@@%#*%@@@@@@@@@@@@@@@@@@@-                    
+                                        -@@@@@@@@@@@@@@@@@@@%::%@@@@@@@@@@@@@@@@@@@-                    
+                                        -@@@@@@@@@@@@@@@@@@@%::%@@@@@@@@@@@@@@@@@@@-                    
+                                        -@@@@@@@@@@@@@@@@@@@%::%@@@@@@@@@@@@@@@@@@@-  """
 
 decrypted_banner = red + r"""
                                          ^M@@@@@@@@@v                                    

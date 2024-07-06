@@ -87,10 +87,7 @@ try:
         return info, domain_all, domain, tld, name
 
     email = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Email -> {reset}")
-    if censored in email:
-        print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find email "{white}{email}{red}".')
-        Continue()
-        Reset()
+    Censored(email)
         
     print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Information Recovery..{reset}")
     info, domain_all, domain, tld, name = get_email_info(email)
