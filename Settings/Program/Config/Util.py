@@ -156,6 +156,11 @@ def ErrorUrl():
     time.sleep(3)
     Reset()
 
+def ErrorResponse():
+    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Invalid Response !", reset)
+    time.sleep(3)
+    Reset()
+
 def ErrorEdge():
     print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Edge not installed or driver not up to date !", reset)
     time.sleep(3)

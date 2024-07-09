@@ -17,7 +17,7 @@ try:
 except Exception as e:
    ErrorModule(e)
 
-Title("Email Info")
+Title("Email Info (Lookup)")
 
 try:
     def get_email_info(email):

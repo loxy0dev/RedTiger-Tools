@@ -47,68 +47,68 @@ option_02 = "Tool-Website"
 option_03 = "Virus-Build-(Stealer,-Malware)"
 option_04 = "Sql-Vulnerability"
 option_05 = "Phishing-Attack"
-option_06 = "Website-Scanner"
-option_07 = "Illegal-Website"
-option_08 = "Search-In-DataBase"
-option_09 = "Dox-Create"
-option_10 = "Dox-Tracker-(OSINT)"
-option_11 = "Username-Tracker-(OSINT)"
-option_12 = "Email-Tracker-(OSINT)"
-option_13 = "Email-Info"
-option_14 = "Number-Info-(Lookup)"
-option_15 = "Ip-Info-(Lookup)"
-option_16 = "Ip-Port-Scanner"
-option_17 = "Ip-Pinger"
-option_18 = "Ip-Generator"
-option_19 = "Password-Encrypted"
-option_20 = "Password-Decrypted"
-option_21 = "Get-Your-Ip"
-option_22 = "Discord-Token-Info"
-option_23 = "Discord-Token-Nuker"
-option_24 = "Discord-Token-Joiner"
-option_25 = "Discord-Token-Leaver"
-option_26 = "Discord-Token-Login"
-option_27 = "Discord-Token-To-Id-And-Brute"
-option_28 = "Discord-Token-Server-Raid"
-option_29 = "Discord-Token-Spammer"
-option_32 = "Discord-Token-Delete-Friends"
-option_33 = "Discord-Token-Block-Friends"
-option_34 = "Discord-Token-Mass-Dm"
-option_35 = "Discord-Token-Delete-Dm"
-option_36 = "Discord-Token-Status-Changer"
-option_37 = "Discord-Token-Language-Changer"
-option_38 = "Discord-Token-House-Changer"
-option_39 = "Discord-Token-Theme-Changer"
-option_40 = "Discord-Token-Generator"
-option_41 = "Discord-Bot-Server-Nuker"
-option_42 = "Discord-Bot-Invite-To-Id"
-option_43 = "Discord-Server-Info"
-option_44 = "Discord-Nitro-Generator"
-option_45 = "Discord-Webhook-Info"
-option_46 = "Discord-Webhook-Delete"
-option_47 = "Discord-Webhook-Spammer"
-option_48 = "Discord-Webhook-Generator"
-option_49 = "Roblox-Cookie-Login"
-option_50 = "Roblox-Cookie-Info"
-option_51 = "Roblox-User-Info"
-option_52 = "Roblox-Id-Info"
-option_53 = ""
-option_54 = ""
-option_55 = ""
-option_56 = ""
-option_57 = ""
-option_58 = ""
-option_59 = ""
-option_60 = ""
-option_61 = "" 
-option_62 = ""
-option_63 = ""
-option_64 = ""
-option_65 = ""
-option_66 = ""
-option_67 = ""
-option_68 = ""
-option_69 = ""
+option_06 = "Website-Info-Scanner"
+option_07 = "Website-Url-Scanner"
+option_08 = "Illegal-Website"
+option_09 = "Search-In-DataBase"
+option_10 = "Dox-Create"
+option_11 = "Dox-Tracker-(OSINT)"
+option_12 = "Username-Tracker-(OSINT)"
+option_13 = "Email-Tracker-(OSINT)"
+option_14 = "Email-Info-(Lookup)"
+option_15 = "Number-Info-(Lookup)"
+option_16 = "Ip-Info-(Lookup)"
+option_17 = "Ip-Port-Scanner"
+option_18 = "Ip-Pinger"
+option_19 = "Ip-Generator"
+option_20 = "Password-Encrypted"
+option_21 = "Password-Decrypted"
+option_22 = "Get-Your-Ip"
+option_23 = "Discord-Token-Info"
+option_24 = "Discord-Token-Nuker"
+option_25 = "Discord-Token-Joiner"
+option_26 = "Discord-Token-Leaver"
+option_27 = "Discord-Token-Login"
+option_28 = "Discord-Token-To-Id-And-Brute"
+option_29 = "Discord-Token-Server-Raid"
+option_32 = "Discord-Token-Spammer"
+option_33 = "Discord-Token-Delete-Friends"
+option_34 = "Discord-Token-Block-Friends"
+option_35 = "Discord-Token-Mass-Dm"
+option_36 = "Discord-Token-Delete-Dm"
+option_37 = "Discord-Token-Status-Changer"
+option_38 = "Discord-Token-Language-Changer"
+option_39 = "Discord-Token-House-Changer"
+option_40 = "Discord-Token-Theme-Changer"
+option_41 = "Discord-Token-Generator"
+option_42 = "Discord-Bot-Server-Nuker"
+option_43 = "Discord-Bot-Invite-To-Id"
+option_44 = "Discord-Server-Info"
+option_45 = "Discord-Nitro-Generator"
+option_46 = "Discord-Webhook-Info"
+option_47 = "Discord-Webhook-Delete"
+option_48 = "Discord-Webhook-Spammer"
+option_49 = "Discord-Webhook-Generator"
+option_50 = "Roblox-Cookie-Login"
+option_51 = "Roblox-Cookie-Info"
+option_52 = "Roblox-User-Info"
+option_53 = "Roblox-Id-Info"
+option_54 = "Soon"
+option_55 = "Soon"
+option_56 = "Soon"
+option_57 = "Soon"
+option_58 = "Soon"
+option_59 = "Soon"
+option_60 = "Soon"
+option_61 = "Soon" 
+option_62 = "Soon"
+option_63 = "Soon"
+option_64 = "Soon"
+option_65 = "Soon"
+option_66 = "Soon"
+option_67 = "Soon"
+option_68 = "Soon"
+option_69 = "Soon"
 
 option_next = "Next Page >>"
 option_previous = "<< Previous Page"
@@ -162,16 +162,16 @@ option_47_txt = option_47.ljust(30)[:30].replace("-", " ")
 option_48_txt = option_48.ljust(30)[:30].replace("-", " ")
 option_49_txt = option_49.ljust(30)[:30].replace("-", " ")
 option_50_txt = option_50.ljust(30)[:30].replace("-", " ")
-option_51_txt = option_50.ljust(30)[:30].replace("-", " ")
-option_52_txt = option_50.ljust(30)[:30].replace("-", " ")
-option_53_txt = option_50.ljust(30)[:30].replace("-", " ")
-option_54_txt = option_50.ljust(30)[:30].replace("-", " ")
-option_55_txt = option_50.ljust(30)[:30].replace("-", " ")
-option_56_txt = option_50.ljust(30)[:30].replace("-", " ")
-option_57_txt = option_50.ljust(30)[:30].replace("-", " ")
-option_58_txt = option_50.ljust(30)[:30].replace("-", " ")
-option_59_txt = option_50.ljust(30)[:30].replace("-", " ")
-option_60_txt = option_50.ljust(30)[:30].replace("-", " ")
+option_51_txt = option_51.ljust(30)[:30].replace("-", " ")
+option_52_txt = option_52.ljust(30)[:30].replace("-", " ")
+option_53_txt = option_53.ljust(30)[:30].replace("-", " ")
+option_54_txt = option_54.ljust(30)[:30].replace("-", " ")
+option_55_txt = option_55.ljust(30)[:30].replace("-", " ")
+option_56_txt = option_56.ljust(30)[:30].replace("-", " ")
+option_57_txt = option_57.ljust(30)[:30].replace("-", " ")
+option_58_txt = option_58.ljust(30)[:30].replace("-", " ")
+option_59_txt = option_59.ljust(30)[:30].replace("-", " ")
+option_60_txt = option_60.ljust(30)[:30].replace("-", " ")
 option_61_txt = option_61.ljust(30)[:30].replace("-", " ")
 option_62_txt = option_62.ljust(30)[:30].replace("-", " ")
 option_63_txt = option_63.ljust(30)[:30].replace("-", " ")
@@ -185,7 +185,7 @@ option_69_txt = option_69.ljust(30)[:30].replace("-", " ")
 option_previous_txt = option_previous.ljust(30)[:30]
 option_next_txt = option_next.ljust(30)[:30]
 
-page1 = f"""{white}[{red}Page n°1{white}]
+page1 = f"""{white}[{red}Menu n°1{white}]
    {white}[{red}01{white}] {red}->{white} {option_01_txt} {white}[{red}11{white}] {red}->{white} {option_11_txt} {white}[{red}21{white}] {red}->{white} {option_21_txt}
    {white}[{red}02{white}] {red}->{white} {option_02_txt} {white}[{red}12{white}] {red}->{white} {option_12_txt} {white}[{red}22{white}] {red}->{white} {option_22_txt}
    {white}[{red}03{white}] {red}->{white} {option_03_txt} {white}[{red}13{white}] {red}->{white} {option_13_txt} {white}[{red}23{white}] {red}->{white} {option_23_txt}
@@ -197,21 +197,21 @@ page1 = f"""{white}[{red}Page n°1{white}]
    {white}[{red}09{white}] {red}->{white} {option_09_txt} {white}[{red}19{white}] {red}->{white} {option_19_txt} {white}[{red}29{white}] {red}->{white} {option_29_txt}
    {white}[{red}10{white}] {red}->{white} {option_10_txt} {white}[{red}20{white}] {red}->{white} {option_20_txt} {white}[{red}30{white}] {red}-> {option_next_txt}
 
-{red}┌───({white}{username_pc}@redtiger{red})─[{white}~/1{red}]"""
+{red}┌───({white}{username_pc}@redtiger{red})─[{white}~/Menu-1{red}]""".replace("(OSINT)", f"{red}(OSINT){white}").replace("(Lookup)", f"{red}(Lookup){white}").replace("(Stealer, Malware)", f"{red}(Stealer, Malware){white}").replace("(Pentest)", f"{red}(Pentest){white}")
 
-page2 = f"""{white}[{red}Page n°2{white}]
-   {white}[{red}31{white}] {red}-> {option_previous_txt} {white}[{red}41{white}] {red}->{white} {option_41_txt} {white}[{red}61{white}] {red}->{white} {option_61_txt}
-   {white}[{red}32{white}] {red}->{white} {option_32_txt} {white}[{red}42{white}] {red}->{white} {option_42_txt} {white}[{red}62{white}] {red}->{white} {option_62_txt}
-   {white}[{red}33{white}] {red}->{white} {option_33_txt} {white}[{red}43{white}] {red}->{white} {option_43_txt} {white}[{red}63{white}] {red}->{white} {option_63_txt}
-   {white}[{red}34{white}] {red}->{white} {option_34_txt} {white}[{red}44{white}] {red}->{white} {option_44_txt} {white}[{red}64{white}] {red}->{white} {option_64_txt}
-   {white}[{red}35{white}] {red}->{white} {option_35_txt} {white}[{red}45{white}] {red}->{white} {option_45_txt} {white}[{red}65{white}] {red}->{white} {option_65_txt}
-   {white}[{red}36{white}] {red}->{white} {option_36_txt} {white}[{red}46{white}] {red}->{white} {option_46_txt} {white}[{red}66{white}] {red}->{white} {option_66_txt}
-   {white}[{red}37{white}] {red}->{white} {option_37_txt} {white}[{red}47{white}] {red}->{white} {option_47_txt} {white}[{red}67{white}] {red}->{white} {option_67_txt}
-   {white}[{red}38{white}] {red}->{white} {option_38_txt} {white}[{red}48{white}] {red}->{white} {option_48_txt} {white}[{red}68{white}] {red}->{white} {option_68_txt}
-   {white}[{red}39{white}] {red}->{white} {option_39_txt} {white}[{red}49{white}] {red}->{white} {option_49_txt} {white}[{red}69{white}] {red}->{white} {option_69_txt}
+page2 = f"""{white}[{red}Menu n°2{white}]
+   {white}[{red}31{white}] {red}-> {option_previous_txt} {white}[{red}41{white}] {red}->{white} {option_41_txt} {white}[{red}51{white}] {red}->{white} {option_51_txt}
+   {white}[{red}32{white}] {red}->{white} {option_32_txt} {white}[{red}42{white}] {red}->{white} {option_42_txt} {white}[{red}52{white}] {red}->{white} {option_52_txt}
+   {white}[{red}33{white}] {red}->{white} {option_33_txt} {white}[{red}43{white}] {red}->{white} {option_43_txt} {white}[{red}53{white}] {red}->{white} {option_53_txt}
+   {white}[{red}34{white}] {red}->{white} {option_34_txt} {white}[{red}44{white}] {red}->{white} {option_44_txt} {white}[{red}54{white}] {red}->{white} {option_54_txt}
+   {white}[{red}35{white}] {red}->{white} {option_35_txt} {white}[{red}45{white}] {red}->{white} {option_45_txt} {white}[{red}55{white}] {red}->{white} {option_55_txt}
+   {white}[{red}36{white}] {red}->{white} {option_36_txt} {white}[{red}46{white}] {red}->{white} {option_46_txt} {white}[{red}56{white}] {red}->{white} {option_56_txt}
+   {white}[{red}37{white}] {red}->{white} {option_37_txt} {white}[{red}47{white}] {red}->{white} {option_47_txt} {white}[{red}57{white}] {red}->{white} {option_57_txt}
+   {white}[{red}38{white}] {red}->{white} {option_38_txt} {white}[{red}48{white}] {red}->{white} {option_48_txt} {white}[{red}58{white}] {red}->{white} {option_58_txt}
+   {white}[{red}39{white}] {red}->{white} {option_39_txt} {white}[{red}49{white}] {red}->{white} {option_49_txt} {white}[{red}59{white}] {red}->{white} {option_59_txt}
    {white}[{red}40{white}] {red}->{white} {option_40_txt} {white}[{red}50{white}] {red}->{white} {option_50_txt} {white}[{red}60{white}] {red}-> {option_next_txt}
 
-{red}┌───({white}{username_pc}@redtiger{red})─[{white}~/2{red}]"""
+{red}┌───({white}{username_pc}@redtiger{red})─[{white}~/Menu-2{red}]""".replace("(OSINT)", f"{red}(OSINT){white}").replace("(Lookup)", f"{red}(Lookup){white}").replace("(Stealer, Malware)", f"{red}(Stealer, Malware){white}")
 
 def Menu():
    try:
@@ -219,20 +219,16 @@ def Menu():
          page = file.read()
       if page in ["1"]:
          page = page1
-         page_number = "1"
-         Title("Page 1")
+         Title("Menu 1")
       elif page in ["2"]:
          page = page2
-         page_number = "2"
-         Title("Page 2")
+         Title("Menu 2")
       else:
          page = page1
-         page_number = "1"
-         Title("Page 1")
+         Title("Menu 1")
    except:
       page = page1
-      page_number = "1"
-      Title("Page 1")
+      Title("Menu 1")
 
    menu = f"""{popup_version}{red}                                                                                                  
                              ██▀███  ▓█████ ▓█████▄    ▄▄▄█████▓ ██▓  ▄████ ▓█████  ██▀███
@@ -351,17 +347,13 @@ while True:
          page = page2
          with open("./Settings/Program/Config/Page.txt", "w") as file:
             file.write("2")
-            Title("Page 2")
-         Clear()
-         Slow(Menu())
+            Title("Menu 2")
 
       elif choice in ['31']:
          page = page1
          with open("./Settings/Program/Config/Page.txt", "w") as file:
             file.write("1")
-            Title("Page 1")
-         Clear()
-         Slow(Menu())
+            Title("Menu 1")
 
 
       elif choice in ['32']:
@@ -433,7 +425,17 @@ while True:
       elif choice in ['54']:
          StartProgram(f"{option_54}.py")
 
+      elif choice in ['55']:
+         StartProgram(f"{option_55}.py")
 
+      elif choice in ['56']:
+         StartProgram(f"{option_56}.py")
+
+      elif choice in ['57']:
+         StartProgram(f"{option_57}.py")
+
+      elif choice in ['58']:
+         StartProgram(f"{option_58}.py")
 
       else:
          ErrorChoiceStart()

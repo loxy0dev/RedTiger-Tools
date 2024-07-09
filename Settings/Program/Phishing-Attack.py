@@ -92,7 +92,7 @@ try:
 
         with open(file_html, 'w', encoding='utf-8') as file:
             file.write(final_html)
-        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Phishing attack successful. The file is located in the folder \"{white}{file_html}{red}\"")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Phishing attack successful. The file is located in the folder \"{white}{file_html_relative}{red}\"")
         Continue()
         Reset()
     else:

@@ -17,7 +17,7 @@ except Exception as e:
    ErrorModule(e)
    
 
-Title("Number Info")
+Title("Number Info (Lookup)")
 
 try:
     phone_number = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Phone Number -> {color.RESET}")

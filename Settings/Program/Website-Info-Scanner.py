@@ -10,10 +10,13 @@
 
 from Config.Util import *
 from Config.Config import *
-import socket
-import requests
+try:
+    import socket
+    import requests
+except Exception as e:
+    ErrorModule(e)
 
-Title("Website Scanner")
+Title("Website Info Scanner")
 
 try:
     def domain_scan(website_url):
@@ -28,8 +31,11 @@ try:
         return secure
 
     def status_scan(website_url):
-        response = requests.get(website_url)
-        status_code = response.status_code
+        try:
+            response = requests.get(website_url)
+            status_code = response.status_code
+        except:
+            status_code = 404
         return status_code
 
     def ip_scan(domain):
@@ -54,40 +60,42 @@ try:
         return ip, status, host_isp, host_org, host_as
     
     def port_scan(ip):
-        open_ports = []
-        common_ports = {
-            80: "HTTP",
-            443: "HTTPS",
-            21: "FTP",
-            22: "SSH",
-            25: "SMTP",
-            53: "DNS",
-            110: "POP3",
-            143: "IMAP",
-            3306: "MySQL",
-            5432: "PostgreSQL",
-            6379: "Redis",
-            27017: "MongoDB",
-            8080: "HTTP-alt"
-        }
-        
-        for port, service in common_ports.items():
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.settimeout(1)
-            try:
-                result = sock.connect_ex((ip, port))
-                if result == 0:
-                    open_ports.append((port, service))
-            except Exception as e:
-                ErrorModule(e)
-            finally:
-                sock.close()
-
-        return ' / '.join([f'{port}/{service}' for port, service in open_ports])
+        try:
+            open_ports = []
+            common_ports = {
+                80: "HTTP",
+                443: "HTTPS",
+                21: "FTP",
+                22: "SSH",
+                25: "SMTP",
+                53: "DNS",
+                110: "POP3",
+                143: "IMAP",
+                3306: "MySQL",
+                5432: "PostgreSQL",
+                6379: "Redis",
+                27017: "MongoDB",
+                8080: "HTTP-alt"
+            }
+            
+            for port, service in common_ports.items():
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                sock.settimeout(1)
+                try:
+                    result = sock.connect_ex((ip, port))
+                    if result == 0:
+                        open_ports.append((port, service))
+                except:
+                    return None
+                finally:
+                    sock.close()
+            return ' / '.join([f'{port}:{service}' for port, service in open_ports])
+        except:
+            return None
 
     Slow(scan_bannner)
     website_url = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Website Url -> {reset}")
-    Censored(website_url)
+    
         
     print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Scanning..{reset}\n")
 
@@ -113,7 +121,7 @@ try:
     {INFO_ADD} Host As     : {white}{host_as}{red}""")
 
     open_port = port_scan(ip)
-    print(f"    {INFO_ADD} Open Ports  : {white}{open_port}{reset}")
+    print(f"    {INFO_ADD} Open Port   : {white}{open_port}{reset}")
 
     print()
     Continue()

