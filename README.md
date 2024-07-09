@@ -26,31 +26,31 @@
 <p align="center">
   
 ```
-   [Page n°1]
-   [01] -> Tool Info                      [11] -> Username Tracker (OSINT)       [21] -> Get Your Ip
-   [02] -> Tool Website                   [12] -> Email Tracker (OSINT)          [22] -> Discord Token Info
-   [03] -> Virus Build (Stealer, Malware) [13] -> Email Info                     [23] -> Discord Token Nuker
-   [04] -> Sql Vulnerability              [14] -> Number Info (Lookup)           [24] -> Discord Token Joiner
-   [05] -> Phishing Attack                [15] -> Ip Info (Lookup)               [25] -> Discord Token Leaver
-   [06] -> Website Scanner                [16] -> Ip Port Scanner                [26] -> Discord Token Login
-   [07] -> Illegal Website                [17] -> Ip Pinger                      [27] -> Discord Token To Id And Brute
-   [08] -> Search In DataBase             [18] -> Ip Generator                   [28] -> Discord Token Server Raid
-   [09] -> Dox Create                     [19] -> Password Encrypted             [29] -> Discord Token Spammer
-   [10] -> Dox Tracker (OSINT)            [20] -> Password Decrypted             [30] -> Next Page >>
+   [Menu n°1]
+   [01] -> Tool Info                      [11] -> Dox Tracker (OSINT)            [21] -> Password Decrypted
+   [02] -> Tool Website                   [12] -> Username Tracker (OSINT)       [22] -> Get Your Ip
+   [03] -> Virus Build (Stealer, Malware) [13] -> Email Tracker (OSINT)          [23] -> Discord Token Info
+   [04] -> Sql Vulnerability              [14] -> Email Info (Lookup)            [24] -> Discord Token Nuker
+   [05] -> Phishing Attack                [15] -> Number Info (Lookup)           [25] -> Discord Token Joiner
+   [06] -> Website Info Scanner           [16] -> Ip Info (Lookup)               [26] -> Discord Token Leaver
+   [07] -> Website Url Scanner            [17] -> Ip Port Scanner                [27] -> Discord Token Login
+   [08] -> Illegal Website                [18] -> Ip Pinger                      [28] -> Discord Token To Id And Brute
+   [09] -> Search In DataBase             [19] -> Ip Generator                   [29] -> Discord Token Server Raid
+   [10] -> Dox Create                     [20] -> Password Encrypted             [30] -> Next Page >>
 
-   [Page n°2]
-   [31] -> << Previous Page               [41] -> Discord Bot Server Nuker       
-   [32] -> Discord Token Delete Friends   [42] -> Discord Bot Invite To Id    
-   [33] -> Discord Token Block Friends    [43] -> Discord Server Info           
-   [34] -> Discord Token Mass Dm          [44] -> Discord Nitro Generator       
-   [35] -> Discord Token Delete Dm        [45] -> Discord Webhook Info        
-   [36] -> Discord Token Status Changer   [46] -> Discord Webhook Delete       
-   [37] -> Discord Token Language Changer [47] -> Discord Webhook Spammer        
-   [38] -> Discord Token House Changer    [48] -> Discord Webhook Generator    
-   [39] -> Discord Token Theme Changer    [49] -> Roblox Cookie Login         
-   [40] -> Discord Token Generator        [50] -> Roblox Cookie Info
+   [Menu n°2]
+   [31] -> << Previous Page               [41] -> Discord Token Generator        [51] -> Roblox Cookie Info
+   [32] -> Discord Token Spammer          [42] -> Discord Bot Server Nuker       [52] -> Roblox User Info
+   [33] -> Discord Token Delete Friends   [43] -> Discord Bot Invite To Id       [53] -> Roblox Id Info
+   [34] -> Discord Token Block Friends    [44] -> Discord Server Info            [54] -> Soon
+   [35] -> Discord Token Mass Dm          [45] -> Discord Nitro Generator        [55] -> Soon
+   [36] -> Discord Token Delete Dm        [46] -> Discord Webhook Info           [56] -> Soon
+   [37] -> Discord Token Status Changer   [47] -> Discord Webhook Delete         [57] -> Soon
+   [38] -> Discord Token Language Changer [48] -> Discord Webhook Spammer        [58] -> Soon
+   [39] -> Discord Token House Changer    [49] -> Discord Webhook Generator      [59] -> Soon
+   [40] -> Discord Token Theme Changer    [50] -> Roblox Cookie Login            [60] -> Next Page >>
 
-┌───(username@redtiger)─[~/1]
+┌───(admin@redtiger)─[~/Menu]
 └──$
 ```
 </p>
@@ -98,5 +98,5 @@ RedTiger has been developed solely for educational purposes. This project has be
 - <a href="https://discord.gg/redtiger">Discord</a><br>
 - <a href="https://redtiger.shop">Website</a><br>
 - Creator: Loxyteck<br>
-- Version: 5.2
+- Version: 5.3
 </p>
