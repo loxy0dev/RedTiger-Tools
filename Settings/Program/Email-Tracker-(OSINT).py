@@ -19,7 +19,7 @@ try:
 except Exception as e:
    ErrorModule(e)
 
-Title("Email Tracker (OSINT)")
+Title("Email Tracker (Osint)")
 
 try:
     email = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Email -> {reset}")

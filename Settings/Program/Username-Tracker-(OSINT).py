@@ -19,7 +19,7 @@ try:
 except Exception as e:
    ErrorModule(e)
 
-Title("Username Tracker (OSINT)")
+Title("Username Tracker (Osint)")
 
 try:
     username = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Username -> {reset}")

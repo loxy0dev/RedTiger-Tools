@@ -88,37 +88,29 @@ def ModuleUninstall(module):
 
 def Title(title):
     if sys.platform.startswith("win"):
-        "WINDOWS"
         ctypes.windll.kernel32.SetConsoleTitleW(f"{name_tool} {version_tool} | {title}")
     elif sys.platform.startswith("linux"):
-        "LINUX"
         sys.stdout.write(f"\x1b]2;{name_tool} {version_tool} | {title}\x07")
         
 def Clear():
     if sys.platform.startswith("win"):
-        "WINDOWS"
         os.system("cls")
     elif sys.platform.startswith("linux"):
-        "LINUX"
         os.system("clear")
 
 def Reset():
         if sys.platform.startswith("win"):
-            "WINDOWS"
             file = f'python ./RedTiger.py'
             subprocess.run(file, shell=True)
         elif sys.platform.startswith("linux"):
-            "LINUX"
             file = f'python3 ./RedTiger.py'
             subprocess.run(file, shell=True)
 
 def StartProgram(program):
     if sys.platform.startswith("win"):
-        "WINDOWS"
         file = f'python ./Settings/Program/{program}'
         subprocess.run(file, shell=True)
     elif sys.platform.startswith("linux"):
-        "LINUX"
         file = f'python3 ./Settings/Program/{program}'
         subprocess.run(file, shell=True)
 
@@ -242,9 +234,6 @@ def ChoiceMultiChannelDiscord():
 
 
 def ChoiceMultiTokenDisord():
-    if sys.platform.startswith("linux"):
-        "LINUX"
-        return
 
     def CheckToken(token_number, token):
         r = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token, 'Content-Type': 'application/json'})
@@ -259,7 +248,7 @@ def ChoiceMultiTokenDisord():
             status = f"Invalid"
             print(f"{white}[{red}{token_number}{white}]{red} -> {red}Status: {white}{status}{red} | {red}Token: {white}{token}")
 
-    file_token_discord = "./TokenDisc.txt"
+    file_token_discord = "./2-Input/TokenDisc/TokenDisc.txt"
     tokens = {}
     token_discord_number = 0
 
@@ -328,7 +317,7 @@ def Choice1TokenDiscord():
             status = f"Invalid"
             print(f"{white}[{red}{token_number}{white}]{red} -> {red}Status: {white}{status}{red} | {red}Token: {white}{token}")
 
-    file_token_discord = "./TokenDisc.txt"
+    file_token_discord = "./2-Input/TokenDisc/TokenDisc.txt"
     tokens = {}
     token_discord_number = 0
 
@@ -440,6 +429,24 @@ def BrowserPrivate(site, search_bar=True, title="Navigateur Web"):
 
     main()
 
+url_banner = red + r"""
+                   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  
+                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                  @@@@                                                    @@@@                     @@@@
+                  @@@@                                                    @@@@       @@@@@          @@@
+                  @@@@   @@@@ @@@@  @@@@@@@@  @@@   @@@ @@@@  @@@  @@@@   @@@@    @@@@@@@@@@@       @@@
+                  @@@@   @@@@ @@@@  @@@ @@@@@ @@@@ @@@@ @@@@ @@@@  @@@@   @@@@  @@@@@@   @@@@@      @@@
+                  @@@@   @@@@ @@@@@@@@@  @@@@@@@@@@@@@@ @@@@@@@@@@@@@@    @@@@  @@@@       @@@@     @@@
+                  @@@@    @@@@@@@@@@@@@   @@@@@@@@@@@@   @@@@@@@@@@@@@    @@@@  @@@@       @@@@     @@@
+                  @@@@    @@@@@@@@@@@@    @@@@@@@@@@@@    @@@@@@@@@@@     @@@@  @@@@@     @@@@@     @@@
+                  @@@@    @@@@@@@@@@@@    @@@@@@@@@@@     @@@@@@@@@@@     @@@@   @@@@@@@@@@@@@      @@@
+                  @@@@     @@@@@@@@@@@    @@@@@@@@@@@     @@@@@ @@@@@     @@@@     @@@@@@@@@@@@@    @@@
+                  @@@@     @@@@@ @@@@      @@@@ @@@@@     @@@@@ @@@@      @@@@               @@@@@  @@@
+                  @@@@      @@@   @@        @@   @@@       @@@   @@       @@@@                 @@@  @@@
+                  @@@@                                                    @@@@                     @@@@
+                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                      
+"""
 
 phishing_banner = red + r"""
                                                          .+#%@@%#+.                                     
@@ -553,14 +560,14 @@ sql_banner = red + r"""
                                                                        ^@@@O  ^J@@@@^;@@@}                
                                                                    >@@@; @@@@^;@@@@@> ;@@@O               
                                                                 >j _@@@@j p@@@^;@|      @@@>              
-                                                              }@@@@  @@@@j J@@@>                          
-                                                          ^a@@ _@@@@;_@@@@a }@@@>                         
-                                                       ^} v@@@@^;@@@@@@@@@@@ >@@@v                        
-                                                     |@@@@ ^@@@@J@@@@@@@@@@@@;^@@@J                       
-                                                  J@M }@@@@ _@@@@@@@@@@@@@@j    @@j                       
-                                               ; v@@@@ >@@@@@@@@@@@@@@@@j                                 
-                                            ^@@@@ ;@@@@v@@@@@@@@@@@@@j^                                   
-                                            a@@@@@ >@@@@@@@@@@@@@@a                                       
+           _____       _                                      }@@@@  @@@@j J@@@>                          
+          / ____|     | |                                 ^a@@ _@@@@;_@@@@a }@@@>                         
+         | (___   __ _| |                              ^} v@@@@^;@@@@@@@@@@@ >@@@v                        
+          \___ \ / _` | |                            |@@@@ ^@@@@J@@@@@@@@@@@@;^@@@J                       
+          ____) | (_| | |                         J@M }@@@@ _@@@@@@@@@@@@@@j    @@j                       
+         |_____/ \__, |_|                      ; v@@@@ >@@@@@@@@@@@@@@@@j                                 
+                    | |                     ^@@@@ ;@@@@v@@@@@@@@@@@@@j^                                   
+                    |_|                     a@@@@@ >@@@@@@@@@@@@@@a                                       
                                             |@@@@@@@@@@@@@@@@@@J                                          
                                           |a ;@@@@@@@@@@@@@@a;                                            
                                          @@@@ ;@@@@@@@@@@@;                                               
@@ -569,7 +576,7 @@ sql_banner = red + r"""
                                   ;@@@a                                                                   
                                ;@@@p;                                                                     
                             >p@@M>                                                                        
-                           }@@>                                                                           
+                           }@@>                                                                          
 """
 
 

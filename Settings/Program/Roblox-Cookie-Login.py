@@ -19,9 +19,6 @@ except Exception as e:
 Title("Roblox Cookie Login")
 
 try:
-    if sys.platform.startswith("linux"):
-        "LINUX"
-        OnlyWindows()
 
     cookie = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Cookie -> {white}")
     print(f"""

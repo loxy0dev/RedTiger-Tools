@@ -14,7 +14,7 @@ from Config.Config import *
 Title("Search DataBase")
 
 try:
-    folder_database_relative = "./2-DataBase"
+    folder_database_relative = "./2-Input/DataBase"
     folder_database = os.path.abspath(folder_database_relative)
 
     print(f"""

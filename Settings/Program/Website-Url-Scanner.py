@@ -91,6 +91,7 @@ try:
                 find_secret_urls(link, domain)
                 visited_links.add(link)
 
+    Slow(url_banner)
     website_url = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Website Url -> {reset}")
     Censored(website_url)
 

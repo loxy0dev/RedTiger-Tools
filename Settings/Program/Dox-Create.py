@@ -257,11 +257,11 @@ try:
     logs =     input(f"{INPUT} Logs          : {reset}")
 
 
-    name_file = input(f"{color.RED}\n{INPUT} Choose the file name -> {color.RESET}")
+    name_file = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Choose the file name -> {reset}")
     if not name_file.strip():
         name_file = f'No Name {random.randint(1, 999)}'
 
-    path = f"./1-FileOutput/DoxCreate/D0x - {name_file}.txt"
+    path = f"./1-Output/DoxCreate/D0x - {name_file}.txt"
 
     with open(path, 'w', encoding='utf-8') as file:
         file.write(f'''
@@ -392,7 +392,7 @@ try:
             ╚═══════════════════════════════════════════════════════════════════════════════════════╝
     ''')
 
-    print(color.RED + f"{INFO} The DOX {color.WHITE}\"{name_file}\"{color.RED} was sent to: {color.WHITE}\"{path}\""+ color.RESET)
+    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} The DOX {color.WHITE}\"{name_file}\"{color.RED} was sent to: {color.WHITE}\"{path}\"")
     Continue()
     Reset()
 except Exception as e:

@@ -85,7 +85,7 @@ try:
         soup = BeautifulSoup(html_content, 'html.parser')
         file_name = re.sub(r'[\\/:*?"<>|]', '-', soup.title.string if soup.title else 'page_sans_titre')
 
-        file_html_relative = f'./1-FileOutput/PhishingAttack/{file_name}.html'
+        file_html_relative = f'./1-Output/PhishingAttack/{file_name}.html'
         file_html = os.path.abspath(file_html_relative)
 
         final_html = css_and_js(html_content, website_url)

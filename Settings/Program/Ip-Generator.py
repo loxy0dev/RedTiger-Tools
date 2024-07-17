@@ -47,8 +47,6 @@ try:
 
     number_valid = 0
     number_invalid = 0
-    file_txt_relative = "./1-FileOutput/IpGenerator/IpValid.txt"
-    file_txt = os.path.abspath(file_txt_relative)
     def ip_check():
         global number_valid, number_invalid
         number_1 = random.randint(1, 255)
@@ -59,10 +57,8 @@ try:
 
         try:
             if sys.platform.startswith("win"):
-                "WINDOWS"
                 result = subprocess.run(['ping', '-n', '1', ip], capture_output=True, text=True, timeout=0.1)
             elif sys.platform.startswith("linux"):
-                "LINUX"
                 result = subprocess.run(['ping', '-c', '1', '-W', '1', ip], capture_output=True, text=True, timeout=0.1)
 
             if result.returncode == 0:
@@ -83,8 +79,6 @@ try:
                 else:
                     print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Logs: {color.WHITE}{number_invalid} invalid - {number_valid} valid{color.RED} | Status:  {color.WHITE}Valid{color.GREEN}  | Ip: {color.WHITE}{ip}{color.GREEN}")
                 
-                with open(file_txt, 'a') as f:
-                    f.write(f"{ip}\n")
             else:
                 number_invalid += 1
                 print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Logs: {color.WHITE}{number_invalid} invalid - {number_valid} valid{color.RED} | Status: {color.WHITE}Invalid{color.RED} | Ip: {color.WHITE}{ip}{color.RED}")
