@@ -100,5 +100,5 @@ RedTiger has been developed solely for educational purposes. This project has be
 - <a href="https://discord.gg/redtiger">Discord</a><br>
 - <a href="https://redtiger.shop">Website</a><br>
 - Creator: Loxyteck<br>
-- Version: 5.4
+- Version: 5.5
 </p>
