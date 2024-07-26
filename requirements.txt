@@ -1,0 +1,13 @@
+PyQt5
+PyQtWebEngine
+colorama
+psutil
+keyboard
+requests
+dnspython
+selenium
+deep-translator
+phonenumbers
+bcrypt
+beautifulsoup4
+pypiwin32

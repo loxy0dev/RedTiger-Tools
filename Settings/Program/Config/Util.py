@@ -19,7 +19,7 @@ try:
     import datetime
     import sys
     import requests
-    import webbrowser
+    from pathlib import Path
 except Exception as e:
     import os
     print(f"[x] | Error Module (Restart Setup.bat): {e}")
@@ -29,8 +29,8 @@ color_webhook = 0xa80505
 username_webhook = name_tool
 avatar_webhook = "https://media.discordapp.net/attachments/1185940734256357427/1252261629546987550/logo_redtiger.png?ex=66719306&is=66704186&hm=c0cdee4699eb76dd404125866c4130d77ed177426daf71d8c976e5bbcb44c6bd&=&format=webp&quality=lossless&width=810&height=810"
 
-color = colorama.Fore
 colorama.init()
+color = colorama.Fore
 red = color.RED
 white = color.WHITE
 green = color.GREEN
@@ -38,10 +38,8 @@ reset = color.RESET
 blue = color.BLUE
 yellow = color.YELLOW
 
-try:
-    username_pc = os.getlogin()
-except:
-    username_pc = "username"
+try: username_pc = os.getlogin()
+except: username_pc = "username"
 
 def current_time_day_hour():
     return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -79,12 +77,6 @@ def Censored(text):
             Reset()
         else:
             pass
-
-def ModuleInstall(module):
-    subprocess.check_call(['pip', 'install', module])
-
-def ModuleUninstall(module):
-    subprocess.check_call(['pip', 'uninstall', module])
 
 def Title(title):
     if sys.platform.startswith("win"):

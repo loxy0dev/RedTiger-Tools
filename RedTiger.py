@@ -21,24 +21,16 @@ except:
 colorama.init()
 
 try:
-   url = url_config
-   response = requests.get(url)
-   if response.status_code == 200:
-       content = response.text
-       match = re.search(r'version_tool\s*=\s*"([^"]+)"', content)
-       if match:
-           current_version = match.group(1)
-           if current_version != version_tool:
-               print(f"{INFO} Please download the new version of the tool ! {white}{version_tool}{color.LIGHTYELLOW_EX} -> {white}{current_version}{red}")
-               webbrowser.open(github_tool)
-               input(f"{INFO} Enter to still use this version -> {color.RESET}")
-               popup_version = f"{color.LIGHTYELLOW_EX}Please update the tool: {white}{version_tool}{color.LIGHTYELLOW_EX} -> {white}{current_version}{red}"
-           else:
-               popup_version = ""
-       else:
-           popup_version = ""
+   content = requests.get(url_config).text
+   match = re.search(r'version_tool\s*=\s*"([^"]+)"', content)
+   current_version = match.group(1)
+   if current_version != version_tool:
+      print(f"{INFO} Please download the new version of the tool ! {white}{version_tool}{color.LIGHTYELLOW_EX} -> {white}{current_version}{red}")
+      webbrowser.open(github_tool)
+      input(f"{INFO} Enter to still use this version -> {reset}")
+      popup_version = f"{color.LIGHTYELLOW_EX}Please update the tool: {white}{version_tool}{color.LIGHTYELLOW_EX} -> {white}{current_version}{red}"
    else:
-       popup_version = ""
+      popup_version = ""
 except:
    popup_version = ""
 
@@ -185,7 +177,7 @@ option_69_txt = option_69.ljust(30)[:30].replace("-", " ")
 option_previous_txt = option_previous.ljust(30)[:30]
 option_next_txt = option_next.ljust(30)[:30]
 
-page1 = f"""{white}[{red}Menu n°1{white}]
+menu1 = f"""{white}[{red}Menu n°1{white}]
    {white}[{red}01{white}] {red}->{white} {option_01_txt} {white}[{red}11{white}] {red}->{white} {option_11_txt} {white}[{red}21{white}] {red}->{white} {option_21_txt}
    {white}[{red}02{white}] {red}->{white} {option_02_txt} {white}[{red}12{white}] {red}->{white} {option_12_txt} {white}[{red}22{white}] {red}->{white} {option_22_txt}
    {white}[{red}03{white}] {red}->{white} {option_03_txt} {white}[{red}13{white}] {red}->{white} {option_13_txt} {white}[{red}23{white}] {red}->{white} {option_23_txt}
@@ -197,9 +189,9 @@ page1 = f"""{white}[{red}Menu n°1{white}]
    {white}[{red}09{white}] {red}->{white} {option_09_txt} {white}[{red}19{white}] {red}->{white} {option_19_txt} {white}[{red}29{white}] {red}->{white} {option_29_txt}
    {white}[{red}10{white}] {red}->{white} {option_10_txt} {white}[{red}20{white}] {red}->{white} {option_20_txt} {white}[{red}30{white}] {red}-> {option_next_txt}
 
-{red}┌───({white}{username_pc}@redtiger{red})─[{white}~/Menu-1{red}]""".replace("(Osint)", f"{red}(Osint){white}").replace("(Lookup)", f"{red}(Lookup){white}").replace("(Stealer, Malware)", f"{red}(Stealer, Malware){white}").replace("(Paid)", f"{red}(Paid){white}")
+{red}┌───({white}{username_pc}@redtiger{red})─[{white}~/RedTiger/Menu-1{red}]""".replace("(Osint)", f"{red}(Osint){white}").replace("(Lookup)", f"{red}(Lookup){white}").replace("(Stealer, Malware)", f"{red}(Stealer, Malware){white}").replace("(Paid)", f"{red}(Paid){white}")
 
-page2 = f"""{white}[{red}Menu n°2{white}]
+menu2 = f"""{white}[{red}Menu n°2{white}]
    {white}[{red}31{white}] {red}-> {option_previous_txt} {white}[{red}41{white}] {red}->{white} {option_41_txt} {white}[{red}51{white}] {red}->{white} {option_51_txt}
    {white}[{red}32{white}] {red}->{white} {option_32_txt} {white}[{red}42{white}] {red}->{white} {option_42_txt} {white}[{red}52{white}] {red}->{white} {option_52_txt}
    {white}[{red}33{white}] {red}->{white} {option_33_txt} {white}[{red}43{white}] {red}->{white} {option_43_txt} {white}[{red}53{white}] {red}->{white} {option_53_txt}
@@ -211,26 +203,26 @@ page2 = f"""{white}[{red}Menu n°2{white}]
    {white}[{red}39{white}] {red}->{white} {option_39_txt} {white}[{red}49{white}] {red}->{white} {option_49_txt} {white}[{red}59{white}] {red}->{white} {option_59_txt}
    {white}[{red}40{white}] {red}->{white} {option_40_txt} {white}[{red}50{white}] {red}->{white} {option_50_txt} {white}[{red}60{white}] {red}-> {option_next_txt}
 
-{red}┌───({white}{username_pc}@redtiger{red})─[{white}~/Menu-2{red}]""".replace("(Osint)", f"{red}(Osint){white}").replace("(Lookup)", f"{red}(Lookup){white}").replace("(Stealer, Malware)", f"{red}(Stealer, Malware){white}").replace("(Paid)", f"{red}(Paid){white}")
+{red}┌───({white}{username_pc}@redtiger{red})─[{white}~/RedTiger/Menu-2{red}]""".replace("(Osint)", f"{red}(Osint){white}").replace("(Lookup)", f"{red}(Lookup){white}").replace("(Stealer, Malware)", f"{red}(Stealer, Malware){white}").replace("(Paid)", f"{red}(Paid){white}")
 
 def Menu():
    try:
-      with open("./Settings/Program/Config/Page.txt", "r") as file:
-         page = file.read()
-      if page in ["1"]:
-         page = page1
+      with open("./Settings/Program/Config/Menu.txt", "r") as file:
+         menu = file.read()
+      if menu in ["1"]:
+         menu = menu1
          Title("Menu 1")
-      elif page in ["2"]:
-         page = page2
+      elif menu in ["2"]:
+         menu = menu2
          Title("Menu 2")
       else:
-         page = page1
+         menu = menu1
          Title("Menu 1")
    except:
-      page = page1
+      menu = menu1
       Title("Menu 1")
 
-   menu = f"""{popup_version}{red}                                                                                                  
+   banner = f"""{popup_version}{red}                                                                                                  
                              ██▀███  ▓█████ ▓█████▄    ▄▄▄█████▓ ██▓  ▄████ ▓█████  ██▀███
                             ▓██ ▒ ██▒▓█   ▀ ▒██▀ ██▌   ▓  ██▒ ▓▒▓██▒ ██▒ ▀█▒▓█   ▀ ▓██ ▒ ██▒
                             ▓██ ░▄█ ▒▒███   ░██   █▌   ▒ ▓██░ ▒░▒██▒▒██░▄▄▄░▒███   ▓██ ░▄█ ▒
@@ -245,8 +237,8 @@ def Menu():
                                                      {white}╔════════════╗
                                                      {white}║ {red}Multi-Tool{white} ║
                                                      {white}╚════════════╝
-   {page}"""
-   return menu
+   {menu}"""
+   return banner
 
 
 while True:
@@ -255,188 +247,37 @@ while True:
       Slow(Menu())
       choice = input(f"""└──{white}$ {reset}""")
 
-      if choice in ['1', '01']:
-         StartProgram(f"{option_01}.py")
+      options = {
+         '1': option_01, '2': option_02, '3': option_03, '4': option_04,
+         '5': option_05, '6': option_06, '7': option_07, '8': option_08,
+         '9': option_09, '10': option_10, '11': option_11, '12': option_12,
+         '13': option_13, '14': option_14, '15': option_15, '16': option_16,
+         '17': option_17, '18': option_18, '19': option_19, '20': option_20,
+         '21': option_21, '22': option_22, '23': option_23, '24': option_24,
+         '25': option_25, '26': option_26, '27': option_27, '28': option_28,
+         '29': option_29, '30': option_next, '31': option_previous, '32': option_32,
+         '33': option_33, '34': option_34, '35': option_35, '36': option_36,
+         '37': option_37, '38': option_38, '39': option_39, '40': option_40,
+         '41': option_41, '42': option_42, '43': option_43, '44': option_44,
+         '45': option_45, '46': option_46, '47': option_47, '48': option_48,
+         '49': option_49, '50': option_50, '51': option_51, '52': option_52,
+         '53': option_53, '54': option_54, '55': option_55, '56': option_56,
+         '57': option_57, '58': option_58
+      }
 
-      elif choice in ['2', '02']:
-         StartProgram(f"{option_02}.py")
-
-      elif choice in ['3', '03']:
-         StartProgram(f"{option_03}.py")
-
-      elif choice in ['4', '04']:
-         StartProgram(f"{option_04}.py")
-
-      elif choice in ['5', '05']:
-         StartProgram(f"{option_05}.py")
-
-      elif choice in ['6', '06']:
-         StartProgram(f"{option_06}.py")
-
-      elif choice in ['7', '07']:
-         StartProgram(f"{option_07}.py")
-
-      elif choice in ['8', '08']:
-         StartProgram(f"{option_08}.py")
-
-      elif choice in ['9', '09']:
-         StartProgram(f"{option_09}.py")
-
-      elif choice in ['10']:
-         StartProgram(f"{option_10}.py")
-
-      elif choice in ['11']:
-         StartProgram(f"{option_11}.py")
-
-      elif choice in ['12']:
-         StartProgram(f"{option_12}.py")
-
-      elif choice in ['13']:
-         StartProgram(f"{option_13}.py")
-
-      elif choice in ['14']:
-         StartProgram(f"{option_14}.py")
-
-      elif choice in ['15']:
-         StartProgram(f"{option_15}.py")
-
-      elif choice in ['16']:
-         StartProgram(f"{option_16}.py")
-
-      elif choice in ['17']:
-         StartProgram(f"{option_17}.py")
-
-      elif choice in ['18']:
-         StartProgram(f"{option_18}.py")
-
-      elif choice in ['19']:
-         StartProgram(f"{option_19}.py")
-      
-      elif choice in ['20']:
-         StartProgram(f"{option_20}.py")
-      
-      elif choice in ['21']:
-         StartProgram(f"{option_21}.py")
-      
-      elif choice in ['22']:
-         StartProgram(f"{option_22}.py")
-      
-      elif choice in ['23']:
-         StartProgram(f"{option_23}.py")
-      
-      elif choice in ['24']:
-         StartProgram(f"{option_24}.py")
-      
-      elif choice in ['25']:
-         StartProgram(f"{option_25}.py")
-      
-      elif choice in ['26']:
-         StartProgram(f"{option_26}.py")
-      
-      elif choice in ['27']:
-         StartProgram(f"{option_27}.py")
-      
-      elif choice in ['28']:
-         StartProgram(f"{option_28}.py")
-      
-      elif choice in ['29']:
-         StartProgram(f"{option_29}.py")
-      
-
-      elif choice in ['30']:
-         page = page2
-         with open("./Settings/Program/Config/Page.txt", "w") as file:
-            file.write("2")
-            Title("Menu 2")
-
-      elif choice in ['31']:
-         page = page1
-         with open("./Settings/Program/Config/Page.txt", "w") as file:
-            file.write("1")
-            Title("Menu 1")
-
-
-      elif choice in ['32']:
-         StartProgram(f"{option_32}.py")
-      
-      elif choice in ['33']:
-         StartProgram(f"{option_33}.py")
-      
-      elif choice in ['34']:
-         StartProgram(f"{option_34}.py")
-
-      elif choice in ['35']:
-         StartProgram(f"{option_35}.py")
-
-      elif choice in ['36']:
-         StartProgram(f"{option_36}.py")
-
-      elif choice in ['37']:
-         StartProgram(f"{option_37}.py")
-
-      elif choice in ['38']:
-         StartProgram(f"{option_38}.py")
-
-      elif choice in ['39']:
-         StartProgram(f"{option_39}.py")
-
-      elif choice in ['40']:
-         StartProgram(f"{option_40}.py")
-
-      elif choice in ['41']:
-         StartProgram(f"{option_41}.py")
-
-      elif choice in ['42']:
-         StartProgram(f"{option_42}.py")
-
-      elif choice in ['43']:
-         StartProgram(f"{option_43}.py")
-   
-      elif choice in ['44']:
-         StartProgram(f"{option_44}.py")
-
-      elif choice in ['45']:
-         StartProgram(f"{option_45}.py")
-
-      elif choice in ['46']:
-         StartProgram(f"{option_46}.py")
-
-      elif choice in ['47']:
-         StartProgram(f"{option_47}.py")
-
-      elif choice in ['48']:
-         StartProgram(f"{option_48}.py")
-
-      elif choice in ['49']:
-         StartProgram(f"{option_49}.py")
-
-      elif choice in ['50']:
-         StartProgram(f"{option_50}.py")
-
-      elif choice in ['51']:
-         StartProgram(f"{option_51}.py")
-
-      elif choice in ['52']:
-         StartProgram(f"{option_52}.py")
-
-      elif choice in ['53']:
-         StartProgram(f"{option_53}.py")
-
-      elif choice in ['54']:
-         StartProgram(f"{option_54}.py")
-
-      elif choice in ['55']:
-         StartProgram(f"{option_55}.py")
-
-      elif choice in ['56']:
-         StartProgram(f"{option_56}.py")
-
-      elif choice in ['57']:
-         StartProgram(f"{option_57}.py")
-
-      elif choice in ['58']:
-         StartProgram(f"{option_58}.py")
-
+      if choice in options:
+         if choice in ['30']:
+            menu = menu2
+            with open("./Settings/Program/Config/Menu.txt", "w") as file:
+               file.write("2")
+               Title("Menu 2")
+         elif choice in ['31']:
+            menu = menu1
+            with open("./Settings/Program/Config/Menu.txt", "w") as file:
+               file.write("1")
+               Title("Menu 1")
+         else:  
+            StartProgram(f"{options[choice]}.py")
       else:
          ErrorChoiceStart()
          

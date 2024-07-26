@@ -11,11 +11,8 @@
 from Config.Util import *
 from Config.Config import *
 try:
-    import random
     from selenium import webdriver
-    from selenium.webdriver.common.by import By
     from deep_translator import GoogleTranslator
-    from selenium.webdriver.common.keys import Keys
 except Exception as e:
    ErrorModule(e)
 

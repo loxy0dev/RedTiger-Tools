@@ -31,8 +31,7 @@ try:
         pass
     else:
         print(f"{color.RED}{INFO} Installing discord.py version 1.6.0: (please put \"y\" so that it uninstalls to better reinstall){color.RESET}\n")
-        ModuleUninstall("discord.py")
-        ModuleInstall("discord.py==1.6.0")
+        os.system("pip install discord.py==1.6.0")
         time.sleep(5)
 
     Clear()
