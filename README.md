@@ -60,12 +60,14 @@
 <h1>🔒・Requirements:</h1>
 <h3>Windows:</h3>
 <p>
-- You need to install <a href="https://www.python.org/downloads/">Python</a> with the <a href="Img/Python_Path.png">PATH</a> options.<br>
+- Install <a href="https://www.python.org/downloads/">Python</a> with the <a href="Img/Python_Path.png">PATH</a> options.<br>
+- Install <a href="https://www.win-rar.com/postdownload.html?&L=10">Winrar</a>.<br>
 - Windows 10 & 11
 </p>
 <h3>Linux:</h3>
 <p>
-- Latest version of Python.<br>
+- Latest version of <a href="https://www.python.org/downloads/">Python</a>.<br>
+- Install <a href="https://www.win-rar.com/postdownload.html?&L=10">Winrar</a>.<br>
 - Linux recent version.
 </p>
 
