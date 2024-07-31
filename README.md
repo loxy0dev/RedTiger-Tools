@@ -1,4 +1,4 @@
-<h1 align="center">NEW DISCORD SERVER: https://discord.gg/KRhHZQxKTT</h1> 
+<h1 align="center">NEW DISCORD SERVER: https://discord.gg/redtigertools</h1> 
 <h1 align="center"><img src="Img/RedTiger_Logo2.png" width="40px"> RedTiger Multi-Tool <img src="Img/RedTiger_Logo2.png" width="40px"></h1> 
 <p align="center">
   <img src="https://img.shields.io/github/v/release/fluzyteck/RedTiger-Tools?label=Version&color=a80505">
@@ -100,7 +100,7 @@ RedTiger has been developed solely for educational purposes. This project has be
 
 <h2>🔗・Credits:</h2>
 <p>
-- <a href="https://discord.gg/KRhHZQxKTT">Discord</a><br>
+- <a href="https://discord.gg/redtigertools">Discord</a><br>
 - <a href="https://redtiger.shop">Website</a><br>
 - Creator: Loxyteck<br>
 - Version: 5.5
