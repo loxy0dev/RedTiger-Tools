@@ -30,16 +30,16 @@
   
 ```
    [Menu n°1]
-   [01] -> Tool Info                      [11] -> Dox Create                     [21] -> Password Encrypted
-   [02] -> Tool Website                   [12] -> Dox Tracker (Osint)            [22] -> Password Decrypted
-   [03] -> Obfuscator Tool (Paid)         [13] -> Username Tracker (Osint)       [23] -> Get Your Ip
+   [01] -> Tool Info                      [11] -> Dox Create                     [21] -> Ip Generator
+   [02] -> Tool Website                   [12] -> Dox Tracker (Osint)            [22] -> Password Encrypted
+   [03] -> Obfuscator Tool (Paid)         [13] -> Username Tracker (Osint)       [23] -> Password Decrypted
    [04] -> Virus Build (Stealer, Malware) [14] -> Email Tracker (Osint)          [24] -> Discord Token Info
    [05] -> Sql Vulnerability              [15] -> Email Info (Lookup)            [25] -> Discord Token Nuker
    [06] -> Phishing Attack                [16] -> Number Info (Lookup)           [26] -> Discord Token Joiner
-   [07] -> Website Info Scanner           [17] -> Ip Info (Lookup)               [27] -> Discord Token Leaver
-   [08] -> Website Url Scanner            [18] -> Ip Port Scanner                [28] -> Discord Token Login
-   [09] -> Dark Web Links                 [19] -> Ip Pinger                      [29] -> Discord Token To Id And Brute
-   [10] -> Search In DataBase             [20] -> Ip Generator                   [30] -> Next Page >>
+   [07] -> Website Scanner                [17] -> Ip Lookup                      [27] -> Discord Token Leaver
+   [08] -> Website Url Scanner            [18] -> Ip Scanner                     [28] -> Discord Token Login
+   [09] -> Dark Web Links                 [19] -> Ip Port Scanner                [29] -> Discord Token To Id And Brute
+   [10] -> Search In DataBase             [20] -> Ip Pinger                      [30] -> Next Page >>
 
    [Menu n°2]
    [31] -> << Previous Page               [41] -> Discord Token Theme Changer    [51] -> Roblox Cookie Login
@@ -103,5 +103,5 @@ RedTiger has been developed solely for educational purposes. This project has be
 - <a href="https://discord.gg/redtigertools">Discord</a><br>
 - <a href="https://redtiger.shop">Website</a><br>
 - Creator: Loxyteck<br>
-- Version: 5.5
+- Version: 5.6
 </p>
