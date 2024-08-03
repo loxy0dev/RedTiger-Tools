@@ -40,7 +40,7 @@ option_03 = "Obfuscator-Tool-(Paid)"
 option_04 = "Virus-Build-(Stealer,-Malware)"
 option_05 = "Sql-Vulnerability"
 option_06 = "Phishing-Attack"
-option_07 = "Website-Info-Scanner"
+option_07 = "Website-Scanner"
 option_08 = "Website-Url-Scanner"
 option_09 = "Dark-Web-Links"
 option_10 = "Search-In-DataBase"
@@ -50,13 +50,13 @@ option_13 = "Username-Tracker-(Osint)"
 option_14 = "Email-Tracker-(Osint)"
 option_15 = "Email-Info-(Lookup)"
 option_16 = "Number-Info-(Lookup)"
-option_17 = "Ip-Info-(Lookup)"
-option_18 = "Ip-Port-Scanner"
-option_19 = "Ip-Pinger"
-option_20 = "Ip-Generator"
-option_21 = "Password-Encrypted"
-option_22 = "Password-Decrypted"
-option_23 = "Get-Your-Ip"
+option_17 = "Ip-Lookup"
+option_18 = "Ip-Scanner"
+option_19 = "Ip-Port-Scanner"
+option_20 = "Ip-Pinger"
+option_21 = "Ip-Generator"
+option_22 = "Password-Encrypted"
+option_23 = "Password-Decrypted"
 option_24 = "Discord-Token-Info"
 option_25 = "Discord-Token-Nuker"
 option_26 = "Discord-Token-Joiner"
@@ -222,7 +222,7 @@ def Menu():
       menu = menu1
       Title("Menu 1")
 
-   banner = f"""{popup_version}{red}                                                                                                  
+   banner = f"""{popup_version}{red}New Server: {white + discord_server + red}                                                                                        
                              ██▀███  ▓█████ ▓█████▄    ▄▄▄█████▓ ██▓  ▄████ ▓█████  ██▀███
                             ▓██ ▒ ██▒▓█   ▀ ▒██▀ ██▌   ▓  ██▒ ▓▒▓██▒ ██▒ ▀█▒▓█   ▀ ▓██ ▒ ██▒
                             ▓██ ░▄█ ▒▒███   ░██   █▌   ▒ ▓██░ ▒░▒██▒▒██░▄▄▄░▒███   ▓██ ░▄█ ▒

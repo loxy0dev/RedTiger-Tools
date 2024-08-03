@@ -20,7 +20,7 @@ try:
     print(f"""
 {BEFORE + current_time_hour() + AFTER} {INFO} Add DataBase to the "{white}{folder_database_relative}{red}" folder.
 {BEFORE + current_time_hour() + AFTER} {INFO} If you don't have a DataBase you can get one on the Discord Server "{white}{discord_server}{red}\".""")
-    search = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Search -> {reset}")
+    search = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Search -> {reset}")
 
     print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in DataBase..")
 

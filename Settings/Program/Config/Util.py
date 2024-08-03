@@ -515,7 +515,7 @@ encrypted_banner = red + r"""
 
 
 
-scan_bannner = red + r"""
+scan_banner = red + r"""
                                                             >@@|                                                
                                                             >@@|                                                
                                                             >@@|                                                

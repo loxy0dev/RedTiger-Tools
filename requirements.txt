@@ -1,3 +1,4 @@
+urllib3
 PyQt5
 PyQtWebEngine
 colorama
@@ -11,3 +12,4 @@ phonenumbers
 bcrypt
 beautifulsoup4
 pypiwin32
+whois

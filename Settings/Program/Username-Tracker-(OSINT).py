@@ -11,256 +11,139 @@
 from Config.Util import *
 from Config.Config import *
 try:
-    from selenium import webdriver
-    from deep_translator import GoogleTranslator
+    import requests
+    from bs4 import BeautifulSoup
 except Exception as e:
    ErrorModule(e)
 
 Title("Username Tracker (Osint)")
 
 try:
+    sites = {
+        "Twitter": "https://twitter.com/{}",
+        "Instagram": "https://www.instagram.com/{}",
+        "Facebook": "https://www.facebook.com/{}",
+        "Pinterest": "https://www.pinterest.com/{}",
+        "Tumblr": "https://{}.tumblr.com",
+        "YouTube": "https://www.youtube.com/{}",
+        "Vimeo": "https://vimeo.com/{}",
+        "SoundCloud": "https://soundcloud.com/{}",
+        "DeviantArt": "https://www.deviantart.com/{}",
+        "About.me": "https://about.me/{}",
+        "Flickr": "https://www.flickr.com/people/{}",
+        "Twitch": "https://www.twitch.tv/{}",
+        "Steam": "https://steamcommunity.com/id/{}",
+        "Medium": "https://medium.com/@{}",
+        "Blogger": "https://{}.blogspot.com",
+        "Goodreads": "https://www.goodreads.com/{}",
+        "Keybase": "https://keybase.io/{}",
+        "VK": "https://vk.com/{}",
+        "Spotify": "https://open.spotify.com/user/{}",
+        "TripAdvisor": "https://www.tripadvisor.com/members/{}",
+        "Last.fm": "https://www.last.fm/user/{}",
+        "Slideshare": "https://www.slideshare.net/{}",
+        "Dribbble": "https://dribbble.com/{}",
+        "Behance": "https://www.behance.net/{}",
+        "AngelList": "https://angel.co/{}",
+        "ProductHunt": "https://www.producthunt.com/@{}",
+        "500px": "https://500px.com/{}",
+        "LinkedIn": "https://www.linkedin.com/in/{}",
+        "Snapchat": "https://www.snapchat.com/add/{}",
+        "WhatsApp": "https://wa.me/{}",
+        "Discord": "https://discord.com/users/{}",
+        "Telegram": "https://t.me/{}",
+        "Quora": "https://www.quora.com/profile/{}",
+        "TikTok": "https://www.tiktok.com/@{}",
+        "Patreon": "https://www.patreon.com/{}",
+        "Weibo": "https://weibo.com/{}",
+        "OKCupid": "https://www.okcupid.com/profile/{}",
+        "Meetup": "https://www.meetup.com/members/{}",
+        "Myspace": "https://myspace.com/{}",
+        "Kaggle": "https://www.kaggle.com/{}",
+        "CodePen": "https://codepen.io/{}",
+        "StackOverflow": "https://stackoverflow.com/users/{}",
+        "HackerRank": "https://www.hackerrank.com/{}",
+        "Xing": "https://www.xing.com/profile/{}",
+        "Deezer": "https://www.deezer.com/en/user/{}",
+        "Mix": "https://mix.com/{}",
+        "Snapfish": "https://www.snapfish.com/{}",
+        "Periscope": "https://www.pscp.tv/{}",
+        "Tidal": "https://tidal.com/{}",
+        "Yelp": "https://www.yelp.com/user_details?userid={}",
+        "Disqus": "https://disqus.com/by/{}",
+        "Dailymotion": "https://www.dailymotion.com/{}",
+        "Ravelry": "https://www.ravelry.com/people/{}",
+        "ReverbNation": "https://www.reverbnation.com/{}",
+        "Vine": "https://vine.co/u/{}",
+        "Foursquare": "https://foursquare.com/user/{}",
+        "Mastodon": "https://mastodon.social/@{}",
+        "Ello": "https://ello.co/{}",
+        "GitLab": "https://gitlab.com/{}",
+        "Giphy": "https://giphy.com/{}",
+        "Hootsuite": "https://hootsuite.com/{}",
+        "LiveJournal": "https://{}.livejournal.com",
+        "Linktree": "https://linktr.ee/{}",
+        "Prezi": "https://prezi.com/{}",
+        "Groupon": "https://www.groupon.com/profile/{}",
+        "Liveleak": "https://www.liveleak.com/c/{}",
+        "Joomla": "https://www.joomla.org/user/{}",
+        "StackExchange": "https://stackexchange.com/users/{}",
+        "Weebly": "https://{}.weebly.com",
+        "CodeWars": "https://www.codewars.com/users/{}",
+        "Taringa": "https://www.taringa.net/{}",
+        "Gumroad": "https://gumroad.com/{}",
+        "Shopify": "https://{}.myshopify.com",
+        "8tracks": "https://8tracks.com/{}",
+        "Couchsurfing": "https://www.couchsurfing.com/people/{}",
+        "OpenSea": "https://opensea.io/{}",
+        "Trello": "https://trello.com/{}",
+        "Tinder": "https://www.tinder.com/@{}",
+        "Strava": "https://www.strava.com/athletes/{}",
+        "Fiverr": "https://www.fiverr.com/{}",
+        "Coursera": "https://www.coursera.org/user/{}",
+        "Badoo": "https://badoo.com/profile/{}",
+        "Rumble": "https://rumble.com/user/{}",
+        "Wix": "https://www.wix.com/website/{}",
+        "Twitch": "https://www.twitch.tv/{}",
+        "ReverbNation": "https://www.reverbnation.com/{}",
+        "Gumroad": "https://gumroad.com/{}",
+        "Dailymotion": "https://www.dailymotion.com/{}",
+        "Vimeo": "https://vimeo.com/{}",
+        "Tinder": "https://www.tinder.com/@{}",
+        "TripAdvisor": "https://www.tripadvisor.com/members/{}",
+        "Mix": "https://mix.com/{}",
+        "Snapfish": "https://www.snapfish.com/{}",
+        "DeviantArt": "https://www.deviantart.com/{}",
+        "Medium": "https://medium.com/@{}",
+        "GitHub": "https://github.com/{}",
+        "VK": "https://vk.com/{}",
+        "Facebook": "https://www.facebook.com/{}",
+        "Instagram": "https://www.instagram.com/{}",
+        "Twitter": "https://twitter.com/{}",
+        "GitHub": "https://github.com/{}",
+    }
+
+
+    number_site = 0
+    number_found = 0
     username = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Username -> {reset}")
-
     Censored(username)
-
-    print(f"""
-{white}[{red}01{white}] {red}->{white} Chrome (Windows / Linux)
-{white}[{red}02{white}] {red}->{white} Edge (Windows)
-{white}[{red}03{white}] {red}->{white} Firefox (Windows)
-    """)
-    browser = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Browser -> {reset}")
- 
-    if browser in ['1', '01']:
+    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Account search..")
+    username_lower = username.lower()
+    for site, url_template in sites.items():
+        url = url_template.format(username)
         try:
-            navigator = "Chrome"
-            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
-            driver = webdriver.Chrome()
-            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
-        except:
-            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
-            Continue()
-            Reset()
+            response = requests.get(url, timeout=2)
+            number_site += 1
+            if response.status_code == 200:
+                soup = BeautifulSoup(response.text, 'html.parser')
+                page_text = soup.get_text().lower()
+                if username_lower in page_text:
+                    number_found += 1
+                    print(f"{BEFORE + current_time_hour() + AFTER} {ADD} {site}: {white + url}")
+        except: pass
 
-    elif browser in ['2', '02']:
-        if sys.platform.startswith("linux"):
-            OnlyLinux()
-        else:
-            try:
-                navigator = "Edge"
-                print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
-                driver = webdriver.Edge()
-                print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
-            except:
-                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
-                Continue()
-                Reset()
-
-    elif browser in ['3', '03']:
-        if sys.platform.startswith("linux"):
-            OnlyLinux()
-        else:
-            try:
-                navigator = "Firefox"
-                print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
-                driver = webdriver.Firefox()
-                print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
-            except:
-                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
-                Continue()
-                Reset()
-    else:
-        ErrorChoice()
-
-    driver.set_window_size(900, 600)
-
-    def text_page():
-        page_text = driver.execute_script("return document.documentElement.innerText")
-        return page_text
-        
-    def text_translated(text):
-        try:
-            translated_text = GoogleTranslator(source='auto', target='en').translate(text)
-        except: 
-            translated_text = text
-        return translated_text
-
-    def tiktok_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Tiktok..{blue}")
-        try:
-            link = r"https://www.tiktok.com/@" + username
-            driver.get(link)
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            if "This account cannot be found" in text_translated(text_page()):
-                tiktok = False
-            else:
-                tiktok = link
-        except Exception as e:
-            tiktok = f"Error: {e}"
-        return tiktok
-
-    def instagram_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Instagram..{blue}")
-        try:
-            link = r"https://instagram.com/" + username
-            driver.get(link)
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            if "This page is unfortunately not available" in text_translated(text_page()):
-                instagram = False
-            else:
-                instagram = link
-        except Exception as e:
-            instagram = f"Error: {e}"
-        return instagram
-
-    def giters_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Giters..{blue}")
-        try:
-            link = r"https://giters.com/" + username
-            driver.get(link)
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            if "This page could not be found" in text_translated(text_page()):
-                giters = False
-            elif username in text_page():
-                giters = link
-            else:
-                giters = False
-
-        except Exception as e:
-            giters = f"Error: {e}"
-        return giters
-
-    def github_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Github..{blue}")
-        try:
-            link = r"https://github.com/" + username
-            driver.get(link)
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            if "Find code, projects, and people on GitHub" in text_translated(text_page()):
-                github = False
-            else:
-                github = link
-        except Exception as e:
-            github = f"Error: {e}"
-        return github
-
-    def paypal_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Paypal..{blue}")
-        try:
-            link = r"https://www.paypal.com/paypalme/" + username
-            driver.get(link)
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            if "We cannot find this profile" in text_translated(text_page()):
-                paypal = False
-            elif "We were not able to process your request. Please try again later" in text_translated(text_page()):
-                paypal = f"Error: Rate Limit"
-            else:
-                paypal = link
-        except Exception as e:
-            paypal = f"Error: {e}"
-        return paypal
-
-    def telegram_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Telegram..{blue}")
-        try:
-            link = r"https://t.me/" + username
-            driver.get(link)
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            if "If you have Telegram, you can contact" in text_translated(text_page()):
-                telegram = False
-            elif "a new era of messaging" in text_translated(text_page()):
-                telegram = False
-            else:
-                telegram = link
-        except Exception as e:
-            telegram = f"Error: {e}"
-        return telegram
-
-    def snapchat_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Snapchat..{blue}")
-        try:
-            link = r"https://www.snapchat.com/add/" + username
-            driver.get(link)
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            if "This content could not be found" in text_translated(text_page()):
-                snapchat = False
-            else:
-                snapchat = link
-        except Exception as e:
-            snapchat = f"Error: {e}"
-        return snapchat
-
-    def linktree_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Linktree..{blue}")
-        try:
-            link = r"https://linktr.ee/" + username
-            driver.get(link)
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            if "The page you’re looking for doesn’t exist" in text_translated(text_page()):
-                linktree = False
-            else:
-                linktree = link
-        except Exception as e:
-            linktree = f"Error: {e}"
-        return linktree
-
-    def roblox_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Roblox..{blue}")
-        try:
-            link = r"https://www.roblox.com/search/users?keyword=" + username
-            driver.get(link)
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            if "No results available for" in text_translated(text_page()):
-                roblox = False
-            else:
-                roblox = link
-        except Exception as e:
-            roblox = f"Error: {e}"
-        return roblox
-
-    def streamlabs_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Streamlabs..{blue}")
-        try:
-            link = r"https://streamlabs.com/" + username + r"/tip"
-            driver.get(link)
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            if "UNAUTHORIZED" in text_translated(text_page()):
-                streamlabs = False
-            elif "401" in text_translated(text_page()):
-                streamlabs = False
-            else:
-                streamlabs = link
-        except Exception as e:
-            streamlabs = f"Error: {e}"
-        return streamlabs
-
-
-    Slow(f"""
-{BEFORE + current_time_hour() + AFTER} {INFO} The username "{white}{username}{red}" was found:
-
-    {INFO_ADD} Tiktok     : {white}{tiktok_search()}{red}
-    {INFO_ADD} Instagram  : {white}{instagram_search()}{red}
-    {INFO_ADD} Snapchat   : {white}{snapchat_search()}{red}
-    {INFO_ADD} Giters     : {white}{giters_search()}{red}
-    {INFO_ADD} Github     : {white}{github_search()}{red}
-    {INFO_ADD} Paypal     : {white}{paypal_search()}{red}
-    {INFO_ADD} Telegram   : {white}{telegram_search()}{red}
-    {INFO_ADD} Linktree   : {white}{linktree_search()}{red}
-    {INFO_ADD} Roblox     : {white}{roblox_search()}{red}
-    {INFO_ADD} Streamlabs : {white}{streamlabs_search()}{red}
-    """)
-
-    driver.quit()
-
+    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Total Website: {white}{number_site}{red}, Found: {white}{number_found}{red}")
     Continue()
     Reset()
 except Exception as e:

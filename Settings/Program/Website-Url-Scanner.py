@@ -91,7 +91,7 @@ try:
                 find_secret_urls(link, domain)
                 visited_links.add(link)
 
-    Slow(url_banner)
+    Slow(scan_banner)
     website_url = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Website Url -> {reset}")
     Censored(website_url)
 
@@ -105,7 +105,6 @@ try:
     """)
 
     choice = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Choice -> {reset}")
-    print()
 
     if choice in ['1', '01']:
         find_secret_urls(website_url, domain)
@@ -113,7 +112,6 @@ try:
     elif choice in ['2', '02']:
         find_all_secret_urls(website_url, domain)
     
-    print()
     Continue()
     Reset()
 except Exception as e:

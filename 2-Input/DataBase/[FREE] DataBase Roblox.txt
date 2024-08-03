@@ -8,7 +8,6 @@ John Doe:2:john.doe@roblox.com
 ROBLOX:1:noreply@roblox.com
 test:17:test@roblox.com
 Admin:18:admin@roblox.com
-erik.cassel:16:erik@roblox.com
 Todd:21:Slidebar@aol.com
 dbb:26:dbaszucki@aol.com
 loduha:23:tim.loduha@mscsoftware.com
