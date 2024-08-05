@@ -60,9 +60,9 @@
 │   ├── Phishing Attack
 │   ├── Dark Web Links
 │   ├── Search In DataBase
-│   ├── Ip Generator
 │   ├── Password Encrypted
-│   └── Password Decrypted
+│   ├── Password Decrypted
+│   └── Ip Generator
 │
 ├── ☠️ - Virus Builder
 │   ├── Stealer
