@@ -35,6 +35,10 @@
 │   ├── Tool Info
 │   └── Tool Website
 │
+├── 💰 - Paid
+│   ├── Obfuscator Tool
+│   └── Rat Discord
+│
 ├── 🔎 - Osint
 │   ├── Dox Create
 │   ├── Dox Tracker
@@ -120,6 +124,8 @@
     ├── Roblox Cookie Info
     ├── Roblox User Info
     └── Roblox Id Info
+
+
 
 ```
 
