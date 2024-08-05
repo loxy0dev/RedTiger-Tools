@@ -56,6 +56,14 @@
 │   ├── Ip Port Scanner
 │   └── Ip Pinger
 │
+├── 🔧 - Utilities
+│   ├── Phishing Attack
+│   ├── Dark Web Links
+│   ├── Search In DataBase
+│   ├── Ip Generator
+│   ├── Password Encrypted
+│   └── Password Decrypted
+│
 ├── ☠️ - Virus Builder
 │   ├── Stealer
 │   │   ├── System Info: User, System, Ip, Disk, Screen, Location, etc.
@@ -74,14 +82,6 @@
 │       ├── Fake Error
 │       ├── Launch At Startup
 │       └── Restart Every 5min
-│
-├── 🔧 - Utilities
-│   ├── Phishing Attack
-│   ├── Dark Web Links
-│   ├── Search In DataBase
-│   ├── Ip Generator
-│   ├── Password Encrypted
-│   └── Password Decrypted
 │
 ├── 📞 - Discord Tools
 │   ├── Token Discord
