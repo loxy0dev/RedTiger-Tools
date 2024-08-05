@@ -1,71 +1,133 @@
 <h1 align="center">NEW DISCORD SERVER: https://discord.gg/redtigertools</h1> 
-<h1 align="center"><img src="Img/RedTiger_Logo2.png" width="40px"> RedTiger Multi-Tool <img src="Img/RedTiger_Logo2.png" width="40px"></h1> 
+<h1 align="center">RedTiger Multi-Tools</h1> 
+
 <p align="center">
   <img src="https://img.shields.io/github/v/release/fluzyteck/RedTiger-Tools?label=Version&color=a80505">
   <img src="https://img.shields.io/github/stars/fluzyteck/RedTiger-tools?style=flat&label=Stars&color=a80505">
   <img src="https://img.shields.io/github/repo-size/fluzyteck/RedTiger-Tools?label=Size&color=a80505">
   <img src="https://img.shields.io/github/languages/top/fluzyteck/RedTiger-Tools?color=a80505">
-
 </p>
+
 <img align="center" src="Img/RedTiger.png" width="99999px">
-<p>
-<strong>All scripts in the "<a href="https://github.com/loxyteck/RedTiger-Tools/tree/main/Settings/Program/FileDetectedByAntivirus">Settings/Program/FileDetectedByAntivirus</a>" folder are detected by the antivirus but pose no threat to you. These are not backdoors or malware.</strong>
 
-<h3>⭐ Don't forget to set the repository to "Star" !! ⬆️</h3>
-</p>
-<h1>📜・Description:</h1>
 <p>
-  
-👨‍💻 -> Developed in <strong>Python</strong>.<br>
-🌍 -> Tool in <strong>English</strong>.<br>
-💻 -> Available on <strong>Windows</strong> and <strong>Linux</strong>.<br>
-🔎 -> <strong>No malware</strong> or <strong>backdoor</strong>.<br>
-📂 -> <strong>Open Source</strong> only for verification, ensuring no malicious programs.<br>
-🔄 -> <strong>Frequently updated</strong>.<br>
-💰 -> <strong>Free</strong> for everyone.<br>
+  <strong>All scripts in the "<a href="https://github.com/loxyteck/RedTiger-Tools/tree/main/Settings/Program/FileDetectedByAntivirus">Settings/Program/FileDetectedByAntivirus</a>" folder are detected by the antivirus but pose no     threat to you. These are not backdoors or malware.</strong>
+
+  <h3>⭐ Don't forget to set the repository to "Star" !! ⬆️</h3>
+</p>
+
+<h1>📜・Description:</h1>
+
+<p>
+  👨‍💻 -> Developed in <strong>Python</strong>.<br>
+  🌍 -> Tool in <strong>English</strong>.<br>
+  💻 -> Available on <strong>Windows</strong> and <strong>Linux</strong>.<br>
+  🔎 -> <strong>No malware</strong> or <strong>backdoor</strong>.<br>
+  📂 -> <strong>Open Source</strong> only for verification, ensuring no malicious programs.<br>
+  🔄 -> <strong>Frequently updated</strong>.<br>
+  💰 -> <strong>Free</strong> for everyone.<br>
 </p>
 
 <h1>⚙️・Functions:</h1>
-<p align="center">
-  
-```
-   [Menu n°1]
-   [01] -> Tool Info                      [11] -> Dox Create                     [21] -> Ip Generator
-   [02] -> Tool Website                   [12] -> Dox Tracker (Osint)            [22] -> Password Encrypted
-   [03] -> Obfuscator Tool (Paid)         [13] -> Username Tracker (Osint)       [23] -> Password Decrypted
-   [04] -> Virus Build (Stealer, Malware) [14] -> Email Tracker (Osint)          [24] -> Discord Token Info
-   [05] -> Sql Vulnerability              [15] -> Email Info (Lookup)            [25] -> Discord Token Nuker
-   [06] -> Phishing Attack                [16] -> Number Info (Lookup)           [26] -> Discord Token Joiner
-   [07] -> Website Scanner                [17] -> Ip Lookup                      [27] -> Discord Token Leaver
-   [08] -> Website Url Scanner            [18] -> Ip Scanner                     [28] -> Discord Token Login
-   [09] -> Dark Web Links                 [19] -> Ip Port Scanner                [29] -> Discord Token To Id And Brute
-   [10] -> Search In DataBase             [20] -> Ip Pinger                      [30] -> Next Page >>
 
-   [Menu n°2]
-   [31] -> << Previous Page               [41] -> Discord Token Theme Changer    [51] -> Roblox Cookie Login
-   [32] -> Discord Token Server Raid      [42] -> Discord Token Generator        [52] -> Roblox Cookie Info
-   [33] -> Discord Token Spammer          [43] -> Discord Bot Server Nuker       [53] -> Roblox User Info
-   [34] -> Discord Token Delete Friends   [44] -> Discord Bot Invite To Id       [54] -> Roblox Id Info
-   [35] -> Discord Token Block Friends    [45] -> Discord Server Info            [55] -> Soon
-   [36] -> Discord Token Mass Dm          [46] -> Discord Nitro Generator        [56] -> Soon
-   [37] -> Discord Token Delete Dm        [47] -> Discord Webhook Info           [57] -> Soon
-   [38] -> Discord Token Status Changer   [48] -> Discord Webhook Delete         [58] -> Soon
-   [39] -> Discord Token Language Changer [49] -> Discord Webhook Spammer        [59] -> Soon
-   [40] -> Discord Token House Changer    [50] -> Discord Webhook Generator      [60] -> Next Page >>
-
-┌───(admin@redtiger)─[~/Menu]
-└──$
 ```
-</p>
+┌── ⚒️ - RedTiger-Tools
+│   ├── Tool Info
+│   └── Tool Website
+│
+├── 🔎 - Osint
+│   ├── Dox Create
+│   ├── Dox Tracker
+│   ├── Username Tracker
+│   ├── Email Tracker
+│   ├── Email Info
+│   ├── Number Info
+│   └── Ip Lookup 
+│
+├── 🕵️‍♂️ - Network Scanner
+│   ├── Sql Vulnerability Scanner
+│   ├── Website Scanner
+│   ├── Website Url Scanner
+│   ├── Ip Scanner
+│   ├── Ip Port Scanner
+│   └── Ip Pinger
+│
+├── ☠️ - Virus Builder
+│   ├── Stealer
+│   │   ├── System Info: User, System, Ip, Disk, Screen, Location, etc.
+│   │   ├── Discord Token: Token, Email, Phone, Id, Username, etc.
+│   │   ├── Browser Steal: Passwords, History, Cookies, Downloads, Cards, etc.
+│   │   ├── Roblox Cookie: Cookie, Id, Username, etc.
+│   │   ├── Camera Capture: Record the victim's computer camera.
+│   │   └── Screenshot: Capture the victim's computer screen.
+│   │
+│   └── Malware
+│       ├── Block Key
+│       ├── Block Mouse
+│       ├── Block Task Manager
+│       ├── Block AV Website
+│       ├── Spam Open Program
+│       ├── Fake Error
+│       ├── Launch At Startup
+│       └── Restart Every 5min
+│
+├── 🔧 - Utilities
+│   ├── Tool Info
+│   ├── Tool Website
+│   ├── Obfuscator Tool (Paid)
+│   ├── Phishing Attack
+│   ├── Dark Web Links
+│   ├── Search In DataBase
+│   ├── Ip Generator
+│   ├── Password Encrypted
+│   └── Password Decrypted
+│
+├── 📞 - Discord Tools
+│   ├── Discord Token Info
+│   ├── Discord Token Nuker
+│   ├── Discord Token Joiner
+│   ├── Discord Token Leaver
+│   ├── Discord Token Login
+│   ├── Discord Token To Id And Brute
+│   ├── Discord Token Server Raid
+│   ├── Discord Token Spammer
+│   ├── Discord Token Delete Friends
+│   ├── Discord Token Block Friends
+│   ├── Discord Token Mass Dm
+│   ├── Discord Token Delete Dm
+│   ├── Discord Token Status Changer
+│   ├── Discord Token Language Changer
+│   ├── Discord Token House Changer
+│   ├── Discord Token Theme Changer
+│   ├── Discord Token Generator
+│   ├── Discord Bot Server Nuker
+│   ├── Discord Bot Invite To Id
+│   ├── Discord Server Info
+│   ├── Discord Nitro Generator
+│   ├── Discord Webhook Info
+│   ├── Discord Webhook Delete
+│   └── Discord Webhook Spammer
+│
+└── 🎮 - Roblox Tools
+    ├── Roblox Cookie Login
+    ├── Roblox Cookie Info
+    ├── Roblox User Info
+    └── Roblox Id Info
+
+```
 
 <h1>🔒・Requirements:</h1>
+
 <h3>Windows:</h3>
+
 <p>
 - Install <a href="https://www.python.org/downloads/">Python</a> with the <a href="Img/Python_Path.png">PATH</a> options.<br>
 - Install <a href="https://www.win-rar.com/postdownload.html?&L=10">Winrar</a>.<br>
 - Windows 10 & 11
 </p>
+
 <h3>Linux:</h3>
+
 <p>
 - Latest version of <a href="https://www.python.org/downloads/">Python</a>.<br>
 - Install <a href="https://www.win-rar.com/postdownload.html?&L=10">Winrar</a>.<br>
@@ -73,11 +135,13 @@
 </p>
 
 <h1>⏳・Installation:</h1>
+
 <a href="https://github.com/fluzyteck/RedTiger/archive/main.zip">Dowloads Tools Here</a>
+
 <p>
   
 ```
-1 - Download the .rar or .zip folder.
+1 - Download the .zip folder.
 2 - Extract or unzip the folder.
 3 - Launch "Setup.bat" or "Setup.py".
 ```
@@ -91,17 +155,20 @@ Or
 </p>
 
 <h1>☠️・Builder:</h1>
+
 <img align="center" src="Img/Builder.png" width="800px">
 
 <h1>⚠️・Terms of use:</h1>
+
 <p>
-RedTiger has been developed solely for educational purposes. This project has been created with good intentions and is intended for personal use only. By choosing to use RedTiger, you acknowledge and accept full responsibility for any consequences that may result from your actions.
+  RedTiger has been developed solely for educational purposes. This project has been created with good intentions and is intended for personal use only. By choosing to use RedTiger, you acknowledge and accept full responsibility     for any consequences that may result from your actions.
 </p>
 
 <h2>🔗・Credits:</h2>
+
 <p>
-- <a href="https://discord.gg/redtigertools">Discord</a><br>
-- <a href="https://redtiger.shop">Website</a><br>
-- Creator: Loxyteck<br>
-- Version: 5.6
+  - <a href="https://discord.gg/redtigertools">Discord</a><br>
+  - <a href="https://redtiger.shop">Website</a><br>
+  - Creator: Loxyteck<br>
+  - Version: 5.6
 </p>
