@@ -76,9 +76,6 @@
 │       └── Restart Every 5min
 │
 ├── 🔧 - Utilities
-│   ├── Tool Info
-│   ├── Tool Website
-│   ├── Obfuscator Tool (Paid)
 │   ├── Phishing Attack
 │   ├── Dark Web Links
 │   ├── Search In DataBase
