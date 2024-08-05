@@ -39,15 +39,6 @@
 │   ├── Obfuscator Tool
 │   └── Rat Discord
 │
-├── 🔎 - Osint
-│   ├── Dox Create
-│   ├── Dox Tracker
-│   ├── Username Tracker
-│   ├── Email Tracker
-│   ├── Email Info
-│   ├── Number Info
-│   └── Ip Lookup 
-│
 ├── 🕵️‍♂️ - Network Scanner
 │   ├── Sql Vulnerability Scanner
 │   ├── Website Scanner
@@ -55,6 +46,15 @@
 │   ├── Ip Scanner
 │   ├── Ip Port Scanner
 │   └── Ip Pinger
+│
+├── 🔎 - Osint
+│   ├── Dox Create
+│   ├── Dox Tracker
+│   ├── Username Tracker
+│   ├── Email Tracker
+│   ├── Email Info
+│   ├── Number Info
+│   └── Ip Lookup
 │
 ├── 🔧 - Utilities
 │   ├── Phishing Attack
