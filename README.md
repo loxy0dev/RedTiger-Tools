@@ -32,8 +32,8 @@
 
 ```
 ┌── ⚒️ - RedTiger-Tools
-│   ├── Tool Info
-│   └── Tool Website
+│   ├── Info
+│   └── Site
 │
 ├── 💰 - Paid
 │   ├── Obfuscator Tool
