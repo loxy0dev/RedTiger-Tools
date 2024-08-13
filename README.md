@@ -52,16 +52,16 @@
 │   ├── Dox Tracker
 │   ├── Username Tracker
 │   ├── Email Tracker
-│   ├── Email Info
-│   ├── Number Info
+│   ├── Email Lookup
+│   ├── Phone Number Lookup
 │   └── Ip Lookup
 │
 ├── 🔧 - Utilities
 │   ├── Phishing Attack
-│   ├── Dark Web Links
-│   ├── Search In DataBase
+│   ├── Password Decrypted Attack
 │   ├── Password Encrypted
-│   ├── Password Decrypted
+│   ├── Search In DataBase
+│   ├── Dark Web Links
 │   └── Ip Generator
 │
 ├── ☠️ - Virus Builder
@@ -180,5 +180,5 @@ Or
   - <a href="https://discord.gg/redtigertools">Discord</a><br>
   - <a href="https://redtiger.shop">Website</a><br>
   - Creator: Loxyteck<br>
-  - Version: 5.6
+  - Version: 5.7
 </p>
