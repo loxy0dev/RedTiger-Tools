@@ -19,12 +19,12 @@ except Exception as e:
 Title("Discord Webhook Delete")
 
 try:
-    webhook_url = input(f"{color.RED}\n{INPUT} URL Webhook -> {color.RESET}")
+    webhook_url = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} URL Webhook -> {color.RESET}")
     CheckWebhook(webhook_url)
     try:
         response = requests.delete(webhook_url)
         response.raise_for_status()
-        print(f"{color.RED}{INFO} Webhook Deleted.")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Webhook Deleted.")
         Continue()
         Reset()
     except:

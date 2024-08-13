@@ -15,14 +15,14 @@ try:
 except Exception as e:
    ErrorModule(e)
    
-Title("Dox Tracker (Osint)")
+Title("Dox Tracker")
 
 try:
-    print(f"""
-    {white}[{red}00{white}] {red}-> Back
-    {white}[{red}01{white}] {red}->{white} Username
-    {white}[{red}02{white}] {red}->{white} LastName, FirstName
-    {white}[{red}03{white}] {red}->{white} Other
+    Slow(f"""{dox_banner}
+ {BEFORE}00{AFTER} Back
+ {BEFORE}01{AFTER}{white} Username
+ {BEFORE}02{AFTER}{white} LastName, FirstName
+ {BEFORE}03{AFTER}{white} Other
     """)
 
     search_type = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Search Type -> {reset}")

@@ -20,7 +20,25 @@ except Exception as e:
 Title("Ip Pinger")
 
 try:
-    hostname = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Ip -> " + color.RESET)
+    def ping_ip(hostname, port, bytes):
+        try:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(2)
+            start_time = time.time() 
+            sock.connect((hostname, port))
+            data = b'\x00' * bytes
+            sock.sendall(data)
+            end_time = time.time() 
+            elapsed_time = (end_time - start_time) * 1000 
+            print(f'{BEFORE + current_time_hour() + AFTER} {ADD} Hostname: {white}{hostname}{red} time: {white}{elapsed_time:.2f}ms{red} port: {white}{port}{red} bytes: {white}{bytes}{red} status: {white}succeed{red}')
+        except:
+            elapsed_time = 0
+            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Hostname: {white}{hostname}{red} time: {white}{elapsed_time}ms{red} port: {white}{port}{red} bytes: {white}{bytes}{red} status: {white}fail{red}')
+
+    Slow(wifi_banner)
+
+    hostname = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Ip -> " + color.RESET)
+
     try:
         port_input = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Port (enter for default) -> " + color.RESET)
         if port_input.strip():
@@ -33,44 +51,11 @@ try:
             bytes = int(bytes_input)
         else:
             bytes = 64
-
-        threads_input = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Threads (enter for default) -> {color.RESET}")
-        if threads_input.strip():
-            threads_number = threads_input
-        else:
-            threads_number = 1
     except:
         ErrorNumber()
 
-    def ping_ip():
-        try:
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.settimeout(2)
-            start_time = time.time() 
-            sock.connect((hostname, port))
-            data = b'\x00' * bytes
-            sock.sendall(data)
-            end_time = time.time() 
-            elapsed_time = (end_time - start_time) * 1000 
-            print(f'{BEFORE + current_time_hour() + AFTER} {ADD} Ping to {white}{hostname}{red}: time={white}{elapsed_time:.2f}ms{red} port={white}{port}{red} bytes={white}{bytes}{red} status={white}succeed{red}')
-        except:
-            elapsed_time = 0
-            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Ping to {white}{hostname}{red}: time={white}{elapsed_time}ms{red} port={white}{port}{red} bytes={white}{bytes}{red} status={white}fail{red}')
-
-    def request():
-        threads = []
-        try:
-            for _ in range(int(threads_number)):
-                t = threading.Thread(target=ping_ip)
-                t.start()
-                threads.append(t)
-        except:
-            ()
-
-        for thread in threads:
-            thread.join()
-
     while True:
-        request()
+        ping_ip(hostname, port, bytes)
+
 except Exception as e:
     Error(e)

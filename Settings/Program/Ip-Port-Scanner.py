@@ -71,6 +71,7 @@ try:
             results = {executor.submit(scan_port, ip, port): port for port in range(1, 65535 + 1)}
         concurrent.futures.wait(results)
     
+    Slow(scan_banner)
     ip = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Ip -> {reset}")
     print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Scanning..")
     port_scanner(ip)

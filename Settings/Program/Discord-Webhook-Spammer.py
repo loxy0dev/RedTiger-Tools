@@ -20,12 +20,12 @@ except Exception as e:
 Title("Discord Webhook Spammer")
 
 try:
-    webhook_url = input(f"{color.RED}\n{INPUT} Webhook URL -> {color.RESET}")
+    webhook_url = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Webhook URL -> {reset}")
     CheckWebhook(webhook_url)
-    message = input(f"{color.RED}{INPUT} Message -> {color.RESET}")
+    message = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Message -> {reset}")
 
     try:
-        threads_number = int(input(f"{INPUT} Threads Number -> {color.RESET}"))
+        threads_number = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Threads Number -> {reset}"))
     except:
         ErrorNumber()
 
@@ -41,9 +41,9 @@ try:
         try:
             response = requests.post(webhook_url, headers=headers, data=json.dumps(payload))
             response.raise_for_status()
-            print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Message: {color.WHITE}{message}{color.GREEN} | Status: {color.WHITE}Send{color.GREEN}")
+            print(f"{BEFORE_GREEN + current_time_hour() + AFTER_GREEN} {GEN_VALID} Message: {white}{message}{color.GREEN} Status: {white}Send{color.GREEN}")
         except:
-            print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Message: {color.WHITE}{message}{color.RED} | Status: {color.WHITE}Rate Limit{color.RED}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} Message: {white}{message}{red} Status: {white}Rate Limit{red}")
 
     def request():
         threads = []

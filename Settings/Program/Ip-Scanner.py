@@ -24,7 +24,6 @@ except Exception as e:
 Title("Ip Scanner")
 
 try:
-
     def ip_type(ip):
         if ':' in ip:
             type = "ipv6"

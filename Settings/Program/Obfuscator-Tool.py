@@ -8,23 +8,20 @@
 #     - Ne pas toucher ni modifier le code ci-dessous. En cas d'erreur, veuillez contacter le propriétaire, mais en aucun cas vous ne devez toucher au code.
 #     - Ne revendez pas ce tool, ne le créditez pas au vôtre.
 
+from Config.Util import *
+from Config.Config import *
+try:
+    import webbrowser
+except Exception as e:
+    ErrorModule(e)
+
+Title("Obfuscator Tool (Paid)")
 
 try:
-    import sys
-    import os
-
-    print("Installing the python modules required for the RedTiger Tool:")
-
-    if sys.platform.startswith("win"):
-        os.system("python -m pip install --upgrade pip")
-        os.system("python -m pip install -r requirements.txt")
-        os.system("python RedTiger.py")
-
-    elif sys.platform.startswith("linux"):
-        os.system("python3 -m pip3 install --upgrade pip")
-        os.system("python3 -m pip3 install -r requirements.txt")
-        os.system("python3 RedTiger.py")
-
+    print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} It's a tool that makes any Python script undetectable by antivirus and makes the code unreadable.")
+    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} The tool is paid and can be purchased on discord.")
+    webbrowser.open_new_tab(f"https://{discord_server}")
+    Continue()
+    Reset()
 except Exception as e:
-    print(e)
-    os.system("pause")
+    Error(e)

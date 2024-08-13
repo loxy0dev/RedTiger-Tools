@@ -19,16 +19,16 @@ try:
 except Exception as e:
    ErrorModule(e)
 
-Title("Email Tracker (Osint)")
+Title("Email Tracker")
 
 try:
     email = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Email -> {reset}")
     Censored(email)
 
     print(f"""
-{white}[{red}01{white}] {red}->{white} Chrome (Windows / Linux)
-{white}[{red}02{white}] {red}->{white} Edge (Windows)
-{white}[{red}03{white}] {red}->{white} Firefox (Windows)
+ {BEFORE}01{AFTER}{white} Chrome (Windows / Linux)
+ {BEFORE}02{AFTER}{white} Edge (Windows)
+ {BEFORE}03{AFTER}{white} Firefox (Windows)
     """)
     browser = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Browser -> {reset}")
  

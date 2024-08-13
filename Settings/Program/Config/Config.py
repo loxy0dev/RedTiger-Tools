@@ -9,10 +9,11 @@
 #     - Ne revendez pas ce tool, ne le créditez pas au vôtre.
 
 name_tool = "RedTiger"
-version_tool = "5.6"
+type_tool = "Multi-Tools"
+version_tool = "5.7"
 coding_tool = "Python 3"
 language_tool = "EN"
-creator = "LoxyTeck"
+creator = "Loxyteck"
 platform = "Windows 10/11 & Linux"
 discord_server = "discord.gg/redtigertools"
 website = "redtiger.shop"

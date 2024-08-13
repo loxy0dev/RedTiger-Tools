@@ -83,7 +83,7 @@ try:
     if response.status_code == 200:
         html_content = response.text
         soup = BeautifulSoup(html_content, 'html.parser')
-        file_name = re.sub(r'[\\/:*?"<>|]', '-', soup.title.string if soup.title else 'page_sans_titre')
+        file_name = re.sub(r'[\\/:*?"<>|]', '-', soup.title.string if soup.title else 'Phishing')
 
         file_html_relative = f'./1-Output/PhishingAttack/{file_name}.html'
         file_html = os.path.abspath(file_html_relative)

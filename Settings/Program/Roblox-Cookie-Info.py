@@ -24,40 +24,17 @@ try:
     try:
         info = requests.get("https://www.roblox.com/mobileapi/userinfo", cookies={".ROBLOSECURITY": cookie})
         print(info.json())
-        information = json.loads(info.text)
+        api = json.loads(info.text)
         status = "Valid"
     except:
         status = "Invalid"
 
-    try:
-        username_roblox = information['UserName']
-    except:
-        username_roblox = "None"
-
-    try:
-        user_id_roblox = information["UserID"]
-    except:
-        user_id_roblox = "None"
-
-    try:
-        robux_roblox = information["RobuxBalance"]
-    except:
-        robux_roblox = "None"
-    try:
-        premium_roblox = information["IsPremium"]
-    except:
-        premium_roblox = "None"
-
-    try:
-        avatar_roblox = information["ThumbnailUrl"]
-    except:
-        avatar_roblox = "None"
-
-    try:
-        builders_club_roblox = information["IsAnyBuildersClubMember"]
-    except:
-        builders_club_roblox = "None"
-
+    username_roblox = api.get('UserName', "None")
+    user_id_roblox = api.get("UserID", "None")
+    robux_roblox = api.get("RobuxBalance", "None")
+    premium_roblox = api.get("IsPremium", "None")
+    avatar_roblox = api.get("ThumbnailUrl", "None")
+    builders_club_roblox = api.get("IsAnyBuildersClubMember", "None")
 
     print(f"""
     {INFO_ADD} Status        : {white}{status}{red}

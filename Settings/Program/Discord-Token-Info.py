@@ -21,123 +21,54 @@ Title("Discord Token Info")
 try:
     print()
     token_discord = Choice1TokenDiscord()
-    print(f"{color.RED}{WAIT} Information Recovery..{reset}")
+    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Information Recovery..{reset}")
     try:
-        user = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token_discord}).json()
+        api = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token_discord}).json()
 
-        r = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token_discord, 'Content-Type': 'application/json'})
+        response = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token_discord, 'Content-Type': 'application/json'})
 
-        if r.status_code == 200:
-            status = "Valid"
-        else:
-            status = "Invalid"
+        if response.status_code == 200: status = "Valid"
+        else: status = "Invalid"
 
-        try:
-            username_discord = user['username'] + '#' + user['discriminator']
-        except:
-            username_discord = "None"
-        
-        try:
-            display_name_discord = user['global_name']
-        except:
-            display_name_discord = "None"
+        username_discord = api.get('username', "None") + '#' + api.get('discriminator', "None")
+        display_name_discord = api.get('global_name', "None")
+        user_id_discord = api.get('id', "None")
+        email_discord = api.get('email', "None")
+        email_verified_discord = api.get('verified', "None")
+        phone_discord = api.get('phone', "None")
+        mfa_discord = api.get('mfa_enabled', "None")
+        country_discord = api.get('locale', "None")
+        avatar_discord = api.get('avatar', "None")
+        avatar_decoration_discord = api.get('avatar_decoration_data', "None")
+        public_flags_discord = api.get('public_flags', "None")
+        flags_discord = api.get('flags', "None")
+        banner_discord = api.get('banner', "None")
+        banner_color_discord = api.get('banner_color', "None")
+        accent_color_discord = api.get("accent_color", "None")
+        nsfw_discord = api.get('nsfw_allowed', "None")
 
-        try:
-            user_id_discord = user['id']
-        except:
-            user_id_discord = "None"
-
-        try:
-            email_discord = user['email']
-        except:
-            email_discord = "None"
+        try: created_at_discord = datetime.fromtimestamp(((int(api.get('id', 'None')) >> 22) + 1420070400000) / 1000, timezone.utc)
+        except: created_at_discord = "None"
 
         try:
-            email_verified_discord = user['verified']
-        except:
-            email_verified_discord = "None"
-
-        try:
-            phone_discord = user['phone']
-        except:
-            phone_discord = "None"
-
-        try:
-            mfa_discord = user['mfa_enabled']
-        except:
-            mfa_discord = "None"
-
-        try:
-            country_discord = user['locale']
-        except:
-            country_discord = "None"
-
-        try:
-            created_at_discord = datetime.fromtimestamp(((int(user['id']) >> 22) + 1420070400000) / 1000, timezone.utc)
-        except:
-            created_at_discord = "None"
-
-        try:
-            if user['premium_type'] == 0:
+            if api.get('premium_type', 'None') == 0:
                 nitro_discord = 'False'
-            elif user['premium_type'] == 1:
+            elif api.get('premium_type', 'None') == 1:
                 nitro_discord = 'Nitro Classic'
-            elif user['premium_type'] == 2:
+            elif api.get('premium_type', 'None') == 2:
                 nitro_discord = 'Nitro Boosts'
-            elif user['premium_type'] == 3:
+            elif api.get('premium_type', 'None') == 3:
                 nitro_discord = 'Nitro Basic'
             else:
                 nitro_discord = 'False'
         except:
             nitro_discord = "None"
 
-        try:
-            avatar_url_discord = f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.gif" if requests.get(f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.gif").status_code == 200 else f"https://cdn.discordapp.com/avatars/{user_id_discord}/{user['avatar']}.png"
-        except:
-            avatar_url_discord = "None"
+        try: avatar_url_discord = f"https://cdn.discordapp.com/avatars/{user_id_discord}/{api['avatar']}.gif" if requests.get(f"https://cdn.discordapp.com/avatars/{user_id_discord}/{api['avatar']}.gif").status_code == 200 else f"https://cdn.discordapp.com/avatars/{user_id_discord}/{api['avatar']}.png"
+        except: avatar_url_discord = "None"
         
         try:
-            avatar_discord = user['avatar']
-        except:
-            avatar_discord = "None"
-
-        try:
-            avatar_decoration_discord = user['avatar_decoration_data']
-        except:
-            avatar_decoration_discord = "None"
-        
-        try:
-            public_flags_discord = user['public_flags']
-        except:
-            public_flags_discord = "None"
-        
-        try:
-            flags_discord = user['flags']
-        except:
-            flags_discord = "None"
-
-        try:
-            banner_discord = user['banner']
-        except:
-            banner_discord = "None"
-        
-        try:
-            banner_color_discord = user['banner_color']
-        except:
-            banner_color_discord = "None"
-
-        try:
-            accent_color_discord = user["accent_color"]
-        except:
-            accent_color_discord = "None"
-
-        try:
-            nsfw_discord = user['nsfw_allowed']
-        except:
-            nsfw_discord = "None"
-
-        try:
-            linked_users_discord = user['linked_users']
+            linked_users_discord = api.get('linked_users', 'None')
             linked_users_discord = ' / '.join(linked_users_discord)
             if not linked_users_discord.strip():
                 linked_users_discord = "None"
@@ -145,14 +76,14 @@ try:
             linked_users_discord = "None"
         
         try:
-            bio_discord = "\n" + user['bio']
+            bio_discord = "\n" + api.get('bio', 'None')
             if not bio_discord.strip() or bio_discord.isspace():
                 bio_discord = "None"
         except:
             bio_discord = "None"
         
         try:
-            authenticator_types_discord = user['authenticator_types']
+            authenticator_types_discord = api.get('authenticator_types', 'None')
             authenticator_types_discord = ' / '.join(authenticator_types_discord)
         except:
             authenticator_types_discord = "None"
@@ -242,40 +173,39 @@ try:
         except:
             gift_codes_discord = "None"
 
-
     except Exception as e:
-        print(f"{ERROR} Error when retrieving information: {white}{e}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Error when retrieving information: {white}{e}")
 
     print(f"""
-    {white}[{red}+{white}]{red} Status       : {color.WHITE}{status}{color.RED}
-    {white}[{red}+{white}]{red} Token        : {color.WHITE}{token_discord}{color.RED}
-    {white}[{red}+{white}]{red} Username     : {color.WHITE}{username_discord}{color.RED}
-    {white}[{red}+{white}]{red} Display Name : {color.WHITE}{display_name_discord}{color.RED}
-    {white}[{red}+{white}]{red} Id           : {color.WHITE}{user_id_discord}{color.RED}
-    {white}[{red}+{white}]{red} Created      : {color.WHITE}{created_at_discord}{color.RED}
-    {white}[{red}+{white}]{red} Country      : {color.WHITE}{country_discord}{color.RED}
-    {white}[{red}+{white}]{red} Email        : {color.WHITE}{email_discord}{color.RED}
-    {white}[{red}+{white}]{red} Verified     : {color.WHITE}{email_verified_discord}{color.RED}
-    {white}[{red}+{white}]{red} Phone        : {color.WHITE}{phone_discord}{color.RED}
-    {white}[{red}+{white}]{red} Nitro        : {color.WHITE}{nitro_discord}{color.RED}
-    {white}[{red}+{white}]{red} Linked Users : {color.WHITE}{linked_users_discord}{color.RED}
-    {white}[{red}+{white}]{red} Avatar Decor : {color.WHITE}{avatar_decoration_discord}{color.RED}
-    {white}[{red}+{white}]{red} Avatar       : {color.WHITE}{avatar_discord}{color.RED}
-    {white}[{red}+{white}]{red} Avatar URL   : {color.WHITE}{avatar_url_discord}{color.RED}
-    {white}[{red}+{white}]{red} Accent Color : {color.WHITE}{accent_color_discord}{color.RED}
-    {white}[{red}+{white}]{red} Banner       : {color.WHITE}{banner_discord}{color.RED}
-    {white}[{red}+{white}]{red} Banner Color : {color.WHITE}{banner_color_discord}{color.RED}
-    {white}[{red}+{white}]{red} Flags        : {color.WHITE}{flags_discord}{color.RED}
-    {white}[{red}+{white}]{red} Public Flags : {color.WHITE}{public_flags_discord}{color.RED}
-    {white}[{red}+{white}]{red} NSFW         : {color.WHITE}{nsfw_discord}{color.RED}
-    {white}[{red}+{white}]{red} Multi-Factor Authentication : {color.WHITE}{mfa_discord}{color.RED}
-    {white}[{red}+{white}]{red} Authenticator Type          : {color.WHITE}{authenticator_types_discord}{color.RED}
-    {white}[{red}+{white}]{red} Billing      : {color.WHITE}{payment_methods_discord}{color.RED}
-    {white}[{red}+{white}]{red} Gift Code    : {color.WHITE}{gift_codes_discord}{color.RED}
-    {white}[{red}+{white}]{red} Guilds       : {color.WHITE}{guild_count}{color.RED}
-    {white}[{red}+{white}]{red} Owner Guilds : {color.WHITE}{owner_guild_count}{owner_guilds_names}{color.RED}
-    {white}[{red}+{white}]{red} Bio          : {color.WHITE}{bio_discord}{color.RED}
-    {white}[{red}+{white}]{red} Friend       : {color.WHITE}{friends_discord}{color.RED}
+    {INFO_ADD} Status       : {white}{status}{red}
+    {INFO_ADD} Token        : {white}{token_discord}{red}
+    {INFO_ADD} Username     : {white}{username_discord}{red}
+    {INFO_ADD} Display Name : {white}{display_name_discord}{red}
+    {INFO_ADD} Id           : {white}{user_id_discord}{red}
+    {INFO_ADD} Created      : {white}{created_at_discord}{red}
+    {INFO_ADD} Country      : {white}{country_discord}{red}
+    {INFO_ADD} Email        : {white}{email_discord}{red}
+    {INFO_ADD} Verified     : {white}{email_verified_discord}{red}
+    {INFO_ADD} Phone        : {white}{phone_discord}{red}
+    {INFO_ADD} Nitro        : {white}{nitro_discord}{red}
+    {INFO_ADD} Linked Users : {white}{linked_users_discord}{red}
+    {INFO_ADD} Avatar Decor : {white}{avatar_decoration_discord}{red}
+    {INFO_ADD} Avatar       : {white}{avatar_discord}{red}
+    {INFO_ADD} Avatar URL   : {white}{avatar_url_discord}{red}
+    {INFO_ADD} Accent Color : {white}{accent_color_discord}{red}
+    {INFO_ADD} Banner       : {white}{banner_discord}{red}
+    {INFO_ADD} Banner Color : {white}{banner_color_discord}{red}
+    {INFO_ADD} Flags        : {white}{flags_discord}{red}
+    {INFO_ADD} Public Flags : {white}{public_flags_discord}{red}
+    {INFO_ADD} NSFW         : {white}{nsfw_discord}{red}
+    {INFO_ADD} Multi-Factor Authentication : {white}{mfa_discord}{red}
+    {INFO_ADD} Authenticator Type          : {white}{authenticator_types_discord}{red}
+    {INFO_ADD} Billing      : {white}{payment_methods_discord}{red}
+    {INFO_ADD} Gift Code    : {white}{gift_codes_discord}{red}
+    {INFO_ADD} Guilds       : {white}{guild_count}{red}
+    {INFO_ADD} Owner Guilds : {white}{owner_guild_count}{owner_guilds_names}{red}
+    {INFO_ADD} Bio          : {white}{bio_discord}{red}
+    {INFO_ADD} Friend       : {white}{friends_discord}{red}
     """)
     Continue()
     Reset()

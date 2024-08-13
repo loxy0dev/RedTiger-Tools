@@ -15,9 +15,10 @@ try:
 except Exception as e:
    ErrorModule(e)
 
-Title("Tool Website")
+Title("Site")
+
 print(f"""
-{white}[{red}01{white}] {red}->{white} Web Site
+{white}[{red}01{white}] {red}->{white} Website
 {white}[{red}02{white}] {red}->{white} Discord
 {white}[{red}03{white}] {red}->{white} Github
 {white}[{red}04{white}] {red}->{white} Telegram

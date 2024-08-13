@@ -26,21 +26,17 @@ Title("Discord Token Nuker")
 try:
     print()
     token = Choice1TokenDiscord()
+    custom_status_input = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Custom Status -> {reset}")
 
     headers = {'Authorization': token, 'Content-Type': 'application/json'}
-    r = requests.get('https://discord.com/api/v8/users/@me', headers=headers)
-    if r.status_code == 200:
-        ()
-    else:
+    response = requests.get('https://discord.com/api/v8/users/@me', headers=headers)
+    if response.status_code != 200:
         ErrorToken()
 
     default_status = f"Nuking By {github_tool}"
-    custom_status = input(f"{color.RED}{INPUT} Enter Custom Status -> {color.RESET}")
-    statues = [default_status]
-    custom_status = f"{custom_status} | RedTiger"
+    custom_status = f"{custom_status_input} | RedTiger"
         
     modes = cycle(["light", "dark"])
-
 
     while True:
 

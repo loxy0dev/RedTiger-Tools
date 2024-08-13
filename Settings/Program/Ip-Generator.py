@@ -67,7 +67,7 @@ try:
 
                     embed_content = {
                     'title': f'Ip Valid !',
-                    'description': f"**__Ip:__**\n```{ip}```",
+                    'description': f"**Ip:**\n```{ip}```",
                     'color': color_webhook,
                     'footer': {
                     "text": username_webhook,
@@ -75,16 +75,16 @@ try:
                     }
                     }
                     send_webhook(embed_content)
-                    print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Logs: {color.WHITE}{number_invalid} invalid - {number_valid} valid{color.RED} | Status:  {color.WHITE}Valid{color.GREEN}  | Ip: {color.WHITE}{ip}{color.GREEN}")
+                    print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Logs: {white}{number_invalid} invalid - {number_valid} valid{green} Status:  {white}Valid{green}  Ip: {white}{ip}{green}")
                 else:
-                    print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Logs: {color.WHITE}{number_invalid} invalid - {number_valid} valid{color.RED} | Status:  {color.WHITE}Valid{color.GREEN}  | Ip: {color.WHITE}{ip}{color.GREEN}")
+                    print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Logs: {white}{number_invalid} invalid - {number_valid} valid{green} Status:  {white}Valid{green}  Ip: {white}{ip}{green}")
                 
             else:
                 number_invalid += 1
-                print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Logs: {color.WHITE}{number_invalid} invalid - {number_valid} valid{color.RED} | Status: {color.WHITE}Invalid{color.RED} | Ip: {color.WHITE}{ip}{color.RED}")
+                print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Logs: {white}{number_invalid} invalid - {number_valid} valid{red} Status: {white}Invalid{red} Ip: {white}{ip}{red}")
         except:
             number_invalid += 1
-            print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Logs: {color.WHITE}{number_invalid} invalid - {number_valid} valid{color.RED} | Status: {color.WHITE}Invalid{color.RED} | Ip: {color.WHITE}{ip}{color.RED}")
+            print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Logs: {white}{number_invalid} invalid - {number_valid} valid{red} Status: {white}Invalid{red} Ip: {white}{ip}{red}")
         Title(f"Ip Generator - Invalid: {number_invalid} - Valid: {number_valid}")
 
     def request():

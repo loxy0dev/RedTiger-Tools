@@ -24,12 +24,12 @@ except Exception as e:
 Title(f"Password Decrypted")
 try:
     Slow(f"""{decrypted_banner}
-{white}[{red}01{white}] {red}->{white} BCRYPT
-{white}[{red}02{white}] {red}->{white} MD5
-{white}[{red}03{white}] {red}->{white} SHA-1
-{white}[{red}04{white}] {red}->{white} SHA-256
-{white}[{red}05{white}] {red}->{white} PBKDF2 (SHA-256)
-{white}[{red}06{white}] {red}->{white} Base64 Decode
+ {BEFORE}01{AFTER}{white} BCRYPT
+ {BEFORE}02{AFTER}{white} MD5
+ {BEFORE}03{AFTER}{white} SHA-1
+ {BEFORE}04{AFTER}{white} SHA-256
+ {BEFORE}05{AFTER}{white} PBKDF2 (SHA-256)
+ {BEFORE}06{AFTER}{white} Base64 Decode
     """)
 
     choice = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Encryption Method -> {reset}")

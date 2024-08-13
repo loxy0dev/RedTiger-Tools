@@ -19,42 +19,33 @@ except Exception as e:
 Title("Discord Token Leaver")
 
 try:
-    print()
-    token = Choice1TokenDiscord()
-    r = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token, 'Content-Type': 'application/json'})
-    if r.status_code == 200:
-        pass
-    else:
-        ErrorToken()
-    def LeaveServer(guilds, token):
+    def leaver(guilds, token):
         for guild in guilds:
             try:
                 response = requests.delete(f'https://discord.com/api/v8/users/@me/guilds/'+guild['id'], headers={'Authorization': token})
                 if response.status_code == 204 or response.status_code == 200:
-                    print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Leave{color.RED} | Server: {color.WHITE}{guild['name']}")
+                    print(f"{BEFORE_GREEN + current_time_hour() + AFTER_GREEN} {GEN_VALID} Status: {white}Leave{green} Server: {white}{guild['name']}")
                 elif response.status_code == 400:
-                    requests.delete(f'https://discord.com/api/v8/guilds/'+guild['id'], headers={'Authorization': token})
-                    print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Leave{color.RED} | Server: {color.WHITE}{guild['name']}")
+                    response = requests.delete(f'https://discord.com/api/v8/guilds/'+guild['id'], headers={'Authorization': token})
+                    if response.status_code == 204 or response.status_code == 200:
+                        print(f"{BEFORE_GREEN + current_time_hour() + AFTER_GREEN} {GEN_VALID} Status: {white}Leave{green} Server: {white}{guild['name']}")
                 else:
-                    print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Error{color.RED} | Server: {color.WHITE}{guild['name']}")
+                    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Status: {white}Error {response.status_code}{red} Server: {white}{guild['name']}")
             except Exception as e:
-                print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Error: {e}{color.RED}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Status: {white}Error: {e}{red}")
+    
 
-    if token.startswith("mfa."):
-        print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Error: Mfa enabled{color.RED}")
+    print()
+    token = Choice1TokenDiscord()
 
     processes = []
     guilds_id = requests.get("https://discord.com/api/v8/users/@me/guilds", headers={'Authorization': token}).json()
     if not guilds_id:
-        print(f"{INFO} No Server found.")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} No Server found.")
         Continue()
         Reset()
     for guild in [guilds_id[i:i+3] for i in range(0, len(guilds_id), 3)]:
-        t = threading.Thread(target=LeaveServer, args=(guild, token))
-        t.start()
-        processes.append(t)
-    for process in processes:
-        process.join()
+        leaver(guild, token)
     Continue()
     Reset()
 except Exception as e:

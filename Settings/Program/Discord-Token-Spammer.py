@@ -19,22 +19,8 @@ except Exception as e:
 Title("Discord Token Spammer")
 
 try:
-    print()
-    token = Choice1TokenDiscord()
-    channel = input(f"{color.RED}{INPUT} Channel Spam Id -> {color.RESET}")
-    message = input(f"{color.RED}{INPUT} Spam Message -> {color.RESET}")
-    message_len = len(message)
-    if message_len > 10:
-        message_sensur = message[:10]
-        message_sensur = message_sensur + "..."
-    else:
-        message_sensur = message
-    try:
-        threads_number = int(input(f"{INPUT} Threads Number (recommended: 2, 4) -> {color.RESET}"))
-    except:
-        ErrorNumber()
 
-    def spam():
+    def spammer(token, message):
         try:
             response = requests.post(
                 f"https://discord.com/api/channels/{channel}/messages",
@@ -45,15 +31,32 @@ try:
                 }
             )
             response.raise_for_status()
-            print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Message: {color.WHITE}{message_sensur}{color.GREEN} | Channel: {color.WHITE}{channel}{color.GREEN} | Status: {color.WHITE}Send{color.GREEN}")
+            print(f"{BEFORE_GREEN + current_time_hour() + AFTER_GREEN} {GEN_VALID} Message: {white}{message_sensur}{green} Channel: {white}{channel}{green} Status: {white}Send{green}")
         except:
-            print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Message: {color.WHITE}{message_sensur}{color.RED} | Channel: {color.WHITE}{channel}{color.RED} | Status: {color.WHITE}Error {response.status_code}{color.RED}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} Message: {white}{message_sensur}{red} Channel: {white}{channel}{red} Status: {white}Error {response.status_code}{red}")
+
+
+    print()
+    token = Choice1TokenDiscord()
+    channel = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Channel Spam Id -> {reset}")
+    message = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Spam Message -> {reset}")
+    message_len = len(message)
+    if message_len > 10:
+        message_sensur = message[:10]
+        message_sensur = message_sensur + "..."
+    else:
+        message_sensur = message
+        
+    try:
+        threads_number = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Threads Number (recommended: 2, 4) -> {reset}"))
+    except:
+        ErrorNumber()
 
     def request():
         threads = []
         try:
             for _ in range(int(threads_number)):
-                t = threading.Thread(target=spam)
+                t = threading.Thread(target=spammer, args=(token, message))
                 t.start()
                 threads.append(t)
         except:

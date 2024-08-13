@@ -17,31 +17,23 @@ try:
 except Exception as e:
    ErrorModule(e)
 
-Title("Email Info (Lookup)")
+Title("Email Lookup")
 
 try:
     def get_email_info(email):
         info = {}
-        try:
-            domain_all = email.split('@')[-1]
-        except:
-            domain_all = None
+        try: domain_all = email.split('@')[-1]
+        except: domain_all = None
 
-        try:
-            name = email.split('@')[0]
-        except:
-            name = None
+        try: name = email.split('@')[0]
+        except: name = None
 
-        try:
-            domain = re.search(r"@([^@.]+)\.", email).group(1)
-        except:
-            domain = None
-        try:
-            tld = f".{email.split('.')[-1]}"
-        except:
-            tld = None
+        try: domain = re.search(r"@([^@.]+)\.", email).group(1)
+        except: domain = None
+        try: tld = f".{email.split('.')[-1]}"
+        except: tld = None
 
-        try:
+        try: 
             mx_records = dns.resolver.resolve(domain_all, 'MX')
             mx_servers = [str(record.exchange) for record in mx_records]
             info["mx_servers"] = mx_servers
@@ -73,16 +65,6 @@ try:
                     info["google_workspace"] = True
                 elif "outlook.com" in server:
                     info["microsoft_365"] = True
-
-        try:
-            response = requests.get(
-                f"https://api.mailgun.net/v4/address/validate?address={email}",
-                auth=("api", "YOUR_MAILGUN_API_KEY")
-            )
-            data = response.json()
-            info["mailgun_validation"] = data
-        except Exception as e:
-            info["mailgun_validation"] = {"error": str(e)}
 
         return info, domain_all, domain, tld, name
 
