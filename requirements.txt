@@ -1,3 +1,4 @@
+setuptools
 urllib3
 PyQt5
 PyQtWebEngine
