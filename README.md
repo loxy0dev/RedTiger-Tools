@@ -28,9 +28,9 @@
 <h1>⭐・Features:</h1>
 
 <p>
-  <img src="Img/RedTiger.png" width="500px"> 
-  <img src="Img/RedTiger-2.png" width="500px"> 
-  <img src="Img/RedTiger-3.png" width="500px"> 
+  <img src="Img/RedTiger.png" width="400px"> 
+  <img src="Img/RedTiger-2.png" width="400px"> 
+  <img src="Img/RedTiger-3.png" width="400px"> 
 </p>
 
 <h1>⚙️・Functions:</h1>
