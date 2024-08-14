@@ -170,10 +170,6 @@ Or
 ```
 </p>
 
-<h1>☠️・Builder:</h1>
-
-<img align="center" src="Img/Builder.png" width="800px">
-
 <h1>⚠️・Terms of use:</h1>
 
 <p>
