@@ -1,5 +1,4 @@
-<h1 align="center">NEW DISCORD SERVER: https://discord.gg/redtigertools</h1> 
-<h1 align="center">RedTiger Multi-Tools</h1> 
+<img align="center" src="Img/RedTiger-Banner.png" width="99999px"> 
 
 <p align="center">
   <img src="https://img.shields.io/github/v/release/fluzyteck/RedTiger-Tools?label=Version&color=a80505">
@@ -8,17 +7,15 @@
   <img src="https://img.shields.io/github/languages/top/fluzyteck/RedTiger-Tools?color=a80505">
 </p>
 
-<img align="center" src="Img/RedTiger.png" width="99999px">
-
 <p>
-  <strong>All scripts in the "<a href="https://github.com/loxyteck/RedTiger-Tools/tree/main/Settings/Program/FileDetectedByAntivirus">Settings/Program/FileDetectedByAntivirus</a>" folder are detected by the antivirus but pose no     threat to you. These are not backdoors or malware.</strong>
-
-  <h3>⭐ Don't forget to set the repository to "Star" !! ⬆️</h3>
+  <h3 align="center">⭐ Don't forget to set the repository to "Star" ⭐</h3>
 </p>
 
 <h1>📜・Description:</h1>
 
 <p>
+    All scripts in the "<a href="https://github.com/loxyteck/RedTiger-Tools/tree/main/Settings/Program/FileDetectedByAntivirus">Settings/Program/FileDetectedByAntivirus</a>" folder are <strong>detected by the antivirus</strong> but pose no threat to you. These are <strong>not backdoors or malware</strong>.
+
   👨‍💻 -> Developed in <strong>Python</strong>.<br>
   🌍 -> Tool in <strong>English</strong>.<br>
   💻 -> Available on <strong>Windows</strong> and <strong>Linux</strong>.<br>
@@ -26,6 +23,14 @@
   📂 -> <strong>Open Source</strong> only for verification, ensuring no malicious programs.<br>
   🔄 -> <strong>Frequently updated</strong>.<br>
   💰 -> <strong>Free</strong> for everyone.<br>
+</p>
+
+<h1>⭐・Features:</h1>
+
+<p>
+  <img src="Img/RedTiger.png" width="500px"> 
+  <img src="Img/RedTiger-2.png" width="500px"> 
+  <img src="Img/RedTiger-3.png" width="500px"> 
 </p>
 
 <h1>⚙️・Functions:</h1>
