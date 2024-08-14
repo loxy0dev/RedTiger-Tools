@@ -27,10 +27,11 @@
 
 <h1>⭐・Features:</h1>
 
-<p>
+<p align="center">
   <img src="Img/RedTiger.png" width="400px"> 
   <img src="Img/RedTiger-2.png" width="400px"> 
   <img src="Img/RedTiger-3.png" width="400px"> 
+  <img src="Img/Builder.png" width="400px">
 </p>
 
 <h1>⚙️・Functions:</h1>
