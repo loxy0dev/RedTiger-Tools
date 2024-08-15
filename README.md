@@ -139,15 +139,13 @@
 
 <p>
 - Install <a href="https://www.python.org/downloads/">Python</a> with the <a href="Img/Python_Path.png">PATH</a> options.<br>
-- Install <a href="https://www.win-rar.com/postdownload.html?&L=10">Winrar</a>.<br>
-- Windows 10 & 11
+- Windows 10 & 11 or +
 </p>
 
 <h3>Linux:</h3>
 
 <p>
 - Latest version of <a href="https://www.python.org/downloads/">Python</a>.<br>
-- Install <a href="https://www.win-rar.com/postdownload.html?&L=10">Winrar</a>.<br>
 - Linux recent version.
 </p>
 
@@ -167,7 +165,8 @@ Or
 1 - Open a terminal.
 2 - Write "git clone https://github.com/loxyteck/RedTiger-Tools.git"
 3 - Write "cd RedTiger-Tools"
-4 - Write "python Setup.py"
+4 - Write "git pull"
+5 - Write "python Setup.py"
 ```
 </p>
 
