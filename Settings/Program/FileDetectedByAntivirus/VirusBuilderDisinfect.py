@@ -18,6 +18,7 @@ import psutil
 import time
 import keyboard
 import subprocess
+import re
 
 def disinfect():
     try:
@@ -123,6 +124,49 @@ def disinfect():
             ]
             for website in websites_to_block:
                 unblock_website(website)
+        
+        def DeleteDiscordInjection():
+            print(f"[!] | Closing Discord.")
+            for proc in psutil.process_iter():
+                if 'discord' in proc.name().lower():
+                    proc.kill()
+                    
+            print(f"[!] | Delete Discord Injection.")
+            def g3t_c0r3(dir):
+                for file in os.listdir(dir):
+                    if re.search(r'app-+?', file):
+                        modules = dir + '\\' + file + '\\modules'
+                        if not os.path.exists(modules):
+                            continue
+                        for file in os.listdir(modules):
+                            if re.search(r'discord_desktop_core-+?', file):
+                                core = modules + '\\' + file + '\\' + 'discord_desktop_core'
+                                return core, file
+                return None
+            
+            appdata = os.getenv('LOCALAPPDATA')
+            discord_dirs = [
+                appdata + '\\Discord',
+                appdata + '\\DiscordCanary',
+                appdata + '\\DiscordPTB',
+                appdata + '\\DiscordDevelopment'
+            ]
+
+            for dir in discord_dirs:
+                if not os.path.exists(dir):
+                    continue
+
+                core_info = g3t_c0r3(dir)
+                if core_info is not None:
+                    core, core_file = core_info
+                    
+                    index_js_path = core + '\\index.js'
+                    
+                    if not os.path.exists(index_js_path):
+                        open(index_js_path, 'w').close()
+
+                    with open(index_js_path, 'w', encoding='utf-8') as f:
+                        f.write("module.exports = require('./core.asar');")
 
         print(f"[!] | Disinfection RedTiger stealer in progress..")
         time.sleep(1)
@@ -148,6 +192,11 @@ def disinfect():
         time.sleep(2)
         try:
             UnblockSite()
+        except:
+            pass
+        time.sleep(2)
+        try:
+            DeleteDiscordInjection()
         except:
             pass
         time.sleep(1)

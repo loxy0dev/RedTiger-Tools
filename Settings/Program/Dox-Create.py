@@ -263,9 +263,10 @@ try:
     if not name_file.strip():
         name_file = f'No Name {random.randint(1, 999)}'
 
-    path = f"./1-Output/DoxCreate/D0x - {name_file}.txt"
+    dox_path_relative = f"\\1-Output\\DoxCreate\\D0x - {name_file}.txt"
+    dox_path = os.path.join(tool_path, "1-Output", "DoxCreate", f"D0x - {name_file}.txt")
 
-    with open(path, 'w', encoding='utf-8') as file:
+    with open(dox_path, 'w', encoding='utf-8') as file:
         file.write(f'''
     ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄                                    
                                         
@@ -391,7 +392,7 @@ try:
            ╚═══════════════════════════════════════════════════════════════════════════════════════╝
     ''')
 
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} The DOX {color.WHITE}\"{name_file}\"{color.RED} was sent to: {color.WHITE}\"{path}\"")
+    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} The DOX {white}\"{name_file}\"{red} was sent to: {white}\"{dox_path_relative}\"")
     Continue()
     Reset()
 except Exception as e:

@@ -242,13 +242,13 @@ menu2 = f""" ┌─ {option_info_txt}                                           
    └─ {option_31_txt                    }├─ {option_32_txt                    }├─ {option_41_txt}
            ├─ Stealer                    │       │                             │
            │  ├─ System Info             │       └─ Pay on discord !           │
-           │  ├─ Discord Token           │                                     ├─ {option_42_txt}
+           │  ├─ Discord Token/Injection │                                     ├─ {option_42_txt}
            │  ├─ Browser Steal           └─ {option_33_txt                    }│
            │  ├─ Roblox Cookie                   │                             │
            │  └─ Other                           └─ Pay on discord !           ├─ {option_43_txt}
            └─ Malware                                                          │
-              ├─ Block Key                                                     │
-              ├─ Block Mouse                                                   └─ {option_44_txt}
+              ├─ Anti VM & Debug                                               │
+              ├─ Startup                                                       └─ {option_44_txt}
               └─ Other
 """
 
@@ -270,9 +270,11 @@ menu3 = f""" ┌─ {option_info_txt}                                           
    └─────────────────────────────────────┴─────────────────────────────────────┘
 """
 
+menu_path = os.path.join(tool_path, "Settings", "Program", "Config", "Menu.txt")
+
 def Menu():
    try:
-      with open("./Settings/Program/Config/Menu.txt", "r") as file:
+      with open(menu_path, "r") as file:
          menu = file.read()
       if menu in ["1"]:
          menu = menu1
@@ -314,28 +316,28 @@ while True:
 
       Title(f"Menu {menu_number}")
       Slow(MainColor(banner))
-
+      username_pc = "admin"
       choice = input(MainColor(f""" ┌───({white}{username_pc}@redtiger)─{red}[{white}~/RedTiger/Menu-{menu_number}]
  └──{white}$ {reset}"""))
 
       if choice in ['N', 'n', 'NEXT', 'Next', 'next']:
          if menu_number == "1":
-            with open("./Settings/Program/Config/Menu.txt", "w") as file:
+            with open(menu_path, "w") as file:
                file.write("2")
 
          elif menu_number == "2":
-            with open("./Settings/Program/Config/Menu.txt", "w") as file:
+            with open(menu_path, "w") as file:
                file.write("3")
 
          continue
 
       elif choice in ['B', 'b', 'BACK', 'Back', 'back']:
          if menu_number == "2":
-            with open("./Settings/Program/Config/Menu.txt", "w") as file:
+            with open(menu_path, "w") as file:
                file.write("1")
 
          elif menu_number == "3":
-            with open("./Settings/Program/Config/Menu.txt", "w") as file:
+            with open(menu_path, "w") as file:
                file.write("2")
 
          continue

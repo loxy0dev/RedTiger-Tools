@@ -27,7 +27,7 @@ except Exception as e:
 
 color_webhook = 0xa80505
 username_webhook = name_tool
-avatar_webhook = 'https://media.discordapp.net/attachments/1268900329605300234/1270486977539604530/logo_redtiger.png?ex=66b72c73&is=66b5daf3&hm=c26e13dabc0297251613512e6ec2b8c8667550db16769a03cddb66fad8ef7eff&=&format=webp&quality=lossless&width=662&height=662'
+avatar_webhook = 'https://cdn.discordapp.com/attachments/1268900329605300234/1273392191234113679/RedTiger-Logo.png?ex=66be7264&is=66bd20e4&hm=1165a5cd1fd68f410e80c07ca00b0e3db24f008251c838d3d0d695d2e777c6bd&'
 
 colorama.init()
 color = colorama.Fore
@@ -40,6 +40,8 @@ yellow = color.YELLOW
 
 try: username_pc = os.getlogin()
 except: username_pc = "username"
+
+tool_path = os.path.dirname(os.path.abspath(__file__)).split("Settings")[0].strip()
 
 def current_time_day_hour():
     return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -165,19 +167,21 @@ def Clear():
         os.system("clear")
 
 def Reset():
-        if sys.platform.startswith("win"):
-            file = f'python ./RedTiger.py'
-            subprocess.run(file, shell=True)
-        elif sys.platform.startswith("linux"):
-            file = f'python3 ./RedTiger.py'
-            subprocess.run(file, shell=True)
+    if sys.platform.startswith("win"):
+        file = 'python', os.path.join(tool_path, "RedTiger.py")
+        subprocess.run(file, shell=True)
+
+    elif sys.platform.startswith("linux"):
+        file = 'python3', os.path.join(tool_path, "RedTiger.py")
+        subprocess.run(file, shell=True)
 
 def StartProgram(program):
     if sys.platform.startswith("win"):
-        file = f'python ./Settings/Program/{program}'
+        file = 'python', os.path.join(tool_path, "Settings", "Program", program)
         subprocess.run(file, shell=True)
+
     elif sys.platform.startswith("linux"):
-        file = f'python3 ./Settings/Program/{program}'
+        file = 'python3', os.path.join(tool_path, "Settings", "Program", program)
         subprocess.run(file, shell=True)
 
 def Slow(texte):
@@ -313,7 +317,8 @@ def ChoiceMultiTokenDisord():
         else:
             print(f" {BEFORE}{token_number}{AFTER} -> {red}Status: {white}Invalid{red} | {red}Token: {white}{token}")
 
-    file_token_discord = "./2-Input/TokenDisc/TokenDisc.txt"
+    file_token_discord_relative = "\\2-Input\\TokenDisc\\TokenDisc.txt"
+    file_token_discord = os.path.join(tool_path, "2-Input", "TokenDisc", "TokenDisc.txt")
     tokens = {}
     token_discord_number = 0
 
@@ -324,11 +329,11 @@ def ChoiceMultiTokenDisord():
             token_discord_number += 1
         
         if token_discord_number == 0:
-            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} No Token Discord in file: {white}{file_token_discord}{red} Please add tokens to the file.")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} No Token Discord in file: {white}{file_token_discord_relative}{red} Please add tokens to the file.")
             Continue()
             Reset()
         else:
-            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {white}{token_discord_number}{red} Token Discord found ({white}{file_token_discord}{red})")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {white}{token_discord_number}{red} Token Discord found ({white}{file_token_discord_relative}{red})")
     
     try:
         num_tokens = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} How many token (max {token_discord_number}) -> {reset}"))
@@ -381,12 +386,14 @@ def Choice1TokenDiscord():
         else:
             print(f" {BEFORE}{token_number}{AFTER} -> {red}Status: {white}Invalid{red} | {red}Token: {white}{token}")
 
-    file_token_discord = "./2-Input/TokenDisc/TokenDisc.txt"
+    file_token_discord_relative = "\\2-Input\\TokenDisc\\TokenDisc.txt"
+    file_token_discord = os.path.join(tool_path, "2-Input", "TokenDisc", "TokenDisc.txt")
+
     tokens = {}
     token_discord_number = 0
 
     with open(file_token_discord, 'r') as file_token:
-        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Token Discord ({white}{file_token_discord}{red}):\n")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Token Discord ({white}{file_token_discord_relative}{red}):\n")
         for line in file_token:
             if not line.strip() or line.isspace():
                 continue
@@ -397,7 +404,7 @@ def Choice1TokenDiscord():
             CheckToken(token_discord_number, modified_token)
 
     if not tokens:
-        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} No Token Discord in file: {white}{file_token_discord}{red} Please add tokens to the file.")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} No Token Discord in file: {white}{file_token_discord_relative}{red} Please add tokens to the file.")
         Continue()
         Reset()
         return None
