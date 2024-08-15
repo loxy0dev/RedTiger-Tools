@@ -74,6 +74,7 @@
 │   ├── Stealer
 │   │   ├── System Info: User, System, Ip, Disk, Screen, Location, etc.
 │   │   ├── Discord Token: Token, Email, Phone, Id, Username, etc.
+│   │   ├── Discord Injection: Email/Password Changed, Login, Card/Paypal Added, Nitro Bought, etc.
 │   │   ├── Browser Steal: Passwords, History, Cookies, Downloads, Cards, etc.
 │   │   ├── Roblox Cookie: Cookie, Id, Username, etc.
 │   │   ├── Camera Capture: Record the victim's computer camera.
@@ -182,5 +183,5 @@ Or
   - <a href="https://discord.gg/redtigertools">Discord</a><br>
   - <a href="https://redtiger.shop">Website</a><br>
   - Creator: Loxyteck<br>
-  - Version: 5.7
+  - Version: 5.8
 </p>
