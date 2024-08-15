@@ -1,4 +1,4 @@
-<img align="center" src="Img/RedTiger-Banner.png" width="99999px"> 
+<img align="center" src="Img/RedTiger-Banner.png" width="100%"> 
 
 <p align="center">
   <img src="https://img.shields.io/github/v/release/fluzyteck/RedTiger-Tools?label=Version&color=a80505">
@@ -28,10 +28,10 @@
 <h1>⭐・Features:</h1>
 
 <p align="center">
-  <img src="Img/RedTiger.png" width="400px"> 
-  <img src="Img/RedTiger-2.png" width="400px"> 
-  <img src="Img/RedTiger-3.png" width="400px"> 
-  <img src="Img/Builder.png" width="400px">
+  <img src="Img/RedTiger.png" width="49%"> 
+  <img src="Img/RedTiger-2.png" width="49%"> 
+  <img src="Img/RedTiger-3.png" width="49%"> 
+  <img src="Img/Builder.png" width="49%">
 </p>
 
 <h1>⚙️・Functions:</h1>
