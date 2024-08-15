@@ -151,7 +151,7 @@
 
 <h1>⏳・Installation:</h1>
 
-<a href="https://github.com/fluzyteck/RedTiger/archive/main.zip">Dowloads Tools Here</a>
+<a href="https://github.com/loxyteck/RedTiger-Tools/archive/refs/tags/v5.8.zip">Dowloads "RedTiger-Tools.zip" Here</a>
 
 <p>
   
