@@ -176,6 +176,20 @@ Or
   RedTiger has been developed solely for educational purposes. This project has been created with good intentions and is intended for personal use only. By choosing to use RedTiger, you acknowledge and accept full responsibility     for any consequences that may result from your actions.
 </p>
 
+<h1>💰・Donation:</h1>
+<p>
+  
+  <strong>Bitcoin Adress:</strong>
+  ``` 
+1MSRzopmhasr9ByHBrksScqv6wByVagDKe
+  ```
+  <strong>Litecoin Adress:</strong>
+  ```
+LXXnPk5hbUxNomJixbysoikZSv6QAiQyVQ
+  ```
+
+</p>
+
 <h2>🔗・Credits:</h2>
 
 <p>
