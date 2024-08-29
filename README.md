@@ -88,6 +88,7 @@
 │       ├── Spam Open Program
 │       ├── Fake Error
 │       ├── Launch At Startup
+│       ├── Anti Vm & Debug
 │       └── Restart Every 5min
 │
 ├── 📞 - Discord Tools
@@ -197,5 +198,5 @@ LXXnPk5hbUxNomJixbysoikZSv6QAiQyVQ
   - <a href="https://t.me/redtigertools">Telegram</a><br>
   - <a href="https://redtiger.shop">Website</a><br>
   - Creator: Loxyteck<br>
-  - Version: 5.8
+  - Version: 5.9
 </p>
