@@ -152,7 +152,7 @@
 
 <h1>⏳・Installation:</h1>
 
-<a href="https://github.com/loxyteck/RedTiger-Tools/archive/refs/tags/v5.8.zip">Dowloads "RedTiger-Tools.zip" Here</a>
+<a href="https://github.com/loxyteck/RedTiger-Tools/archive/refs/tags/v5.9.zip">Dowloads "RedTiger-Tools.zip" Here</a>
 
 <p>
   
