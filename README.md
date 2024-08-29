@@ -25,7 +25,7 @@
   💰 -> <strong>Free</strong> for everyone.<br>
 </p>
 
-<h1>⭐・Features:</h1>
+<h1>⭐・Features: </h1>
 
 <p align="center">
   <img src="Img/RedTiger.png" width="49%"> 
