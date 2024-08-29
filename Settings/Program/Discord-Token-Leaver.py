@@ -35,7 +35,7 @@ try:
                 print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Status: {white}Error: {e}{red}")
     
 
-    print()
+    Slow(discord_banner)
     token = Choice1TokenDiscord()
 
     processes = []

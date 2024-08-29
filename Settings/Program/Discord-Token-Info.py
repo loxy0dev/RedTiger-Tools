@@ -19,7 +19,7 @@ except Exception as e:
 Title("Discord Token Info")
 
 try:
-    print()
+    Slow(discord_banner)
     token_discord = Choice1TokenDiscord()
     print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Information Recovery..{reset}")
     try:

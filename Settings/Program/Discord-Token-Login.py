@@ -17,7 +17,7 @@ except Exception as e:
 
 Title("Discord Token Login")
 try:      
-    print()
+    Slow(discord_banner)
     token = Choice1TokenDiscord()
 
     print(f"""

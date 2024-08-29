@@ -21,6 +21,7 @@ Title("Username Tracker")
 
 try:
     sites = {
+        "Roblox Trade": "https://rblx.trade/p/{}",
         "TikTok": "https://www.tiktok.com/@{}",
         "Instagram": "https://www.instagram.com/{}",
         "Paypal": "https://www.paypal.com/paypalme/{}",
@@ -131,43 +132,61 @@ try:
 
     number_site = 0
     number_found = 0
-
+    sites_and_urls_found = []
+    
     Slow(osint_banner)
     username = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Username -> {reset}")
     Censored(username)
 
     username = username.lower()
 
-    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Account search..")
+    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Scanning..")
 
     for site, url_template in sites.items():
         try:
             number_site += 1
             url = url_template.format(username)
             try:
-                response = requests.get(url, timeout=10)
+                response = requests.get(url, timeout=3)
                 if response.status_code == 200:
                     page_content = re.sub(r'<[^>]*>', '', response.text.lower().replace(url, "").replace(f"/{username}", ""))
+                    page_content = site_exception(username, site, page_content)
                     page_text = bs4.BeautifulSoup(response.text, 'html.parser').get_text().lower().replace(url, "")
                     page_title = bs4.BeautifulSoup(response.content, 'html.parser').title.string.lower()
-                    page_content = site_exception(username, site, page_content)
-
+                    
                     if username in page_title:
                         number_found += 1
-                        print(f"{BEFORE + current_time_hour() + AFTER} {ADD} {site}: {white + url}")
+                        sites_and_urls_found.append(f"{site}: {white + url}")
+                        found = True
                     elif username in page_content:
                         number_found += 1
-                        print(f"{BEFORE + current_time_hour() + AFTER} {ADD} {site}: {white + url}")
+                        sites_and_urls_found.append(f"{site}: {white + url}")
+                        found = True
                     elif username in page_text:
                         number_found += 1
-                        print(f"{BEFORE + current_time_hour() + AFTER} {ADD} {site}: {white + url}")
-            
+                        sites_and_urls_found.append(f"{site}: {white + url}")
+                        found = True
+                    else:
+                        found = False
+                else: 
+                    found = False
+
+                if found == True:
+                    print(f"{BEFORE_GREEN + current_time_hour() + AFTER_GREEN} {GEN_VALID} {site}: {white + url}")
+                elif found == False:
+                    print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} {site}:{white} Not Found")
+
             except Exception as e:
                 print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {site}: {white + e}")
         except: 
             pass
 
-    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Total Website: {white}{number_site}{red}, Found: {white}{number_found}{red}")
+    print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Total Found:{reset}")
+    for site_and_url_found in sites_and_urls_found:
+        time.sleep(0.5)
+        print(f"{BEFORE + current_time_hour() + AFTER} {ADD} {site_and_url_found}")
+
+    print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Total Website: {white}{number_site}{red}, Total Found: {white}{number_found}{red}")
     Continue()
     Reset()
 except Exception as e:

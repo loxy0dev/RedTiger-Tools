@@ -14,21 +14,16 @@ from Settings.Program.Config.Util import *
 try:
    import webbrowser
    import re
-   import colorama
 except:
    ErrorModule()
 
-colorama.init()
-
 try:
-   content = requests.get(url_config).text
-   match = re.search(r'version_tool\s*=\s*"([^"]+)"', content)
-   current_version = match.group(1)
-   if current_version != version_tool:
-      print(f"{INFO} Please download the new version of the tool ! {white}{version_tool}{color.LIGHTYELLOW_EX} -> {white}{current_version}{red}")
+   new_version = re.search(r'version_tool\s*=\s*"([^"]+)"', requests.get(url_config).text).group(1)
+   if new_version != version_tool:
+      print(f"{INFO} Please install the new version of the tool: {white + version_tool + red} -> {white + new_version}")
       webbrowser.open(github_tool)
       input(f"{INFO} Enter to still use this version -> {reset}")
-      popup_version = f"{color.LIGHTYELLOW_EX}Please update the tool: {white}{version_tool}{color.LIGHTYELLOW_EX} -> {white}{current_version}{red}"
+      popup_version = f"{red}New Version: {white + version_tool + red} -> {white + new_version}"
    else:
       popup_version = ""
 except:
@@ -229,9 +224,6 @@ menu1 = f""" ┌─ {option_info_txt}                                           
    └─ {option_06_txt                    }├─ {option_16_txt                    }└─ {option_26_txt}
            {"".ljust(30)[:30]           }└─ {option_17_txt                    }
 
-
-
-
 """
 
 
@@ -316,7 +308,7 @@ while True:
 
       Title(f"Menu {menu_number}")
       Slow(MainColor(banner))
-      username_pc = "admin"
+
       choice = input(MainColor(f""" ┌───({white}{username_pc}@redtiger)─{red}[{white}~/RedTiger/Menu-{menu_number}]
  └──{white}$ {reset}"""))
 

@@ -20,7 +20,7 @@ except Exception as e:
 Title("Discord Token Language Changer")
 
 try:
-    print()
+    Slow(discord_banner)
     token = Choice1TokenDiscord()
 
     headers = {'Authorization': token, 'Content-Type': 'application/json'}

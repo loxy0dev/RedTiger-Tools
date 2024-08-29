@@ -11,248 +11,503 @@
 from Config.Util import *
 from Config.Config import *
 try:
-    import random
-    from selenium import webdriver
-    from selenium.webdriver.common.by import By
-    from deep_translator import GoogleTranslator
-    from selenium.webdriver.common.keys import Keys
+    from bs4 import BeautifulSoup
+    import requests
 except Exception as e:
    ErrorModule(e)
 
 Title("Email Tracker")
 
 try:
-    email = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Email -> {reset}")
-    Censored(email)
+    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
 
-    print(f"""
- {BEFORE}01{AFTER}{white} Chrome (Windows / Linux)
- {BEFORE}02{AFTER}{white} Edge (Windows)
- {BEFORE}03{AFTER}{white} Firefox (Windows)
-    """)
-    browser = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Browser -> {reset}")
- 
-    if browser in ['1', '01']:
+    def Instagram(email):
         try:
-            navigator = "Chrome"
-            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
-            driver = webdriver.Chrome()
-            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
-        except:
-            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
-            Continue()
-            Reset()
+            session = requests.Session()
+            headers = {
+                'User-Agent': user_agent,
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Accept-Language': 'en-US,en;q=0.5',
+                'Origin': 'https://www.instagram.com',
+                'Connection': 'keep-alive',
+                'Referer': 'https://www.instagram.com/'
+            }
 
-    elif browser in ['2', '02']:
-        if sys.platform.startswith("linux"):
-            OnlyLinux()
-        else:
-            try:
-                navigator = "Edge"
-                print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
-                driver = webdriver.Edge()
-                print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
-            except:
-                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
-                Continue()
-                Reset()
+            data = {
+                "email": email
+            }
 
-    elif browser in ['3', '03']:
-        if sys.platform.startswith("linux"):
-            OnlyLinux()
-        else:
-            try:
-                navigator = "Firefox"
-                print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} {navigator} Starting..{blue}")
-                driver = webdriver.Firefox()
-                print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {navigator} Ready !{blue}")
-            except:
-                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {navigator} not installed or driver not up to date.")
-                Continue()
-                Reset()
-    else:
-        ErrorChoice()
+            response = session.get(
+                "https://www.instagram.com/accounts/emailsignup/", 
+                headers=headers
+            )
+            if response.status_code == 200:
+                if 'csrftoken' in session.cookies:
+                    token = session.cookies['csrftoken']
+                else:
+                    return "Error: Token Not Found."
+            else:
+                return f"Error: {response.status_code}"
 
-    driver.set_window_size(900, 600)
+            headers["x-csrftoken"] = token
+            headers["Referer"] = "https://www.instagram.com/accounts/emailsignup/"
 
-    def text_page():
-        page_text = driver.execute_script("return document.documentElement.innerText")
-        return page_text
+            response = session.post(
+                url="https://www.instagram.com/api/v1/web/accounts/web_create_ajax/attempt/",
+                headers=headers,
+                data=data
+            )
+            if response.status_code == 200:
+                if "Another account is using the same email." in response.text:
+                    return True
+                elif "email_is_taken" in response.text:
+                    return True
+                else:
+                    return False
+            else:
+                return f"Error: {response.status_code}"
+        except Exception as e:
+            return f"Error: {e}"
         
-    def text_translated(text):
+    def Twitter(email):
         try:
-            translated_text = GoogleTranslator(source='auto', target='en').translate(text)
-        except: 
-            translated_text = text
-        return translated_text
+            session = requests.Session()
 
-    def twitter_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Twitter..{blue}")
-        try:
-            driver.get(r"https://twitter.com/i/flow/login")
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            email_enter = driver.find_element(By.XPATH, '//input[contains(@class, "r-30o5oe") and @name="text"]')
-            email_enter.send_keys(email)
-            email_enter.send_keys(Keys.RETURN)
-            time.sleep(2)
-            if "Sorry, we couldn't find your account" in text_translated(text_page()):
-                twitter = False
+            response = session.get(
+                url = "https://api.twitter.com/i/users/email_available.json",
+                params = {
+                    "email": email
+                }
+            )
+            if response.status_code == 200:
+                if response.json()["taken"] == True:
+                    return True
+                else:
+                    return False
             else:
-                twitter = True
+                return f"Error: {response.status_code}"
         except Exception as e:
-            twitter = f"Error: {e}"
-        return twitter
+            return f"Error: {e}"
 
-    def google_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Google..{blue}")
+    def Pinterest(email):
         try:
-            driver.get(r"https://accounts.google.com/v3/signin/identifier?authuser=0&continue=https%3A%2F%2Fmyaccount.google.com%2F&ec=GAlAwAE&hl=fr&service=accountsettings&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S-1241433703%3A1715014494878825&theme=mn&ddm=0")
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            email_enter = driver.find_element(By.XPATH, '//input[contains(@class, "whsOnd") and contains(@class, "zHQkBf") and @type="email" and @name="identifier"]')
-            email_enter.send_keys(email)
-            email_enter.send_keys(Keys.RETURN)
-            time.sleep(2)
-            if "Enter a valid email address or phone number" in text_translated(text_page()):
-                google = False
-            elif "Can't find your Google account" in text_translated(text_page()):
-                google = False
-            else:
-                google = True
-        except Exception as e:
-            google = f"Error: {e}"
-        return google
+            session = requests.Session()
+            response = session.get(
+                "https://www.pinterest.com/_ngjs/resource/EmailExistsResource/get/",
+                params={
+                    "source_url": "/",
+                    "data": '{"options": {"email": "' + email + '"}, "context": {}}'
+                }
+            )
 
-    def instagram_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Instagram..{blue}")
+            if response.status_code == 200:
+                if response.json()["resource_response"]["message"] == "Invalid email.":
+                    return False
+                elif response.json()["resource_response"]["message"] == "ok":
+                    if response.json()["resource_response"]["data"] == False:
+                        return False
+                    elif response.json()["resource_response"]["data"] == True:
+                        return True
+                else:
+                    return False
+            else:
+                return f"Error: {response.status_code}"
+        except Exception as e:
+            return f"Error: {e}"
+
+
+    def Imgur(email):
         try:
-            driver.get(r"https://www.instagram.com/accounts/emailsignup/")
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            number = random.randint(9999099999999, 999999999999999999999999999)
-            email_enter = driver.find_element(By.XPATH, '//input[contains(@class, "_aa4b") and contains(@class, "_add6") and contains(@class, "_ac4d") and contains(@class, "_ap35") and @type="text" and @name="emailOrPhone"]')
-            email_enter.send_keys(email)
-            email_enter.send_keys(Keys.RETURN)
-            name_enter = driver.find_element(By.XPATH, '//div[contains(@class, "x6s0dn4") and contains(@class, "x1nk0tez") and contains(@class, "x1xp9za0") and contains(@class, "x1hm1hlx") and contains(@class, "x1npaq5j") and contains(@class, "x1c83p5e") and contains(@class, "x199158v") and contains(@class, "x13fuv20") and contains(@class, "x1q0q8m5") and contains(@class, "x26u7qi") and contains(@class, "x178xt8z") and contains(@class, "xso031l") and contains(@class, "xy80clv") and contains(@class, "x9f619") and contains(@class, "x5n08af") and contains(@class, "x78zum5") and contains(@class, "x1q0g3np") and contains(@class, "xvs91rp") and contains(@class, "x1n2onr6") and contains(@class, "xh8yej3")]//input[@name="fullName"]')
-            name_enter.send_keys("Red Tiger")
-            name_enter.send_keys(Keys.RETURN)
-            username_enter = driver.find_element(By.XPATH, '//div[contains(@class, "x6s0dn4") and contains(@class, "xnz67gz") and contains(@class, "x19gtwsn") and contains(@class, "x1nk0tez") and contains(@class, "x1xp9za0") and contains(@class, "x1hm1hlx") and contains(@class, "x1npaq5j") and contains(@class, "x1c83p5e") and contains(@class, "x1enjb0b") and contains(@class, "x199158v") and contains(@class, "x13fuv20") and contains(@class, "xu3j5b3") and contains(@class, "x1q0q8m5") and contains(@class, "x26u7qi") and contains(@class, "x178xt8z") and contains(@class, "xm81vs4") and contains(@class, "xso031l") and contains(@class, "xy80clv") and contains(@class, "x9f619") and contains(@class, "x5n08af") and contains(@class, "x78zum5") and contains(@class, "x1q0g3np") and contains(@class, "xvs91rp") and contains(@class, "x1n2onr6") and contains(@class, "xh8yej3")]//input[@name="username"]')
-            username_enter.send_keys(f"redtiger{number}")
-            username_enter.send_keys(Keys.RETURN)
-            password_enter = driver.find_element(By.XPATH, '//div[contains(@class, "x6s0dn4") and contains(@class, "xnz67gz") and contains(@class, "x19gtwsn") and contains(@class, "x1nk0tez") and contains(@class, "x1xp9za0") and contains(@class, "x1hm1hlx") and contains(@class, "x1npaq5j") and contains(@class, "x1c83p5e") and contains(@class, "x1enjb0b") and contains(@class, "x199158v") and contains(@class, "x13fuv20") and contains(@class, "xu3j5b3") and contains(@class, "x1q0q8m5") and contains(@class, "x26u7qi") and contains(@class, "x178xt8z") and contains(@class, "xm81vs4") and contains(@class, "xso031l") and contains(@class, "xy80clv") and contains(@class, "x9f619") and contains(@class, "x5n08af") and contains(@class, "x78zum5") and contains(@class, "x1q0g3np") and contains(@class, "xvs91rp") and contains(@class, "x1n2onr6") and contains(@class, "xh8yej3")]//input[@name="password"]')
-            password_enter.send_keys(f"RedTiger.{number}")
-            password_enter.send_keys(Keys.RETURN)
-            time.sleep(2)
-            if "Another account uses the same email address" in text_translated(text_page()):
-                instagram = True
-            else:
-                instagram = False
-        except Exception as e:
-            instagram = f"Error: {e}"
-        return instagram
+            session = requests.Session()
 
-    def snapchat_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Snapchat..{blue}")
+            headers = {
+                'User-Agent': user_agent,
+                'Accept': '*/*',
+                'Accept-Language': 'en,en-US;q=0.5',
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                'Origin': 'https://imgur.com',
+                'DNT': '1',
+                'Connection': 'keep-alive',
+                'TE': 'Trailers',
+            }
+
+            r = session.get("https://imgur.com/register?redirect=%2Fuser", headers=headers)
+
+            headers["X-Requested-With"] = "XMLHttpRequest"
+
+            data = {
+                'email': email
+            }
+
+            response = session.post('https://imgur.com/signin/ajax_email_available', headers=headers, data=data)
+
+            if response.status_code == 200:
+                if response.json()['data']["available"] == True:
+                    return False
+                elif response.json()["data"]["available"] == False:
+                    if "Invalid email domain" in response.text:
+                        return False
+                    else:
+                        return True
+            else:
+                return f"Error: {response.status_code}"
+        except Exception as e:
+            return f"Error: {e}"
+
+    def Patreon(email):
         try:
-            driver.get(r"https://www.snapchat.com/?original_referrer=none")
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            email_enter = driver.find_element(By.XPATH, '//input[@id="ai_input" and contains(@class, "sidebar_input__AVHKi")]')
-            email_enter.send_keys(email)
-            email_enter.send_keys(Keys.RETURN)
-            time.sleep(2)
-            if "We can't find an account matching this username" in text_translated(text_page()):
-                snapchat = False
-            elif "We can't find an account matching this email address" in text_translated(text_page()):
-                snapchat = False
-            elif "Confirm it's you" in text_translated(text_page()):
-                snapchat = "Error: Captcha"
-            else:
-                snapchat = True
-        except Exception as e:
-            snapchat = f"Error: {e}"
-        return snapchat
+            session = requests.Session()
 
-    def microsoft_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Microsoft..{blue}")
+            headers = {
+                'User-Agent': user_agent,
+                'Accept': '*/*',
+                'Accept-Language': 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3',
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                'X-Requested-With': 'XMLHttpRequest',
+                'Origin': 'https://www.plurk.com',
+                'DNT': '1',
+                'Connection': 'keep-alive',
+            }
+
+            data = {
+                'email': email
+            }
+
+            response = session.post('https://www.plurk.com/Users/isEmailFound', headers=headers, data=data)
+            if response.status_code == 200:
+                if "True" in response.text:
+                    return True
+                elif "False" in response.text:
+                    return False
+                else:
+                    return False
+            else:
+                return f"Error: {response.status_code}"
+        except Exception as e:
+            return f"Error: {e}"
+        
+    def Spotify(email):
         try:
-            driver.get(r"https://login.microsoftonline.com/common/oauth2/v2.0/authorize?scope=service%3A%3Aaccount.microsoft.com%3A%3AMBI_SSL%20openid%20profile%20offline_access&response_type=code&client_id=81feaced-5ddd-41e7-8bef-3e20a2689bb7&redirect_uri=https%3A%2F%2Faccount.microsoft.com%2Fauth%2Fcomplete-signin-oauth&client-request-id=61ddde4f-db57-4b1a-a700-ba7c7805ba76&x-client-SKU=MSAL.Desktop&x-client-Ver=4.58.1.0&x-client-OS=Windows%20Server%202019%20Datacenter&prompt=select_account&client_info=1&state=H4sIAAAAAAAEAA3NS4JDMAAA0LvMtgu0SC3rU5Voqe_IjqJCKhm_weln3gXel8xul3EBneq48lrUc0c_NdoTd7O6JtZEDbvfyIprH7znfVwMjdqParx-9uQuNRW0w9lihW6eHEA4r00aDk8UnA769wokAScYDogZCZkWEm7tmXGuvUYHY09VR_NH0JFuJHLhQoTGLbCH8PIb1zHUnySbyyxtfDvY1eljrmRhspZZQl-lsExXmBORPSGgWZb5fax4F7rmUuoHcj5Q0CFRbaK2VRBQTtJdukZI1zQuyFv0f7_dH15iwZtQ2QuwOR3E-2bkoEV9UJf-5ATnX-Pqn8clW56WL-0OcZt3_lJpf-ZTqBbo9WDabQtvHIulB6YCBoGcZolLGVo8RawoWpJjK3k4iipSeaFIhmsx2AzndvcazJorRwU68x267ObPX39XKEYaggEAAA&msaoauth2=true&lc=1036&ru=https%3A%2F%2Faccount.microsoft.com%2Faccount%3Flang%3Dfr-fr%26refd%3Dwww.google.com")
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            email_enter = driver.find_element(By.XPATH, '//input[@type="email" and @name="loginfmt" and @id="i0116"]')
-            email_enter.send_keys(email)
-            email_enter.send_keys(Keys.RETURN)
-            time.sleep(2)
-            if "This Microsoft account does not exist" in text_translated(text_page()):
-                microsoft = False
-            elif "Enter a valid email address, phone number, or Skype ID" in text_translated(text_page()):
-                microsoft = False
-            else:
-                microsoft = True
-        except Exception as e:
-            microsoft = f"Error: {e}"
-        return microsoft
+            session = requests.Session()
+        
+            headers = {
+                'User-Agent': user_agent,
+                'Accept': 'application/json, text/plain, */*',
+                'Accept-Language': 'en-US,en;q=0.5',
+                'DNT': '1',
+                'Connection': 'keep-alive',
+            }
+            
+            params = {
+                'validate': '1',
+                'email': email,
+            }
 
-    def spotify_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Spotify..{blue}")
+            response = session.get('https://spclient.wg.spotify.com/signup/public/v1/account',
+                    headers=headers,
+                    params=params)
+            if response.status_code == 200:
+                if response.json()["status"] == 1:
+                    return False
+                elif response.json()["status"] == 20:
+                    return True
+                else:
+                    return False
+            else:
+                return f"Error: {response.status_code}"
+        except Exception as e:
+            return f"Error: {e}"
+
+    def FireFox(email):
         try:
-            driver.get(r"https://www.spotify.com/fr/signup?flow_id=8f84ffe4-cbe3-481c-99c7-944f17ec3405%3A1715044537&forward_url=https%3A%2F%2Faccounts.spotify.com%2Ffr%2Fstatus")
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            email_enter = driver.find_element(By.XPATH, '//input[@id="username" and @type="email" and @autocomplete="username"]')
-            email_enter.send_keys(email)
-            email_enter.send_keys(Keys.RETURN)
-            time.sleep(1)
-            try:
-                if "COOKIE" in text_translated(text_page()):
-                    driver.execute_script('document.getElementById("onetrust-accept-btn-handler").click();')
-            except:
-                pass
-            time.sleep(1)
-            if "This address is already linked to an existing account" in text_translated(text_page()):
-                spotify = True
-            elif "This email address is invalid" in text_translated(text_page()):
-                spotify = False
-            else:
-                spotify = False
-        except Exception as e:
-            spotify = f"Error: {e}"
-        return spotify
+            session = requests.Session()
 
-    def pornhub_search():
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in Pornhub..{blue}")
+            data = {
+                "email": email
+            }
+
+            response = session.post(
+                "https://api.accounts.firefox.com/v1/account/status",
+                data=data
+            )
+
+            if response.status_code == 200:
+                if "false" in response.text:
+                    return False
+                elif "true" in response.text:
+                    return True
+                else:
+                    return False
+            else:
+                return f"Error: {response.status_code}"
+        except Exception as e:
+            return f"Error: {e}"
+
+    def LastPass(email):
         try:
-            driver.get(r"https://fr.pornhub.com/signup")
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            email_enter = driver.find_element(By.ID, 'createEmail')
-            email_enter.send_keys(email)
-            email_enter.send_keys(Keys.RETURN)
-            time.sleep(2)
-            if "Incorrect email format" in text_translated(text_page()):
-                pornhub = False 
-            elif "Email already taken" in text_translated(text_page()):
-                pornhub = True
+            session = requests.Session()
+            headers = {
+                'User-Agent': user_agent,
+                'Accept': '*/*',
+                'Accept-Language': 'en,en-US;q=0.5',
+                'Referer': 'https://lastpass.com/',
+                'X-Requested-With': 'XMLHttpRequest',
+                'DNT': '1',
+                'Connection': 'keep-alive',
+                'TE': 'Trailers',
+            }
+            params = {
+                'check': 'avail',
+                'skipcontent': '1',
+                'mistype': '1',
+                'username': email,
+            }
+            
+            response = session.get(
+                'https://lastpass.com/create_account.php?check=avail&skipcontent=1&mistype=1&username='+str(email).replace("@", "%40"),       
+                params=params,
+                headers=headers)
+            
+            if response.status_code == 200:
+                if "no" in response.text:
+                    return True
+                elif "emailinvalid" in response.text:
+                    return False
+                elif "ok" in response.text:
+                    return False
+                else:
+                    return False
             else:
-                pornhub = False
+                return f"Error: {response.status_code}"
         except Exception as e:
-            pornhub = f"Error: {e}"
-        return pornhub
+            return f"Error: {e}"
+        
+    def Archive(email):
+        try:
+            session = requests.Session()
 
-    Slow(f"""
-{BEFORE + current_time_hour() + AFTER} {INFO} The email "{white}{email}{red}" was found:
+            headers = {
+                'User-Agent': user_agent,
+                'Accept': '*/*',
+                'Accept-Language': 'en,en-US;q=0.5',
+                'Content-Type': 'multipart/form-data; boundary=---------------------------',
+                'Origin': 'https://archive.org',
+                'Connection': 'keep-alive',
+                'Referer': 'https://archive.org/account/signup',
+                'Sec-GPC': '1',
+                'TE': 'Trailers',
+            }
 
-    {INFO_ADD} Spotify   : {white}{spotify_search()}{red}
-    {INFO_ADD} Snapchat  : {white}{snapchat_search()}{red}
-    {INFO_ADD} Instagram : {white}{instagram_search()}{red}
-    {INFO_ADD} Pornhub   : {white}{pornhub_search()}{red}
-    {INFO_ADD} Twitter   : {white}{twitter_search()}{red}
-    {INFO_ADD} Google    : {white}{google_search()}{red}
-    {INFO_ADD} Microsoft : {white}{microsoft_search()}{red}
-    """)
+            data = '-----------------------------\r\nContent-Disposition: form-data; name="input_name"\r\n\r\nusername\r\n-----------------------------\r\nContent-Disposition: form-data; name="input_value"\r\n\r\n' + email + \
+                '\r\n-----------------------------\r\nContent-Disposition: form-data; name="input_validator"\r\n\r\ntrue\r\n-----------------------------\r\nContent-Disposition: form-data; name="submit_by_js"\r\n\r\ntrue\r\n-------------------------------\r\n'
 
-    driver.quit()
+            response = session.post('https://archive.org/account/signup', headers=headers, data=data)
+            if response.status_code == 200:
+                if "is already taken." in response.text:
+                    return True
+                else:
+                    return False
+            else:
+                return f"Error: {response.status_code}"
+        except Exception as e:
+            return f"Error: {e}"
+        
+    def PornHub(email):
+        try:
+            session = requests.Session()
+
+            headers = {
+                'User-Agent': user_agent,
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Accept-Language': 'en,en-US;q=0.5',
+                'DNT': '1',
+                'Connection': 'keep-alive',
+                'Upgrade-Insecure-Requests': '1',
+            }
+            
+            response = session.get("https://www.pornhub.com/signup", headers=headers)
+            if response.status_code == 200:
+                token = BeautifulSoup(response.content, features="html.parser").find(attrs={"name": "token"})
+
+                if token is None:
+                    return "Error: Token Not Found."
+                
+                token = token.get("value")
+            else:
+                return f"Error: {response.status_code}"
+
+            params = {
+                'token': token,
+            }
+
+            data = {
+                'check_what': 'email',
+                'email': email
+            }
+
+            response = session.post(
+                'https://www.pornhub.com/user/create_account_check',
+                headers=headers,
+                params=params,
+                data=data
+            ) 
+            if response.status_code == 200:
+                if response.json()["error_message"] == "Email has been taken.":
+                    return True
+                elif "Email has been taken." in response.text:
+                    return True
+                else:
+                    return False
+            else:
+                return f"Error: {response.status_code}"
+        except Exception as e:
+            return f"Error: {e}"
+        
+    def Xnxx(email):
+        try:
+            session = requests.Session()
+
+            headers = {
+                'User-Agent': user_agent,
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Accept-Encoding': 'gzip, deflate, br',
+                'Accept-Language': 'en-en',
+                'Host': 'www.xnxx.com',
+                'Referer': 'https://www.google.com/',
+                'Connection': 'keep-alive'
+            }
+            
+            cookie = session.get('https://www.xnxx.com', headers=headers)
+
+            if cookie.status_code == 200:
+                if not cookie:
+                    return "Error: Cookie Not Found."
+            else:
+                return f"Error: {cookie.status_code}"
+            
+            headers['Referer'] = 'https://www.xnxx.com/video-holehe/palenath_fucks_xnxx_with_holehe'
+            headers['X-Requested-With'] = 'XMLHttpRequest'
+            email = email.replace('@', '%40')
+
+            response = session.get(f'https://www.xnxx.com/account/checkemail?email={email}', headers=headers, cookies=cookie.cookies)
+            
+            if response.status_code == 200:
+                try:
+                    if response.json()['message'] == "This email is already in use or its owner has excluded it from our website.":
+                        return True
+                    elif response.json()['message'] == "Invalid email address.": 
+                        return False
+                except:
+                    pass
+                if response.json()['result'] == "false":
+                    return True
+                elif response.json()['code'] == 1:
+                    return True
+                elif response.json()['result'] == "true":
+                    return False
+                elif response.json()['code'] == 0:
+                    return False  
+                else:
+                    return False
+            else:
+                return f"Error: {response.status_code}"
+        except Exception as e:
+            return f"Error: {e}"
+        
+    def Xvideo(email):
+        try:
+            session = requests.Session()
+
+            headers = {
+                'User-Agent': user_agent,
+                'Accept': 'application/json, text/javascript, */*; q=0.01',
+                'X-Requested-With': 'XMLHttpRequest',
+                'Connection': 'keep-alive',
+                'Referer': 'https://www.xvideos.com/',
+            }
+
+            params = {
+                'email': email,
+            }
+
+            response = session.get('https://www.xvideos.com/account/checkemail', headers=headers, params=params)
+            if response.status_code == 200:
+                try:
+                    if response.json()['message'] == "This email is already in use or its owner has excluded it from our website.": 
+                        return True
+                    elif response.json()['message'] == "Invalid email address.": 
+                        return False
+                except: 
+                    pass    
+                if response.json()['result'] == "false":
+                    return True
+                elif response.json()['code'] == 1:
+                    return True
+                elif response.json()['result'] == "true":
+                    return False
+                elif response.json()['code'] == 0:
+                    return False
+                else:
+                    return False
+            else:
+                return f"Error: {response.status_code}"
+        except Exception as e:
+            return f"Error: {e}"
+        
+    Slow(osint_banner)
+    email = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Email -> {reset}")
+    Censored(email)
+    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Scanning..")
+
+    sites = [
+        Instagram, Twitter, Pinterest, Imgur, Patreon, Spotify, FireFox, LastPass, Archive, PornHub, Xnxx, Xvideo
+    ]
+
+    site_founds = []
+    found = 0
+    not_found = 0
+    unknown = 0
+    error = 0
+
+    for site in sites:
+        result = site(email)
+        if result == True:
+            print(f"{BEFORE_GREEN + current_time_hour() + AFTER_GREEN} {GEN_VALID} {site.__name__}: {white}Found")
+            site_founds.append(site.__name__)
+            found +=1
+        elif result == False:
+            print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} {site.__name__}: {white}Not Found")
+            not_found += 1
+        elif result == None:
+            print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} {site.__name__}: {white}Unknown")
+            unknown += 1 
+        else:
+            if "429" in result:
+                result += " (Too Many Requests)"
+            elif "404" in result:
+                result += " (Page Not Found)"
+            elif "400" in result:
+                result += " (Bad Request)"  
+            elif "401" in result:
+                result += " (Unauthorized)"  
+            elif "403" in result:
+                result += " (Forbidden)" 
+            elif "500" in result:
+                result += " (Internal Server Error)" 
+            elif "502" in result:
+                result += " (Bad Gateway)"  
+            elif "503" in result:
+                result += " (Service Unavailable)"
+            elif "504" in result:
+                result += " (Gateway Timeout)"
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {site.__name__}: {white + result}")
+            error += 1
+
+    if found != 0:
+        print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Total Found ({white + str(found) + red}): {white}" + ", ".join(site_founds))
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Not Found: {white + str(not_found) + red} Unknown: {white + str(unknown) + red} Error: {white + str(error)}")
+    else:
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Found: {white + str(found) + red} Not Found: {white + str(not_found) + red} Unknown: {white + str(unknown) + red} Error: {white + str(error)}")
 
     Continue()
     Reset()

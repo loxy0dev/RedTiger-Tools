@@ -12,6 +12,8 @@ from Config.Util import *
 from Config.Config import *
 try:
     import random
+    import phonenumbers
+    from phonenumbers import geocoder, carrier, timezone
 except Exception as e:
    ErrorModule(e)
    
@@ -20,12 +22,6 @@ Title("Dox Create")
 
 try:
     def NumberInfo(phone_number):
-        try:
-            import phonenumbers
-            from phonenumbers import geocoder, carrier, timezone
-        except:
-            pass
-        
         try:
             parsed_number = phonenumbers.parse(phone_number, None)
             operator_phone = carrier.name_for_number(parsed_number, "fr")

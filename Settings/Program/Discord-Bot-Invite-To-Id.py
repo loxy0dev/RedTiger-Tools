@@ -18,18 +18,19 @@ except Exception as e:
 Title("Discord Invite Bot To Id")
 
 try:
+    Slow(discord_banner)
     try:
-        IdBot = int(input(f"\n{red}{INPUT} ID bot -> {reset}"))
+        IdBot = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} ID bot -> {reset}"))
     except:
         ErrorId()
 
-    URLBot = f'https://discord.com/oauth2/authorize?client_id={IdBot}&scope=bot&permissions=8'
+    invite_url = f'https://discord.com/oauth2/authorize?client_id={IdBot}&scope=bot&permissions=8'
+    response = requests.get(invite_url)
+    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Invite Url: {white + invite_url} (status: {response.status_code})")
 
-    print(f"{INFO} URL bot: \"{color.WHITE}{URLBot}{color.RED}\"{color.RESET}")
-
-    choice = input(f"{INPUT} Open the Internet ? (y/n) -> {color.RESET}")
+    choice = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Open in browser ? (y/n) -> {reset}")
     if choice in ['y', 'Y', 'Yes', 'yes']:
-        webbrowser.open_new_tab(URLBot)
+        webbrowser.open_new_tab(invite_url)
         Continue()
         Reset()
     else:

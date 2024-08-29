@@ -19,148 +19,85 @@ except Exception as e:
 Title("Discord Server Info")
 
 try:
-    invite = input(f"{color.RED}\n{INPUT} Server Invitation -> {color.RESET}")
+    Slow(discord_banner)
+    invite = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Server Invitation -> {reset}")
     try:
         invite_code = invite.split("/")[-1]
     except:
         invite_code = invite
+
     response = requests.get(f"https://discord.com/api/v9/invites/{invite_code}")
 
     if response.status_code == 200:
-        data = response.json()
-        try:
-            type_value = data['type']
-        except:
-            type_value= "None"
-        try:
-            code_value = data['code']
-        except:
-            code_value = "None"
-        try:
-            inviter_id = data['inviter']['id']
-        except:
-            inviter_id = "None"
-        try:
-            inviter_username = data['inviter']['username']
-        except:
-            inviter_username = "None"
-        try:
-            inviter_avatar = data['inviter']['avatar']
-        except:
-            inviter_avatar = "None"
-        try:
-            inviter_discriminator = data['inviter']['discriminator']
-        except:
-            inviter_discriminator = "None"
-        try:
-            inviter_public_flags = data['inviter']['public_flags']
-        except:
-            inviter_public_flags = "None"
-        try:
-            inviter_flags = data['inviter']['flags']
-        except:
-            inviter_flags = "None"
-        try:
-            inviter_banner = data['inviter']['banner']
-        except:
-            inviter_banner = "None"
-        try:
-            inviter_accent_color = data['inviter']['accent_color']
-        except:
-            inviter_accent_color = "None"
-        try:
-            inviter_global_name = data['inviter']['global_name']
-        except:
-            inviter_global_name = "None"
-        try:
-            inviter_banner_color = data['inviter']['banner_color']
-        except:
-            inviter_banner_color = "None"
-        try:
-            expires_at = data['expires_at']
-        except:
-            expires_at = "None"
-        try:
-            flags = data['flags']
-        except:
-            flags = "None"
-        try:
-            server_id = data['guild_id']
-        except:
-            server_id = "None"
-        try:
-            server_name = data['guild']['name']
-        except:
-            server_name = "None"
-        try:
-            server_icon = data['guild']['icon']
-        except:
-            server_icon = "None"
-        try:
-            server_features = data['guild']['features']
-        except:
-            server_features = "None"
-        try:
-            server_verification_level = data['guild']['verification_level']
-        except:
-            server_verification_level = "None"
-        try:
-            server_nsfw_level = data['guild']['nsfw_level']
-        except:
-            server_nsfw_level = "None"
-        try:
-            server_nsfw = data['guild']['nsfw']
-        except:
-            server_nsfw = "None"
-        try:
-            server_premium_subscription_count = data['guild']['premium_subscription_count']
-        except:
-            server_premium_subscription_count = "None"
-        try:
-            channel_id = data['channel']['id']
-        except:
-            channel_id = "None"
-        try:
-            channel_type = data['channel']['type']
-        except:
-            channel_type = "None"
-        try:
-            channel_name = data['channel']['name']
-        except:
-            channel_name = "None"
+        api = response.json()
+
+        type_value = api.get('type', "None")
+        code_value = api.get('code', "None")
+        inviter_info = api.get('inviter', {})
+        inviter_id = inviter_info.get('id', "None")
+        inviter_username = inviter_info.get('username', "None")
+        inviter_avatar = inviter_info.get('avatar', "None")
+        inviter_discriminator = inviter_info.get('discriminator', "None")
+        inviter_public_flags = inviter_info.get('public_flags', "None")
+        inviter_flags = inviter_info.get('flags', "None")
+        inviter_banner = inviter_info.get('banner', "None")
+        inviter_accent_color = inviter_info.get('accent_color', "None")
+        inviter_global_name = inviter_info.get('global_name', "None")
+        inviter_banner_color = inviter_info.get('banner_color', "None")
+        expires_at = api.get('expires_at', "None")
+        flags = api.get('flags', "None")
+        server_info = api.get('guild', {})
+        server_id = server_info.get('id', "None")
+        server_name = server_info.get('name', "None")
+        server_icon = server_info.get('icon', "None")
+        server_features = server_info.get('features', "None")
+        if server_features != "None":
+            server_features = ' / '.join(server_features)
+        server_verification_level = server_info.get('verification_level', "None")
+        server_nsfw_level = server_info.get('nsfw_level', "None")
+        server_descritpion = server_info.get('description', "None")
+        server_nsfw = server_info.get('nsfw', "None")
+        server_premium_subscription_count = server_info.get('premium_subscription_count', "None")
+        channel_info = api.get('channel', {})
+        channel_id = channel_info.get('id', "None")
+        channel_type = channel_info.get('type', "None")
+        channel_name = channel_info.get('name', "None")
     else:
         ErrorUrl()
 
-    print(f"""{color.RED}
+    print(f"""{red}
     Invitation Information:
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Invitation        : {color.WHITE}{invite}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Type              : {color.WHITE}{type_value}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Code              : {color.WHITE}{code_value}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Expired           : {color.WHITE}{expires_at}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Server ID         : {color.WHITE}{server_id}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Server Name       : {color.WHITE}{server_name}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Channel ID        : {color.WHITE}{channel_id}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Channel Name      : {color.WHITE}{channel_name}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Channel Type      : {color.WHITE}{channel_type}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Server Icon       : {color.WHITE}{server_icon}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Server Features   : {color.WHITE}{server_features}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Server NSFW Level : {color.WHITE}{server_nsfw_level}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Server NSFW       : {color.WHITE}{server_nsfw}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Flags             : {color.WHITE}{flags}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Server Verification Level         : {color.WHITE}{server_verification_level}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Server Premium Subscription Count : {color.WHITE}{server_premium_subscription_count}{color.RED}
+    {INFO_ADD} Invitation         : {white}{invite}{red}
+    {INFO_ADD} Type               : {white}{type_value}{red}
+    {INFO_ADD} Code               : {white}{code_value}{red}
+    {INFO_ADD} Expired            : {white}{expires_at}{red}
+    {INFO_ADD} Server ID          : {white}{server_id}{red}
+    {INFO_ADD} Server Name        : {white}{server_name}{red}
+    {INFO_ADD} Channel ID         : {white}{channel_id}{red}
+    {INFO_ADD} Channel Name       : {white}{channel_name}{red}
+    {INFO_ADD} Channel Type       : {white}{channel_type}{red}
+    {INFO_ADD} Server Description : {white}{server_descritpion}{red}
+    {INFO_ADD} Server Icon        : {white}{server_icon}{red}
+    {INFO_ADD} Server Features    : {white}{server_features}{red}
+    {INFO_ADD} Server NSFW Level  : {white}{server_nsfw_level}{red}
+    {INFO_ADD} Server NSFW        : {white}{server_nsfw}{red}
+    {INFO_ADD} Flags              : {white}{flags}{red}
+    {INFO_ADD} Server Verification Level         : {white}{server_verification_level}{red}
+    {INFO_ADD} Server Premium Subscription Count : {white}{server_premium_subscription_count}{red}
+""")
 
-    Inviter Information:
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} ID            : {color.WHITE}{inviter_id}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Username      : {color.WHITE}{inviter_username}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Global Name   : {color.WHITE}{inviter_global_name}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Avatar        : {color.WHITE}{inviter_avatar}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Discriminator : {color.WHITE}{inviter_discriminator}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Public Flags  : {color.WHITE}{inviter_public_flags}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Flags         : {color.WHITE}{inviter_flags}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Banner        : {color.WHITE}{inviter_banner}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Accent Color  : {color.WHITE}{inviter_accent_color}{color.RED}
-    {color.WHITE}[{color.RED}+{color.WHITE}]{color.RED} Banner Color  : {color.WHITE}{inviter_banner_color}{color.RED}
+    if inviter_info:
+        print(f"""    {red}Inviter Information:
+    {INFO_ADD} ID            : {white}{inviter_id}{red}
+    {INFO_ADD} Username      : {white}{inviter_username}{red}
+    {INFO_ADD} Global Name   : {white}{inviter_global_name}{red}
+    {INFO_ADD} Avatar        : {white}{inviter_avatar}{red}
+    {INFO_ADD} Discriminator : {white}{inviter_discriminator}{red}
+    {INFO_ADD} Public Flags  : {white}{inviter_public_flags}{red}
+    {INFO_ADD} Flags         : {white}{inviter_flags}{red}
+    {INFO_ADD} Banner        : {white}{inviter_banner}{red}
+    {INFO_ADD} Accent Color  : {white}{inviter_accent_color}{red}
+    {INFO_ADD} Banner Color  : {white}{inviter_banner_color}{red}
     """)
     Continue()
     Reset()

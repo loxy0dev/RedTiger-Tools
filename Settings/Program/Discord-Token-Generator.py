@@ -22,7 +22,8 @@ except Exception as e:
 Title("Discord Token Generator")
 
 try:
-    webhook = input(f"{color.RED}\n{INPUT} Webhook ? (y/n) -> {color.RESET}")
+    Slow(discord_banner)
+    webhook = input(f"{INPUT} Webhook ? (y/n) -> {color.RESET}")
     if webhook in ['y', 'Y', 'Yes', 'yes', 'YES']:
         webhook_url = input(f"{color.RED}{INPUT} Webhook URL -> {color.RESET}")
         CheckWebhook(webhook_url)

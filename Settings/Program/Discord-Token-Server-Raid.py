@@ -31,7 +31,7 @@ try:
             print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} Message: {white}{message_sensur}{red} Channel: {white}{channel}{red} Status: {white}Error {response.status_code}{red}")
 
 
-    print()
+    Slow(discord_banner)
     tokens = ChoiceMultiTokenDisord()
     channels = ChoiceMultiChannelDiscord()
 

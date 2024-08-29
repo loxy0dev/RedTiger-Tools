@@ -36,7 +36,7 @@ try:
             print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} Message: {white}{message_sensur}{red} Channel: {white}{channel}{red} Status: {white}Error {response.status_code}{red}")
 
 
-    print()
+    Slow(discord_banner)
     token = Choice1TokenDiscord()
     channel = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Channel Spam Id -> {reset}")
     message = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Spam Message -> {reset}")

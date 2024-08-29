@@ -18,7 +18,7 @@ except Exception as e:
 Title("Discord Token House Changer")
 
 try:
-    print()
+    Slow(discord_banner)
     token = Choice1TokenDiscord()
     print(f"""
     {color.WHITE}[{color.RED}01{color.WHITE}] {color.RED}->{color.WHITE} Bravery

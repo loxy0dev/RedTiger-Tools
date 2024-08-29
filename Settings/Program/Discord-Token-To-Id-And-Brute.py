@@ -22,7 +22,8 @@ except Exception as e:
    
 Title("Discord Token To Id")
 try:
-    userid = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Victime ID -> {reset}")
+    Slow(discord_banner)
+    userid = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Victime ID -> {reset}")
     OnePartToken =  str(base64.b64encode(userid.encode("utf-8")), "utf-8")
     motifs = ["=", "==", "==="]
     for motif in motifs:

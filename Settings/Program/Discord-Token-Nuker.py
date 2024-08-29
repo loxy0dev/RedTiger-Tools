@@ -24,7 +24,7 @@ except Exception as e:
 Title("Discord Token Nuker")
 
 try:
-    print()
+    Slow(discord_banner)
     token = Choice1TokenDiscord()
     custom_status_input = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Custom Status -> {reset}")
 

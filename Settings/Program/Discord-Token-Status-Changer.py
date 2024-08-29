@@ -20,7 +20,7 @@ except Exception as e:
 Title("Discord Token Status Changer")
 
 try:
-    print()
+    Slow(discord_banner)
     token = Choice1TokenDiscord()
     try:
         statue_number = int(input(f"{color.RED}{INPUT} How many statues do you want to cycle (max 4) -> {color.RESET}"))

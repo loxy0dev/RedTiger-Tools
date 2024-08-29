@@ -41,7 +41,7 @@ try:
         except:
             print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Status: {white}Error{red} Server: {white}{server_name}{red}")
 
-    print()
+    Slow(discord_banner)
     token = Choice1TokenDiscord()
     invite = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Server Invitation -> {reset}")
     joiner(token, invite)
