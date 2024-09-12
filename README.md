@@ -152,7 +152,7 @@
 
 <h1>⏳・Installation:</h1>
 
-<a href="https://github.com/loxyteck/RedTiger-Tools/archive/refs/tags/v5.9.zip">Dowloads "RedTiger-Tools.zip" Here</a>
+<a href="https://github.com/loxyteck/RedTiger-Tools/archive/refs/tags/v6.0.zip">Dowloads "RedTiger-Tools.zip" Here</a>
 
 <p>
   
@@ -198,5 +198,5 @@ LXXnPk5hbUxNomJixbysoikZSv6QAiQyVQ
   - <a href="https://t.me/redtigertools">Telegram</a><br>
   - <a href="https://redtiger.shop">Website</a><br>
   - Creator: Loxyteck<br>
-  - Version: 5.9
+  - Version: 6.0
 </p>
