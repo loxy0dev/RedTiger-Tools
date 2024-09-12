@@ -186,7 +186,7 @@ try:
         time.sleep(0.5)
         print(f"{BEFORE + current_time_hour() + AFTER} {ADD} {site_and_url_found}")
 
-    print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Total Website: {white}{number_site}{red}, Total Found: {white}{number_found}{red}")
+    print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Total Website: {white}{number_site}{red} Total Found: {white}{number_found}{red}")
     Continue()
     Reset()
 except Exception as e:

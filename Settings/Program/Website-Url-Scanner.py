@@ -30,7 +30,7 @@ try:
 
         response = requests.get(website_url)
         if response.status_code != 200:
-            pass
+            return
         
         soup = BeautifulSoup(response.content, 'html.parser')
         
@@ -84,13 +84,15 @@ try:
 
         visited_links = set()
         while True:
-            new_links = [link for link in all_links if link not in visited_links]
-            if not new_links:
-                break
-            for link in new_links:
-                find_secret_urls(link, domain)
-                visited_links.add(link)
-
+            try:
+                new_links = [link for link in all_links if link not in visited_links]
+                if not new_links:
+                    break
+                for link in new_links:
+                    if requests.get(link).status_code == 200:
+                        find_secret_urls(link, domain)
+                        visited_links.add(link)
+            except: pass
     Slow(scan_banner)
     website_url = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Website Url -> {reset}")
     Censored(website_url)
@@ -100,8 +102,8 @@ try:
     domain = re.sub(r'^https?://', '', website_url).split('/')[0]
     
     print(f"""
-{white}[{red}01{white}] {red}->{white} Only "{website_url}"
-{white}[{red}02{white}] {red}->{white} All Website
+ {BEFORE}01{AFTER}{white} Only "{website_url}"
+ {BEFORE}02{AFTER}{white} All Website
     """)
 
     choice = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Choice -> {reset}")

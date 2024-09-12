@@ -17,20 +17,25 @@ try:
 except:
    ErrorModule()
 
-try:
-   new_version = re.search(r'version_tool\s*=\s*"([^"]+)"', requests.get(url_config).text).group(1)
-   if new_version != version_tool:
-      print(f"{INFO} Please install the new version of the tool: {white + version_tool + red} -> {white + new_version}")
-      webbrowser.open(github_tool)
-      input(f"{INFO} Enter to still use this version -> {reset}")
-      popup_version = f"{red}New Version: {white + version_tool + red} -> {white + new_version}"
-   else:
-      popup_version = ""
-except:
+def Update():
    popup_version = ""
 
-option_01 = "Sql-Vulnerability-Scanner"
-option_02 = "Website-Scanner"
+   try:
+      new_version = re.search(r'version_tool\s*=\s*"([^"]+)"', requests.get(url_config).text).group(1)
+      if new_version != version_tool:
+         colorama.init()
+         print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Please install the new version of the tool: {white + version_tool + red} -> {white + new_version}")
+         webbrowser.open(github_tool)
+         input(f"{BEFORE + current_time_hour() + AFTER} {INFO} Enter to still use this version -> {reset}")
+         popup_version = f"{red}New Version: {white + version_tool + red} -> {white + new_version}"
+         colorama.deinit()
+   except: 
+      pass
+
+   return popup_version
+
+option_01 = "Website-Vulnerability-Scanner"
+option_02 = "Website-Info-Scanner"
 option_03 = "Website-Url-Scanner"
 option_04 = "Ip-Scanner"
 option_05 = "Ip-Port-Scanner"
@@ -263,6 +268,7 @@ menu3 = f""" ┌─ {option_info_txt}                                           
 """
 
 menu_path = os.path.join(tool_path, "Settings", "Program", "Config", "Menu.txt")
+popup_version = Update()
 
 def Menu():
    try:

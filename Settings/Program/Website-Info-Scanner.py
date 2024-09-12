@@ -26,11 +26,11 @@ try:
 except Exception as e:
     ErrorModule(e)
 
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
 Title("Website Scanner")
 
 try:
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    
     def website_found_url(url):
         if not urlparse(url).scheme:
             website_url = "https://" + url
