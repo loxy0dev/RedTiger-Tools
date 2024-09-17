@@ -197,6 +197,6 @@ LXXnPk5hbUxNomJixbysoikZSv6QAiQyVQ
   - <a href="https://discord.gg/redtigertools">Discord</a><br>
   - <a href="https://t.me/redtigertools">Telegram</a><br>
   - <a href="https://redtiger.shop">Website</a><br>
-  - Creator: Loxyteck<br>
+  - Creator: Loxy0dev<br>
   - Version: 6.0
 </p>
