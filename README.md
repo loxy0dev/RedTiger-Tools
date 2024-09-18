@@ -9,6 +9,7 @@
 
 <p>
   <h3 align="center">⭐ Don't forget to set the repository to "Star" ⭐</h3>
+  <h3 align="center">Join New Telegram: <a href="https://t.me/redtigersupport">t.me/redtigersupport</a></h3>
 </p>
 
 <h1>📜・Description:</h1>
@@ -194,8 +195,7 @@ LXXnPk5hbUxNomJixbysoikZSv6QAiQyVQ
 <h2>🔗・Credits:</h2>
 
 <p>
-  - <a href="https://discord.gg/redtigertools">Discord</a><br>
-  - <a href="https://t.me/redtigertools">Telegram</a><br>
+  - <a href="https://t.me/redtigersupport">Telegram</a><br>
   - <a href="https://redtiger.shop">Website</a><br>
   - Creator: Loxy0dev<br>
   - Version: 6.0
