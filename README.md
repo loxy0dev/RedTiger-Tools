@@ -22,20 +22,23 @@
   - <strong>Open Source</strong> only for verification, ensuring no malicious programs.<br>
   - <strong>Frequently updated</strong>.<br>
   - <strong>Free</strong> for everyone.<br>
-  - The tools include: <strong>Scanning, Osint, Utilities, Builder, Roblox, Discord</strong>, And more..<br>
+  - The tools include: <strong>Scanning, Osint, Utilities, Builder, Roblox, Discord</strong>, And more..
+  <br><br>
 </p>
 
-<h1 align="center">Feature</h1>
+<h1 align="center">Tools</h1>
 
 <p align="center">
   <img src="Img/RedTiger.png" width="49%"> 
   <img src="Img/RedTiger-2.png" width="49%"> 
   <img src="Img/RedTiger-3.png" width="49%"> 
   <img src="Img/Builder.png" width="49%">
+  <br><br>
 </p>
 
-<h1 align="center">Functions</h1>
-
+<h1 align="center">Features</h1>
+<p>
+   
 ```
 ┌── ⚒️ - RedTiger-Tools
 │   ├── Info
@@ -133,6 +136,8 @@
 
 
 ```
+<br><br>
+</p>
 
 <h1 align="center">Requirements</h1>
 
@@ -148,6 +153,7 @@
 <p>
 - Latest version of <a href="https://www.python.org/downloads/">Python</a>.<br>
 - Linux recent version.
+<br><br>
 </p>
 
 <h1 align="center">Installation</h1>
@@ -169,6 +175,7 @@ Or
 4 - Write "git pull"
 5 - Write "python Setup.py"
 ```
+<br><br>
 </p>
 
 <h1 align="center">Disclamer</h1>
@@ -179,6 +186,7 @@ Or
   - This project has been created with good intentions and is intended for personal use only.<br>
   - By choosing to use RedTiger, you acknowledge and accept full responsibility for any consequences that may result from your actions.<br>
   - All scripts in the "<a href="https://github.com/loxyteck/RedTiger-Tools/tree/main/Settings/Program/FileDetectedByAntivirus">Settings/Program/FileDetectedByAntivirus</a>" folder are <strong>detected by the antivirus</strong> but pose no threat to you. These are <strong>not backdoors or malware</strong>.
+<br><br>
 </p>
 
 <h1 align="center">Donation</h1>
