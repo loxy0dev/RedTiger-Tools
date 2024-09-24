@@ -3,10 +3,14 @@
 <h1 align="center">Multi-Tools</h1>
 
 <p align="center">
+   <a href="https://t.me/redtigersupport">Telegram</a> ・ <a href="https://redtiger.shop">Website</a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/github/v/release/fluzyteck/RedTiger-Tools?label=Version&color=a80505">
   <img src="https://img.shields.io/github/stars/fluzyteck/RedTiger-tools?style=flat&label=Stars&color=a80505">
   <img src="https://img.shields.io/github/repo-size/fluzyteck/RedTiger-Tools?label=Size&color=a80505">
-  <img src="https://img.shields.io/github/languages/top/fluzyteck/RedTiger-Tools?color=a80505"
+  <img src="https://img.shields.io/github/languages/top/fluzyteck/RedTiger-Tools?color=a80505">
 </p>
 
 <p>
@@ -18,10 +22,10 @@
   - <strong>Open Source</strong> only for verification, ensuring no malicious programs.<br>
   - <strong>Frequently updated</strong>.<br>
   - <strong>Free</strong> for everyone.<br>
-  - <strong>Scanning, Osint, Utilities, Builder, Roblox, Discord</strong>, And more..<br>
+  - The tools include: <strong>Scanning, Osint, Utilities, Builder, Roblox, Discord</strong>, And more..<br>
 </p>
 
-<h1>Tools:</h1>
+<h1 align="center">Feature</h1>
 
 <p align="center">
   <img src="Img/RedTiger.png" width="49%"> 
@@ -30,7 +34,7 @@
   <img src="Img/Builder.png" width="49%">
 </p>
 
-<h1>Functions:</h1>
+<h1 align="center">Functions</h1>
 
 ```
 ┌── ⚒️ - RedTiger-Tools
@@ -130,7 +134,7 @@
 
 ```
 
-<h1>Requirements:</h1>
+<h1 align="center">Requirements</h1>
 
 <h3>Windows:</h3>
 
@@ -146,7 +150,7 @@
 - Linux recent version.
 </p>
 
-<h1>Installation:</h1>
+<h1 align="center">Installation</h1>
 
 <a href="https://github.com/loxyteck/RedTiger-Tools/archive/refs/tags/v6.0.zip">Dowloads "RedTiger-Tools.zip" Here</a>
 
@@ -167,7 +171,7 @@ Or
 ```
 </p>
 
-<h1>Disclamer:</h1>
+<h1 align="center">Disclamer</h1>
 
 <p>
   
@@ -177,7 +181,7 @@ Or
   - All scripts in the "<a href="https://github.com/loxyteck/RedTiger-Tools/tree/main/Settings/Program/FileDetectedByAntivirus">Settings/Program/FileDetectedByAntivirus</a>" folder are <strong>detected by the antivirus</strong> but pose no threat to you. These are <strong>not backdoors or malware</strong>.
 </p>
 
-<h1>💰・Donation:</h1>
+<h1 align="center">Donation</h1>
 
 <p>
   
@@ -192,11 +196,7 @@ LXXnPk5hbUxNomJixbysoikZSv6QAiQyVQ
 
 </p>
 
-<h2>🔗・Credits:</h2>
-
 <p>
-  - <a href="https://t.me/redtigersupport">Telegram</a><br>
-  - <a href="https://redtiger.shop">Website</a><br>
   - Creator: Loxy0dev<br>
   - Version: 6.0
 </p>
