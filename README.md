@@ -15,7 +15,7 @@
 
 <p>
   
-  - Developed in <strong>Python</strong>.<br>
+  - Developed in <strong>Python</strong>, by <a href="https://redtiger.shop/loxy0dev">Loxy0dev</a><br>
   - Tool in <strong>English</strong>.<br>
   - Available on <strong>Windows</strong> and <strong>Linux</strong>.<br>
   - <strong>No malware</strong> or <strong>backdoor</strong>.<br>
@@ -202,9 +202,4 @@ Or
 LXXnPk5hbUxNomJixbysoikZSv6QAiQyVQ
   ```
 
-</p>
-
-<p>
-  - Creator: Loxy0dev<br>
-  - Version: 6.0
 </p>
