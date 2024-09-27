@@ -178,7 +178,7 @@ Or
 <br><br>
 </p>
 
-<h1 align="center">Disclamer</h1>
+<h1 align="center">Disclaimer</h1>
 
 <p>
   
