@@ -3,7 +3,7 @@
 <h1 align="center">Multi-Tools</h1>
 
 <p align="center">
-   <a href="https://t.me/redtigersupport">Telegram</a> ・ <a href="https://redtiger.shop">Website</a>
+   <a href="https://t.me/redtigersupport">Telegram</a> ・ <a href="https://redtiger.shop">Website</a> ・ <a href="https://www.trustpilot.com/review/redtiger.shop">Reviews</a>
 </p>
 
 <p align="center">
