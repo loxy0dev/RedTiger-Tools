@@ -88,7 +88,9 @@
 │       ├── Block Mouse
 │       ├── Block Task Manager
 │       ├── Block AV Website
+│       ├── Shutdown
 │       ├── Spam Open Program
+│       ├── Spam Create File
 │       ├── Fake Error
 │       ├── Launch At Startup
 │       ├── Anti Vm & Debug
