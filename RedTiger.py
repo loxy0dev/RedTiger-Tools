@@ -71,7 +71,7 @@ option_31 = "Virus-Builder"
 
 option_32 = "Obfuscator-Tool"
 option_33 = "Rat-Discord"
-option_34 = "Soon"
+option_34 = "Anonymization-Software"
 option_35 = "Soon"
 option_36 = "Soon"
 option_37 = "Soon"
@@ -227,28 +227,26 @@ menu1 = f""" ┌─ {option_info_txt}                                           
    ├─ {option_04_txt                    }├─ {option_14_txt                    }├─ {option_24_txt}
    ├─ {option_05_txt                    }├─ {option_15_txt                    }├─ {option_25_txt}
    └─ {option_06_txt                    }├─ {option_16_txt                    }└─ {option_26_txt}
-           {"".ljust(30)[:30]           }└─ {option_17_txt                    }
+                                         └─ {option_17_txt                    }
 
 """
-
 
 menu2 = f""" ┌─ {option_info_txt}                                                                                                {option_next_txt} ─┐
  ├─ {option_site_txt}  ┌───────────────┐                         ┌──────┐                              ┌────────┐    {option_back_txt} ─┤
 ─┴─┬──────────┤ Virus Builder ├──────────┬──────────────┤ Paid ├───────────────┬──────────────┤ Roblox ├──────────────┴─
    │          └───────────────┘          │              └──────┘               │              └────────┘
    └─ {option_31_txt                    }├─ {option_32_txt                    }├─ {option_41_txt}
-           ├─ Stealer                    │       │                             │
-           │  ├─ System Info             │       └─ Pay on discord !           │
-           │  ├─ Discord Token/Injection │                                     ├─ {option_42_txt}
-           │  ├─ Browser Steal           └─ {option_33_txt                    }│
-           │  ├─ Roblox Cookie                   │                             │
-           │  └─ Other                           └─ Pay on discord !           ├─ {option_43_txt}
-           └─ Malware                                                          │
-              ├─ Anti VM & Debug                                               │
-              ├─ Startup                                                       └─ {option_44_txt}
-              └─ Other
+           ├─ Stealer                    ├─ {option_33_txt                    }├─ {option_42_txt}
+           │  ├─ System Info             └─ {option_34_txt                    }├─ {option_43_txt}
+           │  ├─ Discord Token/Injection                                       └─ {option_44_txt}
+           │  ├─ Browser Steal           
+           │  ├─ Roblox Cookie                                     
+           │  └─ Other                            
+           └─ Malware                    
+              ├─ Anti VM & Debug                                             
+              ├─ Startup                                                    
+              └─ Other                          
 """
-
 
 menu3 = f""" ┌─ {option_info_txt}                                                                                                {option_back_txt} ─┐
  ├─ {option_site_txt}                                           ┌─────────┐                                                    │
@@ -274,13 +272,13 @@ def Menu():
    try:
       with open(menu_path, "r") as file:
          menu = file.read()
-      if menu in ["1"]:
+      if menu in "1":
          menu = menu1
          menu_number = "1"
-      elif menu in ["2"]:
+      elif menu in "2":
          menu = menu2
          menu_number = "2"
-      elif menu in ["3"]:
+      elif menu in "3":
          menu = menu3
          menu_number = "3"
       else:
@@ -315,8 +313,8 @@ while True:
       Title(f"Menu {menu_number}")
       Slow(MainColor(banner))
 
-      choice = input(MainColor(f""" ┌───({white}{username_pc}@redtiger)─{red}[{white}~/RedTiger/Menu-{menu_number}]
- └──{white}$ {reset}"""))
+      choice = input(MainColor(f""" ┌──({white}{username_pc}@redtiger)─{red}[{white}~/RedTiger/Menu-{menu_number}]
+ └─{white}$ {reset}"""))
 
       if choice in ['N', 'n', 'NEXT', 'Next', 'next']:
          if menu_number == "1":

@@ -102,7 +102,7 @@ try:
     domain = re.sub(r'^https?://', '', website_url).split('/')[0]
     
     print(f"""
- {BEFORE}01{AFTER}{white} Only "{website_url}"
+ {BEFORE}01{AFTER}{white} Only Url
  {BEFORE}02{AFTER}{white} All Website
     """)
 

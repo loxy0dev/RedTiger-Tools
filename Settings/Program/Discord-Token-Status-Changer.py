@@ -23,7 +23,7 @@ try:
     Slow(discord_banner)
     token = Choice1TokenDiscord()
     try:
-        statue_number = int(input(f"{color.RED}{INPUT} How many statues do you want to cycle (max 4) -> {color.RESET}"))
+        statue_number = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} How many statues do you want to cycle (max 4) -> {reset}"))
     except:
         ErrorNumber()
 
@@ -33,7 +33,7 @@ try:
 
     if statue_number >= 1 and statue_number <= 4:
         for loop in range(0, statue_number):
-            choice = str(input(f"{color.RED}{INPUT} Custom Status {loop+1} -> {color.RESET}"))
+            choice = str(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Custom Status {loop+1} -> {reset}"))
             statues.append(choice)
     else:
         ErrorNumber()
@@ -43,11 +43,11 @@ try:
             CustomStatus = {"custom_status": {"text": statues[i]}}
             try:
                 r = requests.patch("https://discord.com/api/v9/users/@me/settings", headers=headers, json=CustomStatus)
-                print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Changed{color.RED} | Status Discord: {color.WHITE}{statues[i]}{color.RED}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Status: {white}Changed{red} Status Discord: {white}{statues[i]}{red}")
                 i += 1
                 time.sleep(5)
             except Exception as e:
-                print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Changed{color.RED} | Status Discord: {color.WHITE}{statues[i]}{color.RED}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Status: {white}Changed{red} Status Discord: {white}{statues[i]}{red}")
                 time.sleep(5)
 except Exception as e:
     Error(e)

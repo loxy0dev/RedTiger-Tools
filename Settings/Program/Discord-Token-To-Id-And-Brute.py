@@ -24,11 +24,7 @@ Title("Discord Token To Id")
 try:
     Slow(discord_banner)
     userid = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Victime ID -> {reset}")
-    OnePartToken =  str(base64.b64encode(userid.encode("utf-8")), "utf-8")
-    motifs = ["=", "==", "==="]
-    for motif in motifs:
-        if OnePartToken.endswith(motif):
-            OnePartToken = OnePartToken[:-2]
+    OnePartToken =  str(base64.b64encode(userid.encode("utf-8")), "utf-8").replace("=", "")
     print(f'{BEFORE + current_time_hour() + AFTER} {INFO} Part One Token: {white}{OnePartToken}.{reset}')
 
     brute = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Find the second part by brute force ? (y/n) -> {reset}")

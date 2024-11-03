@@ -31,17 +31,17 @@ try:
             try:
                 requests.delete(
                     f'https://discord.com/api/v9/users/@me/relationships/'+friend['id'], headers={'Authorization': token})
-                print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Delete{color.RED} | User: {color.WHITE}{friend['user']['username']}#{friend['user']['discriminator']}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Status: {white}Delete{red} | User: {white}{friend['user']['username']}#{friend['user']['discriminator']}")
             except Exception as e:
-                print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Error: {e}{color.RED}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Status: {white}Error: {e}{red}")
 
     if not requests.get("https://discord.com/api/v9/users/@me/relationships", headers={'Authorization': token, 'Content-Type': 'application/json'}).json():
-        print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Error{color.RED}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Status: {white}Error{red}")
 
     processes = []
     friend_id = requests.get("https://discord.com/api/v9/users/@me/relationships", headers={'Authorization': token, 'Content-Type': 'application/json'}).json()
     if not friend_id:
-        print(f"{INFO} No friends found.")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} No friends found.")
 
     for friend in [friend_id[i:i+3] for i in range(0, len(friend_id), 3)]:
         t = threading.Thread(target=DeleteFriends, args=(friend, token))

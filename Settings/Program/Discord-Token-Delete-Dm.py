@@ -31,14 +31,14 @@ try:
         for channel in channels:
             try:
                 requests.delete(f'https://discord.com/api/v7/channels/'+channel['id'], headers={'Authorization': token})
-                print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Delete{color.RED} | Channel: {color.WHITE}{channel['id']}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Status: {white}Delete{red} | Channel: {white}{channel['id']}")
             except Exception as e:
-                print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Error: {e}{color.RED}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Status: {white}Error: {e}{red}")
 
     processes = []
     channel_id = requests.get("https://discord.com/api/v9/users/@me/channels", headers={'Authorization': token}).json()
     if not channel_id:
-        print(f"{INFO} No Dm found.")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} No dm found.")
         Continue()
         Reset()
 

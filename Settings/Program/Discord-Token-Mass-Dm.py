@@ -25,10 +25,10 @@ try:
             for user in [x["username"]+"#"+x["discriminator"] for x in channel["recipients"]]:
                 try:
                     requests.post(f"https://discord.com/api/v9/channels/{channel['id']}/messages", headers={'Authorization': token_discord}, data={"content": f"{Message}"})
-                    print(f'{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Send{color.RED} | User: {color.WHITE}{user}{color.RED}')
+                    print(f'{BEFORE + current_time_hour() + AFTER} {ADD} Status: {white}Send{red} User: {white}{user}{red}')
 
                 except Exception as e:
-                    print(f'{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Error: {e}{color.RED}')
+                    print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Status: {white}Error: {e}{red}')
 
     Slow(discord_banner)
     token_discord = Choice1TokenDiscord()
@@ -36,13 +36,13 @@ try:
     if validityTest.status_code != 200:
         ErrorToken()
     try:
-        message = str(input(f"{color.RED}{INPUT} Message -> {color.RESET}"))
+        message = str(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Message -> {reset}"))
     except:
         pass
     processes = []
 
     try:
-        repetition = int(input(f"{color.RED}{INPUT} Number of Repetitions -> {color.RESET}"))
+        repetition = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Number of Repetitions -> {reset}"))
     except:
         ErrorNumber()
 
@@ -59,7 +59,7 @@ try:
             processes.append(t)
         for process in processes:
             process.join()
-        print(f"{color.RED}{INFO} Finish n°{number}.")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Finish n°{number}.")
         time.sleep(0.5)
         
 

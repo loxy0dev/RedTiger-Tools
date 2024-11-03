@@ -15,7 +15,7 @@ try:
 except Exception as e:
     ErrorModule(e)
 
-Title("Obfuscator Tool (Paid)")
+Title("Anonymization Software (Paid)")
 
 try:
     print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} This product is paid for and available on our website.")

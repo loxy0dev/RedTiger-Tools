@@ -29,7 +29,6 @@ try:
     {INFO_ADD} Language      :  {white}{language_tool}
     {INFO_ADD} Creator       :  {white}{creator}
     {INFO_ADD} Platform      :  {white}{platform}
-    {INFO_ADD} Discord  [W]  :  {white}https://{discord_server}
     {INFO_ADD} Site     [W]  :  {white}https://{website}
     {INFO_ADD} GitHub   [W]  :  {white}https://{github_tool}
     {INFO_ADD} Telegram [W]  :  {white}https://{telegram}

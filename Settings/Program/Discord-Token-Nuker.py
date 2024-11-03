@@ -43,52 +43,52 @@ try:
         CustomStatus_default = {"custom_status": {"text": default_status}}
         try:
             r = requests.patch("https://discord.com/api/v9/users/@me/settings", headers=headers, json=CustomStatus_default)
-            print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Changed{color.RED} | Status Discord: {color.WHITE}{default_status}{color.RED}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Status: {white}Changed{red} Status Discord: {white}{default_status}{red}")
         except Exception as e:
-            print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Error {e}{color.RED} | Status Discord: {color.WHITE}{default_status}{color.RED}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Status: {white}Error {e}{red} Status Discord: {white}{default_status}{red}")
 
         for _ in range(5):
             try:
                 random_language = random.choice(['ja', 'zh-TW', 'ko', 'zh-CN', 'th', 'uk', 'ru', 'el', 'cs'])
                 setting = {'locale': random_language}
                 requests.patch("https://discord.com/api/v7/users/@me/settings", headers=headers, json=setting)
-                print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Changed{color.RED} | Language: {color.WHITE}{random_language}{color.RED}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Status: {white}Changed{red} Language: {white}{random_language}{red}")
             except:
-                print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status:  {color.WHITE}Error{color.RED}  | Language: {color.WHITE}{random_language}{color.RED}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Status:  {white}Error{red}  Language: {white}{random_language}{red}")
         
             try:
                 theme = next(modes)
                 setting = {'theme': theme}
                 requests.patch("https://discord.com/api/v8/users/@me/settings", headers=headers, json=setting)
-                print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Changed{color.RED} | Theme: {color.WHITE}{theme}{color.RED}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Status: {white}Changed{red} Theme: {white}{theme}{red}")
             except:
-                print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status:  {color.WHITE}Error{color.RED}  | Theme: {color.WHITE}{theme}{color.RED}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Status:  {white}Error{red}  Theme: {white}{theme}{red}")
             time.sleep(0.5)
 
 
         CustomStatus_custom = {"custom_status": {"text": custom_status}}
         try:
             r = requests.patch("https://discord.com/api/v9/users/@me/settings", headers=headers, json=CustomStatus_custom)
-            print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Changed{color.RED} | Status Discord: {color.WHITE}{custom_status}{color.RED}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Status: {white}Changed{red} Status Discord: {white}{custom_status}{red}")
         except Exception as e:
-            print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Changed{color.RED} | Status Discord: {color.WHITE}{custom_status}{color.RED}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Status: {white}Changed{red} Status Discord: {white}{custom_status}{red}")
         
         for _ in range(5):
             try:
                 random_language = random.choice(['ja', 'zh-TW', 'ko', 'zh-CN', 'th', 'uk', 'ru', 'el', 'cs'])
                 setting = {'locale': random_language}
                 requests.patch("https://discord.com/api/v7/users/@me/settings", headers=headers, json=setting)
-                print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Changed{color.RED} | Language: {color.WHITE}{random_language}{color.RED}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Status: {white}Changed{red} Language: {white}{random_language}{red}")
             except:
-                print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status:  {color.WHITE}Error{color.RED}  | Language: {color.WHITE}{random_language}{color.RED}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Status:  {white}Error{red}  Language: {white}{random_language}{red}")
         
             try:
                 theme = next(modes)
                 setting = {'theme': theme}
                 requests.patch("https://discord.com/api/v8/users/@me/settings", headers=headers, json=setting)
-                print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Changed{color.RED} | Theme: {color.WHITE}{theme}{color.RED}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Status: {white}Changed{red} Theme: {white}{theme}{red}")
             except:
-                print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status:  {color.WHITE}Error{color.RED}  | Theme: {color.WHITE}{theme}{color.RED}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Status:  {white}Error{red}  Theme: {white}{theme}{red}")
             time.sleep(0.5)
 except Exception as e:
     Error(e)

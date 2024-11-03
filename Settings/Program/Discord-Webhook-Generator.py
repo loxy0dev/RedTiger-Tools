@@ -22,13 +22,13 @@ except Exception as e:
 Title("Discord Webhook Generator")
 
 try:
-    webhook = input(f"{color.RED}\n{INPUT} Webhook ? (y/n) -> {color.RESET}")
+    webhook = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Webhook ? (y/n) -> {reset}")
     if webhook in ['y', 'Y', 'Yes', 'yes', 'YES']:
-        webhook_url = input(f"{color.RED}{INPUT} Webhook URL -> {color.RESET}")
+        webhook_url = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Webhook URL -> {reset}")
         CheckWebhook(webhook_url)
 
     try:
-        threads_number = int(input(f"{INPUT} Threads Number -> {color.RESET}"))
+        threads_number = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Threads Number -> {reset}"))
     except:
         ErrorNumber()
 
@@ -57,7 +57,7 @@ try:
                 if webhook in ['y']:
                     embed_content = {
                     'title': f'Webhook Valid !',
-                    'description': f"**__Webhook:__**\n```{webhook_test_url}```",
+                    'description': f"**Webhook:**\n```{webhook_test_url}```",
                     'color': color_webhook,
                     'footer': {
                     "text": username_webhook,
@@ -65,13 +65,13 @@ try:
                     }
                     }
                     send_webhook(embed_content)
-                    print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Status:  {color.WHITE}Valid{color.GREEN}  | Webhook: {color.WHITE}{webhook_test_code}{color.GREEN}")
+                    print(f"{BEFORE_GREEN + current_time_hour() + AFTER_GREEN} {GEN_VALID} Status:  {white}Valid{green}  Webhook: {white}{webhook_test_code}{green}")
                 else:
-                    print(f"{green}[{white}{current_time_hour()}{green}] {GEN_VALID} Status:  {color.WHITE}Valid{color.GREEN}  | Webhook: {color.WHITE}{webhook_test_code}{color.GREEN}")
+                    print(f"{BEFORE_GREEN + current_time_hour() + AFTER_GREEN} {GEN_VALID} Status:  {white}Valid{green}  Webhook: {white}{webhook_test_code}{green}")
             else:
-                print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Status: {color.WHITE}Invalid{color.RED} | Webhook: {color.WHITE}{webhook_test_code}{color.RED}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} Status: {white}Invalid{red} Webhook: {white}{webhook_test_code}{red}")
         except:
-            print(f"{red}[{white}{current_time_hour()}{red}] {GEN_INVALID} Status: {color.WHITE}Error{color.RED} | Webhook: {color.WHITE}{webhook_test_code}{color.RED}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} Status: {white}Error{red} Webhook: {white}{webhook_test_code}{red}")
 
     def request():
         threads = []

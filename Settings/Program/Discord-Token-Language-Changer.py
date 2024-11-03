@@ -22,12 +22,12 @@ Title("Discord Token Language Changer")
 try:
     Slow(discord_banner)
     token = Choice1TokenDiscord()
-
     headers = {'Authorization': token, 'Content-Type': 'application/json'}
     r = requests.get('https://discord.com/api/v8/users/@me', headers=headers)
+
     if r.status_code == 200:
         try:
-            amount = int(input(f"{color.RED}{INPUT} Enter the number of cycles -> {color.RESET}"))
+            amount = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Enter the number of cycles -> {reset}"))
         except:
             ErrorNumber()
 
@@ -37,10 +37,10 @@ try:
                 random_language = random.choice(['ja', 'zh-TW', 'ko', 'zh-CN', 'th', 'uk', 'ru', 'el', 'cs'])
                 setting = {'locale': random_language}
                 requests.patch("https://discord.com/api/v7/users/@me/settings", headers=headers, json=setting)
-                print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Changed{color.RED} | Language: {color.WHITE}{random_language}{color.RED}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Status: {white}Changed{red} Language: {white}{random_language}{red}")
             except:
-                print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status:  {color.WHITE}Error{color.RED}  | Language: {color.WHITE}{random_language}{color.RED}")
-        print(f"\n{color.RED}{INFO} Finish.")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Status:  {white}Error{red}  Language: {white}{random_language}{red}")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Finish.")
         Continue()
         Reset()
     else:

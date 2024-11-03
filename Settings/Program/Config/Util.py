@@ -19,7 +19,6 @@ try:
     import datetime
     import sys
     import requests
-    from pathlib import Path
 except Exception as e:
     import os
     print(f"[x] | Error Module (Restart Setup.bat): {e}")
@@ -65,79 +64,6 @@ GEN_INVALID = f'{BEFORE}x{AFTER} |'
 
 INFO_ADD = f'{white}[{red}+{white}]{red}'
 
-def MainColor(text):
-    start_color = (168, 5, 5)  
-    end_color = (255, 118, 118)
-
-    num_steps = 9
-
-    colors = []
-    for i in range(num_steps):
-        r = start_color[0] + (end_color[0] - start_color[0]) * i // (num_steps - 1)
-        g = start_color[1] + (end_color[1] - start_color[1]) * i // (num_steps - 1)
-        b = start_color[2] + (end_color[2] - start_color[2]) * i // (num_steps - 1)
-        colors.append((r, g, b))
-    
-    colors += list(reversed(colors[:-1]))  
-    
-    gradient_chars = '┴┼┘┤└┐─┬├┌└│]░▒░▒█▓▄▌▀()'
-    
-    def text_color(r, g, b):
-        return f"\033[38;2;{r};{g};{b}m"
-       
-    lines = text.split('\n')
-    num_colors = len(colors)
-    
-    result = []
-    for i, line in enumerate(lines):
-        for j, char in enumerate(line):
-            if char in gradient_chars:
-                color_index = (i + j) % num_colors
-                color = colors[color_index]
-                result.append(text_color(*color) + char + "\033[0m")
-            else:
-                result.append(char)
-        if i < len(lines) - 1:
-            result.append('\n')
-    
-    return ''.join(result)
-
-
-
-def MainColor2(text):
-    start_color = (168, 5, 5)  
-    end_color = (255, 118, 118)
-
-    num_steps = 9
-
-    colors = []
-    for i in range(num_steps):
-        r = start_color[0] + (end_color[0] - start_color[0]) * i // (num_steps - 1)
-        g = start_color[1] + (end_color[1] - start_color[1]) * i // (num_steps - 1)
-        b = start_color[2] + (end_color[2] - start_color[2]) * i // (num_steps - 1)
-        colors.append((r, g, b))
-    
-    colors += list(reversed(colors[:-1]))  
-    
-    def text_color(r, g, b):
-        return f"\033[38;2;{r};{g};{b}m"
-       
-    lines = text.split('\n')
-    num_colors = len(colors)
-    
-    result = []
-    for i, line in enumerate(lines):
-        for j, char in enumerate(line):
-            color_index = (i + j) % num_colors
-            color = colors[color_index]
-            result.append(text_color(*color) + char + "\033[0m")
-        
-        if i < len(lines) - 1:
-            result.append('\n')
-    
-    return ''.join(result)
-
-
 def Censored(text):
     censored = ["loxy", website, creator]
     for censored_text in censored:
@@ -166,21 +92,21 @@ def Clear():
 
 def Reset():
     if sys.platform.startswith("win"):
-        file = 'python', os.path.join(tool_path, "RedTiger.py")
-        subprocess.run(file, shell=True)
+        file = ['python', os.path.join(tool_path, "RedTiger.py")]
+        subprocess.run(file)
 
     elif sys.platform.startswith("linux"):
-        file = 'python3', os.path.join(tool_path, "RedTiger.py")
-        subprocess.run(file, shell=True)
+        file = ['python3', os.path.join(tool_path, "RedTiger.py")]
+        subprocess.run(file)
 
 def StartProgram(program):
     if sys.platform.startswith("win"):
-        file = 'python', os.path.join(tool_path, "Settings", "Program", program)
-        subprocess.run(file, shell=True)
-
+        file = ['python', os.path.join(tool_path, "Settings", "Program", program)]
+        subprocess.run(file)
+        
     elif sys.platform.startswith("linux"):
-        file = 'python3', os.path.join(tool_path, "Settings", "Program", program)
-        subprocess.run(file, shell=True)
+        file = ['python3', os.path.join(tool_path, "Settings", "Program", program)]
+        subprocess.run(file)
 
 def Slow(texte):
     delai = 0.03
@@ -265,6 +191,76 @@ def OnlyLinux():
     print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} This function is only available on Linux !", reset)
     Continue()
     Reset()
+
+def MainColor(text):
+    start_color = (168, 5, 5)  
+    end_color = (255, 118, 118)
+
+    num_steps = 9
+
+    colors = []
+    for i in range(num_steps):
+        r = start_color[0] + (end_color[0] - start_color[0]) * i // (num_steps - 1)
+        g = start_color[1] + (end_color[1] - start_color[1]) * i // (num_steps - 1)
+        b = start_color[2] + (end_color[2] - start_color[2]) * i // (num_steps - 1)
+        colors.append((r, g, b))
+    
+    colors += list(reversed(colors[:-1]))  
+    
+    gradient_chars = '┴┼┘┤└┐─┬├┌└│]░▒░▒█▓▄▌▀()'
+    
+    def text_color(r, g, b):
+        return f"\033[38;2;{r};{g};{b}m"
+       
+    lines = text.split('\n')
+    num_colors = len(colors)
+    
+    result = []
+    for i, line in enumerate(lines):
+        for j, char in enumerate(line):
+            if char in gradient_chars:
+                color_index = (i + j) % num_colors
+                color = colors[color_index]
+                result.append(text_color(*color) + char + "\033[0m")
+            else:
+                result.append(char)
+        if i < len(lines) - 1:
+            result.append('\n')
+    
+    return ''.join(result)
+
+def MainColor2(text):
+    start_color = (168, 5, 5)  
+    end_color = (255, 118, 118)
+
+    num_steps = 9
+
+    colors = []
+    for i in range(num_steps):
+        r = start_color[0] + (end_color[0] - start_color[0]) * i // (num_steps - 1)
+        g = start_color[1] + (end_color[1] - start_color[1]) * i // (num_steps - 1)
+        b = start_color[2] + (end_color[2] - start_color[2]) * i // (num_steps - 1)
+        colors.append((r, g, b))
+    
+    colors += list(reversed(colors[:-1]))  
+    
+    def text_color(r, g, b):
+        return f"\033[38;2;{r};{g};{b}m"
+       
+    lines = text.split('\n')
+    num_colors = len(colors)
+    
+    result = []
+    for i, line in enumerate(lines):
+        for j, char in enumerate(line):
+            color_index = (i + j) % num_colors
+            color = colors[color_index]
+            result.append(text_color(*color) + char + "\033[0m")
+        
+        if i < len(lines) - 1:
+            result.append('\n')
+    
+    return ''.join(result)
 
 def CheckWebhook(webhook):
     if webhook.lower().startswith("https://discord.com/api/webhooks"):

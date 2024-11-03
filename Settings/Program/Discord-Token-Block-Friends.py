@@ -31,13 +31,13 @@ try:
         for friend in friends:
             try:
                 requests.put(f'https://discord.com/api/v9/users/@me/relationships/'+friend['id'], headers={'Authorization': token}, json={"type": 2})
-                print(f"{red}[{white}{current_time_hour()}{red}] {ADD} Status: {color.WHITE}Blocked{color.RED} | User: {color.WHITE}{friend['user']['username']}#{friend['user']['discriminator']}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Status: {white}Blocked{red} | User: {white}{friend['user']['username']}#{friend['user']['discriminator']}")
             except Exception as e:
-                print(f"{red}[{white}{current_time_hour()}{red}] {ERROR} Status: {color.WHITE}Error: {e}{color.RED}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Status: {white}Error: {e}{red}")
 
     friend_id = requests.get("https://discord.com/api/v9/users/@me/relationships", headers={'Authorization': token}).json()
     if not friend_id:
-        print(f"{INFO} No friends found.")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} No friends found.")
         Continue()
         Reset()
 
