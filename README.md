@@ -11,8 +11,8 @@
 
 ```
 1 - Open a terminal.
-2 - Write "git clone https://github.com/loxy0dev/RedTiger-Tools.git"
-3 - Write "cd RedTiger-Tools"
+2 - Write "git clone https://github.com/trulyheartless/BlueTiger.git"
+3 - Write "cd BlueTiger"
 4 - Write "git pull"
 5 - Write "python Setup.py"
 ```
