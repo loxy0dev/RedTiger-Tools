@@ -14,7 +14,7 @@
 2 - Write "git clone https://github.com/trulyheartless/BlueTiger.git"
 3 - Write "cd BlueTiger"
 4 - Write "git pull"
-5 - Write "python Setup.py"
+5 - Write "python Setup.py" or "python3 Setup.py"
 ```
 <br><br>
 </p>
