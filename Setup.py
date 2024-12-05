@@ -1,31 +1,20 @@
-# Copyright (c) RedTiger (https://redtiger.shop)
-# See the file 'LICENSE' for copying permission
-# ----------------------------------------------------------------------------------------------------------------------------------------------------------|
-# EN: 
-#     - Do not touch or modify the code below. If there is an error, please contact the owner, but under no circumstances should you touch the code.
-#     - Do not resell this tool, do not credit it to yours.
-# FR: 
-#     - Ne pas toucher ni modifier le code ci-dessous. En cas d'erreur, veuillez contacter le propriétaire, mais en aucun cas vous ne devez toucher au code.
-#     - Ne revendez pas ce tool, ne le créditez pas au vôtre.
-
-
 try:
     import sys
     import os
 
     if sys.platform.startswith("win"):
-        print("Installing the python modules required for the RedTiger Tool:")
+        print("Installing the python modules required for the BlueTiger Tool:")
         os.system("cls")
         os.system("python -m pip install --upgrade pip")
         os.system("python -m pip install -r requirements.txt")
-        os.system("python RedTiger.py")
+        os.system("python BlueTiger.py")
 
     elif sys.platform.startswith("linux"):
-        print("Installing the python modules required for the RedTiger Tool:")
+        print("Installing the python modules required for the BlueTiger Tool:")
         os.system("clear")
         os.system("python3 -m pip3 install --upgrade pip")
         os.system("python3 -m pip3 install -r requirements.txt")
-        os.system("python3 RedTiger.py")
+        os.system("python3 BlueTiger.py")
 
 except Exception as e:
     print(e)
