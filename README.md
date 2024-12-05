@@ -5,3 +5,16 @@
   <img src="https://img.shields.io/github/repo-size/trulyheartless/BlueTiger?label=Size&color=72bcd4">
   <img src="https://img.shields.io/github/languages/top/trulyheartless/BlueTiger?color=72bcd4">
 </p>
+<h1 align="center">Installation</h1>
+
+<p>
+
+```
+1 - Open a terminal.
+2 - Write "git clone https://github.com/loxy0dev/RedTiger-Tools.git"
+3 - Write "cd RedTiger-Tools"
+4 - Write "git pull"
+5 - Write "python Setup.py"
+```
+<br><br>
+</p>
