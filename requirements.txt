@@ -25,3 +25,4 @@ Pillow
 browser-cookie3
 opencv-python
 pyautogui
+cryptography
