@@ -1,3 +1,5 @@
+# /Settings/Program/folder_tool.py
+
 from cryptography.fernet import Fernet
 import os
 
@@ -36,14 +38,25 @@ def decrypt_folder(folder_path, password):
     
     print("Folder decrypted.")
 
-if __name__ == "__main__":
-    action = input("Do you want to (e)ncrypt or (d)ecrypt a folder? ")
-    folder_path = input("Enter the folder path: ")
-    password = input("Enter a password: ")
+def main():
+    action = input("Do you want to (e)ncrypt or (d)ecrypt a folder? ").strip().lower()
+    
+    if action not in ['e', 'd']:
+        print("Invalid action. Please type 'e' to encrypt or 'd' to decrypt.")
+        return
 
-    if action.lower() == 'e':
+    folder_path = input("Which folder do you want to process? ").strip()
+    
+    if not os.path.exists(folder_path):
+        print("The specified folder does not exist.")
+        return
+
+    password = input("Choose your password: ").strip()
+
+    if action == 'e':
         encrypt_folder(folder_path, password)
-    elif action.lower() == 'd':
+    elif action == 'd':
         decrypt_folder(folder_path, password)
-    else:
-        print("Invalid action.")
+
+if __name__ == "__main__":
+    main()
