@@ -69,11 +69,11 @@ option_30 = "Soon"
 
 option_31 = "Virus-Builder"
 
-option_32 = "Obfuscator-Tool"
-option_33 = "Rat-Discord"
-option_34 = "Anonymization-Software"
-option_35 = "Soon"
-option_36 = "Soon"
+option_32 = "Monitoring"  # Tells you what applications are active
+option_33 = "Protection"  # Can disable stuff like tracking, microphone/webcam, add an extra firewall
+option_34 = "Folder"      # Can encrypt specific folders with a password you choose & decrypt folders
+option_35 = "Spoofer"     # Spoofs information like hardware, etc.
+option_36 = "Information" # Tells the user about their computer information such as IP, etc.
 option_37 = "Soon"
 option_38 = "Soon"
 option_39 = "Soon"
