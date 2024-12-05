@@ -202,15 +202,15 @@ option_68_txt = f"{blue}[{white}68{blue}]{white} " + option_68.ljust(30)[:30].re
 option_69_txt = f"{blue}[{white}69{blue}]{white} " + option_69.ljust(30)[:30].replace("-", " ")
 option_70_txt = f"{blue}[{white}70{blue}]{white} " + option_70.ljust(30)[:30].replace("-", " ")
 
-option_71_txt = f"{blue}[{white}27{blue}]{white} " + option_71.ljust(30)[:30].replace("-", " ")
-option_72_txt = f"{blue}[{white}27{blue}]{white} " + option_72.ljust(30)[:30].replace("-", " ")
-option_73_txt = f"{blue}[{white}27{blue}]{white} " + option_73.ljust(30)[:30].replace("-", " ")
-option_74_txt = f"{blue}[{white}27{blue}]{white} " + option_74.ljust(30)[:30].replace("-", " ")
-option_75_txt = f"{blue}[{white}27{blue}]{white} " + option_75.ljust(30)[:30].replace("-", " ")
-option_76_txt = f"{blue}[{white}27{blue}]{white} " + option_76.ljust(30)[:30].replace("-", " ")
-option_77_txt = f"{blue}[{white}27{blue}]{white} " + option_77.ljust(30)[:30].replace("-", " ")
-option_78_txt = f"{blue}[{white}27{blue}]{white} " + option_78.ljust(30)[:30].replace("-", " ")
-option_79_txt = f"{blue}[{white}27{blue}]{white} " + option_79.ljust(30)[:30].replace("-", " ")
+option_71_txt = f"{blue}[{white}71{blue}]{white} " + option_71.ljust(30)[:30].replace("-", " ")
+option_72_txt = f"{blue}[{white}72{blue}]{white} " + option_72.ljust(30)[:30].replace("-", " ")
+option_73_txt = f"{blue}[{white}73{blue}]{white} " + option_73.ljust(30)[:30].replace("-", " ")
+option_74_txt = f"{blue}[{white}74{blue}]{white} " + option_74.ljust(30)[:30].replace("-", " ")
+option_75_txt = f"{blue}[{white}75{blue}]{white} " + option_75.ljust(30)[:30].replace("-", " ")
+option_76_txt = f"{blue}[{white}76{blue}]{white} " + option_76.ljust(30)[:30].replace("-", " ")
+option_77_txt = f"{blue}[{white}77{blue}]{white} " + option_77.ljust(30)[:30].replace("-", " ")
+option_78_txt = f"{blue}[{white}78{blue}]{white} " + option_78.ljust(30)[:30].replace("-", " ")
+option_79_txt = f"{blue}[{white}79{blue}]{white} " + option_79.ljust(30)[:30].replace("-", " ")
 
 option_back_txt = option_back + f" {blue}[{white}27{blue}]{white}"
 option_next_txt = option_next + f" {blue}[{white}27{blue}]{white}"
