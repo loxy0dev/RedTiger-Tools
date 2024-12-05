@@ -48,15 +48,15 @@ try:
 
     if search_type in ['1', '01','2','02','3','03']:
         print(f"""
-{white}[{red}00{white}] {red}-> Back
-{white}[{red}01{white}] {red}->{white} Facebook.com
-{white}[{red}02{white}] {red}->{white} Youtube.com
-{white}[{red}03{white}] {red}->{white} Twitter.com
-{white}[{red}04{white}] {red}->{white} Tiktok.com
-{white}[{red}05{white}] {red}->{white} Peekyou.com
-{white}[{red}06{white}] {red}->{white} Tumblr.com
-{white}[{red}07{white}] {red}->{white} PagesJaunes.fr
-{white}[{red}07{white}] {red}->{white} Doxbin
+{blue}[{white}00{blue}]{white}] {blue}-> Back
+{blue}[{white}01{blue}]{white}] {blue}->{white} Facebook.com
+{blue}[{white}02{blue}]{white}] {blue}->{white} Youtube.com
+{blue}[{white}03{blue}]{white}] {blue}->{white} Twitter.com
+{blue}[{white}04{blue}]{white}] {blue}->{white} Tiktok.com
+{blue}[{white}05{blue}]{white}] {blue}->{white} Peekyou.com
+{blue}[{white}06{blue}]{white}] {blue}->{white} Tumblr.com
+{blue}[{white}07{blue}]{white}] {blue}->{white} PagesJaunes.fr
+{blue}[{white}08{blue}]{white}] {blue}->{white} Doxbin
     """)
     while True:
         
