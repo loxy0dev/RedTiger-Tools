@@ -56,6 +56,7 @@ try:
 {white}[{red}05{white}] {red}->{white} Peekyou.com
 {white}[{red}06{white}] {red}->{white} Tumblr.com
 {white}[{red}07{white}] {red}->{white} PagesJaunes.fr
+{white}[{red}07{white}] {red}->{white} Doxbin
     """)
     while True:
         
@@ -106,6 +107,12 @@ try:
                     webbrowser.open(f"https://www.pagesjaunes.fr/pagesblanches/recherche?quoiqui={search}")
                 elif search_type in ['02', '2']:
                     webbrowser.open(f"https://www.pagesjaunes.fr/pagesblanches/recherche?quoiqui={name}%20{first_name}")
+
+            elif choice in ['08', '8']:
+                if search_type in ['01', '1', '3', '03']:
+                    webbrowser.open(f"https://doxbin.org/search/{query}")
+                elif search_type in ['02', '2']:
+                    webbrowser.open(f"https://doxbin.org/search/{name}%20{first_name}")
 
 except Exception as e:
     Error(e)
