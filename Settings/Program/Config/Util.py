@@ -47,8 +47,8 @@ def current_time_day_hour():
 def current_time_hour():
     return datetime.datetime.now().strftime('%H:%M:%S')
 
-BEFORE = f'{red}[{white}'
-AFTER = f'{red}]'
+BEFORE = f'{blue}[{white}'
+AFTER = f'{blue}]'
 
 BEFORE_GREEN = f'{green}[{white}'
 AFTER_GREEN = f'{green}]'
@@ -62,17 +62,17 @@ WAIT = f'{BEFORE}~{AFTER} |'
 GEN_VALID = f'{BEFORE_GREEN}+{AFTER_GREEN} |'
 GEN_INVALID = f'{BEFORE}x{AFTER} |'
 
-INFO_ADD = f'{white}[{red}+{white}]{red}'
+INFO_ADD = f'{white}[{blue}+{white}]{blue}'
 
 def Censored(text):
     censored = ["loxy", website, creator]
     for censored_text in censored:
         if text in censored:
-            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find "{white}{text}{red}".')
+            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find "{white}{text}{blue}".')
             Continue()
             Reset()
         elif censored_text in text:
-            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find "{white}{text}{red}".')
+            print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find "{white}{text}{blue}".')
             Continue()
             Reset()
         else:
@@ -92,11 +92,11 @@ def Clear():
 
 def Reset():
     if sys.platform.startswith("win"):
-        file = ['python', os.path.join(tool_path, "RedTiger.py")]
+        file = ['python', os.path.join(tool_path, "BlueTiger.py")]
         subprocess.run(file)
 
     elif sys.platform.startswith("linux"):
-        file = ['python3', os.path.join(tool_path, "RedTiger.py")]
+        file = ['python3', os.path.join(tool_path, "BlueTiger.py")]
         subprocess.run(file)
 
 def StartProgram(program):
@@ -307,9 +307,9 @@ def ChoiceMultiTokenDisord():
                 'https://discord.com/api/v8/users/@me', headers={'Authorization': token}).json()
             username_discord = user['username']
             token_sensur = token[:-25] + '.' * 3
-            print(f" {BEFORE}{token_number}{AFTER} -> {red}Status: {white}Valid{red} | User: {white}{username_discord}{red} | Token: {white}{token_sensur}")
+            print(f" {BEFORE}{token_number}{AFTER} -> {blue}Status: {white}Valid{blue} | User: {white}{username_discord}{blue} | Token: {white}{token_sensur}")
         else:
-            print(f" {BEFORE}{token_number}{AFTER} -> {red}Status: {white}Invalid{red} | {red}Token: {white}{token}")
+            print(f" {BEFORE}{token_number}{AFTER} -> {blue}Status: {white}Invalid{blue} | {blue}Token: {white}{token}")
 
     file_token_discord_relative = "\\2-Input\\TokenDisc\\TokenDisc.txt"
     file_token_discord = os.path.join(tool_path, "2-Input", "TokenDisc", "TokenDisc.txt")
@@ -323,11 +323,11 @@ def ChoiceMultiTokenDisord():
             token_discord_number += 1
         
         if token_discord_number == 0:
-            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} No Token Discord in file: {white}{file_token_discord_relative}{red} Please add tokens to the file.")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} No Token Discord in file: {white}{file_token_discord_relative}{blue} Please add tokens to the file.")
             Continue()
             Reset()
         else:
-            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {white}{token_discord_number}{red} Token Discord found ({white}{file_token_discord_relative}{red})")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} {white}{token_discord_number}{blue} Token Discord found ({white}{file_token_discord_relative}{blue})")
     
     try:
         num_tokens = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} How many token (max {token_discord_number}) -> {reset}"))
@@ -339,7 +339,7 @@ def ChoiceMultiTokenDisord():
     token_discord_number = 0
     with open(file_token_discord, 'r') as file_token:
         print()
-        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Token Discord ({white}{file_token_discord}{red}):\n")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Token Discord ({white}{file_token_discord}{blue}):\n")
         for line in file_token:
             if not line.strip() or line.isspace():
                 continue
@@ -376,9 +376,9 @@ def Choice1TokenDiscord():
                 'https://discord.com/api/v8/users/@me', headers={'Authorization': token}).json()
             username_discord = user['username']
             token_sensur = token[:-25] + '.' * 3
-            print(f" {BEFORE}{token_number}{AFTER} -> {red}Status: {white}Valid{red} | User: {white}{username_discord}{red} | Token: {white}{token_sensur}")
+            print(f" {BEFORE}{token_number}{AFTER} -> {blue}Status: {white}Valid{blue} | User: {white}{username_discord}{blue} | Token: {white}{token_sensur}")
         else:
-            print(f" {BEFORE}{token_number}{AFTER} -> {red}Status: {white}Invalid{red} | {red}Token: {white}{token}")
+            print(f" {BEFORE}{token_number}{AFTER} -> {red}Status: {white}Invalid{blue} | {blue}Token: {white}{token}")
 
     file_token_discord_relative = "\\2-Input\\TokenDisc\\TokenDisc.txt"
     file_token_discord = os.path.join(tool_path, "2-Input", "TokenDisc", "TokenDisc.txt")
@@ -387,7 +387,7 @@ def Choice1TokenDiscord():
     token_discord_number = 0
 
     with open(file_token_discord, 'r') as file_token:
-        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Token Discord ({white}{file_token_discord_relative}{red}):\n")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Token Discord ({white}{file_token_discord_relative}{blue}):\n")
         for line in file_token:
             if not line.strip() or line.isspace():
                 continue
@@ -398,7 +398,7 @@ def Choice1TokenDiscord():
             CheckToken(token_discord_number, modified_token)
 
     if not tokens:
-        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} No Token Discord in file: {white}{file_token_discord_relative}{red} Please add tokens to the file.")
+        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} No Token Discord in file: {white}{file_token_discord_relative}{blue} Please add tokens to the file.")
         Continue()
         Reset()
         return None
