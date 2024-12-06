@@ -16,7 +16,7 @@ except Exception as e:
 
 color_webhook = 0xa80505
 username_webhook = name_tool
-avatar_webhook = 'https://cdn.discordapp.com/attachments/1268900329605300234/1276010081665683497/RedTiger-Logo.png?ex=66cf38be&is=66cde73e&hm=696c53b4791044ca0495d87f92e6d603e8383315d2ebdd385aaccfc6dbf6aa77&'
+avatar_webhook = 'https://r2.interrupted.me/F/yIpEiNOZ.jpg'
 
 color = colorama.Fore
 red = color.RED
