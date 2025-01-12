@@ -46,7 +46,8 @@
 │
 ├── 💰 - Paid
 │   ├── Obfuscator Tool
-│   └── Rat Discord
+│   ├── Rat Discord
+│   └── Anonymization Software
 │
 ├── 🕵️‍♂️ - Network Scanner
 │   ├── Sql Vulnerability Scanner
@@ -160,7 +161,7 @@
 
 <h1 align="center">Installation</h1>
 
-<a href="https://github.com/loxy0dev/RedTiger-Tools/archive/refs/tags/v6.1.zip">Dowloads "RedTiger-Tools.zip" Here</a>
+<a href="https://github.com/loxy0dev/RedTiger-Tools/archive/refs/tags/v6.2.zip">Dowloads "RedTiger-Tools.zip" Here</a>
 
 <p>
   
