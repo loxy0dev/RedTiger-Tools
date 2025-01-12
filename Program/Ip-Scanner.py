@@ -11,108 +11,67 @@
 from Config.Util import *
 from Config.Config import *
 try:
-    import requests
-    import subprocess
     import socket
-    import sys
     import ssl
-    import concurrent.futures
+    import subprocess
+    import sys
+    import requests
     from requests.exceptions import RequestException
+    import concurrent.futures
 except Exception as e:
     ErrorModule(e)
     
 Title("Ip Scanner")
 
 try:
-    def ip_type(ip):
+    def IpType(ip):
+        ip_type = "Unknown"
         if ':' in ip:
-            type = "ipv6"
+            ip_type = "ipv6"
         elif '.' in ip:
-            type = "ipv4"
-        else:
-            type = "Unknown"
-            return
-        
-        print(f"{BEFORE + current_time_hour() + AFTER} {ADD} IP Type: {white}{type}{red}")
+            ip_type = "ipv4"
+        print(f"{BEFORE + current_time_hour() + AFTER} {ADD} IP Type: {white}{ip_type}{red}")
 
-    def ip_ping(ip):
+    def IpPing(ip):
         try:
-            if sys.platform.startswith("win"):
-                result = subprocess.run(['ping', '-n', '1', ip], capture_output=True, text=True, timeout=1)
-            else:
-                result = subprocess.run(['ping', '-c', '1', '-W', '1', ip], capture_output=True, text=True, timeout=1)
-            if result.returncode == 0:
-                ping = "Succeed"
-            else:
-                ping = "Fail"
-        except:
+            ping_cmd = ['ping', '-n', '1', ip] if sys.platform.startswith("win") else ['ping', '-c', '1', '-W', '1', ip]
+            result = subprocess.run(ping_cmd, capture_output=True, text=True, timeout=1)
+            ping = "Succeed" if result.returncode == 0 else "Fail"
+        except Exception:
             ping = "Fail"
-
         print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Ping: {white}{ping}{red}")
 
-    def ip_port(ip):
+    def IpPort(ip):
         port_protocol_map = {
             21: "FTP", 22: "SSH", 23: "Telnet", 25: "SMTP", 53: "DNS", 69: "TFTP",
             80: "HTTP", 110: "POP3", 123: "NTP", 143: "IMAP", 194: "IRC", 389: "LDAP",
             443: "HTTPS", 161: "SNMP", 3306: "MySQL", 5432: "PostgreSQL", 6379: "Redis",
             1521: "Oracle DB", 3389: "RDP"
         }
-
-        port_list = [21, 22, 23, 25, 53, 69, 80, 110, 123, 143, 194, 389, 443, 161, 3306, 5432, 6379, 1521, 3389]
-
+        
         def scan_port(ip, port):
             try:
-                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                sock.settimeout(1)
-                result = sock.connect_ex((ip, port))
-                if result == 0:
-                    protocol = identify_protocol(ip, port)
-                    print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Port: {white}{port}{red} Status: {white}Open{red} Protocol: {white}{protocol}{red}")
-                sock.close()
-            except:
-                pass
-
-        def identify_protocol(ip, port):
-            try:
-                if port in port_protocol_map:
-                    return port_protocol_map[port]
-                else:
-                    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
                     sock.settimeout(1)
-                    sock.connect((ip, port))
-                    
-                    sock.send(b"GET / HTTP/1.1\r\nHost: {}\r\n\r\n".format(ip).encode('utf-8'))
-                    response = sock.recv(100).decode('utf-8')
-                    if "HTTP" in response:
-                        return "HTTP"
-
-                    sock.send(b"\r\n")
-                    response = sock.recv(100).decode('utf-8')
-                    if "FTP" in response:
-                        return "FTP"
-
-                    sock.send(b"\r\n")
-                    response = sock.recv(100).decode('utf-8')
-                    if "SSH" in response:
-                        return "SSH"
-
-                    return "Unknown"
-            except:
-                return "Unknown"
-
+                    result = sock.connect_ex((ip, port))
+                    if result == 0:
+                        protocol = port_protocol_map.get(port, "Unknown")
+                        print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Port: {white}{port}{red} Status: {white}Open{red} Protocol: {white}{protocol}{red}")
+            except Exception:
+                pass
+        
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            results = {executor.submit(scan_port, ip, port): port for port in port_list}
-        concurrent.futures.wait(results)
+            executor.map(lambda port: scan_port(ip, port), port_protocol_map.keys())
 
-    def ip_dns(ip):
+    def IpDns(ip):
         try:
             dns, aliaslist, ipaddrlist = socket.gethostbyaddr(ip)
-        except:
+        except Exception:
             dns = "None"
         if dns != "None":
             print(f"{BEFORE + current_time_hour() + AFTER} {ADD} DNS: {white}{dns}{red}")
 
-    def ip_host_info(ip):
+    def IpHostInfo(ip):
         api_url = f"https://ipinfo.io/{ip}/json"
         try:
             response = requests.get(api_url)
@@ -136,14 +95,14 @@ try:
         if host_as != "None":
             print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Host AS: {white}{host_as}{red}")
 
-    def ssl_certificate_check(ip):
+    def SslCertificateCheck(ip):
         port = 443
         try:
-            sock = socket.create_connection((ip, port), timeout=1)
-            context = ssl.create_default_context()
-            with context.wrap_socket(sock, server_hostname=ip) as ssock:
-                cert = ssock.getpeercert()
-                print(f"{BEFORE + current_time_hour() + AFTER} {ADD} SSL Certificate: {white}{cert}{red}")
+            with socket.create_connection((ip, port), timeout=1) as sock:
+                context = ssl.create_default_context()
+                with context.wrap_socket(sock, server_hostname=ip) as ssock:
+                    cert = ssock.getpeercert()
+                    print(f"{BEFORE + current_time_hour() + AFTER} {ADD} SSL Certificate: {white}{cert}{red}")
         except Exception as e:
             print(f"{BEFORE + current_time_hour() + AFTER} {ADD} SSL Certificate Check Failed: {white}{e}{red}")
 
@@ -152,13 +111,14 @@ try:
     ip = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Ip -> {reset}")
     print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Information Recovery..{reset}")
     print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Ip: {white}{ip}{red}")
-    ip_type(ip)
-    ip_ping(ip)
-    ip_dns(ip)
-    ip_port(ip)
-    ip_host_info(ip)
-    ssl_certificate_check(ip)
+    IpType(ip)
+    IpPing(ip)
+    IpDns(ip)
+    IpPort(ip)
+    IpHostInfo(ip)
+    SslCertificateCheck(ip)
     Continue()
     Reset()
+
 except Exception as e:
     Error(e)

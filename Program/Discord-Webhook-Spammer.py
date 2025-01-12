@@ -21,7 +21,8 @@ Title("Discord Webhook Spammer")
 
 try:
     webhook_url = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Webhook URL -> {reset}")
-    CheckWebhook(webhook_url)
+    if CheckWebhook(webhook_url) == False:
+        ErrorWebhook()
     message = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Message -> {reset}")
 
     try:

@@ -20,7 +20,8 @@ Title("Discord Webhook Delete")
 
 try:
     webhook_url = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} URL Webhook -> {color.RESET}")
-    CheckWebhook(webhook_url)
+    if CheckWebhook(webhook_url) == False:
+        ErrorWebhook()
     try:
         response = requests.delete(webhook_url)
         response.raise_for_status()

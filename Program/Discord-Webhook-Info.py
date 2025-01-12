@@ -72,7 +72,8 @@ try:
     """)
 
     webhook_url = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Webhook URL -> {color.RESET}")
-    CheckWebhook(webhook_url)
+    if CheckWebhook(webhook_url) == False:
+        ErrorWebhook()
     info_webhook(webhook_url)
     Continue()
     Reset()

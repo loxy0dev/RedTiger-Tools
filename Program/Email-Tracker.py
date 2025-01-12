@@ -33,21 +33,15 @@ try:
                 'Referer': 'https://www.instagram.com/'
             }
 
-            data = {
-                "email": email
-            }
+            data = {"email": email}
 
-            response = session.get(
-                "https://www.instagram.com/accounts/emailsignup/", 
-                headers=headers
-            )
-            if response.status_code == 200:
-                if 'csrftoken' in session.cookies:
-                    token = session.cookies['csrftoken']
-                else:
-                    return "Error: Token Not Found."
-            else:
+            response = session.get("https://www.instagram.com/accounts/emailsignup/", headers=headers)
+            if response.status_code != 200:
                 return f"Error: {response.status_code}"
+
+            token = session.cookies.get('csrftoken')
+            if not token:
+                return "Error: Token Not Found."
 
             headers["x-csrftoken"] = token
             headers["Referer"] = "https://www.instagram.com/accounts/emailsignup/"
@@ -58,34 +52,23 @@ try:
                 data=data
             )
             if response.status_code == 200:
-                if "Another account is using the same email." in response.text:
+                if "Another account is using the same email." in response.text or "email_is_taken" in response.text:
                     return True
-                elif "email_is_taken" in response.text:
-                    return True
-                else:
-                    return False
-            else:
-                return f"Error: {response.status_code}"
+                return False
+            return f"Error: {response.status_code}"
         except Exception as e:
             return f"Error: {e}"
-        
+
     def Twitter(email):
         try:
             session = requests.Session()
-
             response = session.get(
-                url = "https://api.twitter.com/i/users/email_available.json",
-                params = {
-                    "email": email
-                }
+                url="https://api.twitter.com/i/users/email_available.json",
+                params={"email": email}
             )
             if response.status_code == 200:
-                if response.json()["taken"] == True:
-                    return True
-                else:
-                    return False
-            else:
-                return f"Error: {response.status_code}"
+                return response.json()["taken"]
+            return f"Error: {response.status_code}"
         except Exception as e:
             return f"Error: {e}"
 
@@ -94,32 +77,21 @@ try:
             session = requests.Session()
             response = session.get(
                 "https://www.pinterest.com/_ngjs/resource/EmailExistsResource/get/",
-                params={
-                    "source_url": "/",
-                    "data": '{"options": {"email": "' + email + '"}, "context": {}}'
-                }
+                params={"source_url": "/", "data": '{"options": {"email": "' + email + '"}, "context": {}}'}
             )
 
             if response.status_code == 200:
-                if response.json()["resource_response"]["message"] == "Invalid email.":
+                data = response.json()["resource_response"]
+                if data["message"] == "Invalid email.":
                     return False
-                elif response.json()["resource_response"]["message"] == "ok":
-                    if response.json()["resource_response"]["data"] == False:
-                        return False
-                    elif response.json()["resource_response"]["data"] == True:
-                        return True
-                else:
-                    return False
-            else:
-                return f"Error: {response.status_code}"
+                return data["data"] is not False
+            return f"Error: {response.status_code}"
         except Exception as e:
             return f"Error: {e}"
-
 
     def Imgur(email):
         try:
             session = requests.Session()
-
             headers = {
                 'User-Agent': user_agent,
                 'Accept': '*/*',
@@ -135,29 +107,23 @@ try:
 
             headers["X-Requested-With"] = "XMLHttpRequest"
 
-            data = {
-                'email': email
-            }
-
+            data = {'email': email}
             response = session.post('https://imgur.com/signin/ajax_email_available', headers=headers, data=data)
 
             if response.status_code == 200:
-                if response.json()['data']["available"] == True:
+                data = response.json()['data']
+                if data["available"]:
                     return False
-                elif response.json()["data"]["available"] == False:
-                    if "Invalid email domain" in response.text:
-                        return False
-                    else:
-                        return True
-            else:
-                return f"Error: {response.status_code}"
+                if "Invalid email domain" in response.text:
+                    return False
+                return True
+            return f"Error: {response.status_code}"
         except Exception as e:
             return f"Error: {e}"
 
     def Patreon(email):
         try:
             session = requests.Session()
-
             headers = {
                 'User-Agent': user_agent,
                 'Accept': '*/*',
@@ -169,27 +135,17 @@ try:
                 'Connection': 'keep-alive',
             }
 
-            data = {
-                'email': email
-            }
-
+            data = {'email': email}
             response = session.post('https://www.plurk.com/Users/isEmailFound', headers=headers, data=data)
             if response.status_code == 200:
-                if "True" in response.text:
-                    return True
-                elif "False" in response.text:
-                    return False
-                else:
-                    return False
-            else:
-                return f"Error: {response.status_code}"
+                return "True" in response.text
+            return f"Error: {response.status_code}"
         except Exception as e:
             return f"Error: {e}"
-        
+
     def Spotify(email):
         try:
             session = requests.Session()
-        
             headers = {
                 'User-Agent': user_agent,
                 'Accept': 'application/json, text/plain, */*',
@@ -198,48 +154,26 @@ try:
                 'Connection': 'keep-alive',
             }
             
-            params = {
-                'validate': '1',
-                'email': email,
-            }
-
+            params = {'validate': '1', 'email': email}
             response = session.get('https://spclient.wg.spotify.com/signup/public/v1/account',
                     headers=headers,
                     params=params)
             if response.status_code == 200:
-                if response.json()["status"] == 1:
-                    return False
-                elif response.json()["status"] == 20:
-                    return True
-                else:
-                    return False
-            else:
-                return f"Error: {response.status_code}"
+                status = response.json()["status"]
+                return status == 20
+            return f"Error: {response.status_code}"
         except Exception as e:
             return f"Error: {e}"
 
     def FireFox(email):
         try:
             session = requests.Session()
-
-            data = {
-                "email": email
-            }
-
-            response = session.post(
-                "https://api.accounts.firefox.com/v1/account/status",
-                data=data
-            )
+            data = {"email": email}
+            response = session.post("https://api.accounts.firefox.com/v1/account/status", data=data)
 
             if response.status_code == 200:
-                if "false" in response.text:
-                    return False
-                elif "true" in response.text:
-                    return True
-                else:
-                    return False
-            else:
-                return f"Error: {response.status_code}"
+                return "false" not in response.text
+            return f"Error: {response.status_code}"
         except Exception as e:
             return f"Error: {e}"
 
@@ -271,17 +205,11 @@ try:
             if response.status_code == 200:
                 if "no" in response.text:
                     return True
-                elif "emailinvalid" in response.text:
-                    return False
-                elif "ok" in response.text:
-                    return False
-                else:
-                    return False
-            else:
-                return f"Error: {response.status_code}"
+                return False
+            return f"Error: {response.status_code}"
         except Exception as e:
             return f"Error: {e}"
-        
+
     def Archive(email):
         try:
             session = requests.Session()
@@ -303,19 +231,14 @@ try:
 
             response = session.post('https://archive.org/account/signup', headers=headers, data=data)
             if response.status_code == 200:
-                if "is already taken." in response.text:
-                    return True
-                else:
-                    return False
-            else:
-                return f"Error: {response.status_code}"
+                return "is already taken." in response.text
+            return f"Error: {response.status_code}"
         except Exception as e:
             return f"Error: {e}"
-        
+
     def PornHub(email):
         try:
             session = requests.Session()
-
             headers = {
                 'User-Agent': user_agent,
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
@@ -336,37 +259,20 @@ try:
             else:
                 return f"Error: {response.status_code}"
 
-            params = {
-                'token': token,
-            }
-
-            data = {
-                'check_what': 'email',
-                'email': email
-            }
-
-            response = session.post(
-                'https://www.pornhub.com/user/create_account_check',
-                headers=headers,
-                params=params,
-                data=data
-            ) 
+            params = {'token': token}
+            data = {'check_what': 'email', 'email': email}
+            response = session.post('https://www.pornhub.com/user/create_account_check', headers=headers, params=params, data=data) 
             if response.status_code == 200:
                 if response.json()["error_message"] == "Email has been taken.":
                     return True
-                elif "Email has been taken." in response.text:
-                    return True
-                else:
-                    return False
-            else:
-                return f"Error: {response.status_code}"
+                return False
+            return f"Error: {response.status_code}"
         except Exception as e:
             return f"Error: {e}"
-        
+
     def Xnxx(email):
         try:
             session = requests.Session()
-
             headers = {
                 'User-Agent': user_agent,
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -379,12 +285,9 @@ try:
             
             cookie = session.get('https://www.xnxx.com', headers=headers)
 
-            if cookie.status_code == 200:
-                if not cookie:
-                    return "Error: Cookie Not Found."
-            else:
+            if cookie.status_code != 200:
                 return f"Error: {cookie.status_code}"
-            
+
             headers['Referer'] = 'https://www.xnxx.com/video-holehe/palenath_fucks_xnxx_with_holehe'
             headers['X-Requested-With'] = 'XMLHttpRequest'
             email = email.replace('@', '%40')
@@ -398,7 +301,7 @@ try:
                     elif response.json()['message'] == "Invalid email address.": 
                         return False
                 except:
-                    pass
+                    pass    
                 if response.json()['result'] == "false":
                     return True
                 elif response.json()['code'] == 1:
@@ -409,15 +312,13 @@ try:
                     return False  
                 else:
                     return False
-            else:
-                return f"Error: {response.status_code}"
+            return f"Error: {response.status_code}"
         except Exception as e:
             return f"Error: {e}"
-        
+
     def Xvideo(email):
         try:
             session = requests.Session()
-
             headers = {
                 'User-Agent': user_agent,
                 'Accept': 'application/json, text/javascript, */*; q=0.01',
@@ -426,10 +327,7 @@ try:
                 'Referer': 'https://www.xvideos.com/',
             }
 
-            params = {
-                'email': email,
-            }
-
+            params = {'email': email}
             response = session.get('https://www.xvideos.com/account/checkemail', headers=headers, params=params)
             if response.status_code == 200:
                 try:
@@ -446,14 +344,13 @@ try:
                 elif response.json()['result'] == "true":
                     return False
                 elif response.json()['code'] == 0:
-                    return False
+                    return False  
                 else:
                     return False
-            else:
-                return f"Error: {response.status_code}"
+            return f"Error: {response.status_code}"
         except Exception as e:
             return f"Error: {e}"
-        
+
     Slow(osint_banner)
     email = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Email -> {reset}")
     Censored(email)
@@ -471,44 +368,17 @@ try:
 
     for site in sites:
         result = site(email)
-        if result == True:
+        if result:
             print(f"{BEFORE_GREEN + current_time_hour() + AFTER_GREEN} {GEN_VALID} {site.__name__}: {white}Found")
             site_founds.append(site.__name__)
-            found +=1
-        elif result == False:
+            found += 1
+        else:
             print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} {site.__name__}: {white}Not Found")
             not_found += 1
-        elif result == None:
-            print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} {site.__name__}: {white}Unknown")
-            unknown += 1 
-        else:
-            if "429" in result:
-                result += " (Too Many Requests)"
-            elif "404" in result:
-                result += " (Page Not Found)"
-            elif "400" in result:
-                result += " (Bad Request)"  
-            elif "401" in result:
-                result += " (Unauthorized)"  
-            elif "403" in result:
-                result += " (Forbidden)" 
-            elif "500" in result:
-                result += " (Internal Server Error)" 
-            elif "502" in result:
-                result += " (Bad Gateway)"  
-            elif "503" in result:
-                result += " (Service Unavailable)"
-            elif "504" in result:
-                result += " (Gateway Timeout)"
-            print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {site.__name__}: {white + result}")
-            error += 1
 
-    if found != 0:
+    if found:
         print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Total Found ({white + str(found) + red}): {white}" + ", ".join(site_founds))
-        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Not Found: {white + str(not_found) + red} Unknown: {white + str(unknown) + red} Error: {white + str(error)}")
-    else:
-        print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Found: {white + str(found) + red} Not Found: {white + str(not_found) + red} Unknown: {white + str(unknown) + red} Error: {white + str(error)}")
-
+    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Not Found: {white + str(not_found) + red} Unknown: {white + str(unknown) + red}")
     Continue()
     Reset()
 except Exception as e:

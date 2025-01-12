@@ -20,9 +20,8 @@ try:
     import sys
     import requests
 except Exception as e:
-    import os
-    print(f"[x] | Error Module (Restart Setup.bat): {e}")
-    os.system("pause")
+    print(f'Modules of the python library required for RedTiger are not installed, make sure you have correctly installed python and have launched the "Setup.py" file which will install all the necessary modules.')
+    input(f'Error: {e}')
 
 color_webhook = 0xa80505
 username_webhook = name_tool
@@ -39,7 +38,17 @@ yellow = color.YELLOW
 try: username_pc = os.getlogin()
 except: username_pc = "username"
 
-tool_path = os.path.dirname(os.path.abspath(__file__)).split("Settings")[0].strip()
+try:
+    if sys.platform.startswith("win"):
+        os_name = "Windows"
+    elif sys.platform.startswith("linux"):
+        os_name = "Linux"
+    else:
+        os_name = "Unknown"
+except:
+    os_name = "None"
+
+tool_path = os.path.dirname(os.path.abspath(__file__)).split("Program")[0].strip()
 
 def current_time_day_hour():
     return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -58,6 +67,7 @@ INFO = f'{BEFORE}!{AFTER} |'
 ERROR = f'{BEFORE}x{AFTER} |'
 ADD = f'{BEFORE}+{AFTER} |'
 WAIT = f'{BEFORE}~{AFTER} |'
+NOTE = f'{BEFORE}NOTE{AFTER} |'
 
 GEN_VALID = f'{BEFORE_GREEN}+{AFTER_GREEN} |'
 GEN_INVALID = f'{BEFORE}x{AFTER} |'
@@ -65,7 +75,7 @@ GEN_INVALID = f'{BEFORE}x{AFTER} |'
 INFO_ADD = f'{white}[{red}+{white}]{red}'
 
 def Censored(text):
-    censored = ["loxy", website, creator]
+    censored = ["loxy", creator, website]
     for censored_text in censored:
         if text in censored:
             print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find "{white}{text}{red}".')
@@ -79,38 +89,38 @@ def Censored(text):
             pass
 
 def Title(title):
-    if sys.platform.startswith("win"):
-        ctypes.windll.kernel32.SetConsoleTitleW(f"{name_tool} {version_tool} | {title}")
-    elif sys.platform.startswith("linux"):
-        sys.stdout.write(f"\x1b]2;{name_tool} {version_tool} | {title}\x07")
+    if os_name == "Windows":
+        ctypes.windll.kernel32.SetConsoleTitleW(f"{name_tool} {version_tool} - {title}")
+    elif os_name == "Linux":
+        sys.stdout.write(f"\x1b]2;{name_tool} {version_tool} - {title}\x07")
         
 def Clear():
-    if sys.platform.startswith("win"):
+    if os_name == "Windows":
         os.system("cls")
-    elif sys.platform.startswith("linux"):
+    elif os_name == "Linux":
         os.system("clear")
 
 def Reset():
-    if sys.platform.startswith("win"):
+    if os_name == "Windows":
         file = ['python', os.path.join(tool_path, "RedTiger.py")]
         subprocess.run(file)
 
-    elif sys.platform.startswith("linux"):
+    elif os_name == "Linux":
         file = ['python3', os.path.join(tool_path, "RedTiger.py")]
         subprocess.run(file)
 
 def StartProgram(program):
-    if sys.platform.startswith("win"):
-        file = ['python', os.path.join(tool_path, "Settings", "Program", program)]
+    if os_name == "Windows":
+        file = ['python', os.path.join(tool_path, "Program", program)]
         subprocess.run(file)
         
-    elif sys.platform.startswith("linux"):
-        file = ['python3', os.path.join(tool_path, "Settings", "Program", program)]
+    elif os_name == "Linux":
+        file = ['python3', os.path.join(tool_path, "Program", program)]
         subprocess.run(file)
 
-def Slow(texte):
+def Slow(text):
     delai = 0.03
-    lignes = texte.split('\n')
+    lignes = text.split('\n')
     for ligne in lignes:
         print(ligne)
         time.sleep(delai)
@@ -177,8 +187,13 @@ def ErrorUsername():
     time.sleep(3)
     Reset()
 
+def ErrorPlateform():
+    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Unsupported Platform !", reset)
+    time.sleep(3)
+    Reset()
+
 def ErrorModule(e):
-    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Error Module (Restart Setup.bat): {white}{e}", reset)
+    print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Error Module: {white}{e}", reset)
     Continue()
     Reset()
 
@@ -263,20 +278,15 @@ def MainColor2(text):
     return ''.join(result)
 
 def CheckWebhook(webhook):
-    if webhook.lower().startswith("https://discord.com/api/webhooks"):
-        pass
-    elif webhook.lower().startswith("http://discord.com/api/webhooks"):
-        pass
-    elif webhook.lower().startswith("https://canary.discord.com/api/webhooks"):
-        pass
-    elif webhook.lower().startswith("http://canary.discord.com/api/webhooks"):
-        pass
-    elif webhook.lower().startswith("https://discordapp.com/api/webhooks"):
-        pass
-    elif webhook.lower().startswith("http://discordapp.com/api/webhooks"):
-        pass
-    else:
-        ErrorWebhook()
+    try:
+        response = requests.get(webhook)
+        if response.status_code == 200 or response.status_code == "200":
+            return True
+        else:
+            return False
+    except:
+        return None
+        
 
 def ChoiceMultiChannelDiscord():
     try:

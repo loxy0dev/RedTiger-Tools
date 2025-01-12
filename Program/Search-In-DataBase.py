@@ -11,25 +11,42 @@
 from Config.Util import *
 from Config.Config import *
 
+try:
+    import tkinter as tk
+    from tkinter import filedialog
+except Exception as e:
+    ErrorModule(e)
+
 Title("Search DataBase")
 
 try:
-    folder_database_relative = "./2-Input/DataBase"
-    folder_database = os.path.abspath(folder_database_relative)
+    def ChooseFolder():
+        try:
+            if sys.platform.startswith("win"):
+                root = tk.Tk()
+                root.iconbitmap(os.path.join(tool_path, "Img", "RedTiger_icon.ico"))
+                root.withdraw()
+                root.attributes('-topmost', True)
+                folder_database = filedialog.askdirectory(parent=root, title=f"{name_tool} {version_tool} - Choose a folder")
+            elif sys.platform.startswith("linux"):
+                folder_database = filedialog.askdirectory(title=f"{name_tool} {version_tool} - Choose a folder")
+            print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Folder path: {white + folder_database}")
+        except Exception as e:
+            print(e)
+            folder_database = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Enter database folder path -> {reset}")
 
-    print(f"""
-{BEFORE + current_time_hour() + AFTER} {INFO} Add DataBase to the "{white}{folder_database_relative}{red}" folder.
-{BEFORE + current_time_hour() + AFTER} {INFO} If you don't have a DataBase you can get one on the Discord Server "{white}{discord_server}{red}\".""")
+        return folder_database
+
+    folder_database = ChooseFolder()
     search = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Search -> {reset}")
 
     print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in DataBase..")
 
     def TitleSearch(files_searched, element):
-        Title(f"Search DataBase | Total: {files_searched} | File: {element}")
+        Title(f"Search DataBase - File Total: {files_searched} - File: {element}")
 
     try:
         files_searched = 0
-
         def check(folder):
             global files_searched
             results_found = False

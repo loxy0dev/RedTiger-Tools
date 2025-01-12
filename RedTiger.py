@@ -8,31 +8,16 @@
 #     - Ne pas toucher ni modifier le code ci-dessous. En cas d'erreur, veuillez contacter le propriétaire, mais en aucun cas vous ne devez toucher au code.
 #     - Ne revendez pas ce tool, ne le créditez pas au vôtre.
 
-from Settings.Program.Config.Config import *
-from Settings.Program.Config.Util import *
+from Program.Config.Config import *
+from Program.Config.Util import *
 
 try:
    import webbrowser
    import re
-except:
-   ErrorModule()
-
-def Update():
-   popup_version = ""
-
-   try:
-      new_version = re.search(r'version_tool\s*=\s*"([^"]+)"', requests.get(url_config).text).group(1)
-      if new_version != version_tool:
-         colorama.init()
-         print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Please install the new version of the tool: {white + version_tool + red} -> {white + new_version}")
-         webbrowser.open(github_tool)
-         input(f"{BEFORE + current_time_hour() + AFTER} {INFO} Enter to still use this version -> {reset}")
-         popup_version = f"{red}New Version: {white + version_tool + red} -> {white + new_version}"
-         colorama.deinit()
-   except: 
-      pass
-
-   return popup_version
+   import pyzipper
+   from tkinter import messagebox
+except Exception as e:
+   ErrorModule(e)
 
 option_01 = "Website-Vulnerability-Scanner"
 option_02 = "Website-Info-Scanner"
@@ -265,25 +250,31 @@ menu3 = f""" ┌─ {option_info_txt}                                           
    └─────────────────────────────────────┴─────────────────────────────────────┘
 """
 
-menu_path = os.path.join(tool_path, "Settings", "Program", "Config", "Menu.txt")
+def Update():
+   popup_version = ""
+   try:
+      new_version = re.search(r'version_tool\s*=\s*"([^"]+)"', requests.get(url_config).text).group(1)
+      if new_version != version_tool:
+         colorama.init()
+         print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Please install the new version of the tool: {white + version_tool + red} -> {white + new_version}")
+         webbrowser.open(github_tool)
+         input(f"{BEFORE + current_time_hour() + AFTER} {INFO} Enter to still use this version -> {reset}")
+         popup_version = f"{red}New Version: {white + version_tool + red} -> {white + new_version}"
+         colorama.deinit()
+   except: 
+      pass
+
+   return popup_version
+
+menu_path = os.path.join(tool_path, "Program", "Config", "Menu.txt")
 popup_version = Update()
 
 def Menu():
    try:
       with open(menu_path, "r") as file:
-         menu = file.read()
-      if menu in "1":
-         menu = menu1
-         menu_number = "1"
-      elif menu in "2":
-         menu = menu2
-         menu_number = "2"
-      elif menu in "3":
-         menu = menu3
-         menu_number = "3"
-      else:
-         menu = menu1
-         menu_number = "1"
+         menu_number = file.read()
+      menu_mapping = {"1": menu1, "2": menu2, "3": menu3}
+      menu = menu_mapping.get(menu_number, menu1)
    except:
       menu = menu1
       menu_number = "1"
@@ -313,38 +304,47 @@ while True:
       Title(f"Menu {menu_number}")
       Slow(MainColor(banner))
 
-      choice = input(MainColor(f""" ┌──({white}{username_pc}@redtiger)─{red}[{white}~/RedTiger/Menu-{menu_number}]
+      choice = input(MainColor(f""" ┌──({white}{username_pc}@redtiger)─{red}[{white}~/{os_name}/Menu-{menu_number}]
  └─{white}$ {reset}"""))
 
       if choice in ['N', 'n', 'NEXT', 'Next', 'next']:
-         if menu_number == "1":
+            menu_number = {"1": "2", "2": "3", "3": "1"}.get(menu_number, "1")
             with open(menu_path, "w") as file:
-               file.write("2")
-
-         elif menu_number == "2":
-            with open(menu_path, "w") as file:
-               file.write("3")
-
-         continue
+               file.write(menu_number)
+            continue
 
       elif choice in ['B', 'b', 'BACK', 'Back', 'back']:
-         if menu_number == "2":
+            menu_number = {"2": "1", "3": "2"}.get(menu_number, "1")
             with open(menu_path, "w") as file:
-               file.write("1")
-
-         elif menu_number == "3":
-            with open(menu_path, "w") as file:
-               file.write("2")
-
-         continue
+               file.write(menu_number)
+            continue
 
       elif choice in ['I', 'i', 'INFO', 'Info', 'info']:
-         StartProgram(f"{option_info}.py")
-         continue
-      
+            StartProgram(f"{option_info}.py")
+            continue
+
       elif choice in ['S', 's', 'SITE', 'Site', 'site']:
-         StartProgram(f"{option_site}.py")
-         continue
+            StartProgram(f"{option_site}.py")
+            continue
+      
+      elif choice == '31':
+         print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} It is important to disable your antivirus (Real-time Protection) before building, so that no files are deleted.")
+         messagebox.showinfo(f"RedTiger {version_tool} - Virus Builder", "It is important to disable your antivirus (Real-time Protection) before building, so that no files are deleted.")
+         try:
+            zip_file_path = os.path.join(tool_path, "Program", "FileDetectedByAntivirus", "Password(redtiger).zip")
+            file_path = os.path.join(tool_path, "Program", "FileDetectedByAntivirus", "VirusBuilderOptions.py")
+            output = os.path.join(tool_path, "Program", "FileDetectedByAntivirus")
+            if not os.path.exists(file_path):
+               if os.path.exists(zip_file_path):
+                  print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Decompression of the encrypted file: {white}Program\\FileDetectedByAntivirus\\Password(redtiger).zip")
+                  with pyzipper.AESZipFile(zip_file_path) as zf:
+                     zf.pwd = b'redtiger'
+                     zf.extractall(output)
+                  time.sleep(3)
+               else:
+                  print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Files are missing, please reinstall the tool.")
+         except Exception as e:
+            Error(e)
 
       options = {
          '01': option_01, '02': option_02, '03': option_03, '04': option_04,

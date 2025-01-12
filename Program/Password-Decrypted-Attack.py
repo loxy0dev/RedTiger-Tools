@@ -21,7 +21,9 @@ try:
     from hashlib import pbkdf2_hmac
 except Exception as e:
     ErrorModule(e)
+
 Title(f"Password Decrypted")
+
 try:
     Slow(f"""{decrypted_banner}
  {BEFORE}01{AFTER}{white} BCRYPT
@@ -38,10 +40,12 @@ try:
         ErrorChoice()
 
     encrypted_password = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Encrypted Password -> {white}")
+
     try:
         threads_number = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Threads Number -> {white}"))
     except:
         ErrorNumber()
+        
     try:
         characters_number = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Password Characters Number Max -> {white}"))
     except:
@@ -54,92 +58,63 @@ try:
     generated_passwords = set()
 
     salt = "this_is_a_salt".encode('utf-8')
-
     all_characters = string.ascii_letters + string.digits + string.punctuation
     all_characters_len = len(all_characters)
 
-    def error_decrypted():
-        if choice in ['1', '01']:
-            encryption = "BCRYPT"
-        elif choice in ['2', '02']:
-            encryption = "MD5"
-        elif choice in ['3', '03']:
-            encryption = "SHA-1"
-        elif choice in ['4', '04']:
-            encryption = "SHA-256"
-        elif choice in ['5', '05']:
-            encryption = "PBKDF2 (SHA-256)"
-        elif choice in ['6', '06']:
-            encryption = "Base64 Decode"
+    def ErrorDecrypted():
+        encryption_map = {
+            '1': 'BCRYPT', '2': 'MD5', '3': 'SHA-1', '4': 'SHA-256', '5': 'PBKDF2 (SHA-256)', '6': 'Base64 Decode'
+        }
+        encryption = encryption_map.get(choice, "Unknown")
         print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} The encryption "{white}{encrypted_password}{red}" is not accepted by "{white}{encryption}{red}".')
         Continue()
         Reset()
 
-    def check_password(password_test):
-        global choice, encrypted_password
-        if choice in ['1', '01']:
-            try:
+    def CheckPassword(password_test):
+        try:
+            if choice in ['1', '01']:
                 return bcrypt.checkpw(password_test.encode('utf-8'), encrypted_password.encode('utf-8'))
-            except:
-                error_decrypted()
-        elif choice in ['2', '02']:
-            try:
+            elif choice in ['2', '02']:
                 return hashlib.md5(password_test.encode('utf-8')).hexdigest() == encrypted_password
-            except:
-                error_decrypted()
-        elif choice in ['3', '03']:
-            try:
+            elif choice in ['3', '03']:
                 return hashlib.sha1(password_test.encode('utf-8')).hexdigest() == encrypted_password
-            except:
-                error_decrypted()
-        elif choice in ['4', '04']:
-            try:
+            elif choice in ['4', '04']:
                 return hashlib.sha256(password_test.encode('utf-8')).hexdigest() == encrypted_password
-            except:
-                error_decrypted()
-        elif choice in ['5', '05']:
-            try:
+            elif choice in ['5', '05']:
                 return pbkdf2_hmac('sha256', password_test.encode('utf-8'), salt, 100000).hex() == encrypted_password
-            except:
-                error_decrypted()
-        elif choice in ['6', '06']:
-            try:
+            elif choice in ['6', '06']:
                 return base64.b64decode(encrypted_password.encode('utf-8')).decode('utf-8') == password_test
-            except:
-                error_decrypted()
-        else:
             return False
+        except:
+            ErrorDecrypted()
 
-    def generate_password(characters_number):
+    def GeneratePassword(characters_number):
         return ''.join(random.choice(all_characters) for _ in range(random.randint(1, characters_number)))
 
-    def test_decrypted():
+    def TestDecrypted():
         global password
         while not password:
-            password_test = generate_password(characters_number)
+            password_test = GeneratePassword(characters_number)
             if password_test not in generated_passwords:
                 generated_passwords.add(password_test)
-                if check_password(password_test):
+                if CheckPassword(password_test):
                     password = True
                     print(f'{BEFORE + current_time_hour() + AFTER} {ADD} Password: {white}{password_test}{reset}')
                     time.sleep(1)
                     Continue()
                     Reset()
 
-    def request():
-        threads = []
+    def Request():
+        from concurrent.futures import ThreadPoolExecutor
+
         try:
-            for _ in range(threads_number):
-                t = threading.Thread(target=test_decrypted)
-                t.start()
-                threads.append(t)
+            with ThreadPoolExecutor(max_workers=threads_number) as executor:
+                executor.map(lambda _: TestDecrypted(), range(threads_number))
         except Exception as e:
             ErrorNumber()
 
-        for thread in threads:
-            thread.join()
-
     while not password:
-        request()
+        Request()
+
 except Exception as e:
     Error(e)

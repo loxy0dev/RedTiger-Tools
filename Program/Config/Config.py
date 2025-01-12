@@ -10,12 +10,11 @@
 
 name_tool       =  "RedTiger"
 type_tool       =  "Multi-Tools"
-version_tool    =  "6.1"
+version_tool    =  "6.2"
 coding_tool     =  "Python 3"
 language_tool   =  "EN"
 creator         =  "loxy0dev"
 platform        =  "Windows 10/11 & Linux"
-discord_server  =  "None"
 website         =  "redtiger.shop"
 github_tool     =  "github.com/loxy0dev/RedTiger-Tools"
 telegram        =  "t.me/redtigersupport"

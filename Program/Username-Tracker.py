@@ -12,8 +12,9 @@ from Config.Util import *
 from Config.Config import *
 try:
     import requests
+    from bs4 import BeautifulSoup
     import re
-    import bs4
+    import time
 except Exception as e:
    ErrorModule(e)
 
@@ -39,7 +40,6 @@ try:
         "Flickr": "https://www.flickr.com/people/{}",
         "Keybase": "https://keybase.io/{}",
         "Last.fm": "https://www.last.fm/user/{}",
-        "Slideshare": "https://www.slideshare.net/{}",
         "Behance": "https://www.behance.net/{}",
         "Quora": "https://www.quora.com/profile/{}",
         "Patreon": "https://www.patreon.com/{}",
@@ -60,7 +60,6 @@ try:
         "Mix": "https://mix.com/{}",
         "Facebook": "https://www.facebook.com/{}",
         "Strava": "https://www.strava.com/athletes/{}",
-
 
         "Internet Archive": "https://archive.org/search?query={}",
         "Twitter Archive": "https://web.archive.org/web/*/https://twitter.com/{}/status/*",
@@ -121,19 +120,17 @@ try:
         "VK": "https://vk.com/{}",
     }
 
-    def site_exception(username, site, page_content):
+    def SiteException(username, site, page_content):
         if site == "Paypal":
             page_content = page_content.replace(f'slug_name={username}', '').replace(f'"slug":"{username}"', '').replace(f'2F{username}&amp', '')
-        
         elif site == "TikTok":
             page_content = page_content.replace(f'\\u002f@{username}"', '')
-
         return page_content
 
     number_site = 0
     number_found = 0
     sites_and_urls_found = []
-    
+
     Slow(osint_banner)
     username = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Username -> {reset}")
     Censored(username)
@@ -142,43 +139,37 @@ try:
 
     print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Scanning..")
 
+    session = requests.Session()
+
     for site, url_template in sites.items():
         try:
             number_site += 1
             url = url_template.format(username)
             try:
-                response = requests.get(url, timeout=3)
+                response = session.get(url, timeout=3)
                 if response.status_code == 200:
                     page_content = re.sub(r'<[^>]*>', '', response.text.lower().replace(url, "").replace(f"/{username}", ""))
-                    page_content = site_exception(username, site, page_content)
-                    page_text = bs4.BeautifulSoup(response.text, 'html.parser').get_text().lower().replace(url, "")
-                    page_title = bs4.BeautifulSoup(response.content, 'html.parser').title.string.lower()
-                    
-                    if username in page_title:
-                        number_found += 1
-                        sites_and_urls_found.append(f"{site}: {white + url}")
-                        found = True
-                    elif username in page_content:
-                        number_found += 1
-                        sites_and_urls_found.append(f"{site}: {white + url}")
-                        found = True
-                    elif username in page_text:
-                        number_found += 1
-                        sites_and_urls_found.append(f"{site}: {white + url}")
-                        found = True
-                    else:
-                        found = False
-                else: 
-                    found = False
+                    page_content = SiteException(username, site, page_content)
 
-                if found == True:
-                    print(f"{BEFORE_GREEN + current_time_hour() + AFTER_GREEN} {GEN_VALID} {site}: {white + url}")
-                elif found == False:
+                    soup = BeautifulSoup(response.text, 'html.parser')
+                    page_text = soup.get_text().lower().replace(url, "")
+                    page_title = soup.title.string.lower() if soup.title else ""
+
+                    found = username in page_title or username in page_content or username in page_text
+
+                    if found:
+                        number_found += 1
+                        sites_and_urls_found.append(f"{site}: {white + url}")
+                        print(f"{BEFORE_GREEN + current_time_hour() + AFTER_GREEN} {GEN_VALID} {site}: {white + url}")
+                    else:
+                        print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} {site}:{white} Not Found")
+
+                else: 
                     print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} {site}:{white} Not Found")
 
             except Exception as e:
                 print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {site}: {white + e}")
-        except: 
+        except:
             pass
 
     print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Total Found:{reset}")
@@ -189,5 +180,6 @@ try:
     print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Total Website: {white}{number_site}{red} Total Found: {white}{number_found}{red}")
     Continue()
     Reset()
+
 except Exception as e:
     Error(e)

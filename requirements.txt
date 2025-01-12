@@ -1,7 +1,9 @@
 setuptools
 pyinstaller
+pyzipper
 auto-py-to-exe
 urllib3
+customtkinter
 PyQt5
 PyQtWebEngine
 colorama
