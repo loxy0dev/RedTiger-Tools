@@ -255,21 +255,20 @@ def Update():
    try:
       new_version = re.search(r'version_tool\s*=\s*"([^"]+)"', requests.get(url_config).text).group(1)
       if new_version != version_tool:
+         webbrowser.open(f"https://{github_tool}")
          colorama.init()
-         print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Please install the new version of the tool: {white + version_tool + red} -> {white + new_version}")
-         webbrowser.open(github_tool)
-         input(f"{BEFORE + current_time_hour() + AFTER} {INFO} Enter to still use this version -> {reset}")
+         input(f"{BEFORE + current_time_hour() + AFTER} {INFO} Please install the new version of the tool: {white + version_tool + red} -> {white + new_version} ")
          popup_version = f"{red}New Version: {white + version_tool + red} -> {white + new_version}"
          colorama.deinit()
-   except: 
-      pass
+   except: pass
 
    return popup_version
 
 menu_path = os.path.join(tool_path, "Program", "Config", "Menu.txt")
-popup_version = Update()
 
 def Menu():
+   popup_version = Update()
+
    try:
       with open(menu_path, "r") as file:
          menu_number = file.read()
@@ -328,6 +327,10 @@ while True:
             continue
       
       elif choice == '31':
+         if os_name == "Linux":
+            print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} The builder virus is only compatible with Windows, under Linux it can encounter big problems.")
+            messagebox.showinfo(f"RedTiger {version_tool} - Virus Builder", "The builder virus is only compatible with Windows, under Linux it can encounter big problems.")
+
          print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} It is important to disable your antivirus (Real-time Protection) before building, so that no files are deleted.")
          messagebox.showinfo(f"RedTiger {version_tool} - Virus Builder", "It is important to disable your antivirus (Real-time Protection) before building, so that no files are deleted.")
          try:

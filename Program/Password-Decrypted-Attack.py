@@ -15,7 +15,7 @@ try:
     import hashlib
     import random
     import string
-    import threading
+    from concurrent.futures import ThreadPoolExecutor
     import time
     import base64
     from hashlib import pbkdf2_hmac
@@ -45,9 +45,14 @@ try:
         threads_number = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Threads Number -> {white}"))
     except:
         ErrorNumber()
-        
+    
     try:
-        characters_number = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Password Characters Number Max -> {white}"))
+        characters_number_min = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Password Characters Number Min -> {white}"))
+    except:
+        ErrorNumber()
+
+    try:
+        characters_number_max = int(input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Password Characters Number Max -> {white}"))
     except:
         ErrorNumber()
 
@@ -88,25 +93,25 @@ try:
         except:
             ErrorDecrypted()
 
-    def GeneratePassword(characters_number):
-        return ''.join(random.choice(all_characters) for _ in range(random.randint(1, characters_number)))
+    def GeneratePassword(characters_number_min, characters_number_max):
+        return ''.join(random.choice(all_characters) for _ in range(random.randint(characters_number_min, characters_number_max)))
 
     def TestDecrypted():
         global password
+        print(red)
         while not password:
-            password_test = GeneratePassword(characters_number)
+            password_test = GeneratePassword(characters_number_min, characters_number_max)
             if password_test not in generated_passwords:
                 generated_passwords.add(password_test)
                 if CheckPassword(password_test):
                     password = True
+                    time.sleep(0.5)
                     print(f'{BEFORE + current_time_hour() + AFTER} {ADD} Password: {white}{password_test}{reset}')
                     time.sleep(1)
                     Continue()
                     Reset()
 
     def Request():
-        from concurrent.futures import ThreadPoolExecutor
-
         try:
             with ThreadPoolExecutor(max_workers=threads_number) as executor:
                 executor.map(lambda _: TestDecrypted(), range(threads_number))
