@@ -45,8 +45,9 @@
 │   └── Site
 │
 ├── 💰 - Paid
-│   ├── Obfuscator Tool
-│   ├── Rat Discord
+│   ├── Python Obfuscator (Premium)
+│   ├── Discord Rat (Premium)
+│   ├── Stresser (Premium)
 │   └── Anonymization Software
 │
 ├── 🕵️‍♂️ - Network Scanner
@@ -60,6 +61,8 @@
 ├── 🔎 - Osint
 │   ├── Dox Create
 │   ├── Dox Tracker
+│   ├── Get Image Exif
+│   ├── Google Dorking
 │   ├── Username Tracker
 │   ├── Email Tracker
 │   ├── Email Lookup
@@ -68,6 +71,7 @@
 │
 ├── 🔧 - Utilities
 │   ├── Phishing Attack
+│   ├── Password Zip Cracked Attack
 │   ├── Password Decrypted Attack
 │   ├── Password Encrypted
 │   ├── Search In DataBase
@@ -161,7 +165,7 @@
 
 <h1 align="center">Installation</h1>
 
-<a href="https://github.com/loxy0dev/RedTiger-Tools/archive/refs/tags/v6.3.zip">Dowloads "RedTiger-Tools.zip" Here</a>
+<a href="https://github.com/loxy0dev/RedTiger-Tools/archive/refs/tags/v6.4.zip">Dowloads "RedTiger-Tools.zip" Here</a>
 
 <p>
   
@@ -198,11 +202,11 @@ Or
   
   <strong>Bitcoin Adress:</strong>
   ``` 
-1MSRzopmhasr9ByHBrksScqv6wByVagDKe
+bc1qwdvhtdyqjfk8lwqkcj5pn44n5f758r2pprn8de
   ```
   <strong>Litecoin Adress:</strong>
   ```
-LXXnPk5hbUxNomJixbysoikZSv6QAiQyVQ
+Ld9H6pvsWMS9UtjFh2xwdGH9sePtum81NN
   ```
 
 </p>

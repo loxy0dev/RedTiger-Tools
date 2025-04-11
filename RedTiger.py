@@ -32,32 +32,32 @@ option_10 = "Soon"
 
 option_11 = "Dox-Create"
 option_12 = "Dox-Tracker"
-option_13 = "Username-Tracker"
-option_14 = "Email-Tracker"
-option_15 = "Email-Lookup"
-option_16 = "Phone-Number-Lookup"
-option_17 = "Ip-Lookup"
-option_18 = "Soon"
-option_19 = "Soon"
+option_13 = "Get-Image-Exif"
+option_14 = "Google-Dorking"
+option_15 = "Username-Tracker"
+option_16 = "Email-Tracker"
+option_17 = "Email-Lookup"
+option_18 = "Phone-Number-Lookup"
+option_19 = "Ip-Lookup"
 option_20 = "Soon"
 
 option_21 = "Phishing-Attack"
-option_22 = "Password-Decrypted-Attack"
-option_23 = "Password-Encrypted"
-option_24 = "Search-In-DataBase"
-option_25 = "Dark-Web-Links"
-option_26 = "Ip-Generator"
-option_27 = "Soon"
+option_22 = "Password-Zip-Cracked-Attack"
+option_23 = "Password-Hash-Decrypted-Attack"
+option_24 = "Password-Hash-Encrypted"
+option_25 = "Search-In-DataBase"
+option_26 = "Dark-Web-Links"
+option_27 = "Ip-Generator"
 option_28 = "Soon"
 option_29 = "Soon"
 option_30 = "Soon"
 
 option_31 = "Virus-Builder"
 
-option_32 = "Obfuscator-Tool"
-option_33 = "Rat-Discord"
-option_34 = "Anonymization-Software"
-option_35 = "Soon"
+option_32 = "Python-Obfuscator-(Premium)"
+option_33 = "Discord-Rat-(Premium)"
+option_34 = "Stresser (Premium)"
+option_35 = "Anonymization-Software"
 option_36 = "Soon"
 option_37 = "Soon"
 option_38 = "Soon"
@@ -211,9 +211,10 @@ menu1 = f""" ┌─ {option_info_txt}                                           
    ├─ {option_03_txt                    }├─ {option_13_txt                    }├─ {option_23_txt}
    ├─ {option_04_txt                    }├─ {option_14_txt                    }├─ {option_24_txt}
    ├─ {option_05_txt                    }├─ {option_15_txt                    }├─ {option_25_txt}
-   └─ {option_06_txt                    }├─ {option_16_txt                    }└─ {option_26_txt}
-                                         └─ {option_17_txt                    }
-
+   └─ {option_06_txt                    }├─ {option_16_txt                    }├─ {option_26_txt}
+                                         ├─ {option_17_txt                    }└─ {option_27_txt}
+                                         ├─ {option_18_txt                    }
+                                         └─ {option_19_txt                    }
 """
 
 menu2 = f""" ┌─ {option_info_txt}                                                                                                {option_next_txt} ─┐
@@ -222,8 +223,8 @@ menu2 = f""" ┌─ {option_info_txt}                                           
    │          └───────────────┘          │              └──────┘               │              └────────┘
    └─ {option_31_txt                    }├─ {option_32_txt                    }├─ {option_41_txt}
            ├─ Stealer                    ├─ {option_33_txt                    }├─ {option_42_txt}
-           │  ├─ System Info             └─ {option_34_txt                    }├─ {option_43_txt}
-           │  ├─ Discord Token/Injection                                       └─ {option_44_txt}
+           │  ├─ System Info             ├─ {option_34_txt                    }├─ {option_43_txt}
+           │  ├─ Discord Token/Injection └─ {option_35_txt                    }└─ {option_44_txt}
            │  ├─ Browser Steal           
            │  ├─ Roblox Cookie                                     
            │  └─ Other                            
@@ -292,7 +293,6 @@ def Menu():
                                            {white}{github_tool}
 {menu}"""
    return banner, menu_number
-
 
 while True:
    try:

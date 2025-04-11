@@ -19,11 +19,15 @@ except Exception as e:
 Title("Roblox User Info")
 
 try:
-    user_id = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} ID -> {color.RESET}")
+    user_agent = ChoiceUserAgent()
+    headers = {"User-Agent": user_agent}
+
+    print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Selected User-Agent: {white + user_agent}")
+    user_id = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} ID -> {color.RESET}")
     print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Information Recovery..{reset}")
     try:
 
-        response = requests.get(f"https://users.roblox.com/v1/users/{user_id}")
+        response = requests.get(f"https://users.roblox.com/v1/users/{user_id}", headers=headers)
         api = response.json()
 
         userid = api.get('id', "None")

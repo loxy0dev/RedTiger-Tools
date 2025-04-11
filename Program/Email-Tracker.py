@@ -19,7 +19,7 @@ except Exception as e:
 Title("Email Tracker")
 
 try:
-    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+    user_agent = ChoiceUserAgent()
 
     def Instagram(email):
         try:
@@ -352,6 +352,7 @@ try:
             return f"Error: {e}"
 
     Slow(osint_banner)
+    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Selected User-Agent: {white + user_agent}")
     email = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Email -> {reset}")
     Censored(email)
     print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Scanning..")

@@ -1,7 +1,11 @@
 setuptools
 pyinstaller
+exifread
+piexif
+rarfile
 pyzipper
 auto-py-to-exe
+selenium
 urllib3
 customtkinter
 PyQt5

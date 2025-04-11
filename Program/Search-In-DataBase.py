@@ -22,6 +22,7 @@ Title("Search DataBase")
 try:
     def ChooseFolder():
         try:
+            print(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Enter database folder path -> {reset}")
             if sys.platform.startswith("win"):
                 root = tk.Tk()
                 root.iconbitmap(os.path.join(tool_path, "Img", "RedTiger_icon.ico"))
@@ -30,10 +31,9 @@ try:
                 folder_database = filedialog.askdirectory(parent=root, title=f"{name_tool} {version_tool} - Choose a folder")
             elif sys.platform.startswith("linux"):
                 folder_database = filedialog.askdirectory(title=f"{name_tool} {version_tool} - Choose a folder")
-            print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Folder path: {white + folder_database}")
-        except Exception as e:
-            print(e)
-            folder_database = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Enter database folder path -> {reset}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Folder path: {white + folder_database}")
+        except:
+            folder_database = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Enter database folder path -> {reset}")
 
         return folder_database
 
@@ -47,14 +47,15 @@ try:
 
     try:
         files_searched = 0
-        def check(folder):
+        def Check(folder):
             global files_searched
             results_found = False
+            folder = os.path.join(folder)
             print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search in {white}{folder}")
             for element in os.listdir(folder):
                 chemin_element = os.path.join(folder, element)
                 if os.path.isdir(chemin_element):
-                    check(chemin_element)
+                    Check(chemin_element)
                 elif os.path.isfile(chemin_element):
                     try:
                         with open(chemin_element, 'r', encoding='utf-8') as file:
@@ -95,7 +96,7 @@ try:
                         print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Error reading file \"{white}{element}{red}\": {white}{e}")
             return results_found
 
-        results_found = check(folder_database)
+        results_found = Check(folder_database)
         if not results_found:
             print(f"{BEFORE + current_time_hour() + AFTER} {INFO} No result found for \"{white}{search}{red}\".")
 

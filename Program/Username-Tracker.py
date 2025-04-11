@@ -21,141 +21,592 @@ except Exception as e:
 Title("Username Tracker")
 
 try:
-    sites = {
-        "Roblox Trade": "https://rblx.trade/p/{}",
-        "TikTok": "https://www.tiktok.com/@{}",
-        "Instagram": "https://www.instagram.com/{}",
-        "Paypal": "https://www.paypal.com/paypalme/{}",
-        "GitHub": "https://github.com/{}",
-        "Giters": "https://giters.com/{}",
-        "Pinterest": "https://www.pinterest.com/{}",
-        "Snapchat": "https://www.snapchat.com/add/{}",
-        "Telegram": "https://t.me/{}",
-        "Steam": "https://steamcommunity.com/id/{}",
-        "Blogger": "https://{}.blogspot.com",
-        "Tumblr": "https://{}.tumblr.com",
-        "SoundCloud": "https://soundcloud.com/{}",
-        "DeviantArt": "https://www.deviantart.com/{}",
-        "About.me": "https://about.me/{}",
-        "Flickr": "https://www.flickr.com/people/{}",
-        "Keybase": "https://keybase.io/{}",
-        "Last.fm": "https://www.last.fm/user/{}",
-        "Behance": "https://www.behance.net/{}",
-        "Quora": "https://www.quora.com/profile/{}",
-        "Patreon": "https://www.patreon.com/{}",
-        "Myspace": "https://myspace.com/{}",
-        "Kaggle": "https://www.kaggle.com/{}",
-        "Periscope": "https://www.pscp.tv/{}",
-        "Disqus": "https://disqus.com/by/{}",
-        "Mastodon": "https://mastodon.social/@{}",
-        "GitLab": "https://gitlab.com/{}",
-        "Giphy": "https://giphy.com/{}",
-        "LiveJournal": "https://{}.livejournal.com",
-        "CodeWars": "https://www.codewars.com/users/{}",
-        "Gumroad": "https://gumroad.com/{}",
-        "Spotify": "https://open.spotify.com/user/{}",
-        "Weebly": "https://{}.weebly.com",
-        "YouTube": "https://www.youtube.com/{}",
-        "ProductHunt": "https://www.producthunt.com/@{}",
-        "Mix": "https://mix.com/{}",
-        "Facebook": "https://www.facebook.com/{}",
-        "Strava": "https://www.strava.com/athletes/{}",
-
-        "Internet Archive": "https://archive.org/search?query={}",
-        "Twitter Archive": "https://web.archive.org/web/*/https://twitter.com/{}/status/*",
-        "Linktree": "https://linktr.ee/{}",
-        "Xbox": "https://www.xboxgamertag.com/search/{}",
-        "Twitter": "https://twitter.com/{}",
-        "Vimeo": "https://vimeo.com/{}",
-        "Twitch": "https://www.twitch.tv/{}",
-        "Goodreads": "https://www.goodreads.com/{}",
-        "VK": "https://vk.com/{}",
-        "TripAdvisor": "https://www.tripadvisor.com/members/{}",
-        "Dribbble": "https://dribbble.com/{}",
-        "AngelList": "https://angel.co/{}",
-        "500px": "https://500px.com/{}",
-        "LinkedIn": "https://www.linkedin.com/in/{}",
-        "WhatsApp": "https://wa.me/{}",
-        "Discord": "https://discord.com/users/{}",
-        "Weibo": "https://weibo.com/{}",
-        "OKCupid": "https://www.okcupid.com/profile/{}",
-        "Meetup": "https://www.meetup.com/members/{}",
-        "CodePen": "https://codepen.io/{}",
-        "StackOverflow": "https://stackoverflow.com/users/{}",
-        "HackerRank": "https://www.hackerrank.com/{}",
-        "Xing": "https://www.xing.com/profile/{}",
-        "Deezer": "https://www.deezer.com/en/user/{}",
-        "Snapfish": "https://www.snapfish.com/{}",
-        "Tidal": "https://tidal.com/{}",
-        "Dailymotion": "https://www.dailymotion.com/{}",
-        "Ravelry": "https://www.ravelry.com/people/{}",
-        "ReverbNation": "https://www.reverbnation.com/{}",
-        "Vine": "https://vine.co/u/{}",
-        "Foursquare": "https://foursquare.com/user/{}",  
-        "Ello": "https://ello.co/{}",
-        "Hootsuite": "https://hootsuite.com/{}",
-        "Prezi": "https://prezi.com/{}",
-        "Groupon": "https://www.groupon.com/profile/{}",
-        "Liveleak": "https://www.liveleak.com/c/{}",
-        "Joomla": "https://www.joomla.org/user/{}",
-        "StackExchange": "https://stackexchange.com/users/{}",
-        "Taringa": "https://www.taringa.net/{}",
-        "Shopify": "https://{}.myshopify.com",
-        "8tracks": "https://8tracks.com/{}",
-        "Couchsurfing": "https://www.couchsurfing.com/people/{}",
-        "OpenSea": "https://opensea.io/{}",
-        "Trello": "https://trello.com/{}",
-        "Fiverr": "https://www.fiverr.com/{}",
-        "Badoo": "https://badoo.com/profile/{}",
-        "Rumble": "https://rumble.com/user/{}",
-        "Wix": "https://www.wix.com/website/{}",
-        "Twitch": "https://www.twitch.tv/{}",
-        "ReverbNation": "https://www.reverbnation.com/{}",
-        "Gumroad": "https://gumroad.com/{}",
-        "Dailymotion": "https://www.dailymotion.com/{}",
-        "Vimeo": "https://vimeo.com/{}",
-        "TripAdvisor": "https://www.tripadvisor.com/members/{}",
-        "Snapfish": "https://www.snapfish.com/{}",
-        "DeviantArt": "https://www.deviantart.com/{}",
-        "VK": "https://vk.com/{}",
-    }
-
-    def SiteException(username, site, page_content):
-        if site == "Paypal":
-            page_content = page_content.replace(f'slug_name={username}', '').replace(f'"slug":"{username}"', '').replace(f'2F{username}&amp', '')
-        elif site == "TikTok":
-            page_content = page_content.replace(f'\\u002f@{username}"', '')
-        return page_content
-
+    user_agent = ChoiceUserAgent()
+    headers = {"User-Agent": user_agent}
     number_site = 0
     number_found = 0
     sites_and_urls_found = []
 
     Slow(osint_banner)
-    username = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Username -> {reset}")
+    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Selected User-Agent: {white + user_agent}")
+    username = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Username -> {reset}").lower()
     Censored(username)
 
-    username = username.lower()
+    sites = {
+        "Steam": {
+            "url": f"https://steamcommunity.com/id/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Telegram": {
+            "url": f"https://t.me/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": [f"if you have telegram, you can contact @{username} right away.", f"resolve?domain={username}", f"telegram: contact @{username}"]
+        },
+        "TikTok": {
+            "url": f"https://www.tiktok.com/@{username}",
+            "method": "get",
+            "verification": "username",
+            "except": [f"\\u002f@{username}\""]
+        },
+        "Instagram": {
+            "url": f"https://www.instagram.com/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Paypal": {
+            "url": f"https://www.paypal.com/paypalme/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": [f"slug_name={username}", f"\"slug\":\"{username}\"", f"2F{username}&amp"]
+        },
+        "GitHub": {
+            "url": f"https://github.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Giters": {
+            "url": f"https://giters.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Pinterest": {
+            "url": f"https://www.pinterest.com/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": [f"[\\\"username\\\",\\\"{username}\\\"]"]
+        },
+        "Snapchat": {
+            "url": f"https://www.snapchat.com/add/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Blogger": {
+            "url": f"https://{username}.blogspot.com",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Tumblr": {
+            "url": f"https://{username}.tumblr.com",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "SoundCloud": {
+            "url": f"https://soundcloud.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "DeviantArt": {
+            "url": f"https://www.deviantart.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "About.me": {
+            "url": f"https://about.me/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Flickr": {
+            "url": f"https://www.flickr.com/people/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Keybase": {
+            "url": f"https://keybase.io/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Last.fm": {
+            "url": f"https://www.last.fm/user/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Behance": {
+            "url": f"https://www.behance.net/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Quora": {
+            "url": f"https://www.quora.com/profile/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Patreon": {
+            "url": f"https://www.patreon.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Myspace": {
+            "url": f"https://myspace.com/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Kaggle": {
+            "url": f"https://www.kaggle.com/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Periscope": {
+            "url": f"https://www.pscp.tv/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Disqus": {
+            "url": f"https://disqus.com/by/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Mastodon": {
+            "url": f"https://mastodon.social/@{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "GitLab": {
+            "url": f"https://gitlab.com/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "LiveJournal": {
+            "url": f"https://{username}.livejournal.com",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "CodeWars": {
+            "url": f"https://www.codewars.com/users/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Gumroad": {
+            "url": f"https://gumroad.com/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Spotify": {
+            "url": f"https://open.spotify.com/user/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Weebly": {
+            "url": f"https://{username}.weebly.com",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "YouTube": {
+            "url": f"https://www.youtube.com/@{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "ProductHunt": {
+            "url": f"https://www.producthunt.com/@{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Mix": {
+            "url": f"https://mix.com/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Facebook": {
+            "url": f"https://www.facebook.com/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Strava": {
+            "url": f"https://www.strava.com/athletes/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Internet Archive": {
+            "url": f"https://archive.org/search?query={username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Twitter Archive": {
+            "url": f"https://web.archive.org/web/*/https://twitter.com/{username}/status/*",
+            "method": "get",
+            "verification": "status",
+            "except": ["No URL has been captured for this URL prefix."]
+        },
+        "Linktree": {
+            "url": f"https://linktr.ee/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Xbox": {
+            "url": f"https://www.xboxgamertag.com/search/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Twitter": {
+            "url": f"https://twitter.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Vimeo": {
+            "url": f"https://vimeo.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Twitch": {
+            "url": f"https://www.twitch.tv/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Goodreads": {
+            "url": f"https://www.goodreads.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "VK": {
+            "url": f"https://vk.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "TripAdvisor": {
+            "url": f"https://www.tripadvisor.com/members/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Dribbble": {
+            "url": f"https://dribbble.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "AngelList": {
+            "url": f"https://angel.co/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "500px": {
+            "url": f"https://500px.com/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "LinkedIn": {
+            "url": f"https://www.linkedin.com/in/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "WhatsApp": {
+            "url": f"https://wa.me/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Weibo": {
+            "url": f"https://weibo.com/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "OKCupid": {
+            "url": f"https://www.okcupid.com/profile/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Meetup": {
+            "url": f"https://www.meetup.com/members/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "CodePen": {
+            "url": f"https://codepen.io/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "StackOverflow": {
+            "url": f"https://stackoverflow.com/users/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "HackerRank": {
+            "url": f"https://www.hackerrank.com/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Xing": {
+            "url": f"https://www.xing.com/profile/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Deezer": {
+            "url": f"https://www.deezer.com/en/user/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Snapfish": {
+            "url": f"https://www.snapfish.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Tidal": {
+            "url": f"https://tidal.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Ravelry": {
+            "url": f"https://www.ravelry.com/people/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "ReverbNation": {
+            "url": f"https://www.reverbnation.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Vine": {
+            "url": f"https://vine.co/u/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Foursquare": {
+            "url": f"https://foursquare.com/user/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Ello": {
+            "url": f"https://ello.co/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Hootsuite": {
+            "url": f"https://hootsuite.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Prezi": {
+            "url": f"https://prezi.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Groupon": {
+            "url": f"https://www.groupon.com/profile/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Liveleak": {
+            "url": f"https://www.liveleak.com/c/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Joomla": {
+            "url": f"https://www.joomla.org/user/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "StackExchange": {
+            "url": f"https://stackexchange.com/users/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Taringa": {
+            "url": f"https://www.taringa.net/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Shopify": {
+            "url": f"https://{username}.myshopify.com",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "8tracks": {
+            "url": f"https://8tracks.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Couchsurfing": {
+            "url": f"https://www.couchsurfing.com/people/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "OpenSea": {
+            "url": f"https://opensea.io/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Trello": {
+            "url": f"https://trello.com/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Fiverr": {
+            "url": f"https://www.fiverr.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Badoo": {
+            "url": f"https://badoo.com/profile/{username}",
+            "method": "get",
+            "verification": "username",
+            "except": None
+        },
+        "Rumble": {
+            "url": f"https://rumble.com/user/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Wix": {
+            "url": f"https://www.wix.com/website/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "ReverbNation": {
+            "url": f"https://www.reverbnation.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Gumroad": {
+            "url": f"https://gumroad.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Vimeo": {
+            "url": f"https://vimeo.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "TripAdvisor": {
+            "url": f"https://www.tripadvisor.com/members/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "Snapfish": {
+            "url": f"https://www.snapfish.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "DeviantArt": {
+            "url": f"https://www.deviantart.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        },
+        "VK": {
+            "url": f"https://vk.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None
+        }
+    }
 
     print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Scanning..")
 
     session = requests.Session()
 
-    for site, url_template in sites.items():
+    for site, data in sites.items():
         try:
             number_site += 1
-            url = url_template.format(username)
+            url = data["url"]
+            method = data["method"]
+            verification = data["verification"]
+            page_except = data["except"]
+
             try:
-                response = session.get(url, timeout=3)
+                found = False
+                if method == "get":
+                    response = session.get(url, timeout=5, headers=headers)
+
                 if response.status_code == 200:
                     page_content = re.sub(r'<[^>]*>', '', response.text.lower().replace(url, "").replace(f"/{username}", ""))
-                    page_content = SiteException(username, site, page_content)
-
                     soup = BeautifulSoup(response.text, 'html.parser')
                     page_text = soup.get_text().lower().replace(url, "")
-                    page_title = soup.title.string.lower() if soup.title else ""
+                    page_title = soup.title.string.lower() if soup.title and soup.title.string else ""
 
-                    found = username in page_title or username in page_content or username in page_text
+                    if "status" in verification:
+                        found = True
+                        if page_except:
+                            for page_content_except in page_except:
+                                if page_content_except.lower() in page_content or page_content_except.lower() in page_text or page_content_except.lower() in page_title:
+                                    found = False
+
+                    elif "username" in verification:
+                        if page_except:
+                            for page_content_except in page_except:
+                                page_content = page_content.replace(page_content_except.lower(), '')
+                                page_text = page_text.replace(page_content_except.lower(), '')
+                                page_title = page_title.replace(page_content_except.lower(), '')
+                        found = username in page_title or username in page_content or username in page_text
+
 
                     if found:
                         number_found += 1
@@ -164,18 +615,19 @@ try:
                     else:
                         print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} {site}:{white} Not Found")
 
-                else: 
+                else:
                     print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} {site}:{white} Not Found")
 
             except Exception as e:
-                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {site}: {white + e}")
+                print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} {site}: {white}Error: {e}")
         except:
             pass
-
-    print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Total Found:{reset}")
-    for site_and_url_found in sites_and_urls_found:
-        time.sleep(0.5)
-        print(f"{BEFORE + current_time_hour() + AFTER} {ADD} {site_and_url_found}")
+    
+    if number_found > 0:
+        print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Total Found:{reset}")
+        for site_and_url_found in sites_and_urls_found:
+            time.sleep(0.5)
+            print(f"{BEFORE + current_time_hour() + AFTER} {ADD} {site_and_url_found}")
 
     print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Total Website: {white}{number_site}{red} Total Found: {white}{number_found}{red}")
     Continue()

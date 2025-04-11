@@ -22,6 +22,9 @@ Title("Website Url Scanner")
 
 try:
     all_links = []
+    
+    user_agent = ChoiceUserAgent()
+    headers = {"User-Agent": user_agent}
 
     def IsValidExtension(url):
         return re.search(r'\.(html|xhtml|php|js|css)$', url) or not re.search(r'\.\w+$', url)
@@ -52,7 +55,7 @@ try:
 
     def FindSecretUrls(website_url, domain):
         global all_links
-        response = requests.get(website_url)
+        response = requests.get(website_url, headers=headers)
         if response.status_code != 200:
             return
         soup = BeautifulSoup(response.content, 'html.parser')
@@ -71,13 +74,14 @@ try:
                 break
             for link in new_links:
                 try:
-                    if requests.get(link).status_code == 200:
+                    if requests.get(link, headers=headers).status_code == 200:
                         FindSecretUrls(link, domain)
                         visited_links.add(link)
                 except:
                     pass
 
     Slow(scan_banner)
+    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Selected User-Agent: {white + user_agent}")
     website_url = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Website Url -> {reset}")
     Censored(website_url)
     if "https://" not in website_url and "http://" not in website_url:

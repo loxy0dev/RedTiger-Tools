@@ -29,6 +29,9 @@ except Exception as e:
 Title("Website Scanner")
 
 try:
+    user_agent = ChoiceUserAgent()
+    headers = {"User-Agent": user_agent}
+
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     
     def WebsiteFoundUrl(url):
@@ -64,14 +67,14 @@ try:
 
     def WebsiteStatus(website_url):
         try:
-            status_code = requests.get(website_url, timeout=5).status_code
+            status_code = requests.get(website_url, timeout=5, headers=headers).status_code
         except RequestException:
             status_code = 404
         print(f"{BEFORE + current_time_hour() + AFTER} {ADD} Status Code: {white}{status_code}{red}")
 
     def IpInfo(ip):
         try:
-            api = requests.get(f"https://ipinfo.io/{ip}/json").json()
+            api = requests.get(f"https://ipinfo.io/{ip}/json", headers=headers).json()
         except RequestException:
             api = {}
         for key in ['country', 'hostname', 'isp', 'org', 'asn']:
@@ -137,7 +140,7 @@ try:
 
     def AnalyzeCookies(website_url):
         try:
-            cookies = requests.get(website_url, timeout=5).cookies
+            cookies = requests.get(website_url, timeout=5, headers=headers).cookies
             for cookie in cookies:
                 secure = 'Secure' if cookie.secure else 'Not Secure'
                 httponly = 'HttpOnly' if cookie.has_nonstandard_attr('HttpOnly') else 'Not HttpOnly'
@@ -147,7 +150,7 @@ try:
 
     def DetectTechnologies(website_url):
         try:
-            response = requests.get(website_url, timeout=5)
+            response = requests.get(website_url, timeout=5, headers=headers)
             headers = response.headers
             soup = BeautifulSoup(response.content, 'html.parser')
             techs = []
@@ -166,6 +169,7 @@ try:
             pass
 
     Slow(scan_banner)
+    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Selected User-Agent: {white + user_agent}")
     url = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Website URL -> {reset}")
     Censored(url)
     print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Scanning..{reset}")

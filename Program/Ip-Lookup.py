@@ -20,6 +20,7 @@ Title("Ip Lookup")
 try:
     Slow(map_banner)
     ip = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Ip -> {reset}")
+    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Search for information..")
 
     try:
         response = requests.get(f"https://{website}/api/ip/ip={ip}")
@@ -59,17 +60,17 @@ try:
         as_host = api.get('as', "None")
 
     Slow(f"""    
-    {INFO_ADD} Status     : {white}{status}{red}
-    {INFO_ADD} Country    : {white}{country} ({country_code}){red}
-    {INFO_ADD} Region     : {white}{region} ({region_code}){red}
-    {INFO_ADD} Zip        : {white}{zip}{red}
-    {INFO_ADD} City       : {white}{city}{red}
-    {INFO_ADD} Latitude   : {white}{latitude}{red}
-    {INFO_ADD} Longitude  : {white}{longitude}{red}
-    {INFO_ADD} Timezone   : {white}{timezone}{red}
-    {INFO_ADD} Isp        : {white}{isp}{red}
-    {INFO_ADD} Org        : {white}{org}{red}
-    {INFO_ADD} As         : {white}{as_host}{red}{reset}
+    {INFO_ADD} Status    : {white}{status}{red}
+    {INFO_ADD} Country   : {white}{country} ({country_code}){red}
+    {INFO_ADD} Region    : {white}{region} ({region_code}){red}
+    {INFO_ADD} Zip       : {white}{zip}{red}
+    {INFO_ADD} City      : {white}{city}{red}
+    {INFO_ADD} Latitude  : {white}{latitude}{red}
+    {INFO_ADD} Longitude : {white}{longitude}{red}
+    {INFO_ADD} Timezone  : {white}{timezone}{red}
+    {INFO_ADD} Isp       : {white}{isp}{red}
+    {INFO_ADD} Org       : {white}{org}{red}
+    {INFO_ADD} As        : {white}{as_host}{red}{reset}
     """)
 
     Continue()

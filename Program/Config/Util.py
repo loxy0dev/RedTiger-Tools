@@ -19,13 +19,14 @@ try:
     import datetime
     import sys
     import requests
+    import random
 except Exception as e:
     print(f'Modules of the python library required for RedTiger are not installed, make sure you have correctly installed python and have launched the "Setup.py" file which will install all the necessary modules.')
     input(f'Error: {e}')
 
 color_webhook = 0xa80505
 username_webhook = name_tool
-avatar_webhook = 'https://cdn.discordapp.com/attachments/1268900329605300234/1276010081665683497/RedTiger-Logo.png?ex=66cf38be&is=66cde73e&hm=696c53b4791044ca0495d87f92e6d603e8383315d2ebdd385aaccfc6dbf6aa77&'
+avatar_webhook = 'https://cdn.discordapp.com/attachments/1337898355279401023/1341890893858213908/RedTiger-Logo.png?ex=67b7a4c8&is=67b65348&hm=174ddbd80dd8570fa83779687def6eda441a7c12abd3765d970c1958ceeb1ec8&'
 
 color = colorama.Fore
 red = color.RED
@@ -276,6 +277,21 @@ def MainColor2(text):
             result.append('\n')
     
     return ''.join(result)
+
+def ChoiceUserAgent():
+    file_user_agent = os.path.join(tool_path, "2-Input", "Headers", "UserAgent.txt")
+
+    with open(file_user_agent, "r", encoding="utf-8") as file:
+        lines = file.readlines()
+
+    if lines:
+        user_agent = random.choice(lines).strip()
+    else:
+        user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.120 Safari/537.36"
+    
+    return user_agent
+
+
 
 def CheckWebhook(webhook):
     try:
@@ -542,7 +558,8 @@ osint_banner = MainColor2(r"""
                                                                       ..=@@@@@=.                    
                                                                          .=%@@@@=.                  
                                                                           ..-%@@@-.                 
-                                                                             ....""")
+                                                                             ....
+""")
 
 wifi_banner = MainColor2(r"""
                                                  @@@@@@@@@@@@@@@@@@@                                 

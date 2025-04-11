@@ -24,8 +24,12 @@ except Exception as e:
 Title("Phishing Attack")
 
 try:
+    user_agent = ChoiceUserAgent()
+    headers = {"User-Agent": user_agent}
+
     Slow(phishing_banner)
-    website_url = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Website Url -> {reset}")
+    print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Selected User-Agent: {white + user_agent}")
+    website_url = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Website Url -> {reset}")
     Censored(website_url)
     if "https://" not in website_url and "http://" not in website_url:
         website_url = "https://" + website_url
@@ -77,7 +81,7 @@ try:
 
     print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Html recovery..")
     session = requests.Session()
-    response = session.get(website_url, timeout=5)
+    response = session.get(website_url, headers=headers, timeout=5)
     if response.status_code == 200:
         html_content = response.text
         soup = BeautifulSoup(html_content, 'html.parser')
