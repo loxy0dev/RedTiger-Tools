@@ -261,6 +261,7 @@ def Update():
          input(f"{BEFORE + current_time_hour() + AFTER} {INFO} Please install the new version of the tool: {white + version_tool + red} -> {white + new_version} ")
          popup_version = f"{red}New Version: {white + version_tool + red} -> {white + new_version}"
          colorama.deinit()
+         Clear()
    except: pass
 
    return popup_version
