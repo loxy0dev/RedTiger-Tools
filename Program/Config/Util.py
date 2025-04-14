@@ -49,7 +49,7 @@ try:
 except:
     os_name = "None"
 
-tool_path = os.path.dirname(os.path.abspath(__file__)).split("Program\\")[0].strip()
+tool_path = os.path.dirname(os.path.abspath(__file__)).split("Program\\")[0].split("Program/")[0].strip()
 
 def current_time_day_hour():
     return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
