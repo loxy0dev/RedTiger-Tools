@@ -14,8 +14,6 @@ try:
     import requests
     import json
     import random
-    import threading
-
 except Exception as e:
    ErrorModule(e)
    

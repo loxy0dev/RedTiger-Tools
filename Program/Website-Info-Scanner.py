@@ -18,11 +18,7 @@ try:
     import ssl
     import urllib3
     from requests.exceptions import RequestException
-    import time
-    import re
-    import dns.resolver
     from bs4 import BeautifulSoup
-    import whois
 except Exception as e:
     ErrorModule(e)
 

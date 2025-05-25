@@ -10,7 +10,7 @@
 
 name_tool       =  "RedTiger"
 type_tool       =  "Multi-Tools"
-version_tool    =  "6.4"
+version_tool    =  "6.5"
 coding_tool     =  "Python 3"
 language_tool   =  "EN"
 creator         =  "loxy0dev"

@@ -10,10 +10,6 @@
 
 from Config.Util import *
 from Config.Config import *
-try:
-    import webbrowser
-except Exception as e:
-   ErrorModule(e)
    
 Title("Dark Web Links")
 

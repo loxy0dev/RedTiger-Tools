@@ -215,6 +215,8 @@ menu1 = f""" ┌─ {option_info_txt}                                           
                                          ├─ {option_17_txt                    }└─ {option_27_txt}
                                          ├─ {option_18_txt                    }
                                          └─ {option_19_txt                    }
+
+
 """
 
 menu2 = f""" ┌─ {option_info_txt}                                                                                                {option_next_txt} ─┐
@@ -223,15 +225,14 @@ menu2 = f""" ┌─ {option_info_txt}                                           
    │          └───────────────┘          │              └──────┘               │              └────────┘
    └─ {option_31_txt                    }├─ {option_32_txt                    }├─ {option_41_txt}
            ├─ Stealer                    ├─ {option_33_txt                    }├─ {option_42_txt}
-           │  ├─ System Info             ├─ {option_34_txt                    }├─ {option_43_txt}
-           │  ├─ Discord Token/Injection └─ {option_35_txt                    }└─ {option_44_txt}
-           │  ├─ Browser Steal           
-           │  ├─ Roblox Cookie                                     
-           │  └─ Other                            
-           └─ Malware                    
-              ├─ Anti VM & Debug                                             
-              ├─ Startup                                                    
-              └─ Other                          
+           ├─ Grabber                    ├─ {option_34_txt                    }├─ {option_43_txt}
+           └─ Malware                    └─ {option_35_txt                    }└─ {option_44_txt}                                    
+
+
+
+
+
+
 """
 
 menu3 = f""" ┌─ {option_info_txt}                                                                                                {option_back_txt} ─┐
@@ -308,24 +309,24 @@ while True:
  └─{white}$ {reset}"""))
 
       if choice in ['N', 'n', 'NEXT', 'Next', 'next']:
-            menu_number = {"1": "2", "2": "3", "3": "1"}.get(menu_number, "1")
-            with open(menu_path, "w") as file:
-               file.write(menu_number)
-            continue
+         menu_number = {"1": "2", "2": "3", "3": "1"}.get(menu_number, "1")
+         with open(menu_path, "w") as file:
+            file.write(menu_number)
+         continue
 
       elif choice in ['B', 'b', 'BACK', 'Back', 'back']:
-            menu_number = {"2": "1", "3": "2"}.get(menu_number, "1")
-            with open(menu_path, "w") as file:
-               file.write(menu_number)
-            continue
+         menu_number = {"2": "1", "3": "2"}.get(menu_number, "1")
+         with open(menu_path, "w") as file:
+            file.write(menu_number)
+         continue
 
       elif choice in ['I', 'i', 'INFO', 'Info', 'info']:
-            StartProgram(f"{option_info}.py")
-            continue
+         StartProgram(f"{option_info}.py")
+         continue
 
       elif choice in ['S', 's', 'SITE', 'Site', 'site']:
-            StartProgram(f"{option_site}.py")
-            continue
+         StartProgram(f"{option_site}.py")
+         continue
       
       elif choice == '31':
          if os_name == "Linux":
