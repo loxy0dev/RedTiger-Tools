@@ -80,13 +80,22 @@
 │
 ├── ☠️ - Virus Builder
 │   ├── Stealer
-│   │   ├── System Info: User, System, Ip, Disk, Screen, Location, etc.
-│   │   ├── Discord Token: Token, Email, Phone, Id, Username, etc.
-│   │   ├── Discord Injection: Email/Password Changed, Login, Card/Paypal Added, Nitro Bought, etc.
-│   │   ├── Browser Steal: Passwords, History, Cookies, Downloads, Cards, etc.
-│   │   ├── Roblox Cookie: Cookie, Id, Username, etc.
-│   │   ├── Camera Capture: Record the victim's computer camera.
-│   │   └── Screenshot: Capture the victim's computer screen.
+│   │   ├── System Info            : User, System, Ip, Disk, Screen, Location, And more..
+│   │   ├── Wallet Session Files   : Electrum, Exodus, Binance, Crypto.com, Trust Wallet, Atomic Wallet, Coinbase Wallet, Guarda, Bytecoin, Armory, Jaxx Liberty, Coinomi, AtomicDEX, Wasabi Wallet, Ledger Live, Trezor Suite, Blockchain Wallet, Mycelium, BRD, Zerion
+│   │   ├── Games Session Files    : Steam, Riot Games, Epic Games, Rockstar Games
+│   │   ├── Apps Session Files     : Telegram
+│   │   ├── Roblox Accounts        : Cookie, Id, Username, And more..
+│   │   ├── Discord Accounts       : Token, Email, Phone, Id, Username, Billing, And more..
+│   │   ├── Discord Injection      : Email/Password Changed, Login, Card/Paypal Added, Nitro Bought, And more..
+│   │   ├── Passwords              : Url, Email, Password
+│   │   ├── Cookies                : Url, Cookie, Expire
+│   │   ├── Browsing History       : Url, Title, Time
+│   │   ├── Download History       : Url, Path
+│   │   ├── Cards                  : Name, Expiration Month, Expiration Year, Card Number, Date Modified
+│   │   ├── Extentions             : Metamask, Binance, Coinbase, ExodusWeb3, Phantom, Trust, Ronin, Venom, Sui, Martian, Tron, Petra, Pontem, Fewcha, Math, Coin98, Authenticator, Core, Tokenpocket, Safepal, Solfare, Kaikas, iWallet, Yoroi, Guarda, Jaxx Liberty, Wombat, Oxygen, MEWCX, Guild, Saturn, TerraStation, HarmonyOutdated, Ever, KardiaChain, PaliWallet, BoltX, Liquality, XDEFI, Nami, MaiarDEFI, TempleTezos, XMR.PT, And more..
+│   │   ├── Interesting Files      : Download the files that are interesting.
+│   │   ├── Camera Capture         : Record the victim's computer camera.
+│   │   └── Screenshot             : Capture the victim's computer screen.
 │   │
 │   └── Malware
 │       ├── Block Key
@@ -165,14 +174,14 @@
 
 <h1 align="center">Installation</h1>
 
-<a href="https://github.com/loxy0dev/RedTiger-Tools/archive/refs/tags/v6.4.zip">Dowloads "RedTiger-Tools.zip" Here</a>
+<a href="https://github.com/loxy0dev/RedTiger-Tools/archive/refs/tags/v6.5.zip">Dowloads "RedTiger-Tools.zip" Here</a>
 
 <p>
   
 ```
 1 - Download the .zip folder.
 2 - Unzip the folder.
-3 - Launch "Setup.bat" or "Setup.py".
+3 - Launch "Setup.py".
 ```
 Or
 ```
@@ -202,11 +211,11 @@ Or
   
   <strong>Bitcoin Adress:</strong>
   ``` 
-bc1qwdvhtdyqjfk8lwqkcj5pn44n5f758r2pprn8de
+bc1q94263paqr9umagpqqafk6kc6wvr3ug2dpw5t7x
   ```
   <strong>Litecoin Adress:</strong>
   ```
-Ld9H6pvsWMS9UtjFh2xwdGH9sePtum81NN
+LWyHjLVM4YCqwyVFSXJfidYbGuakn5C8rV
   ```
 
 </p>
