@@ -26,6 +26,18 @@
   <br><br>
 </p>
 
+<h1 align="center">Disclaimer</h1>
+
+<p>
+  
+  - RedTiger Tools has been developed solely for educational purposes.<br>
+  - This project has been created with good intentions and is intended for personal use only.<br>
+  - By choosing to use RedTiger, you acknowledge and accept full responsibility for any consequences that may result from your actions.<br>
+  - All scripts in the "<a href="https://github.com/loxy0dev/RedTiger-Tools/tree/main/Program/FileDetectedByAntivirus">Program/FileDetectedByAntivirus</a>" folder are <strong>detected by the antivirus</strong> but pose no threat to you. These are <strong>not backdoors or malware</strong>.
+<br><br>
+</p>
+
+
 <h1 align="center">Tools</h1>
 
 <p align="center">
@@ -59,8 +71,8 @@
 │   └── Ip Pinger
 │
 ├── 🔎 - Osint
-│   ├── Dox Create
-│   ├── Dox Tracker
+│   ├── D0x Create
+│   ├── D0x Tracker
 │   ├── Get Image Exif
 │   ├── Google Dorking
 │   ├── Username Tracker
@@ -191,17 +203,6 @@ Or
 4 - Write "git pull"
 5 - Write "python Setup.py"
 ```
-<br><br>
-</p>
-
-<h1 align="center">Disclaimer</h1>
-
-<p>
-  
-  - RedTiger Tools has been developed solely for educational purposes.<br>
-  - This project has been created with good intentions and is intended for personal use only.<br>
-  - By choosing to use RedTiger, you acknowledge and accept full responsibility for any consequences that may result from your actions.<br>
-  - All scripts in the "<a href="https://github.com/loxy0dev/RedTiger-Tools/tree/main/Program/FileDetectedByAntivirus">Program/FileDetectedByAntivirus</a>" folder are <strong>detected by the antivirus</strong> but pose no threat to you. These are <strong>not backdoors or malware</strong>.
 <br><br>
 </p>
 
