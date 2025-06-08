@@ -10,6 +10,7 @@
 
 
 try:
+    import runpy
     import sys
     import os
 
@@ -23,14 +24,23 @@ try:
     if sys.platform.startswith("win"):
         os.system("cls")
         print("Installing the python modules required for the RedTiger Tool:\n")
-        os.system("python -m pip install --upgrade pip")
-        os.system("python -m pip install -r requirements.txt")
+        os.system("python3 -m pip install --upgrade pip")
+        os.system("python3 -m pip install -r requirements.txt")
+        os.system("python3 -m pip install pywin32") # because there is no pywin32 version for linux
         OpenTelegram()
-        os.system("python RedTiger.py")
+        os.system("python3 RedTiger.py")
 
     elif sys.platform.startswith("linux"):
         os.system("clear")
-        print("Installing the python modules required for the RedTiger Tool:\n")
+        if not os.path.exists(".venv"):
+            print("INFO:  Creating a virtual environment (.venv) for the RedTiger Tool:\n")
+            os.system("python3 -m venv .venv")
+        else:
+            print("info:  A virtual environment (.venv) already exists, skipping creation.\n")
+        
+        runpy.run_path(os.path.dirname(__file__)+"/activate_venv_linux.py")
+        
+        print("INFO:  Installing the python modules required for the RedTiger Tool:\n")
         os.system("pip3 install --upgrade pip")
         os.system("pip3 install -r requirements.txt")
         OpenTelegram()
