@@ -11,9 +11,7 @@
   <img src="https://img.shields.io/github/stars/fluzyteck/RedTiger-tools?style=flat&label=Stars&color=a80505">
   <img src="https://img.shields.io/github/repo-size/fluzyteck/RedTiger-Tools?label=Size&color=a80505">
   <img src="https://img.shields.io/github/languages/top/fluzyteck/RedTiger-Tools?color=a80505">
-</p>
-
-<p>
+</p><p>
   
   - Developed in <strong>Python</strong>, by <a href="https://redtiger.shop/loxy0dev">Loxy0dev</a><br>
   - Tool in <strong>English</strong>.<br>
@@ -25,6 +23,17 @@
   - The tools include: <strong>Scanning, Osint, Utilities, Builder, Roblox, Discord</strong>, And more..
   <br><br>
 </p>
+
+
+<h1 align="center">table of content:</h1>
+
+- <a href="#disclaimer">Disclaimer</a>
+- <a href="#tools">Tools</a>
+- <a href="#features">Features</a>
+- <a href="#requirements">Requirements</a>
+- <a href="#installation">Installation</a>
+- <a href="#donation">Donation</a>
+<br><br>
 
 <h1 align="center">Disclaimer</h1>
 
@@ -190,19 +199,25 @@
 
 <p>
   
+
+1. Download the .zip folder or clone the repo via GUI or terminal:
 ```
-1 - Download the .zip folder.
-2 - Unzip the folder.
-3 - Launch "Setup.py".
+git clone https://github.com/loxy0dev/RedTiger-Tools.git
 ```
-Or
+2. go into the RedTiger directory:
 ```
-1 - Open a terminal.
-2 - Write "git clone https://github.com/loxy0dev/RedTiger-Tools.git"
-3 - Write "cd RedTiger-Tools"
-4 - Write "git pull"
-5 - Write "python Setup.py"
+cd RedTiger-Tools
 ```
+3. run "Setup.py":
+```
+python3 Setup.py
+# for updating RedTiger:
+#     git pull
+#     python3 Setup.py
+```
+
+The Setup.py will install everything and launch `RedTiger.py`
+* Under linux the script will create a venv and install every dependency there.
 <br><br>
 </p>
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # Copyright (c) RedTiger (https://redtiger.shop)
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
