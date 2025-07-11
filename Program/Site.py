@@ -1,4 +1,4 @@
-# Copyright (c) RedTiger (https://redtiger.shop)
+# Copyright (c) RedTiger
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 # EN: 
@@ -18,7 +18,7 @@ except Exception as e:
 Title("Site")
 
 print(f"""
- {BEFORE}01{AFTER}{white} Website
+ {BEFORE}01{AFTER}{white} GunsLol
  {BEFORE}02{AFTER}{white} Github
  {BEFORE}03{AFTER}{white} Telegram
 """)
@@ -26,7 +26,7 @@ print(f"""
 try:
     choice = input(f"{BEFORE + current_time_hour() + AFTER} {INPUT} Site -> {reset}")
     if choice in ['1', '01']:
-        site = f"https://{website}"
+        site = f"https://{gunslol}"
         webbrowser.open_new_tab(site)
         print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Access to the site \"{white}{site}{red}\"" + reset)
         Continue()

@@ -1,4 +1,4 @@
-# Copyright (c) RedTiger (https://redtiger.shop)
+# Copyright (c) RedTiger 
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 # EN: 
@@ -53,17 +53,19 @@ try:
         try: formatted_number = phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.NATIONAL)
         except: formatted_number = "None"
             
-        print(f"""
-    {INFO_ADD} Phone        : {white}{phone_number}{red}
-    {INFO_ADD} Formatted    : {white}{formatted_number}{red}
-    {INFO_ADD} Status       : {white}{status}{red}
-    {INFO_ADD} Country Code : {white}{country_code}{red}
-    {INFO_ADD} Country      : {white}{country}{red}
-    {INFO_ADD} Region       : {white}{region}{red}
-    {INFO_ADD} Timezone     : {white}{timezone_info}{red}
-    {INFO_ADD} Operator     : {white}{operator}{red}
-    {INFO_ADD} Type Number  : {white}{type_number}{red}
-    """)
+        Slow(f"""
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ {INFO_ADD} Phone        : {white}{phone_number}{red}
+ {INFO_ADD} Formatted    : {white}{formatted_number}{red}
+ {INFO_ADD} Status       : {white}{status}{red}
+ {INFO_ADD} Country Code : {white}{country_code}{red}
+ {INFO_ADD} Country      : {white}{country}{red}
+ {INFO_ADD} Region       : {white}{region}{red}
+ {INFO_ADD} Timezone     : {white}{timezone_info}{red}
+ {INFO_ADD} Operator     : {white}{operator}{red}
+ {INFO_ADD} Type Number  : {white}{type_number}{red}
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+""")
         Continue()
         Reset()
     except:

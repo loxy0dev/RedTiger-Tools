@@ -10,6 +10,7 @@ discord
 dnspython
 exifread
 GPUtil
+instaloader
 keyboard
 opencv-python
 phonenumbers

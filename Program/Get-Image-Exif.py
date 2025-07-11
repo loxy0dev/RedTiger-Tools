@@ -1,3 +1,13 @@
+# Copyright (c) RedTiger 
+# See the file 'LICENSE' for copying permission
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------|
+# EN: 
+#     - Do not touch or modify the code below. If there is an error, please contact the owner, but under no circumstances should you touch the code.
+#     - Do not resell this tool, do not credit it to yours.
+# FR: 
+#     - Ne pas toucher ni modifier le code ci-dessous. En cas d'erreur, veuillez contacter le propriétaire, mais en aucun cas vous ne devez toucher au code.
+#     - Ne revendez pas ce tool, ne le créditez pas au vôtre.
+
 from Config.Util import *
 from Config.Config import *
 try:
@@ -106,11 +116,11 @@ try:
         if exif_data:
             max_key_length = max(len(k) for k in exif_data.keys())
 
-            print()
+            print(f"\n{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────")
             for key, value in sorted(exif_data.items(), key=lambda x: x[0].lower()):
-                print(f"    {INFO_ADD} {key.ljust(max_key_length)} : {white + str(value)}")
+                print(f" {INFO_ADD} {key.ljust(max_key_length)} : {white + str(value)}")
                 time.sleep(0.01)
-            print()
+            print(f"{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n")
         else:
             print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} No information found.")
 

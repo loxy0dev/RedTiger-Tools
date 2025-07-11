@@ -1,4 +1,4 @@
-# Copyright (c) RedTiger (https://redtiger.shop)
+# Copyright (c) RedTiger 
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 # EN: 
@@ -10,14 +10,15 @@
 
 name_tool       =  "RedTiger"
 type_tool       =  "Multi-Tools"
-version_tool    =  "6.5"
+version_tool    =  "6.6"
 coding_tool     =  "Python 3"
 language_tool   =  "EN"
 creator         =  "loxy0dev"
 platform        =  "Windows 10/11 & Linux"
-website         =  "redtiger.shop"
+website         =  "None"
 github_tool     =  "github.com/loxy0dev/RedTiger-Tools"
 telegram        =  "t.me/redtigersupport"
+gunslol         =  "guns.lol/loxy0dev"
 url_config      =  "https://raw.githubusercontent.com/loxy0dev/RedTiger-Tools/main/Program/Config/Config.py"
 url_downloads   =  "https://github.com/loxy0dev/RedTiger-Tools/archive/main.zip"
 license         =  "https://github.com/loxy0dev/RedTiger-Tools/blob/main/LICENSE"

@@ -1,4 +1,4 @@
-# Copyright (c) RedTiger (https://redtiger.shop)
+# Copyright (c) RedTiger
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 # EN: 
@@ -50,14 +50,16 @@ try:
 
 
         print(f"""
-    {INFO_ADD} Username       : {white}{username}{red}
-    {INFO_ADD} Id             : {white}{userid}{red}
-    {INFO_ADD} Display Name   : {white}{display_name}{red}
-    {INFO_ADD} Description    : {white}{description}{red}
-    {INFO_ADD} Created        : {white}{created_at}{red}
-    {INFO_ADD} Banned         : {white}{is_banned}{red}
-    {INFO_ADD} External Name  : {white}{external_app_display_name}{red}
-    {INFO_ADD} Verified Badge : {white}{has_verified_badge}{red}
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ {INFO_ADD} Username       : {white}{username}{red}
+ {INFO_ADD} Id             : {white}{userid}{red}
+ {INFO_ADD} Display Name   : {white}{display_name}{red}
+ {INFO_ADD} Description    : {white}{description}{red}
+ {INFO_ADD} Created        : {white}{created_at}{red}
+ {INFO_ADD} Banned         : {white}{is_banned}{red}
+ {INFO_ADD} External Name  : {white}{external_app_display_name}{red}
+ {INFO_ADD} Verified Badge : {white}{has_verified_badge}{red}
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     """)
         Continue()
         Reset()

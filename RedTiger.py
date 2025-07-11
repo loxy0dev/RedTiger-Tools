@@ -1,4 +1,4 @@
-# Copyright (c) RedTiger (https://redtiger.shop)
+# Copyright (c) RedTiger
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 # EN: 
@@ -28,82 +28,83 @@ option_06 = "Ip-Pinger"
 option_07 = "Soon"
 option_08 = "Soon"
 option_09 = "Soon"
-option_10 = "Soon"
 
-option_11 = "Dox-Create"
-option_12 = "Dox-Tracker"
-option_13 = "Get-Image-Exif"
-option_14 = "Google-Dorking"
-option_15 = "Username-Tracker"
-option_16 = "Email-Tracker"
-option_17 = "Email-Lookup"
-option_18 = "Phone-Number-Lookup"
-option_19 = "Ip-Lookup"
-option_20 = "Soon"
+option_10 = "D0x-Create"
+option_11 = "D0x-Tracker"
+option_12 = "Get-Image-Exif"
+option_13 = "Google-Dorking"
+option_14 = "Username-Tracker"
+option_15 = "Email-Tracker"
+option_16 = "Email-Lookup"
+option_17 = "Phone-Number-Lookup"
+option_18 = "Ip-Lookup"
+option_19 = "Instagram-Account"
 
-option_21 = "Phishing-Attack"
-option_22 = "Password-Zip-Cracked-Attack"
-option_23 = "Password-Hash-Decrypted-Attack"
-option_24 = "Password-Hash-Encrypted"
-option_25 = "Search-In-DataBase"
-option_26 = "Dark-Web-Links"
-option_27 = "Ip-Generator"
+option_20 = "Phishing-Attack"
+option_21 = "Password-Zip-Cracked-Attack"
+option_22 = "Password-Hash-Decrypted-Attack"
+option_23 = "Password-Hash-Encrypted"
+option_24 = "Search-In-DataBase"
+option_25 = "Dark-Web-Links"
+option_26 = "Ip-Generator"
+option_27 = "Soon"
 option_28 = "Soon"
 option_29 = "Soon"
-option_30 = "Soon"
 
-option_31 = "Virus-Builder"
+option_30 = "Virus-Builder"
 
-option_32 = "Python-Obfuscator-(Premium)"
-option_33 = "Discord-Rat-(Premium)"
-option_34 = "Stresser (Premium)"
-option_35 = "Anonymization-Software"
+option_31 = "Python-Obfuscator-(Premium)"
+option_32 = "Discord-Rat-(Premium)"
+option_33 = "Website-DoS-(Premium)"
+option_34 = "Proxy-Scraper-(Premium)"
+option_35 = "Soon"
 option_36 = "Soon"
 option_37 = "Soon"
 option_38 = "Soon"
 option_39 = "Soon"
-option_40 = "Soon"
 
-option_41 = "Roblox-Cookie-Login"
-option_42 = "Roblox-Cookie-Info"
-option_43 = "Roblox-Id-Info"
-option_44 = "Roblox-User-Info"
+option_40 = "Roblox-Cookie-Login"
+option_41 = "Roblox-Cookie-Info"
+option_42 = "Roblox-Id-Info"
+option_43 = "Roblox-User-Info"
+option_44 = "Soon"
 option_45 = "Soon"
 option_46 = "Soon"
 option_47 = "Soon"
 option_48 = "Soon"
 option_49 = "Soon"
-option_50 = "Soon"
 
-option_51 = "Discord-Token-Nuker"
-option_52 = "Discord-Token-Info"
-option_53 = "Discord-Token-Joiner"
-option_54 = "Discord-Token-Leaver"
-option_55 = "Discord-Token-Login"
-option_56 = "Discord-Token-To-Id-And-Brute"
-option_57 = "Discord-Token-Server-Raid"
-option_58 = "Discord-Token-Spammer"
-option_59 = "Discord-Token-Delete-Friends"
-option_60 = "Discord-Token-Block-Friends"
-option_61 = "Discord-Token-Mass-Dm"
-option_62 = "Discord-Token-Delete-Dm"
-option_63 = "Discord-Token-Status-Changer"
-option_64 = "Discord-Token-Language-Changer"
-option_65 = "Discord-Token-House-Changer"
-option_66 = "Discord-Token-Theme-Changer"
-option_67 = "Discord-Token-Generator"
-option_68 = "Discord-Bot-Server-Nuker"
-option_69 = "Discord-Bot-Invite-To-Id"
-option_70 = "Discord-Server-Info"
-option_71 = "Discord-Nitro-Generator"
-option_72 = "Discord-Webhook-Info"
-option_73 = "Discord-Webhook-Delete"
-option_74 = "Discord-Webhook-Spammer"
-option_75 = "Discord-Webhook-Generator"
+option_50 = "Discord-Token-Nuker"
+option_51 = "Discord-Token-Info"
+option_52 = "Discord-Token-Joiner"
+option_53 = "Discord-Token-Leaver"
+option_54 = "Discord-Token-Login"
+option_55 = "Discord-Token-To-Id-And-Brute"
+option_56 = "Discord-Token-Server-Raid"
+option_57 = "Discord-Token-Spammer"
+option_58 = "Discord-Token-Delete-Friends"
+option_59 = "Discord-Token-Block-Friends"
+option_60 = "Discord-Token-Mass-Dm"
+option_61 = "Discord-Token-Delete-Dm"
+option_62 = "Discord-Token-Status-Changer"
+option_63 = "Discord-Token-Language-Changer"
+option_64 = "Discord-Token-House-Changer"
+option_65 = "Discord-Token-Theme-Changer"
+option_66 = "Discord-Token-Generator"
+option_67 = "Discord-Bot-Server-Nuker"
+option_68 = "Discord-Bot-Invite-To-Id"
+option_69 = "Discord-Server-Info"
+option_70 = "Discord-Nitro-Generator"
+option_71 = "Discord-Webhook-Info"
+option_72 = "Discord-Webhook-Delete"
+option_73 = "Discord-Webhook-Spammer"
+option_74 = "Discord-Webhook-Generator"
+option_75 = "Soon"
 option_76 = "Soon"
 option_77 = "Soon"
 option_78 = "Soon"
 option_79 = "Soon"
+option_80 = "Soon"
 
 option_next = "Next"
 option_back = "Back"
@@ -119,8 +120,8 @@ option_06_txt = f"{red}[{white}06{red}]{white} " + option_06.ljust(30)[:30].repl
 option_07_txt = f"{red}[{white}07{red}]{white} " + option_07.ljust(30)[:30].replace("-", " ")
 option_08_txt = f"{red}[{white}08{red}]{white} " + option_08.ljust(30)[:30].replace("-", " ")
 option_09_txt = f"{red}[{white}09{red}]{white} " + option_09.ljust(30)[:30].replace("-", " ")
-option_10_txt = f"{red}[{white}10{red}]{white} " + option_10.ljust(30)[:30].replace("-", " ")
 
+option_10_txt = f"{red}[{white}10{red}]{white} " + option_10.ljust(30)[:30].replace("-", " ")
 option_11_txt = f"{red}[{white}11{red}]{white} " + option_11.ljust(30)[:30].replace("-", " ")
 option_12_txt = f"{red}[{white}12{red}]{white} " + option_12.ljust(30)[:30].replace("-", " ")
 option_13_txt = f"{red}[{white}13{red}]{white} " + option_13.ljust(30)[:30].replace("-", " ")
@@ -130,8 +131,8 @@ option_16_txt = f"{red}[{white}16{red}]{white} " + option_16.ljust(30)[:30].repl
 option_17_txt = f"{red}[{white}17{red}]{white} " + option_17.ljust(30)[:30].replace("-", " ")
 option_18_txt = f"{red}[{white}18{red}]{white} " + option_18.ljust(30)[:30].replace("-", " ")
 option_19_txt = f"{red}[{white}19{red}]{white} " + option_19.ljust(30)[:30].replace("-", " ")
-option_20_txt = f"{red}[{white}20{red}]{white} " + option_20.ljust(30)[:30].replace("-", " ")
 
+option_20_txt = f"{red}[{white}20{red}]{white} " + option_20.ljust(30)[:30].replace("-", " ")
 option_21_txt = f"{red}[{white}21{red}]{white} " + option_21.ljust(30)[:30].replace("-", " ")
 option_22_txt = f"{red}[{white}22{red}]{white} " + option_22.ljust(30)[:30].replace("-", " ")
 option_23_txt = f"{red}[{white}23{red}]{white} " + option_23.ljust(30)[:30].replace("-", " ")
@@ -141,8 +142,8 @@ option_26_txt = f"{red}[{white}26{red}]{white} " + option_26.ljust(30)[:30].repl
 option_27_txt = f"{red}[{white}27{red}]{white} " + option_27.ljust(30)[:30].replace("-", " ")
 option_28_txt = f"{red}[{white}28{red}]{white} " + option_28.ljust(30)[:30].replace("-", " ")
 option_29_txt = f"{red}[{white}29{red}]{white} " + option_29.ljust(30)[:30].replace("-", " ")
-option_30_txt = f"{red}[{white}30{red}]{white} " + option_30.ljust(30)[:30].replace("-", " ")
 
+option_30_txt = f"{red}[{white}30{red}]{white} " + option_30.ljust(30)[:30].replace("-", " ")
 option_31_txt = f"{red}[{white}31{red}]{white} " + option_31.ljust(30)[:30].replace("-", " ")
 option_32_txt = f"{red}[{white}32{red}]{white} " + option_32.ljust(30)[:30].replace("-", " ")
 option_33_txt = f"{red}[{white}33{red}]{white} " + option_33.ljust(30)[:30].replace("-", " ")
@@ -152,8 +153,8 @@ option_36_txt = f"{red}[{white}36{red}]{white} " + option_36.ljust(30)[:30].repl
 option_37_txt = f"{red}[{white}37{red}]{white} " + option_37.ljust(30)[:30].replace("-", " ")
 option_38_txt = f"{red}[{white}38{red}]{white} " + option_38.ljust(30)[:30].replace("-", " ")
 option_39_txt = f"{red}[{white}39{red}]{white} " + option_39.ljust(30)[:30].replace("-", " ")
-option_40_txt = f"{red}[{white}40{red}]{white} " + option_40.ljust(30)[:30].replace("-", " ")
 
+option_40_txt = f"{red}[{white}40{red}]{white} " + option_40.ljust(30)[:30].replace("-", " ")
 option_41_txt = f"{red}[{white}41{red}]{white} " + option_41.ljust(30)[:30].replace("-", " ")
 option_42_txt = f"{red}[{white}42{red}]{white} " + option_42.ljust(30)[:30].replace("-", " ")
 option_43_txt = f"{red}[{white}43{red}]{white} " + option_43.ljust(30)[:30].replace("-", " ")
@@ -163,8 +164,8 @@ option_46_txt = f"{red}[{white}46{red}]{white} " + option_46.ljust(30)[:30].repl
 option_47_txt = f"{red}[{white}47{red}]{white} " + option_47.ljust(30)[:30].replace("-", " ")
 option_48_txt = f"{red}[{white}48{red}]{white} " + option_48.ljust(30)[:30].replace("-", " ")
 option_49_txt = f"{red}[{white}49{red}]{white} " + option_49.ljust(30)[:30].replace("-", " ")
-option_50_txt = f"{red}[{white}50{red}]{white} " + option_50.ljust(30)[:30].replace("-", " ")
 
+option_50_txt = f"{red}[{white}50{red}]{white} " + option_50.ljust(30)[:30].replace("-", " ")
 option_51_txt = f"{red}[{white}51{red}]{white} " + option_51.ljust(30)[:30].replace("-", " ")
 option_52_txt = f"{red}[{white}52{red}]{white} " + option_52.ljust(30)[:30].replace("-", " ")
 option_53_txt = f"{red}[{white}53{red}]{white} " + option_53.ljust(30)[:30].replace("-", " ")
@@ -174,8 +175,8 @@ option_56_txt = f"{red}[{white}56{red}]{white} " + option_56.ljust(30)[:30].repl
 option_57_txt = f"{red}[{white}57{red}]{white} " + option_57.ljust(30)[:30].replace("-", " ")
 option_58_txt = f"{red}[{white}58{red}]{white} " + option_58.ljust(30)[:30].replace("-", " ")
 option_59_txt = f"{red}[{white}59{red}]{white} " + option_59.ljust(30)[:30].replace("-", " ")
-option_60_txt = f"{red}[{white}60{red}]{white} " + option_60.ljust(30)[:30].replace("-", " ")
 
+option_60_txt = f"{red}[{white}60{red}]{white} " + option_60.ljust(30)[:30].replace("-", " ")
 option_61_txt = f"{red}[{white}61{red}]{white} " + option_61.ljust(30)[:30].replace("-", " ")
 option_62_txt = f"{red}[{white}62{red}]{white} " + option_62.ljust(30)[:30].replace("-", " ")
 option_63_txt = f"{red}[{white}63{red}]{white} " + option_63.ljust(30)[:30].replace("-", " ")
@@ -185,8 +186,8 @@ option_66_txt = f"{red}[{white}66{red}]{white} " + option_66.ljust(30)[:30].repl
 option_67_txt = f"{red}[{white}67{red}]{white} " + option_67.ljust(30)[:30].replace("-", " ")
 option_68_txt = f"{red}[{white}68{red}]{white} " + option_68.ljust(30)[:30].replace("-", " ")
 option_69_txt = f"{red}[{white}69{red}]{white} " + option_69.ljust(30)[:30].replace("-", " ")
-option_70_txt = f"{red}[{white}70{red}]{white} " + option_70.ljust(30)[:30].replace("-", " ")
 
+option_70_txt = f"{red}[{white}70{red}]{white} " + option_70.ljust(30)[:30].replace("-", " ")
 option_71_txt = f"{red}[{white}71{red}]{white} " + option_71.ljust(30)[:30].replace("-", " ")
 option_72_txt = f"{red}[{white}72{red}]{white} " + option_72.ljust(30)[:30].replace("-", " ")
 option_73_txt = f"{red}[{white}73{red}]{white} " + option_73.ljust(30)[:30].replace("-", " ")
@@ -206,16 +207,16 @@ menu1 = f""" ┌─ {option_info_txt}                                           
  ├─ {option_site_txt} ┌─────────────────┐                        ┌───────┐                           ┌───────────┐            │
  └─┬─────────┤ Network Scanner ├─────────┬──────────────┤ Osint ├──────────────┬────────────┤ Utilities ├────────────┴─
    │         └─────────────────┘         │              └───────┘              │            └───────────┘
-   ├─ {option_01_txt                    }├─ {option_11_txt                    }├─ {option_21_txt}
-   ├─ {option_02_txt                    }├─ {option_12_txt                    }├─ {option_22_txt}
-   ├─ {option_03_txt                    }├─ {option_13_txt                    }├─ {option_23_txt}
-   ├─ {option_04_txt                    }├─ {option_14_txt                    }├─ {option_24_txt}
-   ├─ {option_05_txt                    }├─ {option_15_txt                    }├─ {option_25_txt}
-   └─ {option_06_txt                    }├─ {option_16_txt                    }├─ {option_26_txt}
-                                         ├─ {option_17_txt                    }└─ {option_27_txt}
+   ├─ {option_01_txt                    }├─ {option_10_txt                    }├─ {option_20_txt}
+   ├─ {option_02_txt                    }├─ {option_11_txt                    }├─ {option_21_txt}
+   ├─ {option_03_txt                    }├─ {option_12_txt                    }├─ {option_22_txt}
+   ├─ {option_04_txt                    }├─ {option_13_txt                    }├─ {option_23_txt}
+   ├─ {option_05_txt                    }├─ {option_14_txt                    }├─ {option_24_txt}
+   └─ {option_06_txt                    }├─ {option_15_txt                    }├─ {option_25_txt}
+                                         ├─ {option_16_txt                    }└─ {option_26_txt}
+                                         ├─ {option_17_txt                    }
                                          ├─ {option_18_txt                    }
                                          └─ {option_19_txt                    }
-
 
 """
 
@@ -223,10 +224,10 @@ menu2 = f""" ┌─ {option_info_txt}                                           
  ├─ {option_site_txt}  ┌───────────────┐                         ┌──────┐                              ┌────────┐    {option_back_txt} ─┤
 ─┴─┬──────────┤ Virus Builder ├──────────┬──────────────┤ Paid ├───────────────┬──────────────┤ Roblox ├──────────────┴─
    │          └───────────────┘          │              └──────┘               │              └────────┘
-   └─ {option_31_txt                    }├─ {option_32_txt                    }├─ {option_41_txt}
-           ├─ Stealer                    ├─ {option_33_txt                    }├─ {option_42_txt}
-           ├─ Grabber                    ├─ {option_34_txt                    }├─ {option_43_txt}
-           └─ Malware                    └─ {option_35_txt                    }└─ {option_44_txt}                                    
+   └─ {option_30_txt                    }├─ {option_31_txt                    }├─ {option_40_txt}
+           ├─ Stealer                    ├─ {option_32_txt                    }├─ {option_41_txt}
+           ├─ Grabber                    ├─ {option_33_txt                    }├─ {option_42_txt}
+           └─ Malware                    └─ {option_34_txt                    }└─ {option_43_txt}                                    
 
 
 
@@ -239,16 +240,16 @@ menu3 = f""" ┌─ {option_info_txt}                                           
  ├─ {option_site_txt}                                           ┌─────────┐                                                    │
 ─┴─┬───────────────────────────────────────────────────┤ Discord ├────────────────────────────────────────────────────┘
    │                                                   └─────────┘                       
-   ├─ {option_51_txt                    }┌─ {option_61_txt                    }┌─ {option_71_txt}
+   ├─ {option_50_txt                    }┌─ {option_60_txt                    }┌─ {option_70_txt}
+   ├─ {option_51_txt                    }├─ {option_61_txt                    }├─ {option_71_txt}
    ├─ {option_52_txt                    }├─ {option_62_txt                    }├─ {option_72_txt}
    ├─ {option_53_txt                    }├─ {option_63_txt                    }├─ {option_73_txt}
    ├─ {option_54_txt                    }├─ {option_64_txt                    }├─ {option_74_txt}
-   ├─ {option_55_txt                    }├─ {option_65_txt                    }├─ {option_75_txt}
+   ├─ {option_55_txt                    }├─ {option_65_txt                    }│
    ├─ {option_56_txt                    }├─ {option_66_txt                    }│
    ├─ {option_57_txt                    }├─ {option_67_txt                    }│
    ├─ {option_58_txt                    }├─ {option_68_txt                    }│
    ├─ {option_59_txt                    }├─ {option_69_txt                    }│
-   ├─ {option_60_txt                    }├─ {option_70_txt                    }│
    └─────────────────────────────────────┴─────────────────────────────────────┘
 """
 
@@ -270,7 +271,7 @@ def Update():
 menu_path = os.path.join(tool_path, "Program", "Config", "Menu.txt")
 
 def Menu():
-   popup_version = Update()
+   popup_version = ""
 
    try:
       with open(menu_path, "r") as file:

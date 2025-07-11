@@ -1,4 +1,4 @@
-# Copyright (c) RedTiger (https://redtiger.shop)
+# Copyright (c) RedTiger 
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 # EN: 
@@ -18,8 +18,8 @@ except Exception as e:
 Title("Rat Discord (Premium)")
 
 try:
-    print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} This product is paid for and available on our website.")
-    webbrowser.open_new_tab(f"https://{website}")
+    print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} This product is paid for and available on our telegram.")
+    webbrowser.open_new_tab(f"https://{telegram}")
     Continue()
     Reset()
 except Exception as e:

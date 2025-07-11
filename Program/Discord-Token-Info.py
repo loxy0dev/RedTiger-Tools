@@ -1,4 +1,4 @@
-# Copyright (c) RedTiger (https://redtiger.shop)
+# Copyright (c) RedTiger 
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 # EN: 
@@ -176,36 +176,38 @@ try:
     except Exception as e:
         print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Error when retrieving information: {white}{e}")
 
-    print(f"""
-    {INFO_ADD} Status       : {white}{status}{red}
-    {INFO_ADD} Token        : {white}{token_discord}{red}
-    {INFO_ADD} Username     : {white}{username_discord}{red}
-    {INFO_ADD} Display Name : {white}{display_name_discord}{red}
-    {INFO_ADD} Id           : {white}{user_id_discord}{red}
-    {INFO_ADD} Created      : {white}{created_at_discord}{red}
-    {INFO_ADD} Country      : {white}{country_discord}{red}
-    {INFO_ADD} Email        : {white}{email_discord}{red}
-    {INFO_ADD} Verified     : {white}{email_verified_discord}{red}
-    {INFO_ADD} Phone        : {white}{phone_discord}{red}
-    {INFO_ADD} Nitro        : {white}{nitro_discord}{red}
-    {INFO_ADD} Linked Users : {white}{linked_users_discord}{red}
-    {INFO_ADD} Avatar Decor : {white}{avatar_decoration_discord}{red}
-    {INFO_ADD} Avatar       : {white}{avatar_discord}{red}
-    {INFO_ADD} Avatar URL   : {white}{avatar_url_discord}{red}
-    {INFO_ADD} Accent Color : {white}{accent_color_discord}{red}
-    {INFO_ADD} Banner       : {white}{banner_discord}{red}
-    {INFO_ADD} Banner Color : {white}{banner_color_discord}{red}
-    {INFO_ADD} Flags        : {white}{flags_discord}{red}
-    {INFO_ADD} Public Flags : {white}{public_flags_discord}{red}
-    {INFO_ADD} NSFW         : {white}{nsfw_discord}{red}
-    {INFO_ADD} Multi-Factor Authentication : {white}{mfa_discord}{red}
-    {INFO_ADD} Authenticator Type          : {white}{authenticator_types_discord}{red}
-    {INFO_ADD} Billing      : {white}{payment_methods_discord}{red}
-    {INFO_ADD} Gift Code    : {white}{gift_codes_discord}{red}
-    {INFO_ADD} Guilds       : {white}{guild_count}{red}
-    {INFO_ADD} Owner Guilds : {white}{owner_guild_count}{owner_guilds_names}{red}
-    {INFO_ADD} Bio          : {white}{bio_discord}{red}
-    {INFO_ADD} Friend       : {white}{friends_discord}{red}
+    Slow(f"""
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ {INFO_ADD} Status       : {white}{status}{red}
+ {INFO_ADD} Token        : {white}{token_discord}{red}
+ {INFO_ADD} Username     : {white}{username_discord}{red}
+ {INFO_ADD} Display Name : {white}{display_name_discord}{red}
+ {INFO_ADD} Id           : {white}{user_id_discord}{red}
+ {INFO_ADD} Created      : {white}{created_at_discord}{red}
+ {INFO_ADD} Country      : {white}{country_discord}{red}
+ {INFO_ADD} Email        : {white}{email_discord}{red}
+ {INFO_ADD} Verified     : {white}{email_verified_discord}{red}
+ {INFO_ADD} Phone        : {white}{phone_discord}{red}
+ {INFO_ADD} Nitro        : {white}{nitro_discord}{red}
+ {INFO_ADD} Linked Users : {white}{linked_users_discord}{red}
+ {INFO_ADD} Avatar Decor : {white}{avatar_decoration_discord}{red}
+ {INFO_ADD} Avatar       : {white}{avatar_discord}{red}
+ {INFO_ADD} Avatar URL   : {white}{avatar_url_discord}{red}
+ {INFO_ADD} Accent Color : {white}{accent_color_discord}{red}
+ {INFO_ADD} Banner       : {white}{banner_discord}{red}
+ {INFO_ADD} Banner Color : {white}{banner_color_discord}{red}
+ {INFO_ADD} Flags        : {white}{flags_discord}{red}
+ {INFO_ADD} Public Flags : {white}{public_flags_discord}{red}
+ {INFO_ADD} NSFW         : {white}{nsfw_discord}{red}
+ {INFO_ADD} Multi-Factor Authentication : {white}{mfa_discord}{red}
+ {INFO_ADD} Authenticator Type          : {white}{authenticator_types_discord}{red}
+ {INFO_ADD} Billing      : {white}{payment_methods_discord}{red}
+ {INFO_ADD} Gift Code    : {white}{gift_codes_discord}{red}
+ {INFO_ADD} Guilds       : {white}{guild_count}{red}
+ {INFO_ADD} Owner Guilds : {white}{owner_guild_count}{owner_guilds_names}{red}
+ {INFO_ADD} Bio          : {white}{bio_discord}{red}
+ {INFO_ADD} Friend       : {white}{friends_discord}{red}
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     """)
     Continue()
     Reset()

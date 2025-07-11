@@ -1,4 +1,4 @@
-# Copyright (c) RedTiger (https://redtiger.shop)
+# Copyright (c) RedTiger 
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 # EN: 
@@ -76,7 +76,7 @@ GEN_INVALID = f'{BEFORE}x{AFTER} |'
 INFO_ADD = f'{white}[{red}+{white}]{red}'
 
 def Censored(text):
-    censored = ["loxy", creator, website]
+    censored = [ website]
     for censored_text in censored:
         if text in censored:
             print(f'{BEFORE + current_time_hour() + AFTER} {ERROR} Unable to find "{white}{text}{red}".')
@@ -290,8 +290,6 @@ def ChoiceUserAgent():
         user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.120 Safari/537.36"
     
     return user_agent
-
-
 
 def CheckWebhook(webhook):
     try:

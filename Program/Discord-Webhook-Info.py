@@ -1,4 +1,4 @@
-# Copyright (c) RedTiger (https://redtiger.shop)
+# Copyright (c) RedTiger 
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 # EN: 
@@ -35,15 +35,17 @@ try:
         channel_id = webhook_info.get('channel_id', "None")
         guild_id = webhook_info.get('guild_id', "None")
 
-        print(f"""
-    {INFO_ADD} ID         : {white}{webhook_id}{red}
-    {INFO_ADD} Token      : {white}{webhook_token}{red}
-    {INFO_ADD} Name       : {white}{webhook_name}{red}
-    {INFO_ADD} Avatar     : {white}{webhook_avatar}{red}
-    {INFO_ADD} Type       : {white}{webhook_type}{red}
-    {INFO_ADD} Channel ID : {white}{channel_id}{red}
-    {INFO_ADD} Server ID  : {white}{guild_id}{red}
-    """)
+        Slow(f"""
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ {INFO_ADD} ID         : {white}{webhook_id}{red}
+ {INFO_ADD} Token      : {white}{webhook_token}{red}
+ {INFO_ADD} Name       : {white}{webhook_name}{red}
+ {INFO_ADD} Avatar     : {white}{webhook_avatar}{red}
+ {INFO_ADD} Type       : {white}{webhook_type}{red}
+ {INFO_ADD} Channel ID : {white}{channel_id}{red}
+ {INFO_ADD} Server ID  : {white}{guild_id}{red}
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+""")
 
         if 'user' in webhook_info:
             user_info = webhook_info['user']
@@ -58,17 +60,18 @@ try:
             avatar_decoration = user_info.get('avatar_decoration_data', "None")
             banner_color = user_info.get('banner_color', "None")
 
-            print(f"""
-    {red}User information associated with the Webhook:
-    {INFO_ADD} ID          : {white}{user_id}{red}
-    {INFO_ADD} Name        : {white}{username}{red}
-    {INFO_ADD} DisplayName : {white}{display_name}{red}
-    {INFO_ADD} Number      : {white}{discriminator}{red}
-    {INFO_ADD} Avatar      : {white}{user_avatar}{red}
-    {INFO_ADD} Flags       : {white}{user_flags} Publique: {user_flags}{red}
-    {INFO_ADD} Color       : {white}{accent_color}{red}
-    {INFO_ADD} Decoration  : {white}{avatar_decoration}{red}
-    {INFO_ADD} Banner      : {white}{banner_color}{red}
+            Slow(f"""{red}User information associated with the Webhook:
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ {INFO_ADD} ID          : {white}{user_id}{red}
+ {INFO_ADD} Name        : {white}{username}{red}
+ {INFO_ADD} DisplayName : {white}{display_name}{red}
+ {INFO_ADD} Number      : {white}{discriminator}{red}
+ {INFO_ADD} Avatar      : {white}{user_avatar}{red}
+ {INFO_ADD} Flags       : {white}{user_flags} Publique: {user_flags}{red}
+ {INFO_ADD} Color       : {white}{accent_color}{red}
+ {INFO_ADD} Decoration  : {white}{avatar_decoration}{red}
+ {INFO_ADD} Banner      : {white}{banner_color}{red}
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     """)
 
     webhook_url = input(f"\n{BEFORE + current_time_hour() + AFTER} {INPUT} Webhook URL -> {color.RESET}")

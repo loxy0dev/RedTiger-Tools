@@ -1,4 +1,4 @@
-# Copyright (c) RedTiger (https://redtiger.shop)
+# Copyright (c) RedTiger 
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 # EN: 
@@ -20,7 +20,7 @@ except Exception as e:
 Title("Email Lookup")
 
 try:
-    def get_email_info(email):
+    def GetEmailInfo(email):
         info = {}
         try: domain_all = email.split('@')[-1]
         except: domain_all = None
@@ -72,7 +72,7 @@ try:
     Censored(email)
         
     print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Information Recovery..{reset}")
-    info, domain_all, domain, tld, name = get_email_info(email)
+    info, domain_all, domain, tld, name = GetEmailInfo(email)
 
     try:
         mx_servers = info["mx_servers"]
@@ -102,18 +102,20 @@ try:
     except:
         mailgun_validation = None
 
-    print(f"""
-    {INFO_ADD} Email      : {white}{email}{red}
-    {INFO_ADD} Name       : {white}{name}{red}
-    {INFO_ADD} Domain     : {white}{domain}{red}
-    {INFO_ADD} Tld        : {white}{tld}{red}
-    {INFO_ADD} Domain All : {white}{domain_all}{red}
-    {INFO_ADD} Servers    : {white}{mx_servers}{red}
-    {INFO_ADD} Spf        : {white}{spf_records}{red}
-    {INFO_ADD} Dmarc      : {white}{dmarc_records}{red}
-    {INFO_ADD} Workspace  : {white}{google_workspace}{red}
-    {INFO_ADD} Mailgun    : {white}{mailgun_validation}{red}
-    {color.RESET}""")
+    Slow(f"""
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ {INFO_ADD} Email      : {white}{email}{red}
+ {INFO_ADD} Name       : {white}{name}{red}
+ {INFO_ADD} Domain     : {white}{domain}{red}
+ {INFO_ADD} Tld        : {white}{tld}{red}
+ {INFO_ADD} Domain All : {white}{domain_all}{red}
+ {INFO_ADD} Servers    : {white}{mx_servers}{red}
+ {INFO_ADD} Spf        : {white}{spf_records}{red}
+ {INFO_ADD} Dmarc      : {white}{dmarc_records}{red}
+ {INFO_ADD} Workspace  : {white}{google_workspace}{red}
+ {INFO_ADD} Mailgun    : {white}{mailgun_validation}{red}
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+""")
 
     Continue()
     Reset()

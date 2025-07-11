@@ -1,4 +1,4 @@
-# Copyright (c) RedTiger (https://redtiger.shop)
+# Copyright (c) RedTiger 
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 # EN: 
@@ -165,10 +165,10 @@ try:
     text = ctk.CTkLabel(title_frame, text="The builder only creates viruses that work under Windows.", font=ctk.CTkFont(family="Helvetica", size=13), text_color=colors["red"])
     text.grid(row=2, pady=0, columnspan=3, sticky="we")
 
-    url = ctk.CTkLabel(title_frame, text=github_tool, font=ctk.CTkFont(family="Helvetica", size=15))
+    url = ctk.CTkLabel(title_frame, text=github_tool, font=ctk.CTkFont(family="Helvetica", size=15), text_color=colors['white'])
     url.grid(row=3, pady=(3, 10), columnspan=3, sticky="we")
 
-    webhook_url = ctk.CTkEntry(title_frame, height=45, width=350, corner_radius=5, font=ctk.CTkFont(family="Helvetica", size=15), justify="center", border_color=colors["red"], fg_color=colors["dark_gray"], border_width=2, placeholder_text="https://discord.com/api/webhooks/...")
+    webhook_url = ctk.CTkEntry(title_frame, height=45, width=350, corner_radius=5, font=ctk.CTkFont(family="Helvetica", size=15), justify="center", border_color=colors["red"], fg_color=colors["dark_gray"], border_width=2, placeholder_text="https://discord.com/api/webhooks/...", text_color=colors['white'])
     webhook_url.grid(row=4, column=0, padx=(150, 5), pady=10, sticky="we")
 
     test_webhook = ctk.CTkButton(title_frame, text="Test Webhook", command=TestWebhook, height=45, corner_radius=5, fg_color=colors["red"], hover_color=colors["dark_red"], font=ctk.CTkFont(family="Helvetica", size=14))
@@ -309,7 +309,7 @@ try:
     build_frame.grid_columnconfigure(1, weight=1)
     build_frame.grid_columnconfigure(2, weight=1)
 
-    name_file_entry = ctk.CTkEntry(build_frame, height=30, width=140, corner_radius=5, font=ctk.CTkFont(family="Helvetica", size=12), justify="center", border_color=colors["red"], fg_color=colors["dark_gray"], border_width=2, placeholder_text="File Name")
+    name_file_entry = ctk.CTkEntry(build_frame, height=30, width=140, corner_radius=5, font=ctk.CTkFont(family="Helvetica", size=12), justify="center", border_color=colors["red"], text_color=colors['white'], fg_color=colors["dark_gray"], border_width=2, placeholder_text="File Name")
     name_file_entry.grid(row=1, column=0, padx=0, sticky="w", pady=0)
 
     def FileTypeChanged(*args):

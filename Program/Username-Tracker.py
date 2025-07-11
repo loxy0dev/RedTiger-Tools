@@ -1,4 +1,4 @@
-# Copyright (c) RedTiger (https://redtiger.shop)
+# Copyright (c) RedTiger 
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 # EN: 
@@ -65,12 +65,6 @@ try:
         },
         "GitHub": {
             "url": f"https://github.com/{username}",
-            "method": "get",
-            "verification": "status",
-            "except": None
-        },
-        "Giters": {
-            "url": f"https://giters.com/{username}",
             "method": "get",
             "verification": "status",
             "except": None
@@ -249,18 +243,6 @@ try:
             "verification": "username",
             "except": None
         },
-        "Internet Archive": {
-            "url": f"https://archive.org/search?query={username}",
-            "method": "get",
-            "verification": "status",
-            "except": None
-        },
-        "Twitter Archive": {
-            "url": f"https://web.archive.org/web/*/https://twitter.com/{username}/status/*",
-            "method": "get",
-            "verification": "status",
-            "except": ["No URL has been captured for this URL prefix."]
-        },
         "Linktree": {
             "url": f"https://linktr.ee/{username}",
             "method": "get",
@@ -269,12 +251,6 @@ try:
         },
         "Xbox": {
             "url": f"https://www.xboxgamertag.com/search/{username}",
-            "method": "get",
-            "verification": "status",
-            "except": None
-        },
-        "Twitter": {
-            "url": f"https://twitter.com/{username}",
             "method": "get",
             "verification": "status",
             "except": None
@@ -333,12 +309,6 @@ try:
             "verification": "status",
             "except": None
         },
-        "WhatsApp": {
-            "url": f"https://wa.me/{username}",
-            "method": "get",
-            "verification": "status",
-            "except": None
-        },
         "Weibo": {
             "url": f"https://weibo.com/{username}",
             "method": "get",
@@ -389,12 +359,6 @@ try:
         },
         "Snapfish": {
             "url": f"https://www.snapfish.com/{username}",
-            "method": "get",
-            "verification": "status",
-            "except": None
-        },
-        "Tidal": {
-            "url": f"https://tidal.com/{username}",
             "method": "get",
             "verification": "status",
             "except": None
@@ -566,6 +530,126 @@ try:
             "method": "get",
             "verification": "status",
             "except": None
+        },
+        "allmylinks": {
+            "url": f"https://allmylinks.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["This page is missing"]
+        },
+        "Medium": {
+            "url": f"https://medium.com/@{username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["Out of nothing, something."]
+        },
+        "Reddit": {
+            "url": f"https://reddit.com/user/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["Sorry, nobody on Reddit goes by that name."]
+        },
+        "Twitter": {
+            "url": f"https://x.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": None  
+        },
+        "Fosstodon": {
+            "url": f"https://fosstodon.org/@{username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["The user could not be found"]
+        },
+        "Bugcrowd": {
+            "url": f"https://bugcrowd.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["The requested page was not found"]
+        },
+        "HackerOne": {
+            "url": f"https://hackerone.com/{username}",
+            "method": "post",
+            "verification": "status",
+            "except": ["User does not exist"]
+        },
+        "HackTheBox": {
+            "url": f"https://app.hackthebox.com/profile/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["User not found"]
+        },
+        "Apple Developer": {
+            "url": f"https://developer.apple.com/forums/profile/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["The page you’re looking for can’t be found"]
+        },
+        "Apple Discussions": {
+            "url": f"https://discussions.apple.com/profile/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["The page you tried was not found. You may have used an outdated link or may have typed the address (URL) incorrectly."]
+        },
+        "Hacker News": {
+            "url": f"https://news.ycombinator.com/user?id={username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["No such user."]
+        },
+        "Bitbucket": {
+            "url": f"https://bitbucket.org/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["Repository not found"]
+        },
+        "Slack": {
+            "url": f"https://{username}.slack.com",
+            "method": "get",
+            "verification": "status",
+            "except": ["This workspace doesn’t exist"]
+        },
+        "Slide Share": {
+            "url": f"https://www.slideshare.net/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["This username"]
+        },
+        "Wattpad": {
+            "url": f"https://www.wattpad.com/user/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["Oops! That page can’t be found."]
+        },
+        "Codecademy": {
+            "url": f"https://www.codecademy.com/profiles/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["This profile could not be found"]
+        },
+        "Gravatar": {
+            "url": f"https://gravatar.com/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["Uh oh. Page not found"]
+        },
+        "Dev To": {
+            "url": f"https://dev.to/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["This page does not exist"]
+        },
+        "Kaskus": {
+            "url": f"https://www.kaskus.co.id/profile/@{username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["We can't find the page you are looking for"]
+        },
+        "Crunchbase": {
+            "url": f"https://www.crunchbase.com/person/{username}",
+            "method": "get",
+            "verification": "status",
+            "except": ["Page Not Found"]
         }
     }
 
@@ -610,7 +694,7 @@ try:
 
                     if found:
                         number_found += 1
-                        sites_and_urls_found.append(f"{site}: {white + url}")
+                        sites_and_urls_found.append({site: url})
                         print(f"{BEFORE_GREEN + current_time_hour() + AFTER_GREEN} {GEN_VALID} {site}: {white + url}")
                     else:
                         print(f"{BEFORE + current_time_hour() + AFTER} {GEN_INVALID} {site}:{white} Not Found")
@@ -624,10 +708,14 @@ try:
             pass
     
     if number_found > 0:
-        print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Total Found:{reset}")
+        print(f"\n{red}Total Found:{reset}")
         for site_and_url_found in sites_and_urls_found:
-            time.sleep(0.5)
-            print(f"{BEFORE + current_time_hour() + AFTER} {ADD} {site_and_url_found}")
+            for site, url in site_and_url_found.items():
+                time.sleep(0.1)
+                print(f"{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────")
+                print(f"{ADD} Name: {white + site}")
+                print(f"{ADD} Link: {white + url}")
+        print(f"{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────")
 
     print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Total Website: {white}{number_site}{red} Total Found: {white}{number_found}{red}")
     Continue()

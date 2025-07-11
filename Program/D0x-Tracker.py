@@ -1,4 +1,4 @@
-# Copyright (c) RedTiger (https://redtiger.shop)
+# Copyright (c) RedTiger 
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 # EN: 
@@ -48,14 +48,14 @@ try:
 
     if search_type in ['1', '01','2','02','3','03']:
         print(f"""
-{white}[{red}00{white}] {red}-> Back
-{white}[{red}01{white}] {red}->{white} Facebook.com
-{white}[{red}02{white}] {red}->{white} Youtube.com
-{white}[{red}03{white}] {red}->{white} Twitter.com
-{white}[{red}04{white}] {red}->{white} Tiktok.com
-{white}[{red}05{white}] {red}->{white} Peekyou.com
-{white}[{red}06{white}] {red}->{white} Tumblr.com
-{white}[{red}07{white}] {red}->{white} PagesJaunes.fr
+ {BEFORE}00{AFTER} Back
+ {BEFORE}01{AFTER}{white} Facebook.com
+ {BEFORE}02{AFTER}{white} Youtube.com
+ {BEFORE}03{AFTER}{white} Twitter.com
+ {BEFORE}04{AFTER}{white} Tiktok.com
+ {BEFORE}05{AFTER}{white} Peekyou.com
+ {BEFORE}06{AFTER}{white} Tumblr.com
+ {BEFORE}07{AFTER}{white} PagesJaunes.fr
     """)
     while True:
         

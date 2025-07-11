@@ -1,4 +1,4 @@
-# Copyright (c) RedTiger (https://redtiger.shop)
+# Copyright (c) RedTiger 
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 # EN: 
@@ -65,40 +65,44 @@ try:
     else:
         ErrorUrl()
 
-    print(f"""{red}
-    Invitation Information:
-    {INFO_ADD} Invitation         : {white}{invite}{red}
-    {INFO_ADD} Type               : {white}{type_value}{red}
-    {INFO_ADD} Code               : {white}{code_value}{red}
-    {INFO_ADD} Expired            : {white}{expires_at}{red}
-    {INFO_ADD} Server ID          : {white}{server_id}{red}
-    {INFO_ADD} Server Name        : {white}{server_name}{red}
-    {INFO_ADD} Channel ID         : {white}{channel_id}{red}
-    {INFO_ADD} Channel Name       : {white}{channel_name}{red}
-    {INFO_ADD} Channel Type       : {white}{channel_type}{red}
-    {INFO_ADD} Server Description : {white}{server_descritpion}{red}
-    {INFO_ADD} Server Icon        : {white}{server_icon}{red}
-    {INFO_ADD} Server Features    : {white}{server_features}{red}
-    {INFO_ADD} Server NSFW Level  : {white}{server_nsfw_level}{red}
-    {INFO_ADD} Server NSFW        : {white}{server_nsfw}{red}
-    {INFO_ADD} Flags              : {white}{flags}{red}
-    {INFO_ADD} Server Verification Level         : {white}{server_verification_level}{red}
-    {INFO_ADD} Server Premium Subscription Count : {white}{server_premium_subscription_count}{red}
+    Slow(f"""
+{red}Invitation Information:
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ {INFO_ADD} Invitation         : {white}{invite}{red}
+ {INFO_ADD} Type               : {white}{type_value}{red}
+ {INFO_ADD} Code               : {white}{code_value}{red}
+ {INFO_ADD} Expired            : {white}{expires_at}{red}
+ {INFO_ADD} Server ID          : {white}{server_id}{red}
+ {INFO_ADD} Server Name        : {white}{server_name}{red}
+ {INFO_ADD} Channel ID         : {white}{channel_id}{red}
+ {INFO_ADD} Channel Name       : {white}{channel_name}{red}
+ {INFO_ADD} Channel Type       : {white}{channel_type}{red}
+ {INFO_ADD} Server Description : {white}{server_descritpion}{red}
+ {INFO_ADD} Server Icon        : {white}{server_icon}{red}
+ {INFO_ADD} Server Features    : {white}{server_features}{red}
+ {INFO_ADD} Server NSFW Level  : {white}{server_nsfw_level}{red}
+ {INFO_ADD} Server NSFW        : {white}{server_nsfw}{red}
+ {INFO_ADD} Flags              : {white}{flags}{red}
+ {INFO_ADD} Server Verification Level         : {white}{server_verification_level}{red}
+ {INFO_ADD} Server Premium Subscription Count : {white}{server_premium_subscription_count}{red}
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 """)
 
     if inviter_info:
-        print(f"""    {red}Inviter Information:
-    {INFO_ADD} ID            : {white}{inviter_id}{red}
-    {INFO_ADD} Username      : {white}{inviter_username}{red}
-    {INFO_ADD} Global Name   : {white}{inviter_global_name}{red}
-    {INFO_ADD} Avatar        : {white}{inviter_avatar}{red}
-    {INFO_ADD} Discriminator : {white}{inviter_discriminator}{red}
-    {INFO_ADD} Public Flags  : {white}{inviter_public_flags}{red}
-    {INFO_ADD} Flags         : {white}{inviter_flags}{red}
-    {INFO_ADD} Banner        : {white}{inviter_banner}{red}
-    {INFO_ADD} Accent Color  : {white}{inviter_accent_color}{red}
-    {INFO_ADD} Banner Color  : {white}{inviter_banner_color}{red}
-    """)
+        Slow(f"""{red}Inviter Information:
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ {INFO_ADD} ID            : {white}{inviter_id}{red}
+ {INFO_ADD} Username      : {white}{inviter_username}{red}
+ {INFO_ADD} Global Name   : {white}{inviter_global_name}{red}
+ {INFO_ADD} Avatar        : {white}{inviter_avatar}{red}
+ {INFO_ADD} Discriminator : {white}{inviter_discriminator}{red}
+ {INFO_ADD} Public Flags  : {white}{inviter_public_flags}{red}
+ {INFO_ADD} Flags         : {white}{inviter_flags}{red}
+ {INFO_ADD} Banner        : {white}{inviter_banner}{red}
+ {INFO_ADD} Accent Color  : {white}{inviter_accent_color}{red}
+ {INFO_ADD} Banner Color  : {white}{inviter_banner_color}{red}
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+""")
     Continue()
     Reset()
 except Exception as e:

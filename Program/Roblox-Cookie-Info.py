@@ -1,4 +1,4 @@
-# Copyright (c) RedTiger (https://redtiger.shop)
+# Copyright (c) RedTiger
 # See the file 'LICENSE' for copying permission
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 # EN: 
@@ -45,13 +45,15 @@ try:
         builders_club_roblox = "None"
         
     print(f"""
-    {INFO_ADD} Status        : {white}{status}{red}
-    {INFO_ADD} Username      : {white}{username_roblox}{red}
-    {INFO_ADD} Id            : {white}{user_id_roblox}{red}
-    {INFO_ADD} Robux         : {white}{robux_roblox}{red}
-    {INFO_ADD} Premium       : {white}{premium_roblox}{red}
-    {INFO_ADD} Builders Club : {white}{builders_club_roblox}{red}
-    {INFO_ADD} Avatar        : {white}{avatar_roblox}{red}
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ {INFO_ADD} Status        : {white}{status}{red}
+ {INFO_ADD} Username      : {white}{username_roblox}{red}
+ {INFO_ADD} Id            : {white}{user_id_roblox}{red}
+ {INFO_ADD} Robux         : {white}{robux_roblox}{red}
+ {INFO_ADD} Premium       : {white}{premium_roblox}{red}
+ {INFO_ADD} Builders Club : {white}{builders_club_roblox}{red}
+ {INFO_ADD} Avatar        : {white}{avatar_roblox}{red}
+{white}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     """)
     Continue()
     Reset()
