@@ -329,7 +329,7 @@ while True:
          StartProgram(f"{option_site}.py")
          continue
       
-      elif choice == '31':
+      elif choice == '30':
          if os_name == "Linux":
             print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} The builder virus is only compatible with Windows, under Linux it can encounter big problems.")
             messagebox.showinfo(f"RedTiger {version_tool} - Virus Builder", "The builder virus is only compatible with Windows, under Linux it can encounter big problems.")
