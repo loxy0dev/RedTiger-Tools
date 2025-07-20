@@ -1,3 +1,5 @@
+
+
 <img align="center" src="Img/RedTiger-Banner.png" width="100%"> 
 
 <h1 align="center">Multi-Tools</h1>
@@ -48,121 +50,119 @@
   <br><br>
 </p>
 
-<h1 align="center">Features</h1>
+<h1 align="center">Features & descriptions</h1>
 <p>
    
 ```
 ┌── ⚒️ - RedTiger-Tools
-│   ├── Info
-│   └── Site
+│   ├── Info                               : Displays general information about RedTiger Tools.
+│   └── Site                               : Access the official website or related RedTiger Tools link.
 │
 ├── 💰 - Paid
-│   ├── Python Obfuscator (Premium)
-│   ├── Discord Rat (Premium)
-│   ├── Stresser DoS (Premium)
-│   └── Proxy Scraper (Premium)
+│   ├── Python Obfuscator (Premium)        : Makes Python code unreadable for protection.
+│   ├── Discord Rat (Premium)              : Remote access to a system via Discord (for legal use).
+│   ├── Website DoS (Premium)              : Launches a DoS attack on a website (for legal testing).
+│   └── Proxy Scraper (Premium)            : Automatically retrieves fresh proxy lists.
 │
 ├── 🕵️‍♂️ - Network Scanner
-│   ├── Sql Vulnerability Scanner
-│   ├── Website Scanner
-│   ├── Website Url Scanner
-│   ├── Ip Scanner
-│   ├── Ip Port Scanner
-│   └── Ip Pinger
+│   ├── Website Vulnerability Scanner      : Scans a website for vulnerabilities.
+│   ├── Website Info Scanner               : Retrieves general information about a website.
+│   ├── Website Url Scanner                : Crawls all available URLs of a website.
+│   ├── Ip Scanner                         : Retrieves general information about an IP.
+│   ├── Ip Port Scanner                    : Checks for open ports on an IP address.
+│   └── Ip Pinger                          : Tests IP connectivity via ping requests.
 │
 ├── 🔎 - Osint
-│   ├── D0x Create
-│   ├── D0x Tracker
-│   ├── Get Image Exif
-│   ├── Google Dorking
-│   ├── Username Tracker
-│   ├── Email Tracker
-│   ├── Email Lookup
-│   ├── Phone Number Lookup
-│   ├── Ip Lookup
-│   └── Instagram Account
+│   ├── D0x Create                         : Creates a file of collected personal data (legal use only).
+│   ├── D0x Tracker                        : Searches for personal info on a target (legal use only).
+│   ├── Get Image Exif                     : Extracts metadata from an image (location, device, etc.).
+│   ├── Google Dorking                     : Advanced Google searches for sensitive data.
+│   ├── Username Tracker                   : Searches a username across multiple platforms.
+│   ├── Email Tracker                      : Analyzes and tracks an email across the web.
+│   ├── Email Lookup                       : Retrieves public information linked to an email.
+│   ├── Phone Number Lookup                : Finds info related to a phone number.
+│   ├── Ip Lookup                          : Shows location and details linked to an IP.
+│   └── Instagram Account                  : Retrieves public data from an Instagram profile.
 │
 ├── 🔧 - Utilities
-│   ├── Phishing Attack
-│   ├── Password Zip Cracked Attack
-│   ├── Password Decrypted Attack
-│   ├── Password Encrypted
-│   ├── Search In DataBase
-│   ├── Dark Web Links
-│   └── Ip Generator
+│   ├── Phishing Attack                    : Automatically clones the page of any website.
+│   ├── Password Zip Cracked Attack        : Forces password access on a ZIP/RAR archive.
+│   ├── Password Decrypted Attack          : Decrypts encrypted passwords in various formats.
+│   ├── Password Encrypted                 : Encrypts a password in various formats.
+│   ├── Search In DataBase                 : Searches keywords within your local database.
+│   ├── Dark Web Links                     : Displays popular links accessible on the dark web.
+│   └── Ip Generator                       : Randomly generates valid IP addresses.
 │
 ├── ☠️ - Virus Builder
 │   ├── Stealer
-│   │   ├── System Info            : User, System, Ip, Disk, Screen, Location, And more..
-│   │   ├── Wallet Session Files   : Electrum, Exodus, Binance, Crypto.com, Trust Wallet, Atomic Wallet, Coinbase Wallet, Guarda, Bytecoin, Armory, Jaxx Liberty, Coinomi, AtomicDEX, Wasabi Wallet, Ledger Live, Trezor Suite, Blockchain Wallet, Mycelium, BRD, Zerion
-│   │   ├── Games Session Files    : Steam, Riot Games, Epic Games, Rockstar Games
-│   │   ├── Apps Session Files     : Telegram
-│   │   ├── Roblox Accounts        : Cookie, Id, Username, And more..
-│   │   ├── Discord Accounts       : Token, Email, Phone, Id, Username, Billing, And more..
-│   │   ├── Discord Injection      : Email/Password Changed, Login, Card/Paypal Added, Nitro Bought, And more..
-│   │   ├── Passwords              : Url, Email, Password
-│   │   ├── Cookies                : Url, Cookie, Expire
-│   │   ├── Browsing History       : Url, Title, Time
-│   │   ├── Download History       : Url, Path
-│   │   ├── Cards                  : Name, Expiration Month, Expiration Year, Card Number, Date Modified
-│   │   ├── Extentions             : Metamask, Binance, Coinbase, ExodusWeb3, Phantom, Trust, Ronin, Venom, Sui, Martian, Tron, Petra, Pontem, Fewcha, Math, Coin98, Authenticator, Core, Tokenpocket, Safepal, Solfare, Kaikas, iWallet, Yoroi, Guarda, Jaxx Liberty, Wombat, Oxygen, MEWCX, Guild, Saturn, TerraStation, HarmonyOutdated, Ever, KardiaChain, PaliWallet, BoltX, Liquality, XDEFI, Nami, MaiarDEFI, TempleTezos, XMR.PT, And more..
-│   │   ├── Interesting Files      : Download the files that are interesting.
-│   │   ├── Camera Capture         : Record the victim's computer camera.
-│   │   └── Screenshot             : Capture the victim's computer screen.
+│   │   ├── System Info                    : User, System, IP, Disk, Screen, Location, and more...
+│   │   ├── Wallet Session Files           : Electrum, Exodus, Binance, Crypto.com, Trust Wallet, Atomic Wallet, etc.
+│   │   ├── Games Session Files            : Steam, Riot Games, Epic Games, Rockstar Games.
+│   │   ├── Apps Session Files             : Telegram.
+│   │   ├── Roblox Accounts                : Cookie, ID, Username, and more...
+│   │   ├── Discord Accounts               : Token, Email, Phone, ID, Username, Billing, and more...
+│   │   ├── Discord Injection              : Email/Password changed, login, card/PayPal added, Nitro bought, etc.
+│   │   ├── Passwords                      : URL, Email, Password.
+│   │   ├── Cookies                        : URL, Cookie, Expiry.
+│   │   ├── Browsing History               : URL, Title, Time.
+│   │   ├── Download History               : URL, Path.
+│   │   ├── Cards                          : Name, Expiry Month/Year, Card Number, Date Modified.
+│   │   ├── Extensions                     : Lists wallets/extensions like MetaMask, Phantom, Trust, etc.
+│   │   ├── Interesting Files              : Downloads files considered interesting.
+│   │   ├── Camera Capture                 : Records video from the victim's webcam.
+│   │   └── Screenshot                     : Captures the victim's screen.
 │   │
 │   └── Malware
-│       ├── Block Key
-│       ├── Block Mouse
-│       ├── Block Task Manager
-│       ├── Block AV Website
-│       ├── Shutdown
-│       ├── Spam Open Program
-│       ├── Spam Create File
-│       ├── Fake Error
-│       ├── Launch At Startup
-│       ├── Anti Vm & Debug
-│       └── Restart Every 5min
+│       ├── Block Key                      : Blocks keyboard input on the target system.
+│       ├── Block Mouse                    : Disables the user’s mouse.
+│       ├── Block Task Manager             : Disables Task Manager.
+│       ├── Block AV Website               : Prevents access to known antivirus websites.
+│       ├── Shutdown                       : Shuts down the targeted system.
+│       ├── Spam Open Program              : Repeatedly opens a program to cause disruption.
+│       ├── Spam Create File               : Mass-creates files to overload the device.
+│       ├── Fake Error                     : Displays a fake error message.
+│       ├── Launch At Startup              : Auto-starts the script with the system.
+│       ├── Anti Vm & Debug                : Detects VMs and debuggers.
+│       └── Restart Every 5min             : Restarts the script every 5 minutes.
 │
 ├── 📞 - Discord Tools
 │   ├── Token Discord
-│   │   ├── Discord Token Info
-│   │   ├── Discord Token Nuker
-│   │   ├── Discord Token Joiner
-│   │   ├── Discord Token Leaver
-│   │   ├── Discord Token Login
-│   │   ├── Discord Token To Id And Brute
-│   │   ├── Discord Token Server Raid
-│   │   ├── Discord Token Spammer
-│   │   ├── Discord Token Delete Friends
-│   │   ├── Discord Token Block Friends
-│   │   ├── Discord Token Mass Dm
-│   │   ├── Discord Token Delete Dm
-│   │   ├── Discord Token Status Changer
-│   │   ├── Discord Token Language Changer
-│   │   ├── Discord Token House Changer
-│   │   ├── Discord Token Theme Changer
-│   │   └── Discord Token Generator
+│   │   ├── Discord Token Info             : Displays info about a Discord token.
+│   │   ├── Discord Token Nuker            : Deletes a Discord account via token.
+│   │   ├── Discord Token Joiner           : Makes a token join a server.
+│   │   ├── Discord Token Leaver           : Makes a token leave a server.
+│   │   ├── Discord Token Login            : Logs in using a token.
+│   │   ├── Discord Token To Id And Brute  : Links token to ID and brute-forces access.
+│   │   ├── Discord Token Server Raid      : Raids a server using multiple tokens.
+│   │   ├── Discord Token Spammer          : Mass-sends messages using a token.
+│   │   ├── Discord Token Delete Friends   : Deletes all friends from the token account.
+│   │   ├── Discord Token Block Friends    : Blocks all friends from the token account.
+│   │   ├── Discord Token Mass Dm          : Mass-sends private messages.
+│   │   ├── Discord Token Delete Dm        : Deletes all private conversations.
+│   │   ├── Discord Token Status Changer   : Changes the token’s status.
+│   │   ├── Discord Token Language Changer : Changes the Discord UI language.
+│   │   ├── Discord Token House Changer    : Changes the account’s house badge.
+│   │   ├── Discord Token Theme Changer    : Switches between light/dark themes.
+│   │   └── Discord Token Generator        : Randomly generates Discord tokens.
 │   │
 │   ├── Bot Discord
-│   │   ├── Discord Bot Server Nuker
-│   │   └── Discord Bot Invite To Id
+│   │   ├── Discord Bot Server Nuker       : Nukes a server using a bot.
+│   │   └── Discord Bot Invite To Id       : Generates an invite using a server ID.
 │   │
 │   ├── Webhook Discord
-│   │   ├── Discord Webhook Info
-│   │   ├── Discord Webhook Delete
-│   │   ├── Discord Webhook Spammer
-│   │   └── Discord Webhook Generator 
+│   │   ├── Discord Webhook Info           : Shows info about a webhook.
+│   │   ├── Discord Webhook Delete         : Deletes a webhook.
+│   │   ├── Discord Webhook Spammer        : Mass-sends messages via webhook.
+│   │   └── Discord Webhook Generator      : Automatically generates working webhooks.
 │   │
-│   ├── Discord Server Info
-│   └── Discord Nitro Generator
+│   ├── Discord Server Info                : Displays info about a Discord server.
+│   └── Discord Nitro Generator            : Randomly generates Discord Nitro codes.
 │
 └── 🎮 - Roblox Tools
-    ├── Roblox Cookie Login
-    ├── Roblox Cookie Info
-    ├── Roblox User Info
-    └── Roblox Id Info
-
-
+    ├── Roblox Cookie Login                : Logs into a Roblox account via cookie.
+    ├── Roblox Cookie Info                 : Retrieves data linked to a Roblox cookie.
+    ├── Roblox User Info                   : Displays public info of a Roblox user.
+    └── Roblox Id Info                     : Shows details related to a Roblox ID.
 
 ```
 <br><br>
