@@ -29,10 +29,10 @@
 <h1 align="center">Disclaimer</h1>
 
 <p>
-  
-  - RedTiger Tools has been developed solely for educational purposes.<br>
-  - This project has been created with good intentions and is intended for personal use only.<br>
-  - By choosing to use RedTiger, you acknowledge and accept full responsibility for any consequences that may result from your actions.<br>
+   
+  - RedTiger Tools has been developed solely for educational purposes and legal use. This tool must be used in accordance with the laws of your country. Any illegal activity involving this type of tool is prohibited and punishable by law.<br>
+  - This project has been created with good intentions and is intended for personal use only. It is strictly prohibited to use it for malicious purposes or unauthorized access.<br>
+  - By choosing to use RedTiger, you acknowledge and accept full responsibility for any consequences that may result from your actions. The developers are not responsible for any misuse of the tool.<br>
   - All scripts in the "<a href="https://github.com/loxy0dev/RedTiger-Tools/tree/main/Program/FileDetectedByAntivirus">Program/FileDetectedByAntivirus</a>" folder are <strong>detected by the antivirus</strong> but pose no threat to you. These are <strong>not backdoors or malware</strong>.
 <br><br>
 </p>
