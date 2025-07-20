@@ -50,7 +50,7 @@
   <br><br>
 </p>
 
-<h1 align="center">Features & descriptions</h1>
+<h1 align="center">Features & Descriptions</h1>
 <p>
    
 ```
@@ -93,8 +93,8 @@
 │   ├── Dark Web Links                     : Displays popular links accessible on the dark web.
 │   └── Ip Generator                       : Randomly generates valid IP addresses.
 │
-├── ☠️ - Virus Builder
-│   ├── Stealer
+├── ☠️ - Virus Builder (for legal testing)
+│   ├── Stealer (for legal testing)
 │   │   ├── System Info                    : User, System, IP, Disk, Screen, Location, and more...
 │   │   ├── Wallet Session Files           : Electrum, Exodus, Binance, Crypto.com, Trust Wallet, Atomic Wallet, etc.
 │   │   ├── Games Session Files            : Steam, Riot Games, Epic Games, Rockstar Games.
@@ -112,7 +112,7 @@
 │   │   ├── Camera Capture                 : Records video from the victim's webcam.
 │   │   └── Screenshot                     : Captures the victim's screen.
 │   │
-│   └── Malware
+│   └── Malware (for legal testing)
 │       ├── Block Key                      : Blocks keyboard input on the target system.
 │       ├── Block Mouse                    : Disables the user’s mouse.
 │       ├── Block Task Manager             : Disables Task Manager.
