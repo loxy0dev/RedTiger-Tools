@@ -60,7 +60,8 @@
 │
 ├── 💰 - Paid
 │   ├── Python Obfuscator (Premium)        : Makes Python code unreadable for protection.
-│   ├── Discord Rat (Premium)              : Remote access to a system via Discord (for legal use).
+│   ├── Discord Rat Builder (Premium)      : [Legal use only] Remote access to a system via Discord.
+│   ├── Ransomware Builder (Premium)       : [Legal use only] Custom ransomware creation tool to encrypt files and demand payment.
 │   ├── Website DoS (Premium)              : Launches a DoS attack on a website (for legal testing).
 │   └── Proxy Scraper (Premium)            : Automatically retrieves fresh proxy lists.
 │
@@ -73,8 +74,8 @@
 │   └── Ip Pinger                          : Tests IP connectivity via ping requests.
 │
 ├── 🔎 - Osint
-│   ├── D0x Create                         : Creates a file of collected personal data (legal use only).
-│   ├── D0x Tracker                        : Searches for personal info on a target (legal use only).
+│   ├── D0x Create                         : [Legal use only] Creates a file of collected personal data.
+│   ├── D0x Tracker                        : [Legal use only] Searches for personal info on a target.
 │   ├── Get Image Exif                     : Extracts metadata from an image (location, device, etc.).
 │   ├── Google Dorking                     : Advanced Google searches for sensitive data.
 │   ├── Username Tracker                   : Searches a username across multiple platforms.
@@ -93,8 +94,8 @@
 │   ├── Dark Web Links                     : Displays popular links accessible on the dark web.
 │   └── Ip Generator                       : Randomly generates valid IP addresses.
 │
-├── ☠️ - Virus Builder (for legal testing)
-│   ├── Stealer (for legal testing)
+├── ☠️ - Virus Builder [Legal use only]
+│   ├── Stealer [Legal use only]
 │   │   ├── System Info                    : User, System, IP, Disk, Screen, Location, and more...
 │   │   ├── Wallet Session Files           : Electrum, Exodus, Binance, Crypto.com, Trust Wallet, Atomic Wallet, etc.
 │   │   ├── Games Session Files            : Steam, Riot Games, Epic Games, Rockstar Games.
@@ -112,7 +113,7 @@
 │   │   ├── Camera Capture                 : Records video from the victim's webcam.
 │   │   └── Screenshot                     : Captures the victim's screen.
 │   │
-│   └── Malware (for legal testing)
+│   └── Malware [Legal use only]
 │       ├── Block Key                      : Blocks keyboard input on the target system.
 │       ├── Block Mouse                    : Disables the user’s mouse.
 │       ├── Block Task Manager             : Disables Task Manager.
